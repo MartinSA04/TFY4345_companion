@@ -1,0 +1,28 @@
+# TFY4345 Klassisk mekanikk — interaktiv pensumguide.
+# Innholdet er under arbeid; metadataene under er hentet fra NTNUs emneside.
+
+schemaVersion: 1
+
+code: TFY4345
+title: Klassisk mekanikk
+subtitle: Interaktiv pensumguide
+term: H2026
+language: nb
+
+courseUrl: "https://www.ntnu.no/studier/emner/TFY4345"
+institution: NTNU
+repoUrl: "https://github.com/MartinSA04/TFY4345_companion"
+repoBranch: main
+
+accent: "#2e7d57"
+accentDark: "#6cc79b"
+
+exam:
+  format: Skriftlig skoleeksamen, 4 timer
+  aids: "Kode H: alle kalkulatorer tillatt, ingen trykte eller håndskrevne hjelpemidler"
+
+features:
+  progress: true
+  search: true
+  flashcards: false
+  theme: true
