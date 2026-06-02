@@ -26,3 +26,6 @@ features:
   search: true
   flashcards: false
   theme: true
+
+analytics:
+  goatcounter: "https://klasmekmartinsundal.goatcounter.com/count"
