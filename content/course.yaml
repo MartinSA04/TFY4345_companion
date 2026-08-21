@@ -28,6 +28,54 @@ exam:
   format: Skriftlig skoleeksamen
   aids: "Kode H: alle kalkulatorer tillatt, ingen trykte eller håndskrevne hjelpemidler"
 
+# ── Tidligere eksamener → Eksamen-siden ──────────────────────────────────────
+# Lenker rett til PDF-ene hos NTNU; guiden hoster dem ikke selv. Datoene er lest
+# av forsiden på hvert sett, ikke gjettet fra filnavnet — IFY navngir flere av
+# filene etter semesteret (…_251200) og ikke etter eksamensdagen.
+# Et utvalg, nyeste først; resten ligger i arkivet som lenkes nederst.
+exams:
+  - {
+      label: "Ordinær eksamen, november 2025",
+      date: 2025-11-26,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_251200.pdf/df66e8f7-6483-7255-c4b7-52a012a924fc",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_251200.pdf/56c203d5-ea6d-de00-ebb6-fb49a93e433f",
+    }
+  - {
+      label: "Ordinær eksamen, november 2024",
+      date: 2024-11-30,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_241130.pdf/9671b7d0-a23a-371a-8e06-26779817d835",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_241130.pdf/cb2b1e14-0572-02e5-34a6-95b3ed7e5350",
+    }
+  - {
+      label: "Ordinær eksamen, november 2023",
+      date: 2023-11-27,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_231127.pdf/f9dd7df7-33ea-eb9a-fb3a-563c869dd5f8",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_231127.pdf/fe4473de-a2fd-b927-7768-1ec35c83d5a4",
+    }
+  - {
+      label: "Ordinær eksamen, desember 2022",
+      date: 2022-12-01,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_221200.pdf/45a3ba32-5f1c-ae99-5e60-1af9042a1c19",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_221200.pdf/93dc3010-70b6-697b-ca97-764a25ed86d1",
+    }
+  - {
+      label: "Kontinuasjonseksamen, august 2022",
+      date: 2022-08-17,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_220800.pdf/b914a74c-97e6-a065-038a-1228c5155834",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_220800.pdf/eb0eb036-86c7-93d7-796b-6665bf6e1c63",
+    }
+  - {
+      label: "Ordinær eksamen, desember 2021",
+      date: 2021-12-14,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_211200.pdf/f36d4cc9-75af-0a20-7b4d-3fe6a5326437",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_211200.pdf/50431bfb-3ec6-01f9-e76c-bb16b6236931",
+    }
+
+# Hele arkivet hos Institutt for fysikk — rendres som siste rad i lista.
+examArchive:
+  url: "https://www.ntnu.no/fysikk/eksamen/landing/-/asset_publisher/uwSAlUJoweyy/content/tfy4345-klassisk-mekanikk"
+  label: "Hele eksamensarkivet hos Institutt for fysikk"
+
 features:
   progress: true
   search: true
