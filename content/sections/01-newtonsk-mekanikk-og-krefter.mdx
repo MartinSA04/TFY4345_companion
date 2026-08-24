@@ -1,0 +1,286 @@
+---
+order: 1
+title: "Newtonsk mekanikk og krefter"
+summary: "Newtons første lov sier at inertialsystemer finnes. Galilei-transformasjonen følger av at begge systemer er inertiale, og potensialkurven gir likevekt og stabilitet."
+importance: core
+tag: "Uke 34"
+updated: 2026-08-24
+---
+
+Newtons tre lover er kjent stoff fra før.
+
+<LearningGoals>
+- Forklare hva Newtons første lov fastsetter og hvorfor den andre loven ikke gir mening før du har valgt referansesystem.
+- Sette opp den mest generelle lineære transformasjonen mellom to inertialsystemer og vise hvilken antakelse som gir Galilei-transformasjonen.
+- Avgjøre om et kraftfelt er konservativt og finne potensialet til et konservativt felt.
+- Lese likevektspunkter, stabilitet og vendepunkter ut av $V(x)$.
+</LearningGoals>
+
+## Inertialsystemer
+
+Et referansesystem er et origo, et sett akser og en klokke. En hendelse får
+tallene $(t, x, y, z)$.
+
+<Formula
+  tex="\vec F = \dot{\vec p} = m\ddot{\vec r}"
+  caption="Newtons andre lov for konstant masse."
+/>
+
+Akselerasjonen på høyresiden er målt i ett bestemt system, og i mange systemer er
+loven rett og slett gal. Står du på en karusell og slipper en ball, krummer banen
+seg selv om ingenting virker på ballen, og du må innføre ekstra krefter for at
+$\vec F = m\vec a$ skal stemme.
+
+Newtons første lov ser ut som spesialtilfellet $\vec F = 0$ av den andre loven,
+men den sier noe annet. Den slår fast at det finnes systemer der en fri partikkel
+går med konstant hastighet, og det er i dem den andre loven gjelder.
+
+<Statement kind="law" name="Newtons første lov">
+Det finnes referansesystemer der en fri partikkel beveger seg med konstant
+hastighet. Slike systemer kalles <Term name="inertialsystem">inertialsystemer</Term>,
+og Newtons andre lov er formulert i dem.
+</Statement>
+
+Galileo brukte et skip til å vise at jevn fart ikke kan påvises ved noe forsøk om
+bord. Under dekk faller dråper rett ned i en kopp, og du kaster like langt
+forover som bakover. Farten inngår ikke i bevegelsesligningene om bord.
+
+## Fra ett inertialsystem til alle andre
+
+Ett inertialsystem $K$ bestemmer alle de andre. Et system $K'$ er inertialt når
+en fri partikkel også der går langs en rett linje med konstant hastighet, og det
+kravet begrenser hvordan koordinatene i $K'$ kan henge sammen med dem i $K$.
+
+Uniform bevegelse er en rett linje i $(t, x)$-planet. En transformasjon som
+sender alle rette linjer over i rette linjer, og som er inverterbar overalt, må
+være lineær. Et ledd med $x^2$ eller $tx$ ville gitt banen til en fri partikkel
+en krumning, og da var $K'$ ikke inertialt.
+
+Legg aksene parallelt, la origoene falle sammen ved $t = t' = 0$ og la $K'$
+bevege seg med hastigheten $v$ langs $x$-aksen. En bevegelse langs $x$ peker ikke
+ut noen retning på tvers, så $y' = y$ og $z' = z$. Igjen står $t'$ og $x'$, og en
+lineær transformasjon av dem har fire ukjente konstanter.
+
+To krav ligger allerede i oppsettet. Origo i $K'$ følger linja $x = vt$ sett fra $K$,
+og ingen av systemene er utpekt framfor det andre, så transformasjonen tilbake er
+den samme med $v$ byttet mot $-v$. De to kravene fjerner to av konstantene og
+binder de to siste sammen.
+
+<Formula
+  tex="t' = At + Bx, \qquad x' = A\,(x - vt)"
+  caption="Den mest generelle lineære transformasjonen mellom to inertialsystemer med parallelle akser og felles origo ved $t = 0$."
+/>
+<Formula
+  tex="A^2 + ABv = 1"
+  caption="Bindingen mellom de to konstantene, så bare én av dem er fri."
+/>
+
+<Derivation title="Fra fire konstanter til én">
+Start med den generelle lineære formen $t' = At + Bx$, $x' = Dt + Ex$.
+
+Origo i $K'$ er punktet $x' = 0$, og sett fra $K$ følger det linja $x = vt$.
+Innsatt gir det $0 = Dt + Evt$ for alle $t$, altså $D = -Ev$.
+
+Skriv transformasjonen som en matrise $M(v)$ med radene $(A, B)$ og $(-Ev, E)$.
+Sett fra $K'$ beveger $K$ seg med $-v$, så transformasjonen tilbake er
+$M(-v) = M(v)^{-1}$. Speiler du $x$-aksen, bytter $v$ fortegn sammen med $B$ og
+$D$, mens $A$ og $E$ er uendret. Elementet nederst til venstre i den inverse
+matrisen er $Ev/\det M$, og det skal være $D(-v) = Ev$, så $\det M = 1$.
+Elementet øverst til venstre er da $E$, og det skal være $A(-v) = A$, så
+$E = A$. Dermed er $x' = A\,(x - vt)$, og determinanten gir bindingen
+
+$$
+\det M = A^2 + ABv = 1
+$$
+
+Galilei-transformasjonen oppfyller bindingen med $A = 1$ og $B = 0$, og
+Lorentz-transformasjonen med $A = \gamma$ og $B = -\gamma v/c^2$.
+</Derivation>
+
+Bare én konstant står altså igjen, og én fysisk antakelse fikserer den.
+
+Newton antar at tida er absolutt, altså at alle klokker går likt uansett hvordan de beveger seg, og da er $t' = t$ med $A = 1$ og $B = 0$.
+
+<Formula
+  tex="t' = t, \qquad \vec r\,' = \vec r - \vec v t"
+  caption="<b>Galilei-transformasjonen</b>. Den følger av at tida regnes som absolutt."
+/>
+
+Hvis du i stedet krever at $\Delta s^2 = c^2\Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2$
+har samme verdi i begge systemer, får $A$ og $B$ andre verdier, og resultatet er
+Lorentz-transformasjonen.
+
+Deriver <FormulaRef id="galilei">Galilei-transformasjonen</FormulaRef> med hensyn
+på tida, og hastighetene forskyves med $\vec v$. Deriver en gang til, og $\vec v$
+faller ut.
+
+<Formula
+  tex="\vec u\,' = \vec u - \vec v, \qquad \vec a\,' = \vec a"
+  caption="Hastigheter avhenger av systemet, mens akselerasjonen er den samme i begge systemer."
+/>
+
+Massen er den samme i begge systemer, og de vanlige kreftene i mekanikken
+avhenger bare av avstander mellom partikler og av relative hastigheter. Begge
+deler er uendret under transformasjonen, så $\vec F\,' = \vec F$, og
+$m\vec a = \vec F$ har samme form i $K$ og $K'$.
+
+<Simulation
+  src="/sims/inertialsystem.js"
+  title="Samme kast, to inertialsystemer"
+  caption="Vogna skyter en ball rett opp og tar den imot igjen, og prikkene viser posisjonen med faste tidsmellomrom. Sett fra bakken er banen en parabel, sett fra vogna en rett linje opp og ned. Bytt system midt i flukten, og de samme prikkene danner den andre banen. Stå i vogna og dra i $v$: kastet ser helt likt ut uansett, bare bakken flytter seg."
+  host="dom"
+  height={320}
+/>
+
+<Statement kind="principle" name="Galileis relativitetsprinsipp">
+Newtons lover har samme form i alle inertialsystemer. Ingen mekanisk måling inne
+i et lukket laboratorium kan avgjøre hvilken konstant hastighet laboratoriet har.
+</Statement>
+
+<SelfCheck question="Hvorfor må transformasjonen mellom to inertialsystemer være lineær?">
+En fri partikkel følger en rett linje i $(t, x)$-planet i begge systemer, så
+transformasjonen må sende rette linjer over i rette linjer og være inverterbar
+overalt. Da er den lineær bortsett fra en konstant forskyvning, og den
+forskyvningen forsvinner når origoene faller sammen ved $t = t' = 0$.
+</SelfCheck>
+
+## Krefter som kommer fra et potensial
+
+Arbeidet en kraft gjør på en partikkel som går fra $a$ til $b$ langs banen $C$,
+er linjeintegralet
+
+<Formula tex="W = \int_C \vec F \cdot d\vec r" />
+
+For en vilkårlig $\vec F(\vec r)$ avhenger dette tallet av hele banen. De fleste
+kreftene i mekanikken gir samme svar uansett hvilken bane du velger mellom de to
+punktene, og en slik kraft kalles <Term name="konservativ kraft">konservativ</Term>.
+
+Uttrykket $\vec F \cdot d\vec r = F_x\,dx + F_y\,dy + F_z\,dz$ er en
+differensialform, og formen er <Term name="eksakt differensial">eksakt</Term>
+dersom den er differensialet til en funksjon. Finnes det en $V$ med
+$F_x = -\partial V/\partial x$ og tilsvarende for de to andre komponentene,
+blir linjeintegralet en differanse.
+
+<Formula
+  tex="\int_C \vec F \cdot d\vec r = -\int_C dV = V(a) - V(b)"
+  caption="Bare endepunktene står igjen, så arbeidet er uavhengig av banen."
+/>
+
+I praksis sjekker du ikke alle baner. Kryssderiverte av en glatt funksjon
+kommuterer, så en eksakt form må oppfylle $\partial F_x/\partial y =
+\partial F_y/\partial x$ sammen med de to andre parene. Det er nøyaktig kravet
+$\nabla \times \vec F = 0$. På et
+<Term name="enkeltsammenhengende område">enkeltsammenhengende</Term> område er
+kravet også tilstrekkelig.
+
+<Statement kind="theorem" name="Konservative krefter">
+For et glatt kraftfelt $\vec F(\vec r)$ på et enkeltsammenhengende område sier
+disse fire det samme:
+
+- $\vec F \cdot d\vec r$ er et eksakt differensial
+- arbeidet $\int_C \vec F \cdot d\vec r$ er uavhengig av banen
+- $\nabla \times \vec F = 0$
+- det finnes et <Term name="potensial" /> $V$ med $\vec F = -\nabla V$
+</Statement>
+
+<Example title="Er dette kraftfeltet konservativt?">
+Et kraftfelt i $\mathbb{R}^3$ er gitt ved
+
+<Formula tex="\vec F = (2xy + z^3)\,\hat x + x^2\,\hat y + 3xz^2\,\hat z" />
+
+Avgjør om feltet er konservativt, og finn potensialet dersom det er det.
+
+<Solution>
+Sjekk de tre parene av kryssderiverte:
+
+<Formula tex="\frac{\partial F_x}{\partial y} = 2x = \frac{\partial F_y}{\partial x}, \qquad \frac{\partial F_x}{\partial z} = 3z^2 = \frac{\partial F_z}{\partial x}, \qquad \frac{\partial F_y}{\partial z} = 0 = \frac{\partial F_z}{\partial y}" />
+
+Alle tre stemmer, så $\nabla \times \vec F = 0$, og feltet er konservativt på
+hele $\mathbb{R}^3$. Integrer $-\partial V/\partial x = F_x$ med hensyn på $x$:
+
+<Formula tex="V = -(x^2 y + x z^3) + f(y, z)" />
+
+Deriver denne med hensyn på $y$ og sammenlign med $F_y = -\partial V/\partial y$.
+Det gir $x^2 = x^2 - \partial f/\partial y$, altså $\partial f/\partial y = 0$.
+Samme regning for $z$ gir $\partial f/\partial z = 0$, så $f$ er en konstant.
+
+<Answer>$V(x, y, z) = -(x^2 y + x z^3) + \text{konst}$</Answer>
+</Solution>
+</Example>
+
+## Bevegelse i et potensial
+
+I én dimensjon er $F = -dV/dx$, og energien er bevart. Deriver
+$E = \tfrac12 m\dot x^2 + V(x)$ med hensyn på tida:
+$\dot E = \dot x\,(m\ddot x + V'(x))$, og parentesen er null nettopp fordi
+$m\ddot x = -V'(x)$.
+
+<Formula
+  tex="E = \tfrac12 m\dot x^2 + V(x)"
+  caption="Det kinetiske leddet kan ikke være negativt, så partikkelen holder seg der $V(x) \le E$."
+/>
+
+Grensene for dette området er <Term name="vendepunkt">vendepunktene</Term>, der
+$V(x) = E$ og farten er null. En partikkel som starter i en brønn med for lav
+energi til å komme over kanten, blir liggende og svinge mellom to vendepunkter.
+
+Et <Term name="likevektspunkt">likevektspunkt</Term> er et punkt der kraften er
+null, altså der $V'(x_0) = 0$. Den andre deriverte avgjør hva et lite dytt gjør.
+Ligger $x_0$ i et minimum, er $V''(x_0) > 0$, og dyttet gir en kraft tilbake mot
+$x_0$. Ligger $x_0$ på en topp, er $V''(x_0) < 0$, og samme dytt sender
+partikkelen videre vekk. For små utslag $\xi$ om et minimum blir
+bevegelsesligningen $m\ddot\xi = -V''(x_0)\,\xi$.
+
+<Formula
+  tex="V'(x_0) = 0, \qquad \omega = \sqrt{V''(x_0)/m}"
+  caption="Likevekt der $V'$ har et nullpunkt. Om et minimum svinger partikkelen harmonisk med vinkelfrekvens $\omega$."
+/>
+
+<Simulation
+  src="/sims/potensial.js"
+  title="Potensialkurve, likevekt og vendepunkter"
+  caption="$V(x) = \tfrac12 kx^2 + \tfrac14 \lambda x^4$. Utfylt markør er stabil likevekt, åpen ring er ustabil og de loddrette strekene på energilinja er vendepunktene. Det skyggelagte området er der $V(x) \le E$. Dra $k$ ned gjennom null og se brønnen dele seg i to."
+  host="dom"
+  height={320}
+/>
+
+<Example title="Likevekt i en dobbeltbrønn">
+En partikkel med masse $m = 0{,}20$ kg beveger seg i potensialet
+$V(x) = \tfrac12 kx^2 + \tfrac14 \lambda x^4$ med $k = -1{,}2$ N/m og
+$\lambda = 3{,}0$ N/m³. Finn likevektspunktene, avgjør stabiliteten og regn ut
+vinkelfrekvensen for små svingninger om et stabilt punkt.
+
+<Solution>
+Likevekt krever $V'(x) = kx + \lambda x^3 = x\,(k + \lambda x^2) = 0$, som gir
+$x_0 = 0$ og $x_0 = \pm\sqrt{-k/\lambda}$. Med tallene er
+$-k/\lambda = 1{,}2/3{,}0 = 0{,}40$ m², altså $x_0 = \pm 0{,}63$ m.
+
+Den andre deriverte er $V''(x) = k + 3\lambda x^2$. I origo gir det
+$V''(0) = -1{,}2$ N/m, som er negativt, så origo er ustabil. I de to andre
+punktene er
+
+<Formula tex="V''(\pm 0{,}63\ \text{m}) = -1{,}2 + 3 \cdot 3{,}0 \cdot 0{,}40 = 2{,}4\ \text{N/m}" />
+
+som er positivt, så begge er stabile. Vinkelfrekvensen om et av dem er
+
+<Formula tex="\omega = \sqrt{\frac{V''(x_0)}{m}} = \sqrt{\frac{2{,}4\ \text{N/m}}{0{,}20\ \text{kg}}} = \sqrt{12\ \text{s}^{-2}} = 3{,}5\ \text{rad/s}" />
+
+<Answer>$x_0 = 0$ er ustabil, $x_0 = \pm 0{,}63$ m er stabile og $\omega = 3{,}5$ rad/s</Answer>
+</Solution>
+</Example>
+
+<Quiz
+  question="Et kraftfelt har $\nabla \times \vec F = 0$ overalt der det er definert, men feltet er udefinert langs hele $z$-aksen. Hva følger om arbeidet langs en lukket kurve som omslutter $z$-aksen?"
+  options={["Det er null, siden $\\nabla \\times \\vec F = 0$", "Det trenger ikke være null, fordi området ikke er enkeltsammenhengende", "Det er null bare dersom kurven er en sirkel", "Arbeidet er udefinert for lukkede kurver"]}
+  answer={1}
+  explanation="Stokes' teorem krever en flate som spennes ut av kurven og ligger helt inne i området. En kurve rundt $z$-aksen har ingen slik flate, så $\nabla \times \vec F = 0$ sier ingenting her, og arbeidet kan være ulikt null."
+/>
+
+<KeyTakeaways>
+- Newtons første lov slår fast at inertialsystemer finnes. Den andre loven gjelder i dem.
+- Transformasjonen mellom to inertialsystemer må være lineær fordi rette linjer skal forbli rette, og etterpå står bare én fri konstant igjen.
+- Absolutt tid gir Galilei-transformasjonen. Et invariant $\Delta s^2$ gir Lorentz-transformasjonen.
+- Under en Galilei-transformasjon forskyves hastigheter med $\vec v$, mens akselerasjoner, masser og krefter er uendret.
+- En kraft er konservativ når $\nabla \times \vec F = 0$ på et enkeltsammenhengende område, og da finnes et potensial med $\vec F = -\nabla V$.
+- Nullpunktene til $V'$ er likevektspunkter. Fortegnet til $V''$ avgjør stabiliteten.
+</KeyTakeaways>

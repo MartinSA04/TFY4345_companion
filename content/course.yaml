@@ -27,11 +27,17 @@ exam:
   durationMinutes: 240
   format: Skriftlig skoleeksamen
   aids: "Kode H: alle kalkulatorer tillatt, ingen trykte eller håndskrevne hjelpemidler"
+  # Ingen formelsamling deles ut: kode H forbyr trykte hjelpemidler, og settene i
+  # arkivet har ingen formelside.
+  formulaSheet: false
 
 # ── Tidligere eksamener → Eksamen-siden ──────────────────────────────────────
-# Lenker rett til PDF-ene hos NTNU; guiden hoster dem ikke selv. Datoene er lest
-# av forsiden på hvert sett, ikke gjettet fra filnavnet — IFY navngir flere av
-# filene etter semesteret (…_251200) og ikke etter eksamensdagen.
+# Lenker rett til PDF-ene hos NTNU; guiden hoster dem ikke selv. Ingen dato er
+# gjettet fra filnavnet: IFY navngir flere av filene etter semesteret (…_251200)
+# og ikke etter eksamensdagen. Datoene for 2025, 2024 og 2023 står på forsiden av
+# settet; datoene for desember 2022 og 2021 er hentet fra NTNUs eksamensregister.
+# Kontinuasjonseksamen i august 2022 har ingen kjent dag noe sted, så den oppgis
+# bare med måned i etiketten og har ingen date-verdi.
 # Et utvalg, nyeste først; resten ligger i arkivet som lenkes nederst.
 exams:
   - {
@@ -60,7 +66,9 @@ exams:
     }
   - {
       label: "Kontinuasjonseksamen, august 2022",
-      date: 2022-08-17,
+      # Måneden er kjent, dagen ikke: NTNUs eksamensregister har date: null for
+      # denne kontinuasjonen, og settet har ingen dato på forsiden.
+      date: 2022-08,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_220800.pdf/b914a74c-97e6-a065-038a-1228c5155834",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_220800.pdf/eb0eb036-86c7-93d7-796b-6665bf6e1c63",
     }
@@ -75,6 +83,82 @@ exams:
 examArchive:
   url: "https://www.ntnu.no/fysikk/eksamen/landing/-/asset_publisher/uwSAlUJoweyy/content/tfy4345-klassisk-mekanikk"
   label: "Hele eksamensarkivet hos Institutt for fysikk"
+
+# ── Formelsamling ────────────────────────────────────────────────────────────
+# Eksamen deler ikke ut formelark (hjelpemiddelkode H, og settene i arkivet har
+# ingen formelside), så exam.formulaSheet er false og radene får ingen merker.
+formulas:
+  - id: newtons-andre
+    section: Inertialsystemer
+    tex: "\\vec F = \\dot{\\vec p} = m\\ddot{\\vec r}"
+    label: "Newtons andre lov for konstant masse. Akselerasjonen på høyresiden måles i ett bestemt system, og loven sier ingenting før du har sagt hvilket."
+  - id: lineaer-transformasjon
+    section: Inertialsystemer
+    tex: "t' = At + Bx, \\qquad x' = A\\,(x - vt)"
+    label: "Den mest generelle lineære transformasjonen mellom to inertialsystemer med parallelle akser og felles origo ved $t = 0$. Samme krav binder konstantene med $A^2 + ABv = 1$, så bare én av dem er fri."
+  - id: galilei
+    section: Inertialsystemer
+    tex: "t' = t, \\qquad \\vec r\\,' = \\vec r - \\vec v t"
+    label: "<b>Galilei-transformasjonen</b>, altså valget $A = 1$ og $B = 0$. Den følger av at tida regnes som absolutt."
+  - id: galilei-hastighet
+    section: Inertialsystemer
+    tex: "\\vec u\\,' = \\vec u - \\vec v, \\qquad \\vec a\\,' = \\vec a"
+    label: "Hastigheter forskyves med $\\vec v$, mens akselerasjonen er den samme i begge systemer. Derfor har $m\\vec a = \\vec F$ samme form i alle inertialsystemer."
+  - id: arbeid
+    section: Krefter og potensial
+    tex: "W = \\int_C \\vec F \\cdot d\\vec r"
+    label: "Arbeidet kraften gjør langs banen $C$. For en vilkårlig kraft avhenger tallet av hele banen."
+  - id: virvelfri
+    section: Krefter og potensial
+    tex: "\\nabla \\times \\vec F = 0"
+    label: "Testen for om en kraft er konservativ. På et <em>enkeltsammenhengende</em> område er betingelsen både nødvendig og tilstrekkelig."
+  - id: konservativ
+    section: Krefter og potensial
+    tex: "\\vec F = -\\nabla V"
+    label: "Kraften som gradienten av et potensial. Arbeidet blir $V(a) - V(b)$ og avhenger bare av endepunktene."
+  - id: energi-1d
+    section: Bevegelse i et potensial
+    tex: "E = \\tfrac12 m\\dot x^2 + V(x)"
+    label: "Bevart energi i én dimensjon. Det kinetiske leddet kan ikke være negativt, så partikkelen holder seg der $V(x) \\le E$."
+  - id: likevekt
+    section: Bevegelse i et potensial
+    tex: "V'(x_0) = 0, \\qquad \\omega = \\sqrt{V''(x_0)/m}"
+    label: "Likevekt der $V'$ har et nullpunkt. $V''(x_0) > 0$ gir et minimum og en stabil likevekt med små svingninger av vinkelfrekvens $\\omega$, mens $V''(x_0) < 0$ gir en ustabil topp."
+
+# ── Begreper ─────────────────────────────────────────────────────────────────
+glossary:
+  - term: Inertialsystem
+    section: Inertialsystemer
+    definition: "Referansesystem der en fri partikkel går med konstant hastighet. Newtons andre lov er formulert i slike systemer."
+  - term: Galilei-transformasjon
+    section: Inertialsystemer
+    definition: "Transformasjonen $t' = t$, $\\vec r\\,' = \\vec r - \\vec v t$ mellom koordinatene i to inertialsystemer når tida regnes som absolutt."
+  - term: Konservativ kraft
+    section: Krefter og potensial
+    definition: "Kraftfelt der arbeidet mellom to punkter er det samme for alle baner. Et slikt felt kan skrives som $\\vec F = -\\nabla V$."
+  - term: Eksakt differensial
+    section: Krefter og potensial
+    definition: "En differensialform $F_x\\,dx + F_y\\,dy + F_z\\,dz$ som er differensialet til en funksjon. Linjeintegralet av en eksakt form avhenger bare av endepunktene."
+  - term: Potensial
+    section: Krefter og potensial
+    definition: "Funksjonen $V(\\vec r)$ som en konservativ kraft er den negative gradienten av, $\\vec F = -\\nabla V$."
+  - term: Enkeltsammenhengende område
+    section: Krefter og potensial
+    definition: "Område der enhver lukket kurve kan trekkes sammen til et punkt uten å forlate området. Der er $\\nabla \\times \\vec F = 0$ nok til at kraften er konservativ."
+  - term: Likevektspunkt
+    section: Bevegelse i et potensial
+    definition: "Punkt $x_0$ der $V'(x_0) = 0$, slik at kraften på partikkelen er null. Likevekten er stabil når $V''(x_0) > 0$ og ustabil når $V''(x_0) < 0$."
+  - term: Vendepunkt
+    section: Bevegelse i et potensial
+    definition: "Punkt der partikkelen har null fart fordi $V(x) = E$. Vendepunktene avgrenser området den kan bevege seg i."
+
+# ── Lenker → sidemenyen ──────────────────────────────────────────────────────
+# Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker
+# dit én gang i stedet for å duplisere lister som endrer seg gjennom semesteret.
+links:
+  - label: Foreleserens kurssider
+    url: "https://web.phys.ntnu.no/~mika/TFY4345.html"
+    note: "Forelesningsplan, pensum, øvingsark og beskjeder fra foreleser."
 
 features:
   progress: true
