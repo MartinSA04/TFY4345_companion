@@ -124,6 +124,46 @@ formulas:
     section: Bevegelse i et potensial
     tex: "V'(x_0) = 0, \\qquad \\omega = \\sqrt{V''(x_0)/m}"
     label: "Likevekt der $V'$ har et nullpunkt. $V''(x_0) > 0$ gir et minimum og en stabil likevekt med små svingninger av vinkelfrekvens $\\omega$, mens $V''(x_0) < 0$ gir en ustabil topp."
+  - id: green-respons
+    section: Greens funksjon
+    tex: "x(t) = \\int_{-\\infty}^{\\infty} dt'\\, G_R(t - t')\\, J(t')"
+    label: "Responsen på en vilkårlig kraft $J(t)$, satt sammen som en superposisjon av responser på deltadytt. Krever at bevegelsesligningen er lineær."
+  - id: green-invers
+    section: Greens funksjon
+    tex: "D(t)\\, G_R(t - t') = \\delta(t - t')"
+    label: "Greens funksjonen inverterer differensialoperatoren $D(t)$ i bevegelsesligningen $D(t)\\,x(t) = J(t)$."
+  - id: green-oscillator
+    section: Greens funksjon
+    tex: "G_R(\\tau) = \\frac{1}{m}\\, \\frac{\\sin(\\omega\\tau)}{\\omega}\\, \\theta(\\tau)"
+    label: "Retardert Greens funksjon for den harmoniske oscillatoren. Trinnfunksjonen $\\theta$ gjør at responsen kommer etter dyttet."
+  - id: massesenter
+    section: Partikkelsystemer
+    tex: "\\vec R = \\frac{1}{M} \\sum_i m_i \\vec r_i, \\qquad \\vec P = M \\dot{\\vec R}"
+    label: "Massesenteret og den totale impulsen til et partikkelsystem, med $M = \\sum_i m_i$."
+  - id: massesenter-bevegelse
+    section: Partikkelsystemer
+    tex: "\\dot{\\vec P} = \\sum_i \\vec F_i^{(e)}"
+    label: "De indre kreftene opphever hverandre parvis, så bare de ytre kreftene flytter massesenteret. Er summen null, er den totale impulsen bevart."
+  - id: dreieimpuls-ytre
+    section: Partikkelsystemer
+    tex: "\\frac{d\\vec L}{dt} = \\vec N^{(e)}"
+    label: "For sentrale indre krefter endres den totale dreieimpulsen bare av det ytre dreiemomentet $\\vec N^{(e)} = \\sum_i \\vec r_i \\times \\vec F_i^{(e)}$."
+  - id: kinetisk-splitt
+    section: Partikkelsystemer
+    tex: "T = \\tfrac12 M \\dot{\\vec R}^2 + \\tfrac12 \\sum_i m_i \\dot{\\vec y}_i^{\\,2}"
+    label: "Kinetisk energi delt i massesenterets bevegelse og bevegelsen rundt massesenteret, med $\\vec y_i = \\vec r_i - \\vec R$."
+  - id: redusert-masse
+    section: Partikkelsystemer
+    tex: "\\mu \\ddot{\\vec r} = \\vec F_{12}, \\qquad \\mu = \\frac{m_1 m_2}{m_1 + m_2}"
+    label: "Tolegemeproblemet uten ytre krefter, redusert til ett legeme med redusert masse $\\mu$ for relativkoordinaten $\\vec r = \\vec r_1 - \\vec r_2$."
+  - id: kraftstot
+    section: Støt
+    tex: "\\vec I = \\int \\vec F\\, dt = \\Delta\\vec p"
+    label: "Kraftstøtet er tidsintegralet av kraften over støtet og er lik endringen i impuls."
+  - id: elastisk-rett-vinkel
+    section: Støt
+    tex: "\\vec v_1 \\cdot \\vec v_2 = 0"
+    label: "Elastisk støt mellom like masser der den ene starter i ro: enten stopper den første, eller de to går ut vinkelrett på hverandre."
 
 # ── Begreper ─────────────────────────────────────────────────────────────────
 glossary:
@@ -151,6 +191,30 @@ glossary:
   - term: Vendepunkt
     section: Bevegelse i et potensial
     definition: "Punkt der partikkelen har null fart fordi $V(x) = E$. Vendepunktene avgrenser området den kan bevege seg i."
+  - term: Superposisjonsprinsippet
+    section: Greens funksjon
+    definition: "For en lineær ligning er summen av to løsninger en ny løsning, så responsen på en sum av krefter er summen av responsene."
+  - term: Greens funksjon
+    section: Greens funksjon
+    definition: "Responsen på et deltadytt: løsningen av $D(t)\\,G(t - t') = \\delta(t - t')$. Den inverterer differensialoperatoren, og superposisjon gir responsen på en vilkårlig kraft."
+  - term: Retardert Greens funksjon
+    section: Greens funksjon
+    definition: "Greens funksjonen som er null for $\\tau < 0$, slik at responsen kommer etter dyttet. Valget svarer til å skyve polene under den reelle aksen."
+  - term: Massesenter
+    section: Partikkelsystemer
+    definition: "Punktet $\\vec R = \\frac{1}{M}\\sum_i m_i \\vec r_i$. Det beveger seg som én partikkel med hele massen $M$, påvirket av summen av de ytre kreftene."
+  - term: Sentrale krefter
+    section: Partikkelsystemer
+    definition: "Indre krefter som virker langs forbindelseslinja mellom partiklene. Kalles også den sterke loven om aksjon og reaksjon; den gjør at dreieimpulsen bare endres av ytre dreiemoment."
+  - term: Redusert masse
+    section: Partikkelsystemer
+    definition: "Massen $\\mu = m_1 m_2/(m_1 + m_2)$ som relativbevegelsen i tolegemeproblemet følger, $\\mu\\ddot{\\vec r} = \\vec F_{12}$."
+  - term: Elastisk støt
+    section: Støt
+    definition: "Støt der både impulsen og den kinetiske energien er bevart. Det er utfallet når kraften mellom partiklene er konservativ."
+  - term: Kraftstøt
+    section: Støt
+    definition: "Tidsintegralet av kraften over støtet, $\\vec I = \\int \\vec F\\,dt$. Det er lik endringen i impuls."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker

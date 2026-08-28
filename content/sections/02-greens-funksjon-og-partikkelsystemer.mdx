@@ -1,0 +1,259 @@
+---
+order: 2
+title: "Greens funksjon og partikkelsystemer"
+summary: "Responsen på en vilkårlig kraft er en superposisjon av responser på deltadytt, og kausalitet velger den retarderte Greens funksjonen. Massesenteret følger de ytre kreftene alene, og tolegemeproblemet reduseres til ett legeme."
+importance: core
+tag: "Uke 35"
+updated: 2026-08-28
+---
+
+Støt og bevaring av impuls er kjent stoff fra før. Greens funksjoner, massesenterets rolle og redusert masse er nye.
+
+<LearningGoals>
+- Bygge løsningen av en lineær bevegelsesligning med ytre kraft som en superposisjon av responser på deltadytt.
+- Regne ut den retarderte Greens funksjonen til oscillatoren og forklare hvordan kausalitet velger den.
+- Vise at massesenteret bare styres av de ytre kreftene, og knytte bevaringslovene for impuls, dreieimpuls og energi til symmetrier.
+- Redusere tolegemeproblemet til ett legeme med redusert masse, og bruke bevaringslovene på elastiske støt.
+</LearningGoals>
+
+## Respons og Greens funksjon
+
+En harmonisk oscillator som drives av en ytre kraft $J(t)$, følger
+
+<Formula
+  tex="m\ddot x + m\omega^2 x = J(t)"
+  caption="Drevet harmonisk oscillator. Venstresiden er lineær i $x$."
+/>
+
+Gir kraften $J_1$ løsningen $x_1$ og kraften $J_2$ løsningen $x_2$, så er $x_1 + x_2$ løsningen for $J_1 + J_2$. Det er <Term name="superposisjonsprinsippet">superposisjonsprinsippet</Term>, og det gjelder fordi venstresiden er lineær.
+
+Prinsippet lar deg dele kraften opp. Identiteten $J(t) = \int dt'\, \delta(t - t')\, J(t')$ sier at en vilkårlig kraft er en sum av deltadytt ved tidene $t'$, hvert med vekt $J(t')$. Kjenner du responsen $G_R(t - t')$ på ett enhetsdytt $\delta(t - t')$, er responsen på hele kraften den samme summen med de samme vektene.
+
+<Formula
+  tex="x(t) = \int_{-\infty}^{\infty} dt'\, G_R(t - t')\, J(t')"
+  caption="Responsen på en vilkårlig kraft, satt sammen av responser på deltadytt."
+/>
+
+Funksjonen $G_R$ er systemets <Term name="greens funksjon">Greens funksjon</Term>. Skriv bevegelsesligningen som $D(t)\,x(t) = J(t)$ med differensialoperatoren $D(t) = m\,(d^2\!/dt^2 + \omega^2)$, og sett superposisjonen inn. Skal likheten holde for enhver kraft $J$, må
+
+<Formula
+  tex="D(t)\, G_R(t - t') = \delta(t - t')"
+  caption="Greens funksjonen inverterer differensialoperatoren."
+/>
+
+Fourier-transformasjon gjør ligningen algebraisk. På en planbølge $e^{-i\Omega (t - t')}$ er hver tidsderivasjon en multiplikasjon med $-i\Omega$, så operatoren $D(t)$ blir tallet $m\,(\omega^2 - \Omega^2)$, og i frekvensrommet er
+
+<Formula tex="G(\Omega) = \frac{1}{m}\, \frac{1}{\omega^2 - \Omega^2}" />
+
+Tilbaketransformasjonen med $\tau = t - t'$ er $G(\tau) = \int \frac{d\Omega}{2\pi}\, G(\Omega)\, e^{-i\Omega\tau}$, og på integrasjonsveien ligger to poler, ved $\Omega = \pm\omega$. Integralet er ikke definert før du har valgt hvordan de passeres, og valget kommer fra fysikken. Kausalitet krever at responsen kommer etter dyttet, altså $G_R(\tau) = 0$ for $\tau < 0$, og det oppnås ved å skyve begge polene ned i det komplekse planet, til $\Omega = \pm\omega - i\varepsilon$. Den <Term name="retardert greens funksjon">retarderte Greens funksjonen</Term> blir
+
+<Formula
+  tex="G_R(\tau) = \frac{1}{m}\, \frac{\sin(\omega\tau)}{\omega}\, \theta(\tau)"
+  caption="Retardert Greens funksjon for oscillatoren. Trinnfunksjonen $\theta$ bærer kausaliteten."
+/>
+
+<Derivation title="Konturintegralet bak $G_R$">
+Med polene skjøvet ned er
+
+$$
+G_R(\tau) = -\frac{1}{2\pi m} \int_{-\infty}^{\infty} d\Omega\, \frac{e^{-i\Omega\tau}}{(\Omega - \omega + i\varepsilon)\,(\Omega + \omega + i\varepsilon)}
+$$
+
+Konturen må lukkes der $e^{-i\Omega\tau}$ dør ut. For $\tau < 0$ er det i øvre halvplan; der er integranden analytisk, så integralet er null. For $\tau > 0$ lukkes konturen i nedre halvplan og omslutter begge polene. Cauchys residuesetning gir bidraget $2\pi i\, e^{i\omega\tau}/(-2\omega)$ fra polen ved $-\omega$ og $2\pi i\, e^{-i\omega\tau}/(2\omega)$ fra polen ved $+\omega$, med et ekstra minustegn fordi konturen løper med klokka. Med $\varepsilon \to 0$ er
+
+$$
+G_R(\tau) = \frac{i}{2m\omega}\,\bigl(e^{-i\omega\tau} - e^{i\omega\tau}\bigr)\,\theta(\tau) = \frac{1}{m}\,\frac{\sin(\omega\tau)}{\omega}\,\theta(\tau)
+$$
+</Derivation>
+
+Et enhetsdytt ved $\tau = 0$ setter altså en oscillator som lå i ro, i svingning med $x(t) = \sin(\omega t)/(m\omega)$, og før dyttet skjer ingenting. Superposisjonen gir en partikulær løsning; den generelle får du ved å legge til en løsning av den homogene ligningen, altså en fri svingning.
+
+<Simulation
+  src="/sims/respons.js"
+  title="Dytt oscillatoren"
+  caption="Hvert trykk i diagrammet er et dytt $J\,\delta(t - t')$: vannrett plassering gir tidspunktet $t'$, høyden gir styrken $J$ med fortegn. De tynne kurvene er responsen på hvert dytt for seg, null før sitt eget dytt, og den tykke kurven er summen av dem."
+  host="dom"
+  height={320}
+/>
+
+<Example title="Kraft som slås på">
+En oscillator ligger i ro når den konstante kraften $F_0$ slås på ved $t = 0$, altså $J(t) = F_0\,\theta(t)$. Finn $x(t)$.
+
+<Solution>
+Superposisjonen henter bare bidrag fra dytt mellom $t' = 0$, der kraften slås på, og $t' = t$, der trinnfunksjonen i $G_R$ kutter:
+
+$$
+x(t) = \int_0^t dt'\, \frac{\sin\bigl(\omega(t - t')\bigr)}{m\omega}\, F_0
+$$
+
+Bytt variabel til $u = t - t'$:
+
+$$
+x(t) = \frac{F_0}{m\omega} \int_0^t du\, \sin(\omega u) = \frac{F_0}{m\omega} \cdot \frac{1 - \cos(\omega t)}{\omega}
+$$
+
+Løsningen svinger mellom $0$ og $2F_0/(m\omega^2)$, omkring den nye likevekten $x = F_0/(m\omega^2) = F_0/k$, der fjærkraften balanserer $F_0$. Amplituden er lik forskyvningen av likevekten, som den må være når oscillatoren starter i ro i den gamle.
+
+<Answer>$x(t) = \dfrac{F_0}{m\omega^2}\,\bigl(1 - \cos(\omega t)\bigr)$</Answer>
+</Solution>
+</Example>
+
+<SelfCheck question="Hva i utregningen tvinger $G_R(\tau)$ til å være null for $\tau < 0$?">
+Plasseringen av polene. Med begge polene under den reelle aksen lukkes konturen for $\tau < 0$ i øvre halvplan, der integranden er analytisk, og integralet blir null. Å skyve polene ned er måten kravet om at responsen følger dyttet, går inn i regningen på.
+</SelfCheck>
+
+## Partikkelsystemer
+
+Med $N$ partikler får hver partikkel merkelappen $i$, med masse $m_i$, posisjon $\vec r_i$ og impuls $\vec p_i = m_i \dot{\vec r}_i$. Kraften på partikkel $i$ deles i en ytre kraft $\vec F_i^{(e)}$ og indre krefter $\vec F_{ij}$ fra de andre partiklene, og Newtons tredje lov sier $\vec F_{ij} = -\vec F_{ji}$.
+
+<Formula
+  tex="\vec R = \frac{1}{M} \sum_i m_i \vec r_i, \qquad \vec P = M \dot{\vec R}"
+  caption="<b>Massesenteret</b> og den totale impulsen, med $M = \sum_i m_i$."
+/>
+
+Deriver $\vec P$ og sett inn Newtons andre lov for hver partikkel. De indre kreftene kommer i par $\vec F_{ij} + \vec F_{ji} = 0$ og faller ut av summen:
+
+<Formula
+  tex="\dot{\vec P} = \sum_i \vec F_i^{(e)}"
+  caption="Bare de ytre kreftene flytter massesenteret."
+/>
+
+<Statement kind="theorem" name="Massesenterets bevegelse">
+<Term name="massesenter">Massesenteret</Term> til et system beveger seg som én
+partikkel med hele massen $M$, påvirket av summen av de ytre kreftene. Er summen
+null, er den totale impulsen bevart.
+</Statement>
+
+Kaster du en katt som vrir på seg i lufta, endrer de indre kreftene hvordan den
+vender seg, men banen til massesenteret er en parabel bestemt av tyngdekraften
+alene. Derfor kan planeter og baller regnes som punktpartikler så lenge du bare
+følger massesenteret.
+
+Den totale dreieimpulsen $\vec L = \sum_i \vec r_i \times \vec p_i$ følger samme
+mønster, men krever en sterkere antakelse. I $\dot{\vec L}$ står de indre
+kreftene igjen i par av formen $(\vec r_i - \vec r_j) \times \vec F_{ij}$, og
+parene forsvinner bare når kraften mellom to partikler ligger langs
+forbindelseslinja mellom dem. Slike krefter kalles
+<Term name="sentrale krefter">sentrale</Term>; gravitasjon og Coulomb-kraften er
+begge det.
+
+<Formula
+  tex="\frac{d\vec L}{dt} = \vec N^{(e)}"
+  caption="For sentrale indre krefter endres dreieimpulsen bare av det ytre dreiemomentet $\vec N^{(e)} = \sum_i \vec r_i \times \vec F_i^{(e)}$."
+/>
+
+Den kinetiske energien deler seg i to når posisjonene skrives $\vec r_i = \vec R + \vec y_i$. Bindingen $\sum_i m_i \vec y_i = 0$ fjerner kryssleddet:
+
+<Formula
+  tex="T = \tfrac12 M \dot{\vec R}^2 + \tfrac12 \sum_i m_i \dot{\vec y}_i^{\,2}"
+  caption="Massesenterets kinetiske energi pluss energien i bevegelsen rundt massesenteret."
+/>
+
+<Statement kind="principle" name="Bevaringslover og symmetrier">
+Hver bevaringslov svarer til en symmetri: impuls til at rommet er likt overalt,
+dreieimpuls til at ingen retning er utpekt, og energi til at lovene er de samme
+i dag som i morgen. Sammenhengen er Noethers teorem, og beviset hører hjemme i
+Lagrange-formalismen.
+</Statement>
+
+To legemer uten ytre krefter er det viktigste spesialtilfellet. Massesenteret
+går med konstant hastighet, så hele dynamikken ligger i relativkoordinaten
+$\vec r = \vec r_1 - \vec r_2$. Trekk bevegelsesligningene fra hverandre og bruk
+$\vec F_{21} = -\vec F_{12}$, så står det igjen ett legeme med
+<Term name="redusert masse">redusert masse</Term>:
+
+<Formula
+  tex="\mu \ddot{\vec r} = \vec F_{12}, \qquad \mu = \frac{m_1 m_2}{m_1 + m_2}"
+  caption="Tolegemeproblemet redusert til ett legeme for relativkoordinaten."
+/>
+
+Er den ene massen mye større enn den andre, er $\mu$ omtrent lik den minste, og
+det tunge legemet ligger tilnærmet i ro. Massesenteret til jorda og sola ligger
+godt inne i sola.
+
+<Quiz
+  question="En granat kastes i en parabelbane og eksploderer i lufta. Hva gjør massesenteret til bitene rett etter eksplosjonen?"
+  options={["Det fortsetter langs den samme parabelen som før", "Det følger den tyngste biten", "Det stopper opp i eksplosjonspunktet", "Banen avhenger av energien i eksplosjonen"]}
+  answer={0}
+  explanation="Eksplosjonen er indre krefter, og de opphever hverandre parvis etter Newtons tredje lov. Den eneste ytre kraften er fortsatt tyngden, så massesenteret følger samme parabel som før, helt til den første biten treffer bakken og en ny ytre kraft kommer inn."
+/>
+
+## Elastiske støt
+
+I et støt er kraften mellom partiklene stor og kortvarig, og da er
+tidsintegralet nyttigere enn kraften selv.
+<Term name="kraftstøt">Kraftstøtet</Term> er <FormulaRef id="kraftstot" />, altså
+endringen i impuls, rett fra Newtons andre lov. Et
+<Term name="elastisk støt">elastisk støt</Term> bevarer i tillegg den kinetiske
+energien; det er utfallet når kraften mellom partiklene er konservativ.
+
+La en partikkel med hastighet $\vec v$ treffe en annen med samme masse i ro, og
+la støtet være elastisk. Impulsbevarelse gir $\vec v = \vec v_1 + \vec v_2$, og
+energibevarelse gir $v^2 = v_1^2 + v_2^2$. Kvadrer den første ligningen og
+sammenlign med den andre, så må kryssleddet være null:
+
+<Formula
+  tex="\vec v_1 \cdot \vec v_2 = 0"
+  caption="Enten stopper den første partikkelen, eller de to går ut vinkelrett på hverandre."
+/>
+
+<Sidenote>
+Med $M/m = 16 \cdot 100^N$ teller antall støt mellom en tung og en lett kule
+foran en vegg opp de første $N + 1$ sifrene i $\pi$.
+</Sidenote>
+
+Mer sier ikke bevaringslovene. De to hastighetene har seks komponenter, og
+ligningene er fire, så hvordan energien fordeles, bestemmes av selve
+vekselvirkningen. I én dimensjon er det annerledes: to ukjente og to ligninger,
+og utfallet er entydig.
+
+<Example title="Tennisball oppå basketball">
+En tennisball ($m = 0{,}058$ kg) ligger rett oppå en basketball ($M = 0{,}60$ kg),
+og de slippes sammen. Basketballen treffer gulvet med farten $u = 5{,}0$ m/s, og
+alle støt er elastiske. Finn farten til tennisballen rett etter støtet mellom
+ballene, og hvor mange ganger fallhøyden den spretter opp.
+
+<Solution>
+Velg positiv retning oppover, og tenk på ballene som så vidt adskilte.
+Basketballen treffer gulvet først og snur med samme fart, så i støtet mellom
+ballene er den på vei opp med $+u$ mens tennisballen fortsatt er på vei ned med
+$-u$. Kall fartene etterpå $V$ og $v$. Bevaring av impuls og kinetisk energi gir
+
+$$
+Mu - mu = MV + mv, \qquad Mu^2 + mu^2 = MV^2 + mv^2
+$$
+
+Flytt $M$-leddene til venstre og $m$-leddene til høyre i begge:
+
+$$
+M(u - V)(u + V) = m(v - u)(v + u), \qquad M(u - V) = m(v + u)
+$$
+
+Del den første ligningen på den andre, så er $u + V = v - u$. Sett $V = v - 2u$
+inn i impulsligningen:
+
+$$
+Mu - mu = M(v - 2u) + mv \quad\Rightarrow\quad v = \frac{3M - m}{M + m}\, u
+$$
+
+Med tallene er
+
+$$
+v = \frac{3 \cdot 0{,}60 - 0{,}058}{0{,}658} \cdot 5{,}0\ \text{m/s} = 2{,}65 \cdot 5{,}0\ \text{m/s} = 13{,}2\ \text{m/s}
+$$
+
+Høyden vokser med kvadratet av farten, $h = v^2/2g$, så tennisballen når
+$(v/u)^2 = 2{,}65^2 = 7{,}0$ ganger fallhøyden.
+
+<Answer>$v = \dfrac{3M - m}{M + m}\, u = 13$ m/s, omtrent sju ganger fallhøyden</Answer>
+</Solution>
+</Example>
+
+<KeyTakeaways>
+- For en lineær ligning er responsen på en vilkårlig kraft $\int dt'\, G_R(t - t')\, J(t')$, en superposisjon av responser på deltadytt.
+- Kausalitet velger den retarderte Greens funksjonen: polene skyves under den reelle aksen, og $G_R(\tau) = 0$ for $\tau < 0$. For oscillatoren er $G_R(\tau) = \sin(\omega\tau)/(m\omega)\,\theta(\tau)$.
+- Massesenteret beveger seg som én partikkel med hele massen, styrt av de ytre kreftene alene.
+- Impulsbevarelse følger av Newtons tredje lov. Dreieimpulsbevarelse krever i tillegg sentrale krefter, og bevaringslovene svarer til symmetrier i rom og tid.
+- Tolegemeproblemet uten ytre krefter er et ettlegemeproblem for relativkoordinaten, med redusert masse $\mu = m_1 m_2/(m_1 + m_2)$.
+- Et elastisk støt bevarer impuls og kinetisk energi. Like masser med den ene i ro gir vinkelrette utgangshastigheter, og i én dimensjon er utfallet entydig.
+</KeyTakeaways>
