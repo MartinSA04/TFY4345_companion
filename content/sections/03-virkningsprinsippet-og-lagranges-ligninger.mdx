@@ -1,0 +1,157 @@
+---
+order: 3
+title: "Virkningsprinsippet og Lagranges ligninger"
+summary: "Den virkelige banen gjør virkningen stasjonær, og kravet gir Lagranges ligninger. De har samme form i alle koordinatsystemer, og føringskreftene forsvinner fra regningen."
+importance: core
+tag: "Uke 36"
+updated: 2026-08-31
+---
+
+Newtons lover, potensialet og bevaringslovene er kjent stoff fra før. Frihetsgrader, virkningen og Lagranges ligninger er nye.
+
+<LearningGoals>
+- Telle frihetsgrader og velge generaliserte koordinater for et system med holonome føringer.
+- Formulere Hamiltons prinsipp og utlede Lagranges ligninger fra kravet $\delta S = 0$.
+- Vise at Lagranges ligninger i kartesiske koordinater er Newtons andre lov, og bruke dem i koordinater som passer problemet.
+- Sette føringer rett inn i Lagrangefunksjonen og regne med de frie koordinatene alene.
+</LearningGoals>
+
+## Frihetsgrader og føringer
+
+En pendel i planet beskrives av to koordinater $x$ og $y$, men snora holder kula på avstanden $l$ fra opphenget, så $x^2 + y^2 = l^2$. Bare én størrelse kan velges fritt. En betingelse på koordinatene av formen $f(\vec r_1, \dots, \vec r_N, t) = 0$ kalles en <Term name="holonom føring">holonom føring</Term>, og hver slik føring fjerner én koordinat: $N$ partikler med $k$ føringer har $n = 3N - k$ <Term name="frihetsgrader">frihetsgrader</Term>.
+
+De gjenværende frihetene beskrives av <Term name="generaliserte koordinater">generaliserte koordinater</Term> $q_1, \dots, q_n$, uavhengige størrelser som fastlegger hele konfigurasjonen med føringene bygget inn. For pendelen er $q = \theta$, vinkelen fra loddlinja. Rommet med $q$-ene som akser kalles <Term name="konfigurasjonsrom">konfigurasjonsrommet</Term>, og hele systemets bevegelse er én kurve der.
+
+Newton håndterer føringer med krefter. Skal pendelen regnes med $\vec F = m\vec a$, må snordraget inn som ukjent, og komponentligningene løses både for bevegelsen og for draget. Resultatet er $\ddot\theta = -(g/l)\sin\theta$, og på kjøpet snordraget $ml\dot\theta^2 + mg\cos\theta$, en <Term name="føringskraft">føringskraft</Term> du ofte ikke spør etter. Lagrangeformalismen slipper å regne den ut.
+
+## Virkningen og Hamiltons prinsipp
+
+Utgangspunktet er en ny funksjon av koordinater og hastigheter:
+
+<Formula
+  tex="L = T - V"
+  caption="<b>Lagrangefunksjonen</b>, med et minustegn der energien har pluss."
+/>
+
+Se på alle glatte baner $q(t)$ som starter i en gitt konfigurasjon ved $t_1$ og ender i en annen ved $t_2$. Hver bane får et tall, <Term name="virkning">virkningen</Term>:
+
+<Formula
+  tex="S[q] = \int_{t_1}^{t_2} L(q, \dot q, t)\, dt"
+  caption="Virkningen er en funksjonal: den tar en hel bane og gir ett tall."
+/>
+
+<Statement kind="principle" name="Hamiltons prinsipp">
+Den virkelige banen mellom de to konfigurasjonene gjør virkningen stasjonær. En
+liten endring av banen endrer ikke $S$ i første orden, $\delta S = 0$.
+</Statement>
+
+Kravet plukker ut én bane. Legg et lite avvik $\eta(t)$ på en bane $q(t)$, med $\eta(t_1) = \eta(t_2) = 0$ fordi endepunktene ligger fast. Til første orden i $\eta$ endres virkningen med
+
+$$
+\delta S = \int_{t_1}^{t_2} \left( \frac{\partial L}{\partial q}\,\eta + \frac{\partial L}{\partial \dot q}\,\dot\eta \right) dt
+$$
+
+Delvis integrasjon flytter tidsderivasjonen fra $\eta$ over på $\partial L/\partial \dot q$, og randleddet er null fordi $\eta$ er null i endepunktene:
+
+$$
+\delta S = \int_{t_1}^{t_2} \left( \frac{\partial L}{\partial q} - \frac{d}{dt}\frac{\partial L}{\partial \dot q} \right) \eta\, dt
+$$
+
+Skal dette være null for ethvert avvik $\eta$, må parentesen være null langs hele banen.
+
+<Formula
+  tex="\frac{d}{dt}\frac{\partial L}{\partial \dot q_i} - \frac{\partial L}{\partial q_i} = 0"
+  caption="<b>Lagranges ligninger</b>, én for hver generalisert koordinat $q_i$."
+/>
+
+For én partikkel i kartesiske koordinater er $L = \tfrac12 m\dot{\vec r}^2 - V(\vec r)$. Da er $\partial L/\partial \dot x = m\dot x$ og $\partial L/\partial x = -\partial V/\partial x$, så ligningene sier $m\ddot{\vec r} = -\nabla V$. Hamiltons prinsipp er Newtons andre lov i ny form.
+
+Navnet «prinsippet om minste virkning» henger igjen, men kravet er bare at $S$ er stasjonær. Et maksimum kan den virkelige banen aldri være, for en krøllete bane mellom de samme punktene kan gjøre den kinetiske energien, og dermed $S$, så stor du vil. Minimum og sadelpunkt er begge mulige.
+
+<Simulation
+  src="/sims/virkning.js"
+  title="Varier banen"
+  caption="Ballen kastes rett opp: den stiplede kurven er den virkelige banen $y(t)$ mellom de to faste endepunktene. Dra i kurven for å forme en prøvebane. Søylen viser $S - S^*$, virkningen utover den virkelige banens; den vokser uansett hvilken vei du drar, og nær den virkelige banen rører den seg knapt, for førsteordensendringen er null."
+  host="dom"
+  height={320}
+/>
+
+<Video
+  id="https://www.youtube.com/watch?v=Q10_srZ-pbs"
+  title="The Closest We've Come to a Theory of Everything"
+  channel="Veritasium"
+  duration="32:44"
+  caption="Historien bak prinsippet, fra brachistokronen via Fermats minste tid til Maupertuis, Euler og Lagrange, med den samme utledningen som over."
+  number={1}
+/>
+
+<Quiz
+  question="To baner konkurrerer i Hamiltons prinsipp. Hva må de ha felles?"
+  options={["Samme endepunkter og samme start- og sluttid", "Samme energi", "Samme lengde", "Samme startfart"]}
+  answer={0}
+  explanation="Variasjonen holder konfigurasjonene ved $t_1$ og $t_2$ fast og sammenligner baner som bruker samme tid. Energien kan gjerne variere fra prøvebane til prøvebane; farten og lengden er frie."
+/>
+
+## Koordinatfrihet og føringer
+
+Utledningen brukte aldri at $q$ er en kartesisk koordinat. Hamiltons prinsipp handler om banen, og verdien av $S$ er den samme uansett hvilke koordinater banen beskrives med, så Lagranges ligninger har samme form i ethvert koordinatsystem. Newtons ligninger gjelder bare i inertialsystemer. Med formalismen kan du velge koordinatene som passer problemet, en vinkel like gjerne som en lengde.
+
+Koordinatfriheten gjør også føringene enkle.
+
+<Statement kind="theorem" name="Lagranges ligninger med føringer">
+For et system med holonome føringer kan posisjonene uttrykkes ved de
+generaliserte koordinatene. Sett uttrykkene inn i $L = T - V$ og bruk Lagranges
+ligninger på de frie koordinatene alene; føringskreftene inngår ikke.
+</Statement>
+
+For pendelen er $x = l\sin\theta$ og $y = -l\cos\theta$, så
+
+$$
+L = \tfrac12 ml^2\dot\theta^2 + mgl\cos\theta
+$$
+
+og ligningen for $\theta$ gir $ml^2\ddot\theta = -mgl\sin\theta$, altså $\ddot\theta = -(g/l)\sin\theta$. Samme svar som med Newton, uten at snordraget er nevnt. Variasjonene løper bare over baner som oppfyller føringen, og føringskraften står vinkelrett på alle slike forskyvninger, så den gjør ikke arbeid og bidrar ikke til $L$. Trenger du snordraget, er det Newton-regningen som gir det.
+
+<Example title="Atwood-maskinen">
+To lodd med massene $m_1 = 0{,}60$ kg og $m_2 = 0{,}50$ kg henger i hver sin
+ende av en snor over en lett trinse uten friksjon. Finn akselerasjonen.
+
+<Solution>
+Snora er like lang hele tida, så når $m_1$ har falt et stykke $x$, har $m_2$
+steget like mye. Systemet har én frihetsgrad, og begge loddene har farten
+$|\dot x|$:
+
+$$
+T = \tfrac12 (m_1 + m_2)\dot x^2, \qquad V = -m_1 g x + m_2 g x
+$$
+
+med nullnivå i startposisjonene. Lagrangefunksjonen blir
+$L = \tfrac12(m_1 + m_2)\dot x^2 + (m_1 - m_2)\,g x$, og ligningen for $x$:
+
+$$
+(m_1 + m_2)\,\ddot x = (m_1 - m_2)\,g \quad\Rightarrow\quad \ddot x = \frac{m_1 - m_2}{m_1 + m_2}\, g
+$$
+
+Med tallene er $\ddot x = \dfrac{0{,}10}{1{,}10} \cdot 9{,}81$ m/s² $= 0{,}89$
+m/s², rettet slik at det tunge loddet faller. Snordraget ble aldri regnet ut,
+og trengtes ikke.
+
+<Answer>$\ddot x = \dfrac{m_1 - m_2}{m_1 + m_2}\, g = 0{,}89$ m/s²</Answer>
+</Solution>
+</Example>
+
+<SelfCheck question="Hvorfor dukker snordraget aldri opp når pendelen regnes med $\theta$ som koordinat?">
+Parametriseringen $x = l\sin\theta$, $y = -l\cos\theta$ oppfyller føringen
+$x^2 + y^2 = l^2$ for alle $\theta$, så alle baner variasjonen prøver, holder
+snora stram. Snordraget står vinkelrett på disse forskyvningene, gjør ikke
+arbeid og bidrar ikke til $L$. Vil du likevel finne det, må det inn som ukjent
+kraft, som i Newton-regningen.
+</SelfCheck>
+
+<KeyTakeaways>
+- $k$ holonome føringer $f(\vec r_1, \dots, \vec r_N, t) = 0$ reduserer $3N$ koordinater til $n = 3N - k$ frihetsgrader, beskrevet av generaliserte koordinater $q_1, \dots, q_n$.
+- Virkningen $S = \int L\, dt$ med $L = T - V$ gir hver bane mellom faste endepunkter ved faste tider ett tall, og den virkelige banen gjør $S$ stasjonær.
+- Kravet $\delta S = 0$ er ekvivalent med Lagranges ligninger $\frac{d}{dt}\partial L/\partial\dot q_i - \partial L/\partial q_i = 0$, som i kartesiske koordinater er Newtons andre lov.
+- Ligningene har samme form i alle koordinatsystemer, så koordinatene kan velges etter problemet.
+- Holonome føringer settes rett inn i $L$, og føringskreftene forsvinner fra regningen. Trengs en føringskraft, må den tas med som ukjent, som i Newton-regningen.
+</KeyTakeaways>

@@ -164,6 +164,22 @@ formulas:
     section: Støt
     tex: "\\vec v_1 \\cdot \\vec v_2 = 0"
     label: "Elastisk støt mellom like masser der den ene starter i ro: enten stopper den første, eller de to går ut vinkelrett på hverandre."
+  - id: frihetsgrader
+    section: Lagrangeformalismen
+    tex: "n = 3N - k"
+    label: "Antall frihetsgrader for $N$ partikler med $k$ holonome føringer. De beskrives av generaliserte koordinater $q_1, \\dots, q_n$."
+  - id: lagrangefunksjon
+    section: Lagrangeformalismen
+    tex: "L = T - V"
+    label: "Lagrangefunksjonen, kinetisk energi minus potensiell energi. Minustegnet skiller den fra den totale energien."
+  - id: virkning
+    section: Lagrangeformalismen
+    tex: "S[q] = \\int_{t_1}^{t_2} L(q, \\dot q, t)\\, dt"
+    label: "Virkningen gir hver bane mellom faste endepunkter ved faste tider ett tall. Den virkelige banen gjør $S$ stasjonær, $\\delta S = 0$."
+  - id: euler-lagrange
+    section: Lagrangeformalismen
+    tex: "\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot q_i} - \\frac{\\partial L}{\\partial q_i} = 0"
+    label: "Lagranges ligninger, én for hver generalisert koordinat. De følger av $\\delta S = 0$ og har samme form i alle koordinatsystemer."
 
 # ── Begreper ─────────────────────────────────────────────────────────────────
 glossary:
@@ -215,6 +231,27 @@ glossary:
   - term: Kraftstøt
     section: Støt
     definition: "Tidsintegralet av kraften over støtet, $\\vec I = \\int \\vec F\\,dt$. Det er lik endringen i impuls."
+  - term: Holonom føring
+    section: Lagrangeformalismen
+    definition: "Betingelse på koordinatene på formen $f(\\vec r_1, \\dots, \\vec r_N, t) = 0$, som snorlengden til en pendel. Hver slik føring fjerner én frihetsgrad."
+  - term: Frihetsgrader
+    section: Lagrangeformalismen
+    definition: "Antall uavhengige størrelser som trengs for å angi systemets konfigurasjon. $N$ partikler med $k$ holonome føringer har $3N - k$."
+  - term: Generaliserte koordinater
+    section: Lagrangeformalismen
+    definition: "Uavhengige koordinater $q_1, \\dots, q_n$ som fastlegger konfigurasjonen med føringene bygget inn, som vinkelen $\\theta$ for pendelen."
+  - term: Konfigurasjonsrom
+    section: Lagrangeformalismen
+    definition: "Rommet med de generaliserte koordinatene som akser. Hele systemets bevegelse er én kurve der."
+  - term: Føringskraft
+    section: Lagrangeformalismen
+    definition: "Kraften som holder en føring oppfylt, som snordrag og normalkrefter. Den står vinkelrett på forskyvningene føringen tillater og forsvinner når føringene settes inn i Lagrangefunksjonen."
+  - term: Lagrangefunksjon
+    section: Lagrangeformalismen
+    definition: "Funksjonen $L = T - V$ av koordinater og hastigheter. Den bestemmer dynamikken gjennom Lagranges ligninger."
+  - term: Virkning
+    section: Lagrangeformalismen
+    definition: "Tallet $S = \\int L\\, dt$ tilordnet en bane mellom faste endepunkter ved faste tider. Den virkelige banen gjør virkningen stasjonær."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker
