@@ -168,6 +168,10 @@ formulas:
     section: Lagrangeformalismen
     tex: "n = 3N - k"
     label: "Antall frihetsgrader for $N$ partikler med $k$ holonome føringer. De beskrives av generaliserte koordinater $q_1, \\dots, q_n$."
+  - id: sfaerisk-pendel
+    section: Lagrangeformalismen
+    tex: "L = \\tfrac12 ml^2\\left(\\dot\\theta^2 + \\dot\\phi^2\\sin^2\\theta\\right) + mgl\\cos\\theta"
+    label: "Den sfæriske pendelen med $\\theta$ fra loddlinja og $\\phi$ rundt den. $L$ avhenger ikke av $\\phi$, så $ml^2\\dot\\phi\\sin^2\\theta$, dreieimpulsen om loddlinja, er konstant."
   - id: lagrangefunksjon
     section: Lagrangeformalismen
     tex: "L = T - V"
@@ -180,6 +184,18 @@ formulas:
     section: Lagrangeformalismen
     tex: "\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot q_i} - \\frac{\\partial L}{\\partial q_i} = 0"
     label: "Lagranges ligninger, én for hver generalisert koordinat. De følger av $\\delta S = 0$ og har samme form i alle koordinatsystemer."
+  - id: ekvivalente-lagrangefunksjoner
+    section: Lagrangeformalismen
+    tex: "L' = \\alpha L, \\qquad L' = L + \\frac{df(q, t)}{dt}"
+    label: "Lagrangefunksjoner som gir samme bevegelsesligninger som $L$. Virkningen endres med en faktor eller med randleddet $f(q_2, t_2) - f(q_1, t_1)$, som er likt for alle baner med faste endepunkter."
+  - id: lagrange-ladd-partikkel
+    section: Lagrangeformalismen
+    tex: "L = \\tfrac12 m\\dot{\\vec r}^2 + q\\,\\dot{\\vec r} \\cdot \\vec A - q\\phi"
+    label: "Ladd partikkel i et elektromagnetisk felt, med $\\vec E = -\\nabla\\phi - \\partial\\vec A/\\partial t$ og $\\vec B = \\nabla \\times \\vec A$. Lagranges ligninger gir Lorentzkraften $m\\ddot{\\vec r} = q(\\vec E + \\dot{\\vec r} \\times \\vec B)$."
+  - id: gaugetransformasjon
+    section: Lagrangeformalismen
+    tex: "\\vec A \\to \\vec A + \\nabla\\chi, \\qquad \\phi \\to \\phi - \\frac{\\partial\\chi}{\\partial t}"
+    label: "Gaugetransformasjon av potensialene med en vilkårlig funksjon $\\chi(\\vec r, t)$. $\\vec E$ og $\\vec B$ er uendret, og $L$ endres med $q\\,d\\chi/dt$, en total tidsderivert, så bevegelsen er den samme."
 
 # ── Begreper ─────────────────────────────────────────────────────────────────
 glossary:
@@ -233,7 +249,10 @@ glossary:
     definition: "Tidsintegralet av kraften over støtet, $\\vec I = \\int \\vec F\\,dt$. Det er lik endringen i impuls."
   - term: Holonom føring
     section: Lagrangeformalismen
-    definition: "Betingelse på koordinatene på formen $f(\\vec r_1, \\dots, \\vec r_N, t) = 0$, som snorlengden til en pendel. Hver slik føring fjerner én frihetsgrad."
+    definition: "Betingelse på koordinatene på formen $f(\\vec r_1, \\dots, \\vec r_N, t) = 0$, som snorlengden til en pendel. Hver slik føring fjerner én frihetsgrad. Tidsavhengige føringer kalles rheonome, tidsuavhengige skleronome."
+  - term: Ikke-holonom føring
+    section: Lagrangeformalismen
+    definition: "Føring som ikke kan skrives som $f(\\vec r_1, \\dots, \\vec r_N, t) = 0$: en ulikhet, som en partikkel oppå en fast kule, eller en betingelse på hastighetene som ikke kan integreres, som rulling uten å gli. Den fjerner ingen koordinat."
   - term: Frihetsgrader
     section: Lagrangeformalismen
     definition: "Antall uavhengige størrelser som trengs for å angi systemets konfigurasjon. $N$ partikler med $k$ holonome føringer har $3N - k$."
@@ -252,6 +271,12 @@ glossary:
   - term: Virkning
     section: Lagrangeformalismen
     definition: "Tallet $S = \\int L\\, dt$ tilordnet en bane mellom faste endepunkter ved faste tider. Den virkelige banen gjør virkningen stasjonær."
+  - term: Gaugetransformasjon
+    section: Lagrangeformalismen
+    definition: "Byttet $\\vec A \\to \\vec A + \\nabla\\chi$, $\\phi \\to \\phi - \\partial\\chi/\\partial t$ med en vilkårlig funksjon $\\chi(\\vec r, t)$. Feltene $\\vec E$ og $\\vec B$ er uendret, og Lagrangefunksjonen endres med den totale tidsderiverte $q\\,d\\chi/dt$."
+  - term: Gaugeinvarians
+    section: Lagrangeformalismen
+    definition: "At ingen målbar størrelse avhenger av hvilke potensialer $\\phi$ og $\\vec A$ som beskriver feltene. Bevegelsen til en ladd partikkel er gaugeinvariant fordi en gaugetransformasjon bare legger en total tidsderivert til $L$."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker
