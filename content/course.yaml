@@ -197,6 +197,39 @@ formulas:
     tex: "\\vec A \\to \\vec A + \\nabla\\chi, \\qquad \\phi \\to \\phi - \\frac{\\partial\\chi}{\\partial t}"
     label: "Gaugetransformasjon av potensialene med en vilkårlig funksjon $\\chi(\\vec r, t)$. $\\vec E$ og $\\vec B$ er uendret, og $L$ endres med $q\\,d\\chi/dt$, en total tidsderivert, så bevegelsen er den samme."
 
+  - id: plan-pendel
+    section: Kjente systemer
+    tex: "L = \\tfrac12 ml^2\\dot\\theta^2 + mgl\\cos\\theta, \\qquad \\ddot\\theta = -\\frac{g}{l}\\sin\\theta"
+    label: "Den plane pendelen med $\\theta$ fra loddlinja. Energien $E = \\tfrac12 ml^2\\dot\\theta^2 - mgl\\cos\\theta$ er bevart; $E < mgl$ gir svingning mellom to vendepunkter, $E > mgl$ rotasjon."
+  - id: pendel-paa-vogn
+    section: Kjente systemer
+    tex: "L = \\tfrac12 (M + m)\\dot x^2 + ml\\dot x\\dot\\theta\\cos\\theta + \\tfrac12 ml^2\\dot\\theta^2 + mgl\\cos\\theta"
+    label: "Pendel med masse $m$ under ei fri vogn med masse $M$ på en vannrett skinne. $x$ er syklisk, så den totale vannrette impulsen $p_x = (M + m)\\dot x + ml\\dot\\theta\\cos\\theta$ er bevart, i tillegg til energien."
+  - id: sentralkraft-lagrange
+    section: Kjente systemer
+    tex: "L = \\tfrac12\\mu\\left(\\dot r^2 + r^2\\dot\\phi^2\\right) - V(r), \\qquad p_\\phi = \\mu r^2\\dot\\phi"
+    label: "Relativbevegelsen i tolegemeproblemet, i planet vinkelrett på dreieimpulsen. $\\phi$ er syklisk, og $p_\\phi$ er dreieimpulsen. Arealfarten $\\tfrac12 r^2\\dot\\phi = p_\\phi/2\\mu$ er konstant, som er Keplers andre lov."
+  - id: effektivt-potensial
+    section: Kjente systemer
+    tex: "E = \\tfrac12\\mu\\dot r^2 + V_\\text{eff}(r), \\qquad V_\\text{eff}(r) = \\frac{p_\\phi^2}{2\\mu r^2} + V(r)"
+    label: "Den bevarte dreieimpulsen gjør radialbevegelsen til et endimensjonalt problem i et effektivt potensial. Sirkelbanen ligger i minimum av $V_\\text{eff}$; for $V = -k/r$ er radien $r_0 = p_\\phi^2/\\mu k$."
+  - id: magnetfelt-lagrange
+    section: Kjente systemer
+    tex: "L = \\tfrac12 m\\left(\\dot x^2 + \\dot y^2\\right) + \\tfrac12 qB\\left(x\\dot y - y\\dot x\\right)"
+    label: "Ladd partikkel i planet vinkelrett på $\\vec B = B\\hat z$, med $\\vec A = \\tfrac12 B(-y, x, 0)$. Forskyvning i $x$ og $y$ endrer $L$ med en total tidsderivert og gir de bevarte størrelsene $m\\dot x - qBy$ og $m\\dot y + qBx$, som fastlegger sentrum i sirkelbanen. Energien er $\\tfrac12 mv^2$."
+  - id: roterende-ring
+    section: Kjente systemer
+    tex: "L = \\tfrac12 ma^2\\left(\\dot\\theta^2 + \\omega^2\\sin^2\\theta\\right) + mga\\cos\\theta"
+    label: "Perle på en ring med radius $a$ som roterer med fast $\\omega$ om den loddrette diameteren, $\\theta$ fra bunnpunktet. Energifunksjonen $H = \\tfrac12 ma^2\\dot\\theta^2 - \\tfrac12 ma^2\\omega^2\\sin^2\\theta - mga\\cos\\theta$ er bevart, energien $T + V$ er det ikke. Bunnpunktet er stabilt for $\\omega^2 < g/a$."
+  - id: dobbeltpendel
+    section: Kjente systemer
+    tex: "L = \\tfrac12 (m_1 + m_2)\\,l_1^2\\dot\\theta_1^2 + \\tfrac12 m_2 l_2^2\\dot\\theta_2^2 + m_2 l_1 l_2\\dot\\theta_1\\dot\\theta_2\\cos(\\theta_1 - \\theta_2) + (m_1 + m_2)\\,g l_1\\cos\\theta_1 + m_2 g l_2\\cos\\theta_2"
+    label: "Dobbeltpendelen med begge vinklene fra loddlinja. Bare energien er bevart. For små utslag med $m_1 = m_2$ og $l_1 = l_2 = l$ er normalfrekvensene gitt ved $\\omega^2 = (2 \\pm \\sqrt 2)\\,g/l$."
+  - id: kapitza
+    section: Kjente systemer
+    tex: "L = \\tfrac12 ml^2\\dot\\theta^2 + ml(g + \\ddot y_\\text{p})\\cos\\theta, \\qquad V_\\text{eff}(\\Theta) = -mgl\\cos\\Theta + \\tfrac14 mA^2\\Omega^2\\sin^2\\Theta"
+    label: "Pendel med oppheng som svinger loddrett, $y_\\text{p} = A\\cos\\Omega t$. $L$ avhenger eksplisitt av tida, og ingenting er bevart. Midlet over den raske svingningen beveger den langsomme vinkelen $\\Theta$ seg i $V_\\text{eff}$, som har et minimum i toppunktet når $A^2\\Omega^2 > 2gl$."
+
 # ── Begreper ─────────────────────────────────────────────────────────────────
 glossary:
   - term: Inertialsystem
@@ -277,6 +310,22 @@ glossary:
   - term: Gaugeinvarians
     section: Lagrangeformalismen
     definition: "At ingen målbar størrelse avhenger av hvilke potensialer $\\phi$ og $\\vec A$ som beskriver feltene. Bevegelsen til en ladd partikkel er gaugeinvariant fordi en gaugetransformasjon bare legger en total tidsderivert til $L$."
+
+  - term: Generalisert impuls
+    section: Symmetrier og bevarte størrelser
+    definition: "$p_i = \\partial L/\\partial\\dot q_i$, impulsen som hører til koordinaten $q_i$. Kalles også kanonisk eller konjugert impuls. Lagranges ligning for $q_i$ lyder $\\dot p_i = \\partial L/\\partial q_i$. Den er lik den mekaniske impulsen bare når hastigheten inngår i $L$ gjennom $T$ alene."
+  - term: Syklisk koordinat
+    section: Symmetrier og bevarte størrelser
+    definition: "Koordinat som ikke inngår i $L$, slik at $\\partial L/\\partial q_i = 0$. Lagranges ligning for den sier at den generaliserte impulsen $p_i$ er bevart."
+  - term: Energifunksjon
+    section: Symmetrier og bevarte størrelser
+    definition: "$H = \\sum_i \\dot q_i\\,\\partial L/\\partial\\dot q_i - L$, med $dH/dt = -\\partial L/\\partial t$. Bevart når $L$ ikke avhenger eksplisitt av tida, og lik energien $T + V$ når føringene er tidsuavhengige og $V$ bare avhenger av koordinatene."
+  - term: Noethers teorem
+    section: Symmetrier og bevarte størrelser
+    definition: "Hver kontinuerlig symmetri av Lagrangefunksjonen gir en bevart størrelse. Forskyvningen $q_i \\to q_i + \\epsilon F_i$ er en symmetri når den endrer $L$ med høyst en total tidsderivert $\\epsilon\\,dF/dt$, og da er $\\sum_i p_i F_i - F$ bevart."
+  - term: Effektivt potensial
+    section: Symmetrier og bevarte størrelser
+    definition: "Potensialet som står igjen for én koordinat når de bevarte størrelsene er satt inn i energien, som $p_\\phi^2/2\\mu r^2 + V(r)$ for radialbevegelsen i et sentralpotensial. Vendepunkter og likevekter leses ut av det som av et vanlig potensial."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker
