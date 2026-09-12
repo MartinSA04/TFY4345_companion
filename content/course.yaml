@@ -197,6 +197,47 @@ formulas:
     tex: "\\vec A \\to \\vec A + \\nabla\\chi, \\qquad \\phi \\to \\phi - \\frac{\\partial\\chi}{\\partial t}"
     label: "Gaugetransformasjon av potensialene med en vilkårlig funksjon $\\chi(\\vec r, t)$. $\\vec E$ og $\\vec B$ er uendret, og $L$ endres med $q\\,d\\chi/dt$, en total tidsderivert, så bevegelsen er den samme."
 
+  - id: rotasjon-tidsderivert
+    section: Roterende referansesystemer
+    tex: "\\left(\\frac{d\\vec A}{dt}\\right)_{K} = \\left(\\frac{d\\vec A}{dt}\\right)_{K'} + \\vec\\omega \\times \\vec A"
+    label: "Den tidsderiverte av en vilkårlig vektor i inertialsystemet $K$ og i systemet $K'$ som roterer med vinkelhastigheten $\\vec\\omega$. Enhetsvektorene i $K'$ følger rotasjonen, $\\dot{\\hat e}_i' = \\vec\\omega \\times \\hat e_i'$."
+  - id: hastighet-roterende
+    section: Roterende referansesystemer
+    tex: "\\vec v = \\vec v\\,' + \\vec\\omega \\times \\vec r"
+    label: "Hastigheten i $K$ er hastigheten målt i det roterende systemet pluss farten $\\vec\\omega \\times \\vec r$ til det medroterende punktet."
+  - id: akselerasjon-roterende
+    section: Roterende referansesystemer
+    tex: "\\vec a = \\vec a\\,' + 2\\,\\vec\\omega \\times \\vec v\\,' + \\dot{\\vec\\omega} \\times \\vec r + \\vec\\omega \\times (\\vec\\omega \\times \\vec r)"
+    label: "Akselerasjonen i $K$ uttrykt ved størrelser målt i $K'$. Det siste leddet er $-\\omega^2\\vec d$ med $\\vec d$ vinkelrett fra aksen, altså sentripetalakselerasjonen for et medroterende punkt."
+  - id: newton-roterende
+    section: Roterende referansesystemer
+    tex: "m\\vec a\\,' = \\vec F - 2m\\,\\vec\\omega \\times \\vec v\\,' - m\\,\\vec\\omega \\times (\\vec\\omega \\times \\vec r) - m\\,\\dot{\\vec\\omega} \\times \\vec r"
+    label: "Newtons andre lov i et roterende system. De tre ekstra leddene er Corioliskraften, sentrifugalkraften og Eulerkraften; de er proporsjonale med $m$ og har ingen motkraft."
+  - id: sentrifugalkraft
+    section: Roterende referansesystemer
+    tex: "\\vec F_\\text{s} = m\\omega^2\\vec d = -\\nabla V_\\text{s}, \\qquad V_\\text{s} = -\\tfrac12 m\\,|\\vec\\omega \\times \\vec r|^2"
+    label: "Sentrifugalkraften peker ut fra aksen med størrelsen $m\\omega^2 d$ og er konservativ med potensialet $-\\tfrac12 m\\omega^2 d^2$. Vannflaten i ei roterende bøtte er paraboloiden $z = z_0 + \\omega^2 r^2/2g$."
+  - id: effektiv-tyngde
+    section: Roterende referansesystemer
+    tex: "\\vec g_\\text{eff} = \\vec g - \\vec\\omega \\times (\\vec\\omega \\times \\vec R), \\qquad \\tan\\alpha \\approx \\frac{\\omega^2 R\\sin\\phi\\cos\\phi}{g}"
+    label: "Den effektive tyngdeakselerasjonen på breddegraden $\\phi$, og vinkelen loddlinja avviker fra retningen mot sentrum. $\\omega^2 R = 3{,}4$ cm/s² for jorda, og $\\alpha$ er størst ved $45°$, omtrent $0{,}1°$."
+  - id: corioliskraft
+    section: Roterende referansesystemer
+    tex: "\\vec F_\\text{C} = -2m\\,\\vec\\omega \\times \\vec v\\,', \\qquad F_\\text{C,\\,horisontal} = 2m\\omega v\\sin\\phi"
+    label: "Corioliskraften står vinkelrett på $\\vec v\\,'$ og gjør ikke arbeid. For bevegelse langs bakken på breddegraden $\\phi$ peker den horisontale komponenten mot høyre for fartsretningen på den nordlige halvkula."
+  - id: fall-avboyning
+    section: Roterende referansesystemer
+    tex: "d = \\tfrac13\\, g\\omega\\cos\\phi\\, t^3, \\qquad t = \\sqrt{2h/g}"
+    label: "Avbøyningen mot øst for et legeme som faller fra ro fra høyden $h$, til første orden i $\\omega$. Fra $\\ddot{\\vec r} = \\vec g - 2\\vec\\omega \\times \\vec g\\,t$ integrert to ganger."
+  - id: foucault
+    section: Roterende referansesystemer
+    tex: "\\Omega_\\text{F} = \\omega\\sin\\phi, \\qquad T_\\text{F} = \\frac{24\\ \\text{h}}{\\sin\\phi}"
+    label: "Foucaults pendel: svingeplanet dreier med klokka på den nordlige halvkula med vinkelfarten $\\omega\\sin\\phi$. Løsningen er $x + iy = e^{-i\\omega\\sin\\phi\\,t}(A\\cos\\omega_0 t + B\\sin\\omega_0 t)$."
+  - id: larmor
+    section: Roterende referansesystemer
+    tex: "\\vec\\omega_\\text{L} = -\\frac{q\\vec B}{2m}"
+    label: "Larmor-presesjonen. I systemet som roterer med $\\vec\\omega_\\text{L}$ opphever Corioliskraften magnetkraften $q\\vec v\\,' \\times \\vec B$, og banen i et svakt felt er den upåvirkede banen som dreier om feltretningen."
+
   - id: plan-pendel
     section: Kjente systemer
     tex: "L = \\tfrac12 ml^2\\dot\\theta^2 + mgl\\cos\\theta, \\qquad \\ddot\\theta = -\\frac{g}{l}\\sin\\theta"
@@ -310,6 +351,25 @@ glossary:
   - term: Gaugeinvarians
     section: Lagrangeformalismen
     definition: "At ingen målbar størrelse avhenger av hvilke potensialer $\\phi$ og $\\vec A$ som beskriver feltene. Bevegelsen til en ladd partikkel er gaugeinvariant fordi en gaugetransformasjon bare legger en total tidsderivert til $L$."
+
+  - term: Vinkelhastighet
+    section: Roterende referansesystemer
+    definition: "Vektoren $\\vec\\omega$ som beskriver en rotasjon: retningen ligger langs aksen etter høyrehåndsregelen, og lengden er vinkelfarten. Et punkt som følger rotasjonen har hastigheten $\\vec\\omega \\times \\vec r$."
+  - term: Fiktiv kraft
+    section: Roterende referansesystemer
+    definition: "Et av leddene som må regnes som kraft for at $m\\vec a\\,' = \\text{kraft}$ skal gjelde i et system som ikke er inertialt. Fiktive krefter skyldes ikke noe annet legeme, har ingen motkraft og er proporsjonale med massen."
+  - term: Sentrifugalkraft
+    section: Roterende referansesystemer
+    definition: "Den fiktive kraften $-m\\vec\\omega \\times (\\vec\\omega \\times \\vec r) = m\\omega^2\\vec d$ i et roterende system. Den peker ut fra aksen, virker også på det som ligger i ro, og er konservativ med potensialet $-\\tfrac12 m\\omega^2 d^2$."
+  - term: Corioliskraft
+    section: Roterende referansesystemer
+    definition: "Den fiktive kraften $-2m\\vec\\omega \\times \\vec v\\,'$ på et legeme som beveger seg i et roterende system. Den står vinkelrett på hastigheten, gjør ikke arbeid og dytter mot høyre på den nordlige halvkula."
+  - term: Eulerkraft
+    section: Roterende referansesystemer
+    definition: "Den fiktive kraften $-m\\dot{\\vec\\omega} \\times \\vec r$ som kommer når vinkelfarten til systemet endrer seg. For jorda er den null."
+  - term: Effektiv tyngdeakselerasjon
+    section: Roterende referansesystemer
+    definition: "$\\vec g_\\text{eff} = \\vec g - \\vec\\omega \\times (\\vec\\omega \\times \\vec R)$, tyngden og sentrifugalkraften per masse for et legeme i ro på den roterende jorda. Loddlinja følger $\\vec g_\\text{eff}$, og jordoverflaten står vinkelrett på den."
 
   - term: Generalisert impuls
     section: Symmetrier og bevarte størrelser
