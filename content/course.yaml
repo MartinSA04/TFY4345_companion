@@ -196,6 +196,10 @@ formulas:
     section: Lagrangeformalismen
     tex: "\\vec A \\to \\vec A + \\nabla\\chi, \\qquad \\phi \\to \\phi - \\frac{\\partial\\chi}{\\partial t}"
     label: "Gaugetransformasjon av potensialene med en vilkårlig funksjon $\\chi(\\vec r, t)$. $\\vec E$ og $\\vec B$ er uendret, og $L$ endres med $q\\,d\\chi/dt$, en total tidsderivert, så bevegelsen er den samme."
+  - id: lagrange-multiplikator
+    section: Lagrangeformalismen
+    tex: "\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot q_k} - \\frac{\\partial L}{\\partial q_k} = \\sum_\\alpha \\lambda_\\alpha \\frac{\\partial f_\\alpha}{\\partial q_k}"
+    label: "Lagranges ligninger med multiplikatorer for føringene $f_\\alpha(q, t) = 0$, fra $L' = L + \\sum_\\alpha \\lambda_\\alpha f_\\alpha$. Høyresida er føringskraften i retning $q_k$; for pendelen med $f = r - l$ er $\\lambda = -S$, snorkraften med motsatt fortegn."
 
   - id: rotasjon-tidsderivert
     section: Roterende referansesystemer
@@ -237,6 +241,23 @@ formulas:
     section: Roterende referansesystemer
     tex: "\\vec\\omega_\\text{L} = -\\frac{q\\vec B}{2m}"
     label: "Larmor-presesjonen. I systemet som roterer med $\\vec\\omega_\\text{L}$ opphever Corioliskraften magnetkraften $q\\vec v\\,' \\times \\vec B$, og banen i et svakt felt er den upåvirkede banen som dreier om feltretningen."
+
+  - id: generalisert-impuls
+    section: Symmetrier og bevarte størrelser
+    tex: "p_i = \\frac{\\partial L}{\\partial\\dot q_i}, \\qquad \\dot p_i = \\frac{\\partial L}{\\partial q_i}"
+    label: "Den generaliserte impulsen til $q_i$, og Lagranges ligning skrevet med den. Mangler $q_i$ i $L$, er koordinaten syklisk og $p_i$ bevart. For den ladde partikkelen er $\\vec p = m\\dot{\\vec r} + q\\vec A$."
+  - id: energifunksjon
+    section: Symmetrier og bevarte størrelser
+    tex: "\\begin{aligned} H &= \\sum_i \\dot q_i\\,\\frac{\\partial L}{\\partial\\dot q_i} - L \\\\ \\frac{dH}{dt} &= -\\frac{\\partial L}{\\partial t} \\end{aligned}"
+    label: "Energifunksjonen. Bevart når $L$ ikke avhenger eksplisitt av tida, og lik $T + V$ når føringene er tidsuavhengige og $V$ ikke avhenger av hastighetene."
+  - id: lagrange-roterende
+    section: Symmetrier og bevarte størrelser
+    tex: "\\begin{aligned} &L = \\tfrac12 m\\left(\\vec v\\,' + \\vec\\omega \\times \\vec r\\right)^2 - V \\\\ &H = \\tfrac12 mv'^2 + V - \\tfrac12 m\\,|\\vec\\omega \\times \\vec r|^2 \\end{aligned}"
+    label: "Lagrangefunksjonen i et system som roterer med konstant $\\vec\\omega$, med $\\vec v\\,'$ målt i det roterende systemet. Lagranges ligninger gir Corioliskraften og sentrifugalkraften, $\\vec p = m\\vec v$ er impulsen i inertialsystemet, og energifunksjonen inneholder sentrifugalpotensialet."
+  - id: noether
+    section: Symmetrier og bevarte størrelser
+    tex: "\\begin{aligned} &q_i \\to q_i + \\epsilon F_i, \\qquad \\delta L = \\epsilon\\,\\frac{dF}{dt} \\\\ &Q = \\sum_i p_i F_i - F = \\text{konst} \\end{aligned}"
+    label: "Noethers teorem. Forskyvning av alle partikler langs $\\hat n$ gir $\\vec P \\cdot \\hat n$, rotasjon om $\\hat n$ gir $\\vec L \\cdot \\hat n$, og en syklisk koordinat $q_j$ er tilfellet $F_i = \\delta_{ij}$, $F = 0$."
 
   - id: plan-pendel
     section: Kjente systemer
@@ -338,7 +359,7 @@ glossary:
     definition: "Rommet med de generaliserte koordinatene som akser. Hele systemets bevegelse er én kurve der."
   - term: Føringskraft
     section: Lagrangeformalismen
-    definition: "Kraften som holder en føring oppfylt, som snordrag og normalkrefter. Den står vinkelrett på forskyvningene føringen tillater og forsvinner når føringene settes inn i Lagrangefunksjonen."
+    definition: "Kraften som holder en føring oppfylt, som snordrag og normalkrefter. Den står vinkelrett på forskyvningene føringen tillater og forsvinner når føringene settes inn i Lagrangefunksjonen. En Lagrange-multiplikator henter den tilbake."
   - term: Lagrangefunksjon
     section: Lagrangeformalismen
     definition: "Funksjonen $L = T - V$ av koordinater og hastigheter. Den bestemmer dynamikken gjennom Lagranges ligninger."
@@ -351,6 +372,9 @@ glossary:
   - term: Gaugeinvarians
     section: Lagrangeformalismen
     definition: "At ingen målbar størrelse avhenger av hvilke potensialer $\\phi$ og $\\vec A$ som beskriver feltene. Bevegelsen til en ladd partikkel er gaugeinvariant fordi en gaugetransformasjon bare legger en total tidsderivert til $L$."
+  - term: Lagrange-multiplikator
+    section: Lagrangeformalismen
+    definition: "Ukjent funksjon $\\lambda(t)$ som ganges med føringen $f(q, t)$ og legges til $L$. Ligningen for $\\lambda$ gir føringen tilbake, og $\\lambda\\,\\partial f/\\partial q_k$ er føringskraften i retning $q_k$. Der ei snor eller et underlag har $\\lambda = 0$, slipper føringen."
 
   - term: Vinkelhastighet
     section: Roterende referansesystemer
@@ -380,6 +404,9 @@ glossary:
   - term: Energifunksjon
     section: Symmetrier og bevarte størrelser
     definition: "$H = \\sum_i \\dot q_i\\,\\partial L/\\partial\\dot q_i - L$, med $dH/dt = -\\partial L/\\partial t$. Bevart når $L$ ikke avhenger eksplisitt av tida, og lik energien $T + V$ når føringene er tidsuavhengige og $V$ bare avhenger av koordinatene."
+  - term: Kontinuerlig symmetri
+    section: Symmetrier og bevarte størrelser
+    definition: "Transformasjon $q_i \\to q_i + \\epsilon F_i(q, \\dot q, t)$ med en parameter $\\epsilon$ som kan gjøres vilkårlig liten, og som endrer $L$ med høyst en total tidsderivert $\\epsilon\\,dF/dt$ for alle baner. Forskyvning, rotasjon og Galilei-skifte er eksempler; speiling er det ikke, for den har ingen parameter."
   - term: Noethers teorem
     section: Symmetrier og bevarte størrelser
     definition: "Hver kontinuerlig symmetri av Lagrangefunksjonen gir en bevart størrelse. Forskyvningen $q_i \\to q_i + \\epsilon F_i$ er en symmetri når den endrer $L$ med høyst en total tidsderivert $\\epsilon\\,dF/dt$, og da er $\\sum_i p_i F_i - F$ bevart."
