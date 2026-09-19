@@ -125,6 +125,89 @@ Det er i høyden $\tfrac23 R$ over sentrum, med farten $v^2 = R^2\dot\theta^2 = 
 </Solution>
 </Example>
 
+<Example label="Eksamensoppgave" title="Stigen som glir">
+<ExamRef id="2025-nov" task="1 a–d" />
+
+Consider a uniform ladder of length $l$ and total mass $m$, as shown in
+Fig. 1.
+
+<Figure src="/figures/eksamen-2025-11-oppgave-1.png" alt="En stige lener seg mot en vegg. Vinkelen mellom stigen og gulvet er θ, mellom stigen og veggen π/2 − θ, og lengden er l." width={500} height={440} caption="Figure 1: Ladder leaning against a wall." />
+
+The ladder starts to slide without friction. The initial conditions are
+$\theta(0) = \theta_0$ and $\dot\theta(0) = 0$.
+
+a) Show that the Lagrangian of the systems [sic] is
+
+$$
+\begin{aligned}
+L &= \frac12 m(\dot x_{\text{cm}}^2 + \dot y_{\text{cm}}^2) \\
+&\quad + \frac12 I_{\text{cm}}\dot\theta^2 - mgy_{\text{cm}}, \qquad (1)
+\end{aligned}
+$$
+
+where $I_{\text{cm}} = \frac{1}{12}ml^2$.
+
+b) The system is described in terms of the three coordinates
+$x_{\text{cm}}$, $y_{\text{cm}}$, and $\theta$. As long as the ladder is in
+contact with the wall, the system is constrained, with a single degree of
+freedom. Write down the two constraint equations and classify the
+constraints.
+
+c) Use the Lagrange multiplier method and write down the Lagrangian for the
+constrained system. Derive the equations of motion.
+
+d) Find the constraint forces as functions of $m$, $g$, and $\theta$. For
+which value of $\theta$ does the ladder lose contact with the wall?
+
+<Solution>
+a) Den kinetiske energien til et stivt legeme er massesenterets
+translasjonsenergi pluss rotasjonsenergien om massesenteret,
+$\tfrac12 mv_{\text{cm}}^2 + \tfrac12 I_{\text{cm}}\dot\theta^2$, og for en
+jevn stang er $I_{\text{cm}} = ml^2/12$. Den potensielle energien er
+$mgy_{\text{cm}}$.
+
+b) Med veggen langs $y$-aksen og gulvet langs $x$-aksen ligger massesenteret
+midt på stigen: $f_1 = x_{\text{cm}} - \tfrac{l}{2}\cos\theta = 0$ og
+$f_2 = y_{\text{cm}} - \tfrac{l}{2}\sin\theta = 0$. Begge er holonome, og
+tiden inngår ikke.
+
+c) $L' = L + \lambda_1 f_1 + \lambda_2 f_2$. Lagranges ligninger for de tre
+koordinatene:
+
+$$
+\begin{aligned}
+m\ddot x_{\text{cm}} &= \lambda_1, \\
+m\ddot y_{\text{cm}} &= -mg + \lambda_2, \\
+I_{\text{cm}}\ddot\theta &= \tfrac{l}{2}\,\lambda_1\sin\theta - \tfrac{l}{2}\,\lambda_2\cos\theta.
+\end{aligned}
+$$
+
+$\lambda_1$ er normalkraften fra veggen og $\lambda_2$ normalkraften fra
+gulvet.
+
+d) Deriver føringene to ganger og sett inn:
+$\lambda_1 = -\tfrac12 ml(\cos\theta\,\dot\theta^2 + \sin\theta\,\ddot\theta)$ og
+$\lambda_2 = mg + \tfrac12 ml(\cos\theta\,\ddot\theta - \sin\theta\,\dot\theta^2)$.
+I $\theta$-ligningen faller $\dot\theta^2$ bort, og igjen står
+$\tfrac13 ml^2\ddot\theta = -\tfrac12 mgl\cos\theta$. Gang med $\dot\theta$ og
+integrer fra start: $\dot\theta^2 = \tfrac{3g}{l}(\sin\theta_0 - \sin\theta)$.
+Sett $\ddot\theta$ og $\dot\theta^2$ inn i uttrykkene over:
+
+$$
+\begin{aligned}
+\lambda_1 &= \tfrac32 mg\cos\theta\left(\tfrac32\sin\theta - \sin\theta_0\right), \\
+\lambda_2 &= \tfrac14 mg\big(1 + 9\sin^2\theta \\
+&\qquad\quad - 6\sin\theta\sin\theta_0\big).
+\end{aligned}
+$$
+
+Stigen mister kontakten med veggen når $\lambda_1 = 0$, altså når
+$\sin\theta = \tfrac23\sin\theta_0$.
+
+<Answer>Kontakten med veggen forsvinner ved $\sin\theta = \tfrac{2}{3}\sin\theta_0$.</Answer>
+</Solution>
+</Example>
+
 ## Generalisert impuls og sykliske koordinater
 
 Lagranges ligning for $q_i$ kan leses som en bevegelsesligning for én størrelse:
@@ -317,6 +400,71 @@ Her er $F_x = t$, så $\delta\dot x = \epsilon$ og $\delta L = m\dot x\,\epsilon
 </SelfCheck>
 
 Speiling $\vec r \to -\vec r$ er også en symmetri av mange systemer, men den har ingen liten parameter $\epsilon$, og gir ingen bevart størrelse i klassisk mekanikk.
+
+<Example label="Eksamensoppgave" title="Noethers teorem for to partikler">
+<ExamRef id="2025-nov" task="4 a–c" />
+
+a) Formulate Noether's theorem.
+
+b) Consider a system described by a Lagrangian that is a function of a set
+of generalized coordinates $q_i$, their time derivatives $\dot q_i$, and
+time $t$, $L = L(q_i, \dot q_i, t)$. A set of coordinate transformations are
+given by
+
+$$
+\begin{aligned}
+q_i \;\rightarrow\; q_i' &= q_i + \delta q_i \\
+&= q_i + \epsilon F_i(q_j, \dot q_j, t). \qquad (6)
+\end{aligned}
+$$
+
+where $\epsilon$ is a small dimensionless parameter. Show that the
+corresponding change in the Lagrangian can be written as
+
+$$
+\delta L = \epsilon\frac{dF}{dt} \qquad (7)
+$$
+
+for a suitable function $F = F(q_j, \dot q_j, t)$.
+
+c) Consider a system consisting of two particles of mass $m_1$ and $m_2$ in
+three dimensions. The potential energy $V$ is a function of the distance
+$|\vec r_{12}| = |\vec r_1 - \vec r_2|$, i.e. $V = V(|\vec r_{12}|)$. Prove
+that the total angular momentum of the system is conserved. Hint: Use
+Eq. (7). Are there other conserved quantities? (proof not required).
+
+<Solution>
+a) Til hver kontinuerlig symmetri i Lagrangefunksjonen hører en bevart
+størrelse: endrer $L$ seg bare med en total tidsderivert,
+$\delta L = \epsilon\,dF/dt$, under transformasjonen
+$q_i \to q_i + \epsilon F_i$, så er $Q = \sum_i p_i F_i - F$ konstant langs
+bevegelsen.
+
+b) Til første orden i $\epsilon$ er
+
+$$
+\delta L = \sum_i \frac{\partial L}{\partial q_i}\,\epsilon F_i + \sum_i \frac{\partial L}{\partial \dot q_i}\,\epsilon\dot F_i .
+$$
+
+Langs en løsning gjelder Lagranges ligninger,
+$\partial L/\partial q_i = \dot p_i$ med $p_i = \partial L/\partial\dot q_i$,
+så summen er $\epsilon\sum_i(\dot p_i F_i + p_i\dot F_i) = \epsilon\,\frac{d}{dt}\sum_i p_i F_i$.
+Altså $F = \sum_i p_i F_i$.
+
+c) Roter begge partiklene en liten vinkel $\epsilon$ om en akse $\hat n$:
+$\delta\vec r_a = \epsilon\,\hat n\times\vec r_a$. Avstanden $|\vec r_{12}|$ og
+fartene endrer seg ikke, så $\delta L = 0$. Etter b) er da
+$\frac{d}{dt}\sum_a \vec p_a\cdot(\hat n\times\vec r_a) = 0$, og
+$\vec p_a\cdot(\hat n\times\vec r_a) = \hat n\cdot(\vec r_a\times\vec p_a)$, så
+$\hat n\cdot\vec L$ er bevart for enhver retning $\hat n$. Hele
+dreieimpulsen $\vec L = \vec r_1\times\vec p_1 + \vec r_2\times\vec p_2$ er
+bevart. $L$ endrer seg heller ikke under en felles forskyvning av begge
+partiklene eller under en forskyvning i tid, så total impuls og energi er
+også bevart.
+
+<Answer>c) $\vec L$ er bevart fordi $V(|\vec r_{12}|)$ er rotasjonsinvariant; total impuls og energi er også bevart.</Answer>
+</Solution>
+</Example>
 
 <KeyTakeaways>
 - Med $L' = L + \lambda f$ kommer føringen $f = 0$ tilbake som ligningen for $\lambda$, og ligningene for $q_k$ får føringskraften $\lambda\,\partial f/\partial q_k$ på høyresida. Snorer og underlag slipper der $\lambda = 0$.

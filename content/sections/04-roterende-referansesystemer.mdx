@@ -276,6 +276,100 @@ Ved polen er $\sin\phi = 1$: pendelen svinger i et fast plan i forhold til stjer
 Ved ekvator er $\vec\omega = \omega\,(0, 1, 0)$, langs bakken. Corioliskraften på en horisontal hastighet blir da $2\omega v_x\,\hat z$, altså loddrett: den løfter kula litt når den svinger østover og presser den ned når den svinger vestover. Det som dreier planet, er komponenten av $\vec\omega$ langs loddlinja, $\omega\sin\phi$, og den er null.
 </SelfCheck>
 
+<Example label="Eksamensoppgave" title="Coriolis- og sentrifugalakselerasjon ved ekvator">
+<ExamRef id="2023-nov" task="1.16–1.17" />
+
+1.16 The acceleration $\boldsymbol{a}_b$ of an object measured by a stationary
+observer at the Equator on the surface of the Earth is
+
+$$
+\boldsymbol{a}_b = \boldsymbol{a}_s + 2\boldsymbol{v}_b\times\boldsymbol{\omega} - \boldsymbol{\omega}\times(\boldsymbol{\omega}\times\boldsymbol{r}).
+$$
+
+Here, $\boldsymbol{v}_b$ and $\boldsymbol{r}$ are the velocity and the position
+of the object, respectively, both measured by this observer, and
+$\boldsymbol{a}_s$ is the acceleration measured in an inertial system. Assume
+a spherical Earth with radius $r = 6378$ km rotating around an axis pointing
+straight north, with a period $T = 2\pi/\omega = 24$ hours. The observer
+throws a ball upwards with an initial speed 15 m/s. At this instant, what is
+the Coriolis acceleration?
+
+A) 5.5 mm/s² &nbsp; B) 4.4 mm/s² &nbsp; C) 3.3 mm/s² &nbsp; D) 2.2 mm/s² &nbsp; E) 1.1 mm/s² &nbsp; F) 0.55 mm/s²
+
+1.17 At the instant described in the previous question, what is the
+centrifugal acceleration?
+
+A) 64 mm/s² &nbsp; B) 54 mm/s² &nbsp; C) 44 mm/s² &nbsp; D) 34 mm/s² &nbsp; E) 24 mm/s² &nbsp; F) 14 mm/s²
+
+<Solution>
+Ved ekvator står $\boldsymbol{\omega}$ vinkelrett på en vertikal hastighet,
+så kryssproduktet har full størrelse:
+$a_{\text{Cor}} = 2v\omega = 2\cdot 15\ \text{m/s}\cdot\dfrac{2\pi}{86\,400\ \text{s}} = 2{,}2\ \text{mm/s}^2$.
+
+Sentrifugalakselerasjonen er
+$\omega^2 r = \left(\dfrac{2\pi}{86\,400\ \text{s}}\right)^2\cdot 6{,}378\cdot 10^6\ \text{m} = 34\ \text{mm/s}^2$,
+det samme tallet som modulen regner ut for jordoverflaten.
+
+<Answer>1.16 D, 2,2 mm/s². 1.17 D, 34 mm/s².</Answer>
+</Solution>
+</Example>
+
+<Example label="Eksamensoppgave" title="Rotation of Earth">
+<ExamRef id="2022-aug-kont" task="1 A–B" />
+
+A. Felix Baumgartner made his record base jump in 2012 with a starting
+altitude of 39 km (reached by using a giant helium balloon) and a supersonic
+top velocity of 1358 km/h in free fall. Some people claim (?!) that if Earth
+was a spinning sphere, the starting point on the surface should have escaped
+him *visibly* while ascend (balloon trip). Make solid arguments why this
+should not be the case. Small measurable deflections are of course present
+(one effect mentioned below). The radius of Earth is 6371 km. [2p]
+
+<Figure src="/figures/eksamen-2022-08-oppgave-1.png" alt="Jordkule med rotasjonsaksen gjennom N og S, vinkelhastigheten ω, breddegraden α og de lokale enhetsvektorene e_x, e_y og e_z ved et punkt på overflaten der g peker innover." width={380} height={450} caption="Figuren fra oppgavesettet." />
+
+B. Derive the lateral displacement due to the Coriolis effect for the first
+part of the free fall by assuming that Felix reaches the maximum velocity
+(1358 km/h) in the end, but not reaching the ground yet. To be clear: Felix
+starts from 39 km at rest (checkpoint 1) and falls freely until maximum
+velocity (checkpoint 2). How much has it taken time and what is the altitude
+then? How much is the lateral deflection of the fall at that point with
+respect to Earth's surface and in which direction? You can neglect air
+resistance. The latitude of Roswell (New Mexico, USA) is 34 degrees (north),
+Earth's angular velocity is $\omega = 7.29\times 10^{-5}\ \text{s}^{-1}$ and
+the acceleration of gravity is $g = 9.81\ \text{m/s}^2$. [5p]
+
+Hint: You can safely ignore the x- and y-components of velocity in the
+cross-product.
+
+<Solution>
+A. Alt på bakken deler bakkens hastighet østover, og Felix og ballongen tar
+den med seg opp. Ingen kraft fjerner den: i treghetssystemet fortsetter de
+østover sammen med bakken under seg, og i det roterende systemet er de i ro
+bortsett fra de små fiktive kreftene. Lufta roterer også med jorda, og en
+ballong følger lufta, så selv den lille avdriften Corioliskraften gir en
+fritt stigende gjenstand, tas opp av luftmotstanden. Igjen står målbare
+avvik på meterskala, som i B, ingenting som synes fra 39 km.
+
+B. Fritt fall fra ro: $v = gt$ gir $t = v_{\max}/g = 377{,}2/9{,}81 = 38{,}5$ s,
+og fallhøyden er $\Delta h = v_{\max}^2/2g = 7{,}25$ km, så høyden ved
+sjekkpunkt 2 er $39 - 7{,}25 \approx 31{,}7$ km. Med bare den vertikale
+hastigheten i kryssproduktet peker Corioliskraften østover, og resultatet
+for fall fra et tårn gjelder direkte:
+
+$$
+\begin{aligned}
+d &= \tfrac13\, g\,\omega\cos\alpha\; t^3 \\
+  &= \tfrac13\cdot 9{,}81\cdot 7{,}29\cdot 10^{-5} \\
+  &\qquad \cdot\cos 34^\circ\cdot(38{,}5\ \text{s})^3 \approx 11\ \text{m}.
+\end{aligned}
+$$
+
+Avbøyningen er mot øst. Løsningsforslaget oppgir 11,5 m med samme metode.
+
+<Answer>B: $t \approx 38{,}5$ s, høyde $\approx 31{,}7$ km, avbøyning $\approx 11$ m mot øst.</Answer>
+</Solution>
+</Example>
+
 ## Corioliskraften og Lorentzkraften
 
 Likheten med Lorentzkraften kan brukes andre veien. En ladd partikkel går i en bane om et sentrum, som et elektron rundt en kjerne, og et svakt, homogent magnetfelt $\vec B$ slås på. Gå over til et system som roterer med $\vec\omega = -q\vec B/2m$. Der kommer Corioliskraften $-2m\vec\omega \times \vec v\,' = q\vec B \times \vec v\,'$ til, og den opphever magnetkraften $q\vec v\,' \times \vec B$ nøyaktig. Det som står igjen fra $\vec\omega \times \vec r$ i hastigheten og fra sentrifugalkraften, er proporsjonalt med $B^2$ og kan sløyfes for svake felt. I det roterende systemet er banen den gamle, upåvirkede banen. Sett fra $K$ dreier den derfor sakte om feltretningen:

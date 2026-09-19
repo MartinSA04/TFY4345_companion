@@ -184,6 +184,72 @@ arbeid og bidrar ikke til $L$. Vil du likevel finne det, må det inn som ukjent
 kraft, som i Newton-regningen.
 </SelfCheck>
 
+<Example label="Eksamensoppgave" title="Stang med to masser">
+<ExamRef id="2023-nov" task="3 a–c" />
+
+A rod with negligible mass and length $\ell$ has equal masses $m$ at its two
+ends. (See figure below.) One mass can slide without friction along a
+horizontal constraint on the $x$ axis. The other mass is restricted to move
+in the $xy$ plane. We consider a situation where the center of mass is all
+the time located on the $y$ axis, i.e., in $x = 0$. Zero potential energy is
+chosen in vertical position $y = 0$.
+
+<Figure src="/figures/eksamen-2023-11-oppgave-3.png" alt="Den øvre massen ligger på x-aksen, stangen henger skrått ned med vinkelen θ fra vertikalen til den nedre massen, og tyngden peker nedover." width={720} height={440} caption="Figuren fra oppgavesettet." />
+
+a) (7%) Show that the Lagrangian of the system is
+
+$$
+\begin{aligned}
+L(\theta, \dot\theta) = T - V &= \frac{m\ell^2\dot\theta^2}{4}(1 + \sin^2\theta) \\
+&\quad + mg\ell\cos\theta.
+\end{aligned}
+$$
+
+Hint: $a\sin^2 x + b\cos^2 x = b + (a - b)\sin^2 x$.
+
+b) (7%) Find the equation of motion (i.e., the Lagrange equation).
+
+c) (5%) If the oscillation amplitude is small, the system is a harmonic
+oscillator. Show this by including only linear terms in the equation of
+motion, and determine the oscillation frequency $\omega$.
+
+<Solution>
+a) Én frihetsgrad, $\theta$. Massesenteret skal ligge på $y$-aksen, så den
+øvre massen står i $x_1 = -\tfrac{\ell}{2}\sin\theta$ og den nedre i
+$x_2 = \tfrac{\ell}{2}\sin\theta$, $y_2 = -\ell\cos\theta$. Da er
+$\dot x_1^2 = \dot x_2^2 = \tfrac{\ell^2}{4}\cos^2\theta\,\dot\theta^2$ og
+$\dot y_2^2 = \ell^2\sin^2\theta\,\dot\theta^2$, så
+
+$$
+\begin{aligned}
+T &= \frac{m\ell^2\dot\theta^2}{2}\left(\tfrac12\cos^2\theta + \sin^2\theta\right) \\
+  &= \frac{m\ell^2\dot\theta^2}{4}(1 + \sin^2\theta),
+\end{aligned}
+$$
+
+med hintet brukt på $\cos^2\theta + 2\sin^2\theta$. Bare den nedre massen
+har potensiell energi, $V = -mg\ell\cos\theta$, og $L = T - V$ er uttrykket i
+oppgaven.
+
+b) $\partial L/\partial\dot\theta = \tfrac{m\ell^2}{2}\dot\theta(1 + \sin^2\theta)$
+og $\partial L/\partial\theta = \tfrac{m\ell^2}{2}\dot\theta^2\sin\theta\cos\theta - mg\ell\sin\theta$.
+Lagranges ligning gir, etter forkorting med $m\ell^2/2$,
+
+$$
+\begin{aligned}
+\ddot\theta\,(1 + \sin^2\theta) &+ \dot\theta^2\sin\theta\cos\theta \\
+&+ \frac{2g}{\ell}\sin\theta = 0.
+\end{aligned}
+$$
+
+c) For små utslag er $\sin\theta \approx \theta$, $\sin^2\theta$ neglisjerbar
+og $\dot\theta^2\sin\theta$ av andre orden, så ligningen blir
+$\ddot\theta + (2g/\ell)\,\theta = 0$.
+
+<Answer>b) $\ddot\theta(1+\sin^2\theta) + \dot\theta^2\sin\theta\cos\theta + (2g/\ell)\sin\theta = 0$. c) $\omega = \sqrt{2g/\ell}$.</Answer>
+</Solution>
+</Example>
+
 ## Lagrangefunksjonen er ikke entydig
 
 Utledningen av Lagranges ligninger brukte bare at $S$ er stasjonær. Alt som lar den virkelige banen forbli stasjonær, gir samme bevegelse, og det gjør Lagrangefunksjonen til et friere valg enn $L = T - V$ antyder. Ganger du $L$ med en konstant $\alpha$, ganges $S$ med den samme konstanten, og en stasjonær bane er fortsatt stasjonær. Legger du til den totale tidsderiverte av en funksjon $f(q, t)$ av koordinatene og tida, endres virkningen bare med et randledd:

@@ -97,6 +97,52 @@ altså $n < 2$. Tyngdekraften har $n = 1$ og gir stabile sirkelbaner. For $n = 2
 Med $J^2 = \mu k r_0$ er $V_\text{eff}''(r_0) = -2k/r_0^3 + 3J^2/\mu r_0^4 = k/r_0^3$, så $\omega_r^2 = k/\mu r_0^3$. Vinkelfarten i sirkelbanen er $\dot\phi^2 = J^2/\mu^2 r_0^4 = k/\mu r_0^3$, det samme. Legemet er tilbake i $r_\text{min}$ nøyaktig én gang per omløp, så den forstyrrede banen er lukket. Det er ellipsen, med $r_\text{min}$ og $r_\text{max}$ på hver sin side av sirkelen.
 </SelfCheck>
 
+<Example label="Eksamensoppgave" title="Condition for circular orbits">
+<ExamRef id="2022-des" task="2 a–c" />
+
+Consider a central force field with a general potential $V(r)$ and a
+corresponding force $f = -\dfrac{\partial V}{\partial r}$.
+
+(a) Derive the Lagrangian function and solve the corresponding equations of
+motion. What are the conserved quantities? [2p]
+
+(b) Solve the conditions for force $f(r_0)$ and total energy $E(r_0)$ in the
+case of circular orbits ($r = r_0$). Note that we have not specified $V(r)$
+yet and that the results will remain somewhat implicit. For example, we
+cannot solve $r_0$ without knowing the potential explicitly. [1p]
+
+(c) By considering the effective potential $V_{\text{eff}}$ alone, deduce
+what is the condition that ensures that a circular orbit ($r = r_0$)
+corresponds to a stable minimum. Next, let us assume that we have a
+potential $V(r) = kr^{n+1}$, where $n$ is an integer. Derive the stability
+condition of circular orbits for this set of power law potentials with
+respect to $n$. [3p]
+
+<Solution>
+(a) Bevegelsen ligger i et plan, og i polarkoordinater er
+$L = \tfrac12 m(\dot r^2 + r^2\dot\theta^2) - V(r)$. $\theta$ er syklisk, så
+$p_\theta = mr^2\dot\theta = \ell$ er bevart, dreieimpulsen (modulens $J$).
+Siden $L$ ikke avhenger av tiden og kraften er konservativ, er energien
+$E = \tfrac12 m\dot r^2 + \tfrac{\ell^2}{2mr^2} + V(r)$ bevart. Den radielle
+ligningen er
+$m\ddot r = mr\dot\theta^2 + f(r) = \tfrac{\ell^2}{mr^3} + f(r) = -V_{\text{eff}}'(r)$
+med $V_{\text{eff}} = V + \tfrac{\ell^2}{2mr^2}$.
+
+(b) Sirkelbane betyr $\ddot r = 0$: $f(r_0) = -\tfrac{\ell^2}{mr_0^3}$, kraften
+er ren sentripetalkraft. Energien er
+$E(r_0) = \tfrac{\ell^2}{2mr_0^2} + V(r_0) = V_{\text{eff}}(r_0)$.
+
+(c) Stabil sirkelbane krever et minimum i $V_{\text{eff}}$:
+$V_{\text{eff}}''(r_0) > 0$, altså $V''(r_0) + \tfrac{3\ell^2}{mr_0^4} > 0$.
+Med $\ell^2/mr_0^3 = V'(r_0)$ fra (b) blir det $V''(r_0) + 3V'(r_0)/r_0 > 0$.
+For $V = kr^{n+1}$ er $V' = k(n+1)r^n$ og $V'' = k(n+1)nr^{n-1}$, så
+betingelsen er $k(n+1)(n+3)r_0^{n-1} > 0$. En sirkelbane finnes bare når
+$V'(r_0) > 0$, altså $k(n+1) > 0$, og da gjenstår $n + 3 > 0$.
+
+<Answer>(c) Sirkelbaner i $V = kr^{n+1}$ er stabile for $n > -3$.</Answer>
+</Solution>
+</Example>
+
 ## Baneligningen og Keplerproblemet
 
 Formen på banen er $r(\phi)$, og den er lettere å finne enn $r(t)$. Bytt variabel til $u = 1/r$ og bruk $\dot\phi = Ju^2/\mu$ til å gjøre tidsderiverte om til $\phi$-deriverte:
