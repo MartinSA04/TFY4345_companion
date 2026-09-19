@@ -96,7 +96,8 @@ export function animate({ stage, signal, onFrame }) {
   function frame(now) {
     raf = 0;
     if (signal?.aborted) return;
-    const dt = Math.min(0.05, (now - last) / 1000 || 0);
+    // rAF-tidsstempelet kan ligge før performance.now() fra start(), så dt klippes til ≥ 0.
+    const dt = Math.max(0, Math.min(0.05, (now - last) / 1000 || 0));
     last = now;
     onFrame(dt);
     if (visible) raf = requestAnimationFrame(frame);
