@@ -309,6 +309,26 @@ formulas:
     section: Tolegemeproblemet
     tex: "\\begin{aligned} 2\\langle T\\rangle &= -\\Big\\langle\\sum_i \\vec F_i \\cdot \\vec r_i\\Big\\rangle \\\\ &= n\\,\\langle V\\rangle \\end{aligned}"
     label: "Virialteoremet for et system som holder seg endelig; tidsmidler. Den siste likheten gjelder for et potensial som er homogent av grad $n$, som $V \\propto r^n$. Keplerbaner har $n = -1$ og $E = -\\langle T\\rangle$, oscillatoren $n = 2$ og $\\langle T\\rangle = \\langle V\\rangle$."
+  - id: trelegeme-lagrange
+    section: Trelegemeproblemet
+    tex: "L = \\tfrac12 m\\left(\\dot x^2 + \\dot y^2\\right) \\allowbreak + m\\omega\\left(x\\dot y - y\\dot x\\right) \\allowbreak - m\\,U(x, y)"
+    label: "Det lette legemet i det begrensede trelegemeproblemet, i systemet $K'$ som roterer med $\\omega^2 = G(m_1 + m_2)/d^3$ om massesenteret. $m_1$ og $m_2$ står i ro på $x$-aksen, og leddet som er lineært i farten, gir Corioliskraften."
+  - id: trelegeme-potensial
+    section: Trelegemeproblemet
+    tex: "U = -\\frac{Gm_1}{r_1} - \\frac{Gm_2}{r_2} \\allowbreak - \\tfrac12\\omega^2\\left(x^2 + y^2\\right)"
+    label: "Potensialet per masse i det roterende systemet, tyngden fra $m_1$ og $m_2$ pluss sentrifugalpotensialet. $r_1$ og $r_2$ er avstandene til de to massene, og Lagrangepunktene er de stasjonære punktene til $U$."
+  - id: jacobi-konstant
+    section: Trelegemeproblemet
+    tex: "C = \\tfrac12\\left(\\dot x^2 + \\dot y^2\\right) + U(x, y)"
+    label: "Jacobis konstant, energifunksjonen per masse i det roterende systemet. Den er bevart, og legemet kan bare være der $U \\le C$."
+  - id: lagrangepunkter
+    section: Trelegemeproblemet
+    tex: "r_1 = r_2 = d \\allowbreak\\qquad h \\approx d\\left(\\frac{m_2}{3m_1}\\right)^{1/3}"
+    label: "$L_4$ og $L_5$ danner likesidede trekanter med $m_1$ og $m_2$. $L_1$ og $L_2$ ligger i avstanden $h$ på hver side av $m_2$ når $m_2 \\ll m_1$, og $L_3$ ligger på motsatt side av $m_1$."
+  - id: lagrange-stabilitet
+    section: Trelegemeproblemet
+    tex: "27\\,m_1 m_2 < (m_1 + m_2)^2"
+    label: "Betingelsen for at $L_4$ og $L_5$ er stabile, $m_1/m_2 > 24{,}96$. $L_1$, $L_2$ og $L_3$ er ustabile for alle masseforhold."
 
   - id: plan-pendel
     section: Kjente systemer
@@ -475,6 +495,13 @@ glossary:
   - term: Virialteoremet
     section: Tolegemeproblemet
     definition: "For et system som holder seg endelig er tidsmiddelet $2\\langle T\\rangle = -\\langle\\sum_i \\vec F_i \\cdot \\vec r_i\\rangle$. For et potensial som er homogent av grad $n$ er det $2\\langle T\\rangle = n\\langle V\\rangle$."
+
+  - term: Jacobis konstant
+    section: Trelegemeproblemet
+    definition: "Den bevarte energifunksjonen per masse for det lette legemet i det begrensede trelegemeproblemet, $C = \\tfrac12 v'^2 + U$. $v'$ er farten i systemet som roterer med de to tunge legemene, og $U$ tar med sentrifugalpotensialet. Legemet kan bare være der $U \\le C$."
+  - term: Lagrangepunkt
+    section: Trelegemeproblemet
+    definition: "Et av de fem likevektspunktene i det begrensede trelegemeproblemet, der et lett legeme står i ro i systemet som roterer med de to tunge legemene. $L_1$, $L_2$ og $L_3$ ligger på linja gjennom dem og er ustabile. $L_4$ og $L_5$ danner likesidede trekanter med dem og er stabile når $m_1/m_2 > 24{,}96$."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker

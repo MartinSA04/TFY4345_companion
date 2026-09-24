@@ -1,10 +1,10 @@
 ---
 order: 6
 title: "Tolegemeproblemet og sentrale krefter"
-summary: "To legemer som trekker på hverandre er ett legeme med redusert masse i et sentralpotensial, og den bevarte dreieimpulsen gjør radialbevegelsen til et endimensjonalt problem i et effektivt potensial. Baneligningen gir kjeglesnittene og Keplers lover, den samme regningen gir Rutherfords spredningsformel, og virialteoremet knytter midlere kinetisk og potensiell energi sammen."
+summary: "To legemer som trekker på hverandre er ett legeme med redusert masse i et sentralpotensial, og den bevarte dreieimpulsen gjør radialbevegelsen til et endimensjonalt problem i et effektivt potensial. Baneligningen gir kjeglesnittene og Keplers lover, den samme regningen gir Rutherfords spredningsformel, og virialteoremet knytter midlere kinetisk og potensiell energi sammen. I det begrensede trelegemeproblemet gir et roterende system de fem Lagrangepunktene."
 importance: core
 tag: "Uke 39"
-updated: 2026-09-19
+updated: 2026-09-24
 ---
 
 <LearningGoals>
@@ -12,6 +12,7 @@ updated: 2026-09-19
 - Avgjøre om en sirkelbane er stabil, og finne frekvensen til små radielle svingninger om den.
 - Løse baneligningen for $V = -k/r$, og knytte eksentrisiteten og halvaksene til $E$ og $J$.
 - Utlede Keplers tre lover og bruke dem på baner i solsystemet.
+- Sette opp det begrensede trelegemeproblemet i et roterende system, finne de fem Lagrangepunktene og avgjøre hvilke som er stabile.
 - Finne spredningsvinkelen som funksjon av støtparameteren og det differensielle spredningstverrsnittet, med Rutherfords formel som eksempel.
 - Bevise virialteoremet og bruke det på potenslovpotensialer.
 </LearningGoals>
@@ -315,6 +316,171 @@ $$
 
 per omløp. For Merkur er $a(1 - e^2) = 55{,}5\cdot10^6$ km og $GM_\odot/c^2 = 1{,}48$ km, som gir $5{,}0\cdot10^{-7}$ rad per omløp. Med $415$ omløp per århundre er det $43$ buesekunder per århundre, det samme som er målt.
 
+## Det begrensede trelegemeproblemet
+
+Tre legemer som trekker på hverandre, har ingen generell løsning. Et tilfelle som kan regnes ut, er når to tunge legemer $m_1 \ge m_2$ går i sirkelbaner om massesenteret, og et tredje legeme med masse $m$ er så lett at det ikke påvirker dem. Sola, jorda og et romteleskop er et eksempel, sola, Jupiter og en asteroide et annet.
+
+Med avstanden $d$ mellom $m_1$ og $m_2$ gir Keplers tredje lov for sirkelbanen vinkelfarten
+
+$$
+\omega^2 = \frac{GM}{d^3}, \qquad M = m_1 + m_2
+$$
+
+I et system $K'$ som roterer med $\omega$ om massesenteret, står $m_1$ og $m_2$ i ro på $x$-aksen, i $x = -\alpha d$ og $x = (1 - \alpha)d$ med $\alpha = m_2/M$. Det lette legemet beveger seg i baneplanet $z = 0$. Lagrangefunksjonen i et roterende system er $\tfrac12 m(\vec v\,' + \vec\omega \times \vec r)^2 - V$, og med $\vec\omega = \omega\hat z$ er $\vec\omega \times \vec r = (-\omega y, \omega x)$. Kvadratet er
+
+$$
+(\dot x - \omega y)^2 + (\dot y + \omega x)^2 = \dot x^2 + \dot y^2 \allowbreak + 2\omega(x\dot y - y\dot x) \allowbreak + \omega^2(x^2 + y^2)
+$$
+
+og det siste leddet samles med tyngden i ett potensial. Det gir
+
+$$
+L = \tfrac12 m\left(\dot x^2 + \dot y^2\right) \allowbreak + m\omega\left(x\dot y - y\dot x\right) \allowbreak - m\,U(x, y)
+$$
+
+<Formula
+  tex="U = -\frac{Gm_1}{r_1} - \frac{Gm_2}{r_2} \allowbreak - \tfrac12\omega^2\left(x^2 + y^2\right)"
+  caption="<b>Potensialet i det roterende systemet</b>, per masse. $r_1$ og $r_2$ er avstandene fra det lette legemet til $m_1$ og $m_2$, og det siste leddet er sentrifugalpotensialet."
+/>
+
+Leddet $m\omega(x\dot y - y\dot x)$ er lineært i farten og gir Corioliskraften. Lagranges ligning for $x$, $\frac{d}{dt}\frac{\partial L}{\partial\dot x} = \frac{\partial L}{\partial x}$, med
+
+$$
+\frac{\partial L}{\partial\dot x} = m(\dot x - \omega y) \allowbreak\qquad \frac{\partial L}{\partial x} = m\omega\dot y - m\frac{\partial U}{\partial x}
+$$
+
+gir $m\ddot x - m\omega\dot y = m\omega\dot y - m\,\partial U/\partial x$. Ligningen for $y$ følger på samme måte:
+
+<Formula
+  tex="\ddot x - 2\omega\dot y = -\frac{\partial U}{\partial x} \allowbreak\qquad \ddot y + 2\omega\dot x = -\frac{\partial U}{\partial y}"
+  caption="<b>Bevegelsesligningene</b> for det lette legemet i $K'$. Leddene med $2\omega$ er Corioliskraften per masse."
+/>
+
+$L$ inneholder ikke tida, så energifunksjonen $H = \dot x\,\partial L/\partial\dot x + \dot y\,\partial L/\partial\dot y - L$ er bevart. Leddet som er lineært i farten, faller ut:
+
+$$
+\begin{aligned}
+H &= m\dot x(\dot x - \omega y) + m\dot y(\dot y + \omega x) - L \\
+&= \tfrac12 m\left(\dot x^2 + \dot y^2\right) + m\,U
+\end{aligned}
+$$
+
+Delt på $m$ er det <Term name="Jacobis konstant">Jacobis konstant</Term>:
+
+<Formula
+  tex="C = \tfrac12\left(\dot x^2 + \dot y^2\right) + U(x, y)"
+  caption="<b>Jacobis konstant</b>, bevart langs banen. Corioliskraften står vinkelrett på farten og gjør ikke arbeid, så den er ikke med."
+/>
+
+Farten i kvadrat kan ikke være negativ, så legemet kan bare være der $U \le C$. Kurvene $U = C$ står stille i $K'$ og er grensen for området legemet kan nå.
+
+## Lagrangepunktene
+
+Et legeme som står i ro i $K'$, har $\dot x = \dot y = \ddot x = \ddot y = 0$, og bevegelsesligningene krever da $\partial U/\partial x = \partial U/\partial y = 0$. Likevektspunktene er altså de stasjonære punktene til $U$, og de heter <Term name="lagrangepunkt">Lagrangepunktene</Term>. Sett fra $K$ går et legeme i et Lagrangepunkt i en sirkelbane med samme omløpstid som $m_1$ og $m_2$, og tyngden fra de to er akkurat sentripetalkraften.
+
+<Simulation
+  src="/sims/trelegeme.js"
+  title="Potensialet og Lagrangepunktene"
+  caption="Nivåkurvene til $U$ i det roterende systemet, der $m_1$ og $m_2$ står i ro. De kraftige kurvene går gjennom $L_1$, $L_2$ og $L_3$. Det lette legemet slippes i ro like foran $L_4$, eller der du trykker i figuren. I det skraverte området er $U > C$, og dit kommer legemet aldri. Over $m_2/M = 0{,}039$ er $L_4$ ustabil, og legemet driver bort."
+  host="dom"
+  height={380}
+/>
+
+Tre av punktene ligger på $x$-aksen. For $y = 0$ er $\partial U/\partial y = 0$ av symmetri, og $\partial U/\partial x = 0$ blir
+
+$$
+\omega^2 x = \frac{Gm_1(x + \alpha d)}{|x + \alpha d|^3} \allowbreak + \frac{Gm_2\,(x - (1 - \alpha)d)}{|x - (1 - \alpha)d|^3}
+$$
+
+Langs aksen går $U$ mot $-\infty$ ved hver masse og langt ute, og alle tre leddene i $U(x, 0)$ har negativ annenderivert. $U(x, 0)$ har derfor nøyaktig ett maksimum i hvert av de tre intervallene: $L_1$ mellom massene, $L_2$ utenfor $m_2$ og $L_3$ utenfor $m_1$ på motsatt side. Ligningen er av femte grad og må løses numerisk, men for $m_2 \ll m_1$ ligger $L_1$ og $L_2$ nær $m_2$, på hver sin side i avstanden
+
+$$
+h \approx d\left(\frac{m_2}{3m_1}\right)^{1/3}
+$$
+
+<Derivation title="Avstanden fra m₂ til L₁ og L₂">
+$L_2$ ligger i $x = (1 - \alpha)d + h$, i avstanden $d + h$ fra $m_1$ og $h$ fra $m_2$. Siden $\omega^2(1 - \alpha)d = GM(1 - \alpha)/d^2 = Gm_1/d^2$, blir ligningen
+
+$$
+\frac{Gm_1}{d^2} + \omega^2 h = \frac{Gm_1}{(d + h)^2} + \frac{Gm_2}{h^2}
+$$
+
+For $h \ll d$ er $Gm_1/(d + h)^2 \approx (Gm_1/d^2)(1 - 2h/d)$, og for $m_2 \ll m_1$ er $\omega^2 \approx Gm_1/d^3$:
+
+$$
+\begin{aligned}
+\frac{Gm_1}{d^3}\,h + \frac{2Gm_1}{d^3}\,h &= \frac{Gm_2}{h^2} \\
+\Rightarrow\quad h^3 &= \frac{m_2}{3m_1}\,d^3
+\end{aligned}
+$$
+
+For $L_1$ i $x = (1 - \alpha)d - h$ skifter alle leddene med $h$ fortegn, og den samme ligningen kommer ut.
+</Derivation>
+
+For sola og jorda er $m_2/m_1 = 3{,}0\cdot10^{-6}$ og $h = 1{,}5\cdot10^6$ km, fire ganger avstanden til månen. Solobservatoriet SOHO går i bane rundt $L_1$, og James Webb-teleskopet rundt $L_2$, der sola og jorda ligger i samme retning og ett varmeskjold skygger for begge.
+
+De to andre punktene ligger utenfor aksen. For $y \ne 0$ kan $\partial U/\partial y = 0$ deles på $y$:
+
+$$
+\omega^2 = \frac{Gm_1}{r_1^3} + \frac{Gm_2}{r_2^3}
+$$
+
+Gang med $x$ og trekk fra $\partial U/\partial x = 0$, som er $\omega^2 x = Gm_1(x + \alpha d)/r_1^3 + Gm_2(x - (1 - \alpha)d)/r_2^3$. Leddene med $x$ faller bort, og med $m_1\alpha = m_2(1 - \alpha) = m_1m_2/M$ står det igjen
+
+$$
+0 = \frac{Gm_1m_2\,d}{M}\left(\frac{1}{r_1^3} - \frac{1}{r_2^3}\right)
+$$
+
+Altså er $r_1 = r_2$, og den første ligningen gir $\omega^2 = GM/r_1^3$. Sammen med $\omega^2 = GM/d^3$ gir det $r_1 = r_2 = d$. $L_4$ og $L_5$ ligger i hjørnet av en likesidet trekant med $m_1$ og $m_2$, $60°$ foran og bak $m_2$ i banen, uansett masseforholdet.
+
+$L_1$, $L_2$ og $L_3$ er sadelpunkter for $U$, med maksimum langs aksen og minimum på tvers. Et legeme som dyttes litt langs aksen, glir bort, så satellittene ved $L_1$ og $L_2$ må korrigere kursen med jevne mellomrom. $L_4$ og $L_5$ er maksimumspunkter for $U$, og uten Corioliskraften ville et legeme gli ned fra dem i alle retninger. Når legemet begynner å gli, bøyer Corioliskraften banen av til siden, og er $m_1$ mye større enn $m_2$, går legemet i en sløyfe rundt punktet i stedet. Betingelsen er
+
+<Formula
+  tex="27\,m_1 m_2 < (m_1 + m_2)^2 \allowbreak\quad\Leftrightarrow\quad \frac{m_1}{m_2} > 24{,}96"
+  caption="<b>Stabilitetsbetingelsen for $L_4$ og $L_5$.</b> $L_1$, $L_2$ og $L_3$ er ustabile for alle masseforhold."
+/>
+
+<Derivation title="Hvorfor L₄ og L₅ er stabile">
+Den annenderiverte av $-1/r$ er $\partial_i\partial_j(-1/r) = (\delta_{ij} - 3n_in_j)/r^3$, med $\vec n = \vec r/r$. I $L_4$ er $r_1 = r_2 = d$, og enhetsvektorene fra $m_1$ og $m_2$ er $\vec n_1 = (\tfrac12, \tfrac{\sqrt3}{2})$ og $\vec n_2 = (-\tfrac12, \tfrac{\sqrt3}{2})$. Leddene med $\delta_{ij}$ gir $GM/d^3 = \omega^2$ og opphever sentrifugalleddet. Med $Gm_1/d^3 = (1 - \alpha)\omega^2$ og $Gm_2/d^3 = \alpha\omega^2$ står det igjen
+
+$$
+\partial_i\partial_j U = -3(1 - \alpha)\,\omega^2 n_{1i}n_{1j} \allowbreak - 3\alpha\,\omega^2 n_{2i}n_{2j}
+$$
+
+$$
+U_{xx} = -\tfrac34\omega^2 \allowbreak\qquad U_{yy} = -\tfrac94\omega^2 \allowbreak\qquad U_{xy} = -\tfrac{3\sqrt3}{4}(1 - 2\alpha)\,\omega^2
+$$
+
+For et lite avvik $(\xi, \eta)$ fra $L_4$ gir bevegelsesligningene
+
+$$
+\begin{aligned}
+\ddot\xi - 2\omega\dot\eta &= -U_{xx}\,\xi - U_{xy}\,\eta \\
+\ddot\eta + 2\omega\dot\xi &= -U_{xy}\,\xi - U_{yy}\,\eta
+\end{aligned}
+$$
+
+Med $\xi, \eta \propto e^{\lambda t}$ må determinanten til ligningssystemet være null:
+
+$$
+\left(\lambda^2 + U_{xx}\right)\left(\lambda^2 + U_{yy}\right) \allowbreak - U_{xy}^2 + 4\omega^2\lambda^2 = 0
+$$
+
+Med de annenderiverte over blir det
+
+$$
+\lambda^4 + \omega^2\lambda^2 + \tfrac{27}{4}\,\alpha(1 - \alpha)\,\omega^4 = 0
+$$
+
+Avviket holder seg lite når begge røttene $\lambda^2$ er reelle og negative, så $\lambda$ er rent imaginær. Det krever $1 - 27\alpha(1 - \alpha) > 0$, og med $\alpha(1 - \alpha) = m_1m_2/M^2$ er det betingelsen over. Uten Coriolisleddet $4\omega^2\lambda^2$ ville summen av røttene vært $-(U_{xx} + U_{yy}) = 3\omega^2 > 0$, og minst én rot positiv.
+</Derivation>
+
+Sola og Jupiter har $m_1/m_2 = 1047$, og over ti tusen asteroider, trojanerne, følger Jupiter rundt sola nær $L_4$ og $L_5$.
+
+<SelfCheck question="Jorda er $81$ ganger tyngre enn månen, og avstanden mellom dem er $384\,400$ km. Hvor langt fra månen ligger $L_1$ og $L_2$ omtrent?">
+$h \approx 384\,400\text{ km}\cdot(1/243)^{1/3} = 61\,500$ km. Den eksakte løsningen av femtegradsligningen gir $58\,000$ km for $L_1$ og $64\,500$ km for $L_2$. Med $h/d = 0{,}16$ er leddene av andre orden i $h/d$ ikke lenger små, og de flytter $L_1$ nærmere månen og $L_2$ lenger ut.
+</SelfCheck>
+
 ## Spredning
 
 Send en strøm av partikler med samme masse og energi mot et kraftsentrum med et potensial som går mot null langt ute. Hver partikkel kommer inn langs ei rett linje, avbøyes og går ut langs ei ny rett linje. Avstanden fra kraftsentrum til den innkommende linja er <Term name="støtparameter">støtparameteren</Term> $s$, og vinkelen mellom inn- og utretning er spredningsvinkelen $\Theta$. Langt ute er farten $v_0$ og $E = \tfrac12\mu v_0^2$, og dreieimpulsen er
@@ -421,6 +587,7 @@ Fortere. For $V = -k/r$ er $E = -\langle T\rangle$, så når luftmotstanden tar 
 - Baneligningen $u'' + u = -\mu F(1/u)/J^2u^2$ gir for $V = -k/r$ kjeglesnittet $r = r_0/(1 + e\cos\phi)$ med $r_0 = J^2/\mu k$ og $e^2 = 1 + 2EJ^2/\mu k^2$. $E < 0$ gir ellipse, $E = 0$ parabel og $E > 0$ hyperbel.
 - $a = k/2|E|$, $b = J/\sqrt{2\mu|E|}$ og $T^2 = 4\pi^2\mu a^3/k$, som er Keplers tredje lov. Den andre er $J$ bevart og gjelder i alle sentralpotensialer.
 - Runge–Lenz-vektoren $\vec p \times \vec L - \mu k\hat r$ er bevart bare for $1/r$ og holder perihel fast. Relativitetsteoriens $1/r^2$-ledd gir presesjonen $6\pi GM/c^2a(1 - e^2)$ per omløp.
+- I det begrensede trelegemeproblemet går to tunge legemer i sirkelbaner, og i systemet som roterer med dem er $C = \tfrac12 v'^2 + U$ bevart, med $U = -Gm_1/r_1 - Gm_2/r_2 - \tfrac12\omega^2(x^2 + y^2)$. Lagrangepunktene er de stasjonære punktene til $U$: $L_1$, $L_2$ og $L_3$ på aksen er ustabile, $L_4$ og $L_5$ danner likesidede trekanter og er stabile når $m_1/m_2 > 24{,}96$.
 - Spredning: $J = s\sqrt{2\mu E}$ og $d\sigma/d\Omega = (s/\sin\Theta)\,|ds/d\Theta|$. For Coulombkraften er $s = (|k|/2E)\cot(\Theta/2)$ og $d\sigma/d\Omega = (k/4E)^2/\sin^4(\Theta/2)$.
 - Virialteoremet: $2\langle T\rangle = -\langle\sum_i \vec F_i \cdot \vec r_i\rangle = n\langle V\rangle$ for $V \propto r^n$. Keplerbaner har $E = -\langle T\rangle$, oscillatoren $\langle T\rangle = \langle V\rangle$.
 </KeyTakeaways>
