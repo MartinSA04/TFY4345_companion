@@ -71,6 +71,8 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     const cx = w / 2;
     const cy = h / 2 + 4;
     const pivY = cy - yp(t) * lp;
+    // θ-buen er stor nok til å gå utenom 2A-merket ved føringa, også på telefon.
+    const ra = 0.48 * lp;
     const bx = cx + lp * Math.sin(th);
     const by = pivY + lp * Math.cos(th);
     let s = "";
@@ -85,13 +87,15 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     s += arrow(xa, cy, xa, cy - A * lp - 3, LABEL, 1.2);
     s += arrow(xa, cy, xa, cy + A * lp + 3, LABEL, 1.2);
     s += txt(xa - 6, cy + 4, "2A", { anchor: "end" });
-    s += txt(cx + 0.1 * lp, cy + 0.3 * lp + 16, "y_p = A cos Ωt");
+    // Drivloven står i hjørnet, utenfor sirkelen pendelen kan nå, så verken buen
+    // eller en hengende pendel går over den.
+    s += txt(w - 10, 26, `y<tspan dy="3" style="font-size:9px">p</tspan><tspan dy="-3"> = A cos Ωt</tspan>`, { anchor: "end" });
 
     // Pendelen fra det svingende opphenget.
     s += rod(cx, pivY, bx, by);
     s += rodLabel(cx, pivY, bx, by, "l");
     s += `<rect x="${(cx - 6).toFixed(1)}" y="${(pivY - 6).toFixed(1)}" width="12" height="12" rx="2" style="fill:${FIXED}"/>`;
-    s += angleFromDown(cx, pivY, 0.32 * lp, wrap(th), "θ");
+    s += angleFromDown(cx, pivY, ra, wrap(th), "θ");
     s += bob(bx, by, 9, undefined, "m");
     s += gravity(22, 18);
 

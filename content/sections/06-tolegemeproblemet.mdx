@@ -198,7 +198,7 @@ Fortegnet på $E$ bestemmer banetypen:
     ["$e > 1$", "$E > 0$", "hyperbel"],
   ]}
   rowHeader={false}
-  caption="Kjeglesnittene i $V = -k/r$. For $e \ge 1$ blir nevneren null ved $\cos\phi = -1/e$, og banen går ut til uendelig langs to asymptoter."
+  caption="Kjeglesnittene i $V = -k/r$. For $e \ge 1$ blir nevneren null ved $\cos\phi = -1/e$, og banen går ut til uendelig, for $e > 1$ langs to asymptoter."
 />
 
 For ellipsen er $r_\text{min} = r_0/(1 + e)$ og $r_\text{max} = r_0/(1 - e)$, og summen er storaksen $2a$:
@@ -322,6 +322,8 @@ $$
 $$
 
 per omløp. For Merkur er $a(1 - e^2) = 55{,}5\cdot10^6$ km og $GM_\odot/c^2 = 1{,}48$ km, som gir $5{,}0\cdot10^{-7}$ rad per omløp. Med $415$ omløp per århundre er det $43$ buesekunder per århundre, det samme som er målt.
+
+Korreksjonen skrives også som et ledd $-GMJ^2/\mu c^2r^3$ i $V_\text{eff}$. Det gir $3GMu^2/c^2$ på høyresida av baneligningen. Nær sirkelbanen $u_0 = \mu k/J^2$ er $u^2 \approx 2u_0u - u_0^2$, og koeffisienten foran $u$ blir den samme $1 - 6k^2/c^2J^2$, så de to formene gir samme presesjon.
 
 ## Det begrensede trelegemeproblemet
 
@@ -503,7 +505,7 @@ $$
 $$
 </Derivation>
 
-Tverrsnittet vokser uten grense når $\Theta \to 0$. Coulombkraften har uendelig rekkevidde, så selv partikler med svært stor $s$ avbøyes litt, og det totale tverrsnittet $\int (d\sigma/d\Omega)\,d\Omega$ divergerer. For et potensial med endelig rekkevidde er det endelig. Formelen gjelder i massesentersystemet, med $\mu$ og $E$ målt der. Er kjernen mye tyngre enn partikkelen, er det også laboratoriesystemet. Rutherford, Geiger og Marsden fant i 1909 at $\alpha$-partikler kom tilbake fra ei gullfolie med nettopp denne vinkelfordelingen, som bare er mulig om ladningen sitter samlet i en liten kjerne.
+Tverrsnittet vokser uten grense når $\Theta \to 0$. Coulombkraften har uendelig rekkevidde, så selv partikler med svært stor $s$ avbøyes litt, og det totale tverrsnittet $\int (d\sigma/d\Omega)\,d\Omega$ divergerer. For et potensial med endelig rekkevidde er det endelig. Formelen gjelder i massesentersystemet, med $\mu$ og $E$ målt der. Er kjernen mye tyngre enn partikkelen, er det også laboratoriesystemet. Geiger og Marsden så i 1909 at noen $\alpha$-partikler kom tilbake fra ei gullfolie. Rutherford forklarte det i 1911 med at den positive ladningen sitter samlet i en liten kjerne, og utledet denne vinkelfordelingen. I 1913 målte Geiger og Marsden vinkelfordelingen, og den stemte med formelen.
 
 <Quiz
   question="Ei punktpartikkel spres elastisk mot ei hard kule med radius $a$, med støtparameter $s = a/\sqrt2$. Hva er spredningsvinkelen?"

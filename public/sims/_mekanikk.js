@@ -87,9 +87,11 @@ export function button(text, aria, onClick, signal) {
 /**
  * Animasjonsløkke: kaller onFrame(dt) hvert bilde med dt i sekunder (maks
  * 0,05 så et bakgrunnsfaneopphold ikke blir ett kjempesteg). Stopper mens
- * figuren er utenfor skjermen og for godt når sida byttes ut.
+ * figuren er utenfor skjermen og for godt når sida byttes ut. Med `running`
+ * stopper løkka også mens running() er usann; kall start() på det returnerte
+ * objektet når den skal gå igjen.
  */
-export function animate({ stage, signal, onFrame }) {
+export function animate({ stage, signal, onFrame, running = () => true }) {
   let raf = 0;
   let last = 0;
   let visible = true;
@@ -100,10 +102,10 @@ export function animate({ stage, signal, onFrame }) {
     const dt = Math.max(0, Math.min(0.05, (now - last) / 1000 || 0));
     last = now;
     onFrame(dt);
-    if (visible) raf = requestAnimationFrame(frame);
+    if (visible && running()) raf = requestAnimationFrame(frame);
   }
   function start() {
-    if (raf || !visible) return;
+    if (raf || !visible || !running() || signal?.aborted) return;
     last = performance.now();
     raf = requestAnimationFrame(frame);
   }
@@ -124,6 +126,7 @@ export function animate({ stage, signal, onFrame }) {
     { once: true },
   );
   start();
+  return { start };
 }
 
 /** Pakk SVG-innhold i et element som fyller scenen. */

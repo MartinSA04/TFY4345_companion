@@ -5,8 +5,9 @@
  * Glidebryterne styrer de to koeffisientene i potensialet og partikkelens
  * energi. Skyggen er det klassisk tillatte området V(x) ≤ E, og markørene på
  * kurven er nullpunktene til V′. Utfylt markør betyr V″ > 0 (stabil), åpen ring
- * betyr V″ < 0 (ustabil). Når k skifter fortegn går den ene brønnen over i to, og
- * likevekten i origo blir ustabil.
+ * betyr V″ < 0 (ustabil). Med k = 0 og λ > 0 er V″(0) = 0, men origo er et
+ * kvartisk minimum og dermed stabilt. Når k skifter fortegn går den ene
+ * brønnen over i to, og likevekten i origo blir ustabil.
  *
  * Kontrakt: default-eksportert init(api), api = { stage, controls, getSize,
  * onResize }. Fargene er sidens egne CSS-variabler, så figuren bytter tema selv.
@@ -117,7 +118,8 @@ export default function init({ stage, controls, getSize, onResize }) {
 
     let marks = "";
     for (const x0 of equilibria()) {
-      const stable = V2(x0) > 0;
+      // V″ = 0 skjer bare i origo med k = 0; der er V = ¼λx⁴ et minimum når λ > 0.
+      const stable = V2(x0) > 0 || (V2(x0) === 0 && lam > 0);
       const cx = px(x0).toFixed(1);
       const cy = py(V(x0)).toFixed(1);
       // Formen bærer betydningen, fargen gjentar den: utfylt = stabil, åpen = ustabil.

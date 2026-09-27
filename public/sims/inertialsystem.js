@@ -11,8 +11,11 @@
  *
  * Kontrakt: default-eksportert init(api), api = { stage, controls, getSize,
  * onResize, signal }. Fargene er sidens egne CSS-variabler, så figuren bytter
- * tema av seg selv.
+ * tema av seg selv. Animasjonen går gjennom animate() i _mekanikk.js, som
+ * stopper løkka mens figuren er utenfor skjermen eller står på pause.
  */
+import { animate } from "./_mekanikk.js";
+
 export default function init({ stage, controls, getSize, onResize, signal }) {
   const TC = 3.6; // sekunder per syklus
   const T0 = 0.6; // ballen skytes opp
@@ -132,25 +135,26 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
   }
 
   // ── animasjon ─────────────────────────────────────────────────────────────
-  let last = null;
-  function frame(now) {
-    if (signal?.aborted) return;
-    if (playing) {
-      if (last !== null) {
-        const nt = (t + (now - last) / 1000) % TC;
-        if (nt < t) trail = []; // ny syklus, nytt kast
-        t = nt;
-        if (inFlight(t) && (trail.length === 0 || t - trail[trail.length - 1].t >= DT)) {
-          trail.push({ t, x: xc(t), y: ballY(t) });
-        }
-      }
-      last = now;
-    } else {
-      last = null;
+  function step(dt) {
+    const nt = (t + dt) % TC;
+    if (nt < t) trail = []; // ny syklus, nytt kast
+    t = nt;
+    if (inFlight(t) && (trail.length === 0 || t - trail[trail.length - 1].t >= DT)) {
+      trail.push({ t, x: xc(t), y: ballY(t) });
     }
-    render();
-    requestAnimationFrame(frame);
   }
+
+  onResize(render);
+  render();
+  const loop = animate({
+    stage,
+    signal,
+    running: () => playing,
+    onFrame: (dt) => {
+      step(dt);
+      render();
+    },
+  });
 
   vInput.addEventListener("input", () => {
     v = Number(vInput.value);
@@ -161,10 +165,6 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
   playBtn.addEventListener("click", () => {
     playing = !playing;
     playBtn.textContent = playing ? "Pause" : "Spill av";
-    last = null;
+    if (playing) loop.start();
   }, { signal });
-
-  onResize(render);
-  render();
-  requestAnimationFrame(frame);
 }

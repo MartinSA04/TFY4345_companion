@@ -373,11 +373,11 @@ formulas:
     label: "Perle på en ring med radius $a$ som roterer med fast $\\omega$ om den loddrette diameteren, $\\theta$ fra bunnpunktet. Energifunksjonen $H = \\tfrac12 ma^2\\dot\\theta^2 - \\tfrac12 ma^2\\omega^2\\sin^2\\theta - mga\\cos\\theta$ er bevart, energien $T + V$ er det ikke. Bunnpunktet er stabilt for $\\omega^2 < g/a$."
   - id: dobbeltpendel
     section: Kjente systemer
-    tex: "L = \\tfrac12 (m_1 + m_2)\\,l_1^2\\dot\\theta_1^2 + \\tfrac12 m_2 l_2^2\\dot\\theta_2^2 + m_2 l_1 l_2\\dot\\theta_1\\dot\\theta_2\\cos(\\theta_1 - \\theta_2) + (m_1 + m_2)\\,g l_1\\cos\\theta_1 + m_2 g l_2\\cos\\theta_2"
+    tex: "\\begin{aligned} L &= \\tfrac12 (m_1 + m_2)\\,l_1^2\\dot\\theta_1^2 + \\tfrac12 m_2 l_2^2\\dot\\theta_2^2 + m_2 l_1 l_2\\dot\\theta_1\\dot\\theta_2\\cos(\\theta_1 - \\theta_2) \\\\ &\\quad + (m_1 + m_2)\\,g l_1\\cos\\theta_1 + m_2 g l_2\\cos\\theta_2 \\end{aligned}"
     label: "Dobbeltpendelen med begge vinklene fra loddlinja. Bare energien er bevart. For små utslag med $m_1 = m_2$ og $l_1 = l_2 = l$ er normalfrekvensene gitt ved $\\omega^2 = (2 \\pm \\sqrt 2)\\,g/l$."
   - id: kapitza
     section: Kjente systemer
-    tex: "L = \\tfrac12 ml^2\\dot\\theta^2 + ml(g + \\ddot y_\\text{p})\\cos\\theta, \\qquad V_\\text{eff}(\\Theta) = -mgl\\cos\\Theta + \\tfrac14 mA^2\\Omega^2\\sin^2\\Theta"
+    tex: "\\begin{aligned} L &= \\tfrac12 ml^2\\dot\\theta^2 + ml(g + \\ddot y_\\text{p})\\cos\\theta \\\\ V_\\text{eff}(\\Theta) &= -mgl\\cos\\Theta + \\tfrac14 mA^2\\Omega^2\\sin^2\\Theta \\end{aligned}"
     label: "Pendel med oppheng som svinger loddrett, $y_\\text{p} = A\\cos\\Omega t$. $L$ avhenger eksplisitt av tida, og ingenting er bevart. Midlet over den raske svingningen beveger den langsomme vinkelen $\\Theta$ seg i $V_\\text{eff}$, som har et minimum i toppunktet når $A^2\\Omega^2 > 2gl$."
 
 # ── Begreper ─────────────────────────────────────────────────────────────────

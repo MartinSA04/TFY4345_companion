@@ -4,7 +4,7 @@ title: "Føringskrefter, symmetrier og bevaringslover"
 summary: "Lagrange-multiplikatorer henter føringskreftene tilbake i regningen og sier når ei snor blir slakk eller en kloss forlater underlaget. Hver koordinat som mangler i Lagrangefunksjonen gir en bevart impuls, energifunksjonen er bevart når tida mangler, og Noethers teorem gir en bevart størrelse for hver kontinuerlig symmetri."
 importance: core
 tag: "Uke 38"
-updated: 2026-09-13
+updated: 2026-09-27
 ---
 
 <LearningGoals>
@@ -436,6 +436,10 @@ Langs en løsning gjelder Lagranges ligninger,
 $\partial L/\partial q_i = \dot p_i$ med $p_i = \partial L/\partial\dot q_i$,
 så summen er $\epsilon\sum_i(\dot p_i F_i + p_i\dot F_i) = \epsilon\,\frac{d}{dt}\sum_i p_i F_i$.
 Altså $F = \sum_i p_i F_i$.
+Med denne $F$ er $Q = \sum_i p_iF_i - F$ identisk null langs løsningen, så
+regningen i b) gjelder for enhver transformasjon og gir ingen bevart størrelse
+alene. En symmetri krever at $\delta L = \epsilon\,dF/dt$ holder for alle
+baner, uten å bruke Lagranges ligninger, og det er dette c) bruker.
 
 c) Roter begge partiklene en liten vinkel $\epsilon$ om en akse $\hat n$:
 $\delta\vec r_a = \epsilon\,\hat n\times\vec r_a$. Avstanden $|\vec r_{12}|$ og
