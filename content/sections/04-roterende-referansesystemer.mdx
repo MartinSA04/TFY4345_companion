@@ -123,7 +123,7 @@ Overflaten er en paraboloide. Samme regnskap for en måne i bane om en planet, t
 
 ## Corioliskraften
 
-Corioliskraften $-2m\vec\omega \times \vec v\,'$ står vinkelrett på $\vec v\,'$, så den gjør ikke arbeid og endrer bare retningen på bevegelsen. Den har samme form som Lorentzkraften $q\vec v \times \vec B$ med $q\vec B$ byttet ut med $-2m\vec\omega$, og en fri partikkel i et roterende system går i sirkler slik en ladd partikkel gjør i et magnetfelt.
+Corioliskraften $-2m\vec\omega \times \vec v\,'$ står vinkelrett på $\vec v\,'$, så den gjør ikke arbeid og endrer bare retningen på bevegelsen. Skrevet som $2m\,\vec v\,' \times \vec\omega$ har den samme form som Lorentzkraften $q\vec v \times \vec B$, med $q\vec B$ byttet ut med $2m\vec\omega$. En partikkel som bare kjenner Corioliskraften i bevegelsesplanet, går derfor i sirkler slik en ladd partikkel gjør i et magnetfelt. Det gjelder en partikkel som glir friksjonsfritt på et vannrett underlag på jorda, for der er sentrifugalkraften tatt inn i $\vec g_\text{eff}$. En fri partikkel på skiva i simuleringen over kjenner også sentrifugalkraften, og sett fra skiva går den i en spiral.
 
 Legg akser på jordoverflaten på breddegraden $\phi$: $x$ mot øst, $y$ mot nord og $z$ opp. Da er $\vec\omega = \omega\,(0, \cos\phi, \sin\phi)$, og for en hastighet $\vec v\,' = (v_x, v_y, 0)$ langs bakken blir
 
@@ -274,7 +274,7 @@ Ved ekvator er $\vec\omega = \omega\,(0, 1, 0)$, langs bakken. Corioliskraften p
 <Example label="Eksamensoppgave" title="Coriolis- og sentrifugalakselerasjon ved ekvator">
 <ExamRef id="2023-nov" task="1.16–1.17" />
 
-1.16 The acceleration $\boldsymbol{a}_b$ of an object measured by a stationary
+The acceleration $\boldsymbol{a}_b$ of an object measured by a stationary
 observer at the Equator on the surface of the Earth is
 
 $$
@@ -286,27 +286,21 @@ of the object, respectively, both measured by this observer, and
 $\boldsymbol{a}_s$ is the acceleration measured in an inertial system. Assume
 a spherical Earth with radius $r = 6378$ km rotating around an axis pointing
 straight north, with a period $T = 2\pi/\omega = 24$ hours. The observer
-throws a ball upwards with an initial speed 15 m/s. At this instant, what is
-the Coriolis acceleration?
+throws a ball upwards with an initial speed 15 m/s.
 
-A) 5.5 mm/s² &nbsp; B) 4.4 mm/s² &nbsp; C) 3.3 mm/s² &nbsp; D) 2.2 mm/s² &nbsp; E) 1.1 mm/s² &nbsp; F) 0.55 mm/s²
+<Quiz
+  question="At this instant, what is the Coriolis acceleration?"
+  options={["5.5 mm/s²", "4.4 mm/s²", "3.3 mm/s²", "2.2 mm/s²", "1.1 mm/s²", "0.55 mm/s²"]}
+  answer={3}
+  explanation="Ved ekvator står $\boldsymbol{\omega}$ vinkelrett på en vertikal hastighet, så kryssproduktet har full størrelse: $a_\text{Cor} = 2v\omega = 2\cdot 15\ \text{m/s}\cdot 2\pi/(86\,400\ \text{s}) = 2{,}2\ \text{mm/s}^2$."
+/>
 
-1.17 At the instant described in the previous question, what is the
-centrifugal acceleration?
-
-A) 64 mm/s² &nbsp; B) 54 mm/s² &nbsp; C) 44 mm/s² &nbsp; D) 34 mm/s² &nbsp; E) 24 mm/s² &nbsp; F) 14 mm/s²
-
-<Solution>
-Ved ekvator står $\boldsymbol{\omega}$ vinkelrett på en vertikal hastighet,
-så kryssproduktet har full størrelse:
-$a_{\text{Cor}} = 2v\omega = 2\cdot 15\ \text{m/s}\cdot\dfrac{2\pi}{86\,400\ \text{s}} = 2{,}2\ \text{mm/s}^2$.
-
-Sentrifugalakselerasjonen er
-$\omega^2 r = \left(\dfrac{2\pi}{86\,400\ \text{s}}\right)^2\cdot 6{,}378\cdot 10^6\ \text{m} = 34\ \text{mm/s}^2$,
-det samme tallet som modulen regner ut for jordoverflaten.
-
-<Answer>1.16 D, 2,2 mm/s². 1.17 D, 34 mm/s².</Answer>
-</Solution>
+<Quiz
+  question="At the instant described in the previous question, what is the centrifugal acceleration?"
+  options={["64 mm/s²", "54 mm/s²", "44 mm/s²", "34 mm/s²", "24 mm/s²", "14 mm/s²"]}
+  answer={3}
+  explanation="Sentrifugalakselerasjonen er $\omega^2 r = \big(2\pi/(86\,400\ \text{s})\big)^2\cdot 6{,}378\cdot 10^6\ \text{m} = 34\ \text{mm/s}^2$, det samme tallet som modulen regner ut for jordoverflaten."
+/>
 </Example>
 
 <Example label="Eksamensoppgave" title="Rotation of Earth">
