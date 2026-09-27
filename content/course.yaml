@@ -330,6 +330,31 @@ formulas:
     tex: "27\\,m_1 m_2 < (m_1 + m_2)^2"
     label: "Betingelsen for at $L_4$ og $L_5$ er stabile, $m_1/m_2 > 24{,}96$. $L_1$, $L_2$ og $L_3$ er ustabile for alle masseforhold."
 
+  - id: sma-svingninger
+    section: Små svingninger
+    tex: "L \\approx \\tfrac12 m(q_0)\\,\\dot\\eta^2 - \\tfrac12 V''(q_0)\\,\\eta^2 \\allowbreak\\qquad \\omega^2 = \\frac{V''(q_0)}{m(q_0)}"
+    label: "Små svingninger om en likevekt $q_0$ med én frihetsgrad, for $L = \\tfrac12 m(q)\\dot q^2 - V(q)$ og $q = q_0 + \\eta$. Likevekten er stabil når $V''(q_0) > 0$."
+  - id: kvadratisk-lagrange
+    section: Små svingninger
+    tex: "L \\approx \\tfrac12 T_{ij}\\,\\dot\\eta_i\\dot\\eta_j - \\tfrac12 V_{ij}\\,\\eta_i\\eta_j \\allowbreak\\qquad T_{ij} = m_{ij}(q_0) \\allowbreak\\qquad V_{ij} = \\frac{\\partial^2 V}{\\partial q_i\\,\\partial q_j}\\bigg|_{q_0}"
+    label: "Lagrangefunksjonen til andre orden i utslagene $\\eta_i = q_i - q_{0i}$ fra en likevekt, med $T = \\tfrac12 m_{ij}(q)\\dot q_i\\dot q_j$. Begge matrisene er symmetriske, og $\\boldsymbol T$ er positivt definitt."
+  - id: sekulaerligning
+    section: Små svingninger
+    tex: "\\det\\left(\\boldsymbol V - \\omega^2\\boldsymbol T\\right) = 0 \\allowbreak\\qquad \\left(\\boldsymbol V - \\omega_n^2\\boldsymbol T\\right)\\mathbf A_n = 0"
+    label: "Sekulærligningen for egenfrekvensene $\\omega_n$, og ligningen for normalmoden $\\mathbf A_n$. $\\omega_n^2 < 0$ gir ustabil likevekt, $\\omega_n^2 = 0$ en fri translasjon eller rotasjon."
+  - id: normalkoordinater
+    section: Små svingninger
+    tex: "\\boldsymbol\\eta = \\sum_n \\xi_n\\,\\mathbf A_n \\allowbreak\\qquad L = \\tfrac12\\sum_n\\left(\\dot\\xi_n^2 - \\omega_n^2\\,\\xi_n^2\\right) \\allowbreak\\qquad \\mathbf A_m^\\top\\boldsymbol T\\mathbf A_n = \\delta_{mn}"
+    label: "Normalkoordinatene $\\xi_n$ er uavhengige harmoniske oscillatorer når modene er normert med $\\boldsymbol T$ som vekt. Startverdiene er $\\xi_n(0) = \\mathbf A_n^\\top\\boldsymbol T\\boldsymbol\\eta(0)$."
+  - id: kjede-dispersjon
+    section: Små svingninger
+    tex: "\\omega = 2\\sqrt{\\frac{k}{m}}\\,\\left|\\sin\\frac{\\varphi}{2}\\right| \\allowbreak\\qquad v = a\\sqrt{\\frac{k}{m}}"
+    label: "Normalmodene til en kjede av like atomer med masse $m$, avstand $a$ og fjærkonstant $k$. $\\varphi$ er faseforskjellen mellom naboatomer, og $v$ er lydfarten for lange bølger."
+  - id: anharmonisk-frekvens
+    section: Små svingninger
+    tex: "\\omega \\approx \\omega_0 + \\frac{3\\varepsilon A^2}{8\\omega_0}"
+    label: "Frekvensen til $\\ddot x + \\omega_0^2 x + \\varepsilon x^3 = 0$ med amplitude $A$, til første orden i $\\varepsilon$. For pendelen er $\\varepsilon = -\\omega_0^2/6$ og $\\omega = \\omega_0(1 - \\theta_0^2/16)$."
+
   - id: plan-pendel
     section: Kjente systemer
     tex: "L = \\tfrac12 ml^2\\dot\\theta^2 + mgl\\cos\\theta, \\qquad \\ddot\\theta = -\\frac{g}{l}\\sin\\theta"
@@ -502,6 +527,22 @@ glossary:
   - term: Lagrangepunkt
     section: Trelegemeproblemet
     definition: "Et av de fem likevektspunktene i det begrensede trelegemeproblemet, der et lett legeme står i ro i systemet som roterer med de to tunge legemene. $L_1$, $L_2$ og $L_3$ ligger på linja gjennom dem og er ustabile. $L_4$ og $L_5$ danner likesidede trekanter med dem og er stabile når $m_1/m_2 > 24{,}96$."
+
+  - term: Normalmode
+    section: Små svingninger
+    definition: "En bevegelse nær en stabil likevekt der alle koordinatene svinger harmonisk med den samme frekvensen og i fast forhold til hverandre, $\\boldsymbol\\eta = \\mathbf A_n\\cos(\\omega_n t - \\delta_n)$. Enhver liten bevegelse er en sum av normalmoder."
+  - term: Egenfrekvens
+    section: Små svingninger
+    definition: "Frekvensen $\\omega_n$ til en normalmode, en rot av sekulærligningen $\\det(\\boldsymbol V - \\omega^2\\boldsymbol T) = 0$."
+  - term: Sekulærligning
+    section: Små svingninger
+    definition: "Ligningen $\\det(\\boldsymbol V - \\omega^2\\boldsymbol T) = 0$ for egenfrekvensene til små svingninger om en likevekt. Med $N$ frihetsgrader er den av grad $N$ i $\\omega^2$."
+  - term: Normalkoordinat
+    section: Små svingninger
+    definition: "Utslaget $\\xi_n$ langs normalmode $n$, definert ved $\\boldsymbol\\eta = \\sum_n \\xi_n\\mathbf A_n$. I normalkoordinatene er Lagrangefunksjonen en sum av uavhengige harmoniske oscillatorer."
+  - term: Dispersjonsrelasjon
+    section: Små svingninger
+    definition: "Sammenhengen mellom frekvensen og bølgelengden til en bølge. For en kjede av like atomer er den $\\omega = 2\\sqrt{k/m}\\,|\\sin(\\varphi/2)|$, med $\\varphi$ faseforskjellen mellom naboatomer."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker
