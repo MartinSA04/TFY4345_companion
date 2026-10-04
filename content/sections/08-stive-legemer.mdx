@@ -1,0 +1,318 @@
+---
+order: 8
+title: "Stive legemer og treghetstensoren"
+summary: "Et stivt legeme har seks frihetsgrader, og hele rotasjonen beskrives av én vinkelhastighet. Treghetstensoren gir dreieimpulsen og den kinetiske energien, hovedaksene er retningene der dreieimpulsen er parallell med vinkelhastigheten, og parallellakseteoremet flytter tensoren til et annet punkt. Med dette settes Lagrangefunksjonen opp for legemer som svinger og ruller."
+importance: core
+tag: "Uke 41"
+updated: 2026-10-04
+---
+
+<LearningGoals>
+- Forklare hvorfor et stivt legeme har seks frihetsgrader, og vise at rotasjonen beskrives av én vinkelhastighet som er den samme om alle punkter i legemet.
+- Regne ut treghetstensoren og bruke den til å finne dreieimpulsen $\vec L = \boldsymbol I\vec\omega$, den kinetiske energien og treghetsmomentet om en vilkårlig akse.
+- Finne hovedaksene og hovedtreghetsmomentene som egenvektorer og egenverdier, og bruke symmetrien til legemet til å finne dem uten regning.
+- Forklare hvorfor et legeme som roterer om en akse som ikke er en hovedakse, trenger et dreiemoment fra lagrene.
+- Flytte treghetstensoren fra massesenteret til et annet punkt med parallellakseteoremet.
+- Sette opp Lagrangefunksjonen for et stivt legeme som svinger om et fast punkt eller ruller uten å gli.
+</LearningGoals>
+
+## Seks frihetsgrader
+
+Et <Term name="stivt legeme">stivt legeme</Term> er et system av partikler der alle avstandene $|\vec r_i - \vec r_j|$ er faste. Med $N$ partikler er det $\tfrac12 N(N - 1)$ slike føringer, men de er ikke uavhengige. Tre punkter som ikke ligger på ei linje, bestemmer hvor alle de andre er. Det første trenger tre koordinater. Det andre ligger på en kuleflate rundt det første og trenger to. Det tredje ligger på en sirkel om linja gjennom de to første og trenger én. Et stivt legeme har altså seks frihetsgrader: tre for et punkt i legemet, gjerne massesenteret, og tre for hvordan legemet er orientert.
+
+Orienteringen kan beskrives med tre enhetsvektorer $\hat e_1'$, $\hat e_2'$ og $\hat e_3'$ som sitter fast i legemet og følger det. De er aksene i et roterende system $K'$. Til sammen har de ni komponenter, bundet av de seks betingelsene $\hat e_a' \cdot \hat e_b' = \delta_{ab}$, og tre tall er igjen.
+
+## Vinkelhastigheten
+
+Deriver $\hat e_a' \cdot \hat e_b' = \delta_{ab}$ med hensyn på tida:
+
+$$
+\dot{\hat e}_a' \cdot \hat e_b' = -\,\hat e_a' \cdot \dot{\hat e}_b'
+$$
+
+Tallene $\Omega_{ab} = \dot{\hat e}_a' \cdot \hat e_b'$ danner altså en antisymmetrisk matrise, og en antisymmetrisk $3 \times 3$-matrise har tre uavhengige elementer. Kall dem $\omega_1 = \Omega_{23}$, $\omega_2 = \Omega_{31}$ og $\omega_3 = \Omega_{12}$, og la $\vec\omega = \sum_a \omega_a \hat e_a'$. Da er $\dot{\hat e}_1' = \Omega_{12}\hat e_2' + \Omega_{13}\hat e_3' = \omega_3\hat e_2' - \omega_2\hat e_3'$, som er $\vec\omega \times \hat e_1'$, og likedan for de to andre:
+
+$$
+\dot{\hat e}_a' = \vec\omega \times \hat e_a'
+$$
+
+Enhver endring av orienteringen er altså en rotasjon med en <Term name="vinkelhastighet">vinkelhastighet</Term> $\vec\omega$. Et punkt i legemet har faste komponenter langs $\hat e_a'$, så $\dot{\vec r} = \vec\omega \times \vec r$ når origo i $K'$ står i ro. Når origo beveger seg, kommer farten til origo i tillegg. Med massesenteret $\vec R$ som origo er
+
+<Formula
+  tex="\dot{\vec r}_i = \dot{\vec R} + \vec\omega \times \left(\vec r_i - \vec R\right)"
+  caption="Hastigheten til punkt $i$ i et stivt legeme: massesenterets fart pluss rotasjonen om massesenteret."
+/>
+
+Velg et annet punkt $\vec Q$ i legemet som origo. Formelen gir $\dot{\vec Q} = \dot{\vec R} + \vec\omega \times (\vec Q - \vec R)$, og trekkes den fra, står det $\dot{\vec r}_i = \dot{\vec Q} + \vec\omega \times (\vec r_i - \vec Q)$ med den samme $\vec\omega$. Alle punkter i legemet gir den samme vinkelhastigheten.
+
+Vinkelhastigheter legges sammen som vektorer. Det gjør ikke endelige rotasjoner. Drei en bok en kvart omdreining om $x$-aksen og så en kvart om $y$-aksen, og den havner et annet sted enn i motsatt rekkefølge. Derfor finnes det ingen tre vinkler som har $\omega_1$, $\omega_2$ og $\omega_3$ som tidsderiverte, og komponentene av $\vec\omega$ kan ikke brukes som generaliserte hastigheter.
+
+## Treghetstensoren
+
+Hold et punkt $O$ i legemet fast og mål posisjonene fra det. Hver partikkel har farten $\vec\omega \times \vec r_i$. Med $(\vec\omega \times \vec r)^2 = \omega^2 r^2 - (\vec\omega \cdot \vec r)^2$ er den kinetiske energien
+
+$$
+T = \tfrac12 \sum_i m_i\left[\omega^2 r_i^2 - (\vec\omega \cdot \vec r_i)^2\right] \allowbreak = \tfrac12 \sum_{a,b} \omega_a I_{ab}\,\omega_b
+$$
+
+Dreieimpulsen gir den samme matrisen. Med $\vec r \times (\vec\omega \times \vec r) = r^2\vec\omega - (\vec r \cdot \vec\omega)\,\vec r$ er
+
+$$
+\vec L = \sum_i m_i\,\vec r_i \times (\vec\omega \times \vec r_i) \allowbreak = \sum_i m_i\left[r_i^2\,\vec\omega - (\vec r_i \cdot \vec\omega)\,\vec r_i\right]
+$$
+
+og komponent $a$ er $L_a = \sum_b I_{ab}\,\omega_b$. Matrisen er <Term name="treghetstensor">treghetstensoren</Term>:
+
+<Formula
+  tex="I_{ab} = \sum_i m_i\left(r_i^2\,\delta_{ab} - x_{ia}\,x_{ib}\right) \allowbreak\qquad \vec L = \boldsymbol I\vec\omega \allowbreak\qquad T = \tfrac12\,\vec\omega \cdot \boldsymbol I\vec\omega"
+  caption="<b>Treghetstensoren</b> om punktet $O$, der $x_{ia}$ er komponent $a$ av $\vec r_i$. For en sammenhengende masse med tetthet $\rho$ blir summen integralet $\int \rho\,(r^2\delta_{ab} - x_a x_b)\,dV$ over hele legemet."
+/>
+
+Komponentene tas langs aksene $\hat e_a'$, som følger legemet, så $I_{ab}$ endrer seg ikke med tida. Skrevet ut er
+
+$$
+I_{11} = \int \rho\,(y^2 + z^2)\,dV \allowbreak\qquad I_{12} = -\int \rho\,xy\,dV
+$$
+
+og de andre elementene følger ved å bytte om koordinatene. Tensoren er symmetrisk, $I_{ab} = I_{ba}$. Om en akse $\hat n$ gjennom $O$ er <Term name="treghetsmoment">treghetsmomentet</Term> $I_{\hat n} = \hat n \cdot \boldsymbol I\hat n = \sum_i m_i d_i^2$, der $d_i$ er avstanden fra partikkel $i$ til aksen. Med $\vec\omega = \omega\hat n$ blir $T = \tfrac12 I_{\hat n}\omega^2$, som for rotasjon om en fast akse. Diagonalelementene er treghetsmomentene om de tre aksene.
+
+## Hovedakser
+
+Treghetstensoren er en reell, symmetrisk matrise. Den har derfor tre reelle egenverdier og tre ortogonale egenvektorer. Egenvektorene er legemets <Term name="hovedakse">hovedakser</Term>, og egenverdiene $I_1$, $I_2$ og $I_3$ er <Term name="hovedtreghetsmoment">hovedtreghetsmomentene</Term>. Ingen av dem er negative, for hver av dem er et treghetsmoment $\sum_i m_i d_i^2$. Legges $\hat e_a'$ langs hovedaksene, er tensoren diagonal:
+
+<Formula
+  tex="L_a = I_a\,\omega_a \allowbreak\qquad T = \tfrac12\left(I_1\omega_1^2 + I_2\omega_2^2 + I_3\omega_3^2\right)"
+  caption="Dreieimpulsen og den kinetiske energien med aksene langs hovedaksene."
+/>
+
+Roterer legemet om en hovedakse, er $\vec L$ parallell med $\vec\omega$. Om en akse som ikke er en hovedakse, får komponentene av $\vec\omega$ ulike vekter, og $\vec L$ peker skrått.
+
+Symmetrien til legemet gir ofte hovedaksene uten regning. En symmetriakse er en hovedakse, og det er også normalen til et symmetriplan. Ser legemet likt ut etter en dreining på 120° eller 90° om en akse, er de to treghetsmomentene vinkelrett på aksen like, og da er enhver akse vinkelrett på den en hovedakse. En kube har slik symmetri om alle tre aksene gjennom sentrum, så $I_1 = I_2 = I_3 = \tfrac16 Ma^2$, og hver akse gjennom sentrum er en hovedakse. For et flatt legeme i $xy$-planet er $z = 0$ overalt, og da er $I_{33} = \int \rho\,(x^2 + y^2)\,dA = I_{11} + I_{22}$.
+
+<Table
+  columns={["Legeme", "Akse", "$I_\\text{cm}$"]}
+  rows={[
+    ["tynn stang", "vinkelrett", "$\\tfrac{1}{12}Ml^2$"],
+    ["ring", "aksen", "$MR^2$"],
+    ["ring", "diameter", "$\\tfrac12 MR^2$"],
+    ["skive", "aksen", "$\\tfrac12 MR^2$"],
+    ["skive", "diameter", "$\\tfrac14 MR^2$"],
+    ["massiv kule", "alle", "$\\tfrac25 MR^2$"],
+    ["kloss", "langs $a$", "${\\tfrac{1}{12}M(b^2 + c^2)}$"],
+  ]}
+  rowHeader={false}
+  caption="Hovedtreghetsmomenter om massesenteret for jevne legemer med masse $M$. $l$ er lengden til stanga, $R$ radien og $a$, $b$ og $c$ sidene til klossen."
+/>
+
+<Simulation
+  src="/sims/roterende-plate.js"
+  title="Plate som roterer om en fast aksel"
+  caption="Ei tynn plate med sidene $a$ og $b$ roterer med fast $\vec\omega$ om en loddrett aksel gjennom massesenteret, holdt av to lagre. Den oransje pila er $\vec L = \boldsymbol I\vec\omega$. Ligger akselen langs en av sidene, er den en hovedakse, og $\vec L$ ligger langs akselen. Ellers peker $\vec L$ skrått, roterer med plata og sveiper den stiplede kjeglen. Endringen i $\vec L$ må komme fra lagrene, som gir kraftparet $\vec F$ og $-\vec F$. Med sideforholdet 1 er alle akser i plateplanet hovedakser."
+  host="dom"
+  height={380}
+/>
+
+<Example title="Plate som roterer om diagonalen">
+Ei tynn, rektangulær plate med masse $M = 1{,}0$ kg og sidene $a = 0{,}20$ m og $b = 0{,}40$ m roterer med $\omega = 10$ rad/s om en aksel langs diagonalen. Akselen er lagret i de to hjørnene. Finn vinkelen mellom $\vec L$ og $\vec\omega$, og kraften hvert lager må gi.
+
+<Solution>
+Legg origo i massesenteret, $\hat e_1'$ langs sida $a$ og $\hat e_2'$ langs sida $b$. Det er hovedakser, fordi plata er symmetrisk om begge midtlinjene. Treghetsmomentet om aksen langs $a$ kommer av utstrekningen langs $b$:
+
+$$
+I_1 = \tfrac{1}{12}Mb^2 \allowbreak\qquad I_2 = \tfrac{1}{12}Ma^2
+$$
+
+Diagonalen har retningen $(a, b)/d$ med $d = \sqrt{a^2 + b^2}$, så $\omega_1 = \omega a/d$ og $\omega_2 = \omega b/d$:
+
+$$
+\vec L = \left(I_1\omega_1,\ I_2\omega_2,\ 0\right) \allowbreak = \frac{M\omega ab}{12\,d}\,(b,\ a,\ 0)
+$$
+
+$\vec L$ ligger i plateplanet, langs $(b, a)$. Vinkelen $\gamma$ til diagonalen er gitt ved
+
+$$
+\cos\gamma = \frac{(a, b) \cdot (b, a)}{a^2 + b^2} \allowbreak = \frac{2ab}{a^2 + b^2} = 0{,}80
+$$
+
+altså $\gamma = 36{,}9^\circ$, og lengden er $|\vec L| = M\omega ab/12 = 0{,}0667$ kg·m²/s.
+
+$\vec L$ sitter fast i plata og roterer med den, så $\dot{\vec L} = \vec\omega \times \vec L$, med lengden
+
+$$
+N = \omega|\vec L|\sin\gamma \allowbreak = 10 \cdot 0{,}0667 \cdot 0{,}60\ \text{N·m} \allowbreak = 0{,}40\ \text{N·m}
+$$
+
+Det dreiemomentet må komme fra lagrene. De sitter $d = 0{,}447$ m fra hverandre og gir like store, motsatt rettede krefter, så hver av dem er $F = N/d = 0{,}89$ N. Kreftene står vinkelrett på akselen og roterer med plata.
+
+<Answer>$\gamma = 36{,}9^\circ$, og hvert lager gir $F = 0{,}89$ N i en retning som roterer med plata.</Answer>
+</Solution>
+</Example>
+
+Et bilhjul der massen ikke er fordelt symmetrisk om akselen, rister av samme grunn. Avbalansering setter på små lodd til akselen er en hovedakse gjennom massesenteret.
+
+<Example label="Eksamensoppgave" title="Dreieimpuls og vinkelhastighet">
+<ExamRef id="2022-des" task="1 v" />
+
+True (T) or false (F). Please explain your choice as half of the points depends on it:
+
+<Quiz
+  question={"v. The angular momentum $\\vec L$ and the angular velocity $\\vec\\omega$ always point in the same direction."}
+  options={["T", "F"]}
+  answer={1}
+  explanation={"Usant. $\\vec L = \\boldsymbol I\\vec\\omega$ er parallell med $\\vec\\omega$ bare når $\\vec\\omega$ ligger langs en hovedakse. Plata som roterer om diagonalen, har $36{,}9^\\circ$ mellom dem, og lagrene må gi et dreiemoment fordi $\\vec L$ endrer retning."}
+/>
+</Example>
+
+## Tensoren om et annet punkt
+
+Treghetstensoren avhenger av punktet den regnes om, men den trenger bare regnes ut om massesenteret. Skriv $\vec r_i = \vec R + \vec y_i$, der $\vec R$ er massesenteret målt fra $O$ og summen $\sum_i m_i\vec y_i$ er null, og sett inn i definisjonen:
+
+$$
+I_{ab} = \sum_i m_i\Bigl[(\vec R + \vec y_i)^2\,\delta_{ab} \allowbreak - (R_a + y_{ia})(R_b + y_{ib})\Bigr]
+$$
+
+Leddene som er lineære i $\vec y_i$, inneholder $\sum_i m_i\vec y_i$ og faller bort. Det som er igjen, er tensoren om massesenteret pluss tensoren til én punktmasse $M$ i $\vec R$.
+
+<Statement kind="theorem" name="Parallellakseteoremet" id="parallellakseteoremet-resultat">
+Er $\vec R$ massesenteret målt fra $O$ og $\boldsymbol I^{\text{cm}}$ treghetstensoren om massesenteret, er treghetstensoren om $O$ gitt ved $I_{ab} = I^{\text{cm}}_{ab} + M\left(R^2\,\delta_{ab} - R_aR_b\right)$. For en akse i avstanden $h$ fra en parallell akse gjennom massesenteret er $I = I_\text{cm} + Mh^2$.
+</Statement>
+
+Siden $Mh^2 \ge 0$, er treghetsmomentet minst om aksen gjennom massesenteret av alle parallelle akser. Teoremet heter også Steiners sats.
+
+<Example label="Eksamensoppgave" title="Treghetstensoren til en kube">
+<ExamRef id="2022-aug-kont" task="4" />
+
+<Figure src="/figures/eksamen-2022-08-oppgave-4.png" alt="En kube med tre stiplede koordinatakser som møtes i et punkt midt på en av kantene." width={262} height={180} caption="Figuren fra oppgavesettet." />
+
+Let us consider a homogeneous cube of density $\rho$ and mass $M$. Its side length is $a$.
+
+(a) Calculate the inertia tensor for a case where the fixed point is in the middle of one of its edges and the cube sides are aligned with coordinate axes. [3p]
+
+(b) Solve the principal moments of inertia (eigenvalues). [3p]
+
+Note: We solved the case with corner fixed in the lectures. Use a shorthand notation $b = Ma^2$ once you have solved the tensor elements.
+
+<Solution>
+a) Begynn i massesenteret. Der går hver koordinat fra $-a/2$ til $a/2$, og
+
+$$
+I^{\text{cm}}_{11} = \rho\int (y^2 + z^2)\,dV \allowbreak = 2\rho a^2\int_{-a/2}^{a/2} y^2\,dy \allowbreak = \tfrac16 Ma^2
+$$
+
+Elementene $-\rho\int xy\,dV$ er null, fordi integranden skifter fortegn når $x \to -x$. De tre aksene er like, så $I^{\text{cm}}_{ab} = \tfrac16 Ma^2\,\delta_{ab}$.
+
+Legg $O$ midt på kanten langs $z$-aksen, med kuben i $0 \le x \le a$ og $0 \le y \le a$. Da er massesenteret $\vec R = (a/2,\ a/2,\ 0)$ med $R^2 = a^2/2$, og parallellakseteoremet gir
+
+$$
+\begin{aligned}
+I_{11} &= \tfrac16 b + b\left(\tfrac12 - \tfrac14\right) = \tfrac{5}{12}b \\
+I_{33} &= \tfrac16 b + b \cdot \tfrac12 = \tfrac23 b \\
+I_{12} &= -b \cdot \tfrac12 \cdot \tfrac12 = -\tfrac14 b
+\end{aligned}
+$$
+
+mens $I_{22}$ er lik $I_{11}$ og $I_{13} = I_{23} = 0$ fordi $R_3 = 0$. Direkte integrasjon gir det samme. Med $z$ fra $-a/2$ til $a/2$ er for eksempel
+
+$$
+I_{11} = \rho\int (y^2 + z^2)\,dV \allowbreak = \rho\left(a^2 \cdot \tfrac13 a^3 + a^2 \cdot \tfrac{1}{12}a^3\right) \allowbreak = \tfrac{5}{12}b
+$$
+
+Hele tensoren er
+
+$$
+\boldsymbol I = b\begin{pmatrix} 5/12 & -1/4 & 0 \\ -1/4 & 5/12 & 0 \\ 0 & 0 & 2/3 \end{pmatrix}
+$$
+
+b) $z$-aksen er en hovedakse med $I_3 = \tfrac23 b$. For $xy$-blokka gir determinanten
+
+$$
+\left(\tfrac{5}{12}b - I\right)^2 - \left(\tfrac14 b\right)^2 = 0 \allowbreak\quad\Rightarrow\quad I = \tfrac{5}{12}b \pm \tfrac14 b
+$$
+
+Egenvektorene er $(1, -1, 0)$ for $\tfrac23 b$ og $(1, 1, 0)$ for $\tfrac16 b$. Aksen $(1, 1, 0)$ går fra $O$ gjennom massesenteret, og om den er treghetsmomentet det samme som om enhver akse gjennom sentrum.
+
+<Answer>$I_{11} = I_{22} = \tfrac{5}{12}b$, $I_{33} = \tfrac23 b$, $I_{12} = -\tfrac14 b$ og $I_{13} = I_{23} = 0$. Hovedtreghetsmomentene er $\tfrac16 b$, $\tfrac23 b$ og $\tfrac23 b$.</Answer>
+</Solution>
+</Example>
+
+## Bevegelsen til et stivt legeme
+
+Den kinetiske energien til et partikkelsystem er energien til massesenteret pluss energien i bevegelsen om massesenteret, <FormulaRef id="kinetisk-splitt" />. I et stivt legeme er $\dot{\vec y}_i = \vec\omega \times \vec y_i$, og det andre leddet er rotasjonsenergien om massesenteret:
+
+<Formula
+  tex="T = \tfrac12 M\dot{\vec R}^2 + \tfrac12\,\vec\omega \cdot \boldsymbol I^{\text{cm}}\vec\omega"
+  caption="Den kinetiske energien til et stivt legeme. Står et punkt $O$ i legemet fast, er $T = \tfrac12\,\vec\omega \cdot \boldsymbol I^{O}\vec\omega$ med tensoren om $O$, og parallellakseteoremet viser at de to uttrykkene er like."
+/>
+
+Tyngdens potensielle energi er $\sum_i m_i g z_i = MgZ$, der $Z$ er høyden til massesenteret. Lagrangefunksjonen $L = T - V$ har seks koordinater for et fritt legeme og færre når føringer binder det. Et legeme som svinger om en fast, vannrett akse, er en <Term name="fysisk pendel">fysisk pendel</Term>. Bare vinkelen $\theta$ er igjen, og $L = \tfrac12 I_O\dot\theta^2 + MgD\cos\theta$, der $D$ er avstanden fra aksen til massesenteret. Små svingninger har $\omega^2 = MgD/I_O$.
+
+<SelfCheck question="Ei jevn stang med lengde $l$ henger i en tapp i den ene enden. Hvor lang må en matematisk pendel være for å svinge like fort?">
+Parallellakseteoremet gir $I_O = \tfrac{1}{12}ml^2 + m\left(\tfrac12 l\right)^2 = \tfrac13 ml^2$, og massesenteret er $D = l/2$ fra tappen. Da er $\omega^2 = mg(l/2)/(\tfrac13 ml^2) = 3g/2l$, som for en matematisk pendel med lengden $\tfrac23 l$.
+</SelfCheck>
+
+Et legeme som <Term name="rulling uten glidning">ruller uten å gli</Term>, har en føring til. Kontaktpunktet $A$ har farten $\dot{\vec R} + \vec\omega \times (\vec r_A - \vec R)$, og den skal være null. For et hjul med radius $R$ som ruller langs ei linje, er $\vec r_A - \vec R$ en radius rett mot underlaget, og betingelsen blir
+
+$$
+\dot s = R\dot\theta
+$$
+
+der $s$ er strekningen hjulet har rullet og $\theta$ dreievinkelen. Den kan integreres, og $s - R\theta$ er konstant. Føringen er altså holonom, og $\theta$ kan elimineres fra Lagrangefunksjonen som for andre holonome føringer. For en kule som ruller på et plan, går ikke det, for der binder føringen hastighetene på en måte som ikke kan integreres. Friksjonskraften virker i et punkt som står i ro, så den gjør ikke arbeid, og energien er bevart selv om friksjonen er det som får legemet til å rulle.
+
+<Example label="Eksamensoppgave" title="Ring som ruller ned et skråplan">
+<ExamRef id="2022-des" task="3" />
+
+<Figure src="/figures/eksamen-2022-12-oppgave-3.png" alt="Et skråplan med vinkelen alfa og masse M står på et vannrett underlag i posisjonen X fra origo. En ring med masse m og treghetsmoment I ligger på skråplanet i avstanden s langs planet, med dreievinkelen theta og radien merket a." width={680} height={293} caption="Figuren fra oppgavesettet. Radien som teksten kaller $R$, er merket $a$ i figuren." />
+
+A ring of mass $m$ and radius $R$ rolls down an inclined plane without slipping (see Figure). Let us denote its moment of inertia simply $I$. The inclined plane (mass $M$) has an opening angle $\alpha$ and it slides itself frictionlessly along a horizontal surface (instantaneous position $X$).
+
+(a) Figure out the appropriate generalized coordinates and write out the Lagrangian function. [3p]
+
+Hint: Start from the position coordinates for the center of the ring. Use the slipping constraint the same way as we are used to do with holonomic constraints (note: no forces requested).
+
+(b) Solve the equations of motion and resulting accelerations for the ring and inclined plane. [3p]
+
+<Solution>
+a) Skråplanet har koordinaten $X$. Ringen har strekningen $s$ langs planet fra hjørnet og dreievinkelen $\theta$, bundet av $\dot s = R\dot\theta$, så de generaliserte koordinatene er $X$ og $s$. Sentrum i ringen ligger $R$ ut fra planet langs normalen:
+
+$$
+x = X + s\cos\alpha - R\sin\alpha \allowbreak\qquad y = s\sin\alpha + R\cos\alpha
+$$
+
+Da er $\dot x = \dot X + \dot s\cos\alpha$ og $\dot y = \dot s\sin\alpha$. Ringens kinetiske energi er $\tfrac12 m(\dot x^2 + \dot y^2)$ for sentrum pluss rotasjonsenergien $\tfrac12 I\dot\theta^2 = \tfrac12 (I/R^2)\,\dot s^2$, og skråplanet har $\tfrac12 M\dot X^2$. Potensialet er $V = mgy$, der leddet $mgR\cos\alpha$ er konstant og kan droppes. Da er
+
+$$
+L = \tfrac12(M + m)\dot X^2 \allowbreak + m\dot X\dot s\cos\alpha \allowbreak + \tfrac12\left(m + \frac{I}{R^2}\right)\dot s^2 \allowbreak - mgs\sin\alpha
+$$
+
+b) $X$ er syklisk, så $p_X = (M + m)\dot X + m\dot s\cos\alpha$, den totale vannrette impulsen, er bevart. Lagranges ligning for $X$ er
+
+$$
+(M + m)\ddot X + m\ddot s\cos\alpha = 0
+$$
+
+og ligningen for $s$, delt på $m$, er
+
+$$
+\left(1 + \frac{I}{mR^2}\right)\ddot s \allowbreak + \ddot X\cos\alpha + g\sin\alpha = 0
+$$
+
+Den første gir $\ddot X = -m\ddot s\cos\alpha/(M + m)$. Satt inn i den andre gir det
+
+$$
+\Delta\,\ddot s = -g\sin\alpha \allowbreak\qquad \Delta = 1 + \frac{I}{mR^2} - \frac{m\cos^2\alpha}{M + m}
+$$
+
+Begge akselerasjonene er konstante. Ringen ruller nedover, $\ddot s < 0$, og skråplanet glir motsatt vei, $\ddot X > 0$, slik at den vannrette impulsen holder seg null når alt starter i ro. For en ring er $I = mR^2$. Når $M \to \infty$, står skråplanet stille, og $\ddot s = -\tfrac12 g\sin\alpha$, som for en ring på et fast skråplan.
+
+<Answer>$\ddot s = -g\sin\alpha/\Delta$ og $\ddot X = {mg\sin\alpha\cos\alpha/[(M + m)\Delta]}$, begge konstante.</Answer>
+</Solution>
+</Example>
+
+<KeyTakeaways>
+- Et stivt legeme har seks frihetsgrader, tre for massesenteret og tre for orienteringen. Orienteringen endrer seg med én vinkelhastighet, $\dot{\hat e}_a' = \vec\omega \times \hat e_a'$, og hvert punkt har $\dot{\vec r}_i = \dot{\vec R} + \vec\omega \times (\vec r_i - \vec R)$ med den samme $\vec\omega$ om alle punkter.
+- Treghetstensoren $I_{ab} = \sum_i m_i(r_i^2\delta_{ab} - x_{ia}x_{ib})$ gir $\vec L = \boldsymbol I\vec\omega$, $T = \tfrac12\vec\omega \cdot \boldsymbol I\vec\omega$ og treghetsmomentet $I_{\hat n} = \hat n \cdot \boldsymbol I\hat n$. Langs legemets akser er komponentene konstante.
+- Hovedaksene er egenvektorene til $\boldsymbol I$, og der er $L_a = I_a\omega_a$. $\vec L$ er parallell med $\vec\omega$ bare når $\vec\omega$ ligger langs en hovedakse. Ellers sveiper $\vec L$ en kjegle, og lagrene må gi dreiemomentet $\vec\omega \times \vec L$.
+- Symmetriakser og normaler til symmetriplan er hovedakser. En kube har $I = \tfrac16 Ma^2$ om enhver akse gjennom sentrum.
+- Parallellakseteoremet: $I_{ab} = I^{\text{cm}}_{ab} + M(R^2\delta_{ab} - R_aR_b)$, og $I = I_\text{cm} + Mh^2$ for parallelle akser.
+- $T = \tfrac12 M\dot{\vec R}^2 + \tfrac12\vec\omega \cdot \boldsymbol I^{\text{cm}}\vec\omega$ og $V = MgZ$. Rulling langs ei linje gir den holonome føringen $\dot s = R\dot\theta$, og friksjonen i kontaktpunktet gjør ikke arbeid.
+</KeyTakeaways>

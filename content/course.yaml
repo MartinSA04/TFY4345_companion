@@ -355,6 +355,39 @@ formulas:
     tex: "\\omega \\approx \\omega_0 + \\frac{3\\varepsilon A^2}{8\\omega_0}"
     label: "Frekvensen til $\\ddot x + \\omega_0^2 x + \\varepsilon x^3 = 0$ med amplitude $A$, til første orden i $\\varepsilon$. For pendelen er $\\varepsilon = -\\omega_0^2/6$ og $\\omega = \\omega_0(1 - \\theta_0^2/16)$."
 
+  - id: stivt-legeme-hastighet
+    section: Stive legemer
+    tex: "\\dot{\\vec r}_i = \\dot{\\vec R} + \\vec\\omega \\times \\left(\\vec r_i - \\vec R\\right) \\allowbreak\\qquad \\dot{\\hat e}_a' = \\vec\\omega \\times \\hat e_a'"
+    label: "Hastigheten til punkt $i$ i et stivt legeme med massesenteret $\\vec R$. Enhetsvektorene $\\hat e_a'$ sitter fast i legemet, og $\\vec\\omega$ er den samme uansett hvilket punkt i legemet som brukes som origo."
+  - id: treghetstensor
+    section: Stive legemer
+    tex: "I_{ab} = \\sum_i m_i\\left(r_i^2\\,\\delta_{ab} - x_{ia}\\,x_{ib}\\right) \\allowbreak\\qquad I_{ab} = \\int \\rho\\left(r^2\\,\\delta_{ab} - x_a x_b\\right)dV"
+    label: "Treghetstensoren om et punkt $O$, med posisjonene målt fra $O$ og komponentene langs aksene i legemet. Diagonalelementene er treghetsmomentene om aksene, for eksempel $I_{11} = \\int\\rho\\,(y^2 + z^2)\\,dV$."
+  - id: dreieimpuls-stivt
+    section: Stive legemer
+    tex: "\\vec L = \\boldsymbol I\\vec\\omega \\allowbreak\\qquad T = \\tfrac12\\,\\vec\\omega \\cdot \\boldsymbol I\\vec\\omega \\allowbreak\\qquad I_{\\hat n} = \\hat n \\cdot \\boldsymbol I\\hat n"
+    label: "Dreieimpulsen og den kinetiske energien for rotasjon om et fast punkt, og treghetsmomentet om aksen $\\hat n$. $\\vec L$ er parallell med $\\vec\\omega$ bare når $\\vec\\omega$ ligger langs en hovedakse."
+  - id: hovedakser
+    section: Stive legemer
+    tex: "L_a = I_a\\,\\omega_a \\allowbreak\\qquad T = \\tfrac12\\left(I_1\\omega_1^2 + I_2\\omega_2^2 + I_3\\omega_3^2\\right)"
+    label: "Med aksene langs hovedaksene er treghetstensoren diagonal, med hovedtreghetsmomentene $I_1$, $I_2$ og $I_3$. For et flatt legeme er treghetsmomentet om normalen summen av de to i planet."
+  - id: parallellakse
+    section: Stive legemer
+    tex: "I_{ab} = I^{\\text{cm}}_{ab} + M\\left(R^2\\,\\delta_{ab} - R_aR_b\\right) \\allowbreak\\qquad I = I_\\text{cm} + Mh^2"
+    label: "<b>Parallellakseteoremet.</b> $\\vec R$ er massesenteret målt fra det nye punktet, og $h$ er avstanden mellom to parallelle akser der den ene går gjennom massesenteret."
+  - id: kinetisk-stivt
+    section: Stive legemer
+    tex: "T = \\tfrac12 M\\dot{\\vec R}^2 + \\tfrac12\\,\\vec\\omega \\cdot \\boldsymbol I^{\\text{cm}}\\vec\\omega"
+    label: "Den kinetiske energien til et stivt legeme, massesenteret pluss rotasjonen om massesenteret. Står et punkt $O$ fast, er $T = \\tfrac12\\,\\vec\\omega \\cdot \\boldsymbol I^{O}\\vec\\omega$."
+  - id: fysisk-pendel
+    section: Stive legemer
+    tex: "L = \\tfrac12 I_O\\dot\\theta^2 + MgD\\cos\\theta \\allowbreak\\qquad \\omega^2 = \\frac{MgD}{I_O}"
+    label: "Fysisk pendel: et legeme som svinger om en fast, vannrett akse. $I_O$ er treghetsmomentet om aksen, $D$ avstanden fra aksen til massesenteret, og $\\omega$ frekvensen for små svingninger."
+  - id: rulling
+    section: Stive legemer
+    tex: "\\dot{\\vec R} + \\vec\\omega \\times \\left(\\vec r_A - \\vec R\\right) = 0 \\allowbreak\\qquad \\dot s = R\\dot\\theta"
+    label: "Rulling uten glidning: kontaktpunktet $A$ står i ro. For et hjul med radius $R$ som ruller langs ei linje, er føringen holonom, $s = R\\theta + \\text{konstant}$, og friksjonen gjør ikke arbeid."
+
   - id: plan-pendel
     section: Kjente systemer
     tex: "L = \\tfrac12 ml^2\\dot\\theta^2 + mgl\\cos\\theta, \\qquad \\ddot\\theta = -\\frac{g}{l}\\sin\\theta"
@@ -396,8 +429,10 @@ symbols:
   - { tex: "\\Omega", meaning: "Vinkelfrekvens som settes utenfra", unit: "rad/s", section: "Newtonsk mekanikk", id: omega-stor, note: "Frekvensvariabelen i Greens funksjon, drivfrekvensen til Kapitzas pendel og ringens vinkelfart i modulen om små svingninger. Ikke $\\omega$, frekvensen systemet selv svinger med. I $d\\sigma/d\\Omega$ er $\\Omega$ en romvinkel, og $\\Omega_\\text{F}$ er dreiefarten til svingeplanet i Foucaults pendel." }
   - { tex: "k", meaning: "Fjærkonstant, koeffisienten i $\\tfrac12 kx^2$", unit: "N/m", section: "Newtonsk mekanikk", formula: kjede-dispersjon, note: "Samme bokstav som styrken i $V = -k/r$ og antallet føringer i $n = 3N - k$." }
   - { tex: "\\mu", meaning: "Redusert masse, $m_1m_2/(m_1 + m_2)$", unit: "kg", section: "Newtonsk mekanikk", term: "Redusert masse", formula: redusert-masse, id: mu }
-  - { tex: "\\vec R", meaning: "Massesenteret, $\\sum_i m_i\\vec r_i/M$", unit: "m", section: "Newtonsk mekanikk", term: "Massesenter", formula: massesenter, note: "I roterende systemer er $\\vec R$ posisjonen målt fra jordas sentrum. $R$ alene er en radius: jordas, kulas eller ringens." }
+  - { tex: "\\vec R", meaning: "Massesenteret, $\\sum_i m_i\\vec r_i/M$", unit: "m", section: "Newtonsk mekanikk", term: "Massesenter", formula: massesenter, note: "I roterende systemer er $\\vec R$ posisjonen målt fra jordas sentrum. $R$ alene er en radius: jordas, kulas, ringens eller hjulets." }
+  - { tex: "\\vec y_i", meaning: "Posisjonen til partikkel $i$ målt fra massesenteret, $\\vec r_i - \\vec R$", unit: "m", section: "Newtonsk mekanikk", formula: kinetisk-splitt, note: "$\\sum_i m_i\\vec y_i = 0$." }
   - { tex: "\\vec L", meaning: "Dreieimpuls, $\\sum_i \\vec r_i \\times \\vec p_i$", unit: "kg·m²/s", section: "Newtonsk mekanikk", formula: dreieimpuls-ytre, note: "Ikke Lagrangefunksjonen $L$. I tolegemeproblemet heter lengden $J$." }
+  - { tex: "\\vec N", meaning: "Dreiemomentet, $\\sum_i \\vec r_i \\times \\vec F_i$", unit: "N·m", section: "Newtonsk mekanikk", formula: dreieimpuls-ytre, note: "$\\vec N^{(e)}$ er dreiemomentet fra de ytre kreftene." }
   - { tex: "G_R(\\tau)", meaning: "Retardert Greens funksjon, responsen på et enhetsdytt", unit: "s/kg", section: "Newtonsk mekanikk", term: "Retardert Greens funksjon", formula: green-oscillator, note: "$\\tau = t - t'$ er tida siden dyttet, og $\\theta(\\tau)$ er trinnfunksjonen, ikke en vinkel." }
   - { tex: "J(t)", meaning: "Den ytre kraften som driver oscillatoren", unit: "N", section: "Newtonsk mekanikk", formula: green-respons, note: "Ikke dreieimpulsen $J$ i tolegemeproblemet." }
   # ── Lagrangeformalismen ──
@@ -413,7 +448,7 @@ symbols:
   - { tex: "F,\\ Q", meaning: "Funksjonen i $\\delta L = \\epsilon\\,dF/dt$ og den bevarte størrelsen $Q = \\sum_i p_iF_i - F$", section: "Lagrangeformalismen", term: "Noethers teorem", formula: noether, note: "Ikke en kraft $\\vec F$, og ikke kjerneladningen $Q$ i Rutherford-spredning." }
   - { tex: "\\phi,\\ \\vec A", meaning: "Skalarpotensialet og vektorpotensialet for en ladd partikkel", unit: "V, T·m", section: "Lagrangeformalismen", term: "Gaugeinvarians", formula: lagrange-ladd-partikkel, note: "$\\vec E = -\\nabla\\phi - \\partial\\vec A/\\partial t$ og $\\vec B = \\nabla \\times \\vec A$. Ikke vinkelen $\\phi$ eller Runge–Lenz-vektoren $\\vec A$." }
   # ── Roterende referansesystemer ──
-  - { tex: "\\vec\\omega", meaning: "Vinkelhastigheten til det roterende systemet", unit: "s⁻¹", section: "Roterende referansesystemer", term: "Vinkelhastighet", formula: rotasjon-tidsderivert, note: "For jorda er $\\omega = 7{,}29 \\cdot 10^{-5}$ s⁻¹. Perla på roterende ring i «Kjente systemer» bruker $\\omega$ for ringens vinkelfart, som modulen om små svingninger kaller $\\Omega$." }
+  - { tex: "\\vec\\omega", meaning: "Vinkelhastigheten til et roterende system eller et stivt legeme", unit: "s⁻¹", section: "Roterende referansesystemer", term: "Vinkelhastighet", formula: rotasjon-tidsderivert, note: "For jorda er $\\omega = 7{,}29 \\cdot 10^{-5}$ s⁻¹. Perla på roterende ring i «Kjente systemer» bruker $\\omega$ for ringens vinkelfart, som modulen om små svingninger kaller $\\Omega$." }
   - { tex: "\\vec v\\,',\\ \\vec a\\,'", meaning: "Hastighet og akselerasjon målt i det roterende systemet $K'$", unit: "m/s, m/s²", section: "Roterende referansesystemer", formula: akselerasjon-roterende }
   - { tex: "\\vec d", meaning: "Komponenten av $\\vec r$ vinkelrett på rotasjonsaksen", unit: "m", section: "Roterende referansesystemer", formula: sentrifugalkraft, note: "Ellers er $d$ avbøyningen i fall fra et tårn og avstanden mellom $m_1$ og $m_2$ i trelegemeproblemet." }
   - { tex: "V_\\text{s}", meaning: "Sentrifugalpotensialet, $-\\tfrac12 m\\omega^2 d^2$", unit: "J", section: "Roterende referansesystemer", term: "Sentrifugalkraft", formula: sentrifugalkraft, note: "Inngår i $U$ i trelegemeproblemet og i $H$ for et roterende system." }
@@ -424,14 +459,14 @@ symbols:
   - { tex: "k", meaning: "Styrken i $V = -k/r$, $Gm_1m_2$ for gravitasjon", unit: "J·m", section: "To- og trelegemeproblemet", formula: kepler-bane, id: k, note: "Negativ for frastøting, $k = -qQ/4\\pi\\epsilon_0$. Ikke fjærkonstanten $k$." }
   - { tex: "e", meaning: "Eksentrisiteten", section: "To- og trelegemeproblemet", term: "Eksentrisitet", formula: kepler-bane, id: e, note: "$e = 0$ er en sirkel, $0 < e < 1$ en ellipse, $e = 1$ en parabel og $e > 1$ en hyperbel. Ikke Eulers tall $e$." }
   - { tex: "r_0", meaning: "Radien til sirkelbanen med samme $J$, $J^2/\\mu k$", unit: "m", section: "To- og trelegemeproblemet", formula: kepler-bane, note: "I molekylet med tre atomer er $r_0$ likevektsavstanden i hver binding." }
-  - { tex: "a,\\ b", meaning: "Den store og den lille halvaksen til ellipsen", unit: "m", section: "To- og trelegemeproblemet", formula: ellipse-akser, note: "$r_\\text{min}, r_\\text{max} = a(1 \\mp e)$. $a$ er også radien til ringen i «Kjente systemer», radien til den harde kula i spredning og avstanden mellom atomene i kjeden." }
+  - { tex: "a,\\ b", meaning: "Den store og den lille halvaksen til ellipsen", unit: "m", section: "To- og trelegemeproblemet", formula: ellipse-akser, note: "$r_\\text{min}, r_\\text{max} = a(1 \\mp e)$. $a$ er også radien til ringen i «Kjente systemer», radien til den harde kula i spredning, avstanden mellom atomene i kjeden og sidene til plata og kuben blant de stive legemene." }
   - { tex: "u", meaning: "$1/r$, variabelen i baneligningen", unit: "m⁻¹", section: "To- og trelegemeproblemet", formula: baneligning }
   - { tex: "\\vec A", meaning: "Runge–Lenz-vektoren, bevart for $V = -k/r$", section: "To- og trelegemeproblemet", formula: runge-lenz, note: "Peker mot perihel og har lengden $\\mu ke$. Ikke vektorpotensialet $\\vec A$." }
   - { tex: "G", meaning: "Gravitasjonskonstanten", unit: "N·m²/kg²", section: "To- og trelegemeproblemet", formula: keplers-tredje, note: "$6{,}674 \\cdot 10^{-11}$ N·m²/kg². For jorda er $GM_\\oplus = 3{,}986 \\cdot 10^5$ km³/s²." }
-  - { tex: "s", meaning: "Støtparameteren", unit: "m", section: "To- og trelegemeproblemet", term: "Støtparameter", formula: rutherford }
+  - { tex: "s", meaning: "Støtparameteren", unit: "m", section: "To- og trelegemeproblemet", term: "Støtparameter", formula: rutherford, note: "For et legeme som ruller, er $s$ strekningen langs underlaget, med $\\dot s = R\\dot\\theta$." }
   - { tex: "\\Theta", meaning: "Spredningsvinkelen", unit: "rad", section: "To- og trelegemeproblemet", formula: rutherford, note: "Hos Kapitzas pendel er $\\Theta$ den langsomme delen av vinkelen $\\theta$." }
   - { tex: "d\\sigma/d\\Omega", meaning: "Det differensielle spredningstverrsnittet", unit: "m²", section: "To- og trelegemeproblemet", term: "Spredningstverrsnitt", formula: spredningstverrsnitt, note: "$d\\Omega$ er et romvinkelelement, ikke en frekvens." }
-  - { tex: "\\alpha", meaning: "Masseforholdet $m_2/M$ i trelegemeproblemet", section: "To- og trelegemeproblemet", note: "Ellers en lokal konstant: faktoren i $L' = \\alpha L$, indeksen på føringene $f_\\alpha$ og vinkelen loddlinja avviker med." }
+  - { tex: "\\alpha", meaning: "Masseforholdet $m_2/M$ i trelegemeproblemet", section: "To- og trelegemeproblemet", note: "Ellers en lokal konstant: faktoren i $L' = \\alpha L$, indeksen på føringene $f_\\alpha$, vinkelen loddlinja avviker med og vinkelen til skråplanet i eksamensoppgaven om ringen." }
   - { tex: "U", meaning: "Potensialet per masse i det roterende systemet, med sentrifugalleddet", unit: "J/kg", section: "To- og trelegemeproblemet", formula: trelegeme-potensial, note: "De annenderiverte $U_{xx}$, $U_{xy}$ og $U_{yy}$ avgjør stabiliteten til Lagrangepunktene." }
   - { tex: "C", meaning: "Jacobis konstant, $\\tfrac12 v'^2 + U$", unit: "J/kg", section: "To- og trelegemeproblemet", term: "Jacobis konstant", formula: jacobi-konstant, id: jacobi, note: "Legemet kan bare være der $U \\le C$." }
   - { tex: "L_1\\text{–}L_5", meaning: "Lagrangepunktene, likevektspunktene i det roterende systemet", section: "To- og trelegemeproblemet", term: "Lagrangepunkt", formula: lagrangepunkter, note: "Ikke Lagrangefunksjonen $L$. $L_4$ og $L_5$ er stabile når $m_1/m_2 > 24{,}96$." }
@@ -443,10 +478,16 @@ symbols:
   - { tex: "\\xi_n", meaning: "Normalkoordinaten, utslaget langs mode $n$", section: "Små svingninger", term: "Normalkoordinat", formula: normalkoordinater, note: "Ellers er $\\xi$ et lite utslag, som den raske delen av vinkelen hos Kapitzas pendel, eller $x + iy$ for Foucaults pendel." }
   - { tex: "\\lambda", meaning: "Eksponenten i $e^{\\lambda t}$ for utslaget nær en likevekt", unit: "s⁻¹", section: "Små svingninger", note: "Stabilt når alle røttene $\\lambda^2$ er negative. Ikke Lagrange-multiplikatoren $\\lambda$. I kjeden er $\\lambda$ bølgelengden, og i $V = \\tfrac12 kx^2 + \\tfrac14\\lambda x^4$ en koeffisient." }
   - { tex: "\\varphi", meaning: "Faseforskjellen mellom naboatomer i kjeden, $2\\pi n/N$", unit: "rad", section: "Små svingninger", term: "Dispersjonsrelasjon", formula: kjede-dispersjon }
+  # ── Stive legemer ──
+  - { tex: "\\hat e_a'", meaning: "Enhetsvektorene langs aksene som sitter fast i legemet", section: "Stive legemer", formula: stivt-legeme-hastighet, note: "$a = 1, 2, 3$ nummererer aksene og $i$ partiklene. Komponentene av $\\vec\\omega$, $\\vec L$ og $\\boldsymbol I$ tas langs disse aksene." }
+  - { tex: "\\boldsymbol I,\\ I_{ab}", meaning: "Treghetstensoren om et punkt i legemet", unit: "kg·m²", section: "Stive legemer", term: "Treghetstensor", formula: treghetstensor, note: "Avhenger av punktet. $\\boldsymbol I^{\\text{cm}}$ er tensoren om massesenteret og $\\boldsymbol I^{O}$ om et fast punkt $O$." }
+  - { tex: "I_1,\\ I_2,\\ I_3", meaning: "Hovedtreghetsmomentene, egenverdiene til $\\boldsymbol I$", unit: "kg·m²", section: "Stive legemer", term: "Hovedtreghetsmoment", formula: hovedakser }
+  - { tex: "I_{\\hat n},\\ I", meaning: "Treghetsmomentet om en akse, $\\sum_i m_i d_i^2$", unit: "kg·m²", section: "Stive legemer", term: "Treghetsmoment", formula: dreieimpuls-stivt, note: "$I_\\text{cm}$ er treghetsmomentet om en akse gjennom massesenteret og $I_O$ om en fast akse gjennom $O$." }
+  - { tex: "D", meaning: "Avstanden fra aksen til massesenteret for en fysisk pendel", unit: "m", section: "Stive legemer", term: "Fysisk pendel", formula: fysisk-pendel }
   - { tex: "\\varepsilon", meaning: "Styrken til $x^3$-leddet i den anharmoniske oscillatoren", unit: "m⁻²·s⁻²", section: "Små svingninger", formula: anharmonisk-frekvens, note: "Ikke $\\epsilon$ i Noethers teorem. I Greens funksjon er $i\\varepsilon$ forskyvningen av polene." }
   # ── Kjente systemer ──
   - { tex: "l", meaning: "Lengden til pendelen; $l_1$ og $l_2$ for dobbeltpendelen", unit: "m", section: "Kjente systemer", formula: plan-pendel, note: "I eksamensoppgavene står $\\ell$ både for en stanglengde og for dreieimpulsen." }
-  - { tex: "\\theta", meaning: "Vinkelen fra loddlinja nedover for en pendel, og fra bunnpunktet for perla på ringen", unit: "rad", section: "Kjente systemer", formula: plan-pendel, note: "$\\theta = \\pi$ er opp ned. I Greens funksjon er $\\theta(\\tau)$ trinnfunksjonen." }
+  - { tex: "\\theta", meaning: "Vinkelen fra loddlinja nedover for en pendel, og fra bunnpunktet for perla på ringen", unit: "rad", section: "Kjente systemer", formula: plan-pendel, note: "$\\theta = \\pi$ er opp ned. For et legeme som ruller, er $\\theta$ dreievinkelen. I Greens funksjon er $\\theta(\\tau)$ trinnfunksjonen." }
   - { tex: "\\phi", meaning: "Vinkelen rundt loddlinja for den sfæriske pendelen, og vinkelen i baneplanet i tolegemeproblemet", unit: "rad", section: "Kjente systemer", formula: sfaerisk-pendel, note: "I roterende systemer er $\\phi$ breddegraden, og for den ladde partikkelen skalarpotensialet." }
   - { tex: "g", meaning: "Tyngdeakselerasjonen", unit: "m/s²", section: "Kjente systemer", note: "$9{,}81$ m/s²." }
   - { tex: "y_\\text{p},\\ A", meaning: "Høyden til opphenget på Kapitzas pendel og amplituden, $y_\\text{p} = A\\cos\\Omega t$", unit: "m", section: "Kjente systemer", formula: kapitza, note: "Pendelen står stabilt opp ned når $A^2\\Omega^2 > 2gl$." }
@@ -614,6 +655,31 @@ glossary:
   - term: Dispersjonsrelasjon
     section: Små svingninger
     definition: "Sammenhengen mellom frekvensen og bølgelengden til en bølge. For en kjede av like atomer er den $\\omega = 2\\sqrt{k/m}\\,|\\sin(\\varphi/2)|$, med $\\varphi$ faseforskjellen mellom naboatomer."
+
+  - term: Stivt legeme
+    section: Stive legemer
+    definition: "System av partikler der alle avstandene mellom partiklene er faste. Det har seks frihetsgrader, tre for et punkt i legemet og tre for orienteringen."
+  - term: Treghetstensor
+    section: Stive legemer
+    definition: "Den symmetriske matrisen $I_{ab} = \\sum_i m_i(r_i^2\\delta_{ab} - x_{ia}x_{ib})$ om et punkt i legemet. Den gir dreieimpulsen $\\vec L = \\boldsymbol I\\vec\\omega$ og den kinetiske energien $\\tfrac12\\vec\\omega \\cdot \\boldsymbol I\\vec\\omega$."
+  - term: Treghetsmoment
+    section: Stive legemer
+    definition: "Summen $I_{\\hat n} = \\sum_i m_i d_i^2$, der $d_i$ er avstanden fra partikkel $i$ til aksen $\\hat n$. Det er $\\hat n \\cdot \\boldsymbol I\\hat n$, og for rotasjon om aksen er $T = \\tfrac12 I_{\\hat n}\\omega^2$."
+  - term: Hovedakse
+    section: Stive legemer
+    definition: "En egenvektor til treghetstensoren. Roterer legemet om en hovedakse, er $\\vec L$ parallell med $\\vec\\omega$. Symmetriakser og normaler til symmetriplan er hovedakser."
+  - term: Hovedtreghetsmoment
+    section: Stive legemer
+    definition: "En egenverdi $I_1$, $I_2$ eller $I_3$ av treghetstensoren, altså treghetsmomentet om en hovedakse."
+  - term: Parallellakseteoremet
+    section: Stive legemer
+    definition: "Treghetstensoren om et punkt $O$ er tensoren om massesenteret pluss tensoren til en punktmasse $M$ i massesenteret, $I_{ab} = I^{\\text{cm}}_{ab} + M(R^2\\delta_{ab} - R_aR_b)$. For parallelle akser er $I = I_\\text{cm} + Mh^2$. Teoremet heter også Steiners sats."
+  - term: Fysisk pendel
+    section: Stive legemer
+    definition: "Et stivt legeme som svinger om en fast, vannrett akse som ikke går gjennom massesenteret. Små svingninger har $\\omega^2 = MgD/I_O$, der $D$ er avstanden fra aksen til massesenteret."
+  - term: Rulling uten glidning
+    section: Stive legemer
+    definition: "Bevegelse der kontaktpunktet står i ro i forhold til underlaget. Langs ei linje gir det den holonome føringen $\\dot s = R\\dot\\theta$, og friksjonskraften gjør ikke arbeid."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker
