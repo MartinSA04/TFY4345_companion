@@ -387,6 +387,46 @@ formulas:
     section: Stive legemer
     tex: "\\dot{\\vec R} + \\vec\\omega \\times \\left(\\vec r_A - \\vec R\\right) = 0 \\allowbreak\\qquad \\dot s = R\\dot\\theta"
     label: "Rulling uten glidning: kontaktpunktet $A$ står i ro. For et hjul med radius $R$ som ruller langs ei linje, er føringen holonom, $s = R\\theta + \\text{konstant}$, og friksjonen gjør ikke arbeid."
+  - id: eulers-ligninger
+    section: Eulers ligninger og snurrebassen
+    tex: "\\begin{aligned} I_1\\dot\\omega_1 + (I_3 - I_2)\\,\\omega_2\\omega_3 &= N_1 \\\\ I_2\\dot\\omega_2 + (I_1 - I_3)\\,\\omega_3\\omega_1 &= N_2 \\\\ I_3\\dot\\omega_3 + (I_2 - I_1)\\,\\omega_1\\omega_2 &= N_3 \\end{aligned}"
+    label: "<b>Eulers ligninger</b>: $\\dot{\\vec L} = \\vec N$ med komponentene langs hovedaksene, om et fast punkt eller om massesenteret. Uten dreiemoment er $T$ og $|\\vec L|$ bevart."
+  - id: fri-symmetrisk-snurrebass
+    section: Eulers ligninger og snurrebassen
+    tex: "\\Omega = \\frac{I_3 - I_1}{I_1}\\,\\omega_3 \\allowbreak\\qquad \\dot{\\hat e}_3' = \\frac{\\vec L}{I_1} \\times \\hat e_3'"
+    label: "Fri symmetrisk snurrebass, $I_1 = I_2$. $\\omega_3$ er konstant, og sett fra legemet roterer $\\vec\\omega$ om symmetriaksen med $\\Omega$. Sett fra rommet presesserer symmetriaksen om den faste $\\vec L$ med vinkelfarten $|\\vec L|/I_1$."
+  - id: stabil-rotasjon
+    section: Eulers ligninger og snurrebassen
+    tex: "\\lambda^2 = \\frac{(I_3 - I_1)(I_1 - I_2)}{I_2 I_3}\\,\\omega_1^2"
+    label: "Små avvik fra rotasjon om hovedakse 1 går som $e^{\\lambda t}$. Rotasjonen er stabil når $I_1$ er det største eller det minste hovedtreghetsmomentet, og ustabil når det er det midterste."
+  - id: rotasjonsmatrise
+    section: Eulers ligninger og snurrebassen
+    tex: "\\hat e_a' = \\sum_b R_{ab}\\,\\hat e_b \\allowbreak\\qquad \\boldsymbol R\\boldsymbol R^{\\mathsf T} = \\boldsymbol 1 \\allowbreak\\qquad \\det\\boldsymbol R = +1"
+    label: "Rotasjonsmatrisen mellom rommets akser $\\hat e_a$ og legemets akser $\\hat e_a'$ er ortogonal med determinant $+1$. Treghetstensoren skifter akser som ${\\boldsymbol I' = \\boldsymbol R\\boldsymbol I\\boldsymbol R^{\\mathsf T}}$."
+  - id: eulervinkler-omega
+    section: Eulers ligninger og snurrebassen
+    tex: "\\begin{aligned} \\omega_1 &= \\dot\\phi\\sin\\theta\\sin\\psi + \\dot\\theta\\cos\\psi \\\\ \\omega_2 &= \\dot\\phi\\sin\\theta\\cos\\psi - \\dot\\theta\\sin\\psi \\\\ \\omega_3 &= \\dot\\psi + \\dot\\phi\\cos\\theta \\end{aligned}"
+    label: "Vinkelhastigheten langs legemets akser, uttrykt ved Eulervinklene: $\\phi$ om $\\hat e_3$, $\\theta$ om knutelinja og $\\psi$ om $\\hat e_3'$. Med $I_1 = I_2$ er $\\omega_1^2 + \\omega_2^2 = \\dot\\theta^2 + \\dot\\phi^2\\sin^2\\theta$."
+  - id: tung-snurrebass
+    section: Eulers ligninger og snurrebassen
+    tex: "L = \\tfrac12 I_1\\left(\\dot\\theta^2 + \\dot\\phi^2\\sin^2\\theta\\right) \\allowbreak + \\tfrac12 I_3\\left(\\dot\\psi + \\dot\\phi\\cos\\theta\\right)^2 \\allowbreak - Mgl\\cos\\theta"
+    label: "Tung symmetrisk snurrebass med spissen fast. $I_1$ og $I_3$ er treghetsmomentene om spissen, og $l$ er avstanden fra spissen til massesenteret."
+  - id: snurrebass-impulser
+    section: Eulers ligninger og snurrebassen
+    tex: "p_\\psi = I_3\\left(\\dot\\psi + \\dot\\phi\\cos\\theta\\right) \\allowbreak = I_3\\omega_3 \\allowbreak\\qquad p_\\phi = I_1\\dot\\phi\\sin^2\\theta + I_3\\omega_3\\cos\\theta"
+    label: "$\\phi$ og $\\psi$ er sykliske for den tunge snurrebassen. $p_\\psi$ er komponenten av $\\vec L$ langs symmetriaksen og $p_\\phi$ komponenten langs loddlinja. Energien er bevart også."
+  - id: snurrebass-veff
+    section: Eulers ligninger og snurrebassen
+    tex: "\\tfrac12 I_1\\dot\\theta^2 + V_\\text{eff}(\\theta) \\allowbreak = E - \\tfrac12 I_3\\omega_3^2 \\allowbreak\\qquad V_\\text{eff}(\\theta) = \\frac{(p_\\phi - p_\\psi\\cos\\theta)^2}{2I_1\\sin^2\\theta} \\allowbreak + Mgl\\cos\\theta"
+    label: "Bevegelsen i $\\theta$ for den tunge snurrebassen. $\\theta$ svinger mellom to vendepunkter, og den svingningen er nutasjon."
+  - id: jevn-presesjon
+    section: Eulers ligninger og snurrebassen
+    tex: "Mgl = \\dot\\phi\\,(I_3\\omega_3 - I_1\\dot\\phi\\cos\\theta_0) \\allowbreak\\qquad \\dot\\phi \\approx \\frac{Mgl}{I_3\\omega_3}"
+    label: "<b>Jevn presesjon</b> i vinkelen $\\theta_0$. Den langsomme løsningen $\\dot\\phi \\approx Mgl/I_3\\omega_3$ gjelder når snurrebassen spinner fort, og er uavhengig av vinkelen."
+  - id: sovende-snurrebass
+    section: Eulers ligninger og snurrebassen
+    tex: "I_3^2\\omega_3^2 > 4I_1Mgl"
+    label: "Betingelsen for at en snurrebass står stabilt rett opp, $\\theta = 0$."
 
   - id: plan-pendel
     section: Kjente systemer
@@ -484,6 +524,14 @@ symbols:
   - { tex: "I_1,\\ I_2,\\ I_3", meaning: "Hovedtreghetsmomentene, egenverdiene til $\\boldsymbol I$", unit: "kg·m²", section: "Stive legemer", term: "Hovedtreghetsmoment", formula: hovedakser }
   - { tex: "I_{\\hat n},\\ I", meaning: "Treghetsmomentet om en akse, $\\sum_i m_i d_i^2$", unit: "kg·m²", section: "Stive legemer", term: "Treghetsmoment", formula: dreieimpuls-stivt, note: "$I_\\text{cm}$ er treghetsmomentet om en akse gjennom massesenteret og $I_O$ om en fast akse gjennom $O$." }
   - { tex: "D", meaning: "Avstanden fra aksen til massesenteret for en fysisk pendel", unit: "m", section: "Stive legemer", term: "Fysisk pendel", formula: fysisk-pendel }
+  # ── Eulers ligninger og snurrebassen ──
+  - { tex: "\\hat e_a,\\ \\hat e_N", meaning: "Rommets akser i $K$, og knutelinja", section: "Eulers ligninger og snurrebassen", term: "Knutelinje", formula: rotasjonsmatrise, note: "Legemets akser er $\\hat e_a'$. For en tung snurrebass peker $\\hat e_3$ loddrett opp." }
+  - { tex: "\\boldsymbol R", meaning: "Rotasjonsmatrisen, $R_{ab} = \\hat e_a' \\cdot \\hat e_b$", section: "Eulers ligninger og snurrebassen", term: "Rotasjonsmatrise", formula: rotasjonsmatrise, note: "Ikke massesenteret $\\vec R$ eller en radius $R$." }
+  - { tex: "\\phi,\\ \\theta,\\ \\psi", meaning: "Eulervinklene, dreiningene om $\\hat e_3$, om knutelinja og om $\\hat e_3'$", unit: "rad", section: "Eulers ligninger og snurrebassen", term: "Eulervinkler", formula: eulervinkler-omega, note: "For en tung snurrebass er $\\theta$ vinkelen mellom loddlinja og symmetriaksen, $\\phi$ presesjonsvinkelen og $\\psi$ dreiningen om symmetriaksen. Eksamensoppgavene skriver $\\varphi$." }
+  - { tex: "\\omega_3", meaning: "Spinnet, komponenten av $\\vec\\omega$ langs symmetriaksen", unit: "rad/s", section: "Eulers ligninger og snurrebassen", formula: snurrebass-impulser, note: "$\\omega_3 = \\dot\\psi + \\dot\\phi\\cos\\theta$ er konstant for både den frie og den tunge symmetriske snurrebassen." }
+  - { tex: "\\Omega", meaning: "Vinkelfrekvensen $\\vec\\omega$ roterer med om symmetriaksen sett fra en fri symmetrisk snurrebass, $(I_3 - I_1)\\,\\omega_3/I_1$", unit: "rad/s", section: "Eulers ligninger og snurrebassen", term: "Symmetrisk snurrebass", formula: fri-symmetrisk-snurrebass, note: "For jorda er $\\Omega \\approx \\omega_3/300$. Sett fra rommet presesserer symmetriaksen med en annen vinkelfart, $|\\vec L|/I_1$." }
+  - { tex: "p_\\phi,\\ p_\\psi", meaning: "De bevarte impulsene til den tunge snurrebassen, komponentene av $\\vec L$ langs loddlinja og langs symmetriaksen", unit: "kg·m²/s", section: "Eulers ligninger og snurrebassen", formula: snurrebass-impulser }
+  - { tex: "l", meaning: "Avstanden fra spissen til massesenteret for en tung snurrebass", unit: "m", section: "Eulers ligninger og snurrebassen", formula: tung-snurrebass, note: "Eksamensoppgaven kaller den $h$. For den fysiske pendelen heter den samme avstanden $D$." }
   - { tex: "\\varepsilon", meaning: "Styrken til $x^3$-leddet i den anharmoniske oscillatoren", unit: "m⁻²·s⁻²", section: "Små svingninger", formula: anharmonisk-frekvens, note: "Ikke $\\epsilon$ i Noethers teorem. I Greens funksjon er $i\\varepsilon$ forskyvningen av polene." }
   # ── Kjente systemer ──
   - { tex: "l", meaning: "Lengden til pendelen; $l_1$ og $l_2$ for dobbeltpendelen", unit: "m", section: "Kjente systemer", formula: plan-pendel, note: "I eksamensoppgavene står $\\ell$ både for en stanglengde og for dreieimpulsen." }
@@ -680,6 +728,30 @@ glossary:
   - term: Rulling uten glidning
     section: Stive legemer
     definition: "Bevegelse der kontaktpunktet står i ro i forhold til underlaget. Langs ei linje gir det den holonome føringen $\\dot s = R\\dot\\theta$, og friksjonskraften gjør ikke arbeid."
+  - term: Eulers ligninger
+    section: Eulers ligninger og snurrebassen
+    definition: "Bevegelsesligningene ${I_1\\dot\\omega_1 + (I_3 - I_2)\\,\\omega_2\\omega_3 = N_1}$ og de to sykliske ombyttingene, for komponentene av $\\vec\\omega$ langs hovedaksene. De er $\\dot{\\vec L} = \\vec N$ skrevet langs legemets akser."
+  - term: Symmetrisk snurrebass
+    section: Eulers ligninger og snurrebassen
+    definition: "Stivt legeme med to like hovedtreghetsmomenter, $I_1 = I_2$. Hovedaksen $\\hat e_3'$ med det tredje er symmetriaksen."
+  - term: Presesjon
+    section: Eulers ligninger og snurrebassen
+    definition: "Rotasjon av symmetriaksen om en fast retning, om $\\vec L$ for en fri snurrebass og om loddlinja for en tung."
+  - term: Nutasjon
+    section: Eulers ligninger og snurrebassen
+    definition: "Svingningen i vinkelen $\\theta$ mellom loddlinja og symmetriaksen mens en tung snurrebass presesserer."
+  - term: Rotasjonsmatrise
+    section: Eulers ligninger og snurrebassen
+    definition: "Matrisen $R_{ab} = \\hat e_a' \\cdot \\hat e_b$ mellom to sett akser. Den er ortogonal, $\\boldsymbol R\\boldsymbol R^{\\mathsf T} = \\boldsymbol 1$, og har determinant $+1$. Rotasjonene danner gruppen SO(3), og en ortogonal matrise med determinant $-1$ inneholder en speiling."
+  - term: Eulervinkler
+    section: Eulers ligninger og snurrebassen
+    definition: "Tre vinkler $\\phi$, $\\theta$ og $\\psi$ som gir orienteringen til et stivt legeme som tre dreininger etter hverandre, $\\phi$ om rommets $\\hat e_3$, $\\theta$ om knutelinja og $\\psi$ om legemets $\\hat e_3'$."
+  - term: Knutelinje
+    section: Eulers ligninger og snurrebassen
+    definition: "Skjæringslinja mellom rommets $\\hat e_1\\hat e_2$-plan og legemets $\\hat e_1'\\hat e_2'$-plan. Den andre Eulervinkelen $\\theta$ er en dreining om den."
+  - term: Sovende snurrebass
+    section: Eulers ligninger og snurrebassen
+    definition: "En tung snurrebass som spinner rett opp, $\\theta = 0$. Den står stabilt når $I_3^2\\omega_3^2 > 4I_1Mgl$."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker
