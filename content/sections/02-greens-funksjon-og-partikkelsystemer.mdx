@@ -1,7 +1,7 @@
 ---
 order: 2
 title: "Greens funksjon og partikkelsystemer"
-summary: "Responsen på en vilkårlig kraft er en superposisjon av responser på deltadytt, og kausalitet velger den retarderte Greens funksjonen. Massesenteret følger de ytre kreftene alene, og tolegemeproblemet reduseres til ett legeme."
+summary: "Responsen på en vilkårlig kraft er en superposisjon av responser på deltadytt, og kravet om at responsen kommer etter dyttet gir den retarderte Greens funksjonen. Bare de ytre kreftene endrer bevegelsen til massesenteret, og tolegemeproblemet reduseres til ett legeme."
 importance: core
 tag: "Uke 35"
 updated: 2026-09-27
@@ -9,8 +9,8 @@ updated: 2026-09-27
 
 <LearningGoals>
 - Bygge løsningen av en lineær bevegelsesligning med ytre kraft som en superposisjon av responser på deltadytt.
-- Regne ut den retarderte Greens funksjonen til oscillatoren og forklare hvordan kausalitet velger den.
-- Vise at massesenteret bare styres av de ytre kreftene, og knytte bevaringslovene for impuls, dreieimpuls og energi til symmetrier.
+- Regne ut den retarderte Greens funksjonen til oscillatoren og forklare hvorfor den er null før dyttet.
+- Vise at bare de ytre kreftene endrer bevegelsen til massesenteret, og knytte bevaringslovene for impuls, dreieimpuls og energi til symmetrier.
 - Redusere tolegemeproblemet til ett legeme med redusert masse, og bruke bevaringslovene på elastiske støt.
 </LearningGoals>
 
@@ -23,31 +23,37 @@ En harmonisk oscillator som drives av en ytre kraft $J(t)$, følger
   caption="Drevet harmonisk oscillator. Venstresiden er lineær i $x$."
 />
 
-Gir kraften $J_1$ løsningen $x_1$ og kraften $J_2$ løsningen $x_2$, så er $x_1 + x_2$ løsningen for $J_1 + J_2$. Det er <Term name="superposisjonsprinsippet">superposisjonsprinsippet</Term>, og det gjelder fordi venstresiden er lineær.
+Løsningen $x(t)$ for en gitt kraft kalles responsen. Gir kraften $J_1$ responsen $x_1$ og kraften $J_2$ responsen $x_2$, så er $x_1 + x_2$ responsen på $J_1 + J_2$. Regelen kalles <Term name="superposisjonsprinsippet">superposisjonsprinsippet</Term>, og den gjelder fordi venstresiden er lineær.
 
-Prinsippet lar deg dele kraften opp. Identiteten $J(t) = \int dt'\, \delta(t - t')\, J(t')$ sier at en vilkårlig kraft er en sum av deltadytt ved tidene $t'$, hvert med vekt $J(t')$. Kjenner du responsen $G_R(t - t')$ på ett enhetsdytt $\delta(t - t')$, er responsen på hele kraften den samme summen med de samme vektene.
+Du kan derfor dele kraften opp og legge sammen responsene på bitene. Identiteten $J(t) = \int dt'\, \delta(t - t')\, J(t')$ skriver en vilkårlig kraft som en sum av deltadytt ved tidene $t'$, hvert med vekt $J(t')$. Massen og $\omega$ avhenger ikke av tiden, så responsen på et dytt ved $t'$ avhenger bare av tiden $t - t'$ som har gått siden dyttet. Er $G_R(t - t')$ responsen på ett enhetsdytt $\delta(t - t')$, er responsen på hele kraften summen av $G_R(t - t')$ med de samme vektene.
 
 <Formula
   tex="x(t) = \int_{-\infty}^{\infty} dt'\, G_R(t - t')\, J(t')"
   caption="Responsen på en vilkårlig kraft, satt sammen av responser på deltadytt."
 />
 
-Funksjonen $G_R$ er systemets <Term name="greens funksjon">Greens funksjon</Term>. Skriv bevegelsesligningen som $D(t)\,x(t) = J(t)$ med differensialoperatoren $D(t) = m\,(d^2\!/dt^2 + \omega^2)$, og sett superposisjonen inn. Skal likheten holde for enhver kraft $J$, må
+Funksjonen $G_R$ er systemets <Term name="greens funksjon">Greens funksjon</Term>. Skriv bevegelsesligningen som $D(t)\,x(t) = J(t)$ med differensialoperatoren $D(t) = m\,(d^2\!/dt^2 + \omega^2)$. Siden $G_R$ er responsen på kraften $\delta(t - t')$, oppfyller den
 
 <Formula
   tex="D(t)\, G_R(t - t') = \delta(t - t')"
   caption="Greens funksjonen inverterer differensialoperatoren."
 />
 
-Fourier-transformasjon gjør ligningen algebraisk. På en planbølge $e^{-i\Omega (t - t')}$ er hver tidsderivasjon en multiplikasjon med $-i\Omega$, så operatoren $D(t)$ blir tallet $m\,(\omega^2 - \Omega^2)$, og i frekvensrommet er
+For å løse ligningen, skriv $G_R$ og $\delta$ som Fourier-integraler over frekvensen $\Omega$, med $\tau = t - t'$:
+
+$$
+G_R(\tau) = \int \frac{d\Omega}{2\pi}\, G(\Omega)\, e^{-i\Omega\tau}, \qquad \delta(\tau) = \int \frac{d\Omega}{2\pi}\, e^{-i\Omega\tau}
+$$
+
+Hver tidsderivasjon av $e^{-i\Omega\tau}$ gir faktoren $-i\Omega$, så $D(t)$ ganger integranden i $G_R$ med $m\,(\omega^2 - \Omega^2)$. Integranden må da være lik integranden i $\delta$, altså $m\,(\omega^2 - \Omega^2)\,G(\Omega) = 1$, og ligningen er blitt algebraisk:
 
 <Formula tex="G(\Omega) = \frac{1}{m}\, \frac{1}{\omega^2 - \Omega^2}" />
 
-Tilbaketransformasjonen med $\tau = t - t'$ er $G(\tau) = \int \frac{d\Omega}{2\pi}\, G(\Omega)\, e^{-i\Omega\tau}$, og på integrasjonsveien ligger to poler, ved $\Omega = \pm\omega$. Integralet er ikke definert før du har valgt hvordan de passeres, og valget kommer fra fysikken. Kausalitet krever at responsen kommer etter dyttet, altså $G_R(\tau) = 0$ for $\tau < 0$, og det oppnås ved å skyve begge polene ned i det komplekse planet, til $\Omega = \pm\omega - i\varepsilon$. Den <Term name="retardert greens funksjon">retarderte Greens funksjonen</Term> blir
+Integranden i $G_R(\tau)$ har to poler på den reelle aksen, ved $\Omega = \pm\omega$, og du må velge om integrasjonsveien går over eller under hver av dem. Responsen kan ikke komme før dyttet, så kravet er $G_R(\tau) = 0$ for $\tau < 0$. For $\tau < 0$ går $e^{-i\Omega\tau}$ mot null langt ute i øvre halvplan, så der kan du lukke integrasjonsveien med en halvsirkel uten å endre integralet. Ligger ingen poler i øvre halvplan, er integralet null. Kravet oppfyller du derfor ved å skyve begge polene ned i det komplekse planet, til $\Omega = \pm\omega - i\varepsilon$. Med polene der får du den <Term name="retardert greens funksjon">retarderte Greens funksjonen</Term>:
 
 <Formula
   tex="G_R(\tau) = \frac{1}{m}\, \frac{\sin(\omega\tau)}{\omega}\, \theta(\tau)"
-  caption="Retardert Greens funksjon for oscillatoren. Trinnfunksjonen $\theta$ bærer kausaliteten."
+  caption="Retardert Greens funksjon for oscillatoren. Trinnfunksjonen $\theta$ gjør at responsen kommer etter dyttet."
 />
 
 <Derivation title="Konturintegralet bak $G_R$">
@@ -57,14 +63,14 @@ $$
 G_R(\tau) = -\frac{1}{2\pi m} \int_{-\infty}^{\infty} d\Omega\, \frac{e^{-i\Omega\tau}}{(\Omega - \omega + i\varepsilon)\,(\Omega + \omega + i\varepsilon)}
 $$
 
-Konturen må lukkes der $e^{-i\Omega\tau}$ dør ut. For $\tau < 0$ er det i øvre halvplan; der er integranden analytisk, så integralet er null. For $\tau > 0$ lukkes konturen i nedre halvplan og omslutter begge polene. Cauchys residuesetning gir bidraget $2\pi i\, e^{i\omega\tau}/(-2\omega)$ fra polen ved $-\omega$ og $2\pi i\, e^{-i\omega\tau}/(2\omega)$ fra polen ved $+\omega$, med et ekstra minustegn fordi konturen løper med klokka. Med $\varepsilon \to 0$ er
+Lukk konturen med en halvsirkel der $e^{-i\Omega\tau}$ går mot null, så den ikke bidrar. For $\tau < 0$ ligger halvsirkelen i øvre halvplan; der er integranden analytisk, så integralet er null. For $\tau > 0$ lukkes konturen i nedre halvplan og omslutter begge polene. Cauchys residuesetning gir bidraget $2\pi i\, e^{i\omega\tau}/(-2\omega)$ fra polen ved $-\omega$ og $2\pi i\, e^{-i\omega\tau}/(2\omega)$ fra polen ved $+\omega$, med et ekstra minustegn fordi konturen løper med klokka. Med $\varepsilon \to 0$ er
 
 $$
 G_R(\tau) = \frac{i}{2m\omega}\,\bigl(e^{-i\omega\tau} - e^{i\omega\tau}\bigr)\,\theta(\tau) = \frac{1}{m}\,\frac{\sin(\omega\tau)}{\omega}\,\theta(\tau)
 $$
 </Derivation>
 
-Et enhetsdytt ved $\tau = 0$ setter altså en oscillator som lå i ro, i svingning med $x(t) = \sin(\omega t)/(m\omega)$, og før dyttet skjer ingenting. Superposisjonen gir en partikulær løsning; den generelle får du ved å legge til en løsning av den homogene ligningen, altså en fri svingning.
+Et enhetsdytt ved $\tau = 0$ setter altså en oscillator som lå i ro, i svingning med $x(t) = \sin(\omega t)/(m\omega)$, og før dyttet skjer ingenting. Integralet med $G_R$ er en partikulær løsning. Den generelle løsningen får du ved å legge til en fri svingning, en løsning med $J = 0$.
 
 <Simulation
   src="/sims/respons.js"
@@ -78,7 +84,7 @@ Et enhetsdytt ved $\tau = 0$ setter altså en oscillator som lå i ro, i svingni
 En oscillator ligger i ro når den konstante kraften $F_0$ slås på ved $t = 0$, altså $J(t) = F_0\,\theta(t)$. Finn $x(t)$.
 
 <Solution>
-Superposisjonen henter bare bidrag fra dytt mellom $t' = 0$, der kraften slås på, og $t' = t$, der trinnfunksjonen i $G_R$ kutter:
+Bare dytt mellom $t' = 0$, der kraften slås på, og $t' = t$, der trinnfunksjonen i $G_R$ kutter, bidrar til integralet:
 
 $$
 x(t) = \int_0^t dt'\, \frac{\sin\bigl(\omega(t - t')\bigr)}{m\omega}\, F_0
@@ -90,26 +96,26 @@ $$
 x(t) = \frac{F_0}{m\omega} \int_0^t du\, \sin(\omega u) = \frac{F_0}{m\omega} \cdot \frac{1 - \cos(\omega t)}{\omega}
 $$
 
-Løsningen svinger mellom $0$ og $2F_0/(m\omega^2)$, omkring den nye likevekten $x = F_0/(m\omega^2) = F_0/k$, der fjærkraften balanserer $F_0$. Amplituden er lik forskyvningen av likevekten, som den må være når oscillatoren starter i ro i den gamle.
+Oscillatoren svinger om den nye likevekten $x = F_0/(m\omega^2)$, der fjærkraften balanserer $F_0$. Den starter i ro i den gamle likevekten $x = 0$, så amplituden er også $F_0/(m\omega^2)$.
 
 <Answer>$x(t) = \dfrac{F_0}{m\omega^2}\,\bigl(1 - \cos(\omega t)\bigr)$</Answer>
 </Solution>
 </Example>
 
 <SelfCheck question="Hva i utregningen tvinger $G_R(\tau)$ til å være null for $\tau < 0$?">
-Plasseringen av polene. Med begge polene under den reelle aksen lukkes konturen for $\tau < 0$ i øvre halvplan, der integranden er analytisk, og integralet blir null. Å skyve polene ned er måten kravet om at responsen følger dyttet, går inn i regningen på.
+Plasseringen av polene. Med begge polene under den reelle aksen lukkes konturen for $\tau < 0$ i øvre halvplan, der integranden er analytisk, og integralet blir null. Kravet om at responsen kommer etter dyttet, går inn i regningen ved at du skyver polene ned.
 </SelfCheck>
 
 ## Partikkelsystemer
 
-Med $N$ partikler får hver partikkel merkelappen $i$, med masse $m_i$, posisjon $\vec r_i$ og impuls $\vec p_i = m_i \dot{\vec r}_i$. Kraften på partikkel $i$ deles i en ytre kraft $\vec F_i^{(e)}$ og indre krefter $\vec F_{ij}$ fra de andre partiklene, og Newtons tredje lov sier $\vec F_{ij} = -\vec F_{ji}$.
+Partikkel $i$ av $N$ har masse $m_i$, posisjon $\vec r_i$ og impuls $\vec p_i = m_i \dot{\vec r}_i$. Kraften på den er summen av en ytre kraft $\vec F_i^{(e)}$ og de indre kreftene $\vec F_{ij}$ fra de andre partiklene $j$. Newtons tredje lov sier $\vec F_{ij} = -\vec F_{ji}$.
 
 <Formula
   tex="\vec R = \frac{1}{M} \sum_i m_i \vec r_i, \qquad \vec P = M \dot{\vec R}"
   caption="<b>Massesenteret</b> og den totale impulsen, med $M = \sum_i m_i$."
 />
 
-Deriver $\vec P$ og sett inn Newtons andre lov for hver partikkel. De indre kreftene kommer i par $\vec F_{ij} + \vec F_{ji} = 0$ og faller ut av summen:
+Summer Newtons andre lov over alle partiklene. De indre kreftene kommer i par $\vec F_{ij} + \vec F_{ji} = 0$ og faller ut:
 
 <Formula
   tex="\dot{\vec P} = \sum_i \vec F_i^{(e)}"
@@ -127,20 +133,32 @@ vender seg, men banen til massesenteret er en parabel bestemt av tyngdekraften
 alene. Derfor kan planeter og baller regnes som punktpartikler så lenge du bare
 følger massesenteret.
 
-Den totale dreieimpulsen $\vec L = \sum_i \vec r_i \times \vec p_i$ følger samme
-mønster, men krever en sterkere antakelse. I $\dot{\vec L}$ står de indre
-kreftene igjen i par av formen $(\vec r_i - \vec r_j) \times \vec F_{ij}$, og
-parene forsvinner bare når kraften mellom to partikler ligger langs
-forbindelseslinja mellom dem. Slike krefter kalles
-<Term name="sentrale krefter">sentrale</Term>; gravitasjon og Coulomb-kraften er
-begge det.
+Den totale dreieimpulsen er $\vec L = \sum_i \vec r_i \times \vec p_i$. Når du deriverer,
+er $\dot{\vec r}_i \times \vec p_i = 0$, fordi $\vec p_i$ er parallell med $\dot{\vec r}_i$,
+så $\dot{\vec L} = \sum_i \vec r_i \times \dot{\vec p}_i$. Sett inn kraften på hver partikkel
+og samle de indre kreftene parvis. Paret $i, j$ gir
+$\vec r_i \times \vec F_{ij} + \vec r_j \times \vec F_{ji} = (\vec r_i - \vec r_j) \times \vec F_{ij}$
+etter Newtons tredje lov:
+
+$$
+\frac{d\vec L}{dt} = \sum_i \vec r_i \times \vec F_i^{(e)} + \sum_{i<j} (\vec r_i - \vec r_j) \times \vec F_{ij}
+$$
+
+Kryssproduktet i den siste summen er null når kraften ligger langs linja mellom
+partiklene, og bare da. Slike krefter kalles <Term name="sentrale krefter">sentrale</Term>;
+gravitasjon og Coulomb-kraften er begge sentrale. Med sentrale indre krefter er
 
 <Formula
   tex="\frac{d\vec L}{dt} = \vec N^{(e)}"
   caption="For sentrale indre krefter endres dreieimpulsen bare av det ytre dreiemomentet $\vec N^{(e)} = \sum_i \vec r_i \times \vec F_i^{(e)}$."
 />
 
-Den kinetiske energien deler seg i to når posisjonene skrives $\vec r_i = \vec R + \vec y_i$. Bindingen $\sum_i m_i \vec y_i = 0$ fjerner kryssleddet:
+Skriv posisjonene som $\vec r_i = \vec R + \vec y_i$, med $\vec y_i$ målt fra
+massesenteret. Definisjonen av $\vec R$ gir
+$\sum_i m_i \vec y_i = \sum_i m_i \vec r_i - M\vec R = 0$, og da er også
+$\sum_i m_i \dot{\vec y}_i = 0$. Kvadrer parentesen i
+$T = \tfrac12 \sum_i m_i (\dot{\vec R} + \dot{\vec y}_i)^2$. Kryssleddet er
+$\dot{\vec R} \cdot \sum_i m_i \dot{\vec y}_i = 0$, så
 
 <Formula
   tex="T = \tfrac12 M \dot{\vec R}^2 + \tfrac12 \sum_i m_i \dot{\vec y}_i^{\,2}"
@@ -150,15 +168,21 @@ Den kinetiske energien deler seg i to når posisjonene skrives $\vec r_i = \vec 
 <Statement kind="principle" name="Bevaringslover og symmetrier">
 Hver bevaringslov svarer til en symmetri: impuls til at rommet er likt overalt,
 dreieimpuls til at ingen retning er utpekt, og energi til at lovene er de samme
-i dag som i morgen. Sammenhengen er Noethers teorem, og beviset hører hjemme i
-Lagrange-formalismen.
+i dag som i morgen. Sammenhengen er Noethers teorem.
 </Statement>
 
-To legemer uten ytre krefter er det viktigste spesialtilfellet. Massesenteret
-går med konstant hastighet, så hele dynamikken ligger i relativkoordinaten
-$\vec r = \vec r_1 - \vec r_2$. Trekk bevegelsesligningene fra hverandre og bruk
-$\vec F_{21} = -\vec F_{12}$, så står det igjen ett legeme med
-<Term name="redusert masse">redusert masse</Term>:
+For impulsen kan du se sammenhengen direkte. Er rommet likt overalt, avhenger
+den potensielle energien $V$ bare av forskjellene $\vec r_i - \vec r_j$, og den
+endres ikke når du flytter alle partiklene like langt $\vec a$. For en liten
+$\vec a$ er endringen $\vec a \cdot \sum_i \nabla_i V$, og den er null for alle
+retninger av $\vec a$. Summen av de indre kreftene, $-\sum_i \nabla_i V$, er
+altså null, som Newtons tredje lov ga over.
+
+For to legemer uten ytre krefter går massesenteret med konstant hastighet, og
+bare relativkoordinaten $\vec r = \vec r_1 - \vec r_2$ står igjen.
+Trekk $\ddot{\vec r}_2 = -\vec F_{12}/m_2$ fra $\ddot{\vec r}_1 = \vec F_{12}/m_1$, så er
+$\ddot{\vec r} = (1/m_1 + 1/m_2)\,\vec F_{12}$. Med $1/\mu = 1/m_1 + 1/m_2$ er resultatet bevegelsesligningen for ett
+legeme med <Term name="redusert masse">redusert masse</Term>:
 
 <Formula
   tex="\mu \ddot{\vec r} = \vec F_{12}, \qquad \mu = \frac{m_1 m_2}{m_1 + m_2}"
@@ -178,33 +202,32 @@ godt inne i sola.
 
 ## Elastiske støt
 
-I et støt er kraften mellom partiklene stor og kortvarig, og da er
-tidsintegralet nyttigere enn kraften selv.
-<Term name="kraftstøt">Kraftstøtet</Term> er <FormulaRef id="kraftstot" />, altså
-endringen i impuls, rett fra Newtons andre lov. Et
-<Term name="elastisk støt">elastisk støt</Term> bevarer i tillegg den kinetiske
-energien; det er utfallet når kraften mellom partiklene er konservativ.
+I et støt er kraften mellom partiklene stor, kortvarig og ukjent i detalj.
+Tidsintegralet av den er <Term name="kraftstøt">kraftstøtet</Term>
+<FormulaRef id="kraftstot" />, endringen i impuls. Et
+<Term name="elastisk støt">elastisk støt</Term> bevarer både impuls og kinetisk
+energi. Er kraften mellom partiklene konservativ, er støtet elastisk. Partiklene
+er langt fra hverandre både før og etter støtet, så potensialenergien mellom dem
+er den samme, og da er den kinetiske energien også den samme.
 
 La en partikkel med hastighet $\vec v$ treffe en annen med samme masse i ro, og
-la støtet være elastisk. Impulsbevarelse gir $\vec v = \vec v_1 + \vec v_2$, og
-energibevarelse gir $v^2 = v_1^2 + v_2^2$. Kvadrer den første ligningen og
-sammenlign med den andre, så må kryssleddet være null:
+la støtet være elastisk. Massen forkortes, så impulsbevarelse gir
+$\vec v = \vec v_1 + \vec v_2$ og energibevarelse $v^2 = v_1^2 + v_2^2$. Kvadrer
+den første, $v^2 = v_1^2 + v_2^2 + 2\,\vec v_1 \cdot \vec v_2$, og sammenlign med
+den andre:
 
 <Formula
   tex="\vec v_1 \cdot \vec v_2 = 0"
   caption="Enten stopper den første partikkelen, eller de to går ut vinkelrett på hverandre."
 />
 
-<Sidenote>
-En tung kule med masse $M$ triller mot en lett kule med masse $m$ som ligger i
-ro foran en vegg. Med $M/m = 100^N$ er det totale antallet støt, mellom kulene
-og mot veggen, lik de første $N + 1$ sifrene i $\pi$, altså 31 støt for $M/m = 100$.
-</Sidenote>
-
-Mer sier ikke bevaringslovene. De to hastighetene har seks komponenter, og
-ligningene er fire, så hvordan energien fordeles, bestemmes av selve
-vekselvirkningen. I én dimensjon er det annerledes: to ukjente og to ligninger,
-og utfallet er entydig.
+Impuls- og energibevarelse er fire ligninger for de seks komponentene i
+$\vec v_1$ og $\vec v_2$. De to komponentene som står igjen, avhenger av kraften
+mellom partiklene og av hvor de treffer hverandre. I én dimensjon er det to
+ukjente hastigheter etter støtet og to ligninger. Impulsligningen er lineær og
+energiligningen kvadratisk, så de har høyst to felles løsninger. Hastighetene
+før støtet oppfyller begge ligningene, så den andre løsningen er hastighetene
+etter støtet, og de er entydige.
 
 <Example title="Tennisball oppå basketball">
 En tennisball ($m = 0{,}058$ kg) ligger rett oppå en basketball ($M = 0{,}60$ kg),
@@ -213,10 +236,11 @@ alle støt er elastiske. Finn farten til tennisballen rett etter støtet mellom
 ballene, og hvor mange ganger fallhøyden den spretter opp.
 
 <Solution>
-Velg positiv retning oppover, og tenk på ballene som så vidt adskilte.
-Basketballen treffer gulvet først og snur med samme fart, så i støtet mellom
-ballene er den på vei opp med $+u$ mens tennisballen fortsatt er på vei ned med
-$-u$. Kall fartene etterpå $V$ og $v$. Bevaring av impuls og kinetisk energi gir
+Velg positiv retning oppover, og tenk på ballene som så vidt adskilte, så
+støtene skjer ett om gangen. Basketballen treffer gulvet først og snur med samme
+fart, så i støtet mellom ballene er den på vei opp med $+u$ mens tennisballen
+fortsatt er på vei ned med $-u$. Kall fartene etterpå $V$ og $v$. Bevaring av
+impuls og kinetisk energi gir
 
 $$
 Mu - mu = MV + mv, \qquad Mu^2 + mu^2 = MV^2 + mv^2
@@ -259,8 +283,8 @@ $(v/u)^2 = 2{,}65^2 = 7{,}0$ ganger fallhøyden.
 
 <KeyTakeaways>
 - For en lineær ligning er responsen på en vilkårlig kraft $\int dt'\, G_R(t - t')\, J(t')$, en superposisjon av responser på deltadytt.
-- Kausalitet velger den retarderte Greens funksjonen: polene skyves under den reelle aksen, og $G_R(\tau) = 0$ for $\tau < 0$. For oscillatoren er $G_R(\tau) = \sin(\omega\tau)/(m\omega)\,\theta(\tau)$.
-- Massesenteret beveger seg som én partikkel med hele massen, styrt av de ytre kreftene alene.
+- Responsen kan ikke komme før dyttet, så polene skyves under den reelle aksen, og $G_R(\tau) = 0$ for $\tau < 0$. For oscillatoren er $G_R(\tau) = \sin(\omega\tau)/(m\omega)\,\theta(\tau)$.
+- Massesenteret beveger seg som én partikkel med hele massen, påvirket bare av de ytre kreftene.
 - Impulsbevarelse følger av Newtons tredje lov. Dreieimpulsbevarelse krever i tillegg sentrale krefter, og bevaringslovene svarer til symmetrier i rom og tid.
 - Tolegemeproblemet uten ytre krefter er et ettlegemeproblem for relativkoordinaten, med redusert masse $\mu = m_1 m_2/(m_1 + m_2)$.
 - Et elastisk støt bevarer impuls og kinetisk energi. Like masser med den ene i ro gir vinkelrette utgangshastigheter, og i én dimensjon er utfallet entydig.
