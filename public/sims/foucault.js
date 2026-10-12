@@ -1,39 +1,41 @@
 /**
- * Foucaults pendel sett ovenfra. Kula svinger fram og tilbake gjennom
- * sentrum, og svingeplanet dreier med vinkelfarten ω sin φ: med klokka på den
- * nordlige halvkula, mot klokka på den sørlige, ikke i det hele tatt ved
- * ekvator. De gamle svingelinjene blir stående som en vifte, og buen fra
- * startlinja til den gjeldende linja er vinkelen planet har dreid.
+ * Foucaults pendel sett ovenfra, i gulvets system. Kula slippes fra ro ute ved
+ * kanten i nord og følger bevegelsesligningene for små utslag,
+ *   ẍ = −ω₀² x + 2Ω ẏ,   ÿ = −ω₀² y − 2Ω ẋ,   Ω = ω sin φ,
+ * der leddene med Ω er den horisontale Corioliskraften. Corioliskraften bøyer
+ * banen mot høyre under hver sving (nordlige halvkule), så kula tegner en
+ * rosett: spisse vendepunkter ute ved kanten, og banen bommer så vidt på
+ * sentrum. Sporet blekner bakover. Buen fra startlinja viser vinkelen Ωt
+ * svingeplanet i snitt har dreid.
  *
- * Tida er skrudd opp: ett døgn tar ett minutt, og pendelen svinger én gang
- * per 2 s. Kontrakt: default-eksportert init(api), api = { stage, controls,
- * getSize, onResize, signal }.
+ * Tida er skrudd opp: ett døgn tar 60 s, og pendelen svinger én gang per 5 s.
+ * Kontrakt: default-eksportert init(api), api = { stage, controls, getSize,
+ * onResize, signal }.
  */
 import {
-  slider, button, animate, svg, txt, line, circle, arc, arrow,
+  slider, button, animate, svg, txt, line, circle, arc, arrow, rk4,
   FIXED, MOVING, DERIVED, HINT, LABEL,
 } from "./_mekanikk.js";
 
 export default function init({ stage, controls, getSize, onResize, signal }) {
   const DAY = 60; // sekunder per døgn i simuleringen
   const OMEGA = (2 * Math.PI) / DAY; // jordas vinkelfart
-  const T0 = 2; // svingeperiode
+  const T0 = 5; // svingeperiode
   const W0 = (2 * Math.PI) / T0;
   const PSI0 = Math.PI / 2; // startplanet: nord–sør
-  const KEEP = 28; // antall gamle svingelinjer som vises
+  const TRAIL = 30; // sekunder spor som vises
+  const MARK = 0.04; // tid mellom sporpunktene
   let lat = 63; // breddegrad i grader
   let t = 0;
-  let psi = PSI0; // svingeplanets retning, fra øst mot nord
-  let lines = []; // gamle svingeretninger
-  let nextMark = T0 / 2;
+  let y = [0, 1, 0, 0]; // x, y, ẋ, ẏ i amplituder, x mot øst og y mot nord
+  let trail = [];
 
   const reset = () => {
     t = 0;
-    psi = PSI0;
-    lines = [];
-    nextMark = T0 / 2;
+    y = [Math.cos(PSI0), Math.sin(PSI0), 0, 0];
+    trail = [[y[0], y[1]]];
   };
-  const rate = () => -OMEGA * Math.sin((lat * Math.PI) / 180); // dψ/dt
+  const big = () => OMEGA * Math.sin((lat * Math.PI) / 180); // Ω = ω sin φ
 
   controls.append(
     slider({
@@ -50,18 +52,26 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
         reset();
       },
     }),
-    button("Nullstill", "Start pendelen på nytt i nord–sør-planet", reset, signal),
+    button("Nullstill", "Slipp pendelen på nytt fra nord", reset, signal),
   );
 
+  const f = (_, [x, yy, vx, vy]) => {
+    const om = big();
+    return [vx, vy, -W0 * W0 * x + 2 * om * vy, -W0 * W0 * yy - 2 * om * vx];
+  };
+  let since = 0;
   function step(dt) {
+    const n = 8;
+    for (let i = 0; i < n; i++) y = rk4(y, f, t, dt / n);
     t += dt;
-    psi += rate() * dt;
-    if (t >= nextMark) {
-      lines.push(psi);
-      if (lines.length > KEEP) lines.shift();
-      nextMark += T0 / 2;
+    since += dt;
+    if (since >= MARK) {
+      since = 0;
+      trail.push([y[0], y[1]]);
+      if (trail.length > TRAIL / MARK) trail.shift();
     }
   }
+  reset();
 
   function render() {
     const { w, h } = getSize();
@@ -86,19 +96,24 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
       g += txt(x, y + 4, s, { anchor: "middle" });
     }
 
-    // Gamle svingelinjer, eldst svakest.
-    lines.forEach((a, i) => {
-      const op = 0.06 + (0.32 * (i + 1)) / lines.length;
-      const [x1, y1] = P(A, a);
-      const [x2, y2] = P(-A, a);
-      g += line(x1, y1, x2, y2, { color: MOVING, width: 1, opacity: op });
-    });
+    // Sporet etter kula, i fem bolker som blekner bakover.
+    const K = 5;
+    const per = Math.ceil(trail.length / K);
+    for (let k = 0; k < K; k++) {
+      const part = trail.slice(k * per, (k + 1) * per + 1);
+      if (part.length < 2) continue;
+      let d = "";
+      part.forEach(([x, yy], i) => {
+        d += `${i ? "L" : "M"} ${(cx + A * x).toFixed(1)} ${(cy - A * yy).toFixed(1)} `;
+      });
+      g += `<path d="${d}" fill="none" stroke="${MOVING}" stroke-width="1.2" opacity="${(0.1 + (0.5 * (k + 1)) / K).toFixed(2)}"/>`;
+    }
 
     // Startplanet og buen planet har dreid, med retning.
     const [sx1, sy1] = P(A + 10, PSI0);
     const [sx2, sy2] = P(-A - 10, PSI0);
     g += line(sx1, sy1, sx2, sy2, { color: HINT, width: 1, dash: "3 4" });
-    const turned = psi - PSI0; // negativ = med klokka
+    const turned = -big() * t; // svingeplanets midlere dreining, negativ = med klokka
     if (Math.abs(turned) > 0.03) {
       const ra = 0.5 * R;
       const lim = Math.min(Math.abs(turned), 1.9 * Math.PI) * Math.sign(turned);
@@ -113,8 +128,8 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     }
 
     // Snora sett ovenfra og kula.
-    const s = A * Math.cos(W0 * t);
-    const [bx, by] = P(s, psi);
+    const bx = cx + A * y[0];
+    const by = cy - A * y[1];
     g += line(cx, cy, bx, by, { color: LABEL, width: 1 });
     g += circle(cx, cy, 2.5, { fill: FIXED, stroke: FIXED });
     g += `<circle cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" r="8" style="fill:${MOVING}"/>`;

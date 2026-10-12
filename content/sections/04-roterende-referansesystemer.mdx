@@ -36,11 +36,11 @@ Den første summen er endringen en observatør i $K'$ måler, fordi enhetsvektor
   caption="Den tidsderiverte av en vilkårlig vektor, målt i inertialsystemet $K$ og i det roterende systemet $K'$. Indeksen sier hvilket system endringen måles i."
 />
 
-Brukt på $\vec\omega$ selv gir sammenhengen $\vec\omega \times \vec\omega = 0$, så $\dot{\vec\omega}$ er den samme i begge systemer.
+Sett $\vec A = \vec\omega$. Da er det siste leddet $\vec\omega \times \vec\omega = 0$, ettersom kryssproduktet av en vektor med seg selv er null. Dette betyr at $\dot{\vec\omega}$ er den samme målt i $K$ og i $K'$.
 
 ## Hastighet og akselerasjon
 
-Newtons andre lov gjelder i $K$, så du trenger akselerasjonen i $K$ uttrykt ved størrelsene en observatør i $K'$ måler. Bruk sammenhengen på posisjonen $\vec r$. Med $\vec v = (d\vec r/dt)_K$ og $\vec v\,' = (d\vec r/dt)_{K'}$ er
+På jorda måler du bevegelse i forhold til bakken, altså i $K'$, og vil vite hvilken akselerasjon $\vec a\,'$ kreftene gir der. Newtons andre lov gjelder bare i $K$, så veien går gjennom $K$: skriv $\vec a$ ved størrelser målt i $K'$, sett det inn i $m\vec a = \vec F$ og løs for $\vec a\,'$. Bruk sammenhengen på posisjonen $\vec r$. Med $\vec v = (d\vec r/dt)_K$ og $\vec v\,' = (d\vec r/dt)_{K'}$ er
 
 <Formula
   tex="\vec v = \vec v\,' + \vec\omega \times \vec r"
@@ -104,15 +104,38 @@ Sentrifugalkraften $m\omega^2\vec d$ avhenger bare av avstanden til aksen og pek
 
 Legg $V_\text{s}$ til den potensielle energien, så løser du likevektsproblemer i et roterende system som vanlige potensialproblemer.
 
-På jorda ligger et punkt på breddegraden $\phi$ i avstanden $d = R\cos\phi$ fra aksen, så sentrifugalakselerasjonen $\omega^2 R\cos\phi$ peker ut fra aksen, ikke rett opp. Komponenten $\omega^2 R\cos^2\phi$ langs loddlinja trekker fra $g$, og komponenten $\omega^2 R\cos\phi\sin\phi$ langs bakken peker mot ekvator. Lagt til $\vec g$ gir sentrifugalakselerasjonen den <Term name="effektiv tyngdeakselerasjon">effektive tyngdeakselerasjonen</Term>:
+Heng et lodd i ei snor på jordoverflaten, i posisjonen $\vec R$ målt fra jordas sentrum. Loddet ligger i ro i $K'$, så $\vec v\,' = 0$ og $\vec a\,' = 0$. Corioliskraften er da null, og Eulerkraften sløyfes. På loddet virker tyngden $m\vec g$, der $\vec g$ peker mot jordas sentrum, og snordraget $\vec S$. Newtons andre lov i $K'$ gir
+
+$$
+0 = m\vec g + \vec S - m\,\vec\omega \times (\vec\omega \times \vec R)
+\quad\Rightarrow\quad
+\vec S = -m\left[\vec g - \vec\omega \times (\vec\omega \times \vec R)\right]
+$$
+
+Snora holder altså igjen mot summen av tyngden og sentrifugalkraften, og loddet henger langs denne summen. Summen per masse er den <Term name="effektiv tyngdeakselerasjon">effektive tyngdeakselerasjonen</Term>:
 
 <Formula
   tex="\vec g_\text{eff} = \vec g - \vec\omega \times (\vec\omega \times \vec R)"
-  caption="Tyngdeakselerasjonen et lodd i ro på jorda kjenner. $\vec R$ er posisjonen målt fra jordas sentrum."
+  caption="Tyngdeakselerasjonen et lodd i ro på jorda kjenner. $\vec g$ peker mot jordas sentrum, og $\vec R$ er posisjonen målt fra sentrum."
 />
 
-Med $\omega = 7{,}29 \cdot 10^{-5}\ \text{s}^{-1}$ og $R = 6371$ km er $\omega^2 R = 3{,}4$ cm/s², altså $0{,}35\,\%$ av $g$ ved ekvator. Komponenten langs bakken delt på $g$ gir vinkelen mellom loddlinja og retningen mot sentrum, $\tan\alpha \approx \omega^2 R\sin\phi\cos\phi/g$. Den er størst ved $\phi = 45°$, med $1{,}7 \cdot 10^{-3}$ rad, omtrent $0{,}1°$. Jorda er ikke ei kule. Sentrifugalkraften fikk den unge, flytende jorda til å bule ut ved ekvator til overflaten sto vinkelrett på $\vec g_\text{eff}$ overalt. Derfor henger loddet vinkelrett på bakken der du står.
+Det andre leddet er sentrifugalakselerasjonen $\omega^2\vec d$. På breddegraden $\phi$ er avstanden til aksen $d = R\cos\phi$, så leddet har lengden $\omega^2 R\cos\phi$ og peker ut fra aksen, ikke rett opp. Komponenten $\omega^2 R\cos^2\phi$ rett opp trekker fra $g$, og komponenten $\omega^2 R\cos\phi\sin\phi$ langs bakken peker mot ekvator.
 
+<Derivation title="Loddlinja og jordas form">
+Med $\omega = 7{,}29 \cdot 10^{-5}\ \text{s}^{-1}$ og $R = 6371$ km er $\omega^2 R = 3{,}4$ cm/s², altså $0{,}35\,\%$ av $g$ ved ekvator. Komponenten langs bakken delt på $g$ gir vinkelen mellom loddlinja og retningen mot sentrum, $\tan\alpha \approx \omega^2 R\sin\phi\cos\phi/g$. Den er størst ved $\phi = 45°$, med $1{,}7 \cdot 10^{-3}$ rad, omtrent $0{,}1°$.
+
+Jorda er ikke ei kule. Sentrifugalkraften fikk den unge, flytende jorda til å bule ut ved ekvator til overflaten sto vinkelrett på $\vec g_\text{eff}$ overalt. Derfor henger loddet vinkelrett på bakken der du står.
+
+<Simulation
+  src="/sims/jordform.js"
+  title="Loddet på den roterende jorda"
+  caption="Jorda i snitt, med kula stiplet til sammenligning. Loddet henger langs $\vec g_\text{eff}$, summen av $\vec g$ mot sentrum og $\omega^2\vec d$ ut fra aksen, og flaten står vinkelrett på loddlinja overalt. Rotasjonen er overdrevet: med jordas egen $\omega$ er avviket for lite til å se."
+  host="dom"
+  height={340}
+/>
+</Derivation>
+
+<Derivation title="Vannflaten i ei roterende bøtte">
 Vannet i ei bøtte som roterer om sin egen akse, ligger i ro sett fra bøtta. Da står summen av tyngdekraften og sentrifugalkraften vinkelrett på vannflaten, ellers ville vannet strømme langs flaten. Summen per masse er minus gradienten til den potensielle energien per masse, $gz + V_\text{s}/m$, og en flate som overalt står vinkelrett på gradienten, har samme potensielle energi i alle punkter. Med $d$ som avstanden til aksen er
 
 $$
@@ -121,15 +144,18 @@ $$
 
 Vannflaten er en paraboloide.
 
-En måne i bane om en planet ligger i ro i systemet som roterer med månen. Der gir planetens tyngde og sentrifugalkraften til sammen en kraft som trekker en masse på månens overflate bort fra månen, og månens egen tyngde holder massen igjen. Kommer månen nærmere planeten enn Roche-grensen
+<Simulation
+  src="/sims/botte.js"
+  title="Vann i ei roterende bøtte"
+  caption="Sett fra bøtta, der vannet ligger i ro. Pilene viser $\vec g$ og $\omega^2\vec d$ på et vannelement i flaten, og summen deres står vinkelrett på flaten. Jo større $\omega$, desto brattere blir flaten ute ved kanten."
+  host="dom"
+  height={300}
+/>
+</Derivation>
 
-$$
-r_\text{R} = C R_\text{p}\left(\frac{\rho_\text{p}}{\rho_\text{m}}\right)^{1/3}
-$$
+<Derivation title="Roche-grensen">
+En måne i bane om en planet ligger i ro i systemet som roterer med månen. Der gir planetens tyngde og sentrifugalkraften til sammen en kraft som trekker en masse på månens overflate bort fra månen, og månens egen tyngde holder massen igjen.
 
-vinner planeten, og månen går i stykker. Her er $R_\text{p}$ planetens radius og $\rho_\text{p}$ og $\rho_\text{m}$ massetettheten til planeten og månen. For en kuleformet måne som holder formen, er $C = 3^{1/3} \approx 1{,}44$. En flytende måne strekkes ut og går i stykker lenger ute, ved $C \approx 2{,}44$.
-
-<Derivation title="Roche-grensen for en kuleformet måne">
 La planeten ha massen $M$, månen massen $m_\text{m}$ og radien $R_\text{m}$, og la $r$ være avstanden mellom sentrene. Planeten er mye tyngre enn månen, så systemet roterer om planetens sentrum. Hvis månens sentrum ligger i ro i systemet, er
 
 $$
@@ -151,7 +177,21 @@ $$
 \frac{Gm_\text{m}}{R_\text{m}^2} > \frac{3GMR_\text{m}}{r^3} \quad\Rightarrow\quad r^3 > 3\,\frac{M}{m_\text{m}}\,R_\text{m}^3
 $$
 
-Med $M = \tfrac43\pi\rho_\text{p}R_\text{p}^3$ og $m_\text{m} = \tfrac43\pi\rho_\text{m}R_\text{m}^3$ er $(M/m_\text{m})\,R_\text{m}^3 = (\rho_\text{p}/\rho_\text{m})\,R_\text{p}^3$, så grensen er $r_\text{R} = 3^{1/3} R_\text{p}(\rho_\text{p}/\rho_\text{m})^{1/3}$.
+Med $M = \tfrac43\pi\rho_\text{p}R_\text{p}^3$ og $m_\text{m} = \tfrac43\pi\rho_\text{m}R_\text{m}^3$ er $(M/m_\text{m})\,R_\text{m}^3 = (\rho_\text{p}/\rho_\text{m})\,R_\text{p}^3$. Her er $R_\text{p}$ planetens radius og $\rho_\text{p}$ og $\rho_\text{m}$ massetettheten til planeten og månen. Kommer månen nærmere enn Roche-grensen
+
+$$
+r_\text{R} = C R_\text{p}\left(\frac{\rho_\text{p}}{\rho_\text{m}}\right)^{1/3}, \qquad C = 3^{1/3} \approx 1{,}44
+$$
+
+vinner planeten, og månen går i stykker. Denne $C$ gjelder en kuleformet måne som holder formen. En flytende måne strekkes ut og går i stykker lenger ute, ved $C \approx 2{,}44$.
+
+<Simulation
+  src="/sims/roche.js"
+  title="Løse steiner på en måne"
+  caption="Sett fra systemet som roterer med månen. Planeten og månen har samme massetetthet, så Roche-grensen ligger ved $1{,}44\,R_\text{p}$. Innenfor den er forskjellen mellom planetens tyngde og sentrifugalkraften større enn månens egen tyngde, og steinene på nærsiden og baksiden løfter seg."
+  host="dom"
+  height={280}
+/>
 </Derivation>
 
 ## Corioliskraften
@@ -169,6 +209,14 @@ Det første leddet er $\vec v\,'$ dreid en kvart omdreining mot høyre, med leng
 <Formula
   tex="\vec F_\text{C} = -2m\,\vec\omega \times \vec v\,'"
   caption="<b>Corioliskraften.</b> For bevegelse langs bakken på breddegraden $\phi$ er den horisontale komponenten $2m\omega v\sin\phi$, rettet mot høyre for fartsretningen på den nordlige halvkula."
+/>
+
+<Simulation
+  src="/sims/coriolis-jord.js"
+  title="Puck på den roterende jorda"
+  caption="Pucken sklir uten friksjon langs bakken, sett fra jorda. Corioliskraften står vinkelrett på farten og bøyer banen mot høyre på den nordlige halvkula og mot venstre på den sørlige. Langt fra ekvator er kraften nesten den samme hele veien, og pucken går nesten i en sirkel. Nær ekvator endrer den seg langs banen, og sirkelen åpner seg. Langs selve ekvator er den horisontale delen null, og pucken går rett fram. Jordas rotasjon er overdrevet, så banene får plass på kloden."
+  host="dom"
+  height={380}
 />
 
 Luft som strømmer inn mot et lavtrykk, bøyes mot høyre, bommer på sentrum og sirkulerer mot klokka rundt det. Derfor roterer orkaner mot klokka på den nordlige halvkula og med klokka på den sørlige. I badekaret er Coriolisakselerasjonen $2\omega v$ omkring $10^{-5}$ m/s² for $v = 10$ cm/s, og strømmer som er igjen i vannet fra før, er mye sterkere.
@@ -304,7 +352,7 @@ Ved polen er $\sin\phi = 1$. Pendelen svinger i et fast plan i forhold til stjer
 <Simulation
   src="/sims/foucault.js"
   title="Foucaults pendel sett ovenfra"
-  caption="Kula svinger gjennom sentrum, og svingeplanet dreier med vinkelfarten $\omega\sin\phi$. Tida er skrudd opp så ett døgn tar ett minutt. Flytt breddegraden: ved polen går planet en runde per døgn, ved ekvator står det stille, og sør for ekvator dreier planet andre veien."
+  caption="Kula slippes fra ro i nord. Corioliskraften bøyer banen mot høyre under hver sving, så kula tegner en rosett med spisse vendepunkter ved kanten, og svingeplanet dreier i snitt med vinkelfarten $\omega\sin\phi$. Tida er skrudd opp så ett døgn tar ett minutt. Flytt breddegraden: ved polen går planet en runde per døgn, ved ekvator står det stille, og sør for ekvator dreier planet andre veien."
   host="dom"
   height={340}
 />
