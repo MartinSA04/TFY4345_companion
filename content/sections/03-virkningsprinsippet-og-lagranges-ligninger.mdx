@@ -84,7 +84,7 @@ Navnet «prinsippet om minste virkning» henger igjen, men kravet er bare at $S$
   title="The Closest We've Come to a Theory of Everything"
   channel="Veritasium"
   duration="32:44"
-  caption="Historien bak prinsippet, fra brachistokronen via Fermats minste tid til Maupertuis, Euler og Lagrange, med den samme utledningen som over."
+  caption="Historien bak prinsippet, fra brachistokronen via Fermats minste tid til Maupertuis, Euler og Lagrange, og fram til Lagranges ligninger og virkningen som integralet av kinetisk minus potensiell energi."
   number={1}
 />
 
@@ -249,14 +249,19 @@ oppgaven.
 
 b) $\partial L/\partial\dot\theta = \tfrac{m\ell^2}{2}\dot\theta(1 + \sin^2\theta)$
 og $\partial L/\partial\theta = \tfrac{m\ell^2}{2}\dot\theta^2\sin\theta\cos\theta - mg\ell\sin\theta$.
-Lagranges ligning gir, etter forkorting med $m\ell^2/2$,
+Den tidsderiverte av den første er
+$\tfrac{m\ell^2}{2}\bigl[\ddot\theta(1 + \sin^2\theta) + 2\dot\theta^2\sin\theta\cos\theta\bigr]$.
+Trekk fra $\partial L/\partial\theta$. Da blir $\dot\theta^2$-leddene
+$2\dot\theta^2\sin\theta\cos\theta - \dot\theta^2\sin\theta\cos\theta = \dot\theta^2\sin\theta\cos\theta$,
+og Lagranges ligning gir, etter forkorting med $m\ell^2/2$,
 
 $$
 \ddot\theta\,(1 + \sin^2\theta) \allowbreak + \dot\theta^2\sin\theta\cos\theta \allowbreak + \frac{2g}{\ell}\sin\theta = 0.
 $$
 
-c) For små utslag er $\sin\theta \approx \theta$, $\sin^2\theta$ neglisjerbar
-og $\dot\theta^2\sin\theta$ av andre orden, så ligningen blir
+c) For små utslag er $\sin\theta \approx \theta$, og leddene
+$\ddot\theta\sin^2\theta$ og $\dot\theta^2\sin\theta\cos\theta$ er av tredje orden
+i utslaget. Bare de lineære leddene står igjen, så ligningen blir
 $\ddot\theta + (2g/\ell)\,\theta = 0$, en harmonisk oscillator med $\omega = \sqrt{2g/\ell}$.
 
 <Answer>b) $\ddot\theta(1+\sin^2\theta) + \dot\theta^2\sin\theta\cos\theta + (2g/\ell)\sin\theta = 0$. c) $\omega = \sqrt{2g/\ell}$.</Answer>
@@ -360,7 +365,7 @@ $$
 \nabla \times \vec A' - \nabla \times \vec A = 0 \quad\Rightarrow\quad \nabla \times (\vec A' - \vec A) = 0
 $$
 
-Dette betyr at $\vec A' - \vec A$ kan skrives som en gradient, ettersom et vektorfelt med $\nabla \times \vec F = 0$ i hele rommet er en gradient. Da kan $\vec A'$ skrives som $\vec A + \nabla\chi$, der $\chi(\vec r, t)$ er en vilkårlig funksjon.
+Dette betyr at $\vec A' - \vec A$ kan skrives som en gradient, ettersom et vektorfelt med $\nabla \times \vec F = 0$ i hele rommet er en gradient. Da kan $\vec A'$ skrives som $\vec A + \nabla\chi$ for en funksjon $\chi(\vec r, t)$.
 
 Hvis $\vec A'$ og et nytt skalarpotensial $\phi'$ også skal gi det samme elektriske feltet, er $-\nabla\phi' - \partial\vec A'/\partial t = -\nabla\phi - \partial\vec A/\partial t$. Med $\vec A' = \vec A + \nabla\chi$ blir ligningen
 

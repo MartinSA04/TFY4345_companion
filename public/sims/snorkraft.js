@@ -1,7 +1,7 @@
 /**
- * Snorkraften i pendelen: kule i ei snor med lengde l, tegnet med vinkelen θ
+ * Snordraget i pendelen: kule i ei snor med lengde l, tegnet med vinkelen θ
  * fra loddlinja. Glidebryteren setter farten i bunnpunktet. Den oransje pila
- * er snorkraften S = mlθ̇² + mg cos θ, den grå er tyngden mg, i samme
+ * er snordraget S = mlθ̇² + mg cos θ, den grå er tyngden mg, i samme
  * målestokk. Blir S negativ, kan snora ikke holde igjen: den blir slakk, og
  * kula går i en kastebane til snora strammes igjen. Da forsvinner den
  * radielle delen av farten, slik en snor som ikke tøyer seg gjør det.
@@ -119,7 +119,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     g += circle(cx, cy, L, { stroke: HINT, width: 1, dash: "3 4" });
     g += line(cx, cy, cx, cy + L + 10, { color: HINT, width: 1, dash: "3 4" });
 
-    // Der snorkraften blir null: cos θ* = (2 − v₀²/gl)/3.
+    // Der snordraget blir null: cos θ* = (2 − v₀²/gl)/3.
     const k = v0 * v0;
     if (k > 2 && k < 5) {
       const ts = Math.acos((2 - k) / 3);
@@ -157,7 +157,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     }
     g += support(cx, cy);
 
-    // Kreftene på kula, i samme målestokk: tyngden ned, snorkraften langs snora.
+    // Kreftene på kula, i samme målestokk: tyngden ned, snordraget langs snora.
     g += arrow(bx, by, bx, by + F, LABEL, 1.5);
     g += txt(bx + 7, by + F + 4, "mg");
     if (taut && S > 0) {

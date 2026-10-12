@@ -24,7 +24,7 @@ $$
 m(q)\ddot q + \tfrac12 m'(q)\dot q^2 + V'(q) = 0
 $$
 
-så $q = q_0$ med $\dot q = 0$ er en løsning når $V'(q_0) = 0$. Sett $q = q_0 + \eta$ med $\eta$ liten. Lagranges ligning deriverer $L$ én gang, så utvikler du $L$ til andre orden i $\eta$ og $\dot\eta$, blir bevegelsesligningen lineær i $\eta$. Potensialet blir $V \approx V(q_0) + \tfrac12 V''(q_0)\eta^2$. Leddet av første orden er null fordi $V'(q_0) = 0$, og konstanten påvirker ikke bevegelsen. I den kinetiske energien er $\dot\eta^2$ allerede av andre orden, så $m(q)$ kan erstattes med $m(q_0)$:
+så $q = q_0$ med $\dot q = 0$ er en løsning når $V'(q_0) = 0$. Sett $q = q_0 + \eta$ med $\eta$ liten. Lagranges ligning inneholder bare førstederiverte av $L$. Utvikler du derfor $L$ til andre orden i $\eta$ og $\dot\eta$, blir bevegelsesligningen lineær i $\eta$. Potensialet blir $V \approx V(q_0) + \tfrac12 V''(q_0)\eta^2$. Leddet av første orden er null fordi $V'(q_0) = 0$, og konstanten påvirker ikke bevegelsen. I den kinetiske energien er $\dot\eta^2$ allerede av andre orden, så $m(q)$ kan erstattes med $m(q_0)$:
 
 <Formula
   tex="L \approx \tfrac12 m(q_0)\,\dot\eta^2 - \tfrac12 V''(q_0)\,\eta^2 \allowbreak\qquad \omega^2 = \frac{V''(q_0)}{m(q_0)}"
@@ -53,7 +53,7 @@ Lagranges ligninger blir de $N$ koblede ligningene $\boldsymbol T\ddot{\boldsymb
 
 Røttene $\omega_n$ er <Term name="egenfrekvens">egenfrekvensene</Term>, og ligningen er <Term name="sekulærligning">sekulærligningen</Term>. En <Term name="normalmode">normalmode</Term>, eller bare mode, er bevegelsen $\boldsymbol\eta = \mathbf A_n\cos(\omega_n t - \delta_n)$, der alle koordinatene svinger med den samme frekvensen og i fast forhold til hverandre. $\mathbf A_n$ er bestemt opp til en faktor, som startbetingelsene gir.
 
-Fordi $\boldsymbol T$ og $\boldsymbol V$ er reelle og symmetriske, er alle $\omega_n^2$ reelle, og to moder med forskjellige frekvenser er ortogonale med $\boldsymbol T$ som vekt:
+Fordi $\boldsymbol T$ og $\boldsymbol V$ er reelle og symmetriske og $\boldsymbol T$ er positivt definitt, er alle $\omega_n^2$ reelle, og to moder med forskjellige frekvenser er ortogonale med $\boldsymbol T$ som vekt:
 
 $$
 \mathbf A_m^\top\boldsymbol T\mathbf A_n = 0, \qquad \omega_m \ne \omega_n
@@ -77,18 +77,18 @@ Bevegelsen langs $\mathbf A_n$ avhenger av fortegnet til $\omega_n^2$:
 - $\omega_n^2 < 0$: utslaget vokser eksponentielt, og likevekten er ustabil.
 - $\omega_n^2 = 0$: ingen kraft trekker tilbake, og $\boldsymbol\eta = \mathbf A_n\,(c_1 + c_2 t)$. En fri translasjon eller rotasjon av hele systemet endrer ikke $V$ og gir en slik mode.
 
-Gang ligningen for $\mathbf A_n$ fra venstre med $\mathbf A_n^\top$, så får du $\mathbf A_n^\top\boldsymbol V\mathbf A_n = \omega_n^2\,\mathbf A_n^\top\boldsymbol T\mathbf A_n$. Siden $\boldsymbol T$ er positivt definitt, har $\omega_n^2$ samme fortegn som $\mathbf A_n^\top\boldsymbol V\mathbf A_n$. Er $\boldsymbol V$ positivt definitt, altså $q_0$ et minimum for $V$, er derfor alle $\omega_n^2$ positive.
+Gang ligningen for $\mathbf A_n$ fra venstre med $\mathbf A_n^\top$, så får du $\mathbf A_n^\top\boldsymbol V\mathbf A_n = \omega_n^2\,\mathbf A_n^\top\boldsymbol T\mathbf A_n$. Siden $\boldsymbol T$ er positivt definitt, har $\omega_n^2$ samme fortegn som $\mathbf A_n^\top\boldsymbol V\mathbf A_n$. Er $\boldsymbol V$ positivt definitt, er $q_0$ et minimum for $V$, og alle $\omega_n^2$ er positive.
 
 ## Modene som koordinater
 
-De $N$ vektorene $\mathbf A_n$ er ortogonale med $\boldsymbol T$ som vekt, og moder med samme frekvens kan velges ortogonale. Ortogonale vektorer er uavhengige, så enhver liten bevegelse er en sum over modene, $\boldsymbol\eta = \sum_n \xi_n(t)\,\mathbf A_n$. Normer vektorene så $\mathbf A_n^\top\boldsymbol T\mathbf A_n = 1$. Da er $\mathbf A_m^\top\boldsymbol T\mathbf A_n = \delta_{mn}$, og ligningen for $\mathbf A_n$ gir $\mathbf A_m^\top\boldsymbol V\mathbf A_n = \omega_n^2\,\delta_{mn}$. Gang summen med $\mathbf A_m^\top\boldsymbol T$, så står bare $\xi_m = \mathbf A_m^\top\boldsymbol T\boldsymbol\eta$ igjen. Satt inn i $L$ faller alle leddene med $m \ne n$ bort:
+De $N$ vektorene $\mathbf A_n$ er ortogonale med $\boldsymbol T$ som vekt, og moder med samme frekvens kan velges ortogonale. Ortogonale vektorer er uavhengige, så enhver liten bevegelse er en sum over modene, $\boldsymbol\eta = \sum_n \xi_n(t)\,\mathbf A_n$. Normer vektorene så $\mathbf A_n^\top\boldsymbol T\mathbf A_n = 1$. Da er $\mathbf A_m^\top\boldsymbol T\mathbf A_n = \delta_{mn}$, og ganger du ligningen for $\mathbf A_n$ fra venstre med $\mathbf A_m^\top$, er $\mathbf A_m^\top\boldsymbol V\mathbf A_n = \omega_n^2\,\delta_{mn}$. Gang summen med $\mathbf A_m^\top\boldsymbol T$, så står bare $\xi_m = \mathbf A_m^\top\boldsymbol T\boldsymbol\eta$ igjen. Satt inn i $L$ faller alle leddene med $m \ne n$ bort:
 
 <Formula
   tex="L = \tfrac12\sum_n\left(\dot\xi_n^2 - \omega_n^2\,\xi_n^2\right) \allowbreak\qquad \xi_n(0) = \mathbf A_n^\top\boldsymbol T\boldsymbol\eta(0)"
   caption="<b>Normalkoordinatene</b> $\xi_n$ er $N$ uavhengige harmoniske oscillatorer. Startverdiene finnes ved å gange utslagene med $\mathbf A_n^\top\boldsymbol T$, og $\dot\xi_n(0)$ på samme måte fra hastighetene."
 />
 
-Potensialet er nå $\tfrac12\sum_n\omega_n^2\xi_n^2$, så $\boldsymbol V$ er positivt definitt bare når alle $\omega_n^2$ er positive: et minimum for $V$ er det samme som en stabil likevekt. <Term name="normalkoordinat">Normalkoordinatene</Term> svinger hver for seg, $\xi_n = C_n\cos(\omega_n t - \delta_n)$, og den generelle bevegelsen er
+Potensialet er nå $\tfrac12\sum_n\omega_n^2\xi_n^2$, så $\boldsymbol V$ er positivt definitt nøyaktig når alle $\omega_n^2$ er positive. <Term name="normalkoordinat">Normalkoordinatene</Term> svinger da hver for seg, $\xi_n = C_n\cos(\omega_n t - \delta_n)$, og den generelle bevegelsen er
 
 $$
 \boldsymbol\eta(t) = \sum_n C_n\,\mathbf A_n\cos(\omega_n t - \delta_n)
@@ -145,7 +145,7 @@ Utviklet etter første rad er determinanten til $\boldsymbol V - \omega^2\boldsy
 - $\mathbf A = (1, 0, -1)$ med $\omega^2 = k/m$: de ytre atomene svinger i motfase, og midtatomet står stille. Moden er symmetrisk.
 - $\mathbf A = (1, -2m/M, 1)$ med $\omega^2 = (k/m)(1 + 2m/M)$: de ytre atomene går samme vei og midtatomet motsatt. Moden er antisymmetrisk.
 
-Summen $\mathbf A_n^\top\boldsymbol T\,(1, 1, 1)^\top = mA_1 + MA_2 + mA_3$ er totalmassen ganget med forskyvningen av massesenteret. Begge modene med $\omega \ne 0$ er $\boldsymbol T$-ortogonale på translasjonen, så de holder massesenteret i ro. For CO₂ er $M/m = 12/16$, og modellen gir en antisymmetrisk mode som er $\sqrt{1 + 32/12} = 1{,}91$ ganger raskere enn den symmetriske. Målt er de $2349\ \text{cm}^{-1}$ og $1337\ \text{cm}^{-1}$, forholdet $1{,}76$. Modellen tar ikke med at de to bindingene påvirker hverandre.
+Summen $\mathbf A_n^\top\boldsymbol T\,(1, 1, 1)^\top = mA_1 + MA_2 + mA_3$ er totalmassen ganget med forskyvningen av massesenteret. Begge modene med $\omega \ne 0$ er $\boldsymbol T$-ortogonale på translasjonen, så de holder massesenteret i ro.
 
 <Simulation
   src="/sims/normalmoder.js"
@@ -154,6 +154,10 @@ Summen $\mathbf A_n^\top\boldsymbol T\,(1, 1, 1)^\top = mA_1 + MA_2 + mA_3$ er t
   host="dom"
   height={380}
 />
+
+<Derivation title="Modellen mot målte frekvenser for CO₂">
+For CO₂ er $M/m = 12/16$, og modellen gir en antisymmetrisk mode som er $\sqrt{1 + 32/12} = 1{,}91$ ganger raskere enn den symmetriske. Målt er de $2349\ \text{cm}^{-1}$ og $1337\ \text{cm}^{-1}$, forholdet $1{,}76$. Modellen tar ikke med at de to bindingene påvirker hverandre.
+</Derivation>
 
 <Example label="Eksamensoppgave" title="Tre kuler og to fjærer">
 <ExamRef id="2023-nov" task="2 a–c" />
@@ -237,14 +241,14 @@ $$
 L = \sum_{j=1}^{N}\left[\tfrac12 m\dot\eta_j^2 - \tfrac12 k\left(\eta_{j+1} - \eta_j\right)^2\right]
 $$
 
-gir $m\ddot\eta_j = k\left(\eta_{j+1} - 2\eta_j + \eta_{j-1}\right)$. Siden alle atomene er like, prøv en bølge der hvert atom ligger en fast fase $\varphi$ etter naboen, $\eta_j = \cos(j\varphi - \omega t)$. Med $\cos(u + \varphi) + \cos(u - \varphi) = 2\cos u\cos\varphi$ blir høyresida $2k(\cos\varphi - 1)\,\eta_j = -4k\sin^2(\varphi/2)\,\eta_j$. Venstresida er $-m\omega^2\eta_j$, så
+gir $m\ddot\eta_j = k\left(\eta_{j+1} - 2\eta_j + \eta_{j-1}\right)$. Siden alle atomene er like, prøv en bølge der hvert atom ligger en fast fase $\varphi$ etter naboen, $\eta_j = \cos(j\varphi - \omega t)$. Med $u = j\varphi - \omega t$ er $\eta_{j\pm1} = \cos(u \pm \varphi)$, og $\cos(u + \varphi) + \cos(u - \varphi) = 2\cos u\cos\varphi$ gjør høyresida til $2k(\cos\varphi - 1)\,\eta_j = -4k\sin^2(\varphi/2)\,\eta_j$. Venstresida er $-m\omega^2\eta_j$, og ringen krever $\eta_{j+N} = \eta_j$, så $N\varphi$ er et multiplum av $2\pi$. Derfor er
 
 <Formula
   tex="\omega = 2\sqrt{\frac{k}{m}}\,\left|\sin\frac{\varphi}{2}\right| \allowbreak\qquad \varphi = \frac{2\pi n}{N}"
   caption="<b>Normalmodene til en kjede</b> av $N$ like atomer på en ring. $\varphi$ er faseforskjellen mellom naboatomer, og $n = 0, 1, \dots, N - 1$ gir $N$ moder."
 />
 
-Ringen krever $\eta_{j+N} = \eta_j$, så $N\varphi$ er et multiplum av $2\pi$. $n = 0$ er translasjonen, med $\omega = 0$. Frekvensen er størst, $2\sqrt{k/m}$, når $\varphi = \pi$. Den finnes med et like antall atomer, $n = N/2$, og da svinger naboatomene i motfase. Bølgen har bølgelengden $\lambda = 2\pi a/\varphi$, og sammenhengen mellom frekvensen og bølgelengden er kjedens <Term name="dispersjonsrelasjon">dispersjonsrelasjon</Term>.
+$n = 0$ er translasjonen, med $\omega = 0$. Frekvensen er størst, $2\sqrt{k/m}$, i moden med $\varphi = \pi$, som finnes bare når $N$ er et partall, med $n = N/2$. Da svinger naboatomene i motfase. Bølgen har bølgelengden $\lambda = 2\pi a/\varphi$, og sammenhengen mellom frekvensen og bølgelengden er kjedens <Term name="dispersjonsrelasjon">dispersjonsrelasjon</Term>.
 
 For lange bølger er $\varphi \ll 1$ og $\omega \approx \sqrt{k/m}\,\varphi$, så bølgen går med farten
 
@@ -320,7 +324,9 @@ $$
 De er reelle og negative når $1 - 27\alpha(1 - \alpha) > 0$, og med $\alpha(1 - \alpha) = m_1m_2/M^2$ er ulikheten betingelsen over.
 </Derivation>
 
+<Derivation title="Trojanerne hos Jupiter">
 Sola og Jupiter har $m_1/m_2 = 1047$, og over ti tusen asteroider, trojanerne, følger Jupiter rundt sola nær $L_4$ og $L_5$. For så liten $\alpha$ er røttene $\lambda^2 \approx -\omega^2$ og $\lambda^2 \approx -\tfrac{27}{4}\alpha\,\omega^2$. Den langsomme svingningen om punktet har perioden $2\pi/\omega$ delt på $\sqrt{27\alpha/4} = 0{,}080$, for Jupiter $11{,}9$ år$/0{,}080 \approx 150$ år.
+</Derivation>
 
 <Simulation
   src="/sims/trelegeme.js"

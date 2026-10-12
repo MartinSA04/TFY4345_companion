@@ -1,9 +1,10 @@
 /**
  * Dobbeltpendelen: to stenger etter hverandre fra en tapp, med vinklene θ₁
  * og θ₂ fra loddlinja tegnet på. En tvilling i oransje slippes samtidig med
- * en halv grads forskjell i den nederste vinkelen. Ved små utslag følger de
- * hverandre lenge; ved store skiller de lag etter få svingninger. Energien er
- * den eneste bevarte størrelsen, og den holder ikke banene på plass.
+ * en halv grads forskjell i den nederste vinkelen. Ved små utslag er
+ * ligningene nesten lineære, og de to følger hverandre lenge. Ved store utslag
+ * er energien den eneste bevarte størrelsen, og de skiller lag etter få
+ * svingninger.
  *
  * Enheter: m₁ = m₂ = l₁ = l₂ = 1, g = 9,81, virkelig tid. Kontrakt:
  * default-eksportert init(api), api = { stage, controls, getSize, onResize,

@@ -1,7 +1,7 @@
 /**
  * Den plane pendelen: kule i stiv stang om en tapp, tegnet med vinkelen θ fra
  * loddlinja. Glidebryteren setter farten i bunnpunktet, altså energien. Den
- * oransje linja ligger i høyden E/mg over bunnpunktet: så høyt har kula
+ * oransje linja ligger i høyden y = E/mg, målt oppover fra tappen: så høyt har kula
  * energi til å nå. Der linja skjærer sirkelen, er vendepunktene; ligger linja
  * over toppen, går pendelen rundt.
  *

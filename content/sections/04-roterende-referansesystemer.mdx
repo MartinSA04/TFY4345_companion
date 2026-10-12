@@ -33,7 +33,7 @@ Den første summen er endringen en observatør i $K'$ måler, fordi enhetsvektor
 
 <Formula
   tex="\left(\frac{d\vec A}{dt}\right)_{K} = \left(\frac{d\vec A}{dt}\right)_{K'} + \vec\omega \times \vec A"
-  caption="Den tidsderiverte av en vilkårlig vektor, målt i inertialsystemet $K$ og i det roterende systemet $K'$. Indeksen sier hvilket system endringen måles i."
+  caption="Den tidsderiverte av en vilkårlig vektor, målt i inertialsystemet $K$ og i det roterende systemet $K'$. Indeksen er systemet endringen måles i."
 />
 
 Sett $\vec A = \vec\omega$. Da er det siste leddet $\vec\omega \times \vec\omega = 0$, ettersom kryssproduktet av en vektor med seg selv er null. Dette betyr at $\dot{\vec\omega}$ er den samme målt i $K$ og i $K'$.
@@ -81,7 +81,7 @@ De tre leddene kalles <Term name="fiktiv kraft">fiktive krefter</Term>. De skyld
 <Simulation
   src="/sims/roterende-skive.js"
   title="Kule på roterende skive"
-  caption="Kula sklir friksjonsfritt fra sentrum av ei skive som roterer med vinkelfarten $\omega$. Sett fra bakken går den rett fram. Sett fra skiva krummer banen mot høyre, og pilene viser sentrifugalkraften ut fra aksen og Corioliskraften vinkelrett på $\vec v\,'$. Bytt system midt i turen: prikkene er de samme hendelsene."
+  caption="Kula sklir friksjonsfritt fra sentrum av ei skive som roterer med vinkelfarten $\omega$. Sett fra bakken går den rett fram. Sett fra skiva krummer banen mot høyre, og pilene viser sentrifugalkraften ut fra aksen og Corioliskraften vinkelrett på $\vec v\,'$. Bytt system midt i turen: prikkene markerer de samme hendelsene i begge systemer."
   host="dom"
   height={340}
 />
@@ -196,7 +196,7 @@ vinner planeten, og månen går i stykker. Denne $C$ gjelder en kuleformet måne
 
 ## Corioliskraften
 
-Corioliskraften $-2m\vec\omega \times \vec v\,'$ står vinkelrett på $\vec v\,'$, så den gjør ikke arbeid og endrer bare retningen på bevegelsen. Skrevet som $2m\,\vec v\,' \times \vec\omega$ har den samme form som Lorentzkraften $q\vec v \times \vec B$, med $q\vec B$ byttet ut med $2m\vec\omega$. En partikkel som bare kjenner Corioliskraften i bevegelsesplanet, går derfor i sirkler slik en ladd partikkel gjør i et magnetfelt. Slik går en partikkel som glir friksjonsfritt på et vannrett underlag på jorda, for der er sentrifugalkraften tatt inn i $\vec g_\text{eff}$. Kula på skiva i simuleringen over kjenner også sentrifugalkraften, og sett fra skiva går den i en spiral.
+Corioliskraften $-2m\vec\omega \times \vec v\,'$ står vinkelrett på $\vec v\,'$, så den gjør ikke arbeid og endrer bare retningen på bevegelsen. Skrevet som $2m\,\vec v\,' \times \vec\omega$ har den samme form som Lorentzkraften $q\vec v \times \vec B$, med $q\vec B$ byttet ut med $2m\vec\omega$. En partikkel som bare kjenner Corioliskraften i bevegelsesplanet, går derfor i sirkler slik en ladd partikkel gjør i et magnetfelt. Kula på skiva i simuleringen over kjenner også sentrifugalkraften, og sett fra skiva går den i en spiral.
 
 Legg akser på jordoverflaten på breddegraden $\phi$, med $x$ mot øst, $y$ mot nord og $z$ opp. Loddlinja danner vinkelen $\phi$ med ekvatorplanet og dermed $90° - \phi$ med jordaksen. Jordaksen peker derfor mot nord, vinkelen $\phi$ over horisonten, og $\vec\omega = \omega\,(0, \cos\phi, \sin\phi)$. For en hastighet $\vec v\,' = (v_x, v_y, 0)$ langs bakken blir
 
@@ -211,14 +211,17 @@ Det første leddet er $\vec v\,'$ dreid en kvart omdreining mot høyre, med leng
   caption="<b>Corioliskraften.</b> For bevegelse langs bakken på breddegraden $\phi$ er den horisontale komponenten $2m\omega v\sin\phi$, rettet mot høyre for fartsretningen på den nordlige halvkula."
 />
 
+En puck som glir friksjonsfritt langs bakken, kjenner bare den horisontale komponenten. Sentrifugalkraften er tatt inn i $\vec g_\text{eff}$, og underlaget tar opp den loddrette komponenten. Der $\sin\phi$ endrer seg lite langs banen, går pucken i en sirkel med radien $v/(2\omega\sin\phi)$.
+
 <Simulation
   src="/sims/coriolis-jord.js"
   title="Puck på den roterende jorda"
-  caption="Pucken sklir uten friksjon langs bakken, sett fra jorda. Corioliskraften står vinkelrett på farten og bøyer banen mot høyre på den nordlige halvkula og mot venstre på den sørlige. Langt fra ekvator er kraften nesten den samme hele veien, og pucken går nesten i en sirkel. Nær ekvator endrer den seg langs banen, og sirkelen åpner seg. Langs selve ekvator er den horisontale delen null, og pucken går rett fram. Jordas rotasjon er overdrevet, så banene får plass på kloden."
+  caption="Pucken sklir uten friksjon langs bakken, sett fra jorda. Corioliskraften står vinkelrett på farten og bøyer banen mot høyre på den nordlige halvkula og mot venstre på den sørlige. Langt fra ekvator endrer $\sin\phi$ seg lite langs banen, så kraften er nesten like stor hele veien, og pucken går nesten i en sirkel. Nær ekvator endrer $\sin\phi$ seg mye, og sirkelen åpner seg. Langs selve ekvator er den horisontale delen null, og pucken går rett fram. Jordas rotasjon er overdrevet, så banene får plass på kloden."
   host="dom"
   height={380}
 />
 
+<Derivation title="Lavtrykk, orkaner og badekaret">
 Luft som strømmer inn mot et lavtrykk, bøyes mot høyre, bommer på sentrum og sirkulerer mot klokka rundt det. Derfor roterer orkaner mot klokka på den nordlige halvkula og med klokka på den sørlige. I badekaret er Coriolisakselerasjonen $2\omega v$ omkring $10^{-5}$ m/s² for $v = 10$ cm/s, og strømmer som er igjen i vannet fra før, er mye sterkere.
 
 <Video
@@ -229,6 +232,7 @@ Luft som strømmer inn mot et lavtrykk, bøyes mot høyre, bommer på sentrum og
   caption="Derek Muller og Destin Sandlin gjør det samme forsøket på hver sin halvkule for å finne ut om vannet virvler motsatt vei når det renner ut."
   number={1}
 />
+</Derivation>
 
 <Quiz
   question="Ei elv renner rett sørover på den nordlige halvkula. Hvilken bredd graver Corioliskraften mest i?"
@@ -318,7 +322,7 @@ $$
 Corioliskraften kobler $x$ og $y$, men bare svakt, fordi $\omega \ll \omega_0$.
 
 <Derivation title="Løsning med en kompleks koordinat">
-Sett $\xi = x + iy$, så blir de to koblede ligningene én. Da er $\dot y - i\dot x = -i(\dot x + i\dot y) = -i\dot\xi$, og
+Sett $\xi = x + iy$ og legg $i$ ganger ligningen for $y$ til ligningen for $x$. Venstresida blir $\ddot\xi$, fjærleddene blir $-\omega_0^2\xi$, og Coriolisleddene blir $2\omega\sin\phi\,(\dot y - i\dot x) = -2i\omega\sin\phi\,\dot\xi$, ettersom $\dot y - i\dot x = -i(\dot x + i\dot y)$. Flytt alt til venstre side:
 
 $$
 \ddot\xi + 2i\omega\sin\phi\,\dot\xi + \omega_0^2\,\xi = 0
@@ -451,7 +455,7 @@ Avbøyningen er mot øst. Løsningsforslaget oppgir 11,5 m med samme metode.
 
 ## Corioliskraften og Lorentzkraften
 
-En ladd partikkel går i en bane om et sentrum, som et elektron rundt en kjerne, og et svakt, homogent magnetfelt $\vec B$ slås på. I et system som roterer med $\vec\omega$, kommer Corioliskraften $-2m\vec\omega \times \vec v\,'$ til. Magnetkraften på delen $\vec v\,'$ av hastigheten er $q\vec v\,' \times \vec B = -q\vec B \times \vec v\,'$, så de to opphever hverandre når $2m\vec\omega = -q\vec B$. Velg derfor $\vec\omega = -q\vec B/2m$. Magnetkraften på delen $\vec\omega \times \vec r$ av hastigheten og sentrifugalkraften er proporsjonale med $B^2$ og kan sløyfes for et svakt felt. Sentralkraften er uendret, så i det roterende systemet går partikkelen i den gamle banen. Sett fra $K$ dreier banen derfor sakte om feltretningen:
+En ladd partikkel går i en bane om et sentrum, som et elektron rundt en kjerne. Du vil vite hva et svakt, homogent magnetfelt $\vec B$ gjør med banen. Corioliskraften har samme form som magnetkraften, så se på bevegelsen i et system som roterer med $\vec\omega$. Der kommer Corioliskraften $-2m\vec\omega \times \vec v\,'$ til. Magnetkraften på delen $\vec v\,'$ av hastigheten er $q\vec v\,' \times \vec B = -q\vec B \times \vec v\,'$, så de to opphever hverandre når $2m\vec\omega = -q\vec B$. Velg derfor $\vec\omega = -q\vec B/2m$. Magnetkraften på delen $\vec\omega \times \vec r$ av hastigheten og sentrifugalkraften er proporsjonale med $B^2$ og kan sløyfes for et svakt felt. Sentralkraften er uendret, så i det roterende systemet går partikkelen i den gamle banen. Sett fra $K$ dreier banen derfor sakte om feltretningen:
 
 <Formula
   tex="\vec\omega_\text{L} = -\frac{q\vec B}{2m}"

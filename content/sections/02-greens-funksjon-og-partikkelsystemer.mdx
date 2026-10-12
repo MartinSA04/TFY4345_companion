@@ -25,7 +25,7 @@ En harmonisk oscillator som drives av en ytre kraft $J(t)$, følger
 
 Løsningen $x(t)$ for en gitt kraft kalles responsen. Gir kraften $J_1$ responsen $x_1$ og kraften $J_2$ responsen $x_2$, så er $x_1 + x_2$ responsen på $J_1 + J_2$. Regelen kalles <Term name="superposisjonsprinsippet">superposisjonsprinsippet</Term>, og den gjelder fordi venstresiden er lineær.
 
-Du kan derfor dele kraften opp og legge sammen responsene på bitene. Identiteten $J(t) = \int dt'\, \delta(t - t')\, J(t')$ skriver en vilkårlig kraft som en sum av deltadytt ved tidene $t'$, hvert med vekt $J(t')$. Massen og $\omega$ avhenger ikke av tiden, så responsen på et dytt ved $t'$ avhenger bare av tiden $t - t'$ som har gått siden dyttet. Er $G_R(t - t')$ responsen på ett enhetsdytt $\delta(t - t')$, er responsen på hele kraften summen av $G_R(t - t')$ med de samme vektene.
+Du kan derfor dele kraften opp og legge sammen responsene på bitene. Ifølge identiteten $J(t) = \int dt'\, \delta(t - t')\, J(t')$ er en vilkårlig kraft en sum av deltadytt ved tidene $t'$, hvert med vekt $J(t')$. Massen og $\omega$ avhenger ikke av tiden, så responsen på et dytt ved $t'$ avhenger bare av tiden $t - t'$ som har gått siden dyttet. Er $G_R(t - t')$ responsen på ett enhetsdytt $\delta(t - t')$, er responsen på hele kraften summen av $G_R(t - t')$ med de samme vektene.
 
 <Formula
   tex="x(t) = \int_{-\infty}^{\infty} dt'\, G_R(t - t')\, J(t')"
@@ -119,7 +119,7 @@ Summer Newtons andre lov over alle partiklene. De indre kreftene kommer i par $\
 
 <Formula
   tex="\dot{\vec P} = \sum_i \vec F_i^{(e)}"
-  caption="Bare de ytre kreftene flytter massesenteret."
+  caption="Bare de ytre kreftene endrer bevegelsen til massesenteret."
 />
 
 <Statement kind="theorem" name="Massesenterets bevegelse">
@@ -133,10 +133,12 @@ vender seg, men banen til massesenteret er en parabel bestemt av tyngdekraften
 alene. Derfor kan planeter og baller regnes som punktpartikler så lenge du bare
 følger massesenteret.
 
-Den totale dreieimpulsen er $\vec L = \sum_i \vec r_i \times \vec p_i$. Når du deriverer,
-er $\dot{\vec r}_i \times \vec p_i = 0$, fordi $\vec p_i$ er parallell med $\dot{\vec r}_i$,
-så $\dot{\vec L} = \sum_i \vec r_i \times \dot{\vec p}_i$. Sett inn kraften på hver partikkel
-og samle de indre kreftene parvis. Paret $i, j$ gir
+For å se hvilke krefter som endrer den totale dreieimpulsen
+$\vec L = \sum_i \vec r_i \times \vec p_i$, deriver den med produktregelen:
+$\dot{\vec L} = \sum_i \dot{\vec r}_i \times \vec p_i + \sum_i \vec r_i \times \dot{\vec p}_i$.
+Det første leddet er null, ettersom $\vec p_i = m_i \dot{\vec r}_i$ er parallell med
+$\dot{\vec r}_i$. Sett inn kraften på hver partikkel i det andre leddet og samle de
+indre kreftene parvis. Paret $i, j$ gir
 $\vec r_i \times \vec F_{ij} + \vec r_j \times \vec F_{ji} = (\vec r_i - \vec r_j) \times \vec F_{ij}$
 etter Newtons tredje lov:
 
@@ -153,7 +155,9 @@ gravitasjon og Coulomb-kraften er begge sentrale. Med sentrale indre krefter er
   caption="For sentrale indre krefter endres dreieimpulsen bare av det ytre dreiemomentet $\vec N^{(e)} = \sum_i \vec r_i \times \vec F_i^{(e)}$."
 />
 
-Skriv posisjonene som $\vec r_i = \vec R + \vec y_i$, med $\vec y_i$ målt fra
+Den kinetiske energien kan deles i en del for bevegelsen til massesenteret og en
+del for bevegelsen rundt massesenteret. Skriv posisjonene som
+$\vec r_i = \vec R + \vec y_i$, med $\vec y_i$ målt fra
 massesenteret. Definisjonen av $\vec R$ gir
 $\sum_i m_i \vec y_i = \sum_i m_i \vec r_i - M\vec R = 0$, og da er også
 $\sum_i m_i \dot{\vec y}_i = 0$. Kvadrer parentesen i
@@ -166,9 +170,9 @@ $\dot{\vec R} \cdot \sum_i m_i \dot{\vec y}_i = 0$, så
 />
 
 <Statement kind="principle" name="Bevaringslover og symmetrier">
-Hver bevaringslov svarer til en symmetri: impuls til at rommet er likt overalt,
-dreieimpuls til at ingen retning er utpekt, og energi til at lovene er de samme
-i dag som i morgen. Sammenhengen er Noethers teorem.
+Til hver kontinuerlig symmetri hører en bevart størrelse. Er rommet likt overalt,
+er impulsen bevart. Er ingen retning utpekt, er dreieimpulsen bevart. Er lovene de
+samme i dag som i morgen, er energien bevart. Sammenhengen er Noethers teorem.
 </Statement>
 
 For impulsen kan du se sammenhengen direkte. Er rommet likt overalt, avhenger
@@ -285,7 +289,7 @@ $(v/u)^2 = 2{,}65^2 = 7{,}0$ ganger fallhøyden.
 - For en lineær ligning er responsen på en vilkårlig kraft $\int dt'\, G_R(t - t')\, J(t')$, en superposisjon av responser på deltadytt.
 - Responsen kan ikke komme før dyttet, så polene skyves under den reelle aksen, og $G_R(\tau) = 0$ for $\tau < 0$. For oscillatoren er $G_R(\tau) = \sin(\omega\tau)/(m\omega)\,\theta(\tau)$.
 - Massesenteret beveger seg som én partikkel med hele massen, påvirket bare av de ytre kreftene.
-- Impulsbevarelse følger av Newtons tredje lov. Dreieimpulsbevarelse krever i tillegg sentrale krefter, og bevaringslovene svarer til symmetrier i rom og tid.
+- Impulsen er bevart når summen av de ytre kreftene er null, fordi de indre kreftene opphever hverandre parvis etter Newtons tredje lov. Dreieimpulsen er bevart når det ytre dreiemomentet er null og de indre kreftene er sentrale. Bevaringslovene svarer til symmetrier i rom og tid.
 - Tolegemeproblemet uten ytre krefter er et ettlegemeproblem for relativkoordinaten, med redusert masse $\mu = m_1 m_2/(m_1 + m_2)$.
 - Et elastisk støt bevarer impuls og kinetisk energi. Like masser med den ene i ro gir vinkelrette utgangshastigheter, og i én dimensjon er utfallet entydig.
 </KeyTakeaways>

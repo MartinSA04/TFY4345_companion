@@ -2,9 +2,9 @@
  * Den sfæriske pendelen i skråprojeksjon: kule i stiv stang fra et fast
  * oppheng, fri til å svinge i alle retninger. θ er vinkelen fra loddlinja og
  * φ vinkelen rundt den, tegnet i det vannrette planet gjennom bunnpunktet.
- * Glidebryteren gir kula en sidefart i startpunktet θ₀ = 45°. Dreieimpulsen
- * om loddlinja er bevart, så kula holder seg mellom de to stiplede
- * breddesirklene.
+ * Glidebryteren gir kula en sidefart i startpunktet θ₀ = 45°. Energien og
+ * dreieimpulsen om loddlinja er begge bevart, og sammen holder de kula mellom
+ * de to stiplede breddesirklene.
  *
  * Enheter: m = l = g = 1. Kontrakt: default-eksportert init(api), api =
  * { stage, controls, getSize, onResize, signal }.

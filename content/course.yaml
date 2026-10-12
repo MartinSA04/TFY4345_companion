@@ -101,7 +101,7 @@ formulas:
   - id: lineaer-transformasjon
     section: Inertialsystemer
     tex: "t' = At + Bx, \\qquad x' = A\\,(x - vt)"
-    label: "Den mest generelle lineære transformasjonen mellom to inertialsystemer med parallelle akser og felles origo ved $t = 0$. Samme krav binder konstantene med $A^2 + ABv = 1$, så bare én av dem er fri."
+    label: "Den mest generelle lineære transformasjonen mellom to inertialsystemer med parallelle akser og felles origo ved $t = 0$. Kravet om at transformasjonen tilbake er den samme med $-v$, og at speiling av $x$-aksen gir transformasjonen for $-v$, binder konstantene med $A^2 + ABv = 1$, så bare én av dem er fri."
   - id: galilei
     section: Inertialsystemer
     tex: "t' = t, \\qquad \\vec r\\,' = \\vec r - \\vec v t"
@@ -109,15 +109,15 @@ formulas:
   - id: galilei-hastighet
     section: Inertialsystemer
     tex: "\\vec u\\,' = \\vec u - \\vec v, \\qquad \\vec a\\,' = \\vec a"
-    label: "Hastigheter forskyves med $\\vec v$, mens akselerasjonen er den samme i begge systemer. Derfor har $m\\vec a = \\vec F$ samme form i alle inertialsystemer."
+    label: "Hastigheter forskyves med $\\vec v$, mens akselerasjonen er den samme i begge systemer. Massen og kreftene er også de samme, så $m\\vec a = \\vec F$ har samme form i alle inertialsystemer."
   - id: arbeid
     section: Krefter og potensial
     tex: "W = \\int_C \\vec F \\cdot d\\vec r"
-    label: "Arbeidet kraften gjør langs banen $C$. For en vilkårlig kraft avhenger tallet av hele banen."
+    label: "Arbeidet kraften gjør langs banen $C$. For en vilkårlig kraft avhenger arbeidet av hele banen."
   - id: virvelfri
     section: Krefter og potensial
     tex: "\\nabla \\times \\vec F = 0"
-    label: "Testen for om en kraft er konservativ. På et <em>enkeltsammenhengende</em> område er betingelsen både nødvendig og tilstrekkelig."
+    label: "Testen for om en kraft er konservativ. En konservativ kraft har alltid $\\nabla \\times \\vec F = 0$. Det omvendte gjelder på et <em>enkeltsammenhengende</em> område. Rundt et hull i området kan arbeidet langs en lukket kurve være ulikt null selv om $\\nabla \\times \\vec F = 0$."
   - id: konservativ
     section: Krefter og potensial
     tex: "\\vec F = -\\nabla V"
@@ -149,7 +149,7 @@ formulas:
   - id: massesenter-bevegelse
     section: Partikkelsystemer
     tex: "\\dot{\\vec P} = \\sum_i \\vec F_i^{(e)}"
-    label: "De indre kreftene opphever hverandre parvis, så bare de ytre kreftene flytter massesenteret. Er summen null, er den totale impulsen bevart."
+    label: "De indre kreftene opphever hverandre parvis, så bare de ytre kreftene endrer bevegelsen til massesenteret. Er summen av de ytre kreftene null, er den totale impulsen bevart."
   - id: dreieimpuls-ytre
     section: Partikkelsystemer
     tex: "\\frac{d\\vec L}{dt} = \\vec N^{(e)}"
@@ -205,7 +205,7 @@ formulas:
   - id: lagrange-multiplikator
     section: Lagrangeformalismen
     tex: "\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot q_k} - \\frac{\\partial L}{\\partial q_k} = \\sum_\\alpha \\lambda_\\alpha \\frac{\\partial f_\\alpha}{\\partial q_k}"
-    label: "Lagranges ligninger med multiplikatorer for føringene $f_\\alpha(q, t) = 0$, fra $L' = L + \\sum_\\alpha \\lambda_\\alpha f_\\alpha$. Høyresida er føringskraften i retning $q_k$; for pendelen med $f = r - l$ er $\\lambda = -S$, snorkraften med motsatt fortegn."
+    label: "Lagranges ligninger med multiplikatorer for føringene $f_\\alpha(q, t) = 0$, fra $L' = L + \\sum_\\alpha \\lambda_\\alpha f_\\alpha$. Høyresida er føringskraften i retning $q_k$; for pendelen med $f = r - l$ er $\\lambda = -S$, snordraget med motsatt fortegn."
 
   - id: rotasjon-tidsderivert
     section: Roterende referansesystemer
@@ -226,7 +226,7 @@ formulas:
   - id: sentrifugalkraft
     section: Roterende referansesystemer
     tex: "\\vec F_\\text{s} = m\\omega^2\\vec d = -\\nabla V_\\text{s}, \\qquad V_\\text{s} = -\\tfrac12 m\\,|\\vec\\omega \\times \\vec r|^2"
-    label: "Sentrifugalkraften peker ut fra aksen med størrelsen $m\\omega^2 d$ og er konservativ med potensialet $-\\tfrac12 m\\omega^2 d^2$. Vannflaten i ei roterende bøtte er paraboloiden $z = z_0 + \\omega^2 r^2/2g$."
+    label: "Sentrifugalkraften peker ut fra aksen med størrelsen $m\\omega^2 d$ og er konservativ med potensialet $-\\tfrac12 m\\omega^2 d^2$. Vannflaten i ei roterende bøtte er paraboloiden $z = z_0 + \\omega^2 d^2/2g$."
   - id: effektiv-tyngde
     section: Roterende referansesystemer
     tex: "\\vec g_\\text{eff} = \\vec g - \\vec\\omega \\times (\\vec\\omega \\times \\vec R), \\qquad \\tan\\alpha \\approx \\frac{\\omega^2 R\\sin\\phi\\cos\\phi}{g}"
@@ -263,7 +263,7 @@ formulas:
   - id: noether
     section: Symmetrier og bevarte størrelser
     tex: "\\begin{aligned} &q_i \\to q_i + \\epsilon F_i, \\qquad \\delta L = \\epsilon\\,\\frac{dF}{dt} \\\\ &Q = \\sum_i p_i F_i - F = \\text{konst} \\end{aligned}"
-    label: "Noethers teorem. Forskyvning av alle partikler langs $\\hat n$ gir $\\vec P \\cdot \\hat n$, rotasjon om $\\hat n$ gir $\\vec L \\cdot \\hat n$, og en syklisk koordinat $q_j$ er tilfellet $F_i = \\delta_{ij}$, $F = 0$."
+    label: "Noethers teorem. Forskyvning av alle partikler langs $\\hat n$ gir $\\vec P \\cdot \\hat n$, rotasjon om $\\hat n$ gir dreieimpulsen langs $\\hat n$, og en syklisk koordinat $q_j$ er tilfellet $F_i = \\delta_{ij}$, $F = 0$."
 
   - id: sentralkraft-lagrange
     section: Tolegemeproblemet
@@ -276,7 +276,7 @@ formulas:
   - id: sirkelbane-stabil
     section: Tolegemeproblemet
     tex: "\\begin{aligned} \\omega_r^2 &= \\frac{V_\\text{eff}''(r_0)}{\\mu} \\\\ &= \\frac{1}{\\mu}\\left(V''(r_0) + \\frac{3}{r_0}V'(r_0)\\right) \\end{aligned}"
-    label: "Små radielle svingninger om sirkelbanen med radius $r_0$. Banen er stabil når $\\omega_r^2 > 0$; for $V = -k/r^n$ krever det $n < 2$. I $V = -k/r$ er $\\omega_r$ lik vinkelfarten i banen, så den forstyrrede banen er lukket."
+    label: "Små radielle svingninger om sirkelbanen med radius $r_0$. Banen er stabil når $\\omega_r^2 > 0$; for $V = -k/r^n$ er sirkelbanene stabile når $n < 2$. I $V = -k/r$ er $\\omega_r$ lik vinkelfarten i banen, så den forstyrrede banen er lukket."
   - id: baneligning
     section: Tolegemeproblemet
     tex: "\\frac{d^2u}{d\\phi^2} + u = -\\frac{\\mu}{J^2u^2}\\,F\\!\\left(\\frac1u\\right)"
@@ -308,7 +308,7 @@ formulas:
   - id: virialteoremet
     section: Tolegemeproblemet
     tex: "\\begin{aligned} 2\\langle T\\rangle &= -\\Big\\langle\\sum_i \\vec F_i \\cdot \\vec r_i\\Big\\rangle \\\\ &= n\\,\\langle V\\rangle \\end{aligned}"
-    label: "Virialteoremet for et system som holder seg endelig; tidsmidler. Den siste likheten gjelder for et potensial som er homogent av grad $n$, som $V \\propto r^n$. Keplerbaner har $n = -1$ og $E = -\\langle T\\rangle$, oscillatoren $n = 2$ og $\\langle T\\rangle = \\langle V\\rangle$."
+    label: "Virialteoremet for et system som holder seg endelig. Klammene er tidsmidler. Den siste likheten gjelder for et potensial som er homogent av grad $n$, som $V \\propto r^n$. Keplerbaner har $n = -1$ og $E = -\\langle T\\rangle$, oscillatoren $n = 2$ og $\\langle T\\rangle = \\langle V\\rangle$."
   - id: trelegeme-lagrange
     section: Trelegemeproblemet
     tex: "L = \\tfrac12 m\\left(\\dot x^2 + \\dot y^2\\right) \\allowbreak + m\\omega\\left(x\\dot y - y\\dot x\\right) \\allowbreak - m\\,U(x, y)"
@@ -341,7 +341,7 @@ formulas:
   - id: sekulaerligning
     section: Små svingninger
     tex: "\\det\\left(\\boldsymbol V - \\omega^2\\boldsymbol T\\right) = 0 \\allowbreak\\qquad \\left(\\boldsymbol V - \\omega_n^2\\boldsymbol T\\right)\\mathbf A_n = 0"
-    label: "Sekulærligningen for egenfrekvensene $\\omega_n$, og ligningen for normalmoden $\\mathbf A_n$. $\\omega_n^2 < 0$ gir ustabil likevekt, $\\omega_n^2 = 0$ en fri translasjon eller rotasjon."
+    label: "Sekulærligningen for egenfrekvensene $\\omega_n$, og ligningen for normalmoden $\\mathbf A_n$. $\\omega_n^2 < 0$ gir ustabil likevekt, og $\\omega_n^2 = 0$ en mode uten tilbakedrivende kraft, som en fri translasjon eller rotasjon."
   - id: normalkoordinater
     section: Små svingninger
     tex: "\\boldsymbol\\eta = \\sum_n \\xi_n\\,\\mathbf A_n \\allowbreak\\qquad L = \\tfrac12\\sum_n\\left(\\dot\\xi_n^2 - \\omega_n^2\\,\\xi_n^2\\right) \\allowbreak\\qquad \\mathbf A_m^\\top\\boldsymbol T\\mathbf A_n = \\delta_{mn}"
@@ -479,7 +479,7 @@ symbols:
   - { tex: "q_i,\\ \\dot q_i", meaning: "Generaliserte koordinater og hastigheter", section: "Lagrangeformalismen", term: "Generaliserte koordinater", formula: euler-lagrange, id: q, note: "Ikke ladningen $q$ i Lagrangefunksjonen for en ladd partikkel." }
   - { tex: "n", meaning: "Antall frihetsgrader, $3N - k$", section: "Lagrangeformalismen", term: "Frihetsgrader", formula: frihetsgrader, note: "$N$ partikler med $k$ holonome føringer; her er $k$ et antall og ikke en fjærkonstant. I modulen om små svingninger heter antallet frihetsgrader $N$, og $n$ nummererer modene. I virialteoremet er $n$ graden til potensialet." }
   - { tex: "L", meaning: "Lagrangefunksjonen, $T - V$", unit: "J", section: "Lagrangeformalismen", term: "Lagrangefunksjon", formula: lagrangefunksjon, id: lagrangefunksjon, note: "Ikke dreieimpulsen $\\vec L$ eller Lagrangepunktene $L_1$ til $L_5$." }
-  - { tex: "S", meaning: "Virkningen, $\\int L\\,dt$ langs en bane", unit: "J·s", section: "Lagrangeformalismen", term: "Virkning", formula: virkning, note: "Med Lagrange-multiplikatorer er $S$ snorkraften i pendelen, $S = -\\lambda$." }
+  - { tex: "S", meaning: "Virkningen, $\\int L\\,dt$ langs en bane", unit: "J·s", section: "Lagrangeformalismen", term: "Virkning", formula: virkning, note: "Med Lagrange-multiplikatorer er $S$ snordraget i pendelen, $S = -\\lambda$." }
   - { tex: "f(q, t)", meaning: "Føringen, skrevet $f(q, t) = 0$; med flere føringer $f_\\alpha$", section: "Lagrangeformalismen", term: "Holonom føring", formula: lagrange-multiplikator, note: "I $L' = L + df/dt$ er $f$ en vilkårlig funksjon av koordinatene og tida, ikke en føring." }
   - { tex: "\\lambda", meaning: "Lagrange-multiplikatoren; $\\lambda\\,\\partial f/\\partial q_k$ er føringskraften", section: "Lagrangeformalismen", term: "Lagrange-multiplikator", formula: lagrange-multiplikator, id: lambda, note: "Har dimensjon kraft når $f$ er en lengde. Ikke vekstraten $\\lambda$ i $e^{\\lambda t}$ nær en ustabil likevekt." }
   - { tex: "p_i", meaning: "Generalisert impuls, $\\partial L/\\partial\\dot q_i$", section: "Lagrangeformalismen", term: "Generalisert impuls", formula: generalisert-impuls, id: p-i, note: "Bevart når $q_i$ er syklisk. For en ladd partikkel er $\\vec p = m\\dot{\\vec r} + q\\vec A$ og ikke bare $m\\dot{\\vec r}$." }
@@ -516,7 +516,7 @@ symbols:
   - { tex: "\\omega_n", meaning: "Egenfrekvensene, røttene av sekulærligningen", unit: "rad/s", section: "Små svingninger", term: "Egenfrekvens", formula: sekulaerligning }
   - { tex: "\\mathbf A_n", meaning: "Modevektoren, forholdet mellom utslagene i mode $n$", section: "Små svingninger", term: "Normalmode", formula: sekulaerligning }
   - { tex: "\\xi_n", meaning: "Normalkoordinaten, utslaget langs mode $n$", section: "Små svingninger", term: "Normalkoordinat", formula: normalkoordinater, note: "Ellers er $\\xi$ et lite utslag, som den raske delen av vinkelen hos Kapitzas pendel, eller $x + iy$ for Foucaults pendel." }
-  - { tex: "\\lambda", meaning: "Eksponenten i $e^{\\lambda t}$ for utslaget nær en likevekt", unit: "s⁻¹", section: "Små svingninger", note: "Stabilt når alle røttene $\\lambda^2$ er negative. Ikke Lagrange-multiplikatoren $\\lambda$. I kjeden er $\\lambda$ bølgelengden, og i $V = \\tfrac12 kx^2 + \\tfrac14\\lambda x^4$ en koeffisient." }
+  - { tex: "\\lambda", meaning: "Eksponenten i $e^{\\lambda t}$ for utslaget nær en likevekt", unit: "s⁻¹", section: "Små svingninger", note: "Likevekten er stabil når alle røttene $\\lambda^2$ er negative. Ikke Lagrange-multiplikatoren $\\lambda$. I kjeden er $\\lambda$ bølgelengden, og i $V = \\tfrac12 kx^2 + \\tfrac14\\lambda x^4$ en koeffisient." }
   - { tex: "\\varphi", meaning: "Faseforskjellen mellom naboatomer i kjeden, $2\\pi n/N$", unit: "rad", section: "Små svingninger", term: "Dispersjonsrelasjon", formula: kjede-dispersjon }
   # ── Stive legemer ──
   - { tex: "\\hat e_a'", meaning: "Enhetsvektorene langs aksene som sitter fast i legemet", section: "Stive legemer", formula: stivt-legeme-hastighet, note: "$a = 1, 2, 3$ nummererer aksene og $i$ partiklene. Komponentene av $\\vec\\omega$, $\\vec L$ og $\\boldsymbol I$ tas langs disse aksene." }
@@ -559,7 +559,7 @@ glossary:
     definition: "Funksjonen $V(\\vec r)$ som en konservativ kraft er den negative gradienten av, $\\vec F = -\\nabla V$."
   - term: Enkeltsammenhengende område
     section: Krefter og potensial
-    definition: "Område der enhver lukket kurve kan trekkes sammen til et punkt uten å forlate området. Der er $\\nabla \\times \\vec F = 0$ nok til at kraften er konservativ."
+    definition: "Område der enhver lukket kurve kan trekkes sammen til et punkt uten å forlate området. Der er $\\nabla \\times \\vec F = 0$ nok til at kraften er konservativ. Har området et hull, kan arbeidet rundt hullet være ulikt null selv om $\\nabla \\times \\vec F = 0$."
   - term: Likevektspunkt
     section: Bevegelse i et potensial
     definition: "Punkt $x_0$ der $V'(x_0) = 0$, slik at kraften på partikkelen er null. Likevekten er stabil når $V''(x_0) > 0$ og ustabil når $V''(x_0) < 0$."
@@ -568,7 +568,7 @@ glossary:
     definition: "Punkt der partikkelen har null fart fordi $V(x) = E$. Vendepunktene avgrenser området den kan bevege seg i."
   - term: Superposisjonsprinsippet
     section: Greens funksjon
-    definition: "For en lineær ligning er summen av to løsninger en ny løsning, så responsen på en sum av krefter er summen av responsene."
+    definition: "For en lineær bevegelsesligning er responsen på en sum av krefter summen av responsene. Gir $J_1$ responsen $x_1$ og $J_2$ responsen $x_2$, er $x_1 + x_2$ responsen på $J_1 + J_2$."
   - term: Greens funksjon
     section: Greens funksjon
     definition: "Responsen på et deltadytt: løsningen av $D(t)\\,G(t - t') = \\delta(t - t')$. Den inverterer differensialoperatoren, og superposisjon gir responsen på en vilkårlig kraft."
@@ -580,7 +580,7 @@ glossary:
     definition: "Punktet $\\vec R = \\frac{1}{M}\\sum_i m_i \\vec r_i$. Det beveger seg som én partikkel med hele massen $M$, påvirket av summen av de ytre kreftene."
   - term: Sentrale krefter
     section: Partikkelsystemer
-    definition: "Indre krefter som virker langs forbindelseslinja mellom partiklene. Kalles også den sterke loven om aksjon og reaksjon; den gjør at dreieimpulsen bare endres av ytre dreiemoment."
+    definition: "Indre krefter som virker langs forbindelseslinja mellom partiklene. Kravet om slike krefter kalles også den sterke loven om aksjon og reaksjon. Med sentrale indre krefter endres dreieimpulsen bare av det ytre dreiemomentet."
   - term: Redusert masse
     section: Partikkelsystemer
     definition: "Massen $\\mu = m_1 m_2/(m_1 + m_2)$ som relativbevegelsen i tolegemeproblemet følger, $\\mu\\ddot{\\vec r} = \\vec F_{12}$."
@@ -635,10 +635,10 @@ glossary:
     definition: "Den fiktive kraften $-m\\vec\\omega \\times (\\vec\\omega \\times \\vec r) = m\\omega^2\\vec d$ i et roterende system. Den peker ut fra aksen, virker også på det som ligger i ro, og er konservativ med potensialet $-\\tfrac12 m\\omega^2 d^2$."
   - term: Corioliskraft
     section: Roterende referansesystemer
-    definition: "Den fiktive kraften $-2m\\vec\\omega \\times \\vec v\\,'$ på et legeme som beveger seg i et roterende system. Den står vinkelrett på hastigheten, gjør ikke arbeid og dytter mot høyre på den nordlige halvkula."
+    definition: "Den fiktive kraften $-2m\\vec\\omega \\times \\vec v\\,'$ på et legeme som beveger seg i et roterende system. Den står vinkelrett på hastigheten, gjør ikke arbeid og dytter det som beveger seg langs bakken, mot høyre på den nordlige halvkula."
   - term: Eulerkraft
     section: Roterende referansesystemer
-    definition: "Den fiktive kraften $-m\\dot{\\vec\\omega} \\times \\vec r$ som kommer når vinkelfarten til systemet endrer seg. For jorda er den null."
+    definition: "Den fiktive kraften $-m\\dot{\\vec\\omega} \\times \\vec r$ som kommer når vinkelfarten til systemet endrer seg. Jordas $\\vec\\omega$ endrer seg så langsomt at Eulerkraften kan sløyfes."
   - term: Effektiv tyngdeakselerasjon
     section: Roterende referansesystemer
     definition: "$\\vec g_\\text{eff} = \\vec g - \\vec\\omega \\times (\\vec\\omega \\times \\vec R)$, tyngden og sentrifugalkraften per masse for et legeme i ro på den roterende jorda. Loddlinja følger $\\vec g_\\text{eff}$, og jordoverflaten står vinkelrett på den."
@@ -648,13 +648,13 @@ glossary:
     definition: "$p_i = \\partial L/\\partial\\dot q_i$, impulsen som hører til koordinaten $q_i$. Kalles også kanonisk eller konjugert impuls. Lagranges ligning for $q_i$ lyder $\\dot p_i = \\partial L/\\partial q_i$. Den er lik den mekaniske impulsen bare når hastigheten inngår i $L$ gjennom $T$ alene."
   - term: Syklisk koordinat
     section: Symmetrier og bevarte størrelser
-    definition: "Koordinat som ikke inngår i $L$, slik at $\\partial L/\\partial q_i = 0$. Lagranges ligning for den sier at den generaliserte impulsen $p_i$ er bevart."
+    definition: "Koordinat som ikke inngår i $L$, slik at $\\partial L/\\partial q_i = 0$. Da er $\\dot p_i = 0$ etter Lagranges ligning, og den generaliserte impulsen $p_i$ er bevart."
   - term: Energifunksjon
     section: Symmetrier og bevarte størrelser
     definition: "$H = \\sum_i \\dot q_i\\,\\partial L/\\partial\\dot q_i - L$, med $dH/dt = -\\partial L/\\partial t$. Bevart når $L$ ikke avhenger eksplisitt av tida, og lik energien $T + V$ når føringene er tidsuavhengige og $V$ bare avhenger av koordinatene."
   - term: Kontinuerlig symmetri
     section: Symmetrier og bevarte størrelser
-    definition: "Transformasjon $q_i \\to q_i + \\epsilon F_i(q, \\dot q, t)$ med en parameter $\\epsilon$ som kan gjøres vilkårlig liten, og som endrer $L$ med høyst en total tidsderivert $\\epsilon\\,dF/dt$ for alle baner. Forskyvning, rotasjon og Galilei-skifte er eksempler; speiling er det ikke, for den har ingen parameter."
+    definition: "Transformasjon $q_i \\to q_i + \\epsilon F_i(q, \\dot q, t)$ med en parameter $\\epsilon$ som kan gjøres vilkårlig liten, og som endrer $L$ med høyst en total tidsderivert $\\epsilon\\,dF/dt$ for alle baner. Forskyvning, rotasjon og Galilei-transformasjonen er eksempler; speiling er det ikke, for den har ingen parameter."
   - term: Noethers teorem
     section: Symmetrier og bevarte størrelser
     definition: "Hver kontinuerlig symmetri av Lagrangefunksjonen gir en bevart størrelse. Forskyvningen $q_i \\to q_i + \\epsilon F_i$ er en symmetri når den endrer $L$ med høyst en total tidsderivert $\\epsilon\\,dF/dt$, og da er $\\sum_i p_i F_i - F$ bevart."
@@ -664,7 +664,7 @@ glossary:
 
   - term: Sentrifugalbarriere
     section: Tolegemeproblemet
-    definition: "Leddet $J^2/2\\mu r^2$ i det effektive potensialet, den kinetiske energien i vinkelbevegelsen skrevet med den bevarte dreieimpulsen. Det vokser uten grense når $r \\to 0$ og holder legemet unna kraftsentrum så lenge $J \\ne 0$."
+    definition: "Leddet $J^2/2\\mu r^2$ i det effektive potensialet, den kinetiske energien i vinkelbevegelsen skrevet med den bevarte dreieimpulsen. Det vokser uten grense når $r \\to 0$ og holder legemet unna kraftsentrum så lenge $J \\ne 0$ og $-V$ vokser langsommere enn $1/r^2$ når $r \\to 0$."
   - term: Eksentrisitet
     section: Tolegemeproblemet
     definition: "Tallet $e \\ge 0$ i kjeglesnittet $r = r_0/(1 + e\\cos\\phi)$. Det fastlegger formen på banen: $e = 0$ er en sirkel, $e < 1$ en ellipse, $e = 1$ en parabel og $e > 1$ en hyperbel. For $V = -k/r$ er $e^2 = 1 + 2EJ^2/\\mu k^2$."
@@ -679,7 +679,7 @@ glossary:
     definition: "Det differensielle spredningstverrsnittet $d\\sigma/d\\Omega$ er antall partikler spredt inn i romvinkelen $d\\Omega$ per tid, delt på antall innkommende partikler per tid og areal. Det har dimensjon areal, og integralet over alle retninger er det totale tverrsnittet."
   - term: Virialteoremet
     section: Tolegemeproblemet
-    definition: "For et system som holder seg endelig er tidsmiddelet $2\\langle T\\rangle = -\\langle\\sum_i \\vec F_i \\cdot \\vec r_i\\rangle$. For et potensial som er homogent av grad $n$ er det $2\\langle T\\rangle = n\\langle V\\rangle$."
+    definition: "For et system som holder seg endelig er tidsmiddelet $2\\langle T\\rangle = -\\langle\\sum_i \\vec F_i \\cdot \\vec r_i\\rangle$. For et potensial som er homogent av grad $n$, gir teoremet $2\\langle T\\rangle = n\\langle V\\rangle$."
 
   - term: Jacobis konstant
     section: Trelegemeproblemet

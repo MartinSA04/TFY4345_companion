@@ -28,19 +28,14 @@ Akselerasjonen $\ddot{\vec r}$ er målt i ett referansesystem, og i mange system
 banen seg selv om ingen vannrett kraft virker på ballen. Der må du innføre ekstra
 krefter for at $\vec F = m\vec a$ skal stemme.
 
-Newtons første lov ser ut som spesialtilfellet $\vec F = 0$ av den andre loven,
-men den slår fast at det finnes systemer der den andre loven gjelder.
-
 <Statement kind="law" name="Newtons første lov">
 Det finnes referansesystemer der en fri partikkel, en partikkel uten krefter på
 seg, beveger seg med konstant hastighet. Slike systemer kalles <Term name="inertialsystem">inertialsystemer</Term>,
 og Newtons andre lov er formulert i dem.
 </Statement>
 
-Galileo brukte et skip til å vise at ingen forsøk om bord kan måle om skipet
-seiler med jevn fart. Under dekk faller dråper rett ned i en kopp, og du kaster
-like langt forover som bakover, fordi skipets fart ikke inngår i
-bevegelsesligningene om bord.
+Loven ser ut som spesialtilfellet $\vec F = 0$ av den andre loven, men den slår
+fast at det finnes systemer der den andre loven gjelder.
 
 ## Fra ett inertialsystem til alle andre
 
@@ -57,10 +52,10 @@ transformasjonene som gjør $K'$ til et inertialsystem, er
   caption="Bindingen mellom de to konstantene, så bare én av dem er fri."
 />
 
-<Derivation title="Fra fire konstanter til én">
-En fri partikkel i $K$ beveger seg i en rett linje, og må bevege seg i en rett
-linje også i $K'$. Transformasjonen må derfor være lineær, ettersom en ulineær
-transformasjon krummer rette linjer:
+<Derivation title="Utledning av transformasjonen">
+En fri partikkel går med konstant hastighet i $K$, altså langs en rett linje i
+$(t, x)$-planet, og skal gjøre det samme i $K'$. Transformasjonen må derfor være
+lineær, ettersom en ulineær transformasjon krummer rette linjer:
 
 $$
 t' = At + Bx, \qquad x' = Dt + Ex
@@ -70,9 +65,13 @@ Origo i $K'$, punktet $x' = 0$, beveger seg langs $x = vt$ i $K$. Innsatt i $x' 
 $0 = Dt + Evt$, altså $D = -Ev$.
 
 Ingen av systemene er spesielle, så transformasjonen tilbake er den samme med
-$-v$ i stedet for $v$. Skriv transformasjonen som matrisen $M(v)$ med radene
-$(A, B)$ og $(-Ev, E)$, slik at $M(-v) = M(v)^{-1}$. Speiler du $x$-aksen, ser du
-at $B$ og $D$ skifter fortegn med $v$, mens $A$ og $E$ ikke endres.
+$-v$ i stedet for $v$. Transformasjonen er matrisen $M(v)$ med radene
+$(A, B)$ og $(-Ev, E)$, så kravet er $M(-v) = M(v)^{-1}$.
+
+Ingen retning langs $x$-aksen er spesiell heller. Bytt $x$ med $-x$ og $x'$ med
+$-x'$. Da blir $t' = At - Bx$ og $x' = -Dt + Ex$, og $K'$ beveger seg med $-v$.
+Speilingen gir altså transformasjonen for $-v$, så $B$ og $D$ skifter fortegn
+med $v$, mens $A$ og $E$ ikke endres.
 
 Nederst til venstre har $M(v)^{-1}$ elementet $Ev/\det M$ og $M(-v)$ elementet
 $Ev$, så $\det M = 1$. Øverst til venstre har de $E$ og $A$, så $E = A$.
@@ -148,6 +147,10 @@ $m\vec a = \vec F$ har samme form i $K$ og $K'$.
 Newtons lover har samme form i alle inertialsystemer. Ingen mekanisk måling inne
 i et lukket laboratorium kan avgjøre hvilken konstant hastighet laboratoriet har.
 </Statement>
+
+Galileo brukte et skip til å vise prinsippet. Under dekk faller dråper rett ned i
+en kopp, og du kaster like langt forover som bakover, fordi $m\vec a = \vec F$ har
+samme form om bord som på land så lenge skipet seiler med jevn fart.
 
 <SelfCheck question="Hvorfor må transformasjonen mellom to inertialsystemer være lineær?">
 En fri partikkel følger en rett linje i $(t, x)$-planet i begge systemer, så
@@ -307,7 +310,7 @@ som er positivt, så begge er stabile. Vinkelfrekvensen om et av dem er
 
 <KeyTakeaways>
 - Newtons første lov slår fast at inertialsystemer finnes. Den andre loven gjelder i dem.
-- Transformasjonen mellom to inertialsystemer må være lineær fordi en fri partikkel går i en rett linje i begge systemer, og den har bare én fri konstant.
+- Transformasjonen mellom to inertialsystemer må være lineær fordi en fri partikkel går langs en rett linje i $(t, x)$-planet i begge systemer. Med parallelle akser og felles origo har transformasjonen bare én fri konstant.
 - Absolutt tid gir Galilei-transformasjonen. Et invariant $\Delta s^2$ gir Lorentz-transformasjonen.
 - Under en Galilei-transformasjon forskyves hastigheter med $\vec v$, mens akselerasjoner, masser og krefter er uendret.
 - En kraft er konservativ når $\nabla \times \vec F = 0$ på et enkeltsammenhengende område, og da finnes et potensial med $\vec F = -\nabla V$.

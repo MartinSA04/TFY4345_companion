@@ -18,7 +18,7 @@ updated: 2026-10-10
 
 ## Eulers ligninger
 
-Hold et punkt $O$ i legemet fast, eller bruk massesenteret. I begge tilfeller er $\dot{\vec L} = \vec N$ i et inertialsystem $K$, med dreieimpulsen og dreiemomentet om det samme punktet. Langs rommets akser endrer treghetstensoren seg når legemet dreier. Langs hovedaksene $\hat e_a'$, som følger legemet, er $L_a = I_a\omega_a$ med konstante $I_a$. Aksene roterer med $\vec\omega$, så den tidsderiverte i $K$ er den tidsderiverte langs aksene pluss $\vec\omega \times \vec L$, <FormulaRef id="rotasjon-tidsderivert" />:
+Bevegelsesligningen for rotasjonen er $\dot{\vec L} = \vec N$ i et inertialsystem $K$, med dreieimpulsen og dreiemomentet om et fast punkt $O$ i legemet eller om massesenteret. Du vil ha den som ligninger for komponentene $\omega_a$. Langs rommets akser endrer treghetstensoren seg når legemet dreier. Langs hovedaksene $\hat e_a'$, som følger legemet, er $L_a = I_a\omega_a$ med konstante $I_a$. Aksene roterer med $\vec\omega$, så den tidsderiverte i $K$ er den tidsderiverte langs aksene pluss $\vec\omega \times \vec L$, <FormulaRef id="rotasjon-tidsderivert" />:
 
 $$
 \dot{\vec L} = \sum_a I_a\dot\omega_a\,\hat e_a' + \vec\omega \times \vec L = \vec N
@@ -53,7 +53,9 @@ $$
 
 Symmetriaksen roterer altså om den faste $\vec L$ med vinkelfarten $|\vec L|/I_1$, og vinkelen mellom dem er fast, fordi $\dot{\hat e}_3'$ står vinkelrett på $\vec L$. En slik rotasjon av symmetriaksen om en fast retning heter <Term name="presesjon">presesjon</Term>. Siden $\vec L$ er en sum av $\vec\omega$ og $\hat e_3'$, ligger de tre vektorene hele tida i samme plan, og planet roterer med symmetriaksen.
 
+<Derivation title="Chandler wobble">
 Jorda er flattrykt ved polene, med $(I_3 - I_1)/I_1 \approx 1/300$, så $\Omega \approx \omega_3/300$. Ligger $\vec\omega$ litt på skrå av polaksen, skulle rotasjonsaksen gå rundt polen én gang på omtrent 300 døgn. Den målte bevegelsen, Chandler wobble, har perioden 430 døgn, fordi jorda ikke er helt stiv.
+</Derivation>
 
 ## Stabil og ustabil rotasjon
 
@@ -72,7 +74,7 @@ For å få én ligning for $\omega_2$, deriver den første og sett inn $\dot\ome
 
 Er $I_1$ det største av de tre, er den første faktoren negativ og den andre positiv. Er $I_1$ det minste, er fortegnene omvendt. I begge tilfeller er $\lambda^2 < 0$, og rotasjonen er stabil. Ligger $I_1$ mellom de to andre, har faktorene samme fortegn, og et lite avvik vokser eksponentielt. Rotasjon om hovedaksen med det midterste treghetsmomentet er ustabil.
 
-At $T$ og $|\vec L|$ er bevart, gir samme konklusjon. Sett fra legemet ligger $\vec L$ både på kula $\sum_a L_a^2 = |\vec L|^2$ og på ellipsoiden $\sum_a L_a^2/2I_a = T$, så den beveger seg langs skjæringskurven mellom dem. Skjæringskurvene er kurvene på kula der $T$ har en fast verdi. Hver $L_a^2$ teller med vekten $1/2I_a$ i $T$, så på kula er $T$ størst når $\vec L$ ligger langs aksen med minst $I_a$, og minst langs aksen med størst $I_a$. Rundt et maksimum og et minimum er kurvene med fast $T$ små, lukkede kurver rundt aksen. Langs den midterste aksen øker $T$ når $\vec L$ vipper mot aksen med minst $I_a$, og avtar når $\vec L$ vipper mot aksen med størst. Den midterste aksen er altså et sadelpunkt for $T$, og gjennom den går to kurver som krysser hverandre. En $\vec L$ som starter like ved den midterste aksen, følger en av dem helt over til motsatt side av legemet.
+At $T$ og $|\vec L|$ er bevart, gir også at rotasjon om den midterste hovedaksen er ustabil og om de to andre stabil. Sett fra legemet ligger $\vec L$ både på kula $\sum_a L_a^2 = |\vec L|^2$ og på ellipsoiden $\sum_a L_a^2/2I_a = T$, så den beveger seg langs skjæringskurven mellom dem. Skjæringskurvene er kurvene på kula der $T$ har en fast verdi. Hver $L_a^2$ teller med vekten $1/2I_a$ i $T$, så på kula er $T$ størst når $\vec L$ ligger langs aksen med minst $I_a$, og minst langs aksen med størst $I_a$. Rundt et maksimum og et minimum er kurvene med fast $T$ små, lukkede kurver rundt aksen. Langs den midterste aksen øker $T$ når $\vec L$ vipper mot aksen med minst $I_a$, og avtar når $\vec L$ vipper mot aksen med størst. Den midterste aksen er altså et sadelpunkt for $T$, og gjennom den går to kurver som krysser hverandre. En $\vec L$ som starter like ved den midterste aksen, følger en av dem helt over til motsatt side av legemet.
 
 <Simulation
   src="/sims/fri-rotasjon.js"
@@ -91,7 +93,11 @@ At $T$ og $|\vec L|$ er bevart, gir samme konklusjon. Sett fra legemet ligger $\
   number={1}
 />
 
-Taper legemet energi, går $T$ ned mens $|\vec L|$ er bevart. Da ender rotasjonen om aksen med størst treghetsmoment, der $T = |\vec L|^2/2I_\text{max}$ er minst. Satellitten Explorer 1 skulle i 1958 spinne om lengdeaksen, som har det minste treghetsmomentet. Bøyelige antenner tok opp energi, og satellitten endte med å rotere om en akse på tvers.
+Taper legemet energi, ender det med å rotere om aksen med størst treghetsmoment. $|\vec L|$ er bevart, så $T = |\vec L|^2/2I$ er minst for størst $I$.
+
+<Derivation title="Explorer 1">
+Satellitten Explorer 1 skulle i 1958 spinne om lengdeaksen, som har det minste treghetsmomentet. Bøyelige antenner tok opp energi, og satellitten endte med å rotere om en akse på tvers.
+</Derivation>
 
 <Example label="Eksamensoppgave" title="Stabil rotasjon av en sylinder">
 <ExamRef id="2022-des" task="1 ii" />
@@ -102,17 +108,17 @@ True (T) or false (F). Please explain your choice as half of the points depends 
   question={"ii. Consider a cylinder with the principal components of inertia $I_1 = I_2 > I_3$. Claim: The rotation around the third principal axis ($I_3$) is stable against small perturbations."}
   options={["T", "F"]}
   answer={0}
-  explanation={"Sant. $I_3$ er det minste treghetsmomentet, og rotasjon om aksen med det største eller det minste er stabil. Med indeksene byttet syklisk er $\\lambda^2 = (I_2 - I_3)(I_3 - I_1)\\,\\omega_3^2/I_1I_2$, og med $I_1 = I_2$ blir $\\lambda^2 = -\\Omega^2$. Avviket roterer med $\\Omega$ om aksen i stedet for å vokse, og denne rotasjonen er presesjonen til den frie symmetriske snurrebassen."}
+  explanation={"Sant. $I_3$ er det minste treghetsmomentet, og rotasjon om aksen med det største eller det minste er stabil. Med indeksene byttet syklisk er $\\lambda^2 = (I_2 - I_3)(I_3 - I_1)\\,\\omega_3^2/I_1I_2$, og med $I_1 = I_2$ blir $\\lambda^2 = -\\Omega^2$. Sett fra legemet roterer avviket med $\\Omega$ om aksen i stedet for å vokse."}
 />
 </Example>
 
 ## Rotasjoner og Eulervinklene
 
-For Lagranges ligninger trenger du generaliserte koordinater for orienteringen til legemet, altså for hvor aksene $\hat e_a'$ peker i forhold til rommets akser $\hat e_a$ i $K$. Tallene $R_{ab} = \hat e_a' \cdot \hat e_b$ danner <Term name="rotasjonsmatrise">rotasjonsmatrisen</Term> $\boldsymbol R$ med $\hat e_a' = \sum_b R_{ab}\,\hat e_b$. Da er $\hat e_a' \cdot \hat e_b' = \sum_c R_{ac}R_{bc}$, og kravet $\hat e_a' \cdot \hat e_b' = \delta_{ab}$ sier at matrisen er ortogonal, $\boldsymbol R\boldsymbol R^{\mathsf T} = \boldsymbol 1$. Produktet $\boldsymbol R\boldsymbol R^{\mathsf T}$ er symmetrisk, så kravet gir seks betingelser på ni elementer, og tre tall er igjen.
+Eulers ligninger gir $\vec\omega$, men ikke orienteringen til legemet, og dreiemomentet på en tung snurrebass avhenger av orienteringen. For å sette opp Lagranges ligninger trenger du generaliserte koordinater for orienteringen til legemet, altså for hvor aksene $\hat e_a'$ peker i forhold til rommets akser $\hat e_a$ i $K$. Tallene $R_{ab} = \hat e_a' \cdot \hat e_b$ danner <Term name="rotasjonsmatrise">rotasjonsmatrisen</Term> $\boldsymbol R$ med $\hat e_a' = \sum_b R_{ab}\,\hat e_b$. Da er $\hat e_a' \cdot \hat e_b' = \sum_c R_{ac}R_{bc}$, og kravet $\hat e_a' \cdot \hat e_b' = \delta_{ab}$ sier at matrisen er ortogonal, $\boldsymbol R\boldsymbol R^{\mathsf T} = \boldsymbol 1$. Produktet $\boldsymbol R\boldsymbol R^{\mathsf T}$ er symmetrisk, så kravet gir seks betingelser på ni elementer, og tre tall er igjen.
 
-Determinanten er $\pm 1$, fordi $(\det\boldsymbol R)^2 = \det(\boldsymbol R\boldsymbol R^{\mathsf T}) = 1$. Matrisen $-\boldsymbol 1$ har determinant $-1$ og gjør et høyrehåndssystem til et venstrehåndssystem. Et legeme som dreies, starter i $\boldsymbol 1$ og endrer seg kontinuerlig, så determinanten kan ikke hoppe til $-1$. Rotasjonene er derfor de ortogonale matrisene med $\det\boldsymbol R = +1$. Produktet av to rotasjoner er en rotasjon, og den inverse til $\boldsymbol R$ er $\boldsymbol R^{\mathsf T}$, så rotasjonene danner en gruppe, SO(3).
+Determinanten er $\pm 1$, fordi $(\det\boldsymbol R)^2 = \det(\boldsymbol R\boldsymbol R^{\mathsf T}) = 1$. Matrisen $-\boldsymbol 1$ har determinant $-1$ og gjør et høyrehåndssystem til et venstrehåndssystem. Et legeme som dreies, starter i $\boldsymbol 1$ og endrer seg kontinuerlig, så determinanten kan ikke hoppe til $-1$. En rotasjon har derfor $\det\boldsymbol R = +1$. Omvendt er hver ortogonal matrise med $\det\boldsymbol R = +1$ en rotasjon, for Eulervinklene under når den med tre dreininger etter hverandre. Produktet av to rotasjoner er en rotasjon, og den inverse til $\boldsymbol R$ er $\boldsymbol R^{\mathsf T}$, så rotasjonene danner en gruppe, SO(3).
 
-Komponentene av en vektor langs de to settene akser henger sammen ved $v_a' = \sum_b R_{ab}v_b$. Med $\vec L = \boldsymbol I\vec\omega$ er $\vec L\,' = \boldsymbol R\boldsymbol I\boldsymbol R^{\mathsf T}\vec\omega\,'$, så treghetstensoren langs de nye aksene er $\boldsymbol I' = \boldsymbol R\boldsymbol I\boldsymbol R^{\mathsf T}$. En tensor er en størrelse med komponenter som skifter akser på denne måten, med én $\boldsymbol R$ for hver indeks.
+Komponentene av en vektor langs de to settene akser henger sammen ved $v_a' = \sum_b R_{ab}v_b$. Sett $\vec L = \boldsymbol I\vec\omega$ inn i $\vec L\,' = \boldsymbol R\vec L$, og skriv $\vec\omega = \boldsymbol R^{\mathsf T}\vec\omega\,'$, som følger av $\vec\omega\,' = \boldsymbol R\vec\omega$ og $\boldsymbol R^{\mathsf T}\boldsymbol R = \boldsymbol 1$. Da er $\vec L\,' = \boldsymbol R\boldsymbol I\boldsymbol R^{\mathsf T}\vec\omega\,'$, så treghetstensoren langs de nye aksene er $\boldsymbol I' = \boldsymbol R\boldsymbol I\boldsymbol R^{\mathsf T}$. En tensor er en størrelse med komponenter som skifter akser på denne måten, med én $\boldsymbol R$ for hver indeks.
 
 <Example label="Eksamensoppgave" title="Rotasjoner som ortogonale transformasjoner">
 <ExamRef id="2022-des" task="1 i" />
@@ -157,7 +163,7 @@ Langs legemets akser blir summen
 />
 
 <Derivation title="Komponentene av $\vec\omega$ langs legemets akser">
-Den tredje dreiningen tar knutelinja over i $\hat e_1'$, så $\hat e_N = \cos\psi\,\hat e_1' - \sin\psi\,\hat e_2'$. Den andre dreiningen vipper $\hat e_3$ over i $\hat e_3'$ om knutelinja. Rommets $\hat e_3$ er altså $\hat e_3'$ vippet tilbake vinkelen $\theta$ om $\hat e_N$, og det gir $\hat e_3 = \cos\theta\,\hat e_3' + \sin\theta\,\hat e_3' \times \hat e_N$. Med $\hat e_3' \times \hat e_N = \sin\psi\,\hat e_1' + \cos\psi\,\hat e_2'$ er
+Den tredje dreiningen tar knutelinja over i $\hat e_1'$, så $\hat e_N = \cos\psi\,\hat e_1' - \sin\psi\,\hat e_2'$. Den andre dreiningen vipper $\hat e_3$ over i $\hat e_3'$ om knutelinja. Rommets $\hat e_3$ er altså $\hat e_3'$ vippet tilbake vinkelen $\theta$ om $\hat e_N$. Vektoren $\hat e_3'$ står vinkelrett på $\hat e_N$ og vippes mot $\hat e_3' \times \hat e_N$, så $\hat e_3 = \cos\theta\,\hat e_3' + \sin\theta\,\hat e_3' \times \hat e_N$. Med $\hat e_3' \times \hat e_N = \sin\psi\,\hat e_1' + \cos\psi\,\hat e_2'$ er
 
 $$
 \hat e_3 = \sin\theta\sin\psi\,\hat e_1' \allowbreak + \sin\theta\cos\psi\,\hat e_2' \allowbreak + \cos\theta\,\hat e_3'
@@ -276,16 +282,22 @@ Snurrebassen presesserer jevnt, uten nutasjon, når $\theta = \theta_0$ hele tid
 
 <Formula
   tex="Mgl = \dot\phi\,(I_3\omega_3 - I_1\dot\phi\cos\theta_0)"
-  caption="<b>Jevn presesjon</b> i vinkelen $\theta_0$. Ligningen er kvadratisk i $\dot\phi$ og har reelle løsninger når $I_3^2\omega_3^2 > 4I_1Mgl\cos\theta_0$."
+  caption="<b>Jevn presesjon</b> i vinkelen $\theta_0$."
 />
 
-Spinner snurrebassen fort, er leddet $I_1\dot\phi\cos\theta_0$ lite for den langsomme av de to løsningene, og den er
+Ligningen er kvadratisk i $\dot\phi$, med røttene
 
 $$
-\dot\phi \approx \frac{Mgl}{I_3\omega_3}
+\dot\phi_\pm = \frac{I_3\omega_3 \pm \sqrt{I_3^2\omega_3^2 - 4I_1Mgl\cos\theta_0}}{2I_1\cos\theta_0}
 $$
 
-uavhengig av vinkelen. Den følger også direkte av $\dot{\vec L} = \vec N$. Med $\vec L \approx I_3\omega_3\hat e_3'$ går spissen av $\vec L$ rundt på en vannrett sirkel med radius $I_3\omega_3\sin\theta$, så $|\dot{\vec L}| = I_3\omega_3\dot\phi\sin\theta$, og dreiemomentet krever $|\dot{\vec L}| = Mgl\sin\theta$. Den raske løsningen, $\dot\phi \approx I_3\omega_3/(I_1\cos\theta_0)$, er presesjonen til en fri snurrebass og krever et kraftig dytt. En snurrebass som slippes i ro, presesserer i snitt med den langsomme farten.
+De er reelle når $I_3^2\omega_3^2 > 4I_1Mgl\cos\theta_0$. Spinner snurrebassen fort, er $4I_1Mgl\cos\theta_0 \ll I_3^2\omega_3^2$, og kvadratroten er omtrent $I_3\omega_3 - 2I_1Mgl\cos\theta_0/I_3\omega_3$. Da er den langsomme roten
+
+$$
+\dot\phi_- \approx \frac{Mgl}{I_3\omega_3}
+$$
+
+og den raske $\dot\phi_+ \approx I_3\omega_3/(I_1\cos\theta_0)$, som er presesjonen til en fri snurrebass og krever et kraftig dytt. Den langsomme roten er uavhengig av vinkelen. Den følger også direkte av $\dot{\vec L} = \vec N$. Med $\vec L \approx I_3\omega_3\hat e_3'$ går spissen av $\vec L$ rundt på en vannrett sirkel med radius $I_3\omega_3\sin\theta$, så $|\dot{\vec L}| = I_3\omega_3\dot\phi\sin\theta$, og dreiemomentet krever $|\dot{\vec L}| = Mgl\sin\theta$. En snurrebass som slippes i ro, presesserer i snitt med den langsomme farten.
 
 Jorda er en symmetrisk snurrebass med $I_3 > I_1$. Sola og Månen trekker i ekvatorbulen, og dreiemomentet får jordaksen til å presessere én gang på omtrent 26 000 år.
 
