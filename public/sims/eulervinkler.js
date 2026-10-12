@@ -6,19 +6,28 @@
  * tegnet som oransje buer. Knappen spiller av dreiningene i rekkefølge fra
  * null.
  *
+ * Skiva er massiv og skyggelagt fra ett lys (_solid.js). Aksene og buene
+ * deles og sorteres mot den (_painter.js), og det som ligger bak skiva, vises
+ * som svake stiplede linjer.
+ *
  * Kontrakt: default-eksportert init(api), api = { stage, controls, getSize,
  * onResize, signal }.
  */
 import {
-  slider, button, animate, svg, txt, line, poly, arrow,
+  slider, button, animate, svg, txt,
   FIXED, HINT, DERIVED, LABEL, MOVING,
 } from "./_mekanikk.js";
+import { PAPER, add, disc, lightFor, viewFor } from "./_solid.js";
+import { discHit, painter } from "./_painter.js";
 
 export default function init({ stage, controls, getSize, onResize, signal }) {
   const ALPHA = 0.32; // kameraets hevning over vannrett
   const BETA = -2.25; // dreining av rommet om ê₃ for kameraet
   const PLAY = 1.3; // sekunder per dreining
   const deg = Math.PI / 180;
+  const VIEW = viewFor(ALPHA, BETA);
+  const LIGHT = lightFor(BETA);
+  const COIN = `color-mix(in oklab, ${MOVING} 30%, ${PAPER})`;
 
   const set = { phi: 50 * deg, theta: 40 * deg, psi: 60 * deg };
   let shown = { ...set };
@@ -83,6 +92,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     const E1 = [1, 0, 0];
     const E2 = [0, 1, 0];
     const E3 = [0, 0, 1];
+    const O = [0, 0, 0];
     const eN = [Math.cos(phi), Math.sin(phi), 0];
     const e3p = comb(Math.cos(theta), E3, Math.sin(theta), cross(eN, E3));
     const q = cross(e3p, eN);
@@ -90,80 +100,70 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     const e2p = cross(e3p, e1p);
     const at = (r, v) => v.map((c) => r * c);
     const sub = (s0, s1) => `${s0}<tspan baseline-shift="sub" style="font-size:9px">${s1}</tspan>`;
-    let g = "";
+
+    // Skiva er massiv, og alle linjer deles og sorteres mot den. Det som
+    // ligger i skiveplanet (knutelinja, ê′₁, ê′₂ og ψ), er tegnet på den
+    // synlige flata.
+    const R = 0.85;
+    const HT = 0.045;
+    const coin = disc({
+      c: O, n: e3p, eu: eN, ev: q, r: R, ht: HT, view: VIEW, light: LIGHT, P,
+      base: COIN, seg: 60,
+    });
+    const nv = coin.capNormal;
+    const lift = (p) => add(p, nv, HT + 0.004);
+    const pen = painter({ P, view: VIEW, hit: discHit(O, e3p, R, HT) });
+    let labels = "";
 
     // Det vannrette planet og knutelinja.
     const ringH = [];
     for (let i = 0; i <= 72; i++) {
       const u = (2 * Math.PI * i) / 72;
-      ringH.push(P([Math.cos(u), Math.sin(u), 0]));
+      ringH.push([Math.cos(u), Math.sin(u), 0]);
     }
-    g += poly(ringH, `stroke="${HINT}" stroke-width="1" stroke-dasharray="4 4"`);
-    const [n0x, n0y] = P(at(-1.15, eN));
+    pen.polyline(ringH, { color: HINT, width: 1, dash: "4 4" });
+    pen.polyline([lift(at(-1.15, eN)), lift(at(1.15, eN))], { color: LABEL, width: 1.3, dash: "6 4" });
     const [n1x, n1y] = P(at(1.15, eN));
-    g += line(n0x, n0y, n1x, n1y, { color: LABEL, width: 1.3, dash: "6 4" });
-    g += txt(n1x + 4, n1y + 14, sub("ê", "N"), { anchor: "middle" });
+    labels += txt(n1x + 4, n1y + 14, sub("ê", "N"), { anchor: "middle" });
 
-    // Skiva.
-    const disc = [];
-    for (let i = 0; i <= 60; i++) {
-      const u = (2 * Math.PI * i) / 60;
-      disc.push(P(comb(0.85 * Math.cos(u), eN, 0.85 * Math.sin(u), q)));
-    }
-    let d = "";
-    disc.forEach(([x, y], i) => {
-      d += `${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)} `;
-    });
-    g += `<path d="${d}Z" style="fill:${MOVING}" fill-opacity="0.14" stroke="${MOVING}" stroke-width="1.6" stroke-linejoin="round"/>`;
-
-    // Rommets akser.
-    const [ox, oy] = P([0, 0, 0]);
-    const spaceAxes = [
-      [E1, 1.3, sub("ê", "1")],
-      [E2, 1.3, sub("ê", "2")],
-      [E3, 1.3, sub("ê", "3")],
-    ];
-    for (const [v, r, lab] of spaceAxes) {
-      const [x, y] = P(at(r, v));
-      g += arrow(ox, oy, x, y, FIXED, 1.6);
-      const [lx, ly] = P(at(r + 0.14, v));
-      g += txt(lx, ly + 4, lab, { anchor: "middle" });
+    // Rommets akser går ut fra sentrum, inni skiva.
+    for (const [v, lab] of [[E1, sub("ê", "1")], [E2, sub("ê", "2")], [E3, sub("ê", "3")]]) {
+      pen.arrow(O, at(1.3, v), FIXED, 1.6);
+      const [lx, ly] = P(at(1.44, v));
+      labels += txt(lx, ly + 4, lab, { anchor: "middle" });
     }
 
-    // Vinklene: φ i det vannrette planet, θ fra ê₃ til ê₃′, ψ i skiveplanet.
-    const arcPts = (n, fn) => {
-      const pts = [];
-      for (let i = 0; i <= n; i++) pts.push(P(fn(i / n)));
-      return pts;
-    };
-    const angle = (val, r, fn, lab, lr) => {
-      if (val < 0.06) return "";
+    // Vinklene: φ i det vannrette planet, θ fra ê₃ til ê₃′, ψ på skiva.
+    const angle = (val, r, fn, lab, lr, inPlane) => {
+      if (val < 0.06) return;
       const n = Math.max(6, Math.ceil(val * 14));
-      let out = poly(arcPts(n, (t) => at(r, fn(t * val))), `stroke="${DERIVED}" stroke-width="2"`);
+      const pts = [];
+      for (let i = 0; i <= n; i++) {
+        const p = at(r, fn((i / n) * val));
+        pts.push(inPlane ? lift(p) : p);
+      }
+      pen.polyline(pts, { color: DERIVED, width: 2 });
       const [lx, ly] = P(at(lr, fn(val / 2)));
-      out += txt(lx, ly + 4, lab, { anchor: "middle", fill: DERIVED });
-      return out;
+      labels += txt(lx, ly + 4, lab, { anchor: "middle", fill: DERIVED });
     };
     const nodeCross = cross(eN, E3);
-    g += angle(phi, 0.42, (u) => [Math.cos(u), Math.sin(u), 0], "φ", 0.58);
-    g += angle(theta, 0.5, (u) => comb(Math.cos(u), E3, Math.sin(u), nodeCross), "θ", 0.66);
-    g += angle(psi, 0.62, (u) => comb(Math.cos(u), eN, Math.sin(u), q), "ψ", 0.77);
+    angle(phi, 0.42, (u) => [Math.cos(u), Math.sin(u), 0], "φ", 0.58, false);
+    angle(theta, 0.5, (u) => comb(Math.cos(u), E3, Math.sin(u), nodeCross), "θ", 0.66, false);
+    angle(psi, 0.62, (u) => comb(Math.cos(u), eN, Math.sin(u), q), "ψ", 0.77, true);
 
     // Legemets akser.
-    const bodyAxes = [
-      [e1p, 1.05, sub("ê′", "1")],
-      [e2p, 1.05, sub("ê′", "2")],
-      [e3p, 1.25, sub("ê′", "3")],
-    ];
-    for (const [v, r, lab] of bodyAxes) {
-      const [x, y] = P(at(r, v));
-      g += arrow(ox, oy, x, y, MOVING, 2.2);
+    for (const [v, r, lab, inPlane] of [
+      [e1p, 1.05, sub("ê′", "1"), true],
+      [e2p, 1.05, sub("ê′", "2"), true],
+      [e3p, 1.25, sub("ê′", "3"), false],
+    ]) {
+      pen.arrow(inPlane ? lift(O) : O, inPlane ? lift(at(r, v)) : at(r, v), MOVING, 2.2);
       const [lx, ly] = P(at(r + 0.16, v));
-      g += txt(lx, ly + 4, lab, { anchor: "middle", fill: MOVING });
+      labels += txt(lx, ly + 4, lab, { anchor: "middle", fill: MOVING });
     }
-    g += `<circle cx="${ox.toFixed(1)}" cy="${oy.toFixed(1)}" r="3" style="fill:${FIXED}"/>`;
+    pen.dotAt(lift(O), 3, FIXED);
 
-    stage.innerHTML = svg(w, h, g);
+    stage.innerHTML = svg(w, h, pen.svg(coin.rim + coin.cap) + labels);
   }
 
   onResize(render);

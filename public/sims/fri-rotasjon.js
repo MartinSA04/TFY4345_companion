@@ -10,13 +10,21 @@
  * loddrett opp, og den grå stanga er aksen rotasjonen startet om, med en prikk
  * i den ene enden så det synes når den snur.
  *
+ * Boka er massiv (permer, rygg og sideblokk) og skyggelagt fra ett lys
+ * (_solid.js). Stanga, banen og L deles og sorteres mot boka (_painter.js),
+ * så det som er inni eller bak boka, vises som svake stiplede linjer.
+ *
  * Kontrakt: default-eksportert init(api), api = { stage, controls, getSize,
  * onResize, signal }.
  */
 import {
-  rk4, button, animate, svg, txt, line, poly, arrow,
+  rk4, button, animate, svg, txt, line,
   DERIVED, LABEL, MOVING,
 } from "./_mekanikk.js";
+import { PAPER, face, lightFor, shade, tone } from "./_solid.js";
+import { boxHit, painter } from "./_painter.js";
+
+const LIGHT = lightFor();
 
 export default function init({ stage, controls, getSize, onResize, signal }) {
   const HALF = [1, 0.6, 0.15]; // halve sider langs aksene 1, 2, 3
@@ -124,69 +132,113 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     const ca = Math.cos(ALPHA);
     const sa = Math.sin(ALPHA);
     const P = ([x, yy, z]) => [cx + s * x, cy - s * (z * ca + yy * sa)];
-    const depth = ([, yy, z]) => yy * ca - z * sa; // større er lenger inne
     const view = [0, ca, -sa];
     const e = axes(y);
     const at = (c) => [0, 1, 2].map((i) => c[0] * e[0][i] + c[1] * e[1][i] + c[2] * e[2][i]);
-    let g = "";
+    // Boka er bygd av fire deler, alle med de samme ytre målene HALF som
+    // treghetsmomentene regnes fra: to permer som stikker litt utenfor
+    // sideblokka, ryggen langs −2 og sideblokka i papir imellom.
+    const CT = 0.03; // permtykkelse
+    const OV = 0.04; // så mye permene stikker ut
+    const parts = [
+      { c: [0, 0, -(HALF[2] - CT / 2)], h: [HALF[0], HALF[1], CT / 2], mat: MOVING, kind: "back" },
+      { c: [0, 0, HALF[2] - CT / 2], h: [HALF[0], HALF[1], CT / 2], mat: MOVING, kind: "front" },
+      { c: [0, -(HALF[1] - CT / 2), 0], h: [HALF[0], CT / 2, HALF[2] - CT], mat: MOVING, kind: "spine" },
+      { c: [0, (CT - OV) / 2, 0], h: [HALF[0] - OV, HALF[1] - (CT + OV) / 2, HALF[2] - CT], mat: PAPER, kind: "block" },
+    ];
+    const hits = parts.map((pt) => boxHit(e, pt.h, at(pt.c)));
+    const pen = painter({ P, view, hit: (p, u) => hits.some((f) => f(p, u)) });
 
-    // Stanga langs aksen k, bak boka.
-    const rodEnd = HALF[k] + 0.32;
-    const pPlus = P(e[k].map((c) => rodEnd * c));
-    const pMinus = P(e[k].map((c) => -rodEnd * c));
-    const plusFront = depth(e[k]) < 0;
-    g += poly(trail.map(P), `stroke="${LABEL}" stroke-width="1.2" stroke-dasharray="3 4" opacity="0.7"`);
-    g += line(pMinus[0], pMinus[1], pPlus[0], pPlus[1], { color: LABEL, width: 3 });
+    // Rekkefølgen er fast gitt av planene som skiller delene: permen lengst
+    // inne først, så ryggen og sideblokka (den nærmeste sist), så den nærmeste permen.
+    const frontNear = dot(e[2], view) < 0;
+    const spineNear = dot(e[1], view) > 0;
+    const [back, front, spine, block] = parts;
+    const order = [frontNear ? back : front, ...(spineNear ? [block, spine] : [spine, block]), frontNear ? front : back];
 
-    // Flatene som vender mot kameraet.
-    const faces = [];
-    for (let a = 0; a < 3; a++) {
-      for (const sg of [1, -1]) {
-        const nrm = e[a].map((c) => sg * c);
-        if (dot(nrm, view) >= 0) continue;
-        const b = (a + 1) % 3;
-        const c = (a + 2) % 3;
-        const corner = (pb, pc) => {
-          const v = [0, 0, 0];
-          v[a] = sg * HALF[a];
-          v[b] = pb * HALF[b];
-          v[c] = pc * HALF[c];
-          return P(at(v));
-        };
-        const pts = [corner(1, 1), corner(-1, 1), corner(-1, -1), corner(1, -1)];
-        const op = a === 2 ? (sg > 0 ? 0.5 : 0.1) : 0.24;
-        faces.push({ pts, op });
+    // Punkt i boka: v i bokas akser, relativt til delens senter.
+    const pt3 = (part, v) => at([part.c[0] + v[0], part.c[1] + v[1], part.c[2] + v[2]]);
+    const segOn = (part, a, sg, run, fixed, val, from, to, color, width) => {
+      const p0 = [0, 0, 0];
+      const p1 = [0, 0, 0];
+      p0[a] = p1[a] = sg * part.h[a];
+      p0[fixed] = p1[fixed] = val;
+      p0[run] = from;
+      p1[run] = to;
+      const [x0, y0] = P(pt3(part, p0));
+      const [x1, y1] = P(pt3(part, p1));
+      return line(x0, y0, x1, y1, { color, width });
+    };
+    const rect = (part, a, sg, ua, va, [u0, u1], [v0, v1]) =>
+      [[u1, v1], [u0, v1], [u0, v0], [u1, v0]].map(([u, v]) => {
+        const p = [0, 0, 0];
+        p[a] = sg * part.h[a];
+        p[ua] = u;
+        p[va] = v;
+        return P(pt3(part, p));
+      });
+
+    let book = "";
+    for (const part of order) {
+      for (let a = 0; a < 3; a++) {
+        for (const sg of [1, -1]) {
+          const nrm = e[a].map((c) => sg * c);
+          if (dot(nrm, view) >= 0) continue;
+          const b = (a + 1) % 3;
+          const c = (a + 2) % 3;
+          const corner = (pb, pc) => {
+            const v = [0, 0, 0];
+            v[a] = sg * part.h[a];
+            v[b] = pb * part.h[b];
+            v[c] = pc * part.h[c];
+            return P(pt3(part, v));
+          };
+          const t = tone(nrm, LIGHT);
+          book += face([corner(1, 1), corner(-1, 1), corner(-1, -1), corner(1, -1)], shade(part.mat, t), shade(part.mat, 3), 0.7);
+          const ink = shade(PAPER, Math.min(3, t + 1.5));
+          if (part.kind === "block" && a !== 2) {
+            // Sidekantene: tette linjer parallelt med permene.
+            const run = a === 0 ? 1 : 0;
+            for (let i = 1; i < 8; i++) {
+              const z = -part.h[2] + (2 * part.h[2] * i) / 8;
+              book += segOn(part, a, sg, run, 2, z, -part.h[run], part.h[run], ink, 0.5);
+            }
+          } else if (part.kind === "spine" && a === 1 && sg < 0) {
+            // Ryggen: to par opphøyde bånd og et lyst ryggskilt.
+            for (const x of [-0.84, -0.8, 0.8, 0.84]) {
+              book += segOn(part, a, sg, 2, 0, x * HALF[0], -part.h[2], part.h[2], shade(MOVING, 3), 1);
+            }
+            book += face(rect(part, a, sg, 0, 2, [-0.3, 0.3], [-0.6 * part.h[2], 0.6 * part.h[2]]), shade(PAPER, t), shade(PAPER, 3), 0.6);
+          } else if (part.kind === "front" && a === 2 && sg > 0) {
+            // Forsida: tittelskilt med en tynn ramme rundt.
+            book += face(rect(part, a, sg, 0, 1, [-0.6, 0.6], [0.1, 0.42]), shade(PAPER, t), shade(PAPER, 3), 0.6);
+            const frame = rect(part, a, sg, 0, 1, [-0.9, 0.9], [-0.85 * HALF[1], 0.9 * HALF[1]]);
+            book += face(frame, "none", shade(MOVING, Math.min(3, t + 1)), 0.8);
+          }
+        }
       }
     }
-    for (const { pts, op } of faces) {
-      let d = "";
-      pts.forEach(([x, yy], i) => {
-        d += `${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${yy.toFixed(1)} `;
-      });
-      g += `<path d="${d}Z" style="fill:${MOVING}" fill-opacity="${op}" stroke="${MOVING}" stroke-width="1.6" stroke-linejoin="round"/>`;
-    }
 
-    // Stanga foran boka der den stikker ut mot kameraet, og prikken i plussenden.
-    const out = (sg) => P(e[k].map((c) => sg * (HALF[k] + 0.02) * c));
-    const front = plusFront ? [out(1), pPlus] : [out(-1), pMinus];
-    g += line(front[0][0], front[0][1], front[1][0], front[1][1], { color: LABEL, width: 3 });
-    g += `<circle cx="${pPlus[0].toFixed(1)}" cy="${pPlus[1].toFixed(1)}" r="5" style="fill:${LABEL}"/>`;
+    // Stanga gjennom boka, banen til plussenden og L. Alt sorteres mot boka.
+    const rodEnd = HALF[k] + 0.32;
+    pen.polyline(trail, { color: LABEL, width: 1.2, dash: "3 4", opacity: 0.7 });
+    pen.polyline([e[k].map((c) => -rodEnd * c), e[k].map((c) => rodEnd * c)], { color: LABEL, width: 3 });
+    pen.dotAt(e[k].map((c) => rodEnd * c), 5, LABEL);
+    const Ltip = Lsp.map((c) => 1.35 * c);
+    pen.arrow([0, 0, 0], Ltip, DERIVED, 2.8);
 
-    // Akseetiketter like utenfor boka, svakere når aksen peker mot kameraet.
+    // Etiketter ligger alltid øverst.
+    let labels = "";
     for (let a = 0; a < 3; a++) {
       const tip = e[a].map((c) => (HALF[a] + (a === k ? 0.5 : 0.16)) * c);
       const [lx, ly] = P(tip);
       const side = Math.hypot(e[a][0], e[a][2] * ca + e[a][1] * sa);
-      g += txt(lx, ly + 4, String(a + 1), { anchor: "middle", opacity: Math.min(1, Math.max(0.15, (side - 0.2) / 0.4)) });
+      labels += txt(lx, ly + 4, String(a + 1), { anchor: "middle", opacity: Math.min(1, Math.max(0.15, (side - 0.2) / 0.4)) });
     }
+    const [l1x, l1y] = P(Ltip);
+    labels += txt(l1x + 9, l1y + 8, "L", { fill: DERIVED });
 
-    // L står fast.
-    const [l0x, l0y] = P([0, 0, 0]);
-    const [l1x, l1y] = P(Lsp.map((c) => 1.35 * c));
-    g += arrow(l0x, l0y, l1x, l1y, DERIVED, 2.8);
-    g += txt(l1x + 9, l1y + 8, "L", { fill: DERIVED });
-
-    stage.innerHTML = svg(w, h, g);
+    stage.innerHTML = svg(w, h, pen.svg(book) + labels);
   }
 
   onResize(render);

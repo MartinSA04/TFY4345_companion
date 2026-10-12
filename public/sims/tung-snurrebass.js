@@ -1,8 +1,12 @@
 /**
  * Tung symmetrisk snurrebass i skråprojeksjon: spissen P står fast på bordet,
- * og ei skive sitter på aksen i avstanden l fra spissen. θ er vinkelen mellom
- * loddlinja og symmetriaksen, φ dreiningen av aksen rundt loddlinja og ψ
- * dreiningen av skiva om aksen (radien som er tegnet på skiva).
+ * og massesenteret ligger på symmetriaksen i avstanden l fra spissen. θ er
+ * vinkelen mellom loddlinja og symmetriaksen, φ dreiningen av aksen rundt
+ * loddlinja og ψ dreiningen av snurrebassen om aksen (de malte feltene).
+ *
+ * Snurrebassen er et massivt dreid legeme (_solid.js), og alle linjer deles
+ * og sorteres mot det (_painter.js): sirklene og banen går foran og bak den
+ * der de faktisk ligger, og det som er bak, vises som svake stiplede linjer.
  *
  * Bevegelsen regnes fra Lagrangefunksjonen med de to bevarte impulsene
  * p_ψ = I₃ω₃ og p_φ = I₁φ̇ sin²θ + p_ψ cos θ: φ̇ = (p_φ − p_ψ cos θ)/(I₁ sin²θ),
@@ -17,9 +21,52 @@
  * default-eksportert init(api), api = { stage, controls, getSize, onResize, signal }.
  */
 import {
-  nb, rk4, slider, button, animate, svg, txt, line, circle, poly, arrow, rod,
+  nb, rk4, slider, button, animate, svg, txt,
   projector, FIXED, HINT, LABEL, MOVING,
 } from "./_mekanikk.js";
+import { PAPER, face, lathe, lightFor, shade, viewFor } from "./_solid.js";
+import { latheHit, painter } from "./_painter.js";
+
+const LIGHT = lightFor();
+const STEEL = "var(--muted)";
+const LIGHTPAINT = `color-mix(in oklab, ${MOVING} 40%, ${PAPER})`;
+
+// Profilen [s, r] langs aksen i enheten l, som en klassisk snurrebass: en
+// kort stålspiss, en kropp som vider seg ut fra spissen og er bredest like
+// under toppen, en lav rund krone og et skaft opp til enden TIP.
+const PROFILE = (() => {
+  const R = 0.45;
+  const pts = [[0, 0], [0.08, 0.05]];
+  for (let i = 1; i <= 10; i++) {
+    const sk = 0.08 + (0.82 * i) / 10;
+    pts.push([sk, R * (sk / 0.9) ** 0.6]);
+  }
+  for (let i = 1; i <= 6; i++) {
+    const sk = 0.9 + (0.18 * i) / 6;
+    pts.push([sk, Math.max(0.045, R * Math.sqrt(Math.max(0, 1 - ((sk - 0.9) / 0.18) ** 2)))]);
+  }
+  pts.push([1.31, 0.045], [1.34, 0.03], [1.35, 0]);
+  return pts;
+})();
+// Båndene: 0 er stålspissen, så kroppen fram til skaftet.
+const STEM = PROFILE.findIndex(([sk]) => sk >= 1.079);
+
+/** Konvekst skall av punkter [x, y] (monoton kjede). */
+function hull(pts) {
+  const p = pts.slice().sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const lo = [];
+  for (const q of p) {
+    while (lo.length >= 2 && cr(lo[lo.length - 2], lo[lo.length - 1], q) <= 0) lo.pop();
+    lo.push(q);
+  }
+  const up = [];
+  for (const q of p.reverse()) {
+    while (up.length >= 2 && cr(up[up.length - 2], up[up.length - 1], q) <= 0) up.pop();
+    up.push(q);
+  }
+  return lo.slice(0, -1).concat(up.slice(0, -1));
+}
 
 export default function init({ stage, controls, getSize, onResize, signal }) {
   const I1 = 1;
@@ -29,9 +76,9 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
   const TS = 2; // simulert tid per sekund
   const DT = 0.002;
   const TIP = 1.35; // enden av aksen, i enheten l
-  const RD = 0.36; // radien til skiva
   const TRAIL = 620;
   const ALPHA = 0.38;
+  const VIEW = viewFor(ALPHA);
   const MODES = [
     { k: 0, text: "Slipp i ro", aria: "Slipp snurrebassen i ro" },
     { k: 0.5, text: "Dytt framover", aria: "Gi aksen et dytt i samme retning som presesjonen" },
@@ -149,93 +196,94 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     const { w, h } = getSize();
     if (w < 60 || h < 60) return; // før scenen har fått mål
     const [th, , ph, ps] = y;
-    // Skalaen settes så den ytre vendesirkelen får plass i bredden, og så
-    // tegningen fra fronten av bordet til toppen av aksen får plass i høyden.
     const rmax = Math.max(0.8, TIP * Math.sin(lim[1]));
     const s = Math.min((h - 30) / 1.75, (0.5 * w - 16) / rmax);
     const cx = w / 2;
     const cy = h / 2 + 0.5 * s;
-    const P = projector(cx, cy, s, ALPHA);
-    const ring = (r, z) => {
+    const Pp = projector(cx, cy, s, ALPHA);
+    const P = (p) => Pp(...p);
+    const circle3 = (r, z, m = 72) => {
       const pts = [];
-      for (let i = 0; i <= 72; i++) {
-        const u = (2 * Math.PI * i) / 72;
-        pts.push(P(r * Math.cos(u), r * Math.sin(u), z));
+      for (let i = 0; i <= m; i++) {
+        const u = (2 * Math.PI * i) / m;
+        pts.push([r * Math.cos(u), r * Math.sin(u), z]);
       }
       return pts;
     };
-    let g = "";
-
-    // Bordet og loddlinja gjennom spissen.
-    g += poly(ring(0.85, 0), `stroke="${FIXED}" stroke-width="1.2"`);
-    const [vx, vy] = P(0, 0, TIP + 0.12);
-    g += line(cx, cy, vx, vy, { color: HINT, width: 1, dash: "3 4" });
-
-    // Vendesirklene og banen til enden av aksen.
-    for (const t of lim[0] === lim[1] ? [lim[0]] : lim) {
-      g += poly(ring(TIP * Math.sin(t), TIP * Math.cos(t)), `stroke="${LABEL}" stroke-width="1.2" stroke-dasharray="5 4"`);
-    }
-    g += poly(trail.map((p) => P(...p)), `stroke="${MOVING}" stroke-width="1.6" opacity="0.55"`);
-
-    // φ: fra x-aksen til aksens retning, i bordplanet.
-    const [rx, ry] = P(0.62, 0, 0);
-    g += line(cx, cy, rx, ry, { color: HINT, width: 1 });
     const n = axis(th, ph);
-    const [fx, fy] = P(0.62 * Math.cos(ph), 0.62 * Math.sin(ph), 0);
-    g += line(cx, cy, fx, fy, { color: HINT, width: 1, dash: "3 4" });
+    const eN = [Math.sin(ph), -Math.cos(ph), 0];
+    const eP = [n[1] * eN[2] - n[2] * eN[1], n[2] * eN[0] - n[0] * eN[2], n[0] * eN[1] - n[1] * eN[0]];
+    const pen = painter({ P, view: VIEW, hit: latheHit([0, 0, 0], n, PROFILE) });
+
+    // Grunnen først: bordplata med forkant, så skyggen rett under aksen og skiva.
+    let base = "";
+    const SLAB = 0.07;
+    const front = [];
+    for (let i = 0; i <= 36; i++) {
+      const u = Math.PI + (Math.PI * i) / 36;
+      front.push(P([0.85 * Math.cos(u), 0.85 * Math.sin(u), 0]));
+    }
+    const edge = [...front, ...front.slice().reverse().map(([x, yy]) => [x, yy + SLAB * s])];
+    base += face(edge, shade(FIXED, 1), shade(FIXED, 2), 0.8);
+    base += face(circle3(0.85, 0).map(P), `color-mix(in oklab, ${FIXED} 40%, var(--canvas-bg))`, FIXED, 0.8);
+    // Skyggen er det konvekse skallet av legemets ringer, rett ned på bordet.
+    const floor = [];
+    for (const [sk, rk] of PROFILE) {
+      for (let i = 0; i < 24; i++) {
+        const u = (2 * Math.PI * i) / 24;
+        floor.push([sk * n[0] + rk * (Math.cos(u) * eN[0] + Math.sin(u) * eP[0]), sk * n[1] + rk * (Math.cos(u) * eN[1] + Math.sin(u) * eP[1])]);
+      }
+    }
+    base += face(hull(floor).map(([x, yy]) => P([x, yy, 0])), "color-mix(in oklab, var(--solid-shade) 22%, transparent)", "none", 0);
+
+    // Alt som er linjer, deles og sorteres mot skiva.
+    pen.polyline([[0, 0, 0], [0, 0, TIP + 0.12]], { color: HINT, width: 1, dash: "3 4" });
+    for (const t of lim[0] === lim[1] ? [lim[0]] : lim) {
+      pen.polyline(circle3(TIP * Math.sin(t), TIP * Math.cos(t)), { color: LABEL, width: 1.2, dash: "5 4" });
+    }
+    pen.polyline(trail, { color: MOVING, width: 1.6, opacity: 0.55 });
+    pen.polyline([[0, 0, 0], [0.62, 0, 0]], { color: HINT, width: 1 });
+    pen.polyline([[0, 0, 0], [0.62 * Math.cos(ph), 0.62 * Math.sin(ph), 0]], { color: HINT, width: 1, dash: "3 4" });
+    let labels = "";
     const phm = ((ph % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
     if (phm > 0.2) {
       const pts = [];
       const m = Math.max(4, Math.ceil(phm * 12));
       for (let i = 0; i <= m; i++) {
         const u = (phm * i) / m;
-        pts.push(P(0.34 * Math.cos(u), 0.34 * Math.sin(u), 0));
+        pts.push([0.34 * Math.cos(u), 0.34 * Math.sin(u), 0]);
       }
-      g += poly(pts, `stroke="${LABEL}" stroke-width="1.2"`);
-      const [lx, ly] = P(0.46 * Math.cos(phm / 2), 0.46 * Math.sin(phm / 2), 0);
-      g += txt(lx, ly + 4, "φ", { anchor: "middle" });
+      pen.polyline(pts, { color: LABEL, width: 1.2 });
+      const [lx, ly] = P([0.46 * Math.cos(phm / 2), 0.46 * Math.sin(phm / 2), 0]);
+      labels += txt(lx, ly + 4, "φ", { anchor: "middle" });
     }
-
-    // Aksen, skiva og spinnmerket.
-    const [tx, ty] = P(...n.map((c) => TIP * c));
-    const [mx, my] = P(...n);
-    g += rod(cx, cy, tx, ty, MOVING);
-    // To enhetsvektorer i skiveplanet: knutelinja og n × knutelinja.
-    const eN = [Math.sin(ph), -Math.cos(ph), 0];
-    const eP = [n[1] * eN[2] - n[2] * eN[1], n[2] * eN[0] - n[0] * eN[2], n[0] * eN[1] - n[1] * eN[0]];
-    const rim = (u) => P(...n.map((c, i) => c + RD * (Math.cos(u) * eN[i] + Math.sin(u) * eP[i])));
-    const disc = [];
-    for (let i = 0; i <= 48; i++) disc.push(rim((2 * Math.PI * i) / 48));
-    let d = "";
-    disc.forEach(([x, yy], i) => {
-      d += `${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${yy.toFixed(1)} `;
-    });
-    g += `<path d="${d}Z" style="fill:${MOVING}" fill-opacity="0.22" stroke="${MOVING}" stroke-width="2" stroke-linejoin="round"/>`;
-    const [kx, ky] = rim(ps);
-    g += line(mx, my, kx, ky, { color: MOVING, width: 2.2 });
-    g += circle(kx, ky, 3, { fill: MOVING, stroke: MOVING, width: 1 });
-    g += `<circle cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" r="3" style="fill:${FIXED}"/>`;
-    // l på motsatt side av stanga fra loddlinja, så den ikke treffer θ.
-    const side = mx >= cx ? 1 : -1;
-    g += txt(cx + 0.62 * (mx - cx) + side * 11, cy + 0.62 * (my - cy) + 4, "l", { anchor: "middle" });
-
-    // θ: fra loddlinja til aksen, ved spissen.
+    // Symmetriaksen går gjennom hele snurrebassen og vises derfor som spøkelse.
+    pen.polyline([[0, 0, 0], n.map((c) => TIP * c)], { color: LABEL, width: 1.2 });
     if (th > 0.12) {
       const pts = [];
       const m = Math.max(4, Math.ceil(th * 10));
-      for (let i = 0; i <= m; i++) pts.push(P(...axis((th * i) / m, ph).map((c) => 0.36 * c)));
-      g += poly(pts, `stroke="${LABEL}" stroke-width="1.2"`);
-      const [lx, ly] = P(...axis(th / 2, ph).map((c) => 0.5 * c));
-      g += txt(lx, ly + 4, "θ", { anchor: "middle" });
+      for (let i = 0; i <= m; i++) pts.push(axis((th * i) / m, ph).map((c) => 0.36 * c));
+      pen.polyline(pts, { color: LABEL, width: 1.2 });
+      const [lx, ly] = P(axis(th / 2, ph).map((c) => 0.5 * c));
+      labels += txt(lx, ly + 4, "θ", { anchor: "middle" });
     }
+    // Mg virker i massesenteret, inni legemet, og stikker ut under det.
+    pen.arrow(n, [n[0], n[1], n[2] - 0.6], LABEL, 1.5);
+    pen.dotAt([0, 0, 0], 3.5, FIXED);
 
-    // Tyngden i massesenteret og spissen.
-    g += arrow(mx, my, mx, my + 0.3 * s, LABEL, 1.5);
-    g += txt(mx + 7, my + 0.3 * s - 2, "Mg");
-    g += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="3.5" style="fill:${FIXED}"/>`;
-    g += txt(cx - 9, cy + 15, "P", { anchor: "middle" });
+    // Snurrebassen: stålspiss, malte felter på kroppen som dreier med ψ, og skaftet.
+    const body = lathe({
+      o: [0, 0, 0], n, eu: eN, ev: eP, profile: PROFILE, u0: ps, seg: 40, view: VIEW, light: LIGHT, P,
+      mat: (k, i) => (k < 1 ? STEEL : k >= STEM ? MOVING : Math.floor(i / 5) % 2 ? MOVING : LIGHTPAINT),
+    });
 
-    stage.innerHTML = svg(w, h, g);
+    const [mx, my] = P(n);
+    const side = mx >= cx ? 1 : -1;
+    labels += txt(cx + 0.45 * (mx - cx) + side * (0.4 * s + 8), cy + 0.45 * (my - cy) + 4, "l", { anchor: "middle" });
+    labels += txt(mx + 7, my + 0.6 * s - 2, "Mg");
+    labels += txt(cx - 9, cy + 15, "P", { anchor: "middle" });
+
+    stage.innerHTML = svg(w, h, base + pen.svg(body) + labels);
   }
 
   onResize(render);
