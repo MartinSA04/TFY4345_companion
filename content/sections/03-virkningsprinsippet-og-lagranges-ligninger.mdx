@@ -114,10 +114,10 @@ $$
 og ligningen for $\theta$ gir $ml^2\ddot\theta = -mgl\sin\theta$, altså $\ddot\theta = -(g/l)\sin\theta$. Newton gir samme ligning, men her inngår ikke snordraget. Snordraget står vinkelrett på hver forskyvning langs sirkelen, og Lagranges ligning for $\theta$ er Newtons andre lov projisert på nettopp en slik forskyvning. Trenger du snordraget, gir Newton-regningen det.
 
 <Derivation title="Hvorfor føringskreftene faller ut">
-Ta én partikkel med posisjon $\vec r(q_1, \dots, q_n, t)$ som oppfyller føringene for alle verdier av $q$-ene. Newtons andre lov er $m\ddot{\vec r} = -\nabla V + \vec N$, der $\vec N$ er føringskraften. Hvis $q_i$ endres litt mens tida og de andre $q$-ene holdes fast, flytter partikkelen seg langs $\partial\vec r/\partial q_i$, og føringen er fortsatt oppfylt. En føringskraft som bare holder partikkelen på føringen, står vinkelrett på alle slike forskyvninger, $\vec N \cdot \partial\vec r/\partial q_i = 0$. Projiser Newtons lov på $\partial\vec r/\partial q_i$:
+Ta én partikkel med posisjon $\vec r(q_1, \dots, q_n, t)$. Newtons andre lov er $m\ddot{\vec r} = -\nabla V + \vec N$, der $\vec N$ er føringskraften. Projiser Newtons lov på $\partial\vec r/\partial q_i$. Etter kjerneregelen er $\nabla V \cdot \partial\vec r/\partial q_i = \partial V/\partial q_i$, så
 
 $$
-m\ddot{\vec r} \cdot \frac{\partial\vec r}{\partial q_i} = -\nabla V \cdot \frac{\partial\vec r}{\partial q_i} = -\frac{\partial V}{\partial q_i}
+m\ddot{\vec r} \cdot \frac{\partial\vec r}{\partial q_i} = -\frac{\partial V}{\partial q_i} + \vec N \cdot \frac{\partial\vec r}{\partial q_i}
 $$
 
 Hastigheten er $\dot{\vec r} = \sum_j \dfrac{\partial\vec r}{\partial q_j}\dot q_j + \dfrac{\partial\vec r}{\partial t}$. Den er lineær i $\dot q_i$ med koeffisient $\partial\vec r/\partial q_i$, og den tidsderiverte av $\partial\vec r/\partial q_i$ langs banen er $\partial\dot{\vec r}/\partial q_i$, fordi rekkefølgen av derivasjonene kan byttes:
@@ -136,7 +136,13 @@ m\ddot{\vec r} \cdot \frac{\partial\vec r}{\partial q_i} &= \frac{d}{dt}\Bigl(m\
 \end{aligned}
 $$
 
-Sammen med projeksjonen gir dette $\frac{d}{dt}\partial T/\partial\dot q_i - \partial T/\partial q_i = -\partial V/\partial q_i$. $V$ avhenger ikke av $\dot q_i$, så ligningen er Lagranges ligning for $L = T - V$, og $\vec N$ er borte. Med flere partikler summerer du over dem, og da er det summen $\sum_k \vec N_k \cdot \partial\vec r_k/\partial q_i$ som er null.
+Sett venstresida inn i projeksjonen. $V$ avhenger ikke av $\dot q_i$, så $T$ og $V$ kan slås sammen til $L = T - V$:
+
+$$
+\frac{d}{dt}\frac{\partial L}{\partial\dot q_i} - \frac{\partial L}{\partial q_i} = \vec N \cdot \frac{\partial\vec r}{\partial q_i}
+$$
+
+La nå $\vec r(q, t)$ oppfylle føringene for alle verdier av $q$-ene. Hvis $q_i$ endres litt mens tida og de andre $q$-ene holdes fast, flytter partikkelen seg langs $\partial\vec r/\partial q_i$, og føringen er fortsatt oppfylt. En føringskraft som bare holder partikkelen på føringen, står vinkelrett på alle slike forskyvninger, så $\vec N \cdot \partial\vec r/\partial q_i = 0$. Da er høyresida null, ligningen er Lagranges ligning for $L$, og $\vec N$ er borte. Med flere partikler summerer du over dem, og da er det summen $\sum_k \vec N_k \cdot \partial\vec r_k/\partial q_i$ som er null.
 </Derivation>
 
 <Example title="Den sfæriske pendelen">
