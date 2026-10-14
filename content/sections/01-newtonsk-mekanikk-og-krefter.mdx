@@ -47,15 +47,26 @@ transformasjonene som gjør $K'$ til et inertialsystem, er
   tex="t' = At + Bx, \qquad x' = A\,(x - vt)"
   caption="Den mest generelle lineære transformasjonen mellom to inertialsystemer med parallelle akser og felles origo ved $t = 0$."
 />
+
+Ingen av systemene er spesielle, så transformasjonen tilbake er den samme med
+$-v$ i stedet for $v$. Ingen retning langs $x$-aksen er spesiell heller. De to
+kravene binder konstantene, så bare én av dem er fri:
+
 <Formula
   tex="A^2 + ABv = 1"
-  caption="Bindingen mellom de to konstantene, så bare én av dem er fri."
+  caption="Bindingen mellom de to konstantene."
 />
 
 <Derivation title="Utledning av transformasjonen">
 En fri partikkel går med konstant hastighet i $K$, altså langs en rett linje i
-$(t, x)$-planet, og skal gjøre det samme i $K'$. Transformasjonen må derfor være
-lineær, ettersom en ulineær transformasjon krummer rette linjer:
+$(t, x)$-planet, og skal gjøre det samme i $K'$. Transformasjonen må derfor sende
+rette linjer over i rette linjer. Det kravet alene gir ikke linearitet.
+Avbildningen $t' = t/(1 + at)$, $x' = x/(1 + at)$ sender også hver rett linje
+over i en rett linje, men gir hendelsene ved $t = -1/a$ uendelige koordinater.
+Hver hendelse har endelige koordinater i begge systemer, så transformasjonen må
+være definert og inverterbar i hele planet. En slik avbildning som sender rette
+linjer over i rette linjer, er lineær pluss en konstant forskyvning, og
+forskyvningen er null når origoene faller sammen ved $t = t' = 0$:
 
 $$
 t' = At + Bx, \qquad x' = Dt + Ex
@@ -91,8 +102,11 @@ Galilei-transformasjonen.
 </CompareCol>
 <CompareCol title="Intervallet er invariant">
 $\Delta s^2 = c^2\Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2$ er lik i begge
-systemer. Invariansen gir $A = \gamma$ og $B = -\gamma v/c^2$, med
-$\gamma = 1/\sqrt{1 - v^2/c^2}$, altså Lorentz-transformasjonen.
+systemer. En lyspuls har $\Delta s^2 = 0$, så kravet sier blant annet at lyset
+har farten $c$ i begge systemer. Invariansen gir $A = \gamma$ og
+$B = -\gamma v/c^2$, med $\gamma = 1/\sqrt{1 - v^2/c^2}$, altså
+Lorentz-transformasjonen. For $v \ll c$ er $\gamma \approx 1$ og $B \approx 0$,
+og Galilei-transformasjonen kommer tilbake.
 </CompareCol>
 </Compare>
 
@@ -133,12 +147,14 @@ faller ut.
 Massen er den samme i begge systemer, og de vanlige kreftene i mekanikken
 avhenger bare av avstander mellom partikler og av relative hastigheter. Begge
 deler er uendret under transformasjonen, så $\vec F\,' = \vec F$, og
-$m\vec a = \vec F$ har samme form i $K$ og $K'$.
+$m\vec a = \vec F$ har samme form i $K$ og $K'$. En ball som ei vogn skyter rett
+opp, går i en parabel sett fra bakken og rett opp og ned sett fra vogna, uansett
+hvor fort vogna kjører.
 
 <Simulation
   src="/sims/inertialsystem.js"
   title="Samme kast, to inertialsystemer"
-  caption="Vogna skyter en ball rett opp og tar den imot igjen, og prikkene viser posisjonen med faste tidsmellomrom. Sett fra bakken er banen en parabel, sett fra vogna en rett linje opp og ned. Bytt system midt i flukten, og de samme prikkene danner den andre banen. Stå i vogna og dra i $v$: kastet ser helt likt ut uansett, bare bakken flytter seg."
+  caption="Ei vogn med farten $v$ skyter en ball rett opp og tar den imot igjen. Prikkene er ballens posisjon med faste tidsmellomrom, sett fra bakken ($K$) eller fra vogna ($K'$)."
   host="dom"
   height={320}
 />
@@ -152,11 +168,11 @@ Galileo brukte et skip til å vise prinsippet. Under dekk faller dråper rett ne
 en kopp, og du kaster like langt forover som bakover, fordi $m\vec a = \vec F$ har
 samme form om bord som på land så lenge skipet seiler med jevn fart.
 
-<SelfCheck question="Hvorfor må transformasjonen mellom to inertialsystemer være lineær?">
-En fri partikkel følger en rett linje i $(t, x)$-planet i begge systemer, så
-transformasjonen må sende rette linjer over i rette linjer og være inverterbar
-overalt. Da er den lineær bortsett fra en konstant forskyvning, og den
-forskyvningen forsvinner når origoene faller sammen ved $t = t' = 0$.
+<SelfCheck question="Systemet $K'$ har $t' = t$ og $x' = x - \tfrac12 a_0 t^2$ i forhold til inertialsystemet $K$. Hvorfor er ikke $K'$ et inertialsystem?">
+En fri partikkel med $x = x_0 + ut$ får $x' = x_0 + ut - \tfrac12 a_0 t^2$, en
+parabel i $(t, x')$-planet. Partikkelen akselererer i $K'$ uten at noen kraft
+virker på den, så Newtons første lov gjelder ikke der. Transformasjonen sender
+rette linjer over i krumme, og den er ikke lineær i $t$.
 </SelfCheck>
 
 ## Krefter som kommer fra et potensial
@@ -166,10 +182,15 @@ er linjeintegralet
 
 <Formula tex="W = \int_C \vec F \cdot d\vec r" />
 
-For en vilkårlig $\vec F(\vec r)$ avhenger arbeidet av hele banen. En kraft er
-<Term name="konservativ kraft">konservativ</Term> når arbeidet bare avhenger av
-endepunktene $a$ og $b$, ikke av banen mellom dem. De fleste kreftene i
-mekanikken er konservative.
+og arbeidet er lik økningen i den kinetiske energien $T$. Kan du skrive arbeidet
+som en differanse $V(a) - V(b)$ i en funksjon $V$ av posisjonen, er
+$T(b) - T(a) = V(a) - V(b)$, og energien $T + V$ er bevart.
+
+For en vilkårlig $\vec F(\vec r)$ avhenger arbeidet av hele banen, og da finnes
+ingen slik $V$. En kraft er <Term name="konservativ kraft">konservativ</Term> når
+arbeidet bare avhenger av endepunktene $a$ og $b$, ikke av banen mellom dem. Da
+finnes $V$, for du kan velge $V(\vec r)$ lik minus arbeidet fra et fast punkt
+til $\vec r$. De fleste kreftene i mekanikken er konservative.
 
 Uttrykket $\vec F \cdot d\vec r = F_x\,dx + F_y\,dy + F_z\,dz$ er et
 <Term name="eksakt differensial">eksakt differensial</Term> når $\vec F \cdot d\vec r = -dV$
@@ -181,7 +202,7 @@ $y$ og $z$. Da blir linjeintegralet en differanse:
   caption="Bare endepunktene står igjen, så arbeidet er uavhengig av banen."
 />
 
-Definisjonen er vanskelig å bruke direkte, fordi du da må sammenligne arbeidet
+Definisjonen av en konservativ kraft er vanskelig å bruke direkte, fordi du da må sammenligne arbeidet
 langs alle baner mellom $a$ og $b$. Test heller om en $V$ finnes. Finnes
 $V$, er $F_x = -\partial V/\partial x$ og $F_y = -\partial V/\partial y$.
 For en glatt $V$ spiller rekkefølgen av derivasjonene ingen rolle, så
@@ -194,10 +215,15 @@ Parene $(x, z)$ og $(y, z)$ gir tilsvarende likheter, og de tre likhetene er til
 $\nabla \times \vec F = 0$. En konservativ kraft har altså $\nabla \times \vec F = 0$.
 
 Det omvendte, at $\nabla \times \vec F = 0$ gir en $V$, gjelder når området er
-<Term name="enkeltsammenhengende område">enkeltsammenhengende</Term>, altså uten
-hull som en lukket kurve kan gå rundt. Har området et hull, kan
-$\nabla \times \vec F = 0$ overalt og arbeidet rundt hullet likevel være ulikt
-null.
+<Term name="enkeltsammenhengende område">enkeltsammenhengende</Term>, altså når
+enhver lukket kurve kan trekkes sammen til et punkt uten å forlate området.
+Stokes' teorem gjør arbeidet rundt en lukket kurve om til fluksen av
+$\nabla \times \vec F$ gjennom en flate som kurven spenner ut, og den flaten må
+ligge der feltet er definert. Rundt et hull finnes ingen slik flate. Feltet
+$\vec F = (-y\,\hat x + x\,\hat y)/(x^2 + y^2)$ har $\nabla \times \vec F = 0$
+overalt utenfor $z$-aksen, men arbeidet én gang rundt $z$-aksen mot klokka er
+$2\pi$. Med et potensial ville arbeidet rundt en lukket kurve vært
+$V(a) - V(a) = 0$, så feltet har ikke noe potensial.
 
 <Statement kind="theorem" name="Konservative krefter">
 For et glatt kraftfelt $\vec F(\vec r)$ på et enkeltsammenhengende område er
@@ -243,10 +269,11 @@ $\dot E = \dot x\,(m\ddot x + V'(x))$ er null etter bevegelsesligningen.
 
 <Formula
   tex="E = \tfrac12 m\dot x^2 + V(x)"
-  caption="Det kinetiske leddet kan ikke være negativt, så partikkelen holder seg der $V(x) \le E$."
+  caption="Bevart energi i én dimensjon."
 />
 
-Grensene for området der $V(x) \le E$ er
+Det kinetiske leddet $\tfrac12 m\dot x^2$ kan ikke være negativt, så partikkelen
+holder seg der $V(x) \le E$. Grensene for dette området er
 <Term name="vendepunkt">vendepunktene</Term>, der $V(x) = E$ og farten er null.
 En partikkel i en brønn med for lav energi til å komme over kanten, svinger
 mellom to vendepunkter.
@@ -261,17 +288,25 @@ avgjør de høyere leddene i Taylorrekka stabiliteten.
 
 Med $V''(x_0) > 0$ er bevegelsesligningen $m\ddot\xi = -V''(x_0)\,\xi$. Dette er
 ligningen for en harmonisk oscillator med fjærkonstanten $V''(x_0)$, så
-partikkelen svinger med vinkelfrekvensen $\omega = \sqrt{V''(x_0)/m}$.
+partikkelen svinger med vinkelfrekvensen $\omega = \sqrt{V''(x_0)/m}$. For en
+fjær er $V = \tfrac12 kx^2$ og $V'' = k$, og formelen gir den kjente
+$\omega = \sqrt{k/m}$.
 
 <Formula
   tex="V'(x_0) = 0, \qquad \omega = \sqrt{V''(x_0)/m}"
   caption="Likevekt der $V'$ har et nullpunkt. Om et minimum svinger partikkelen harmonisk med vinkelfrekvens $\omega$."
 />
 
+<Callout title="Potensialkurven">
+Partikkelen holder seg der $V(x) \le E$ og snur i vendepunktene, der $V(x) = E$.
+Likevektspunktene er nullpunktene til $V'$, stabile der $V'' > 0$ og ustabile der
+$V'' < 0$.
+</Callout>
+
 <Simulation
   src="/sims/potensial.js"
   title="Potensialkurve, likevekt og vendepunkter"
-  caption="$V(x) = \tfrac12 kx^2 + \tfrac14 \lambda x^4$. Utfylt markør er stabil likevekt, åpen ring er ustabil og de loddrette strekene på energilinja er vendepunktene. Det skyggelagte området er der $V(x) \le E$. Dra $k$ ned gjennom null og se brønnen dele seg i to."
+  caption="Potensialet $V(x) = \tfrac12 kx^2 + \tfrac14 \lambda x^4$ med energilinja $E$. Utfylt markør er stabil likevekt og åpen ring ustabil likevekt. De loddrette strekene på energilinja er vendepunktene, og det skyggelagte området er der $V(x) \le E$."
   host="dom"
   height={320}
 />
@@ -302,15 +337,15 @@ som er positivt, så begge er stabile. Vinkelfrekvensen om et av dem er
 </Example>
 
 <Quiz
-  question="Et kraftfelt har $\nabla \times \vec F = 0$ overalt der det er definert, men feltet er udefinert langs hele $z$-aksen. Hva følger om arbeidet langs en lukket kurve som omslutter $z$-aksen?"
-  options={["Det er null, siden $\\nabla \\times \\vec F = 0$", "Det trenger ikke være null, fordi området ikke er enkeltsammenhengende", "Det er null bare dersom kurven er en sirkel", "Arbeidet er udefinert for lukkede kurver"]}
-  answer={1}
-  explanation="Stokes' teorem krever en flate som spennes ut av kurven og ligger helt inne i området. En kurve rundt $z$-aksen har ingen slik flate, så $\nabla \times \vec F = 0$ sier ingenting her, og arbeidet kan være ulikt null."
+  question="Et kraftfelt har $\nabla \times \vec F = 0$ overalt unntatt i origo, der det er udefinert, slik gravitasjonsfeltet fra en punktmasse er. Er feltet konservativt?"
+  options={["Ja, enhver lukket kurve kan trekkes sammen utenom origo", "Nei, origo er et hull som en lukket kurve kan gå rundt", "Bare hvis arbeidet rundt origo er regnet ut og er null"]}
+  answer={0}
+  explanation="Et område der bare ett punkt mangler, er enkeltsammenhengende i tre dimensjoner, fordi en flate som en lukket kurve spenner ut, alltid kan bøyes litt til siden for origo. Stokes' teorem gir da null arbeid rundt enhver lukket kurve, og feltet har et potensial. En hel linje som $z$-aksen lager derimot et hull, for en kurve rundt linja kan ikke trekkes sammen uten å krysse den."
 />
 
 <KeyTakeaways>
 - Newtons første lov slår fast at inertialsystemer finnes. Den andre loven gjelder i dem.
-- Transformasjonen mellom to inertialsystemer må være lineær fordi en fri partikkel går langs en rett linje i $(t, x)$-planet i begge systemer. Med parallelle akser og felles origo har transformasjonen bare én fri konstant.
+- Transformasjonen mellom to inertialsystemer må sende den rette linja en fri partikkel følger i $(t, x)$-planet, over i en rett linje, og være inverterbar i hele planet. Med felles origo er den da lineær, og med parallelle akser har den bare én fri konstant.
 - Absolutt tid gir Galilei-transformasjonen. Et invariant $\Delta s^2$ gir Lorentz-transformasjonen.
 - Under en Galilei-transformasjon forskyves hastigheter med $\vec v$, mens akselerasjoner, masser og krefter er uendret.
 - En kraft er konservativ når $\nabla \times \vec F = 0$ på et enkeltsammenhengende område, og da finnes et potensial med $\vec F = -\nabla V$.

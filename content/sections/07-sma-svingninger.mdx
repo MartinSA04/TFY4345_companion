@@ -28,36 +28,75 @@ så $q = q_0$ med $\dot q = 0$ er en løsning når $V'(q_0) = 0$. Sett $q = q_0 
 
 <Formula
   tex="L \approx \tfrac12 m(q_0)\,\dot\eta^2 - \tfrac12 V''(q_0)\,\eta^2 \allowbreak\qquad \omega^2 = \frac{V''(q_0)}{m(q_0)}"
-  caption="<b>Små svingninger om en likevekt</b> med én frihetsgrad. Er $V''(q_0) > 0$, svinger $\eta$ harmonisk med vinkelfrekvensen $\omega$. Er $V''(q_0) < 0$, vokser $\eta$ som $e^{\lambda t}$ med $\lambda^2 = |V''(q_0)|/m(q_0)$, og likevekten er ustabil."
+  caption="<b>Små svingninger om en likevekt</b> med én frihetsgrad."
 />
+
+Lagranges ligning gir nå $m(q_0)\ddot\eta = -V''(q_0)\,\eta$. Er $V''(q_0) > 0$, er $q_0$ et minimum for $V$, kraften trekker $\eta$ tilbake mot null, og $\eta$ svinger harmonisk med vinkelfrekvensen $\omega$. Den plane pendelen har $m(\theta) = ml^2$ og $V = -mgl\cos\theta$, og formelen gir den kjente $\omega^2 = g/l$. Er $V''(q_0) < 0$, er $q_0$ et maksimum, kraften dytter $\eta$ videre ut, og $\eta$ vokser som $e^{\lambda t}$ med $\lambda^2 = |V''(q_0)|/m(q_0)$. Likevekten er da ustabil. Lineariseringen holder så lenge leddene av høyere orden i potensialet er små mot $\tfrac12 V''(q_0)\eta^2$.
+
+<Callout title="Stabil likevekt">
+En likevekt er stabil når $V''(q_0) > 0$, altså i et minimum for $V$. Små svingninger om den har $\omega^2 = V''(q_0)/m(q_0)$.
+</Callout>
 
 <SelfCheck question="Ei perle glir uten friksjon på en ring med radius $R$ som roterer med fast vinkelfart $\Omega$ om en loddrett diameter. Med $\theta$ målt fra bunnen er $L = \tfrac12 mR^2(\dot\theta^2 + \Omega^2\sin^2\theta) + mgR\cos\theta$. Når er bunnen stabil, og hvilken frekvens har små svingninger om den?">
 Her er $m(\theta) = mR^2$ og $V = -mgR\cos\theta - \tfrac12 mR^2\Omega^2\sin^2\theta$, så $V''(0) = mgR - mR^2\Omega^2$ og $\omega^2 = g/R - \Omega^2$. Bunnen er stabil for $\Omega^2 < g/R$. Roterer ringen fortere, glir perla ut til $\cos\theta_0 = g/R\Omega^2$. Der er $V''(\theta_0) = mR^2\Omega^2\sin^2\theta_0$, og perla svinger om $\theta_0$ med $\omega = \Omega\sin\theta_0$.
 </SelfCheck>
 
+## Dobbeltpendelen
+
+To like pendler med masse $m$ og lengde $l$ henger etter hverandre, og $\theta_1$ og $\theta_2$ er vinklene fra loddlinja. Den øverste kula har farten $l\dot\theta_1$. Farten til den nederste er summen av to hastigheter med størrelse $l\dot\theta_1$ og $l\dot\theta_2$ og vinkelen $\theta_1 - \theta_2$ mellom seg, så $v_2^2 = l^2\left(\dot\theta_1^2 + \dot\theta_2^2 + 2\cos(\theta_1 - \theta_2)\,\dot\theta_1\dot\theta_2\right)$. Kulene ligger $l\cos\theta_1$ og $l\cos\theta_1 + l\cos\theta_2$ under tappen. Den eksakte Lagrangefunksjonen er derfor
+
+$$
+L = ml^2\dot\theta_1^2 + \tfrac12 ml^2\dot\theta_2^2 \allowbreak + ml^2\cos(\theta_1 - \theta_2)\,\dot\theta_1\dot\theta_2 \allowbreak + 2mgl\cos\theta_1 + mgl\cos\theta_2
+$$
+
+Faktoren $\dot\theta_1\dot\theta_2$ i kryssleddet er allerede av andre orden, så der kan $\cos(\theta_1 - \theta_2)$ settes lik 1. I potensialet er $\cos\theta \approx 1 - \tfrac12\theta^2$, og konstantene sløyfes. Med $\boldsymbol\eta = (\theta_1, \theta_2)$ er da $L = \tfrac12\dot{\boldsymbol\eta}^\top\boldsymbol T\dot{\boldsymbol\eta} - \tfrac12\boldsymbol\eta^\top\boldsymbol V\boldsymbol\eta$, med
+
+$$
+\boldsymbol T = ml^2\begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix} \allowbreak\qquad \boldsymbol V = mgl\begin{pmatrix} 2 & 0 \\ 0 & 1 \end{pmatrix}
+$$
+
+Lagranges ligninger er $\boldsymbol T\ddot{\boldsymbol\eta} = -\boldsymbol V\boldsymbol\eta$, altså
+
+$$
+\begin{aligned}
+2\ddot\theta_1 + \ddot\theta_2 &= -2(g/l)\,\theta_1 \\
+\ddot\theta_1 + \ddot\theta_2 &= -(g/l)\,\theta_2
+\end{aligned}
+$$
+
+Elementet utenfor diagonalen sitter i $\boldsymbol T$, fordi farten til den nederste kula avhenger av begge vinklene. Det elementet kobler ligningene, så ingen av vinklene svinger som en cosinus for seg. Se i stedet etter en bevegelse der begge vinklene svinger med den samme frekvensen, $\boldsymbol\eta = \mathbf A\cos(\omega t - \delta)$. Innsatt blir ligningene $(\boldsymbol V - \omega^2\boldsymbol T)\mathbf A = 0$, og de har en løsning $\mathbf A \ne 0$ bare når determinanten til $\boldsymbol V - \omega^2\boldsymbol T$ er null. Del på $mgl$ og sett $x = l\omega^2/g$:
+
+$$
+\begin{vmatrix} 2 - 2x & -x \\ -x & 1 - x \end{vmatrix} = x^2 - 4x + 2 = 0
+$$
+
+altså $\omega^2 = (2 \mp \sqrt2)\,g/l$. Den første raden i $(\boldsymbol V - \omega^2\boldsymbol T)\mathbf A = 0$ gir $A_2/A_1 = 2(1 - x)/x = \pm\sqrt2$. I den langsomme bevegelsen, $\omega_1 = 0{,}765\sqrt{g/l}$, svinger kulene i takt, og den nederste har $\sqrt2$ ganger så stort utslag. I den raske, $\omega_2 = 1{,}848\sqrt{g/l}$, svinger de i motfase. De to frekvensene ligger på hver sin side av $\sqrt{g/l}$ for én pendel. Når kulene svinger i takt, er de som én lengre pendel og svinger langsommere.
+
 ## Normalmoder
 
-Med $N$ frihetsgrader er den kinetiske energien $T = \tfrac12 m_{ij}(q)\,\dot q_i\dot q_j$, med summasjon over like indekser, og i en likevekt er alle $\partial V/\partial q_i$ lik null. Sett $q_i = q_{0i} + \eta_i$ og utvikle til andre orden som over:
+Dobbeltpendelen viser hele metoden. Med $N$ frihetsgrader er den kinetiske energien $T = \tfrac12 m_{ij}(q)\,\dot q_i\dot q_j$, med summasjon over like indekser, og i en likevekt er alle $\partial V/\partial q_i$ lik null. Sett $q_i = q_{0i} + \eta_i$ og utvikle til andre orden som for én frihetsgrad:
 
 <Formula
   tex="L \approx \tfrac12 T_{ij}\,\dot\eta_i\dot\eta_j - \tfrac12 V_{ij}\,\eta_i\eta_j \allowbreak\qquad T_{ij} = m_{ij}(q_0) \allowbreak\qquad V_{ij} = \frac{\partial^2 V}{\partial q_i\,\partial q_j}\bigg|_{q_0}"
-  caption="<b>Lagrangefunksjonen nær en likevekt.</b> Matrisene $\boldsymbol T$ og $\boldsymbol V$ er symmetriske, og $\boldsymbol T$ er positivt definitt fordi den kinetiske energien er positiv for enhver bevegelse."
+  caption="<b>Lagrangefunksjonen nær en likevekt.</b>"
 />
 
-Lagranges ligninger blir de $N$ koblede ligningene $\boldsymbol T\ddot{\boldsymbol\eta} = -\boldsymbol V\boldsymbol\eta$. Med én frihetsgrad var løsningen en cosinus, så se etter løsninger der alle koordinatene svinger med den samme frekvensen, $\boldsymbol\eta = \mathbf A\cos(\omega t - \delta)$. Innsatt blir ligningene $(\boldsymbol V - \omega^2\boldsymbol T)\mathbf A = 0$, som har en løsning $\mathbf A \ne 0$ bare når determinanten til $\boldsymbol V - \omega^2\boldsymbol T$ er null:
+Begge matrisene er symmetriske: $V_{ij}$ fordi rekkefølgen av derivasjonene ikke spiller noen rolle, og $m_{ij}$ kan tas symmetrisk fordi bare den symmetriske delen bidrar til summen. $\boldsymbol T$ er dessuten positivt definitt, fordi den kinetiske energien er positiv for enhver bevegelse. Lagranges ligninger blir de $N$ koblede ligningene $\boldsymbol T\ddot{\boldsymbol\eta} = -\boldsymbol V\boldsymbol\eta$, og prøveløsningen $\boldsymbol\eta = \mathbf A\cos(\omega t - \delta)$ gir som for dobbeltpendelen
 
 <Formula
   tex="\det\left(\boldsymbol V - \omega^2\boldsymbol T\right) = 0 \allowbreak\qquad \left(\boldsymbol V - \omega_n^2\boldsymbol T\right)\mathbf A_n = 0"
-  caption="<b>Sekulærligningen</b> og normalmodene. Ligningen er av grad $N$ i $\omega^2$, og hver rot $\omega_n^2$ har en vektor $\mathbf A_n$ som gir forholdet mellom utslagene."
+  caption="<b>Sekulærligningen</b> og normalmodene."
 />
 
-Røttene $\omega_n$ er <Term name="egenfrekvens">egenfrekvensene</Term>, og ligningen er <Term name="sekulærligning">sekulærligningen</Term>. En <Term name="normalmode">normalmode</Term>, eller bare mode, er bevegelsen $\boldsymbol\eta = \mathbf A_n\cos(\omega_n t - \delta_n)$, der alle koordinatene svinger med den samme frekvensen og i fast forhold til hverandre. $\mathbf A_n$ er bestemt opp til en faktor, som startbetingelsene gir.
+Determinanten er et polynom av grad $N$ i $\omega^2$. Hver av de $N$ røttene $\omega_n^2$ har en vektor $\mathbf A_n$ som gir forholdet mellom utslagene. Røttene $\omega_n$ er <Term name="egenfrekvens">egenfrekvensene</Term>, og ligningen er <Term name="sekulærligning">sekulærligningen</Term>. En <Term name="normalmode">normalmode</Term>, eller bare mode, er bevegelsen $\boldsymbol\eta = \mathbf A_n\cos(\omega_n t - \delta_n)$, der alle koordinatene svinger med den samme frekvensen og i fast forhold til hverandre. Dobbeltpendelens langsomme svingning i takt og raske svingning i motfase er dens to normalmoder. $\mathbf A_n$ er bestemt opp til en faktor, som startbetingelsene gir.
 
 Fordi $\boldsymbol T$ og $\boldsymbol V$ er reelle og symmetriske og $\boldsymbol T$ er positivt definitt, er alle $\omega_n^2$ reelle, og to moder med forskjellige frekvenser er ortogonale med $\boldsymbol T$ som vekt:
 
 $$
 \mathbf A_m^\top\boldsymbol T\mathbf A_n = 0, \qquad \omega_m \ne \omega_n
 $$
+
+For dobbeltpendelen er $\mathbf A_1^\top\boldsymbol T\mathbf A_2 = ml^2\,(1, \sqrt2)\cdot(2 - \sqrt2, 1 - \sqrt2) = 0$, mens det vanlige skalarproduktet av $(1, \sqrt2)$ og $(1, -\sqrt2)$ er $-1$.
 
 <Derivation title="Reelle frekvenser og ortogonale moder">
 Anta at $\omega^2$ og $\mathbf A$ kan være komplekse. Gang $\boldsymbol V\mathbf A = \omega^2\boldsymbol T\mathbf A$ fra venstre med den komplekskonjugerte $\mathbf A^{*\top}$:
@@ -71,22 +110,40 @@ For en reell symmetrisk matrise $\boldsymbol S$ er $\mathbf A^{*\top}\boldsymbol
 Gang ligningen for $\mathbf A_n$ med $\mathbf A_m^\top$ og ligningen for $\mathbf A_m$ med $\mathbf A_n^\top$. Fordi $\boldsymbol V$ og $\boldsymbol T$ er symmetriske, er $\mathbf A_m^\top\boldsymbol V\mathbf A_n = \mathbf A_n^\top\boldsymbol V\mathbf A_m$, og $\mathbf A_m^\top\boldsymbol T\mathbf A_n = \mathbf A_n^\top\boldsymbol T\mathbf A_m$. Differansen av de to ligningene er $(\omega_n^2 - \omega_m^2)\,\mathbf A_m^\top\boldsymbol T\mathbf A_n = 0$.
 </Derivation>
 
-Bevegelsen langs $\mathbf A_n$ avhenger av fortegnet til $\omega_n^2$:
+Gang ligningen for $\mathbf A_n$ fra venstre med $\mathbf A_n^\top$:
+
+$$
+\omega_n^2 = \frac{\mathbf A_n^\top\boldsymbol V\mathbf A_n}{\mathbf A_n^\top\boldsymbol T\mathbf A_n}
+$$
+
+Telleren er krumningen til $V$ langs moden, og nevneren er tregheten langs den, som i $V''(q_0)/m(q_0)$ med én frihetsgrad. Nevneren er positiv fordi $\boldsymbol T$ er positivt definitt, så $\omega_n^2$ har samme fortegn som telleren. Bevegelsen langs $\mathbf A_n$ avhenger av det fortegnet:
 
 - $\omega_n^2 > 0$: harmonisk svingning.
 - $\omega_n^2 < 0$: utslaget vokser eksponentielt, og likevekten er ustabil.
 - $\omega_n^2 = 0$: ingen kraft trekker tilbake, og $\boldsymbol\eta = \mathbf A_n\,(c_1 + c_2 t)$. En fri translasjon eller rotasjon av hele systemet endrer ikke $V$ og gir en slik mode.
 
-Gang ligningen for $\mathbf A_n$ fra venstre med $\mathbf A_n^\top$, så får du $\mathbf A_n^\top\boldsymbol V\mathbf A_n = \omega_n^2\,\mathbf A_n^\top\boldsymbol T\mathbf A_n$. Siden $\boldsymbol T$ er positivt definitt, har $\omega_n^2$ samme fortegn som $\mathbf A_n^\top\boldsymbol V\mathbf A_n$. Er $\boldsymbol V$ positivt definitt, er $q_0$ et minimum for $V$, og alle $\omega_n^2$ er positive.
+Er $\boldsymbol V$ positivt definitt, er $q_0$ et minimum for $V$, og alle $\omega_n^2$ er positive.
+
+<Callout title="Normalmoder">
+Egenfrekvensene $\omega_n$ er røttene av $\det(\boldsymbol V - \omega^2\boldsymbol T) = 0$, og i mode $n$ svinger alle koordinatene med $\omega_n$ i forholdet $\mathbf A_n$. Likevekten er stabil når alle $\omega_n^2$ er positive.
+</Callout>
 
 ## Modene som koordinater
 
-De $N$ vektorene $\mathbf A_n$ er ortogonale med $\boldsymbol T$ som vekt, og moder med samme frekvens kan velges ortogonale. Ortogonale vektorer er uavhengige, så enhver liten bevegelse er en sum over modene, $\boldsymbol\eta = \sum_n \xi_n(t)\,\mathbf A_n$. Normer vektorene så $\mathbf A_n^\top\boldsymbol T\mathbf A_n = 1$. Da er $\mathbf A_m^\top\boldsymbol T\mathbf A_n = \delta_{mn}$, og ganger du ligningen for $\mathbf A_n$ fra venstre med $\mathbf A_m^\top$, er $\mathbf A_m^\top\boldsymbol V\mathbf A_n = \omega_n^2\,\delta_{mn}$. Gang summen med $\mathbf A_m^\top\boldsymbol T$, så står bare $\xi_m = \mathbf A_m^\top\boldsymbol T\boldsymbol\eta$ igjen. Satt inn i $L$ faller alle leddene med $m \ne n$ bort:
+De $N$ vektorene $\mathbf A_n$ er ortogonale med $\boldsymbol T$ som vekt, og moder med samme frekvens kan velges ortogonale. Ortogonale vektorer er uavhengige, så enhver liten bevegelse er en sum over modene, $\boldsymbol\eta = \sum_n \xi_n(t)\,\mathbf A_n$. Normer vektorene så $\mathbf A_n^\top\boldsymbol T\mathbf A_n = 1$, og gang ligningen for $\mathbf A_n$ fra venstre med $\mathbf A_m^\top$:
+
+$$
+\mathbf A_m^\top\boldsymbol T\mathbf A_n = \delta_{mn} \quad\Rightarrow\quad \mathbf A_m^\top\boldsymbol V\mathbf A_n = \omega_n^2\,\delta_{mn}
+$$
+
+Sett summen inn i $L$. Den kinetiske energien blir $\tfrac12\sum_{m,n}\dot\xi_m\dot\xi_n\,\mathbf A_m^\top\boldsymbol T\mathbf A_n$, og potensialet har samme form med $\boldsymbol V$, så alle leddene med $m \ne n$ faller bort:
 
 <Formula
   tex="L = \tfrac12\sum_n\left(\dot\xi_n^2 - \omega_n^2\,\xi_n^2\right) \allowbreak\qquad \xi_n(0) = \mathbf A_n^\top\boldsymbol T\boldsymbol\eta(0)"
-  caption="<b>Normalkoordinatene</b> $\xi_n$ er $N$ uavhengige harmoniske oscillatorer. Startverdiene finnes ved å gange utslagene med $\mathbf A_n^\top\boldsymbol T$, og $\dot\xi_n(0)$ på samme måte fra hastighetene."
+  caption="<b>Normalkoordinatene</b> $\xi_n$ er $N$ uavhengige harmoniske oscillatorer."
 />
+
+Startverdiene får du ved å gange $\boldsymbol\eta = \sum_n \xi_n\mathbf A_n$ fra venstre med $\mathbf A_m^\top\boldsymbol T$. Da står bare $\xi_m$ igjen, så $\xi_m(0) = \mathbf A_m^\top\boldsymbol T\boldsymbol\eta(0)$, og $\dot\xi_m(0)$ får du på samme måte fra $\dot{\boldsymbol\eta}(0)$.
 
 Potensialet er nå $\tfrac12\sum_n\omega_n^2\xi_n^2$, så $\boldsymbol V$ er positivt definitt nøyaktig når alle $\omega_n^2$ er positive. <Term name="normalkoordinat">Normalkoordinatene</Term> svinger da hver for seg, $\xi_n = C_n\cos(\omega_n t - \delta_n)$, og den generelle bevegelsen er
 
@@ -94,36 +151,18 @@ $$
 \boldsymbol\eta(t) = \sum_n C_n\,\mathbf A_n\cos(\omega_n t - \delta_n)
 $$
 
-med $2N$ konstanter $C_n$ og $\delta_n$ fra $\boldsymbol\eta(0)$ og $\dot{\boldsymbol\eta}(0)$. Hver mode har sin egen energi $\tfrac12(\dot\xi_n^2 + \omega_n^2\xi_n^2)$, og den er bevart for seg. Et system som startes i én mode, blir i den. Bevegelsen gjentar seg bare når alle forholdene $\omega_m/\omega_n$ er rasjonale tall.
+med $2N$ konstanter $C_n$ og $\delta_n$ fra $\boldsymbol\eta(0)$ og $\dot{\boldsymbol\eta}(0)$. Hver mode har sin egen energi $\tfrac12(\dot\xi_n^2 + \omega_n^2\xi_n^2)$, og den er bevart for seg. Et system som startes i én mode, blir i den. Bevegelsen gjentar seg bare når alle forholdene $\omega_m/\omega_n$ er rasjonale tall. For dobbeltpendelen er $\omega_2/\omega_1 = 1 + \sqrt2$ irrasjonalt, så en vilkårlig liten svingning der gjentar seg aldri nøyaktig.
+
+<Callout title="Normalkoordinater">
+I normalkoordinatene $\xi_n$ er $L$ en sum av $N$ uavhengige harmoniske oscillatorer, hver med sin egen bevarte energi. Med normerte moder er startverdiene $\xi_n(0) = \mathbf A_n^\top\boldsymbol T\boldsymbol\eta(0)$.
+</Callout>
 
 <Quiz
-  question="Et system har to normalmoder med $\omega_1 = 2\ \text{s}^{-1}$ og $\omega_2 = 3\ \text{s}^{-1}$. Etter hvor lang tid gjentar en vilkårlig bevegelse seg?"
-  options={["$2\\pi$ s", "$\\pi$ s", "$6\\pi$ s", "Den gjentar seg aldri"]}
+  question="Et system har to normalmoder med $\omega_1 = 2\ \text{s}^{-1}$ og $\omega_2 = 3\ \text{s}^{-1}$. Hva er den korteste tiden før en vilkårlig bevegelse gjentar seg?"
+  options={["$2\\pi$ s", "$\\pi$ s", "$\\pi/3$ s", "Den gjentar seg aldri"]}
   answer={0}
-  explanation="Periodene er $\pi$ s og $2\pi/3$ s. Etter $2\pi$ s har den første moden gått to perioder og den andre tre, så begge er tilbake der de startet."
+  explanation="Periodene er $\pi$ s og $2\pi/3$ s. Etter $2\pi$ s har den første moden gått to perioder og den andre tre, så begge er tilbake der de startet, og ingen kortere tid går opp i begge periodene. Etter $\pi$ s er bare den langsomme moden tilbake, mens den raske har gått halvannen periode. $\pi/3$ s er $2\pi$ delt på produktet av frekvensene, ikke en tid der noen av modene er tilbake. Forholdet $\omega_2/\omega_1 = 3/2$ er rasjonalt, så bevegelsen gjentar seg."
 />
-
-## Dobbeltpendelen
-
-To like pendler med masse $m$ og lengde $l$ henger etter hverandre, og $\theta_1$ og $\theta_2$ er vinklene fra loddlinja. Den øverste kula har farten $l\dot\theta_1$. Farten til den nederste er summen av to hastigheter med størrelse $l\dot\theta_1$ og $l\dot\theta_2$ og vinkelen $\theta_1 - \theta_2$ mellom seg, så $v_2^2 = l^2\left(\dot\theta_1^2 + \dot\theta_2^2 + 2\cos(\theta_1 - \theta_2)\,\dot\theta_1\dot\theta_2\right)$. Kulene ligger $l\cos\theta_1$ og $l\cos\theta_1 + l\cos\theta_2$ under tappen. Den eksakte Lagrangefunksjonen er derfor
-
-$$
-L = ml^2\dot\theta_1^2 + \tfrac12 ml^2\dot\theta_2^2 \allowbreak + ml^2\cos(\theta_1 - \theta_2)\,\dot\theta_1\dot\theta_2 \allowbreak + 2mgl\cos\theta_1 + mgl\cos\theta_2
-$$
-
-Faktoren $\dot\theta_1\dot\theta_2$ i kryssleddet er allerede av andre orden, så der kan $\cos(\theta_1 - \theta_2)$ settes lik 1. I potensialet er $\cos\theta \approx 1 - \tfrac12\theta^2$. Sammenligning med $L$ nær en likevekt gir
-
-$$
-\boldsymbol T = ml^2\begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix} \allowbreak\qquad \boldsymbol V = mgl\begin{pmatrix} 2 & 0 \\ 0 & 1 \end{pmatrix}
-$$
-
-Elementet utenfor diagonalen, som kobler $\theta_1$ og $\theta_2$, sitter i $\boldsymbol T$, fordi farten til den nederste kula avhenger av begge vinklene. Del $\boldsymbol V - \omega^2\boldsymbol T$ på $mgl$ og sett $x = l\omega^2/g$. Da er sekulærligningen
-
-$$
-\begin{vmatrix} 2 - 2x & -x \\ -x & 1 - x \end{vmatrix} = x^2 - 4x + 2 = 0
-$$
-
-altså $\omega^2 = (2 \mp \sqrt2)\,g/l$. Den første raden i $(\boldsymbol V - \omega^2\boldsymbol T)\mathbf A = 0$ gir $A_2/A_1 = 2(1 - x)/x = \pm\sqrt2$. I den langsomme moden, $\omega_1 = 0{,}765\sqrt{g/l}$, svinger kulene i takt, og den nederste har $\sqrt2$ ganger så stort utslag. I den raske, $\omega_2 = 1{,}848\sqrt{g/l}$, svinger de i motfase. Forholdet $\omega_2/\omega_1 = 1 + \sqrt2$ er irrasjonalt, så en vilkårlig liten svingning gjentar seg aldri nøyaktig.
 
 ## Et lineært molekyl med tre atomer
 
@@ -142,15 +181,17 @@ $$
 Utviklet etter første rad er determinanten til $\boldsymbol V - \omega^2\boldsymbol T$ lik $(k - m\omega^2)\left[(2k - M\omega^2)(k - m\omega^2) - 2k^2\right]$, og hakeparentesen er $\omega^2\left(mM\omega^2 - k(2m + M)\right)$. Sekulærligningen er derfor $\omega^2(k - m\omega^2)\left(mM\omega^2 - k(2m + M)\right) = 0$, og hver av de tre røttene gir en mode:
 
 - $\mathbf A = (1, 1, 1)$ med $\omega = 0$: hele molekylet flytter seg, en translasjon.
-- $\mathbf A = (1, 0, -1)$ med $\omega^2 = k/m$: de ytre atomene svinger i motfase, og midtatomet står stille. Moden er symmetrisk.
-- $\mathbf A = (1, -2m/M, 1)$ med $\omega^2 = (k/m)(1 + 2m/M)$: de ytre atomene går samme vei og midtatomet motsatt. Moden er antisymmetrisk.
+- $\mathbf A = (1, 0, -1)$ med $\omega^2 = k/m$: de ytre atomene svinger i motfase, og midtatomet står stille. Hvert ytre atom svinger da som en masse $m$ på en fjær festet i et fast punkt.
+- $\mathbf A = (1, -2m/M, 1)$ med $\omega^2 = (k/m)(1 + 2m/M)$: de ytre atomene går samme vei og midtatomet motsatt. Når $M \gg m$, står midtatomet nesten stille, og frekvensen går mot $\sqrt{k/m}$.
 
-Summen $\mathbf A_n^\top\boldsymbol T\,(1, 1, 1)^\top = mA_1 + MA_2 + mA_3$ er totalmassen ganget med forskyvningen av massesenteret. Begge modene med $\omega \ne 0$ er $\boldsymbol T$-ortogonale på translasjonen, så de holder massesenteret i ro.
+Speil molekylet i midtatomet. Da bytter de ytre atomene plass, og hvert utslag skifter retning. Moden $(1, 0, -1)$ ser lik ut etter speilingen og kalles symmetrisk. Moden $(1, -2m/M, 1)$ skifter fortegn og kalles antisymmetrisk.
+
+Ingen ytre kraft virker på molekylet, så massesenteret kan ikke svinge, og hver mode med $\omega \ne 0$ holder det i ro. Ortogonaliteten sier det samme: $\mathbf A_n^\top\boldsymbol T\,(1, 1, 1)^\top = mA_1 + MA_2 + mA_3$ er totalmassen ganget med forskyvningen av massesenteret, og summen er null for begge modene, fordi de er $\boldsymbol T$-ortogonale på translasjonen.
 
 <Simulation
   src="/sims/normalmoder.js"
   title="Normalmodene til et treatomig molekyl"
-  caption="Øverst molekylet, under de tre normalmodene i samme skala. Utslaget til hvert atom øverst er summen av utslagene i radene under, og de stiplede linjene er likevektsposisjonene. Dra et atom ut og slipp det. Hver mode svinger harmonisk med sin egen frekvens, og translasjonen står stille fordi molekylet slippes fra ro. Knappene starter molekylet i én mode."
+  caption="Øverst molekylet, med massesenteret som et kryss, og under de tre normalmodene i samme skala. Utslaget til hvert atom øverst er summen av utslagene i radene under, og de stiplede linjene er likevektsposisjonene."
   host="dom"
   height={380}
 />
@@ -245,10 +286,10 @@ gir $m\ddot\eta_j = k\left(\eta_{j+1} - 2\eta_j + \eta_{j-1}\right)$. Siden alle
 
 <Formula
   tex="\omega = 2\sqrt{\frac{k}{m}}\,\left|\sin\frac{\varphi}{2}\right| \allowbreak\qquad \varphi = \frac{2\pi n}{N}"
-  caption="<b>Normalmodene til en kjede</b> av $N$ like atomer på en ring. $\varphi$ er faseforskjellen mellom naboatomer, og $n = 0, 1, \dots, N - 1$ gir $N$ moder."
+  caption="<b>Normalmodene til en kjede</b> av $N$ like atomer på en ring, med faseforskjellen $\varphi$ mellom naboatomer."
 />
 
-$n = 0$ er translasjonen, med $\omega = 0$. Frekvensen er størst, $2\sqrt{k/m}$, i moden med $\varphi = \pi$, som finnes bare når $N$ er et partall, med $n = N/2$. Da svinger naboatomene i motfase. Bølgen har bølgelengden $\lambda = 2\pi a/\varphi$, og sammenhengen mellom frekvensen og bølgelengden er kjedens <Term name="dispersjonsrelasjon">dispersjonsrelasjon</Term>.
+$n$ og $n + N$ gir den samme bevegelsen, så $n = 0, 1, \dots, N - 1$ gir $N$ moder, én for hver frihetsgrad. $n = 0$ er translasjonen, med $\omega = 0$. Frekvensen er størst, $2\sqrt{k/m}$, i moden med $\varphi = \pi$, som finnes bare når $N$ er et partall, med $n = N/2$. Da svinger naboatomene i motfase. Bølgen har bølgelengden $\lambda = 2\pi a/\varphi$, og sammenhengen mellom frekvensen og bølgelengden er kjedens <Term name="dispersjonsrelasjon">dispersjonsrelasjon</Term>.
 
 For lange bølger er $\varphi \ll 1$ og $\omega \approx \sqrt{k/m}\,\varphi$, så bølgen går med farten
 
@@ -266,7 +307,7 @@ $$
 L = \tfrac12 m\left(\dot x^2 + \dot y^2\right) \allowbreak + m\omega\left(x\dot y - y\dot x\right) \allowbreak - m\,U(x, y)
 $$
 
-der $U$ er tyngdepotensialet fra $m_1$ og $m_2$ pluss sentrifugalpotensialet, per masse. Likevektene er Lagrangepunktene, der $\partial U/\partial x = \partial U/\partial y = 0$. Coriolisleddet $m\omega(x\dot y - y\dot x)$ er lineært i farten og passer ikke inn i formen til $L$ nær en likevekt, så bevegelsesligningene må lineariseres direkte. Lagranges ligninger gir $\ddot x - 2\omega\dot y = -\partial U/\partial x$ og $\ddot y + 2\omega\dot x = -\partial U/\partial y$. Med $\eta_1$ og $\eta_2$ som utslaget fra et Lagrangepunkt i $x$ og $y$ er $\partial U/\partial x \approx U_{xx}\eta_1 + U_{xy}\eta_2$ og $\partial U/\partial y \approx U_{xy}\eta_1 + U_{yy}\eta_2$, så de lineariserte ligningene er
+der $U$ er tyngdepotensialet fra $m_1$ og $m_2$ pluss sentrifugalpotensialet, per masse. Likevektene er Lagrangepunktene, der $\partial U/\partial x = \partial U/\partial y = 0$. Coriolisleddet $m\omega(x\dot y - y\dot x)$ er lineært i farten og passer ikke inn i formen $L \approx \tfrac12 T_{ij}\dot\eta_i\dot\eta_j - \tfrac12 V_{ij}\eta_i\eta_j$, så bevegelsesligningene må lineariseres direkte. Lagranges ligninger gir $\ddot x - 2\omega\dot y = -\partial U/\partial x$ og $\ddot y + 2\omega\dot x = -\partial U/\partial y$. Med $\eta_1$ og $\eta_2$ som utslaget fra et Lagrangepunkt i $x$ og $y$ er $\partial U/\partial x \approx U_{xx}\eta_1 + U_{xy}\eta_2$ og $\partial U/\partial y \approx U_{xy}\eta_1 + U_{yy}\eta_2$, så de lineariserte ligningene er
 
 $$
 \begin{aligned}
@@ -287,16 +328,22 @@ $$
 \left(\lambda^2 + U_{xx}\right)\left(\lambda^2 + U_{yy}\right) \allowbreak - U_{xy}^2 + 4\omega^2\lambda^2 = 0
 $$
 
-Utslaget holder seg lite når begge røttene $\lambda^2$ er reelle og negative. Ellers har minst én $\lambda$ positiv realdel. Uten Coriolisleddet $4\omega^2\lambda^2$ er røttene $\lambda^2$ minus egenverdiene til matrisen av annenderiverte, og stabilitet krever et minimum for $U$, som før.
+Ligningen inneholder bare $\lambda^2$, så røttene kommer i par $\pm\lambda$. Er begge røttene $\lambda^2$ reelle og negative, er $\lambda$ rent imaginær, og utslaget svinger uten å vokse. Ellers har én $\lambda$ i et par positiv realdel, og utslaget vokser. Uten Coriolisleddet $4\omega^2\lambda^2$ er røttene $\lambda^2$ minus egenverdiene til matrisen av annenderiverte, og stabilitet krever et minimum for $U$, som før.
 
 $U$ er symmetrisk under $y \to -y$, så $U_{xy} = 0$ på $x$-aksen. $L_1$, $L_2$ og $L_3$ ligger på aksen og er sadelpunkter med $U_{xx} < 0 < U_{yy}$, så produktet av de to røttene $\lambda^2$, som er $U_{xx}U_{yy}$, er negativt. Én rot er positiv, og punktene er ustabile for alle masseforhold.
 
-$L_4$ og $L_5$ er maksimumspunkter for $U$, og uten Corioliskraften ville et legeme gli ned fra dem i alle retninger. Når legemet begynner å gli, bøyer Corioliskraften banen av til siden, og er $m_1$ mye større enn $m_2$, går legemet i en sløyfe rundt punktet i stedet. Betingelsen er
+$L_4$ og $L_5$ er maksimumspunkter for $U$. Corioliskraften står vinkelrett på farten og gjør ikke arbeid, så $\tfrac12 v^2 + U$ er bevart, og et legeme som slippes i ro, kan nå alle steder der $U$ er mindre enn i startpunktet. Energien holder det altså ikke nær punktet, og uten Corioliskraften ville det gli ned i alle retninger. Når legemet begynner å gli, bøyer Corioliskraften banen av til siden, og er $m_1$ mye større enn $m_2$, går legemet i en sløyfe rundt punktet i stedet. Betingelsen er
 
 <Formula
   tex="27\,m_1 m_2 < (m_1 + m_2)^2 \allowbreak\quad\Leftrightarrow\quad \frac{m_1}{m_2} > 24{,}96"
   caption="<b>Stabilitetsbetingelsen for $L_4$ og $L_5$.</b> $L_1$, $L_2$ og $L_3$ er ustabile for alle masseforhold."
 />
+
+Med $\alpha = m_2/(m_1 + m_2)$ er betingelsen $\alpha < 0{,}0385$. Betingelsen gjelder de lineariserte ligningene, så den sier at små utslag holder seg små så lenge leddene av høyere orden i $U$ kan sløyfes. Nær $\alpha = 0{,}0135$ og $\alpha = 0{,}024$ står frekvensene til de to svingningene om punktet i forholdet $3:1$ og $2:1$, og der kan leddene av høyere orden likevel føre legemet bort.
+
+<Callout title="Lagrangepunktene">
+$L_1$, $L_2$ og $L_3$ er ustabile for alle masseforhold. $L_4$ og $L_5$ er maksima for $U$, men Corioliskraften gjør dem stabile når $27\,m_1 m_2 < (m_1 + m_2)^2$.
+</Callout>
 
 <Derivation title="Hvorfor L₄ og L₅ er stabile">
 Potensialet er $U = -Gm_1/r_1 - Gm_2/r_2 - \tfrac12\omega^2(x^2 + y^2)$, med $\omega^2 = GM/d^3$, $M = m_1 + m_2$ og $d$ avstanden mellom de tunge legemene. Den annenderiverte av $-1/r$ er $\partial_i\partial_j(-1/r) = (\delta_{ij} - 3n_in_j)/r^3$, med $\vec n = \vec r/r$. I $L_4$ er $r_1 = r_2 = d$, og enhetsvektorene fra $m_1$ og $m_2$ er $\vec n_1 = (\tfrac12, \tfrac{\sqrt3}{2})$ og $\vec n_2 = (-\tfrac12, \tfrac{\sqrt3}{2})$. Leddene med $\delta_{ij}$ gir $GM/d^3 = \omega^2$ og opphever sentrifugalleddet. Med $\alpha = m_2/M$, $Gm_1/d^3 = (1 - \alpha)\omega^2$ og $Gm_2/d^3 = \alpha\omega^2$ står det igjen
@@ -309,7 +356,7 @@ $$
 U_{xx} = -\tfrac34\omega^2 \allowbreak\qquad U_{yy} = -\tfrac94\omega^2 \allowbreak\qquad U_{xy} = -\tfrac{3\sqrt3}{4}(1 - 2\alpha)\,\omega^2
 $$
 
-Satt inn i determinantligningen gir de annenderiverte
+Satt inn i determinantligningen $(\lambda^2 + U_{xx})(\lambda^2 + U_{yy}) - U_{xy}^2 + 4\omega^2\lambda^2 = 0$ gir de annenderiverte
 
 $$
 \lambda^4 + \omega^2\lambda^2 + \tfrac{27}{4}\,\alpha(1 - \alpha)\,\omega^4 = 0
@@ -321,7 +368,7 @@ $$
 \lambda^2 = \tfrac12\omega^2\left(-1 \pm \sqrt{1 - 27\alpha(1 - \alpha)}\right)
 $$
 
-De er reelle og negative når $1 - 27\alpha(1 - \alpha) > 0$, og med $\alpha(1 - \alpha) = m_1m_2/M^2$ er ulikheten betingelsen over.
+De er reelle og negative når $1 - 27\alpha(1 - \alpha) > 0$, og med $\alpha(1 - \alpha) = m_1m_2/M^2$ er ulikheten $27\,m_1m_2 < (m_1 + m_2)^2$.
 </Derivation>
 
 <Derivation title="Trojanerne hos Jupiter">
@@ -331,7 +378,7 @@ Sola og Jupiter har $m_1/m_2 = 1047$, og over ti tusen asteroider, trojanerne, f
 <Simulation
   src="/sims/trelegeme.js"
   title="Et legeme nær L₄"
-  caption="Nivåkurvene til $U$ i systemet som roterer med $m_1$ og $m_2$. Et lett legeme slippes i ro like foran $L_4$, eller der du trykker i figuren. Det skraverte området er der $U$ er større enn i startpunktet, og dit kommer legemet aldri. For små $m_2/M$ går legemet i en sløyfe rundt $L_4$, og over $0{,}0385$ driver det alltid bort. Nær $0{,}0135$ og $0{,}024$, der frekvensene til de to svingningene om punktet står i forholdet $3:1$ og $2:1$, kan legemet også drive bort. Slipp legemet nær $L_1$ for å se et ustabilt sadelpunkt."
+  caption="Nivåkurvene til $U$ i systemet som roterer med $m_1$ og $m_2$, de fem Lagrangepunktene og et lett legeme som starter i ro, med sporet sitt. Det skraverte området er der $U$ er større enn i startpunktet."
   host="dom"
   height={380}
 />
@@ -344,7 +391,7 @@ $$
 \ddot x + \omega_0^2 x + \varepsilon x^3 = 0
 $$
 
-Siden $\varepsilon$ er liten, prøv en rekke i $\varepsilon$, $x = A\cos\omega_0 t + \varepsilon x_1 + \dots$. Leddet av første orden oppfyller
+Når $|\varepsilon| A^2 \ll \omega_0^2$, er kraften $\varepsilon x^3$ liten mot $\omega_0^2 x$, så prøv en rekke i $\varepsilon$, $x = A\cos\omega_0 t + \varepsilon x_1 + \dots$. Leddet av første orden oppfyller
 
 $$
 \ddot x_1 + \omega_0^2 x_1 = -A^3\cos^3\omega_0 t \allowbreak = -\tfrac14 A^3\left(3\cos\omega_0 t + \cos3\omega_0 t\right)
@@ -362,13 +409,19 @@ Frekvensen $\omega$ ligger nær $\omega_0$, så leddet med $\cos\omega t$ driver
 
 <Formula
   tex="\omega \approx \omega_0 + \frac{3\varepsilon A^2}{8\omega_0}"
-  caption="<b>Frekvensen til en anharmonisk oscillator</b> $\ddot x + \omega_0^2 x + \varepsilon x^3 = 0$ med amplitude $A$, til første orden i $\varepsilon$. En stivere fjær, $\varepsilon > 0$, svinger fortere ved store utslag."
+  caption="<b>Frekvensen til en anharmonisk oscillator</b> $\ddot x + \omega_0^2 x + \varepsilon x^3 = 0$ med amplitude $A$, til første orden i $\varepsilon$."
 />
 
-Resten av ligningen, $\ddot x_1 + \omega_0^2 x_1 = -\tfrac14 A^3\cos3\omega t$, gir en liten tredje harmonisk, $x_1 = (A^3/32\omega_0^2)\cos3\omega t$. For pendelen er $\sin\theta \approx \theta - \theta^3/6$, altså $\varepsilon = -\omega_0^2/6$ med $\omega_0^2 = g/l$, og frekvensen er $\omega = \omega_0(1 - \theta_0^2/16)$ når $\theta_0$ er utslaget.
+Er $\varepsilon > 0$, blir fjæra stivere ved store utslag, og frekvensen øker med amplituden. For $A \to 0$ er $\omega = \omega_0$, som i lineariseringen. Resten av ligningen, $\ddot x_1 + \omega_0^2 x_1 = -\tfrac14 A^3\cos3\omega t$, gir en liten tredje harmonisk, $x_1 = (A^3/32\omega_0^2)\cos3\omega t$.
+
+For pendelen er $\sin\theta \approx \theta - \theta^3/6$, altså $\varepsilon = -\omega_0^2/6$ med $\omega_0^2 = g/l$. Kraften vokser langsommere enn utslaget, og frekvensen er $\omega = \omega_0(1 - \theta_0^2/16)$ når $\theta_0$ er utslaget. Rekka krever $|\varepsilon|\theta_0^2 \ll \omega_0^2$, altså $\theta_0^2/6 \ll 1$.
+
+<Callout title="Anharmonisk frekvens">
+Et ledd $\varepsilon x^3$ gir $\omega \approx \omega_0 + 3\varepsilon A^2/8\omega_0$, så en stivere fjær, $\varepsilon > 0$, svinger fortere ved store utslag, og pendelen svinger langsommere. En rekke med fast frekvens $\omega_0$ kan bare få med forskyvningen gjennom sekulærledd, som vokser med $t$.
+</Callout>
 
 <SelfCheck question="En pendel svinger med utslaget 30°. Hvor mye lengre er perioden enn for små utslag?">
-$\theta_0 = \pi/6 = 0{,}524$ rad gir $T/T_0 = \omega_0/\omega \approx 1 + \theta_0^2/16 = 1{,}017$, altså $1{,}7$ prosent. Det eksakte svaret, fra et elliptisk integral, er $1{,}74$ prosent. Ved 90° gir formelen $15$ prosent, mot det eksakte $18$.
+$\theta_0 = \pi/6 = 0{,}524$ rad gir $\theta_0^2/6 = 0{,}046$, så rekka holder. $T/T_0 = \omega_0/\omega \approx 1 + \theta_0^2/16 = 1{,}017$, altså $1{,}7$ prosent. Det eksakte svaret, fra et elliptisk integral, er $1{,}74$ prosent. Ved 90° er $\theta_0^2/6 = 0{,}41$, ikke lenger lite, og formelen gir $15$ prosent mot det eksakte $18$.
 </SelfCheck>
 
 <KeyTakeaways>

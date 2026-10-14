@@ -17,7 +17,9 @@ updated: 2026-09-12
 
 ## Vinkelhastighet og tidsderivasjon i to systemer
 
-La $K$ være et inertialsystem og $K'$ et system med samme origo, men med akser som roterer om en akse gjennom origo. <Term name="vinkelhastighet">Vinkelhastigheten</Term> $\vec\omega$ ligger langs aksen etter høyrehåndsregelen og har vinkelfarten som lengde. Et punkt som følger rotasjonen, går i en sirkel om aksen. Farten er $\omega d$, der $d$ er avstanden til aksen, og hastigheten står vinkelrett på både aksen og $\vec r$. Kryssproduktet har den lengden og retningen:
+På jorda måler du bevegelse i forhold til bakken, og bakken roterer. La $K$ være et inertialsystem og $K'$ et system med samme origo, men med akser som roterer om en akse gjennom origo, slik bakken gjør. Du vil vite hvilken akselerasjon $\vec a\,'$ kreftene gir målt i $K'$. Newtons andre lov gjelder bare i $K$, så veien går gjennom $K$: skriv $\vec a$ ved størrelser målt i $K'$, sett det inn i $m\vec a = \vec F$ og løs for $\vec a\,'$. Til det trenger du sammenhengen mellom endringen av en vektor målt i $K$ og målt i $K'$.
+
+<Term name="vinkelhastighet">Vinkelhastigheten</Term> $\vec\omega$ ligger langs aksen etter høyrehåndsregelen og har vinkelfarten som lengde. Et punkt som følger rotasjonen, går i en sirkel om aksen. Farten er $\omega d$, der $d$ er avstanden til aksen, og hastigheten står vinkelrett på både aksen og $\vec r$. Kryssproduktet har den lengden og retningen:
 
 $$
 \dot{\vec r} = \vec\omega \times \vec r
@@ -40,7 +42,7 @@ Sett $\vec A = \vec\omega$. Da er det siste leddet $\vec\omega \times \vec\omega
 
 ## Hastighet og akselerasjon
 
-På jorda måler du bevegelse i forhold til bakken, altså i $K'$, og vil vite hvilken akselerasjon $\vec a\,'$ kreftene gir der. Newtons andre lov gjelder bare i $K$, så veien går gjennom $K$: skriv $\vec a$ ved størrelser målt i $K'$, sett det inn i $m\vec a = \vec F$ og løs for $\vec a\,'$. Bruk sammenhengen på posisjonen $\vec r$. Med $\vec v = (d\vec r/dt)_K$ og $\vec v\,' = (d\vec r/dt)_{K'}$ er
+Bruk sammenhengen mellom de tidsderiverte i $K$ og $K'$ på posisjonen $\vec r$. Med $\vec v = (d\vec r/dt)_K$ og $\vec v\,' = (d\vec r/dt)_{K'}$ er
 
 <Formula
   tex="\vec v = \vec v\,' + \vec\omega \times \vec r"
@@ -63,6 +65,8 @@ $$
   caption="Akselerasjonen i $K$ uttrykt ved størrelser målt i $K'$."
 />
 
+De to like leddene i $2\,\vec\omega \times \vec v\,'$ har hver sin grunn. Sett fra $K$ dreier vektoren $\vec v\,'$ med systemet, og dreiningen gir akselerasjonen $\vec\omega \times \vec v\,'$. I tillegg flytter partikkelen seg med $\vec v\,'$ til steder der systemet selv har en annen hastighet $\vec\omega \times \vec r$, og den hastigheten endrer seg med $\vec\omega \times \vec v\,'$ per tid.
+
 Det siste leddet er $\vec\omega \times (\vec\omega \times \vec r) = \vec\omega\,(\vec\omega \cdot \vec r) - \omega^2 \vec r = -\omega^2 \vec d$, som peker inn mot aksen. Her er $\vec\omega\,(\vec\omega \cdot \vec r)/\omega^2$ komponenten av $\vec r$ langs aksen og $\vec d$ komponenten vinkelrett på den. Et punkt som ligger i ro i $K'$, har $\vec v\,' = \vec a\,' = 0$ og dermed $\vec a = -\omega^2\vec d$, sentripetalakselerasjonen i sirkelbevegelse.
 
 ## Newtons andre lov i det roterende systemet
@@ -74,23 +78,27 @@ I $K$ gjelder $m\vec a = \vec F$. Sett inn uttrykket for $\vec a$ og flytt alt u
   caption="<b>Newtons andre lov i et roterende system.</b> De tre ekstra leddene er Corioliskraften, sentrifugalkraften og Eulerkraften."
 />
 
-En observatør i $K'$ som vil bruke $m\vec a\,' = \text{kraft}$, må regne de tre leddene som krefter. <Term name="sentrifugalkraft">Sentrifugalkraften</Term> $-m\vec\omega \times (\vec\omega \times \vec r) = m\omega^2\vec d$ peker ut fra aksen og virker på alt, også det som ligger i ro. <Term name="corioliskraft">Corioliskraften</Term> $-2m\vec\omega \times \vec v\,'$ virker bare på det som beveger seg i $K'$, og alltid vinkelrett på hastigheten. <Term name="eulerkraft">Eulerkraften</Term> $-m\dot{\vec\omega} \times \vec r$ finnes bare når $\vec\omega$ endrer seg. Jordas $\vec\omega$ endrer seg så langsomt at Eulerkraften kan sløyfes.
+En observatør i $K'$ som vil bruke $m\vec a\,' = \text{kraft}$, må regne de tre leddene som krefter. <Term name="sentrifugalkraft">Sentrifugalkraften</Term> $-m\vec\omega \times (\vec\omega \times \vec r) = m\omega^2\vec d$ peker ut fra aksen og virker på alt, også det som ligger i ro. <Term name="corioliskraft">Corioliskraften</Term> $-2m\vec\omega \times \vec v\,'$ virker bare på det som beveger seg i $K'$, og alltid vinkelrett på hastigheten. <Term name="eulerkraft">Eulerkraften</Term> $-m\dot{\vec\omega} \times \vec r$ finnes bare når $\vec\omega$ endrer seg. Når $K'$ roterer stadig fortere, peker $\dot{\vec\omega}$ langs $\vec\omega$, og Eulerkraften peker motsatt av farten $\vec\omega \times \vec r$ til et punkt som følger rotasjonen, slik du dyttes bakover i en buss som setter opp farten. Jordas $\vec\omega$ endrer seg så langsomt at Eulerkraften kan sløyfes.
 
-De tre leddene kalles <Term name="fiktiv kraft">fiktive krefter</Term>. De skyldes ikke noe annet legeme, har ingen motkraft og forsvinner når du går tilbake til $K$. Alle tre er proporsjonale med massen. At tyngdekraften også er proporsjonal med massen, var Einsteins utgangspunkt for å beskrive tyngden som krumning av romtida.
+De tre leddene kalles <Term name="fiktiv kraft">fiktive krefter</Term>. De skyldes ikke noe annet legeme, har ingen motkraft og forsvinner når du går tilbake til $K$. Alle tre er proporsjonale med massen.
+
+<Callout title="Newtons andre lov i $K'$">
+I $K'$ er $m\vec a\,'$ lik de ekte kreftene pluss tre fiktive krefter: sentrifugalkraften $m\omega^2\vec d$ ut fra aksen, Corioliskraften $-2m\vec\omega \times \vec v\,'$ på det som beveger seg og Eulerkraften $-m\dot{\vec\omega} \times \vec r$ når $\vec\omega$ endrer seg.
+</Callout>
 
 <Simulation
   src="/sims/roterende-skive.js"
   title="Kule på roterende skive"
-  caption="Kula sklir friksjonsfritt fra sentrum av ei skive som roterer med vinkelfarten $\omega$. Sett fra bakken går den rett fram. Sett fra skiva krummer banen mot høyre, og pilene viser sentrifugalkraften ut fra aksen og Corioliskraften vinkelrett på $\vec v\,'$. Bytt system midt i turen: prikkene markerer de samme hendelsene i begge systemer."
+  caption="Ei kule sklir friksjonsfritt ut fra sentrum av ei skive som roterer mot klokka med vinkelfarten $\omega$, sett fra bakken ($K$) eller fra skiva ($K'$). I $K'$ viser pilene $\vec v\,'$ (stiplet), sentrifugalkraften og Corioliskraften, og prikkene markerer de samme hendelsene i begge systemer."
   host="dom"
   height={340}
 />
 
 <Quiz
-  question="Du står i ro på ei karusell som går rundt med konstant vinkelfart. Hvilke fiktive krefter virker på deg, sett fra karusellen?"
-  options={["Bare sentrifugalkraften", "Sentrifugalkraften og Corioliskraften", "Bare Corioliskraften", "Ingen, du står jo i ro"]}
+  question="Ei karusell bremser ned mens du står i ro på den. Hvilke fiktive krefter virker på deg, sett fra karusellen?"
+  options={["Sentrifugalkraften og Eulerkraften", "Bare sentrifugalkraften", "Sentrifugalkraften, Corioliskraften og Eulerkraften", "Bare Eulerkraften"]}
   answer={0}
-  explanation="Corioliskraften er proporsjonal med $\vec v\,'$, og den er null når du står i ro på karusellen. Eulerkraften krever at $\vec\omega$ endrer seg. Sentrifugalkraften $m\omega^2\vec d$ er der uansett, og du holder igjen for den."
+  explanation="Du står i ro i $K'$, så $\vec v\,' = 0$ og Corioliskraften er null, selv om du beveger deg sett fra bakken. Sentrifugalkraften $m\omega^2\vec d$ er der så lenge karusellen roterer. Eulerkraften $-m\dot{\vec\omega} \times \vec r$ kommer til fordi $\vec\omega$ endrer seg, og når karusellen bremser, dytter den deg framover i rotasjonsretningen."
 />
 
 ## Sentrifugalkraften
@@ -99,10 +107,10 @@ Sentrifugalkraften $m\omega^2\vec d$ avhenger bare av avstanden til aksen og pek
 
 <Formula
   tex="\vec F_\text{s} = m\omega^2\vec d = -\nabla V_\text{s}, \qquad V_\text{s} = -\tfrac12 m\omega^2 d^2"
-  caption="<b>Sentrifugalpotensialet</b>, som også kan skrives $-\tfrac12 m\,|\vec\omega \times \vec r|^2$. Potensialet er negativt og synker utover, så et legeme senker energien sin ved å komme lenger fra aksen."
+  caption="<b>Sentrifugalpotensialet</b>, som også kan skrives $-\tfrac12 m\,|\vec\omega \times \vec r|^2$."
 />
 
-Legg $V_\text{s}$ til den potensielle energien, så løser du likevektsproblemer i et roterende system som vanlige potensialproblemer.
+$V_\text{s}$ synker utover, så et legeme senker energien sin ved å komme lenger fra aksen. Legg $V_\text{s}$ til den potensielle energien, så løser du likevektsproblemer i et roterende system som vanlige potensialproblemer.
 
 Heng et lodd i ei snor på jordoverflaten, i posisjonen $\vec R$ målt fra jordas sentrum. Loddet ligger i ro i $K'$, så $\vec v\,' = 0$ og $\vec a\,' = 0$. Corioliskraften er da null, og Eulerkraften sløyfes. På loddet virker tyngden $m\vec g$, der $\vec g$ peker mot jordas sentrum, og snordraget $\vec S$. Newtons andre lov i $K'$ gir
 
@@ -119,7 +127,11 @@ Snora holder altså igjen mot summen av tyngden og sentrifugalkraften, og loddet
   caption="Tyngdeakselerasjonen et lodd i ro på jorda kjenner. $\vec g$ peker mot jordas sentrum, og $\vec R$ er posisjonen målt fra sentrum."
 />
 
-Det andre leddet er sentrifugalakselerasjonen $\omega^2\vec d$. På breddegraden $\phi$ er avstanden til aksen $d = R\cos\phi$, så leddet har lengden $\omega^2 R\cos\phi$ og peker ut fra aksen, ikke rett opp. Komponenten $\omega^2 R\cos^2\phi$ rett opp trekker fra $g$, og komponenten $\omega^2 R\cos\phi\sin\phi$ langs bakken peker mot ekvator.
+Det andre leddet er sentrifugalakselerasjonen $\omega^2\vec d$. På breddegraden $\phi$ er avstanden til aksen $d = R\cos\phi$, så leddet har lengden $\omega^2 R\cos\phi$ og peker ut fra aksen, ikke rett opp. Komponenten $\omega^2 R\cos^2\phi$ rett opp trekker fra $g$, og komponenten $\omega^2 R\cos\phi\sin\phi$ langs bakken peker mot ekvator, så loddet henger litt mot ekvator i forhold til retningen mot sentrum. Ved polene og ved ekvator er komponenten langs bakken null, og loddlinja peker rett mot sentrum.
+
+<Callout title="Loddlinja">
+Et lodd i ro på jorda henger langs $\vec g_\text{eff}$, summen av tyngden og sentrifugalkraften per masse. Sentrifugalleddet gjør $g_\text{eff}$ mindre enn $g$ og får loddet til å henge litt mot ekvator.
+</Callout>
 
 <Derivation title="Loddlinja og jordas form">
 Med $\omega = 7{,}29 \cdot 10^{-5}\ \text{s}^{-1}$ og $R = 6371$ km er $\omega^2 R = 3{,}4$ cm/s², altså $0{,}35\,\%$ av $g$ ved ekvator. Komponenten langs bakken delt på $g$ gir vinkelen mellom loddlinja og retningen mot sentrum, $\tan\alpha \approx \omega^2 R\sin\phi\cos\phi/g$. Den er størst ved $\phi = 45°$, med $1{,}7 \cdot 10^{-3}$ rad, omtrent $0{,}1°$.
@@ -129,7 +141,7 @@ Jorda er ikke ei kule. Sentrifugalkraften fikk den unge, flytende jorda til å b
 <Simulation
   src="/sims/jordform.js"
   title="Loddet på den roterende jorda"
-  caption="Jorda i snitt, med kula stiplet til sammenligning. Loddet henger langs $\vec g_\text{eff}$, summen av $\vec g$ mot sentrum og $\omega^2\vec d$ ut fra aksen, og flaten står vinkelrett på loddlinja overalt. Rotasjonen er overdrevet: med jordas egen $\omega$ er avviket for lite til å se."
+  caption="Jorda i snitt med rotasjonen overdrevet, og kula stiplet til sammenligning. Pilene på loddet er $\vec g$ mot sentrum, $\omega^2\vec d$ ut fra aksen og summen $\vec g_\text{eff}$, og den stiplede linja fra loddet går mot sentrum."
   host="dom"
   height={340}
 />
@@ -142,12 +154,12 @@ $$
 gz - \tfrac12\omega^2 d^2 = \text{konst} \quad\Rightarrow\quad z = z_0 + \frac{\omega^2 d^2}{2g}
 $$
 
-Vannflaten er en paraboloide.
+Vannflaten er en paraboloide. Helningen $dz/dd = \omega^2 d/g$ er null på aksen og vokser utover, og med $\omega = 0$ er flaten plan.
 
 <Simulation
   src="/sims/botte.js"
   title="Vann i ei roterende bøtte"
-  caption="Sett fra bøtta, der vannet ligger i ro. Pilene viser $\vec g$ og $\omega^2\vec d$ på et vannelement i flaten, og summen deres står vinkelrett på flaten. Jo større $\omega$, desto brattere blir flaten ute ved kanten."
+  caption="Ei bøtte med vann sett fra siden i bøttas system, der vannet ligger i ro. Pilene på et vannelement i flaten er $\vec g$, $\omega^2\vec d$ og summen deres."
   host="dom"
   height={300}
 />
@@ -171,7 +183,7 @@ $$
 \end{aligned}
 $$
 
-Differansen, nettoakselerasjonen mot planeten, er $3GMR_\text{m}/r^3$. Massen ligger fast på månen så lenge månens tyngde $Gm_\text{m}/R_\text{m}^2$ er større:
+Differansen, nettoakselerasjonen mot planeten, er $3GMR_\text{m}/r^3$. På baksiden, i avstanden $r + R_\text{m}$, gir den samme regningen like stor nettoakselerasjon bort fra planeten. En løs masse på nærsiden eller baksiden ligger fast på månen så lenge månens tyngde $Gm_\text{m}/R_\text{m}^2$ er større:
 
 $$
 \frac{Gm_\text{m}}{R_\text{m}^2} > \frac{3GMR_\text{m}}{r^3} \quad\Rightarrow\quad r^3 > 3\,\frac{M}{m_\text{m}}\,R_\text{m}^3
@@ -188,7 +200,7 @@ vinner planeten, og månen går i stykker. Denne $C$ gjelder en kuleformet måne
 <Simulation
   src="/sims/roche.js"
   title="Løse steiner på en måne"
-  caption="Sett fra systemet som roterer med månen. Planeten og månen har samme massetetthet, så Roche-grensen ligger ved $1{,}44\,R_\text{p}$. Innenfor den er forskjellen mellom planetens tyngde og sentrifugalkraften større enn månens egen tyngde, og steinene på nærsiden og baksiden løfter seg."
+  caption="En måne med løse steiner på nærsiden og baksiden, sett fra systemet som roterer med månen. Pilene er månens tyngde og forskjellen mellom planetens tyngde og sentrifugalkraften. Planeten og månen har samme massetetthet, så Roche-grensen ligger ved $1{,}44\,R_\text{p}$."
   host="dom"
   height={280}
 />
@@ -196,7 +208,7 @@ vinner planeten, og månen går i stykker. Denne $C$ gjelder en kuleformet måne
 
 ## Corioliskraften
 
-Corioliskraften $-2m\vec\omega \times \vec v\,'$ står vinkelrett på $\vec v\,'$, så den gjør ikke arbeid og endrer bare retningen på bevegelsen. Skrevet som $2m\,\vec v\,' \times \vec\omega$ har den samme form som Lorentzkraften $q\vec v \times \vec B$, med $q\vec B$ byttet ut med $2m\vec\omega$. En partikkel som bare kjenner Corioliskraften i bevegelsesplanet, går derfor i sirkler slik en ladd partikkel gjør i et magnetfelt. Kula på skiva i simuleringen over kjenner også sentrifugalkraften, og sett fra skiva går den i en spiral.
+Corioliskraften $-2m\vec\omega \times \vec v\,'$ står vinkelrett på $\vec v\,'$, så den gjør ikke arbeid og endrer bare retningen på bevegelsen. Skrevet som $2m\,\vec v\,' \times \vec\omega$ har den samme form som magnetkraften $q\vec v \times \vec B$, med $q\vec B$ byttet ut med $2m\vec\omega$. En partikkel som bare kjenner Corioliskraften i bevegelsesplanet, går derfor i sirkler slik en ladd partikkel gjør i et magnetfelt. Ei kule som sklir friksjonsfritt ut fra sentrum av ei skive som roterer mot klokka, går rett fram sett fra bakken, for ingen ekte kraft virker på den langs skiva. Sett fra skiva kjenner den både Corioliskraften og sentrifugalkraften, og banen er en spiral som krummer mot høyre.
 
 Legg akser på jordoverflaten på breddegraden $\phi$, med $x$ mot øst, $y$ mot nord og $z$ opp. Loddlinja danner vinkelen $\phi$ med ekvatorplanet og dermed $90° - \phi$ med jordaksen. Jordaksen peker derfor mot nord, vinkelen $\phi$ over horisonten, og $\vec\omega = \omega\,(0, \cos\phi, \sin\phi)$. For en hastighet $\vec v\,' = (v_x, v_y, 0)$ langs bakken blir
 
@@ -206,23 +218,29 @@ $$
 
 Det første leddet er $\vec v\,'$ dreid en kvart omdreining mot høyre, med lengden $2\omega v\sin\phi$. På den nordlige halvkula dyttes alt som beveger seg langs bakken mot høyre, på den sørlige mot venstre og ved ekvator ikke. Det andre leddet er loddrett og lite ved siden av $g$.
 
+For et legeme som faller, er $\vec v\,'$ loddrett. Da gir bare komponenten $\omega\cos\phi$ av $\vec\omega$ langs bakken en kraft, og $-2m\vec\omega \times \vec v\,'$ peker mot øst på begge halvkuler.
+
 <Formula
   tex="\vec F_\text{C} = -2m\,\vec\omega \times \vec v\,'"
-  caption="<b>Corioliskraften.</b> For bevegelse langs bakken på breddegraden $\phi$ er den horisontale komponenten $2m\omega v\sin\phi$, rettet mot høyre for fartsretningen på den nordlige halvkula."
+  caption="<b>Corioliskraften</b> på et legeme som beveger seg med hastigheten $\vec v\,'$ i det roterende systemet."
 />
 
-En puck som glir friksjonsfritt langs bakken, kjenner bare den horisontale komponenten. Sentrifugalkraften er tatt inn i $\vec g_\text{eff}$, og underlaget tar opp den loddrette komponenten. Der $\sin\phi$ endrer seg lite langs banen, går pucken i en sirkel med radien $v/(2\omega\sin\phi)$.
+En puck som glir friksjonsfritt langs bakken, kjenner bare den horisontale komponenten. Sentrifugalkraften er tatt inn i $\vec g_\text{eff}$, og underlaget tar opp den loddrette komponenten. Der $\sin\phi$ endrer seg lite langs banen, går pucken i en sirkel med radien $v/(2\omega\sin\phi)$. Radien vokser jo nærmere ekvator pucken er. Nær ekvator endrer $\sin\phi$ seg mye langs banen, og banen er ingen sirkel. Langs selve ekvator er den horisontale komponenten null, så pucken går rett fram.
+
+<Callout title="Retningen til Corioliskraften">
+Langs bakken dytter Corioliskraften alt som beveger seg mot høyre på den nordlige halvkula og mot venstre på den sørlige, med $2m\omega v\sin\phi$. Et legeme som faller, dyttes mot øst.
+</Callout>
 
 <Simulation
   src="/sims/coriolis-jord.js"
   title="Puck på den roterende jorda"
-  caption="Pucken sklir uten friksjon langs bakken, sett fra jorda. Corioliskraften står vinkelrett på farten og bøyer banen mot høyre på den nordlige halvkula og mot venstre på den sørlige. Langt fra ekvator endrer $\sin\phi$ seg lite langs banen, så kraften er nesten like stor hele veien, og pucken går nesten i en sirkel. Nær ekvator endrer $\sin\phi$ seg mye, og sirkelen åpner seg. Langs selve ekvator er den horisontale delen null, og pucken går rett fram. Jordas rotasjon er overdrevet, så banene får plass på kloden."
+  caption="En puck som sklir uten friksjon langs bakken på den roterende jorda, sett fra jorda og med rotasjonen overdrevet så banene får plass på kloden. Ringen er startpunktet og prikkene banen. Pilene er $\vec v\,'$ og Corioliskraften."
   host="dom"
   height={380}
 />
 
 <Derivation title="Lavtrykk, orkaner og badekaret">
-Luft som strømmer inn mot et lavtrykk, bøyes mot høyre, bommer på sentrum og sirkulerer mot klokka rundt det. Derfor roterer orkaner mot klokka på den nordlige halvkula og med klokka på den sørlige. I badekaret er Coriolisakselerasjonen $2\omega v$ omkring $10^{-5}$ m/s² for $v = 10$ cm/s, og strømmer som er igjen i vannet fra før, er mye sterkere.
+Trykkforskjellen trekker lufta rundt et lavtrykk inn mot sentrum, og på den nordlige halvkula bøyer Corioliskraften den mot høyre. Vinden legger seg derfor langs isobarene, der trykkraften inn mot sentrum og Corioliskraften utover holder hverandre i balanse. Corioliskraften peker mot høyre for fartsretningen, så den peker utover bare når lufta går mot klokka rundt sentrum. Derfor roterer orkaner mot klokka på den nordlige halvkula og med klokka på den sørlige. I badekaret er Coriolisakselerasjonen $2\omega v$ omkring $10^{-5}$ m/s² for $v = 10$ cm/s, og strømmer som er igjen i vannet fra før, er mye sterkere.
 
 <Video
   id="https://www.youtube.com/watch?v=mXaad0rsV38"
@@ -277,7 +295,7 @@ Den loddrette komponenten $2\omega v\cos\phi$ skifter fortegn. Skutt mot øst l�
 Ei kule slippes fra ro i høyden $h = 100$ m i Trondheim, på breddegraden $63{,}4°$ N. Hvor langt fra loddlinja lander den, og i hvilken retning?
 
 <Solution>
-Med sentrifugalkraften bakt inn i $\vec g$ er bevegelsesligningen $\ddot{\vec r} = \vec g - 2\vec\omega \times \dot{\vec r}$. Corioliskraften er liten, så hastigheten uten den, $\dot{\vec r} = \vec g\,t$, er god nok inne i Coriolisleddet. Sett den inn og integrer to ganger, med $\vec r(0) = \vec r_0$ og $\dot{\vec r}(0) = 0$:
+Sentrifugalkraften er tatt inn i $\vec g_\text{eff}$, som peker rett ned langs loddlinja. Skriv $\vec g$ for $\vec g_\text{eff}$ i dette eksempelet, så er bevegelsesligningen $\ddot{\vec r} = \vec g - 2\vec\omega \times \dot{\vec r}$. Coriolisleddet er av størrelse $2\omega g t$, lite ved siden av $g$ så lenge $2\omega t \ll 1$. Da er hastigheten uten Corioliskraften, $\dot{\vec r} = \vec g\,t$, god nok inne i Coriolisleddet. Sett den inn og integrer to ganger, med $\vec r(0) = \vec r_0$ og $\dot{\vec r}(0) = 0$:
 
 $$
 \begin{aligned}
@@ -292,7 +310,7 @@ $$
 d = \tfrac13\, g\omega\cos\phi\, t^3, \qquad t = \sqrt{2h/g}
 $$
 
-Falltida er $t = \sqrt{200/9{,}81}$ s $= 4{,}52$ s, og
+Falltida er $t = \sqrt{200/9{,}81}$ s $= 4{,}52$ s, så $2\omega t = 6{,}6 \cdot 10^{-4} \ll 1$, og
 
 $$
 \begin{aligned}
@@ -302,7 +320,7 @@ d &= \tfrac13 \cdot 9{,}81 \cdot 7{,}29 \cdot 10^{-5} \\
 \end{aligned}
 $$
 
-Sett fra $K$ er grunnen at toppen av tårnet går fortere østover enn bakken, $(R + h)\,\omega\cos\phi$ mot $R\omega\cos\phi$, og kula starter med farten til toppen.
+Sett fra $K$ lander kula mot øst fordi toppen av tårnet går fortere østover enn bakken, $(R + h)\,\omega\cos\phi$ mot $R\omega\cos\phi$, og kula starter med farten til toppen. Det argumentet gir bare retningen. Holder du den ekstra farten $h\omega\cos\phi$ fast gjennom hele fallet, får du $\tfrac12 g\omega\cos\phi\,t^3$, halvannen gang svaret over.
 
 <Answer>$9{,}8$ mm mot øst, fra $d = \tfrac13\, g\omega\cos\phi\, t^3$ med $t = \sqrt{2h/g}$.</Answer>
 </Solution>
@@ -310,7 +328,7 @@ Sett fra $K$ er grunnen at toppen av tårnet går fortere østover enn bakken, $
 
 ### Foucaults pendel
 
-Heng en pendel med lengde $l$ opp på breddegraden $\phi$ og la den svinge med små utslag. Legg $x$ mot øst og $y$ mot nord. Pendelen trekker kula tilbake med $-\omega_0^2\,(x, y)$ per masse, med $\omega_0 = \sqrt{g/l}$. Den horisontale delen av Corioliskraften per masse er $2\omega\sin\phi\,(\dot y, -\dot x)$ etter uttrykket over. Sammen gir de bevegelsesligningene
+Heng en pendel med lengde $l$ opp på breddegraden $\phi$ og la den svinge med små utslag. Legg $x$ mot øst og $y$ mot nord. Pendelen trekker kula tilbake med $-\omega_0^2\,(x, y)$ per masse, med $\omega_0 = \sqrt{g/l}$. Den horisontale delen av Corioliskraften per masse er $2\omega\sin\phi\,(\dot y, -\dot x)$, hastigheten dreid en kvart omdreining mot høyre og ganget med $2\omega\sin\phi$. Sammen gir de bevegelsesligningene
 
 $$
 \begin{aligned}
@@ -320,6 +338,8 @@ $$
 $$
 
 Corioliskraften kobler $x$ og $y$, men bare svakt, fordi $\omega \ll \omega_0$.
+
+For en vannrett hastighet gir bare komponenten $\omega\sin\phi$ av $\vec\omega$ langs loddlinja en vannrett Corioliskraft. Den vannrette bevegelsen er derfor den samme som over ei skive som roterer om loddlinja med vinkelfarten $\omega\sin\phi$, mot klokka sett ovenfra på den nordlige halvkula. Sett fra et system som ikke roterer, svinger pendelen over skiva i et fast plan, så sett fra skiva og fra bakken dreier svingeplanet like fort motsatt vei, med klokka. Sør for ekvator er $\sin\phi < 0$, og svingeplanet dreier mot klokka.
 
 <Derivation title="Løsning med en kompleks koordinat">
 Sett $\xi = x + iy$ og legg $i$ ganger ligningen for $y$ til ligningen for $x$. Venstresida blir $\ddot\xi$, fjærleddene blir $-\omega_0^2\xi$, og Coriolisleddene blir $2\omega\sin\phi\,(\dot y - i\dot x) = -2i\omega\sin\phi\,\dot\xi$, ettersom $\dot y - i\dot x = -i(\dot x + i\dot y)$. Flytt alt til venstre side:
@@ -348,21 +368,25 @@ der $A$ og $B$ er komplekse konstanter. Slipper du kula fra ro i $\xi(0) = x_0$,
 
 <Formula
   tex="\Omega_\text{F} = \omega\sin\phi, \qquad T_\text{F} = \frac{24\ \text{h}}{\sin\phi}"
-  caption="<b>Foucaults pendel.</b> Svingeplanet dreier med klokka på den nordlige halvkula med vinkelfarten $\omega\sin\phi$, og bruker tida $T_\text{F}$ på en full runde."
+  caption="<b>Foucaults pendel.</b> $\Omega_\text{F}$ er vinkelfarten svingeplanet dreier med, og $T_\text{F}$ er tida svingeplanet bruker på en full runde."
 />
 
 Ved polen er $\sin\phi = 1$. Pendelen svinger i et fast plan i forhold til stjernene, og jorda dreier seg under den én gang i døgnet. Ved ekvator ligger $\vec\omega$ langs bakken, og svingeplanet står stille. I Trondheim, på $63{,}4°$ N, bruker svingeplanet $26{,}8$ timer på en runde. Pendelen i Realfagbygget på Gløshaugen er 25 m lang og viser dreiningen.
 
+<Callout title="Foucaults pendel">
+Svingeplanet dreier med vinkelfarten $\omega\sin\phi$, med klokka på den nordlige halvkula. Ved polen går svingeplanet en runde per døgn, og ved ekvator står det stille.
+</Callout>
+
 <Simulation
   src="/sims/foucault.js"
   title="Foucaults pendel sett ovenfra"
-  caption="Kula slippes fra ro i nord. Corioliskraften bøyer banen mot høyre under hver sving, så kula tegner en rosett med spisse vendepunkter ved kanten, og svingeplanet dreier i snitt med vinkelfarten $\omega\sin\phi$. Tida er skrudd opp så ett døgn tar ett minutt. Flytt breddegraden: ved polen går planet en runde per døgn, ved ekvator står det stille, og sør for ekvator dreier planet andre veien."
+  caption="Foucaults pendel sett ovenfra, sluppet fra ro i nord, med tida skrudd opp så ett døgn tar ett minutt. Sporet blekner bakover, den stiplede linja er startplanet og buen vinkelen $\omega\sin\phi\,t$ svingeplanet har dreid."
   host="dom"
   height={340}
 />
 
-<SelfCheck question="Hvorfor dreier ikke svingeplanet til en Foucault-pendel ved ekvator, når Corioliskraften der slett ikke er null?">
-Ved ekvator er $\vec\omega = \omega\,(0, 1, 0)$, langs bakken. Corioliskraften på en horisontal hastighet blir da $2\omega v_x\,\hat z$, altså loddrett. Den løfter kula litt når den svinger østover og presser den ned når den svinger vestover. Planet dreies av komponenten av $\vec\omega$ langs loddlinja, $\omega\sin\phi$, og den er null.
+<SelfCheck question="Svingeplanet til en Foucault-pendel bruker 48 timer på en runde og dreier mot klokka sett ovenfra. På hvilken breddegrad henger pendelen?">
+En runde tar $24\ \text{h}/|\sin\phi|$, så $|\sin\phi| = 24/48 = 1/2$ og $|\phi| = 30°$. Sør for ekvator peker komponenten av $\vec\omega$ langs loddlinja ned i bakken, så bakken roterer med klokka sett ovenfra, og svingeplanet dreier motsatt vei, mot klokka. Pendelen henger altså på $30°$ S. På $30°$ N ville svingeplanet brukt like lang tid, men dreid med klokka.
 </SelfCheck>
 
 <Example label="Eksamensoppgave" title="Coriolis- og sentrifugalakselerasjon ved ekvator">
@@ -453,14 +477,26 @@ Avbøyningen er mot øst. Løsningsforslaget oppgir 11,5 m med samme metode.
 </Solution>
 </Example>
 
-## Corioliskraften og Lorentzkraften
+## Corioliskraften og magnetkraften
 
-En ladd partikkel går i en bane om et sentrum, som et elektron rundt en kjerne. Du vil vite hva et svakt, homogent magnetfelt $\vec B$ gjør med banen. Corioliskraften har samme form som magnetkraften, så se på bevegelsen i et system som roterer med $\vec\omega$. Der kommer Corioliskraften $-2m\vec\omega \times \vec v\,'$ til. Magnetkraften på delen $\vec v\,'$ av hastigheten er $q\vec v\,' \times \vec B = -q\vec B \times \vec v\,'$, så de to opphever hverandre når $2m\vec\omega = -q\vec B$. Velg derfor $\vec\omega = -q\vec B/2m$. Magnetkraften på delen $\vec\omega \times \vec r$ av hastigheten og sentrifugalkraften er proporsjonale med $B^2$ og kan sløyfes for et svakt felt. Sentralkraften er uendret, så i det roterende systemet går partikkelen i den gamle banen. Sett fra $K$ dreier banen derfor sakte om feltretningen:
+En ladd partikkel går i en bane om et sentrum, som et elektron rundt en kjerne. Du vil vite hva et svakt, homogent magnetfelt $\vec B$ gjør med banen. Corioliskraften har samme form som magnetkraften, så se på bevegelsen i et system $K'$ som roterer med en $\vec\omega$ du velger slik at de to kreftene opphever hverandre.
+
+Magnetkraften på delen $\vec v\,'$ av hastigheten er $q\vec v\,' \times \vec B = -q\vec B \times \vec v\,'$, og Corioliskraften er $-2m\vec\omega \times \vec v\,'$. Summen er null for enhver $\vec v\,'$ når
+
+$$
+-(q\vec B + 2m\vec\omega) \times \vec v\,' = 0 \quad\Rightarrow\quad \vec\omega = -\frac{q\vec B}{2m}
+$$
+
+Da er $\omega$ proporsjonal med $B$. De to leddene som er igjen, magnetkraften på delen $\vec\omega \times \vec r$ av hastigheten og sentrifugalkraften, er av størrelsesorden $m\omega^2 r$ og dermed proporsjonale med $B^2$. Feltet er svakt når $\omega$ er mye mindre enn vinkelfarten $\omega_0$ i banen. Da er $m\omega^2 r$ lite ved siden av sentralkraften $m\omega_0^2 r$, og leddene kan sløyfes.
+
+Sentralkraften er uendret, så i $K'$ går partikkelen i den gamle banen. Sett fra $K$ dreier banen derfor sakte om feltretningen:
 
 <Formula
   tex="\vec\omega_\text{L} = -\frac{q\vec B}{2m}"
-  caption="<b>Larmor-presesjonen.</b> I et svakt magnetfelt dreier banen om feltretningen med halve syklotronfrekvensen $qB/m$."
+  caption="<b>Larmor-presesjonen.</b> Vinkelhastigheten banen dreier med i et svakt, homogent magnetfelt."
 />
+
+For et elektron er $q = -e$, så $\vec\omega_\text{L}$ peker langs $\vec B$. Vinkelfarten $|q|B/2m$ er halvparten av syklotronfrekvensen $|q|B/m$, vinkelfarten en fri ladning sirkler med i det samme feltet.
 
 <KeyTakeaways>
 - For enhver vektor er $(d\vec A/dt)_K = (d\vec A/dt)_{K'} + \vec\omega \times \vec A$. Brukt to ganger på $\vec r$ gir formelen $\vec a = \vec a\,' + 2\vec\omega \times \vec v\,' + \dot{\vec\omega} \times \vec r + \vec\omega \times (\vec\omega \times \vec r)$.
@@ -468,5 +504,5 @@ En ladd partikkel går i en bane om et sentrum, som et elektron rundt en kjerne.
 - Sentrifugalkraften $m\omega^2\vec d$ peker ut fra aksen og har potensialet $-\tfrac12 m\omega^2 d^2$. På jorda gjør den $g$ 0,35 % svakere ved ekvator og vipper loddlinja opptil $0{,}1°$ mot ekvator.
 - Corioliskraften $-2m\vec\omega \times \vec v\,'$ gjør ikke arbeid. Langs bakken dytter den mot høyre på den nordlige halvkula med $2m\omega v\sin\phi$, og et fallende legeme bøyes mot øst med $d = \tfrac13 g\omega\cos\phi\,t^3$.
 - Svingeplanet til Foucaults pendel dreier med $\omega\sin\phi$: en runde per døgn ved polen, aldri ved ekvator.
-- Corioliskraften har samme form som Lorentzkraften. Et svakt magnetfelt får en bane til å presesere med $\vec\omega_\text{L} = -q\vec B/2m$.
+- Corioliskraften har samme form som magnetkraften. Et svakt magnetfelt får en bane til å presesere med $\vec\omega_\text{L} = -q\vec B/2m$.
 </KeyTakeaways>

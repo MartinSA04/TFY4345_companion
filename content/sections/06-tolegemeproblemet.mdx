@@ -25,7 +25,7 @@ $$
 L = \tfrac12 m_1\dot{\vec r}_1^{\,2} + \tfrac12 m_2\dot{\vec r}_2^{\,2} \allowbreak - V(|\vec r_1 - \vec r_2|)
 $$
 
-$V$ avhenger bare av relativkoordinaten $\vec r = \vec r_1 - \vec r_2$, så bytt til den og massesenteret $\vec R$. Da faller kryssleddene i den kinetiske energien bort, og $L$ deler seg i $\tfrac12 M\dot{\vec R}^2$ og $\tfrac12\mu\dot{\vec r}^2 - V(r)$, med $M = m_1 + m_2$ og den <Term name="redusert masse">reduserte massen</Term> $\mu = m_1 m_2/M$. For gravitasjon er $V = -Gm_1m_2/r$. $\vec R$ er syklisk, så massesenteret går med konstant hastighet, og i inertialsystemet der massesenteret står i ro, står ett legeme med masse $\mu$ igjen i potensialet $V(r)$ om et fast kraftsentrum $O$.
+$V$ avhenger bare av relativkoordinaten $\vec r = \vec r_1 - \vec r_2$, så bytt til den og massesenteret $\vec R$. Da faller kryssleddene i den kinetiske energien bort, og $L$ deler seg i $\tfrac12 M\dot{\vec R}^2$ og $\tfrac12\mu\dot{\vec r}^2 - V(r)$, med $M = m_1 + m_2$ og den <Term name="redusert masse">reduserte massen</Term> $\mu = m_1 m_2/M$. For gravitasjon er $V = -Gm_1m_2/r$. $\vec R$ er syklisk, så massesenteret går med konstant hastighet. I inertialsystemet der massesenteret står i ro, står bare $\tfrac12\mu\dot{\vec r}^2 - V(r)$ igjen, Lagrangefunksjonen for ett legeme med masse $\mu$ i potensialet $V(r)$ om et fast kraftsentrum $O$ i $\vec r = 0$.
 
 <Derivation title="Den kinetiske energien med massesenteret og relativkoordinaten">
 Med $M\vec R = m_1\vec r_1 + m_2\vec r_2$ og $\vec r = \vec r_1 - \vec r_2$ er
@@ -44,6 +44,12 @@ T &= \tfrac12 M\dot{\vec R}^2 + \tfrac12\mu\,\dot{\vec r}^2 \\
 $$
 </Derivation>
 
+$\vec r$ går fra $m_2$ til $m_1$, så $O$ er der $m_2$ er, og banen til $\vec r$ er banen $m_1$ går i sett fra $m_2$. Med massesenteret i origo er $\vec r_1 = (m_2/M)\,\vec r$ og $\vec r_2 = -(m_1/M)\,\vec r$. Sett fra massesenteret går de to legemene altså i kopier av den samme banen, forminsket med faktorene $m_2/M$ og $m_1/M$ og alltid på hver sin side av massesenteret. Når $m_2 \gg m_1$, er $\mu \approx m_1$ og massesenteret ligger i $m_2$, så banen til $\vec r$ er banen til det lette legemet om et tungt legeme som står i ro.
+
+<Callout title="Redusert masse">
+Relativkoordinaten $\vec r = \vec r_1 - \vec r_2$ beveger seg som ett legeme med masse $\mu = m_1m_2/M$ om et fast kraftsentrum der $m_2$ er. Sett fra massesenteret går $m_1$ og $m_2$ i kopier av banen til $\vec r$, forminsket med $m_2/M$ og $m_1/M$ og på hver sin side av massesenteret.
+</Callout>
+
 Kraften $-V'(r)\,\hat r$ er parallell med $\vec r$, så dreiemomentet er null og dreieimpulsen $\vec L = \vec r \times \mu\dot{\vec r}$ er bevart. Siden $\vec r \perp \vec L$, ligger banen i planet gjennom $O$ vinkelrett på $\vec L$. Med polarkoordinater $r$ og $\phi$ i det planet er <FormulaRef id="sentralkraft-lagrange">Lagrangefunksjonen</FormulaRef> $L = \tfrac12\mu\left(\dot r^2 + r^2\dot\phi^2\right) - V(r)$. Den inneholder verken $\phi$ eller $t$, så både $p_\phi$ og energien er bevart:
 
 $$
@@ -61,31 +67,35 @@ Bruk $\dot\phi = J/\mu r^2$ til å fjerne $\dot\phi$ fra energien, så den bare 
 
 <Formula
   tex="\begin{aligned} E &= \tfrac12\mu\dot r^2 + V_\text{eff}(r) \\ V_\text{eff}(r) &= V(r) + \frac{J^2}{2\mu r^2} \end{aligned}"
-  caption="<b>Det effektive potensialet.</b> Radialbevegelsen er et endimensjonalt problem for $r$ alene, med $J$ som en fast parameter."
+  caption="<b>Det effektive potensialet</b> for radialbevegelsen."
 />
 
-Leddet $J^2/2\mu r^2$ i det <Term name="effektivt potensial">effektive potensialet</Term> er den kinetiske energien i vinkelbevegelsen og heter <Term name="sentrifugalbarriere">sentrifugalbarrieren</Term>. Barrieren vokser uten grense når $r \to 0$. Så lenge $J \ne 0$ og $-V$ vokser langsommere enn $1/r^2$ når $r \to 0$, som for $V = -k/r$, holder den legemet unna sentrum. Siden $\tfrac12\mu\dot r^2 \ge 0$, kan legemet bare være der $E \ge V_\text{eff}$, og det snur der $E = V_\text{eff}$.
+Radialbevegelsen er nå et endimensjonalt problem for $r$ alene, med $J$ som en fast parameter. Leddet $J^2/2\mu r^2$ i det <Term name="effektivt potensial">effektive potensialet</Term> er den kinetiske energien i vinkelbevegelsen og heter <Term name="sentrifugalbarriere">sentrifugalbarrieren</Term>. Barrieren vokser uten grense når $r \to 0$. Så lenge $J \ne 0$ og $-V$ vokser langsommere enn $1/r^2$ når $r \to 0$, som for $V = -k/r$, holder den legemet unna sentrum. Siden $\tfrac12\mu\dot r^2 \ge 0$, kan legemet bare være der $E \ge V_\text{eff}$, og det snur der $E = V_\text{eff}$.
 
 For $V = -k/r$ er $V_\text{eff}' = k/r^2 - J^2/\mu r^3$. Den er null i $r_0 = J^2/\mu k$. Der er $J^2/2\mu r_0^2 = k/2r_0$, så minimumsverdien er $V_\text{eff}(r_0) = -k/2r_0 = -\mu k^2/2J^2$. $V_\text{eff}$ går mot $+\infty$ ved sentrum og mot null nedenfra langt ute, og energien gir tre banetyper:
 
 - $E = V_\text{eff}(r_0)$: $\dot r = 0$ hele tida, og legemet går i en sirkelbane med radius $r_0$ og vinkelfart $\dot\phi = J/\mu r_0^2$.
 - $V_\text{eff}(r_0) < E < 0$: $r$ svinger mellom to <Term name="vendepunkt">vendepunkter</Term> $r_\text{min}$ og $r_\text{max}$ mens $\phi$ øker. Banen er bundet. Med sola som kraftsentrum kalles det nærmeste punktet <Term name="perihel">perihel</Term> og det fjerneste aphel.
-- $E \ge 0$: bare ett vendepunkt. Legemet kommer inn fra uendelig, snur i $r_\text{min}$ og går ut til uendelig igjen.
+- $E \ge 0$: bare ett vendepunkt. Legemet kommer inn fra uendelig, snur i $r_\text{min}$ og går ut til uendelig igjen. $E \ge 0$ betyr $\tfrac12\mu v^2 \ge k/r$, så farten er minst $\sqrt2$ ganger farten $\sqrt{k/\mu r}$ i sirkelbanen med samme $r$.
 
 <Simulation
   src="/sims/effektivt-potensial.js"
   title="Banen og det effektive potensialet"
-  caption="Legemet går i potensialet $V = -k/r$ om kraftsentrum $O$, og glidebryteren setter farten i startpunktet i forhold til farten som gir sirkelbane. Til høyre for $O$ er $V_\text{eff}(r)$ tegnet langs den samme $r$-aksen, med energien $E$ som vannrett linje. Den oransje prikken er legemets avstand $r$, og den snur der linja treffer kurven. De stiplede sirklene har radiene $r_\text{min}$ og $r_\text{max}$. Over $\sqrt2$ ganger sirkelfarten er $E \ge 0$, og banen er ikke bundet."
+  caption="Legemet går i potensialet $V = -k/r$ om kraftsentrum $O$. Til høyre for $O$ er $V_\text{eff}(r)$ tegnet langs den samme $r$-aksen, med energien $E$ som vannrett linje og legemets avstand $r$ som oransje prikk på linja. De stiplede sirklene om $O$ har radiene $r_\text{min}$ og $r_\text{max}$."
   host="dom"
   height={360}
 />
 
-Lagranges ligning for $r$ er $\mu\ddot r = \mu r\dot\phi^2 - V'(r)$. Med $\dot\phi = J/\mu r^2$ er $\mu r\dot\phi^2 = J^2/\mu r^3$, så radialligningen er $\mu\ddot r = -V_\text{eff}'(r)$. En sirkelbane finnes der $V_\text{eff}'(r_0) = 0$, altså der $V'(r_0) = J^2/\mu r_0^3$. Nær $r_0$ er $V_\text{eff}'(r) \approx V_\text{eff}''(r_0)\,\delta$ med utslaget $\delta = r - r_0$, så $\delta$ svinger harmonisk når $V_\text{eff}''(r_0) > 0$, altså når $r_0$ er et minimum:
+Lagranges ligning for $r$ er $\mu\ddot r = \mu r\dot\phi^2 - V'(r)$. Med $\dot\phi = J/\mu r^2$ er $\mu r\dot\phi^2 = J^2/\mu r^3$, så radialligningen er $\mu\ddot r = -V_\text{eff}'(r)$. En sirkelbane finnes der $V_\text{eff}'(r_0) = 0$, altså der $V'(r_0) = J^2/\mu r_0^3$. Nær $r_0$ er $V_\text{eff}'(r) \approx V_\text{eff}''(r_0)\,\delta$ med utslaget $\delta = r - r_0$, så $\delta$ svinger harmonisk når $V_\text{eff}''(r_0) > 0$, altså når $r_0$ er et minimum. I $V_\text{eff}'' = V'' + 3J^2/\mu r^4$ kan du sette inn $J^2 = \mu r_0^3 V'(r_0)$ fra sirkelbanen, og da står bare $V$ igjen:
 
 <Formula
   tex="\begin{aligned} \mu\ddot\delta &= -V_\text{eff}''(r_0)\,\delta \\ \omega_r^2 &= \frac{V_\text{eff}''(r_0)}{\mu} \\ &= \frac{1}{\mu}\left(V''(r_0) + \frac{3}{r_0}V'(r_0)\right) \end{aligned}"
-  caption="<b>Små radielle svingninger om en sirkelbane.</b> Banen er stabil når $\omega_r^2 > 0$. Det siste uttrykket kommer av $J^2 = \mu r_0^3 V'(r_0)$ satt inn i $V_\text{eff}'' = V'' + 3J^2/\mu r_0^4$."
+  caption="<b>Små radielle svingninger om en sirkelbane.</b> Banen er stabil når $\omega_r^2 > 0$."
 />
+
+<Callout title="Det effektive potensialet">
+Med $J$ bevart er radialbevegelsen et endimensjonalt problem i $V_\text{eff} = V + J^2/2\mu r^2$. Legemet kan bare være der $E \ge V_\text{eff}$, og en sirkelbane er stabil der $V_\text{eff}$ har et minimum.
+</Callout>
 
 <Example title="Sirkelbaner i et potenslovpotensial">
 For hvilke $n$ er sirkelbanene i $V = -k/r^n$ stabile, med $k > 0$ og $n > 0$?
@@ -158,7 +168,7 @@ $V'(r_0) > 0$, altså $k(n+1) > 0$, og da gjenstår $n + 3 > 0$.
 
 ## Baneligningen og Keplerproblemet
 
-Formen på banen er $r(\phi)$, og du finner den uten $r(t)$ ved å skrive tidsderiverte som $\phi$-deriverte. Sett $u = 1/r$, så er $\dot\phi = Ju^2/\mu$, og
+Formen på banen er $r(\phi)$, og du finner den uten $r(t)$ ved å skrive tidsderiverte som $\phi$-deriverte. Sett $u = 1/r$. Da er $\dot\phi = Ju^2/\mu$, og faktoren $u^2$ opphever $dr/du = -1/u^2$, så $\dot r$ blir en konstant ganger $du/d\phi$:
 
 $$
 \begin{aligned}
@@ -187,8 +197,10 @@ Integrasjonskonstanten $e \ge 0$ heter <Term name="eksentrisitet">eksentrisitete
 
 <Formula
   tex="\begin{aligned} r &= \frac{r_0}{1 + e\cos\phi}, \qquad r_0 = \frac{J^2}{\mu k} \\ e &= \sqrt{1 + \frac{2EJ^2}{\mu k^2}} \end{aligned}"
-  caption="<b>Keplerbanen</b>, et kjeglesnitt med brennpunkt i $O$. $r_0$ er radien i sirkelbanen med samme $J$, og $e$ følger av energien."
+  caption="<b>Keplerbanen</b>, et kjeglesnitt med brennpunkt i $O$."
 />
+
+Med $e = 0$ er banen sirkelen med radius $r_0 = J^2/\mu k$ fra det effektive potensialet. For alle $e$ er banen et kjeglesnitt med brennpunkt i $O$, og $e$ følger av energien i perihel.
 
 <Derivation title="Banen i kartesiske koordinater">
 Med $x = r\cos\phi$ er banen $r + ex = r_0$. Kvadrer $r = r_0 - ex$:
@@ -220,10 +232,10 @@ E &= \frac{\mu k^2}{2J^2}(1 + e)^2 - \frac{\mu k^2}{J^2}(1 + e) \\
 \end{aligned}
 $$
 
-Ligningen løst for $e$ gir uttrykket over. Sirkelbanen $e = 0$ har $E = -\mu k^2/2J^2$, bunnen av $V_\text{eff}$.
+Ligningen løst for $e$ gir $e = \sqrt{1 + 2EJ^2/\mu k^2}$. Sirkelbanen $e = 0$ har $E = -\mu k^2/2J^2$, bunnen av $V_\text{eff}$.
 </Derivation>
 
-Uttrykket for $e$ knytter banetypen til fortegnet på $E$:
+For $e < 1$ er nevneren $1 + e\cos\phi$ positiv for alle $\phi$, og banen er lukket. For $e \ge 1$ blir nevneren null ved $\cos\phi = -1/e$, og banen går ut til uendelig. Uttrykket for $e$ knytter banetypen til fortegnet på $E$:
 
 <Table
   columns={["Eksentrisitet", "Energi", "Bane"]}
@@ -234,15 +246,17 @@ Uttrykket for $e$ knytter banetypen til fortegnet på $E$:
     ["$e > 1$", "$E > 0$", "hyperbel"],
   ]}
   rowHeader={false}
-  caption="Kjeglesnittene i $V = -k/r$. For $e \ge 1$ blir nevneren null ved $\cos\phi = -1/e$, og banen går ut til uendelig, for $e > 1$ langs to asymptoter."
+  caption="Kjeglesnittene i $V = -k/r$."
 />
 
-For ellipsen gir $\cos\phi = \pm 1$ avstandene $r_\text{min} = r_0/(1 + e)$ og $r_\text{max} = r_0/(1 - e)$. Summen er storaksen $2a$, og den kartesiske formen av banen gir den lille halvaksen $b = a\sqrt{1 - e^2}$. Skrevet med $|E| = \mu k^2(1 - e^2)/2J^2$ blir halvaksene og avstandene
+For ellipsen gir $\cos\phi = \pm 1$ avstandene $r_\text{min} = r_0/(1 + e)$ og $r_\text{max} = r_0/(1 - e)$. Summen er storaksen $2a$, og skrevet i kartesiske koordinater gir banen den lille halvaksen $b = a\sqrt{1 - e^2}$. Skrevet med $|E| = \mu k^2(1 - e^2)/2J^2$ blir halvaksene og avstandene
 
 <Formula
   tex="\begin{aligned} a &= \frac{r_0}{1 - e^2} = \frac{k}{2|E|} \\ b &= \frac{r_0}{\sqrt{1 - e^2}} \\ &= \frac{J}{\sqrt{2\mu|E|}} \\ r_\text{min}, r_\text{max} &= a\,(1 \mp e) \end{aligned}"
-  caption="<b>Ellipsens halvakser.</b> Den store halvaksen $a$ avhenger bare av energien, den lille $b$ også av dreieimpulsen. Avstanden fra sentrum til brennpunktet er $ea$."
+  caption="<b>Ellipsens halvakser.</b> Avstanden fra sentrum til brennpunktet er $ea$."
 />
+
+Den store halvaksen $a = k/2|E|$ avhenger bare av energien. $J$ bestemmer bare $b$, altså hvor flat ellipsen er, og ved en gitt energi er $J$ størst for sirkelbanen.
 
 <Example label="Eksamensoppgave" title="Korteste og lengste avstand til stjerna">
 <ExamRef id="2023-nov" task="1.13" />
@@ -264,18 +278,20 @@ heavier star located at the origin.
 Hver planet går i en ellipse med sola i det ene brennpunktet. Linja fra sola til planeten sveiper over like store arealer i like lange tidsrom. Kvadratet av omløpstida er proporsjonalt med tredje potens av den store halvaksen.
 </Statement>
 
-Den første loven er kjeglesnittet med $e < 1$, og den andre er den konstante arealfarten $J/2\mu$. Den tredje følger av at radiusvektoren sveiper over hele ellipsen, med areal $\pi ab$, på én omløpstid:
+Den første loven er kjeglesnittet med $e < 1$ for banen til $\vec r$, altså planetens bane sett fra sola, og den andre er den konstante arealfarten $J/2\mu$. Den tredje følger av at radiusvektoren sveiper over hele ellipsen, med areal $\pi ab$, på én omløpstid:
 
 $$
 T = \frac{2\pi\mu\,ab}{J} = 2\pi\sqrt{\frac{\mu}{k}}\,a^{3/2}
 $$
 
-der $b = J\sqrt{a/\mu k}$ kommer av at $|E| = k/2a$ er satt inn i $b = J/\sqrt{2\mu|E|}$.
+der $b = J\sqrt{a/\mu k}$ kommer av at $|E| = k/2a$ er satt inn i $b = J/\sqrt{2\mu|E|}$. For gravitasjon er $k = Gm_1m_2$ og $\mu/k = 1/G(m_1 + m_2)$:
 
 <Formula
   tex="\begin{aligned} T^2 &= \frac{4\pi^2\mu}{k}\,a^3 \\ &= \frac{4\pi^2}{G(m_1 + m_2)}\,a^3 \end{aligned}"
-  caption="<b>Keplers tredje lov.</b> Med $k = Gm_1m_2$ er $\mu/k = 1/G(m_1 + m_2)$. For planetene er $m_1 + m_2 \approx M_\odot$, så $T^2/a^3$ er det samme for alle."
+  caption="<b>Keplers tredje lov</b>, med $a$ den store halvaksen i banen til $\vec r$."
 />
+
+For planetene er $m_1 + m_2 \approx M_\odot$, så $T^2/a^3$ er nesten det samme for alle, slik Keplers tredje lov sier. Jupiter, den tyngste, flytter forholdet med en promille.
 
 <Example title="En satellitt i elliptisk bane">
 En satellitt har perigeum $400$ km og apogeum $35\,790$ km over jordoverflata. Finn eksentrisiteten, omløpstida og farten i de to punktene. Jordradien er $6371$ km og $GM_\oplus = 3{,}986\cdot10^5$ km³/s².
@@ -304,13 +320,13 @@ Energien per masse er $E/m = -GM_\oplus/2a = -8{,}15$ km²/s². I perigeum er $\
 
 $$
 \begin{aligned}
-v_\text{min}^2 &= 2\left(\tfrac{3{,}986\cdot10^5}{6771} - 8{,}15\right)\frac{\text{km}^2}{\text{s}^2} \\
+v_\text{p}^2 &= 2\left(\tfrac{3{,}986\cdot10^5}{6771} - 8{,}15\right)\frac{\text{km}^2}{\text{s}^2} \\
 &= 2\,(58{,}87 - 8{,}15)\,\frac{\text{km}^2}{\text{s}^2} \\
 &= 101{,}4\ \text{km}^2\text{/s}^2
 \end{aligned}
 $$
 
-altså $v_\text{min} = 10{,}07$ km/s. Farten er vinkelrett på radiusvektoren i perigeum og apogeum, så $J = mrv$ bevart gir $v_\text{max} = v_\text{min}\,r_\text{min}/r_\text{max} = 1{,}62$ km/s.
+altså farten $v_\text{p} = 10{,}07$ km/s i perigeum. Farten er vinkelrett på radiusvektoren i perigeum og apogeum, så $J = mrv$ bevart gir farten $v_\text{a} = v_\text{p}\,r_\text{min}/r_\text{max} = 1{,}62$ km/s i apogeum.
 
 <Answer>$e = 0{,}72$, $T = 10{,}6$ h, $10{,}1$ km/s i perigeum og $1{,}62$ km/s i apogeum.</Answer>
 </Solution>
@@ -318,7 +334,7 @@ altså $v_\text{min} = 10{,}07$ km/s. Farten er vinkelrett på radiusvektoren i 
 
 ## Runge–Lenz-vektoren og perihelpresesjon
 
-I et generelt sentralpotensial er $\omega_r \ne \dot\phi$ nær en sirkelbane, så perihel flytter seg for hvert omløp. For $V = -k/r$ er også en vektor som peker mot perihel bevart, så perihel står fast:
+Nær en sirkelbane går det tida $2\pi/\omega_r$ fra perihel til perihel, og på den tida øker $\phi$ med $2\pi\dot\phi/\omega_r$. I et generelt sentralpotensial er $\omega_r \ne \dot\phi$, så perihel flytter seg for hvert omløp. For $V = -k/r$ er $\omega_r = \dot\phi$, og en vektor som peker mot perihel, er bevart, så perihel står fast:
 
 <Formula
   tex="\begin{aligned} \vec A &= \vec p \times \vec L - \mu k\,\hat r \\ |\vec A| &= \mu k e \end{aligned}"
@@ -339,7 +355,7 @@ $$
 der $\hat r \cdot \dot{\vec r} = \dot r$ er brukt. Dette betyr at $\vec p \times \vec L$ og $\mu k\,\hat r$ endrer seg like mye, så differansen $\vec A = \vec p \times \vec L - \mu k\,\hat r$ er bevart. Lengden og retningen leses av i perihel, der $\vec p \perp \vec r$ og $|\vec p| = J/r_\text{min}$: $\vec p \times \vec L = (J^2/r_\text{min})\,\hat r = \mu k(1 + e)\,\hat r$, så $\vec A = \mu k e\,\hat r$, langs perihelretningen.
 </Derivation>
 
-Et lite tillegg til potensialet $-k/r$ gjør at $\vec A$ ikke lenger er bevart. For Merkur gir relativitetsteorien en perihelpresesjon på $43$ buesekunder per århundre.
+Et lite tillegg til potensialet $-k/r$ gjør at $\vec A$ ikke lenger er bevart, og perihel flytter seg langsomt. For Merkur gir relativitetsteorien en perihelpresesjon på $43$ buesekunder per århundre, framover i samme retning som planeten går.
 
 <Derivation title="Merkurs perihel og relativitetsteorien">
 Den generelle relativitetsteorien legger til leddet $3GMu^2/c^2$ på høyresida av baneligningen for et lett legeme rundt ei stjerne med masse $M$. Med $k = GM\mu$ er
@@ -367,7 +383,7 @@ per omløp. En regning til første orden i korreksjonen gir den samme $\Delta\ph
 
 Tre legemer som trekker på hverandre, har ingen generell løsning på lukket form. Et enklere tilfelle er når to tunge legemer $m_1 \ge m_2$ går i sirkelbaner om massesenteret, og et tredje legeme med masse $m$ er så lett at det ikke påvirker dem. Sola, jorda og et romteleskop er et eksempel.
 
-Gå over fra inertialsystemet $K$ til systemet $K'$ som roterer med $m_1$ og $m_2$ om massesenteret. Der står de i ro, og tyngden fra dem avhenger ikke av tida. Vinkelfarten følger av Keplers tredje lov for sirkelbanen, med avstanden $d$ mellom dem:
+Gå over fra inertialsystemet $K$ til systemet $K'$ som roterer med $m_1$ og $m_2$ om massesenteret. Der står de i ro, og tyngden fra dem avhenger ikke av tida. Banen til relativkoordinaten mellom dem er en sirkel med radius $d$, så Keplers tredje lov med $a = d$ gir vinkelfarten:
 
 $$
 \omega^2 = \frac{GM}{d^3}, \qquad M = m_1 + m_2
@@ -379,7 +395,7 @@ $$
 (\dot x - \omega y)^2 + (\dot y + \omega x)^2 = \dot x^2 + \dot y^2 \allowbreak + 2\omega(x\dot y - y\dot x) \allowbreak + \omega^2(x^2 + y^2)
 $$
 
-Samle det siste leddet og tyngden i potensialet $U$ per masse, så er
+Samle det siste leddet og tyngden fra $m_1$ og $m_2$ i potensialet $U$ per masse, med avstandene $r_1$ og $r_2$ fra det lette legemet til $m_1$ og $m_2$. Da er
 
 $$
 L = \tfrac12 m\left(\dot x^2 + \dot y^2\right) \allowbreak + m\omega\left(x\dot y - y\dot x\right) \allowbreak - m\,U(x, y)
@@ -387,7 +403,7 @@ $$
 
 <Formula
   tex="U = -\frac{Gm_1}{r_1} - \frac{Gm_2}{r_2} \allowbreak - \tfrac12\omega^2\left(x^2 + y^2\right)"
-  caption="<b>Potensialet i det roterende systemet</b>, per masse. $r_1$ og $r_2$ er avstandene fra det lette legemet til $m_1$ og $m_2$, og det siste leddet er sentrifugalpotensialet."
+  caption="<b>Potensialet i det roterende systemet</b>, per masse. Det siste leddet er sentrifugalpotensialet."
 />
 
 Leddet $m\omega(x\dot y - y\dot x)$ er lineært i farten og gir Corioliskraften. Lagranges ligning for $x$, $\frac{d}{dt}\frac{\partial L}{\partial\dot x} = \frac{\partial L}{\partial x}$, med
@@ -403,7 +419,7 @@ gir $m\ddot x - m\omega\dot y = m\omega\dot y - m\,\partial U/\partial x$. Ligni
   caption="<b>Bevegelsesligningene</b> for det lette legemet i $K'$. Leddene med $2\omega$ er Corioliskraften per masse."
 />
 
-$L$ inneholder ikke tida, så energifunksjonen $H = \dot x\,\partial L/\partial\dot x + \dot y\,\partial L/\partial\dot y - L$ er bevart. Leddet som er lineært i farten, faller ut:
+$L$ inneholder ikke tida, så energifunksjonen $H = \dot x\,\partial L/\partial\dot x + \dot y\,\partial L/\partial\dot y - L$ er bevart. Corioliskraften står vinkelrett på farten og gjør ikke arbeid, så $H$ inneholder bare den kinetiske energien i $K'$ og $U$. I regningen faller leddet som er lineært i farten, ut:
 
 $$
 \begin{aligned}
@@ -416,14 +432,18 @@ $H$ delt på $m$ er <Term name="Jacobis konstant">Jacobis konstant</Term>:
 
 <Formula
   tex="C = \tfrac12\left(\dot x^2 + \dot y^2\right) + U(x, y)"
-  caption="<b>Jacobis konstant</b>, bevart langs banen. Corioliskraften står vinkelrett på farten og gjør ikke arbeid, så den er ikke med."
+  caption="<b>Jacobis konstant</b>, bevart langs banen."
 />
 
 Farten i kvadrat kan ikke være negativ, så legemet kan bare være der $U \le C$. Kurvene $U = C$ er grensen for området legemet kan nå.
 
+<Callout title="Jacobis konstant">
+I systemet som roterer med $m_1$ og $m_2$, er $C = \tfrac12(\dot x^2 + \dot y^2) + U$ bevart for det lette legemet. Legemet kan bare være der $U \le C$.
+</Callout>
+
 ## Lagrangepunktene
 
-Et legeme som står i ro i $K'$, har $\dot x = \dot y = \ddot x = \ddot y = 0$, og bevegelsesligningene krever da $\partial U/\partial x = \partial U/\partial y = 0$. Likevektspunktene er altså de stasjonære punktene til $U$, og de heter <Term name="lagrangepunkt">Lagrangepunktene</Term>. Sett fra $K$ går et legeme i et Lagrangepunkt i en sirkelbane med samme omløpstid som $m_1$ og $m_2$, og tyngden fra de to er akkurat sentripetalkraften.
+Et legeme som står i ro i $K'$, har $\dot x = \dot y = \ddot x = \ddot y = 0$. Da faller Coriolisleddene ut av bevegelsesligningene i $K'$, og de krever $\partial U/\partial x = \partial U/\partial y = 0$. Likevektspunktene er altså de stasjonære punktene til $U$, og de heter <Term name="lagrangepunkt">Lagrangepunktene</Term>. Sett fra $K$ går et legeme i et Lagrangepunkt i en sirkelbane med samme omløpstid som $m_1$ og $m_2$, og tyngden fra de to er akkurat sentripetalkraften.
 
 $U$ er symmetrisk i $y$, så $\partial U/\partial y = 0$ på $x$-aksen, og der blir $\partial U/\partial x = 0$
 
@@ -436,6 +456,8 @@ Langs aksen går $U$ mot $-\infty$ ved hver masse og langt ute, og alle tre ledd
 $$
 h \approx d\left(\frac{m_2}{3m_1}\right)^{1/3}
 $$
+
+Tilnærmingen krever $h \ll d$, og kubikkroten gjør $h/d$ liten bare når $m_2/m_1$ er svært liten. For sola og jorda er $h/d = 0{,}01$.
 
 <Derivation title="Avstanden fra m₂ til L₁ og L₂">
 $L_2$ ligger i $x = (1 - \alpha)d + h$, i avstanden $d + h$ fra $m_1$ og $h$ fra $m_2$. Siden $\omega^2(1 - \alpha)d = GM(1 - \alpha)/d^2 = Gm_1/d^2$, blir ligningen
@@ -460,26 +482,36 @@ For $L_1$ i $x = (1 - \alpha)d - h$ skifter alle leddene med $h$ fortegn, og den
 For sola og jorda er $m_2/m_1 = 3{,}0\cdot10^{-6}$ og $h = 1{,}5\cdot10^6$ km, fire ganger avstanden til månen. Solobservatoriet SOHO går i bane rundt $L_1$, og James Webb-teleskopet rundt $L_2$, der sola og jorda ligger i samme retning og ett varmeskjold skygger for begge.
 </Derivation>
 
-De to andre punktene ligger utenfor aksen. For $y \ne 0$ kan $\partial U/\partial y = 0$ deles på $y$:
+De to siste Lagrangepunktene, $L_4$ og $L_5$, ligger utenfor aksen. For $y \ne 0$ kan $\partial U/\partial y = 0$ deles på $y$:
 
 $$
 \omega^2 = \frac{Gm_1}{r_1^3} + \frac{Gm_2}{r_2^3}
 $$
 
-For å bli kvitt $\omega^2 x$, gang ligningen over med $x$ og trekk $\partial U/\partial x = 0$ fra den. Den siste er $\omega^2 x = Gm_1(x + \alpha d)/r_1^3 + Gm_2(x - (1 - \alpha)d)/r_2^3$. Leddene med $x$ faller bort, og med $m_1\alpha = m_2(1 - \alpha) = m_1m_2/M$ står det igjen
+Ligningen $\partial U/\partial x = 0$ er
+
+$$
+\omega^2 x = \frac{Gm_1(x + \alpha d)}{r_1^3} \allowbreak + \frac{Gm_2\,(x - (1 - \alpha)d)}{r_2^3}
+$$
+
+Gang ligningen for $\omega^2$ med $x$, og trekk ligningen over fra produktet. Leddene med $x$ faller bort, og med $m_1\alpha = m_2(1 - \alpha) = m_1m_2/M$ står det igjen
 
 $$
 0 = \frac{Gm_1m_2\,d}{M}\left(\frac{1}{r_2^3} - \frac{1}{r_1^3}\right)
 $$
 
-Altså er $r_1 = r_2$, og den første ligningen gir $\omega^2 = GM/r_1^3$. De to uttrykkene for $\omega^2$ gir sammen $r_1 = r_2 = d$. $L_4$ og $L_5$ ligger i hjørnet av en likesidet trekant med $m_1$ og $m_2$, $60°$ foran og bak $m_2$ i banen sett fra $m_1$, uansett masseforholdet.
+Altså er $r_1 = r_2$, og ligningen for $\omega^2$ gir $\omega^2 = GM/r_1^3$. Sammen med $\omega^2 = GM/d^3$ gir det $r_1 = r_2 = d$. $L_4$ og $L_5$ ligger i hjørnet av en likesidet trekant med $m_1$ og $m_2$, $60°$ foran og bak $m_2$ i banen sett fra $m_1$, uansett masseforholdet.
+
+<Callout title="Lagrangepunktene">
+Lagrangepunktene er de stasjonære punktene til $U$. $L_1$, $L_2$ og $L_3$ ligger på linja gjennom $m_1$ og $m_2$, og $L_4$ og $L_5$ i hjørnene av de to likesidede trekantene med $m_1$ og $m_2$.
+</Callout>
 
 $L_1$, $L_2$ og $L_3$ er sadelpunkter for $U$, med maksimum langs aksen og minimum på tvers, og $L_4$ og $L_5$ er maksimumspunkter. Når $C$ øker, vokser området $U \le C$ og skifter form ved verdien av $U$ i hvert Lagrangepunkt. For $m_2 < m_1$ er $U(L_1) < U(L_2) < U(L_3) < U(L_4)$. Under $U(L_1)$ er det tillatte området delt i tre: rundt $m_1$, rundt $m_2$ og langt ute. Ved $C = U(L_1)$ møtes de to indre delene i $L_1$, og legemet kan gå fra den ene massen til den andre. Ved $U(L_2)$ åpner området seg forbi $m_2$ og ut, ved $U(L_3)$ forbi $m_1$, og over $U(L_4)$ er hele planet tillatt.
 
 <Simulation
   src="/sims/lagrangepunkter.js"
   title="Potensialet og Lagrangepunktene"
-  caption="Nivåkurvene til $U$ i systemet som roterer med $m_1$ og $m_2$, og de fem Lagrangepunktene. De kraftige kurvene går gjennom $L_1$, $L_2$ og $L_3$. Et legeme med Jacobis konstant $C$ kommer aldri inn i det skraverte området, der $U > C$."
+  caption="Nivåkurvene til $U$ i systemet som roterer med $m_1$ og $m_2$, med de fem Lagrangepunktene i oransje og kraftigere kurver gjennom $L_1$, $L_2$ og $L_3$. Det skraverte området er der $U > C$."
   host="dom"
   height={380}
 />
@@ -508,7 +540,7 @@ I et spredningsforsøk teller du hvor mange partikler som går ut i hver retning
 <Simulation
   src="/sims/rutherford.js"
   title="Spredning i Coulombfeltet"
-  caption="Partikler med samme energi kommer inn fra venstre med jevnt fordelte støtparametere og frastøtes av ladningen $Q$. Den oransje stripen er partiklene mellom $s$ og $s + ds$, og den viser hvilken vinkel $\Theta$ de går ut i og hvor bredt de spres. Nær $s = 0$ spres en tynn stripe over mange grader, langt ute nesten ikke. Den ene glidebryteren velger stripen, den andre energien."
+  caption="Partikler med samme energi kommer inn fra venstre med jevnt fordelte støtparametere og frastøtes av ladningen $Q$. Prikkene på hver bane ligger med fast tidsavstand, og den oransje stripen er partiklene med støtparameter mellom $s$ og $s + ds$, med vinkelen $\Theta$ de går ut i."
   host="dom"
   height={360}
 />
@@ -521,13 +553,23 @@ $$
 \cot\frac{\Theta}{2} = \tan\Psi = \sqrt{e^2 - 1}
 $$
 
-I det nærmeste punktet er $\dot r = 0$ og $1/r_\text{min} = \mu|k|(e - 1)/J^2$. Den samme regningen som for perihel i Keplerbanen gir da $E = (\mu k^2/2J^2)(e - 1)(e + 1)$, altså igjen $e^2 - 1 = 2EJ^2/\mu k^2$. Med $J^2 = 2\mu E s^2$ er $e^2 - 1 = 4E^2s^2/k^2$. Altså er $\cot(\Theta/2) = 2Es/|k|$, og dermed $s = (|k|/2E)\cot(\Theta/2)$. Deriver $s$ med hensyn på $\Theta$:
+I det nærmeste punktet er $\dot r = 0$ og $1/r_\text{min} = \mu|k|(e - 1)/J^2$, så $E = J^2/2\mu r_\text{min}^2 + |k|/r_\text{min} = (\mu k^2/2J^2)(e - 1)(e + 1)$, altså $e^2 - 1 = 2EJ^2/\mu k^2$. Sett inn $J^2 = 2\mu E s^2$:
+
+$$
+\begin{aligned}
+e^2 - 1 &= \frac{4E^2s^2}{k^2} \\
+\Rightarrow\quad \cot\frac{\Theta}{2} &= \frac{2Es}{|k|} \\
+\Rightarrow\quad s &= \frac{|k|}{2E}\cot\frac{\Theta}{2}
+\end{aligned}
+$$
+
+Ved fast $s$ gir større $E$ mindre $\Theta$. $s = 0$ gir $\cot(\Theta/2) = 0$, altså $\Theta = \pi$, så partikkelen rett mot sentrum kommer rett tilbake uansett energi. Deriver $s$ med hensyn på $\Theta$:
 
 $$
 \left|\frac{ds}{d\Theta}\right| = \frac{|k|}{4E}\,\frac{1}{\sin^2(\Theta/2)}
 $$
 
-Sett inn i tverrsnittet med $\sin\Theta = 2\sin(\Theta/2)\cos(\Theta/2)$:
+Sett inn i $d\sigma/d\Omega = (s/\sin\Theta)\,|ds/d\Theta|$ med $\sin\Theta = 2\sin(\Theta/2)\cos(\Theta/2)$:
 
 $$
 \begin{aligned}
@@ -541,21 +583,23 @@ Faktorene $\cos(\Theta/2)$ forkortes, og nevnerne gir $\sin^4(\Theta/2)$:
 
 <Formula
   tex="\begin{aligned} s &= \frac{|k|}{2E}\cot\frac{\Theta}{2} \\ \frac{d\sigma}{d\Omega} &= \left(\frac{k}{4E}\right)^2\frac{1}{\sin^4(\Theta/2)} \end{aligned}"
-  caption="<b>Rutherfords spredningsformel</b> for $V = -k/r$ med $k = -qQ/4\pi\epsilon_0$. Ei partikkel rett mot sentrum, $s = 0$, kommer rett tilbake uansett energi."
+  caption="<b>Rutherfords spredningsformel</b> for $V = -k/r$ med $k = -qQ/4\pi\epsilon_0$."
 />
 
-Tverrsnittet vokser uten grense når $\Theta \to 0$. Coulombkraften har uendelig rekkevidde, så selv partikler med svært stor $s$ avbøyes litt, og det totale tverrsnittet $\int (d\sigma/d\Omega)\,d\Omega$ divergerer. For et potensial med endelig rekkevidde er det totale tverrsnittet endelig. Formelen gjelder i massesentersystemet, med $\mu$ og $E$ målt der, og massesentersystemet er laboratoriesystemet når kjernen er mye tyngre enn partikkelen. Geiger og Marsden målte denne vinkelfordelingen for $\alpha$-partikler i 1913, og den viste at atomet har en liten kjerne.
+Tverrsnittet går som $1/E^2$. Skal en raskere partikkel avbøyes like mye, må den komme inn nærmere sentrum. Ved fast $\Theta$ er både $s$ og $|ds|$ proporsjonale med $1/E$, så ringen $2\pi s\,|ds|$ krymper som $1/E^2$. Tverrsnittet vokser uten grense når $\Theta \to 0$. Coulombkraften har uendelig rekkevidde, så selv partikler med svært stor $s$ avbøyes litt, og det totale tverrsnittet $\int (d\sigma/d\Omega)\,d\Omega$ divergerer. For et potensial med endelig rekkevidde er det totale tverrsnittet endelig. Formelen gjelder i massesentersystemet, med $\mu$ og $E$ målt der, og massesentersystemet er laboratoriesystemet når kjernen er mye tyngre enn partikkelen. Geiger og Marsden sendte $\alpha$-partikler mot gullfolie, der kjernen er $49$ ganger tyngre enn partikkelen. De målte denne vinkelfordelingen i 1913, og den viste at atomet har en liten kjerne.
 
 <Quiz
   question="Ei punktpartikkel spres elastisk mot ei hard kule med radius $a$, med støtparameter $s = a/\sqrt2$. Hva er spredningsvinkelen?"
   options={["$90°$", "$45°$", "$60°$", "$135°$"]}
   answer={0}
-  explanation="Partikkelen treffer der $\sin\alpha = s/a = 1/\sqrt2$, altså $\alpha = 45°$ mellom innretningen og normalen. Refleksjonen er speilende, så $\Theta = \pi - 2\alpha = 90°$."
+  explanation="Partikkelen treffer der $\sin\alpha = s/a = 1/\sqrt2$, altså $\alpha = 45°$ mellom innretningen og normalen. Refleksjonen er speilende, så retningen dreies med $\Theta = \pi - 2\alpha = 90°$. $45°$ er vinkelen mot normalen, og $135°$ er $\pi - \alpha$, der $\alpha$ bare er trukket fra én gang."
 />
 
 ## Virialteoremet
 
-Virialteoremet knytter tidsmiddelet av den kinetiske energien til kreftene. For et system av partikler med posisjoner $\vec r_i$ og impulser $\vec p_i$ inneholder den tidsderiverte av summen $G = \sum_i \vec p_i \cdot \vec r_i$ begge deler:
+I en sirkelbane i $V = -k/r$ gir $\mu v^2/r = k/r^2$ at $T = k/2r = -\tfrac12 V$. Virialteoremet viser at tidsmidlene av $T$ og $V$ har den samme sammenhengen i enhver bundet bane, og for et helt system av partikler, uten at du kjenner banene. Derfor bruker du teoremet på systemer du ikke kan løse, som en stjernehop der du måler størrelsen og farten til stjernene og vil finne massen.
+
+For et system av partikler med posisjoner $\vec r_i$ og impulser $\vec p_i$ inneholder den tidsderiverte av summen $G = \sum_i \vec p_i \cdot \vec r_i$ både den kinetiske energien og kreftene:
 
 $$
 \begin{aligned}
@@ -583,7 +627,7 @@ $$
 E = \langle T\rangle + \langle V\rangle = -\langle T\rangle = \tfrac12\langle V\rangle
 $$
 
-I en sirkelbane gjelder teoremet uten midling: $T = k/2r$ og $V = -k/r$. For den harmoniske oscillatoren er $n = 2$ og $\langle T\rangle = \langle V\rangle$.
+For den harmoniske oscillatoren er $n = 2$ og $\langle T\rangle = \langle V\rangle$.
 
 <Derivation title="Massen til en stjernehop">
 La hopen ha massen $M$ og radien $R$. Da er $\langle T\rangle = \tfrac12 M\langle v^2\rangle$ og $\langle V\rangle \sim -GM^2/R$, og $2\langle T\rangle = -\langle V\rangle$ gir $M \sim R\langle v^2\rangle/G$. Dopplerforskyvningene gir $\langle v^2\rangle$, og størrelsen på hopen gir $R$.
@@ -594,7 +638,7 @@ Fortere. For $V = -k/r$ er $E = -\langle T\rangle$, så når luftmotstanden tar 
 </SelfCheck>
 
 <KeyTakeaways>
-- To legemer med $V(r)$ er ett legeme med masse $\mu$ om et fast kraftsentrum. Bevart $J$ legger banen i et plan og gjør radialbevegelsen til et endimensjonalt problem i $V_\text{eff} = V + J^2/2\mu r^2$.
+- To legemer med $V(r)$ er ett legeme med masse $\mu$ om et fast kraftsentrum der $m_2$ er. Bevart $J$ legger banen i et plan og gjør radialbevegelsen til et endimensjonalt problem i $V_\text{eff} = V + J^2/2\mu r^2$.
 - Sirkelbaner ligger der $V_\text{eff}' = 0$ og er stabile der $V_\text{eff}'' > 0$, for $V = -k/r^n$ når $n < 2$.
 - For $V = -k/r$ er banen kjeglesnittet $r = r_0/(1 + e\cos\phi)$, en ellipse når $E < 0$, en parabel når $E = 0$ og en hyperbel når $E > 0$.
 - Keplers andre lov er $J$ bevart og gjelder i alle sentralpotensialer. Den tredje er $T^2 = 4\pi^2\mu a^3/k$.

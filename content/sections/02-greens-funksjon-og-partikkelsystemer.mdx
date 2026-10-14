@@ -23,9 +23,20 @@ En harmonisk oscillator som drives av en ytre kraft $J(t)$, følger
   caption="Drevet harmonisk oscillator. Venstresiden er lineær i $x$."
 />
 
+For en harmonisk drivkraft kan du gjette en partikulær løsning. Et kort dytt, en
+kraft som slås på eller en vilkårlig $J(t)$ trenger hver sin gjetning. Løs i
+stedet ligningen én gang, for et enkelt dytt, og bygg responsen på alle andre
+krefter av den løsningen.
+
 Løsningen $x(t)$ for en gitt kraft kalles responsen. Gir kraften $J_1$ responsen $x_1$ og kraften $J_2$ responsen $x_2$, så er $x_1 + x_2$ responsen på $J_1 + J_2$. Regelen kalles <Term name="superposisjonsprinsippet">superposisjonsprinsippet</Term>, og den gjelder fordi venstresiden er lineær.
 
-Du kan derfor dele kraften opp og legge sammen responsene på bitene. Ifølge identiteten $J(t) = \int dt'\, \delta(t - t')\, J(t')$ er en vilkårlig kraft en sum av deltadytt ved tidene $t'$, hvert med vekt $J(t')$. Massen og $\omega$ avhenger ikke av tiden, så responsen på et dytt ved $t'$ avhenger bare av tiden $t - t'$ som har gått siden dyttet. Er $G_R(t - t')$ responsen på ett enhetsdytt $\delta(t - t')$, er responsen på hele kraften summen av $G_R(t - t')$ med de samme vektene.
+Du kan derfor dele kraften opp og legge sammen responsene på bitene. En vilkårlig kraft er en sum av deltadytt ved tidene $t'$, hvert med vekt $J(t')$:
+
+$$
+J(t) = \int dt'\, \delta(t - t')\, J(t')
+$$
+
+Massen og $\omega$ avhenger ikke av tiden, så responsen på et dytt ved $t'$ avhenger bare av tiden $t - t'$ som har gått siden dyttet. Er $G_R(t - t')$ responsen på ett enhetsdytt $\delta(t - t')$, er responsen på hele kraften summen av $G_R(t - t')$ med de samme vektene.
 
 <Formula
   tex="x(t) = \int_{-\infty}^{\infty} dt'\, G_R(t - t')\, J(t')"
@@ -49,7 +60,11 @@ Hver tidsderivasjon av $e^{-i\Omega\tau}$ gir faktoren $-i\Omega$, så $D(t)$ ga
 
 <Formula tex="G(\Omega) = \frac{1}{m}\, \frac{1}{\omega^2 - \Omega^2}" />
 
-Integranden i $G_R(\tau)$ har to poler på den reelle aksen, ved $\Omega = \pm\omega$, og du må velge om integrasjonsveien går over eller under hver av dem. Responsen kan ikke komme før dyttet, så kravet er $G_R(\tau) = 0$ for $\tau < 0$. For $\tau < 0$ går $e^{-i\Omega\tau}$ mot null langt ute i øvre halvplan, så der kan du lukke integrasjonsveien med en halvsirkel uten å endre integralet. Ligger ingen poler i øvre halvplan, er integralet null. Kravet oppfyller du derfor ved å skyve begge polene ned i det komplekse planet, til $\Omega = \pm\omega - i\varepsilon$. Med polene der får du den <Term name="retardert greens funksjon">retarderte Greens funksjonen</Term>:
+Integranden i $G_R(\tau)$ har to poler på den reelle aksen, ved $\Omega = \pm\omega$. Der er integralet langs den reelle aksen ikke definert, så du må velge om integrasjonsveien går over eller under hver pol.
+
+Responsen kan ikke komme før dyttet, så kravet er $G_R(\tau) = 0$ for $\tau < 0$. For $\tau < 0$ går $e^{-i\Omega\tau}$ mot null langt ute i øvre halvplan, så der kan du lukke integrasjonsveien med en halvsirkel uten å endre integralet. Ligger ingen poler i øvre halvplan, er integralet null. Kravet oppfyller du derfor ved å skyve begge polene ned i det komplekse planet, til $\Omega = \pm\omega - i\varepsilon$.
+
+En svak friksjonskraft $-m\gamma\dot x$ flytter polene på samme måte. Den gjør $\omega^2 - \Omega^2$ i nevneren til $\omega^2 - \Omega^2 - i\gamma\Omega$, som har nullpunktene $\Omega \approx \pm\omega - i\gamma/2$. Grensen $\varepsilon \to 0$ beskriver altså en oscillator der friksjonen går mot null. Med polene skjøvet ned får du den <Term name="retardert greens funksjon">retarderte Greens funksjonen</Term>:
 
 <Formula
   tex="G_R(\tau) = \frac{1}{m}\, \frac{\sin(\omega\tau)}{\omega}\, \theta(\tau)"
@@ -70,12 +85,16 @@ G_R(\tau) = \frac{i}{2m\omega}\,\bigl(e^{-i\omega\tau} - e^{i\omega\tau}\bigr)\,
 $$
 </Derivation>
 
-Et enhetsdytt ved $\tau = 0$ setter altså en oscillator som lå i ro, i svingning med $x(t) = \sin(\omega t)/(m\omega)$, og før dyttet skjer ingenting. Integralet med $G_R$ er en partikulær løsning. Den generelle løsningen får du ved å legge til en fri svingning, en løsning med $J = 0$.
+Et enhetsdytt ved $\tau = 0$ endrer impulsen med 1, så oscillatoren får farten $1/m$ mens den ennå står i $x = 0$. Den frie svingningen med disse startverdiene er $x(t) = \sin(\omega t)/(m\omega)$, det samme som konturintegralet ga, og før dyttet skjer ingenting. Integralet med $G_R$ er en partikulær løsning. Den generelle løsningen får du ved å legge til en fri svingning, en løsning med $J = 0$.
+
+<Callout title="Retardert Greens funksjon">
+Responsen på en vilkårlig kraft er summen av responser på enhetsdytt, $x(t) = \int dt'\, G_R(t - t')\, J(t')$. Responsen kan ikke komme før dyttet, så $G_R(\tau) = 0$ for $\tau < 0$, og det kravet skyver polene under den reelle aksen.
+</Callout>
 
 <Simulation
   src="/sims/respons.js"
   title="Dytt oscillatoren"
-  caption="Hvert trykk i diagrammet er et dytt $J\,\delta(t - t')$: vannrett plassering gir tidspunktet $t'$, høyden gir styrken $J$ med fortegn. De tynne kurvene er responsen på hvert dytt for seg, null før sitt eget dytt, og den tykke kurven er summen av dem."
+  caption="Oscillatoren med egenfrekvensen $\omega$. Hver oransje pil er et dytt $J\,\delta(t - t')$ ved tidspunktet $t'$, med lengden og retningen til $J$. De tynne kurvene er responsen på hvert dytt for seg, og den tykke kurven er summen av dem."
   host="dom"
   height={320}
 />
@@ -102,8 +121,8 @@ Oscillatoren svinger om den nye likevekten $x = F_0/(m\omega^2)$, der fjærkraft
 </Solution>
 </Example>
 
-<SelfCheck question="Hva i utregningen tvinger $G_R(\tau)$ til å være null for $\tau < 0$?">
-Plasseringen av polene. Med begge polene under den reelle aksen lukkes konturen for $\tau < 0$ i øvre halvplan, der integranden er analytisk, og integralet blir null. Kravet om at responsen kommer etter dyttet, går inn i regningen ved at du skyver polene ned.
+<SelfCheck question="Hva blir Greens funksjonen om du i stedet skyver begge polene opp, til $\Omega = \pm\omega + i\varepsilon$?">
+For $\tau > 0$ lukkes konturen i nedre halvplan, der det nå ikke ligger noen poler, så funksjonen er null etter dyttet. For $\tau < 0$ omslutter halvsirkelen i øvre halvplan begge polene, og residuene gir $-\sin(\omega\tau)/(m\omega)$. Oscillatoren svinger altså før dyttet og ligger i ro etterpå. Funksjonen løser også $D(t)\,G = \delta$, siden den skiller seg fra $G_R$ med en fri svingning, men den bryter kravet om at responsen kommer etter dyttet.
 </SelfCheck>
 
 ## Partikkelsystemer
@@ -148,11 +167,13 @@ $$
 
 Kryssproduktet i den siste summen er null når kraften ligger langs linja mellom
 partiklene, og bare da. Slike krefter kalles <Term name="sentrale krefter">sentrale</Term>;
-gravitasjon og Coulomb-kraften er begge sentrale. Med sentrale indre krefter er
+gravitasjon og Coulomb-kraften er begge sentrale. Med sentrale indre krefter står
+bare den første summen igjen, det ytre dreiemomentet
+$\vec N^{(e)} = \sum_i \vec r_i \times \vec F_i^{(e)}$:
 
 <Formula
   tex="\frac{d\vec L}{dt} = \vec N^{(e)}"
-  caption="For sentrale indre krefter endres dreieimpulsen bare av det ytre dreiemomentet $\vec N^{(e)} = \sum_i \vec r_i \times \vec F_i^{(e)}$."
+  caption="For sentrale indre krefter endres dreieimpulsen bare av det ytre dreiemomentet."
 />
 
 Den kinetiske energien kan deles i en del for bevegelsen til massesenteret og en
@@ -193,15 +214,17 @@ legeme med <Term name="redusert masse">redusert masse</Term>:
   caption="Tolegemeproblemet redusert til ett legeme for relativkoordinaten."
 />
 
-Er den ene massen mye større enn den andre, er $\mu$ omtrent lik den minste, og
-det tunge legemet ligger tilnærmet i ro. Massesenteret til jorda og sola ligger
-godt inne i sola.
+Med massesenteret i origo er $\vec r_1 = (m_2/M)\,\vec r$ og
+$\vec r_2 = -(m_1/M)\,\vec r$, så de to legemene går i baner med samme form som
+$\vec r$, skalert med $m_2/M$ og $m_1/M$. Er $m_2 \gg m_1$, er $\mu \approx m_1$,
+og legeme 2 ligger tilnærmet i ro. Massesenteret til jorda og sola ligger godt
+inne i sola.
 
 <Quiz
-  question="En granat kastes i en parabelbane og eksploderer i lufta. Hva gjør massesenteret til bitene rett etter eksplosjonen?"
-  options={["Det fortsetter langs den samme parabelen som før", "Det følger den tyngste biten", "Det stopper opp i eksplosjonspunktet", "Banen avhenger av energien i eksplosjonen"]}
-  answer={0}
-  explanation="Eksplosjonen er indre krefter, og de opphever hverandre parvis etter Newtons tredje lov. Den eneste ytre kraften er fortsatt tyngden, så massesenteret følger samme parabel som før, helt til den første biten treffer bakken og en ny ytre kraft kommer inn."
+  question="En granat skytes ut over flat mark og eksploderer på toppen av banen i to like tunge biter. Den ene biten står i ro rett etter eksplosjonen og faller rett ned. Hvor langt fra utskytingsstedet lander den andre biten?"
+  options={["Like langt som granaten ville nådd uten eksplosjon", "Halvannen gang så langt som granaten ville nådd", "Dobbelt så langt som granaten ville nådd", "Det avhenger av energien eksplosjonen frigjør"]}
+  answer={1}
+  explanation="Eksplosjonen er indre krefter, så massesenteret følger den gamle parabelen og lander der granaten ville landet. Den første biten står i ro, så impulsen gir den andre null loddrett og dobbel vannrett fart, og begge lander samtidig. Den første lander ved halve rekkevidden, så den andre må lande ved halvannen rekkevidde for at massesenteret skal ligge midt mellom dem. Den doble farten gjelder bare den siste halvdelen av turen, så biten lander ikke ved dobbel rekkevidde."
 />
 
 ## Elastiske støt
@@ -222,8 +245,16 @@ den andre:
 
 <Formula
   tex="\vec v_1 \cdot \vec v_2 = 0"
-  caption="Enten stopper den første partikkelen, eller de to går ut vinkelrett på hverandre."
+  caption="Elastisk støt mellom like masser der den ene starter i ro."
 />
+
+Den andre partikkelen får fart når den blir truffet, så enten er $\vec v_1 = 0$,
+og den første partikkelen har gitt hele farten $\vec v$ til den andre, som i et sentralt
+støt, eller de to går ut vinkelrett på hverandre.
+
+<Callout title="Like masser, den ene i ro">
+I et elastisk støt mellom like masser der den ene ligger i ro, stopper den første partikkelen, eller de to går ut vinkelrett på hverandre.
+</Callout>
 
 Impuls- og energibevarelse er fire ligninger for de seks komponentene i
 $\vec v_1$ og $\vec v_2$. De to komponentene som står igjen, avhenger av kraften
@@ -263,14 +294,17 @@ $$
 Mu - mu = M(v - 2u) + mv \quad\Rightarrow\quad v = \frac{3M - m}{M + m}\, u
 $$
 
-Med tallene er
+For $m \ll M$ går $v$ mot $3u$. Basketballen er da som en vegg som kommer mot
+tennisballen med farten $u$, så tennisballen spretter fra veggen med den relative
+farten $2u$ og får $2u + u$ i forhold til gulvet. Med tallene er
 
 $$
 v = \frac{3 \cdot 0{,}60 - 0{,}058}{0{,}658} \cdot 5{,}0\ \text{m/s} = 2{,}65 \cdot 5{,}0\ \text{m/s} = 13{,}2\ \text{m/s}
 $$
 
 Høyden vokser med kvadratet av farten, $h = v^2/2g$, så tennisballen når
-$(v/u)^2 = 2{,}65^2 = 7{,}0$ ganger fallhøyden.
+$(v/u)^2 = 2{,}65^2 = 7{,}0$ ganger fallhøyden, mot høyst $3^2 = 9$ ganger for en
+basketball som er mye tyngre.
 
 <Answer>$v = \dfrac{3M - m}{M + m}\, u = 13$ m/s, omtrent sju ganger fallhøyden</Answer>
 </Solution>

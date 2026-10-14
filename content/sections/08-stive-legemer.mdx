@@ -24,13 +24,25 @@ Orienteringen kan beskrives med tre enhetsvektorer $\hat e_1'$, $\hat e_2'$ og $
 
 ## Vinkelhastigheten
 
-Orienteringen endrer seg når aksene $\hat e_a'$ endrer seg. For å finne hvilke endringer $\dot{\hat e}_a'$ som er mulige, bruk at aksene forblir ortonormale, og deriver $\hat e_a' \cdot \hat e_b' = \delta_{ab}$ med hensyn på tida:
+For et system som roterer om en gitt akse, følger enhetsvektorene rotasjonen, $\dot{\hat e}_a' = \vec\omega \times \hat e_a'$. Et legeme som tumler, har ingen slik akse gitt på forhånd, så det er ikke opplagt at endringen av orienteringen er en rotasjon. For å finne hvilke endringer $\dot{\hat e}_a'$ som er mulige, bruk at aksene forblir ortonormale, og deriver $\hat e_a' \cdot \hat e_b' = \delta_{ab}$ med hensyn på tida:
 
 $$
 \dot{\hat e}_a' \cdot \hat e_b' = -\,\hat e_a' \cdot \dot{\hat e}_b'
 $$
 
-Tallet $\Omega_{ab} = \dot{\hat e}_a' \cdot \hat e_b'$ er komponenten av $\dot{\hat e}_a'$ langs $\hat e_b'$, så $\dot{\hat e}_a' = \sum_b \Omega_{ab}\,\hat e_b'$. Ligningen over sier at $\Omega_{ba} = -\Omega_{ab}$. Diagonalen er derfor null, og matrisen har bare tre uavhengige elementer. For den første aksen er $\dot{\hat e}_1' = \Omega_{12}\,\hat e_2' - \Omega_{31}\,\hat e_3'$. Et kryssprodukt med $\hat e_1'$ har nettopp denne formen: med $\vec\omega = \sum_a \omega_a \hat e_a'$ er $\vec\omega \times \hat e_1' = \omega_3\,\hat e_2' - \omega_2\,\hat e_3'$, så velg $\omega_3 = \Omega_{12}$ og $\omega_2 = \Omega_{31}$. På samme måte er $\dot{\hat e}_2' = \Omega_{23}\,\hat e_3' - \Omega_{12}\,\hat e_1' = \vec\omega \times \hat e_2'$ når $\omega_1 = \Omega_{23}$. Matrisen har ingen andre uavhengige elementer, så den samme $\vec\omega$ gir også $\dot{\hat e}_3'$:
+Tallet $\Omega_{ab} = \dot{\hat e}_a' \cdot \hat e_b'$ er komponenten av $\dot{\hat e}_a'$ langs $\hat e_b'$, så $\dot{\hat e}_a' = \sum_b \Omega_{ab}\,\hat e_b'$. Ligningen over sier at $\Omega_{ba} = -\Omega_{ab}$. Diagonalen er derfor null, og matrisen har bare tre uavhengige elementer, $\Omega_{12}$, $\Omega_{23}$ og $\Omega_{31}$. For de to første aksene er
+
+$$
+\dot{\hat e}_1' = \Omega_{12}\,\hat e_2' - \Omega_{31}\,\hat e_3' \allowbreak\qquad \dot{\hat e}_2' = \Omega_{23}\,\hat e_3' - \Omega_{12}\,\hat e_1'
+$$
+
+Et kryssprodukt har nettopp denne formen. Med $\vec\omega = \sum_a \omega_a \hat e_a'$ er
+
+$$
+\vec\omega \times \hat e_1' = \omega_3\,\hat e_2' - \omega_2\,\hat e_3' \allowbreak\qquad \vec\omega \times \hat e_2' = \omega_1\,\hat e_3' - \omega_3\,\hat e_1'
+$$
+
+og de to parene er like når $\omega_1 = \Omega_{23}$, $\omega_2 = \Omega_{31}$ og $\omega_3 = \Omega_{12}$. Matrisen har ingen andre uavhengige elementer, så den samme $\vec\omega$ gir også $\dot{\hat e}_3'$:
 
 $$
 \dot{\hat e}_a' = \vec\omega \times \hat e_a'
@@ -44,6 +56,10 @@ Enhver endring av orienteringen er altså en rotasjon med en <Term name="vinkelh
 />
 
 Vinkelhastigheten avhenger ikke av hvilket punkt i legemet du velger som origo. For et annet punkt $\vec Q$ gir formelen $\dot{\vec Q} = \dot{\vec R} + \vec\omega \times (\vec Q - \vec R)$, og trekker du den fra formelen for $\dot{\vec r}_i$, får du $\dot{\vec r}_i = \dot{\vec Q} + \vec\omega \times (\vec r_i - \vec Q)$ med den samme $\vec\omega$.
+
+<Callout title="Én vinkelhastighet">
+Enhver endring av orienteringen er en rotasjon med en vinkelhastighet $\vec\omega$, og hvert punkt har farten $\dot{\vec R} + \vec\omega \times (\vec r_i - \vec R)$. Den samme $\vec\omega$ gjelder uansett hvilket punkt i legemet du regner fra.
+</Callout>
 
 Vinkelhastigheter legges sammen som vektorer. Endelige rotasjoner legges ikke sammen slik. Drei en bok en kvart omdreining om sin egen $x$-akse og så en kvart om sin egen $y$-akse, og den havner et annet sted enn i motsatt rekkefølge. I begge rekkefølgene er $\int\omega_1\,dt = \int\omega_2\,dt = \pi/2$ og $\int\omega_3\,dt = 0$. Hvis $\omega_1$, $\omega_2$ og $\omega_3$ var tidsderiverte av tre vinkler, ville vinklene endt på de samme verdiene og gitt den samme orienteringen. Derfor finnes det ingen slike vinkler, og komponentene av $\vec\omega$ kan ikke brukes som generaliserte hastigheter.
 
@@ -74,26 +90,38 @@ Summen i den siste hakeparentesen er den samme i $T$ og i $L_a$. Den er <Term na
   caption="<b>Treghetstensoren</b> om punktet $O$, der $x_{ia}$ er komponent $a$ av $\vec r_i$. For en sammenhengende masse med tetthet $\rho$ blir summen integralet $\int \rho\,(r^2\delta_{ab} - x_a x_b)\,dV$ over hele legemet."
 />
 
-Komponentene tas langs aksene $\hat e_a'$, som følger legemet, så $I_{ab}$ endrer seg ikke med tida. Skrevet ut er
+Komponentene tas langs aksene $\hat e_a'$, som følger legemet, så $I_{ab}$ endrer seg ikke med tida. For en sammenhengende masse med tetthet $\rho$ blir summen et integral over legemet. Skrevet ut er
 
 $$
 I_{11} = \int \rho\,(y^2 + z^2)\,dV \allowbreak\qquad I_{12} = -\int \rho\,xy\,dV
 $$
 
-og de andre elementene følger ved å bytte om koordinatene. Tensoren er symmetrisk, $I_{ab} = I_{ba}$. Roterer legemet om en fast akse $\hat n$ gjennom $O$, er $\vec\omega = \omega\hat n$ og $T = \tfrac12\,(\hat n \cdot \boldsymbol I\hat n)\,\omega^2$. Uttrykket har formen $\tfrac12 I\omega^2$ for rotasjon om en fast akse, så <Term name="treghetsmoment">treghetsmomentet</Term> om $\hat n$ er $I_{\hat n} = \hat n \cdot \boldsymbol I\hat n = \sum_i m_i\left[r_i^2 - (\hat n \cdot \vec r_i)^2\right] = \sum_i m_i d_i^2$, der $d_i$ er avstanden fra partikkel $i$ til aksen. Hakeparentesen er $d_i^2$ fordi $\hat n \cdot \vec r_i$ er komponenten av $\vec r_i$ langs aksen.
+og de andre elementene følger ved å bytte om koordinatene. Tensoren er symmetrisk, $I_{ab} = I_{ba}$. Et element utenfor diagonalen gir dreieimpuls på tvers av rotasjonen. Roterer legemet om $x$-aksen, $\vec\omega = \omega\hat x$, er $L_2 = I_{21}\,\omega$. Ei punktmasse $m$ i $(x, y, 0)$ har da farten $\omega y\,\hat z$, og $\vec r \times m\vec v$ har $y$-komponenten $-m\omega xy$, som er punktmassens bidrag til $I_{21}\,\omega$. Bare når både $\int \rho\,xy\,dV$ og $\int \rho\,xz\,dV$ er null, ligger $\vec L$ langs $x$-aksen.
+
+Roterer legemet om en fast akse $\hat n$ gjennom $O$, er $\vec\omega = \omega\hat n$ og $T = \tfrac12\,(\hat n \cdot \boldsymbol I\hat n)\,\omega^2$. Uttrykket har formen $\tfrac12 I\omega^2$ for rotasjon om en fast akse, så <Term name="treghetsmoment">treghetsmomentet</Term> om $\hat n$ er $I_{\hat n} = \hat n \cdot \boldsymbol I\hat n = \sum_i m_i\left[r_i^2 - (\hat n \cdot \vec r_i)^2\right] = \sum_i m_i d_i^2$, der $d_i$ er avstanden fra partikkel $i$ til aksen. Hakeparentesen er $d_i^2$ fordi $\hat n \cdot \vec r_i$ er komponenten av $\vec r_i$ langs aksen.
 
 ## Hovedakser
 
-Treghetstensoren er en reell, symmetrisk matrise, så den har tre reelle egenverdier og tre ortogonale egenvektorer. Egenvektorene er legemets <Term name="hovedakse">hovedakser</Term>, og egenverdiene $I_1$, $I_2$ og $I_3$ er <Term name="hovedtreghetsmoment">hovedtreghetsmomentene</Term>. Ingen av dem er negative, fordi hver av dem er treghetsmomentet $\sum_i m_i d_i^2$ om sin hovedakse. Legges $\hat e_a'$ langs hovedaksene, er tensoren diagonal:
+Roterer et legeme om en akse, ligger $\vec L$ som regel ikke langs aksen. Ta to like punktmasser i hver sin ende av en vektløs stang med midtpunktet i $O$, og la stanga rotere om en aksel gjennom $O$ som står skrått på den. Hastigheten $\vec\omega \times \vec r$ til hver masse står vinkelrett på planet gjennom stanga og akselen. Da står $\vec r \times m\vec v$ vinkelrett både på stanga og på normalen til planet, så den ligger i planet, vinkelrett på stanga. Begge massene gir det samme bidraget, og $\vec L$ peker skrått på akselen. Står stanga vinkelrett på akselen, ligger $\vec L$ langs akselen.
+
+Generelt er $\vec L = \boldsymbol I\vec\omega$ parallell med $\vec\omega$ nøyaktig når $\vec\omega$ er en egenvektor til $\boldsymbol I$. Treghetstensoren er en reell, symmetrisk matrise, så den har tre reelle egenverdier og tre ortogonale egenvektorer. Egenvektorene er legemets <Term name="hovedakse">hovedakser</Term>, og egenverdiene $I_1$, $I_2$ og $I_3$ er <Term name="hovedtreghetsmoment">hovedtreghetsmomentene</Term>. Ingen av dem er negative, fordi hver av dem er treghetsmomentet $\sum_i m_i d_i^2$ om sin hovedakse. For stanga er hovedaksene stanga selv, med treghetsmomentet null, og alle akser gjennom $O$ vinkelrett på den. Legges $\hat e_a'$ langs hovedaksene, er tensoren diagonal:
 
 <Formula
   tex="L_a = I_a\,\omega_a \allowbreak\qquad T = \tfrac12\left(I_1\omega_1^2 + I_2\omega_2^2 + I_3\omega_3^2\right)"
   caption="Dreieimpulsen og den kinetiske energien med aksene langs hovedaksene."
 />
 
-Roterer legemet om en hovedakse, er $\vec L$ parallell med $\vec\omega$. Ellers ganges komponentene $\omega_a$ med ulike $I_a$, og $\vec L$ peker skrått.
+Ligger $\vec\omega$ ikke langs en hovedakse, ganges komponentene $\omega_a$ med ulike $I_a$, og $\vec L$ peker skrått på $\vec\omega$. Holder en aksel $\vec\omega$ fast langs en slik akse i legemet, har $\vec L$ faste komponenter langs $\hat e_a'$ og roterer med legemet. Endringen $\dot{\vec L} = \vec\omega \times \vec L$ er ikke null, og dreiemomentet $\vec N = \dot{\vec L}$ må komme fra lagrene.
 
-Symmetriske legemer har hovedakser du finner uten regning. Er legemet symmetrisk om planet $z = 0$, er $I_{13} = I_{23} = 0$, fordi integrandene skifter fortegn når $z \to -z$. Da er $\boldsymbol I\hat z = I_{33}\hat z$, og normalen $\hat z$ er en hovedakse. Ser legemet likt ut etter en halv omdreining om $z$-aksen, $(x, y) \to (-x, -y)$, skifter de samme integrandene fortegn, og $z$-aksen er en hovedakse. Ser legemet likt ut etter en dreining på 120° eller 90° om en akse, er aksen en hovedakse, og de to hovedtreghetsmomentene vinkelrett på den er like. Da er enhver akse vinkelrett på den en hovedakse. En kube har slik symmetri om alle tre aksene gjennom sentrum, så tensoren er $\tfrac16 Ma^2$ ganger enhetsmatrisen (klossen i tabellen under med $b = c = a$), og hver akse gjennom sentrum er en hovedakse. For et flatt legeme i $xy$-planet er $z = 0$ overalt, og da er $I_{33} = \int \rho\,(x^2 + y^2)\,dA = I_{11} + I_{22}$.
+<Callout title="Hovedakser">
+$\vec L$ er parallell med $\vec\omega$ bare når $\vec\omega$ ligger langs en hovedakse. Holder en aksel legemet i rotasjon om en annen akse, roterer $\vec L$ med legemet, og lagrene må gi dreiemomentet $\vec\omega \times \vec L$.
+</Callout>
+
+Symmetriske legemer har hovedakser du finner uten regning. Er legemet symmetrisk om planet $z = 0$, er $I_{13} = I_{23} = 0$, fordi integrandene skifter fortegn når $z \to -z$. Da er $\boldsymbol I\hat z = I_{33}\hat z$, og normalen $\hat z$ er en hovedakse. Ser legemet likt ut etter en halv omdreining om $z$-aksen, $(x, y) \to (-x, -y)$, skifter de samme integrandene fortegn, og $z$-aksen er en hovedakse. Ei rektangulær plate har tre symmetriplan, og normalene til dem er hovedaksene: normalen til plata og de to midtlinjene, som er parallelle med sidene.
+
+Ser legemet likt ut etter en dreining på 120° eller 90° om en akse, er aksen en hovedakse, og de to hovedtreghetsmomentene vinkelrett på den er like. Da er enhver akse vinkelrett på den en hovedakse. Ei kvadratisk plate har slik symmetri om normalen, så hver akse i plateplanet gjennom sentrum er en hovedakse. En kube har den om alle tre aksene gjennom sentrum, så tensoren er $\tfrac16 Ma^2$ ganger enhetsmatrisen (klossen i tabellen under med $b = c = a$), og hver akse gjennom sentrum er en hovedakse.
+
+For et flatt legeme i $xy$-planet er $z = 0$ overalt, og da er $I_{33} = \int \rho\,(x^2 + y^2)\,dA = I_{11} + I_{22}$. Ei skive har $\tfrac14 MR^2$ om hver diameter, og summen $\tfrac12 MR^2$ er momentet om aksen, som i tabellen.
 
 <Derivation title="Hvorfor en dreining på 120° eller 90° gir like hovedtreghetsmomenter">
 La dreiningen $\boldsymbol R$ om $\hat z$ føre legemet over i seg selv. Dreiningen flytter partikkel $i$ fra $\vec r_i$ til $\boldsymbol R\vec r_i$. Lengden $r_i$ er uendret, og $x_{ia}x_{ib}$ blir komponent $ab$ av $\boldsymbol R\,\vec r_i\vec r_i^{\mathsf T}\boldsymbol R^{\mathsf T}$, så det dreide legemet har tensoren $\boldsymbol R\boldsymbol I\boldsymbol R^{\mathsf T}$. Hvis legemet er det samme etter dreiningen, er $\boldsymbol R\boldsymbol I\boldsymbol R^{\mathsf T} = \boldsymbol I$. Gang med $\boldsymbol R$ fra høyre og bruk $\boldsymbol R^{\mathsf T}\boldsymbol R = \boldsymbol 1$: da er $\boldsymbol R\boldsymbol I = \boldsymbol I\boldsymbol R$. Bruk begge sider på $\hat z$, som dreiningen ikke flytter, $\boldsymbol R\hat z = \hat z$:
@@ -131,7 +159,7 @@ Dreiningen med vinkelen $\alpha$ fører legemet over i seg selv, så $I(\varphi 
 <Simulation
   src="/sims/roterende-plate.js"
   title="Plate som roterer om en fast aksel"
-  caption="Ei tynn plate med sidene $a$ og $b$ roterer med fast $\vec\omega$ om en loddrett aksel gjennom massesenteret, holdt av to lagre. Den oransje pila er $\vec L = \boldsymbol I\vec\omega$. Ligger akselen langs en av sidene, er den en hovedakse, og $\vec L$ ligger langs akselen. Ellers peker $\vec L$ skrått, roterer med plata og sveiper den stiplede kjeglen. Endringen i $\vec L$ må komme fra lagrene, som gir kraftparet $\vec F$ og $-\vec F$. Med sideforholdet 1 er alle akser i plateplanet hovedakser."
+  caption="Ei tynn plate med sidene $a$ og $b$ roterer med fast $\vec\omega$ om en loddrett aksel gjennom massesenteret, holdt av to lagre. Den oransje pila er $\vec L = \boldsymbol I\vec\omega$, den stiplede kjeglen er flata $\vec L$ sveiper, og $\vec F$ og $-\vec F$ er kraftparet fra lagrene."
   host="dom"
   height={380}
 />
@@ -261,10 +289,26 @@ Den kinetiske energien til et partikkelsystem er energien til massesenteret plus
 
 <Formula
   tex="T = \tfrac12 M\dot{\vec R}^2 + \tfrac12\,\vec\omega \cdot \boldsymbol I^{\text{cm}}\vec\omega"
-  caption="Den kinetiske energien til et stivt legeme. Står et punkt $O$ i legemet fast, er $T = \tfrac12\,\vec\omega \cdot \boldsymbol I^{O}\vec\omega$ med tensoren om $O$, og parallellakseteoremet viser at de to uttrykkene er like."
+  caption="Den kinetiske energien til et stivt legeme: massesenterets bevegelse pluss rotasjonen om massesenteret."
 />
 
-Tyngdens potensielle energi er $\sum_i m_i g z_i = MgZ$, der $Z$ er høyden til massesenteret. Lagrangefunksjonen $L = T - V$ har seks koordinater for et fritt legeme og færre når føringer binder det. Et legeme som svinger om en fast, vannrett akse, er en <Term name="fysisk pendel">fysisk pendel</Term>. Bare vinkelen $\theta$ mellom loddlinja og linja fra aksen til massesenteret er igjen. Aksen står fast, så $\vec\omega = \dot\theta\,\hat n$ langs aksen og $T = \tfrac12 I_O\dot\theta^2$, der $I_O$ er treghetsmomentet om aksen. Massesenteret ligger $D\cos\theta$ under aksen, der $D$ er avstanden fra aksen til massesenteret, så med høyden målt fra aksen er $Z = -D\cos\theta$ og $V = -MgD\cos\theta$. Da er $L = \tfrac12 I_O\dot\theta^2 + MgD\cos\theta$. Lagranges ligning er $I_O\ddot\theta = -MgD\sin\theta$, og med $\sin\theta \approx \theta$ svinger små utslag med vinkelfrekvensen $\omega$ gitt ved $\omega^2 = MgD/I_O$.
+Står et punkt $O$ i legemet fast, kan du i stedet bruke tensoren om $O$, $T = \tfrac12\,\vec\omega \cdot \boldsymbol I^{O}\vec\omega$, som i utledningen av treghetstensoren. De to uttrykkene er like. Massesenteret har farten $\dot{\vec R} = \vec\omega \times \vec R$ målt fra $O$, så $\tfrac12 M\dot{\vec R}^2$ er rotasjonsenergien til én punktmasse $M$ i $\vec R$, nettopp leddet parallellakseteoremet legger til $\boldsymbol I^{\text{cm}}$.
+
+Tyngdens potensielle energi er $\sum_i m_i g z_i = MgZ$, der $Z$ er høyden til massesenteret. Lagrangefunksjonen $L = T - V$ har seks koordinater for et fritt legeme og færre når føringer binder det.
+
+Et legeme som svinger om en fast, vannrett akse, er en <Term name="fysisk pendel">fysisk pendel</Term>. Bare vinkelen $\theta$ mellom loddlinja og linja fra aksen til massesenteret er igjen. Aksen står fast, så $\vec\omega = \dot\theta\,\hat n$ langs aksen og $T = \tfrac12 I_O\dot\theta^2$, der $I_O$ er treghetsmomentet om aksen. La $D$ være avstanden fra aksen til massesenteret. Massesenteret ligger $D\cos\theta$ under aksen, så med høyden målt fra aksen er $V = -MgD\cos\theta$, og
+
+$$
+L = \tfrac12 I_O\dot\theta^2 + MgD\cos\theta \quad\Rightarrow\quad I_O\ddot\theta = -MgD\sin\theta
+$$
+
+Ved små utslag, $\theta \ll 1$, er $\sin\theta \approx \theta$, og pendelen svinger harmonisk med vinkelfrekvensen $\omega$ gitt ved
+
+$$
+\omega^2 = \frac{MgD}{I_O}
+$$
+
+For en punktmasse er $I_O = MD^2$, og $\omega^2 = g/D$, som for en matematisk pendel med lengden $D$.
 
 <SelfCheck question="Ei jevn stang med lengde $l$ henger i en tapp i den ene enden. Hvor lang må en matematisk pendel være for å svinge like fort?">
 Parallellakseteoremet gir $I_O = \tfrac{1}{12}ml^2 + m\left(\tfrac12 l\right)^2 = \tfrac13 ml^2$, og massesenteret er $D = l/2$ fra tappen. Da er $\omega^2 = mg(l/2)/(\tfrac13 ml^2) = 3g/2l$, som for en matematisk pendel med lengden $\tfrac23 l$.
@@ -277,6 +321,10 @@ $$
 $$
 
 der $s$ er strekningen hjulet har rullet og $\theta$ dreievinkelen. Betingelsen kan integreres til $s - R\theta = \text{konstant}$, så føringen er holonom, og $\theta$ kan elimineres fra Lagrangefunksjonen. For en kule som ruller på et plan, kan føringen ikke integreres. En integrert føring ville vært ligninger mellom posisjonen og orienteringen, og de ville utelukket noen orienteringer i hvert punkt. Men kula kan rulle bort fra et punkt og tilbake til det samme punktet og ende i hvilken som helst orientering. Friksjonskraften virker i kontaktpunktet, som står i ro, så den gjør ikke arbeid, og energien er bevart når de andre kreftene er konservative.
+
+<Callout title="Rulling uten glidning">
+Kontaktpunktet står i ro. For et hjul som ruller langs ei linje, er føringen holonom, $\dot s = R\dot\theta$, og friksjonen i kontaktpunktet gjør ikke arbeid.
+</Callout>
 
 <Example label="Eksamensoppgave" title="Ring som ruller ned et skråplan">
 <ExamRef id="2022-des" task="3" />

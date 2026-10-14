@@ -14,13 +14,13 @@ Her er åtte systemer regnet gjennom med alle mellomregninger, etter framgangsm�
 
 Alle åtte systemene følger de samme fire trinnene.
 
-1. **Tell frihetsgradene og velg koordinater.** Antall <Term name="frihetsgrader">frihetsgrader</Term> er antall koordinater minus antall <Term name="holonom føring">føringer</Term>. Velg like mange <Term name="generaliserte koordinater">generaliserte koordinater</Term>, og velg dem slik at føringene er bygd inn, altså oppfylt for alle verdier av koordinatene: en vinkel for en stiv stang, en vinkel langs en ring, avstand og vinkel for en sentralkraft. Da kommer <Term name="føringskraft">føringskreftene</Term> aldri inn i regningen. Skriv posisjonen til hver masse som funksjon av koordinatene.
+1. **Tell frihetsgradene og velg koordinater.** Antall <Term name="frihetsgrader">frihetsgrader</Term> er antall koordinater minus antall <Term name="holonom føring">føringer</Term>. Velg like mange <Term name="generaliserte koordinater">generaliserte koordinater</Term>, og velg dem slik at føringene er bygd inn, altså oppfylt for alle verdier av koordinatene: en vinkel for en stiv stang, en vinkel langs en ring. Da kommer <Term name="føringskraft">føringskreftene</Term> aldri inn i regningen. Velg dem også etter symmetrien. Bevegelsen er den samme i alle koordinatsett, men en symmetri viser seg som en koordinat som ikke står i $L$ bare i noen av dem: et sentralpotensial gjør $\phi$ syklisk i polarkoordinater og ingen koordinat syklisk i kartesiske. Skriv posisjonen til hver masse som funksjon av koordinatene.
 2. **Skriv $T$ og $V$ i koordinatene.** Deriver posisjonene med hensyn på tida med kjerne- og produktregelen, kvadrer, summer til $v^2$ for hver masse, og sett $T = \sum \tfrac12 mv^2$. Skriv potensialet i de samme koordinatene. Lagrangefunksjonen er <FormulaRef id="lagrangefunksjon" />, og ledd som er totale tidsderiverte kan strykes fordi de ikke endrer bevegelsesligningene, <FormulaRef id="ekvivalente-lagrangefunksjoner" />.
 3. **Deriver.** Lagranges ligning for hver koordinat, <FormulaRef id="euler-lagrange" />, gir bevegelsesligningene: regn ut $\partial L/\partial\dot q_i$, deriver den med hensyn på tida, regn ut $\partial L/\partial q_i$ og sett inn. Kontroller resultatet i et grensetilfelle der svaret er kjent, som små utslag eller en masse som går mot uendelig.
 4. **Let etter hva $L$ ikke avhenger av.** En koordinat som ikke står i $L$, er <Term name="syklisk koordinat">syklisk</Term>, og dens <Term name="generalisert impuls">generaliserte impuls</Term> $p_i = \partial L/\partial\dot q_i$ er bevart. Står ikke tida eksplisitt i $L$, er <Term name="energifunksjon">energifunksjonen</Term> $H = \sum_i \dot q_i\,\partial L/\partial\dot q_i - L$ bevart, og den er lik $T + V$ når føringene er tidsuavhengige og $V$ ikke avhenger av hastighetene. Endrer en forskyvning $q_i \to q_i + \epsilon F_i$ bare $L$ med en total tidsderivert $\epsilon\,dF/dt$, gir <Term name="noethers teorem">Noethers teorem</Term> den bevarte størrelsen $\sum_i p_i F_i - F$.
 
-<Callout type="tip" title="Velg koordinater som følger symmetrien">
-Samme system kan beskrives i mange koordinatsett, og bevegelsen du finner, er den samme i alle. Men en symmetri viser seg som en koordinat som ikke står i $L$ bare i noen av dem: et sentralpotensial gjør $\phi$ syklisk i polarkoordinater og ingen koordinat syklisk i kartesiske. Velg koordinater som følger symmetrien, så leser du de bevarte størrelsene rett av $L$.
+<Callout type="tip" title="Valg av koordinater">
+Velg koordinater som bygger inn føringene og følger symmetrien. Da kommer føringskreftene aldri inn i regningen, og du leser de bevarte størrelsene rett av $L$.
 </Callout>
 
 ## Den plane pendelen
@@ -30,7 +30,7 @@ Ei kule med masse $m$ henger i en stiv, masseløs stang med lengde $l$ fra en ta
 <Simulation
   src="/sims/pendel.js"
   title="Den plane pendelen"
-  caption="Glidebryteren setter farten kula har i bunnpunktet. Den oransje linja ligger i høyden $y = E/mg$, målt oppover fra tappen. Så høyt har kula energi til å nå, og der linja skjærer sirkelen, er vendepunktene. Ligger linja over toppen, altså $E > mgl$, går pendelen rundt."
+  caption="Kula på stanga, med den stiplede sirkelen som banen den kan gå i. Den oransje linja ligger i høyden $y = E/mg$, målt oppover fra tappen, og de oransje punktene er vendepunktene."
   host="dom"
   height={300}
 />
@@ -158,7 +158,7 @@ E + mgl\cos\theta_\text{v} = 0
 \cos\theta_\text{v} = -\frac{E}{mgl}
 $$
 
-Ligningen har en løsning når $-mgl \le E < mgl$, og da svinger pendelen mellom $-\theta_\text{v}$ og $\theta_\text{v}$. For $E > mgl$ er $\dot\theta$ aldri null, og pendelen går rundt. $E = mgl$ er grensen mellom de to typene bevegelse.
+Vendepunktene ligger altså i høyden $y_\text{v} = -l\cos\theta_\text{v} = E/mg$, målt oppover fra tappen, der $T = 0$ og hele energien er potensiell. Ligningen har en løsning når $-mgl \le E < mgl$, og da svinger pendelen mellom $-\theta_\text{v}$ og $\theta_\text{v}$. For $E > mgl$ er $\dot\theta$ aldri null, og pendelen går rundt. $E = mgl$ er grensen mellom de to typene bevegelse.
 
 <Callout type="note" title="Bevart">
 Energien $E = \tfrac12 ml^2\dot\theta^2 - mgl\cos\theta$, fordi $\partial L/\partial t = 0$ og føringen er tidsuavhengig. Ingen syklisk koordinat.
@@ -166,12 +166,12 @@ Energien $E = \tfrac12 ml^2\dot\theta^2 - mgl\cos\theta$, fordi $\partial L/\par
 
 ## Den sfæriske pendelen
 
-Samme kule og stang, men opphenget er et kuleledd, så kula kan svinge fritt i alle retninger. Tyngdekraften er fortsatt den eneste kraften som gjør arbeid. En rotasjon om loddlinja endrer verken $T$ eller $V$, og den symmetrien gir en bevart størrelse til.
+Ei kule med masse $m$ henger i en stiv, masseløs stang med lengde $l$ fra et kuleledd, så kula kan svinge fritt i alle retninger. Tyngdekraften er den eneste kraften som gjør arbeid. En rotasjon om loddlinja endrer verken $T$ eller $V$, og den symmetrien gir en bevart størrelse til.
 
 <Simulation
   src="/sims/sfaerisk-pendel.js"
   title="Den sfæriske pendelen"
-  caption="Kula slippes fra $\theta = 45°$ med sidefarten glidebryteren setter. $\phi$ er tegnet i det vannrette planet gjennom bunnpunktet. Energien og dreieimpulsen om loddlinja er begge bevart, og sammen holder de kula mellom de to stiplede breddesirklene. Med null sidefart svinger den i et plan, altså den plane pendelen."
+  caption="Kula på stanga fra kuleleddet, sluppet fra $\theta = 45°$ med en sidefart. $\theta$ er målt fra loddlinja, $\phi$ er tegnet i det vannrette planet gjennom bunnpunktet, og de to stiplede breddesirklene er vendepunktene for $\theta$."
   host="dom"
   height={300}
 />
@@ -330,7 +330,7 @@ $$
 \end{aligned}
 $$
 
-Ligningen $V_\text{eff}'(\theta_0) = 0$ kan skrives $p_\phi^2\cos\theta_0 = m^2gl^3\sin^4\theta_0$. Den har ingen løsning for $\theta_0 > \pi/2$, der venstresida er negativ, og nøyaktig én for $0 < \theta_0 < \pi/2$, der venstresida avtar og høyresida vokser. $V_\text{eff}$ vokser uten grense både mot $\theta = 0$ og mot $\theta = \pi$, så dette ene stasjonære punktet er minimum av $V_\text{eff}$, og den koniske pendelen er stabil.
+For små $\theta_0$ går $\dot\phi^2$ mot $g/l$, den plane pendelens $\omega^2$. Ligningen $V_\text{eff}'(\theta_0) = 0$ kan skrives $p_\phi^2\cos\theta_0 = m^2gl^3\sin^4\theta_0$. Den har ingen løsning for $\theta_0 > \pi/2$, der venstresida er negativ, og nøyaktig én for $0 < \theta_0 < \pi/2$, der venstresida avtar og høyresida vokser. $V_\text{eff}$ vokser uten grense både mot $\theta = 0$ og mot $\theta = \pi$, så dette ene stasjonære punktet er minimum av $V_\text{eff}$, og den koniske pendelen er stabil.
 
 <Callout type="note" title="Bevart">
 Dreieimpulsen om loddlinja $p_\phi = ml^2\dot\phi\sin^2\theta$, fordi $\phi$ er syklisk, og energien $E$, fordi $\partial L/\partial t = 0$. Sammen gir de det effektive potensialet for $\theta$.
@@ -343,7 +343,7 @@ Ei vogn med masse $M$ ruller friksjonsfritt langs en vannrett skinne, og under v
 <Simulation
   src="/sims/vogn-pendel.js"
   title="Pendel på vogn"
-  caption="Vogna står stille og pendelen slippes fra $60°$. $x$ måles fra merket på skinna. Den oransje pila er massesenterets vannrette posisjon: den står stille mens vogna og kula bytter side, fordi den vannrette impulsen er null og bevart. «Dytt» gir vogna fart, og da glir pila jevnt mens vogna går rykkvis."
+  caption="Vogna på skinna med pendelen under, sluppet fra $60°$ med vogna i ro. $x$ måles fra merket på skinna, og den oransje pila er massesenterets vannrette posisjon."
   host="dom"
   height={300}
 />
@@ -495,7 +495,7 @@ $$
 \end{aligned}
 $$
 
-Massesenterets vannrette posisjon står stille, og vogna må gå motsatt vei av kula.
+Massesenterets vannrette posisjon står stille, og vogna må gå motsatt vei av kula. Med $p_x \neq 0$ er $\frac{d}{dt}(Mx + mx_\text{k}) = p_x$, så massesenteret går med konstant fart $p_x/(M + m)$.
 
 <Callout type="note" title="Bevart">
 Den vannrette impulsen $p_x = M\dot x + m\dot x_\text{k}$, fordi $x$ er syklisk, og energien $E$, fordi $\partial L/\partial t = 0$.
@@ -508,7 +508,7 @@ To legemer med masser $m_1$ og $m_2$ trekker på hverandre med en kraft langs fo
 <Simulation
   src="/sims/sentralkraft.js"
   title="Bane i et sentralpotensial"
-  caption="Legemet går i potensialet $V = -k/r$ om kraftsentrum $O$, med $r$ og $\phi$ tegnet på. Glidebryteren setter farten i startpunktet i forhold til farten som gir sirkelbane. Sektorene fylles i like lange tidsrom og er like store: $p_\phi = \mu r^2\dot\phi$ er bevart, så legemet går fort nær $O$ og sakte langt ute."
+  caption="Legemet med masse $\mu$ i potensialet $V = -k/r$ om kraftsentrum $O$, med $r$ og $\phi$ tegnet på. De fargede sektorene er arealet radiusvektoren sveiper i like lange tidsrom."
   host="dom"
   height={300}
 />
@@ -531,7 +531,7 @@ T &= \tfrac12 m_1\dot{\vec r}_1^{\,2} + \tfrac12 m_2\dot{\vec r}_2^{\,2} \\
 \end{aligned}
 $$
 
-$\mu$ er den <Term name="redusert masse">reduserte massen</Term>. Dermed er $L = \tfrac12 M\dot{\vec R}^2 + \tfrac12\mu\dot{\vec r}^2 - V(r)$. $\vec R$ inngår ikke i $L$ og er syklisk: $M\dot{\vec R}$ er bevart, massesenteret går rett fram, og du kan velge et inertialsystem der det ligger i ro. Igjen står ett legeme med masse $\mu$ i potensialet $V(r)$ om et fast kraftsentrum $O$.
+$\mu$ er den <Term name="redusert masse">reduserte massen</Term>. Dermed er $L = \tfrac12 M\dot{\vec R}^2 + \tfrac12\mu\dot{\vec r}^2 - V(r)$. $\vec R$ inngår ikke i $L$ og er syklisk: $M\dot{\vec R}$ er bevart, massesenteret går rett fram, og du kan velge et inertialsystem der det ligger i ro. Da står ett legeme med masse $\mu$ igjen, i potensialet $V(r)$ om et fast kraftsentrum $O$. Posisjonen til dette legemet er relativkoordinaten $\vec r$, altså $m_1$ sett fra $m_2$, så $O$ er der $m_2$ er. Med massesenteret i ro i origo er $\vec r_1 = (m_2/M)\,\vec r$ og $\vec r_2 = -(m_1/M)\,\vec r$, så begge legemene går i skalerte kopier av banen til $\vec r$, på hver sin side av massesenteret.
 
 Kraften $\vec F = -V'(r)\,\hat r$ er parallell med $\vec r$, så dreieimpulsen $\vec L = \vec r \times \mu\dot{\vec r}$ er bevart:
 
@@ -614,7 +614,7 @@ $$
 \mu\ddot r = \mu r\dot\phi^2 - \frac{k}{r^2}
 $$
 
-Kontroll: i en sirkelbane er $\ddot r = 0$, og da balanserer sentrifugalleddet kraften, $\mu r\dot\phi^2 = k/r^2$, altså $\dot\phi^2 = k/\mu r^3$. Omløpstida er $\tau = 2\pi/\dot\phi$, så $\tau^2 = 4\pi^2\mu r^3/k$ er proporsjonal med $r^3$, Keplers tredje lov for sirkelbaner.
+Kontroll: i en sirkelbane er $\ddot r = 0$, og da balanserer sentrifugalleddet kraften, $\mu r\dot\phi^2 = k/r^2$, altså $\dot\phi^2 = k/\mu r^3$. Omløpstida er $\tau = 2\pi/\dot\phi$, så $\tau^2 = 4\pi^2\mu r^3/k$ er proporsjonal med $r^3$, Keplers tredje lov for sirkelbaner. Med $k = Gm_1m_2$ er $\mu/k = 1/GM$, så $\tau^2 = 4\pi^2r^3/GM$, der $r$ er avstanden mellom legemene. For en planet med $m_1 \ll m_2$ er $M$ omtrent solas masse.
 
 **Symmetrier og bevarte størrelser.** En koordinat er syklisk når $\partial L/\partial q = 0$, og da gir Lagranges ligning $\frac{d}{dt}(\partial L/\partial\dot q) = 0$. Her er $\partial L/\partial\phi = 0$, for $V$ avhenger bare av avstanden. $\phi$ er syklisk, og $\phi$-ligningen sier at
 
@@ -640,7 +640,7 @@ $$
 \frac{dA}{dt} = \tfrac12 r^2\dot\phi = \frac{p_\phi}{2\mu} = \text{konstant}
 $$
 
-Konstant $dA/dt$ er Keplers andre lov, og loven gjelder for ethvert sentralpotensial. Tida inngår ikke eksplisitt, $\partial L/\partial t = 0$, så energifunksjonen $H = \sum_i \dot q_i\,\partial L/\partial\dot q_i - L$ er bevart:
+Konstant $dA/dt$ er Keplers andre lov, og loven gjelder for ethvert sentralpotensial. Når $r^2\dot\phi$ er konstant, er $\dot\phi$ størst der $r$ er minst, så legemet går raskest rundt nær $O$. Tida inngår ikke eksplisitt, $\partial L/\partial t = 0$, så energifunksjonen $H = \sum_i \dot q_i\,\partial L/\partial\dot q_i - L$ er bevart:
 
 $$
 \begin{aligned}
@@ -693,7 +693,7 @@ En partikkel med ladning $q$ og masse $m$ beveger seg i planet vinkelrett på et
 <Simulation
   src="/sims/magnetfelt.js"
   title="Ladd partikkel i magnetfelt"
-  caption="Feltet peker ut av skjermen. Fartspila $\vec v$ snurrer rundt, og kraften $q\vec v \times \vec B$ peker alltid mot sentrum. Krysset er sentrum $(X, Y)$ i sirkelbanen, og sentrum er bevart fordi en forskyvning i planet bare endrer $L$ med en total tidsderivert. «Dytt» endrer farten: krysset hopper til et nytt punkt og blir stående der."
+  caption="Partikkelen i planet, med feltet $\vec B$ ut av skjermen. Pilene er farten $\vec v$ og kraften $q\vec v \times \vec B$, og det oransje krysset er sentrum $(X, Y)$ i sirkelbanen."
   host="dom"
   height={300}
 />
@@ -791,7 +791,7 @@ $$
 \end{aligned}
 $$
 
-og $\dot Q_y = m\ddot y + qB\dot x = 0$. Del på $qB = m\omega$ og sett inn løsningen over:
+og $\dot Q_y = m\ddot y + qB\dot x = 0$. Del på $qB = m\omega$ og sett inn sirkelbanen, der $x - X = (v/\omega)\sin(\omega t + \delta) = -\dot y/\omega$ og $y - Y = (v/\omega)\cos(\omega t + \delta) = \dot x/\omega$:
 
 $$
 \begin{aligned}
@@ -830,8 +830,10 @@ $$
 
 Leddene fra $\vec A$ faller bort. Energien er den kinetiske energien alene, for magnetkraften står vinkelrett på farten og gjør ikke arbeid.
 
-<Callout type="warning" title="Impulsene avhenger av gaugevalget, de bevarte størrelsene gjør det ikke">
-Med $\vec A = (0, Bx, 0)$ er $p_y = m\dot y + qBx$ bevart fordi $y$ er syklisk. Med det symmetriske $\vec A$ er $p_y$ ikke bevart, og den samme størrelsen $m\dot y + qBx$ kommer fra Noethers teorem i stedet. De to vektorpotensialene skiller seg med $\nabla\chi$, der $\chi = \tfrac12 Bxy$, så $L$ får tillegget $q\,d\chi/dt$. Tillegget øker $p_y$ med $\partial(q\chi)/\partial y = \tfrac12 qBx$, og det øker $F$ for forskyvningen i $y$ med det samme, fra $-\tfrac12 qBx$ til $0$. Summen $p_y - F = m\dot y + qBx$ er den samme i begge gaugene.
+Hvilke koordinater som er sykliske, avhenger av hvilket $\vec A$ du velger. Med $\vec A = (0, Bx, 0)$ er $y$ syklisk, og $p_y = m\dot y + qBx$ er bevart direkte. Med det symmetriske $\vec A$ er $p_y = m\dot y + \tfrac12 qBx$ ikke bevart, og den samme størrelsen $m\dot y + qBx$ kommer fra Noethers teorem i stedet. De to vektorpotensialene skiller seg med $\nabla\chi$, der $\chi = \tfrac12 Bxy$, så $L$ får tillegget $q\,d\chi/dt$. Tillegget øker $p_y$ med $\partial(q\chi)/\partial y = \tfrac12 qBx$, og det øker $F$ for forskyvningen i $y$ like mye, fra $-\tfrac12 qBx$ til $0$. Den bevarte størrelsen $p_y - F = m\dot y + qBx$ er derfor den samme i begge gaugene.
+
+<Callout type="warning" title="Impulsene avhenger av gaugen">
+Den generaliserte impulsen $p_y$ endrer seg med valget av $\vec A$, og er bevart bare i gaugen der $y$ er syklisk. Den bevarte størrelsen $m\dot y + qBx$ er den samme i begge gaugene.
 </Callout>
 
 <Callout type="note" title="Bevart">
@@ -845,7 +847,7 @@ En ring med radius $a$ står loddrett og roterer med gitt vinkelfart $\omega$ om
 <Simulation
   src="/sims/roterende-ring.js"
   title="Perle på roterende ring"
-  caption="Ringen roterer om den stiplede aksen med vinkelfarten glidebryteren setter, og perla glir på den. Den stiplede sirkelen er banen perla sveiper. Under $\omega = \sqrt{g/a}$ svinger perla om bunnpunktet. Over blir bunnpunktet ustabilt, og perla svinger om det nye likevektspunktet $\theta_0$ (oransje) i stedet."
+  caption="Ringen med radius $a$ roterer med vinkelfarten $\omega$ om den stiplede loddrette aksen, og perla glir på ringen. Den stiplede sirkelen er banen perla sveiper ut, og det oransje punktet er likevektspunktet $\theta_0$."
   host="dom"
   height={300}
 />
@@ -936,7 +938,7 @@ $$
 \end{aligned}
 $$
 
-Koeffisienten er negativ, så $\theta_0$ er stabilt, med svingefrekvens $\omega\sin\theta_0$.
+Koeffisienten er negativ, så $\theta_0$ er stabilt, med svingefrekvens $\omega\sin\theta_0$. Ved $\omega^2 = g/a$ er $\theta_0 = 0$ og frekvensen null, akkurat der bunnpunktet slutter å være stabilt.
 
 **Symmetrier og bevarte størrelser.** $\partial L/\partial\theta \neq 0$, så ingen koordinat er syklisk. Tida inngår ikke eksplisitt i $L$, for $\omega$ er konstant og $\omega t$ forsvant da fartene ble kvadrert. $\partial L/\partial t = 0$, så energifunksjonen $H = \dot\theta\,\partial L/\partial\dot\theta - L$ er bevart, $dH/dt = -\partial L/\partial t = 0$:
 
@@ -962,8 +964,20 @@ $$
 
 Så lenge $H < mga$, som er $V_\text{eff}$ i toppunktet, svinger perla mellom to vendepunkter der $V_\text{eff}(\theta) = H$. Med større $H$ går den rundt ringen. Slippes den fra ro nær bunnpunktet med $\omega^2 > g/a$, er bunnpunktet et maksimum i $V_\text{eff}$, så den glir ut og svinger om $\theta_0$ med startpunktet som det ene vendepunktet; uten friksjon blir den aldri liggende i minimum.
 
+$H$ er ikke energien. Leddet $\tfrac12 ma^2\omega^2\sin^2\theta$ i $T$ er av grad null i $\dot\theta$, så det skifter fortegn i $H$, og $H$ og $E$ skiller lag:
+
+$$
+\begin{aligned}
+E &= T + V = \tfrac12 ma^2\dot\theta^2 + \tfrac12 ma^2\omega^2\sin^2\theta - mga\cos\theta \\
+&= H + ma^2\omega^2\sin^2\theta \\
+\Rightarrow\quad \frac{dE}{dt} &= 2ma^2\omega^2\dot\theta\sin\theta\cos\theta \neq 0
+\end{aligned}
+$$
+
+Energien er ikke bevart. Ringen dytter perla vinkelrett på ringen, men ringen dreier, så perla beveger seg også langs kraften. Føringskraften står vinkelrett på forskyvningene ved fast tid, ikke på den virkelige bevegelsen, og arbeidet den gjør, kommer fra motoren som holder $\omega$ fast. Sett fra ringen er $-\tfrac12 ma^2\omega^2\sin^2\theta$ sentrifugalpotensialet, og $H$ er energien i det roterende systemet.
+
 <Callout type="warning" title="$H$ er ikke energien">
-Energien er $E = T + V = \tfrac12 ma^2\dot\theta^2 + \tfrac12 ma^2\omega^2\sin^2\theta - mga\cos\theta = H + ma^2\omega^2\sin^2\theta$, og den er ikke bevart: $dE/dt = 2ma^2\omega^2\dot\theta\sin\theta\cos\theta \neq 0$. Motoren som holder $\omega$ fast, gjør arbeid på perla. Leddet $\tfrac12 ma^2\omega^2\sin^2\theta$ i $T$ er av grad null i $\dot\theta$, og slike ledd er grunnen til at $H$ og $E$ skiller lag når føringene er tidsavhengige. Sett fra ringen er $-\tfrac12 ma^2\omega^2\sin^2\theta$ sentrifugalpotensialet, og $H$ er energien i det roterende systemet.
+Energien $E = H + ma^2\omega^2\sin^2\theta$ er ikke bevart, fordi motoren gjør arbeid på perla gjennom ringen. Den bevarte størrelsen er $H$, energien sett fra ringen.
 </Callout>
 
 <Callout type="note" title="Bevart">
@@ -977,7 +991,7 @@ To pendler etter hverandre: en masseløs stang med lengde $l_1$ og ei kule med m
 <Simulation
   src="/sims/dobbeltpendel.js"
   title="Dobbeltpendelen"
-  caption="To like dobbeltpendler slippes samtidig fra utslaget glidebryteren setter, med en halv grads forskjell i $\theta_2$. Ved små utslag er ligningene nesten lineære, og de to følger hverandre lenge. Ved store utslag er energien den eneste bevarte størrelsen, og de skiller lag etter få svingninger."
+  caption="To like dobbeltpendler, sluppet samtidig. Den oransje tvillingen starter med en halv grads forskjell i $\theta_2$, og de stiplede linjene er loddlinjene $\theta_1$ og $\theta_2$ måles fra."
   host="dom"
   height={320}
 />
@@ -1117,7 +1131,7 @@ En pendel med masse $m$ og lengde $l$ henger fra et oppheng som drives loddrett 
 <Simulation
   src="/sims/kapitza.js"
   title="Kapitzas pendel"
-  caption="Opphenget drives opp og ned langs ei loddrett skinne med slaget $2A = 0{,}16\,l$ og frekvensen glidebryteren setter, og pendelen slippes nesten opp ned. Under $\Omega = \sqrt{2gl}/A$ faller den ned og svinger om bunnpunktet; over blir den stående opp ned og vippe. Litt demping er lagt til så bevegelsen faller til ro."
+  caption="Pendelen med opphenget som drives opp og ned langs ei loddrett skinne med slaget $2A = 0{,}16\,l$, sluppet nesten opp ned. Simuleringen har litt demping."
   host="dom"
   height={300}
 />
@@ -1168,7 +1182,7 @@ $$
 \end{aligned}
 $$
 
-Stryk den totale tidsderiverte. Igjen står
+Stryk den totale tidsderiverte. Da er Lagrangefunksjonen
 
 $$
 L = \tfrac12 ml^2\dot\theta^2 + ml\left(g + \ddot y_\text{p}\right)\cos\theta
@@ -1222,7 +1236,7 @@ $$
 \end{aligned}
 $$
 
-Sett $\theta = \Theta + \xi$ inn i ligningen med $\sin\theta \approx \sin\Theta + \xi\cos\Theta$, og midle over én periode av den raske svingningen. Leddene som er lineære i $\cos\Omega t$ eller i $\xi$, midler til null. Igjen står produktet av det raske leddet og $\xi$, med $\overline{\cos^2\Omega t} = \tfrac12$:
+Sett $\theta = \Theta + \xi$ inn i ligningen med $\sin\theta \approx \sin\Theta + \xi\cos\Theta$, og midle over én periode av den raske svingningen. Leddene som er lineære i $\cos\Omega t$ eller i $\xi$, midler til null, og produktet av det raske leddet og $\xi$ står igjen, med $\overline{\cos^2\Omega t} = \tfrac12$:
 
 $$
 \begin{aligned}
@@ -1250,6 +1264,8 @@ V_\text{eff}''(\pi) &= mgl\cos\pi + \frac{mA^2\Omega^2}{2}\cos 2\pi \\
 &\Leftrightarrow\quad A^2\Omega^2 > 2gl
 \end{aligned}
 $$
+
+Over $\Omega = \sqrt{2gl}/A$ står pendelen altså stabilt opp ned, og med $A = 0$ er toppunktet ustabilt som for den vanlige pendelen. Grensen er $\Omega^2 = 2(l/A)^2\,g/l$, og med $A \ll l$ er den langt over $g/l$, så kravet $\Omega \gg \sqrt{g/l}$ holder.
 
 <Callout type="note" title="Bevart">
 Ingen: $\partial L/\partial t \neq 0$, $\theta$ er ikke syklisk, og forskyvningen $\theta \to \theta + \epsilon$ endrer $L$ med et ledd som ikke er en total tidsderivert. Den midlede bevegelsen har likevel en bevart størrelse, $\tfrac12 ml^2\dot\Theta^2 + V_\text{eff}(\Theta)$.

@@ -292,7 +292,7 @@ formulas:
   - id: keplers-tredje
     section: Tolegemeproblemet
     tex: "\\begin{aligned} T^2 &= \\frac{4\\pi^2\\mu}{k}\\,a^3 \\\\ &= \\frac{4\\pi^2}{G(m_1 + m_2)}\\,a^3 \\end{aligned}"
-    label: "Keplers tredje lov, av arealfarten $J/2\\mu$ og ellipsens areal $\\pi ab$. Med $k = Gm_1m_2$ faller massene ut i $\\mu/k = 1/G(m_1 + m_2)$."
+    label: "Keplers tredje lov, av arealfarten $J/2\\mu$ og ellipsens areal $\\pi ab$. $a$ er den store halvaksen i banen til $\\vec r$, planetens bane sett fra sola. Med $k = Gm_1m_2$ faller massene ut i $\\mu/k = 1/G(m_1 + m_2)$."
   - id: runge-lenz
     section: Tolegemeproblemet
     tex: "\\begin{aligned} \\vec A &= \\vec p \\times \\vec L - \\mu k\\,\\hat r \\\\ |\\vec A| &= \\mu k e \\end{aligned}"
@@ -447,7 +447,7 @@ formulas:
   - id: dobbeltpendel
     section: Kjente systemer
     tex: "\\begin{aligned} L &= \\tfrac12 (m_1 + m_2)\\,l_1^2\\dot\\theta_1^2 + \\tfrac12 m_2 l_2^2\\dot\\theta_2^2 + m_2 l_1 l_2\\dot\\theta_1\\dot\\theta_2\\cos(\\theta_1 - \\theta_2) \\\\ &\\quad + (m_1 + m_2)\\,g l_1\\cos\\theta_1 + m_2 g l_2\\cos\\theta_2 \\end{aligned}"
-    label: "Dobbeltpendelen med begge vinklene fra loddlinja. Bare energien er bevart. For små utslag med $m_1 = m_2$ og $l_1 = l_2 = l$ er normalfrekvensene gitt ved $\\omega^2 = (2 \\pm \\sqrt 2)\\,g/l$."
+    label: "Dobbeltpendelen med begge vinklene fra loddlinja. Bare energien er bevart. For små utslag med $m_1 = m_2$ og $l_1 = l_2 = l$ er egenfrekvensene gitt ved $\\omega^2 = (2 \\pm \\sqrt 2)\\,g/l$."
   - id: kapitza
     section: Kjente systemer
     tex: "\\begin{aligned} L &= \\tfrac12 ml^2\\dot\\theta^2 + ml(g + \\ddot y_\\text{p})\\cos\\theta \\\\ V_\\text{eff}(\\Theta) &= -mgl\\cos\\Theta + \\tfrac14 mA^2\\Omega^2\\sin^2\\Theta \\end{aligned}"
@@ -481,7 +481,7 @@ symbols:
   - { tex: "L", meaning: "Lagrangefunksjonen, $T - V$", unit: "J", section: "Lagrangeformalismen", term: "Lagrangefunksjon", formula: lagrangefunksjon, id: lagrangefunksjon, note: "Ikke dreieimpulsen $\\vec L$ eller Lagrangepunktene $L_1$ til $L_5$." }
   - { tex: "S", meaning: "Virkningen, $\\int L\\,dt$ langs en bane", unit: "J·s", section: "Lagrangeformalismen", term: "Virkning", formula: virkning, note: "Med Lagrange-multiplikatorer er $S$ snordraget i pendelen, $S = -\\lambda$." }
   - { tex: "f(q, t)", meaning: "Føringen, skrevet $f(q, t) = 0$; med flere føringer $f_\\alpha$", section: "Lagrangeformalismen", term: "Holonom føring", formula: lagrange-multiplikator, note: "I $L' = L + df/dt$ er $f$ en vilkårlig funksjon av koordinatene og tida, ikke en føring." }
-  - { tex: "\\lambda", meaning: "Lagrange-multiplikatoren; $\\lambda\\,\\partial f/\\partial q_k$ er føringskraften", section: "Lagrangeformalismen", term: "Lagrange-multiplikator", formula: lagrange-multiplikator, id: lambda, note: "Har dimensjon kraft når $f$ er en lengde. Ikke vekstraten $\\lambda$ i $e^{\\lambda t}$ nær en ustabil likevekt." }
+  - { tex: "\\lambda", meaning: "Lagrange-multiplikatoren; $\\lambda\\,\\partial f/\\partial q_k$ er føringskraften", section: "Lagrangeformalismen", term: "Lagrange-multiplikator", formula: lagrange-multiplikator, id: lambda, note: "Positiv $\\lambda$ peker mot økende $f$. Er føringen skrevet med $|\\nabla f| = 1$, er $|\\lambda|$ størrelsen av føringskraften. Ikke vekstraten $\\lambda$ i $e^{\\lambda t}$ nær en ustabil likevekt." }
   - { tex: "p_i", meaning: "Generalisert impuls, $\\partial L/\\partial\\dot q_i$", section: "Lagrangeformalismen", term: "Generalisert impuls", formula: generalisert-impuls, id: p-i, note: "Bevart når $q_i$ er syklisk. For en ladd partikkel er $\\vec p = m\\dot{\\vec r} + q\\vec A$ og ikke bare $m\\dot{\\vec r}$." }
   - { tex: "H", meaning: "Energifunksjonen, $\\sum_i \\dot q_i p_i - L$", unit: "J", section: "Lagrangeformalismen", term: "Energifunksjon", formula: energifunksjon, id: h, note: "Lik $T + V$ bare når føringene er tidsuavhengige og $V$ ikke avhenger av hastighetene." }
   - { tex: "\\epsilon,\\ F_i", meaning: "Parameteren og retningen i symmetrien $q_i \\to q_i + \\epsilon F_i$", section: "Lagrangeformalismen", term: "Kontinuerlig symmetri", formula: noether, note: "$F_i$ er ikke en kraft. Ikke $\\varepsilon$ i den anharmoniske oscillatoren." }
@@ -516,7 +516,7 @@ symbols:
   - { tex: "\\omega_n", meaning: "Egenfrekvensene, røttene av sekulærligningen", unit: "rad/s", section: "Små svingninger", term: "Egenfrekvens", formula: sekulaerligning }
   - { tex: "\\mathbf A_n", meaning: "Modevektoren, forholdet mellom utslagene i mode $n$", section: "Små svingninger", term: "Normalmode", formula: sekulaerligning }
   - { tex: "\\xi_n", meaning: "Normalkoordinaten, utslaget langs mode $n$", section: "Små svingninger", term: "Normalkoordinat", formula: normalkoordinater, note: "Ellers er $\\xi$ et lite utslag, som den raske delen av vinkelen hos Kapitzas pendel, eller $x + iy$ for Foucaults pendel." }
-  - { tex: "\\lambda", meaning: "Eksponenten i $e^{\\lambda t}$ for utslaget nær en likevekt", unit: "s⁻¹", section: "Små svingninger", note: "Likevekten er stabil når alle røttene $\\lambda^2$ er negative. Ikke Lagrange-multiplikatoren $\\lambda$. I kjeden er $\\lambda$ bølgelengden, og i $V = \\tfrac12 kx^2 + \\tfrac14\\lambda x^4$ en koeffisient." }
+  - { tex: "\\lambda", meaning: "Eksponenten i $e^{\\lambda t}$ for utslaget nær en likevekt", unit: "s⁻¹", section: "Små svingninger", note: "Likevekten er stabil når alle røttene $\\lambda^2$ er reelle og negative. Ikke Lagrange-multiplikatoren $\\lambda$. I kjeden er $\\lambda$ bølgelengden, og i $V = \\tfrac12 kx^2 + \\tfrac14\\lambda x^4$ en koeffisient." }
   - { tex: "\\varphi", meaning: "Faseforskjellen mellom naboatomer i kjeden, $2\\pi n/N$", unit: "rad", section: "Små svingninger", term: "Dispersjonsrelasjon", formula: kjede-dispersjon }
   # ── Stive legemer ──
   - { tex: "\\hat e_a'", meaning: "Enhetsvektorene langs aksene som sitter fast i legemet", section: "Stive legemer", formula: stivt-legeme-hastighet, note: "$a = 1, 2, 3$ nummererer aksene og $i$ partiklene. Komponentene av $\\vec\\omega$, $\\vec L$ og $\\boldsymbol I$ tas langs disse aksene." }
@@ -527,12 +527,12 @@ symbols:
   # ── Eulers ligninger og snurrebassen ──
   - { tex: "\\hat e_a,\\ \\hat e_N", meaning: "Rommets akser i $K$, og knutelinja", section: "Eulers ligninger og snurrebassen", term: "Knutelinje", formula: rotasjonsmatrise, note: "Legemets akser er $\\hat e_a'$. For en tung snurrebass peker $\\hat e_3$ loddrett opp." }
   - { tex: "\\boldsymbol R", meaning: "Rotasjonsmatrisen, $R_{ab} = \\hat e_a' \\cdot \\hat e_b$", section: "Eulers ligninger og snurrebassen", term: "Rotasjonsmatrise", formula: rotasjonsmatrise, note: "Ikke massesenteret $\\vec R$ eller en radius $R$." }
-  - { tex: "\\phi,\\ \\theta,\\ \\psi", meaning: "Eulervinklene, dreiningene om $\\hat e_3$, om knutelinja og om $\\hat e_3'$", unit: "rad", section: "Eulers ligninger og snurrebassen", term: "Eulervinkler", formula: eulervinkler-omega, note: "For en tung snurrebass er $\\theta$ vinkelen mellom loddlinja og symmetriaksen, $\\phi$ presesjonsvinkelen og $\\psi$ dreiningen om symmetriaksen. Eksamensoppgavene skriver $\\varphi$." }
+  - { tex: "\\phi,\\ \\theta,\\ \\psi", meaning: "Eulervinklene, dreiningene om $\\hat e_3$, om knutelinja og om $\\hat e_3'$", unit: "rad", section: "Eulers ligninger og snurrebassen", term: "Eulervinkler", formula: eulervinkler-omega, note: "For en tung snurrebass er $\\theta$ vinkelen mellom loddlinja og symmetriaksen, $\\phi$ presesjonsvinkelen og $\\psi$ dreiningen om symmetriaksen, målt fra knutelinja. Spinnet er $\\omega_3 = \\dot\\psi + \\dot\\phi\\cos\\theta$, ikke $\\dot\\psi$. Eksamensoppgavene skriver $\\varphi$." }
   - { tex: "\\omega_3", meaning: "Spinnet, komponenten av $\\vec\\omega$ langs symmetriaksen", unit: "rad/s", section: "Eulers ligninger og snurrebassen", formula: snurrebass-impulser, note: "$\\omega_3 = \\dot\\psi + \\dot\\phi\\cos\\theta$ er konstant for både den frie og den tunge symmetriske snurrebassen." }
-  - { tex: "\\Omega", meaning: "Vinkelfrekvensen $\\vec\\omega$ roterer med om symmetriaksen sett fra en fri symmetrisk snurrebass, $(I_3 - I_1)\\,\\omega_3/I_1$", unit: "rad/s", section: "Eulers ligninger og snurrebassen", term: "Symmetrisk snurrebass", formula: fri-symmetrisk-snurrebass, note: "For jorda er $\\Omega \\approx \\omega_3/300$. Sett fra rommet presesserer symmetriaksen med en annen vinkelfart, $|\\vec L|/I_1$." }
+  - { tex: "\\Omega", meaning: "Vinkelfrekvensen $\\vec\\omega$ roterer med om symmetriaksen sett fra en fri symmetrisk snurrebass, $(I_3 - I_1)\\,\\omega_3/I_1$", unit: "rad/s", section: "Eulers ligninger og snurrebassen", term: "Symmetrisk snurrebass", formula: fri-symmetrisk-snurrebass, note: "For jorda er $\\Omega \\approx \\omega_3/300$. Sett fra rommet presesserer symmetriaksen med $|\\vec L|/I_1$. De to henger sammen ved $\\vec\\omega = \\vec L/I_1 - \\Omega\\,\\hat e_3'$." }
   - { tex: "p_\\phi,\\ p_\\psi", meaning: "De bevarte impulsene til den tunge snurrebassen, komponentene av $\\vec L$ langs loddlinja og langs symmetriaksen", unit: "kg·m²/s", section: "Eulers ligninger og snurrebassen", formula: snurrebass-impulser }
   - { tex: "l", meaning: "Avstanden fra spissen til massesenteret for en tung snurrebass", unit: "m", section: "Eulers ligninger og snurrebassen", formula: tung-snurrebass, note: "Eksamensoppgaven kaller den $h$. For den fysiske pendelen heter den samme avstanden $D$." }
-  - { tex: "\\varepsilon", meaning: "Styrken til $x^3$-leddet i den anharmoniske oscillatoren", unit: "m⁻²·s⁻²", section: "Små svingninger", formula: anharmonisk-frekvens, note: "Ikke $\\epsilon$ i Noethers teorem. I Greens funksjon er $i\\varepsilon$ forskyvningen av polene." }
+  - { tex: "\\varepsilon", meaning: "Styrken til $x^3$-leddet i den anharmoniske oscillatoren", unit: "m⁻²·s⁻²", section: "Små svingninger", formula: anharmonisk-frekvens, note: "Ikke $\\epsilon$ i Noethers teorem. I Greens funksjon er $i\\varepsilon$ forskyvningen av polene, grensen der en svak friksjon går mot null." }
   # ── Kjente systemer ──
   - { tex: "l", meaning: "Lengden til pendelen; $l_1$ og $l_2$ for dobbeltpendelen", unit: "m", section: "Kjente systemer", formula: plan-pendel, note: "I eksamensoppgavene står $\\ell$ både for en stanglengde og for dreieimpulsen." }
   - { tex: "\\theta", meaning: "Vinkelen fra loddlinja nedover for en pendel, og fra bunnpunktet for perla på ringen", unit: "rad", section: "Kjente systemer", formula: plan-pendel, note: "$\\theta = \\pi$ er opp ned. For et legeme som ruller, er $\\theta$ dreievinkelen. I Greens funksjon er $\\theta(\\tau)$ trinnfunksjonen." }
@@ -550,7 +550,7 @@ glossary:
     definition: "Transformasjonen $t' = t$, $\\vec r\\,' = \\vec r - \\vec v t$ mellom koordinatene i to inertialsystemer når tida regnes som absolutt."
   - term: Konservativ kraft
     section: Krefter og potensial
-    definition: "Kraftfelt der arbeidet mellom to punkter er det samme for alle baner. Et slikt felt kan skrives som $\\vec F = -\\nabla V$."
+    definition: "Kraftfelt der arbeidet mellom to punkter er det samme for alle baner. Et slikt felt kan skrives som $\\vec F = -\\nabla V$, og energien $T + V$ er bevart."
   - term: Eksakt differensial
     section: Krefter og potensial
     definition: "En differensialform $F_x\\,dx + F_y\\,dy + F_z\\,dz$ som er differensialet til en funksjon. Linjeintegralet av en eksakt form avhenger bare av endepunktene."
@@ -583,7 +583,7 @@ glossary:
     definition: "Indre krefter som virker langs forbindelseslinja mellom partiklene. Kravet om slike krefter kalles også den sterke loven om aksjon og reaksjon. Med sentrale indre krefter endres dreieimpulsen bare av det ytre dreiemomentet."
   - term: Redusert masse
     section: Partikkelsystemer
-    definition: "Massen $\\mu = m_1 m_2/(m_1 + m_2)$ som relativbevegelsen i tolegemeproblemet følger, $\\mu\\ddot{\\vec r} = \\vec F_{12}$."
+    definition: "Massen $\\mu = m_1 m_2/(m_1 + m_2)$ som relativbevegelsen i tolegemeproblemet følger, $\\mu\\ddot{\\vec r} = \\vec F_{12}$. Relativkoordinaten $\\vec r = \\vec r_1 - \\vec r_2$ er $m_1$ sett fra $m_2$, så den beveger seg som ett legeme med masse $\\mu$ om et fast kraftsentrum der $m_2$ er."
   - term: Elastisk støt
     section: Støt
     definition: "Støt der både impulsen og den kinetiske energien er bevart. Det er utfallet når kraften mellom partiklene er konservativ."
@@ -595,7 +595,7 @@ glossary:
     definition: "Betingelse på koordinatene på formen $f(\\vec r_1, \\dots, \\vec r_N, t) = 0$, som snorlengden til en pendel. Hver slik føring fjerner én frihetsgrad. Tidsavhengige føringer kalles rheonome, tidsuavhengige skleronome."
   - term: Ikke-holonom føring
     section: Lagrangeformalismen
-    definition: "Føring som ikke kan skrives som $f(\\vec r_1, \\dots, \\vec r_N, t) = 0$: en ulikhet, som en partikkel oppå en fast kule, eller en betingelse på hastighetene som ikke kan integreres, som rulling uten å gli. Den fjerner ingen koordinat."
+    definition: "Føring som ikke kan skrives som $f(\\vec r_1, \\dots, \\vec r_N, t) = 0$: en ulikhet, som en partikkel oppå en fast kule, eller en betingelse på hastighetene som ikke kan integreres, som rulling uten å gli. Den fjerner ingen koordinat. Så lenge partikkelen ligger an mot kula, er avstanden til sentrum lik radien, og den likheten kan behandles som en holonom føring."
   - term: Frihetsgrader
     section: Lagrangeformalismen
     definition: "Antall uavhengige størrelser som trengs for å angi systemets konfigurasjon. $N$ partikler med $k$ holonome føringer har $3N - k$."
@@ -607,7 +607,7 @@ glossary:
     definition: "Rommet med de generaliserte koordinatene som akser. Hele systemets bevegelse er én kurve der."
   - term: Føringskraft
     section: Lagrangeformalismen
-    definition: "Kraften som holder en føring oppfylt, som snordrag og normalkrefter. Den står vinkelrett på forskyvningene føringen tillater og forsvinner når føringene settes inn i Lagrangefunksjonen. En Lagrange-multiplikator henter den tilbake."
+    definition: "Kraften som holder en føring oppfylt, som snordrag og normalkrefter. En friksjonsfri føringskraft står vinkelrett på forskyvningene føringen tillater ved fast tid, så den forsvinner når føringene settes inn i Lagrangefunksjonen. Avhenger føringen av tida, som en ring som en motor dreier, kan føringskraften likevel gjøre arbeid. En Lagrange-multiplikator henter føringskraften tilbake."
   - term: Lagrangefunksjon
     section: Lagrangeformalismen
     definition: "Funksjonen $L = T - V$ av koordinater og hastigheter. Den bestemmer dynamikken gjennom Lagranges ligninger."
@@ -742,7 +742,7 @@ glossary:
     definition: "Svingningen i vinkelen $\\theta$ mellom loddlinja og symmetriaksen mens en tung snurrebass presesserer."
   - term: Rotasjonsmatrise
     section: Eulers ligninger og snurrebassen
-    definition: "Matrisen $R_{ab} = \\hat e_a' \\cdot \\hat e_b$ mellom to sett akser. Den er ortogonal, $\\boldsymbol R\\boldsymbol R^{\\mathsf T} = \\boldsymbol 1$, og har determinant $+1$. Rotasjonene danner gruppen SO(3), og en ortogonal matrise med determinant $-1$ inneholder en speiling."
+    definition: "Matrisen $R_{ab} = \\hat e_a' \\cdot \\hat e_b$ mellom to sett akser. Den er ortogonal, $\\boldsymbol R\\boldsymbol R^{\\mathsf T} = \\boldsymbol 1$, og har determinant $+1$. En ortogonal matrise med determinant $-1$ inneholder en speiling."
   - term: Eulervinkler
     section: Eulers ligninger og snurrebassen
     definition: "Tre vinkler $\\phi$, $\\theta$ og $\\psi$ som gir orienteringen til et stivt legeme som tre dreininger etter hverandre, $\\phi$ om rommets $\\hat e_3$, $\\theta$ om knutelinja og $\\psi$ om legemets $\\hat e_3'$."
