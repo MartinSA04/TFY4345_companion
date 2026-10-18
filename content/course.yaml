@@ -428,6 +428,51 @@ formulas:
     tex: "I_3^2\\omega_3^2 > 4I_1Mgl"
     label: "Betingelsen for at en snurrebass står stabilt rett opp, $\\theta = 0$."
 
+  - id: hamiltonfunksjon
+    section: Hamiltonformalismen
+    tex: "H(q, p, t) = \\sum_i p_i\\dot q_i \\allowbreak - L(q, \\dot q, t)"
+    label: "Hamiltonfunksjonen, energifunksjonen skrevet ved koordinatene, impulsene og tida. Hastighetene $\\dot q_i$ er uttrykt ved $q$, $p$ og $t$ ved å løse $p_i = \\partial L/\\partial\\dot q_i$."
+  - id: hamiltons-ligninger
+    section: Hamiltonformalismen
+    tex: "\\dot q_i = \\frac{\\partial H}{\\partial p_i} \\allowbreak\\qquad \\dot p_i = -\\frac{\\partial H}{\\partial q_i} \\allowbreak\\qquad \\frac{dH}{dt} = \\frac{\\partial H}{\\partial t} = -\\frac{\\partial L}{\\partial t}"
+    label: "<b>Hamiltons ligninger</b>, $2n$ førsteordens ligninger. $H$ er bevart når den ikke avhenger eksplisitt av tida. En koordinat som mangler i $L$, mangler også i $H$, og impulsen til den er bevart."
+  - id: sentralkraft-hamilton
+    section: Hamiltonformalismen
+    tex: "H = \\frac{p_r^2}{2\\mu} + \\frac{p_\\phi^2}{2\\mu r^2} + V(r)"
+    label: "Relativbevegelsen i et sentralpotensial. $p_\\phi = J$ er bevart og kan settes inn i $H$, som da blir $p_r^2/2\\mu + V_\\text{eff}(r)$. Satt inn i $L$ gir den samme konstanten feil fortegn på sentrifugalleddet."
+  - id: separatrise
+    section: Hamiltonformalismen
+    tex: "p_\\theta = \\pm 2m\\sqrt{gl^3}\\,\\cos\\frac{\\theta}{2}"
+    label: "Separatrisen $E = mgl$ i faserommet til den plane pendelen, med $H = p_\\theta^2/2ml^2 - mgl\\cos\\theta$. Innenfor svinger pendelen, utenfor går den rundt."
+  - id: hamilton-ladd-partikkel
+    section: Hamiltonformalismen
+    tex: "H = \\frac{(\\vec p - q\\vec A)^2}{2m} + q\\phi"
+    label: "Ladd partikkel i potensialene $\\phi$ og $\\vec A$. Impulsen er $\\vec p = m\\dot{\\vec r} + q\\vec A$, så verdien av $H$ er $\\tfrac12 m\\dot{\\vec r}^{\\,2} + q\\phi$."
+  - id: syklotronfrekvens
+    section: Hamiltonformalismen
+    tex: "\\omega_c = \\frac{qB}{m}"
+    label: "Vinkelfrekvensen til en ladd partikkel i et uniformt magnetfelt, med fortegn. For $q > 0$ går sirkelen med klokka sett fra spissen av $\\vec B$, for $q < 0$ mot klokka. Syklotronfrekvensen $|\\omega_c| = |q|B/m$ er den samme for alle radier og farter."
+  - id: hamiltons-prinsipp-faserom
+    section: Hamiltonformalismen
+    tex: "S = \\int_{t_1}^{t_2} \\Bigl(\\sum_i p_i\\dot q_i - H\\Bigr)\\,dt"
+    label: "Virkningen i faserommet. $\\delta S = 0$ med $q$ og $p$ variert hver for seg og $\\delta q = 0$ i endepunktene gir Hamiltons ligninger."
+  - id: poissonklamme
+    section: Hamiltonformalismen
+    tex: "\\begin{aligned} \\{f, g\\} &= \\sum_i \\left(\\frac{\\partial f}{\\partial q_i}\\frac{\\partial g}{\\partial p_i} - \\frac{\\partial f}{\\partial p_i}\\frac{\\partial g}{\\partial q_i}\\right) \\\\ \\frac{df}{dt} &= \\{f, H\\} + \\frac{\\partial f}{\\partial t} \\end{aligned}"
+    label: "<b>Poissonklammen</b> og tidsendringen til $f(q, p, t)$. En størrelse uten eksplisitt tidsavhengighet er bevart når $\\{f, H\\} = 0$."
+  - id: fundamentale-klammer
+    section: Hamiltonformalismen
+    tex: "\\{q_i, q_j\\} = 0 \\allowbreak\\qquad \\{p_i, p_j\\} = 0 \\allowbreak\\qquad \\{q_i, p_j\\} = \\delta_{ij}"
+    label: "De fundamentale Poissonklammene. Med dem, lineariteten og produktregelen $\\{fg, h\\} = f\\{g, h\\} + \\{f, h\\}g$ regner du ut klammer mellom polynomer i $q$ og $p$."
+  - id: jacobis-identitet
+    section: Hamiltonformalismen
+    tex: "\\{f, \\{g, h\\}\\} \\allowbreak + \\{g, \\{h, f\\}\\} \\allowbreak + \\{h, \\{f, g\\}\\} = 0"
+    label: "Jacobis identitet. Med $h = H$ gir den Poissons teorem. Er $f$ og $g$ bevart uten eksplisitt tidsavhengighet, er også $\\{f, g\\}$ bevart."
+  - id: dreieimpuls-klammer
+    section: Hamiltonformalismen
+    tex: "\\{L_i, L_j\\} = \\sum_k \\epsilon_{ijk}L_k \\allowbreak\\qquad \\{L^2, L_i\\} = 0"
+    label: "Poissonklammene for dreieimpulsen. To bevarte komponenter gir den tredje. Kommutatorene i kvantemekanikken har samme form, $[\\hat L_x, \\hat L_y] = i\\hbar\\hat L_z$."
+
   - id: plan-pendel
     section: Kjente systemer
     tex: "L = \\tfrac12 ml^2\\dot\\theta^2 + mgl\\cos\\theta, \\qquad \\ddot\\theta = -\\frac{g}{l}\\sin\\theta"
@@ -483,7 +528,7 @@ symbols:
   - { tex: "f(q, t)", meaning: "Føringen, skrevet $f(q, t) = 0$; med flere føringer $f_\\alpha$", section: "Lagrangeformalismen", term: "Holonom føring", formula: lagrange-multiplikator, note: "I $L' = L + df/dt$ er $f$ en vilkårlig funksjon av koordinatene og tida, ikke en føring." }
   - { tex: "\\lambda", meaning: "Lagrange-multiplikatoren; $\\lambda\\,\\partial f/\\partial q_k$ er føringskraften", section: "Lagrangeformalismen", term: "Lagrange-multiplikator", formula: lagrange-multiplikator, id: lambda, note: "Positiv $\\lambda$ peker mot økende $f$. Er føringen skrevet med $|\\nabla f| = 1$, er $|\\lambda|$ størrelsen av føringskraften. Ikke vekstraten $\\lambda$ i $e^{\\lambda t}$ nær en ustabil likevekt." }
   - { tex: "p_i", meaning: "Generalisert impuls, $\\partial L/\\partial\\dot q_i$", section: "Lagrangeformalismen", term: "Generalisert impuls", formula: generalisert-impuls, id: p-i, note: "Bevart når $q_i$ er syklisk. For en ladd partikkel er $\\vec p = m\\dot{\\vec r} + q\\vec A$ og ikke bare $m\\dot{\\vec r}$." }
-  - { tex: "H", meaning: "Energifunksjonen, $\\sum_i \\dot q_i p_i - L$", unit: "J", section: "Lagrangeformalismen", term: "Energifunksjon", formula: energifunksjon, id: h, note: "Lik $T + V$ bare når føringene er tidsuavhengige og $V$ ikke avhenger av hastighetene." }
+  - { tex: "H", meaning: "Energifunksjonen, $\\sum_i \\dot q_i p_i - L$; skrevet ved $q$, $p$ og $t$ er den Hamiltonfunksjonen", unit: "J", section: "Lagrangeformalismen", term: "Energifunksjon", formula: energifunksjon, id: h, note: "Lik $T + V$ bare når føringene er tidsuavhengige og $V$ ikke avhenger av hastighetene. Som Hamiltonfunksjon tas $\\partial H/\\partial q_i$ med impulsene holdt fast." }
   - { tex: "\\epsilon,\\ F_i", meaning: "Parameteren og retningen i symmetrien $q_i \\to q_i + \\epsilon F_i$", section: "Lagrangeformalismen", term: "Kontinuerlig symmetri", formula: noether, note: "$F_i$ er ikke en kraft. Ikke $\\varepsilon$ i den anharmoniske oscillatoren." }
   - { tex: "F,\\ Q", meaning: "Funksjonen i $\\delta L = \\epsilon\\,dF/dt$ og den bevarte størrelsen $Q = \\sum_i p_iF_i - F$", section: "Lagrangeformalismen", term: "Noethers teorem", formula: noether, note: "Ikke en kraft $\\vec F$, og ikke kjerneladningen $Q$ i Rutherford-spredning." }
   - { tex: "\\phi,\\ \\vec A", meaning: "Skalarpotensialet og vektorpotensialet for en ladd partikkel", unit: "V, T·m", section: "Lagrangeformalismen", term: "Gaugeinvarians", formula: lagrange-ladd-partikkel, note: "$\\vec E = -\\nabla\\phi - \\partial\\vec A/\\partial t$ og $\\vec B = \\nabla \\times \\vec A$. Ikke vinkelen $\\phi$ eller Runge–Lenz-vektoren $\\vec A$." }
@@ -533,6 +578,10 @@ symbols:
   - { tex: "p_\\phi,\\ p_\\psi", meaning: "De bevarte impulsene til den tunge snurrebassen, komponentene av $\\vec L$ langs loddlinja og langs symmetriaksen", unit: "kg·m²/s", section: "Eulers ligninger og snurrebassen", formula: snurrebass-impulser }
   - { tex: "l", meaning: "Avstanden fra spissen til massesenteret for en tung snurrebass", unit: "m", section: "Eulers ligninger og snurrebassen", formula: tung-snurrebass, note: "Eksamensoppgaven kaller den $h$. For den fysiske pendelen heter den samme avstanden $D$." }
   - { tex: "\\varepsilon", meaning: "Styrken til $x^3$-leddet i den anharmoniske oscillatoren", unit: "m⁻²·s⁻²", section: "Små svingninger", formula: anharmonisk-frekvens, note: "Ikke $\\epsilon$ i Noethers teorem. I Greens funksjon er $i\\varepsilon$ forskyvningen av polene, grensen der en svak friksjon går mot null." }
+  # ── Hamiltonformalismen ──
+  - { tex: "\\{f, g\\}", meaning: "Poissonklammen av $f$ og $g$", section: "Hamiltonformalismen", term: "Poissonklamme", formula: poissonklamme, note: "Eldre eksamenssett skriver $[f, g]_{q,p}$, med samme fortegn." }
+  - { tex: "\\epsilon_{ijk}", meaning: "Levi-Civita-symbolet: $1$ for $xyz$ og sykliske ombyttinger, $-1$ når to indekser byttes, ellers $0$", section: "Hamiltonformalismen", formula: dreieimpuls-klammer, note: "Ikke parameteren $\\epsilon$ i Noethers teorem." }
+  - { tex: "\\omega_c", meaning: "Vinkelfrekvensen $qB/m$ i et uniformt magnetfelt, med fortegn", unit: "rad/s", section: "Hamiltonformalismen", term: "Syklotronfrekvens", formula: syklotronfrekvens, note: "Syklotronfrekvensen er $|\\omega_c| = |q|B/m$. For $q < 0$ er $\\omega_c < 0$, og sirkelen går mot klokka sett fra spissen av $\\vec B$." }
   # ── Kjente systemer ──
   - { tex: "l", meaning: "Lengden til pendelen; $l_1$ og $l_2$ for dobbeltpendelen", unit: "m", section: "Kjente systemer", formula: plan-pendel, note: "I eksamensoppgavene står $\\ell$ både for en stanglengde og for dreieimpulsen." }
   - { tex: "\\theta", meaning: "Vinkelen fra loddlinja nedover for en pendel, og fra bunnpunktet for perla på ringen", unit: "rad", section: "Kjente systemer", formula: plan-pendel, note: "$\\theta = \\pi$ er opp ned. For et legeme som ruller, er $\\theta$ dreievinkelen. I Greens funksjon er $\\theta(\\tau)$ trinnfunksjonen." }
@@ -651,7 +700,7 @@ glossary:
     definition: "Koordinat som ikke inngår i $L$, slik at $\\partial L/\\partial q_i = 0$. Da er $\\dot p_i = 0$ etter Lagranges ligning, og den generaliserte impulsen $p_i$ er bevart."
   - term: Energifunksjon
     section: Symmetrier og bevarte størrelser
-    definition: "$H = \\sum_i \\dot q_i\\,\\partial L/\\partial\\dot q_i - L$, med $dH/dt = -\\partial L/\\partial t$. Bevart når $L$ ikke avhenger eksplisitt av tida, og lik energien $T + V$ når føringene er tidsuavhengige og $V$ bare avhenger av koordinatene."
+    definition: "$H = \\sum_i \\dot q_i\\,\\partial L/\\partial\\dot q_i - L$, med $dH/dt = -\\partial L/\\partial t$. Bevart når $L$ ikke avhenger eksplisitt av tida, og lik energien $T + V$ når føringene er tidsuavhengige og $V$ bare avhenger av koordinatene. Skrevet ved koordinatene og impulsene er den Hamiltonfunksjonen."
   - term: Kontinuerlig symmetri
     section: Symmetrier og bevarte størrelser
     definition: "Transformasjon $q_i \\to q_i + \\epsilon F_i(q, \\dot q, t)$ med en parameter $\\epsilon$ som kan gjøres vilkårlig liten, og som endrer $L$ med høyst en total tidsderivert $\\epsilon\\,dF/dt$ for alle baner. Forskyvning, rotasjon og Galilei-transformasjonen er eksempler; speiling er det ikke, for den har ingen parameter."
@@ -752,6 +801,33 @@ glossary:
   - term: Sovende snurrebass
     section: Eulers ligninger og snurrebassen
     definition: "En tung snurrebass som spinner rett opp, $\\theta = 0$. Den står stabilt når $I_3^2\\omega_3^2 > 4I_1Mgl$."
+  - term: Hamiltonfunksjon
+    section: Hamiltonformalismen
+    definition: "Energifunksjonen $H = \\sum_i p_i\\dot q_i - L$ skrevet som funksjon av koordinatene $q_i$, impulsene $p_i$ og tida. Hamiltons ligninger er $\\dot q_i = \\partial H/\\partial p_i$ og $\\dot p_i = -\\partial H/\\partial q_i$."
+  - term: Legendretransformasjon
+    section: Hamiltonformalismen
+    definition: "Overgangen fra $L$ som funksjon av $\\dot q$ til $H = \\sum_i p_i\\dot q_i - L$ som funksjon av $p_i = \\partial L/\\partial\\dot q_i$. Den kan snus: $\\dot q_i = \\partial H/\\partial p_i$ og $L = \\sum_i p_i\\dot q_i - H$."
+  - term: Kanoniske variabler
+    section: Hamiltonformalismen
+    definition: "Koordinatene $q_i$ og impulsene $p_i$ brukt som $2n$ uavhengige variabler i Hamiltons formulering. De fundamentale Poissonklammene er $\\{q_i, p_j\\} = \\delta_{ij}$."
+  - term: Faserom
+    section: Hamiltonformalismen
+    definition: "Rommet av alle $(q, p)$, med $2n$ dimensjoner. Et punkt er tilstanden til systemet. Når $H$ ikke avhenger eksplisitt av tida, går det én bane gjennom hvert punkt, og to baner krysser aldri."
+  - term: Separatrise
+    section: Hamiltonformalismen
+    definition: "Kurven i faserommet som skiller to slags bevegelse. For pendelen er den kurven $E = mgl$ gjennom toppunktet, og den skiller svingning fra rotasjon."
+  - term: Syklotronfrekvens
+    section: Hamiltonformalismen
+    definition: "Vinkelfarten $|q|B/m$ som en ladd partikkel sirkler med i et uniformt magnetfelt. Den er den samme for alle farter og radier."
+  - term: Poissonklamme
+    section: Hamiltonformalismen
+    definition: "$\\{f, g\\} = \\sum_i (\\partial f/\\partial q_i\\,\\partial g/\\partial p_i - \\partial f/\\partial p_i\\,\\partial g/\\partial q_i)$. Klammen med $H$ gir tidsendringen, $df/dt = \\{f, H\\} + \\partial f/\\partial t$."
+  - term: Jacobis identitet
+    section: Hamiltonformalismen
+    definition: "$\\{f, \\{g, h\\}\\} + \\{g, \\{h, f\\}\\} + \\{h, \\{f, g\\}\\} = 0$ for alle funksjoner på faserommet. Med $h = H$ gir den Poissons teorem."
+  - term: Poissons teorem
+    section: Hamiltonformalismen
+    definition: "Er $f$ og $g$ bevart uten å avhenge eksplisitt av tida, er også $\\{f, g\\}$ bevart. Klammen kan være en konstant eller en funksjon av $f$ og $g$, og da gir den ingen ny bevart størrelse."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker
