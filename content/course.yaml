@@ -85,6 +85,16 @@ exams:
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_211200.pdf/50431bfb-3ec6-01f9-e76c-bb16b6236931",
     }
 
+  # Settet fra 2013 har ingen dato på forsiden; dagen er hentet fra NTNUs filnavn
+  # (E-TFY4345-25mai2013.pdf).
+  - {
+      label: "Ordinær eksamen, mai 2013",
+      id: "2013-mai",
+      date: 2013-05-25,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E-TFY4345-25mai2013.pdf/04cb9b52-18f2-448e-a0d5-d12cfef9d786",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L-TFY4345-25mai2013.pdf/a31d9494-70d8-4e64-aa64-cb694c759c1d",
+    }
+
 # Hele arkivet hos Institutt for fysikk — rendres som siste rad i lista.
 examArchive:
   url: "https://www.ntnu.no/fysikk/eksamen/landing/-/asset_publisher/uwSAlUJoweyy/content/tfy4345-klassisk-mekanikk"
@@ -96,40 +106,64 @@ examArchive:
 formulas:
   - id: newtons-andre
     section: Inertialsystemer
-    tex: "\\vec F = \\dot{\\vec p} = m\\ddot{\\vec r}"
-    label: "Newtons andre lov for konstant masse. Akselerasjonen på høyresiden måles i ett bestemt system, og loven sier ingenting før du har sagt hvilket."
-  - id: lineaer-transformasjon
-    section: Inertialsystemer
-    tex: "t' = At + Bx, \\qquad x' = A\\,(x - vt)"
-    label: "Den mest generelle lineære transformasjonen mellom to inertialsystemer med parallelle akser og felles origo ved $t = 0$. Kravet om at transformasjonen tilbake er den samme med $-v$, og at speiling av $x$-aksen gir transformasjonen for $-v$, binder konstantene med $A^2 + ABv = 1$, så bare én av dem er fri."
+    tex: "m\\ddot{\\vec r} = \\vec F"
+    label: "Newtons andre lov for konstant masse. Den gjelder bare når akselerasjonen er målt i et inertialsystem."
   - id: galilei
     section: Inertialsystemer
     tex: "t' = t, \\qquad \\vec r\\,' = \\vec r - \\vec v t"
-    label: "<b>Galilei-transformasjonen</b>, altså valget $A = 1$ og $B = 0$. Den følger av at tida regnes som absolutt."
+    label: "<b>Galilei-transformasjonen</b> mellom to inertialsystemer, der $K'$ beveger seg med hastigheten $\\vec v$ i forhold til $K$. Den bygger på at klokkene i de to systemene går likt."
   - id: galilei-hastighet
     section: Inertialsystemer
     tex: "\\vec u\\,' = \\vec u - \\vec v, \\qquad \\vec a\\,' = \\vec a"
-    label: "Hastigheter forskyves med $\\vec v$, mens akselerasjonen er den samme i begge systemer. Massen og kreftene er også de samme, så $m\\vec a = \\vec F$ har samme form i alle inertialsystemer."
-  - id: arbeid
-    section: Krefter og potensial
-    tex: "W = \\int_C \\vec F \\cdot d\\vec r"
-    label: "Arbeidet kraften gjør langs banen $C$. For en vilkårlig kraft avhenger arbeidet av hele banen."
-  - id: virvelfri
-    section: Krefter og potensial
-    tex: "\\nabla \\times \\vec F = 0"
-    label: "Testen for om en kraft er konservativ. En konservativ kraft har alltid $\\nabla \\times \\vec F = 0$. Det omvendte gjelder på et <em>enkeltsammenhengende</em> område. Rundt et hull i området kan arbeidet langs en lukket kurve være ulikt null selv om $\\nabla \\times \\vec F = 0$."
-  - id: konservativ
-    section: Krefter og potensial
-    tex: "\\vec F = -\\nabla V"
-    label: "Kraften som gradienten av et potensial. Arbeidet blir $V(a) - V(b)$ og avhenger bare av endepunktene."
+    label: "Hastigheter forskyves med $\\vec v$, mens akselerasjonen er den samme i begge systemene. Kreftene og massen er også de samme, så $m\\vec a = \\vec F$ har samme form i alle inertialsystemer."
+  - id: lineaer-transformasjon
+    section: Inertialsystemer
+    tex: "t' = At + Bx, \\qquad x' = A\\,(x - vt)"
+    label: "Den mest generelle lineære transformasjonen mellom to inertialsystemer med parallelle akser og felles origo ved $t = 0$. Absolutt tid gir $A = 1$ og $B = 0$, altså Galilei. Krever du at $c^2t^2 - x^2$ er det samme i begge systemene, får du $A = 1/\\sqrt{1 - v^2/c^2}$ og $B = -Av/c^2$, altså Lorentz."
   - id: energi-1d
     section: Bevegelse i et potensial
     tex: "E = \\tfrac12 m\\dot x^2 + V(x)"
-    label: "Bevart energi i én dimensjon. Det kinetiske leddet kan ikke være negativt, så partikkelen holder seg der $V(x) \\le E$."
+    label: "Energien i én dimensjon, bevart når kraften bare avhenger av posisjonen. Partikkelen holder seg der $V(x) \\le E$ og snur i vendepunktene, der $V(x) = E$."
+  - id: periode-1d
+    section: Bevegelse i et potensial
+    tex: "T = 2\\int_{x_1}^{x_2} \\frac{dx}{\\sqrt{2\\,(E - V(x))/m}}"
+    label: "Perioden til en svingning mellom vendepunktene $x_1$ og $x_2$. For $V = \\tfrac12 kx^2$ er den uavhengig av amplituden, for $V \\propto x^4$ omvendt proporsjonal med den."
   - id: likevekt
     section: Bevegelse i et potensial
     tex: "V'(x_0) = 0, \\qquad \\omega = \\sqrt{V''(x_0)/m}"
-    label: "Likevekt der $V'$ har et nullpunkt. $V''(x_0) > 0$ gir et minimum og en stabil likevekt med små svingninger av vinkelfrekvens $\\omega$, mens $V''(x_0) < 0$ gir en ustabil topp."
+    label: "Likevekt der kraften $-V'$ er null. Med $V''(x_0) > 0$ er likevekten stabil, og små svingninger om den er harmoniske med vinkelfrekvensen $\\omega$. Med $V''(x_0) < 0$ er den ustabil."
+  - id: arbeid
+    section: Konservative krefter
+    tex: "W = \\int_C \\vec F \\cdot d\\vec r"
+    label: "Arbeidet kraften gjør langs veien $C$. For en konservativ kraft avhenger det bare av endepunktene."
+  - id: konservativ
+    section: Konservative krefter
+    tex: "\\vec F = -\\nabla V"
+    label: "En konservativ kraft er minus gradienten av potensialet, og $\\tfrac12 mv^2 + V$ er bevart."
+  - id: virvelfri
+    section: Konservative krefter
+    tex: "\\nabla \\times \\vec F = 0"
+    label: "Testen for om en kraft er konservativ. En konservativ kraft har alltid $\\nabla \\times \\vec F = 0$, og omvendt er testen nok i et <em>enkeltsammenhengende</em> område. Kraften $(-y, x, 0)/(x^2 + y^2)$ har $\\nabla \\times \\vec F = 0$ utenom på $z$-aksen, men gjør arbeidet $2\\pi$ per runde rundt den."
+  - id: sentralkraft
+    section: Konservative krefter
+    tex: "\\vec F = f(r)\\,\\hat r, \\qquad V(r) = -\\int f(r)\\,dr"
+    label: "En sentralkraft er konservativ. Den har ikke noe dreiemoment om sentrum, så dreieimpulsen $\\vec L = \\vec r \\times \\vec p$ er konstant, og bevegelsen ligger i et fast plan."
+  - id: tyngde-gauss
+    section: Tyngdefeltet
+    tex: "\\nabla\\cdot\\vec g = -4\\pi G\\rho, \\qquad \\nabla^2\\Phi = 4\\pi G\\rho"
+    label: "Gauss' lov for tyngdefeltet $\\vec g = -\\nabla\\Phi$, der $\\Phi$ er tyngdepotensialet og $\\rho$ tettheten."
+  - id: tyngde-kule
+    section: Tyngdefeltet
+    tex: "g(r) = -\\frac{G M(r)}{r^2}"
+    label: "Tyngdefeltet fra en kulesymmetrisk masse, der $M(r)$ er massen innenfor $r$. Utenfor virker kula som en punktmasse i sentrum, og skallet utenfor $r$ gir ikke noe felt."
+  - id: dempet-oscillator
+    section: Dempet svingning
+    tex: "m\\ddot x + \\gamma\\dot x + kx = 0"
+    label: "Dempet harmonisk oscillator. Energien minker som $\\dot E = -\\gamma\\dot x^2$."
+  - id: dempet-rotter
+    section: Dempet svingning
+    tex: "\\lambda = -\\alpha \\pm \\sqrt{\\alpha^2 - \\omega_0^2}, \\qquad \\alpha = \\frac{\\gamma}{2m},\\quad \\omega_0 = \\sqrt{\\frac{k}{m}}"
+    label: "Røttene for $x = e^{\\lambda t}$. Med $\\alpha < \\omega_0$ svinger oscillatoren med vinkelfrekvensen $\\sqrt{\\omega_0^2 - \\alpha^2}$ og utslaget $e^{-\\alpha t}$ (underkritisk). Med $\\alpha > \\omega_0$ kryper den inn uten å svinge (overkritisk), og $\\alpha = \\omega_0$ er kritisk demping."
   - id: green-respons
     section: Greens funksjon
     tex: "x(t) = \\int_{-\\infty}^{\\infty} dt'\\, G_R(t - t')\\, J(t')"
@@ -510,9 +544,15 @@ symbols:
   - { tex: "V", meaning: "Potensialet, den potensielle energien", unit: "J", section: "Newtonsk mekanikk", term: "Potensial", formula: konservativ }
   - { tex: "E", meaning: "Energien, $T + V$", unit: "J", section: "Newtonsk mekanikk", formula: energi-1d, note: "Ikke det elektriske feltet $\\vec E$ hos den ladde partikkelen." }
   - { tex: "x_0,\\ q_0", meaning: "Likevektspunkt, der $V' = 0$", section: "Newtonsk mekanikk", term: "Likevektspunkt", formula: likevekt }
-  - { tex: "\\omega", meaning: "Vinkelfrekvensen til en svingning", unit: "rad/s", section: "Newtonsk mekanikk", formula: likevekt, id: omega, note: "Om et minimum er $\\omega = \\sqrt{V''(x_0)/m}$. $\\omega_0$ er frekvensen uten forstyrrelse, som $\\sqrt{g/l}$ for Foucaults pendel. Verken $\\Omega$ eller vinkelfarten $\\vec\\omega$ til et roterende system." }
-  - { tex: "\\Omega", meaning: "Vinkelfrekvens som settes utenfra", unit: "rad/s", section: "Newtonsk mekanikk", id: omega-stor, note: "Frekvensvariabelen i Greens funksjon, drivfrekvensen til Kapitzas pendel og ringens vinkelfart i modulen om små svingninger. Ikke $\\omega$, frekvensen systemet selv svinger med. I $d\\sigma/d\\Omega$ er $\\Omega$ en romvinkel, og $\\Omega_\\text{F}$ er dreiefarten til svingeplanet i Foucaults pendel." }
-  - { tex: "k", meaning: "Fjærkonstant, koeffisienten i $\\tfrac12 kx^2$", unit: "N/m", section: "Newtonsk mekanikk", formula: kjede-dispersjon, note: "Samme bokstav som styrken i $V = -k/r$ og antallet føringer i $n = 3N - k$." }
+  - { tex: "\\omega", meaning: "Vinkelfrekvensen til en svingning", unit: "rad/s", section: "Newtonsk mekanikk", formula: likevekt, id: omega, note: "Om et minimum er $\\omega = \\sqrt{V''(x_0)/m}$. $\\omega_0$ er frekvensen uten forstyrrelse, som $\\sqrt{k/m}$ for den dempede oscillatoren og $\\sqrt{g/l}$ for Foucaults pendel. Verken $\\Omega$ eller vinkelfarten $\\vec\\omega$ til et roterende system." }
+  - { tex: "\\Omega", meaning: "Vinkelfrekvens som settes utenfra", unit: "rad/s", section: "Newtonsk mekanikk", id: omega-stor, note: "Frekvensvariabelen i Greens funksjon, drivfrekvensen til Kapitzas pendel og ringens vinkelfart i modulen om små svingninger. Ikke $\\omega$, frekvensen systemet selv svinger med, men for den dempede oscillatoren er $\\Omega = \\sqrt{\\omega_0^2 - \\alpha^2}$ frekvensen den svinger med. I $d\\sigma/d\\Omega$ er $\\Omega$ en romvinkel, og $\\Omega_\\text{F}$ er dreiefarten til svingeplanet i Foucaults pendel." }
+  - { tex: "\\gamma", meaning: "Friksjonskoeffisienten i motstandskraften $-\\gamma v$", unit: "kg/s", section: "Newtonsk mekanikk", formula: dempet-oscillator, id: gamma-friksjon, note: "Lorentz-faktoren $1/\\sqrt{1 - v^2/c^2}$ heter også ofte $\\gamma$. Skrives motstandskraften $-m\\gamma\\dot x$ eller $-2m\\gamma\\dot q$, har $\\gamma$ enheten s⁻¹. I eksamensoppgaven om den kvartiske oscillatoren er $\\gamma$ koeffisienten i $\\tfrac14\\gamma x^4$." }
+  - { tex: "\\alpha", meaning: "Dempingen $\\gamma/2m$ i den dempede oscillatoren", unit: "s⁻¹", section: "Newtonsk mekanikk", formula: dempet-rotter, id: alpha-demping, note: "Kritisk demping er $\\alpha = \\omega_0$. I trelegemeproblemet er $\\alpha$ masseforholdet." }
+  - { tex: "A", meaning: "Amplituden til en svingning", unit: "m", section: "Newtonsk mekanikk", formula: periode-1d, id: a-amplitude, note: "Ellers en konstant, som i den lineære transformasjonen $t' = At + Bx$." }
+  - { tex: "\\rho", meaning: "Tetthet, masse per volum", unit: "kg/m³", section: "Newtonsk mekanikk", formula: tyngde-gauss }
+  - { tex: "\\Phi", meaning: "Tyngdepotensialet, potensialet per masse, med $\\vec g = -\\nabla\\Phi$", unit: "J/kg", section: "Newtonsk mekanikk", formula: tyngde-gauss }
+  - { tex: "M(r)", meaning: "Massen innenfor radien $r$ i en kulesymmetrisk massefordeling", unit: "kg", section: "Newtonsk mekanikk", formula: tyngde-kule }
+  - { tex: "k", meaning: "Fjærkonstant, koeffisienten i $\\tfrac12 kx^2$", unit: "N/m", section: "Newtonsk mekanikk", formula: kjede-dispersjon, note: "Samme bokstav som styrken i $V = -k/r$, antallet føringer i $n = 3N - k$ og raten i motstandskraften $-kmv$." }
   - { tex: "\\mu", meaning: "Redusert masse, $m_1m_2/(m_1 + m_2)$", unit: "kg", section: "Newtonsk mekanikk", term: "Redusert masse", formula: redusert-masse, id: mu }
   - { tex: "\\vec R", meaning: "Massesenteret, $\\sum_i m_i\\vec r_i/M$", unit: "m", section: "Newtonsk mekanikk", term: "Massesenter", formula: massesenter, note: "I roterende systemer er $\\vec R$ posisjonen målt fra jordas sentrum. $R$ alene er en radius: jordas, kulas, ringens eller hjulets." }
   - { tex: "\\vec y_i", meaning: "Posisjonen til partikkel $i$ målt fra massesenteret, $\\vec r_i - \\vec R$", unit: "m", section: "Newtonsk mekanikk", formula: kinetisk-splitt, note: "$\\sum_i m_i\\vec y_i = 0$." }
@@ -561,7 +601,7 @@ symbols:
   - { tex: "\\omega_n", meaning: "Egenfrekvensene, røttene av sekulærligningen", unit: "rad/s", section: "Små svingninger", term: "Egenfrekvens", formula: sekulaerligning }
   - { tex: "\\mathbf A_n", meaning: "Modevektoren, forholdet mellom utslagene i mode $n$", section: "Små svingninger", term: "Normalmode", formula: sekulaerligning }
   - { tex: "\\xi_n", meaning: "Normalkoordinaten, utslaget langs mode $n$", section: "Små svingninger", term: "Normalkoordinat", formula: normalkoordinater, note: "Ellers er $\\xi$ et lite utslag, som den raske delen av vinkelen hos Kapitzas pendel, eller $x + iy$ for Foucaults pendel." }
-  - { tex: "\\lambda", meaning: "Eksponenten i $e^{\\lambda t}$ for utslaget nær en likevekt", unit: "s⁻¹", section: "Små svingninger", note: "Likevekten er stabil når alle røttene $\\lambda^2$ er reelle og negative. Ikke Lagrange-multiplikatoren $\\lambda$. I kjeden er $\\lambda$ bølgelengden, og i $V = \\tfrac12 kx^2 + \\tfrac14\\lambda x^4$ en koeffisient." }
+  - { tex: "\\lambda", meaning: "Eksponenten i $e^{\\lambda t}$ for utslaget nær en likevekt og for den dempede oscillatoren", unit: "s⁻¹", section: "Små svingninger", note: "Likevekten er stabil når alle røttene $\\lambda^2$ er reelle og negative. Ikke Lagrange-multiplikatoren $\\lambda$. I kjeden er $\\lambda$ bølgelengden." }
   - { tex: "\\varphi", meaning: "Faseforskjellen mellom naboatomer i kjeden, $2\\pi n/N$", unit: "rad", section: "Små svingninger", term: "Dispersjonsrelasjon", formula: kjede-dispersjon }
   # ── Stive legemer ──
   - { tex: "\\hat e_a'", meaning: "Enhetsvektorene langs aksene som sitter fast i legemet", section: "Stive legemer", formula: stivt-legeme-hastighet, note: "$a = 1, 2, 3$ nummererer aksene og $i$ partiklene. Komponentene av $\\vec\\omega$, $\\vec L$ og $\\boldsymbol I$ tas langs disse aksene." }
@@ -593,28 +633,31 @@ symbols:
 glossary:
   - term: Inertialsystem
     section: Inertialsystemer
-    definition: "Referansesystem der en fri partikkel går med konstant hastighet. Newtons andre lov er formulert i slike systemer."
+    definition: "Referansesystem der et legeme som ingen kraft virker på, går rett fram med konstant fart. Newtons andre lov gjelder bare i slike systemer, og et system som beveger seg med konstant hastighet i forhold til et inertialsystem, er også et inertialsystem."
   - term: Galilei-transformasjon
     section: Inertialsystemer
-    definition: "Transformasjonen $t' = t$, $\\vec r\\,' = \\vec r - \\vec v t$ mellom koordinatene i to inertialsystemer når tida regnes som absolutt."
-  - term: Konservativ kraft
-    section: Krefter og potensial
-    definition: "Kraftfelt der arbeidet mellom to punkter er det samme for alle baner. Et slikt felt kan skrives som $\\vec F = -\\nabla V$, og energien $T + V$ er bevart."
-  - term: Eksakt differensial
-    section: Krefter og potensial
-    definition: "En differensialform $F_x\\,dx + F_y\\,dy + F_z\\,dz$ som er differensialet til en funksjon. Linjeintegralet av en eksakt form avhenger bare av endepunktene."
+    definition: "Transformasjonen $t' = t$, $\\vec r\\,' = \\vec r - \\vec v t$ mellom to inertialsystemer, der $K'$ beveger seg med hastigheten $\\vec v$ i forhold til $K$. Den bygger på at klokkene i de to systemene går likt."
   - term: Potensial
-    section: Krefter og potensial
-    definition: "Funksjonen $V(\\vec r)$ som en konservativ kraft er den negative gradienten av, $\\vec F = -\\nabla V$."
-  - term: Enkeltsammenhengende område
-    section: Krefter og potensial
-    definition: "Område der enhver lukket kurve kan trekkes sammen til et punkt uten å forlate området. Der er $\\nabla \\times \\vec F = 0$ nok til at kraften er konservativ. Har området et hull, kan arbeidet rundt hullet være ulikt null selv om $\\nabla \\times \\vec F = 0$."
+    section: Bevegelse i et potensial
+    definition: "Funksjonen $V$ som en konservativ kraft er minus gradienten av, $\\vec F = -\\nabla V$. I én dimensjon har hver kraft $F(x)$ et potensial, $V(x) = -\\int F\\,dx$."
+  - term: Vendepunkt
+    section: Bevegelse i et potensial
+    definition: "Punkt der $V(x) = E$, så farten er null og partikkelen snur. Vendepunktene avgrenser området den kan bevege seg i."
   - term: Likevektspunkt
     section: Bevegelse i et potensial
     definition: "Punkt $x_0$ der $V'(x_0) = 0$, slik at kraften på partikkelen er null. Likevekten er stabil når $V''(x_0) > 0$ og ustabil når $V''(x_0) < 0$."
-  - term: Vendepunkt
-    section: Bevegelse i et potensial
-    definition: "Punkt der partikkelen har null fart fordi $V(x) = E$. Vendepunktene avgrenser området den kan bevege seg i."
+  - term: Konservativ kraft
+    section: Konservative krefter
+    definition: "Kraft der arbeidet mellom to punkter er det samme langs alle veier. Da er $\\vec F = -\\nabla V$, og $\\tfrac12 mv^2 + V$ er bevart."
+  - term: Eksakt differensial
+    section: Konservative krefter
+    definition: "En differensialform $F_x\\,dx + F_y\\,dy + F_z\\,dz$ som er differensialet til en funksjon. Linjeintegralet av en eksakt form avhenger bare av endepunktene."
+  - term: Enkeltsammenhengende område
+    section: Konservative krefter
+    definition: "Område der hver lukket kurve kan trekkes sammen til et punkt uten å forlate området. Der er $\\nabla \\times \\vec F = 0$ nok til at kraften er konservativ. Har området et hull, kan arbeidet rundt hullet være ulikt null selv om $\\nabla \\times \\vec F = 0$."
+  - term: Kritisk demping
+    section: Dempet svingning
+    definition: "Demping med $\\alpha = \\omega_0$, altså $\\gamma = 2\\sqrt{km}$, i $m\\ddot x + \\gamma\\dot x + kx = 0$. Oscillatoren kommer da raskest tilbake til likevekten uten å svinge forbi. Med svakere demping, underkritisk, svinger den med fallende utslag, og med sterkere, overkritisk, kryper den inn."
   - term: Superposisjonsprinsippet
     section: Greens funksjon
     definition: "For en lineær bevegelsesligning er responsen på en sum av krefter summen av responsene. Gir $J_1$ responsen $x_1$ og $J_2$ responsen $x_2$, er $x_1 + x_2$ responsen på $J_1 + J_2$."
@@ -812,7 +855,7 @@ glossary:
     definition: "Koordinatene $q_i$ og impulsene $p_i$ brukt som $2n$ uavhengige variabler i Hamiltons formulering. De fundamentale Poissonklammene er $\\{q_i, p_j\\} = \\delta_{ij}$."
   - term: Faserom
     section: Hamiltonformalismen
-    definition: "Rommet av alle $(q, p)$, med $2n$ dimensjoner. Et punkt er tilstanden til systemet. Når $H$ ikke avhenger eksplisitt av tida, går det én bane gjennom hvert punkt, og to baner krysser aldri."
+    definition: "Rommet av alle posisjoner og impulser $(q, p)$, med $2n$ dimensjoner. For én partikkel på en linje er det planet av alle $(x, p)$. Et punkt er tilstanden til systemet. Når $H$ ikke avhenger eksplisitt av tida, går det én bane gjennom hvert punkt, og to baner krysser aldri."
   - term: Separatrise
     section: Hamiltonformalismen
     definition: "Kurven i faserommet som skiller to slags bevegelse. For pendelen er den kurven $E = mgl$ gjennom toppunktet, og den skiller svingning fra rotasjon."

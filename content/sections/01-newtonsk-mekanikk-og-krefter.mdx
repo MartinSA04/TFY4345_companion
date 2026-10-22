@@ -1,353 +1,629 @@
 ---
 order: 1
 title: "Newtonsk mekanikk og krefter"
-summary: "Newtons første lov sier at inertialsystemer finnes. Galilei-transformasjonen følger av at begge systemer er inertiale og tida er absolutt, og potensialkurven gir likevekt og stabilitet."
+summary: "Inertialsystemene der Newtons lover gjelder, og Galilei-transformasjonen mellom dem. Bevegelse i et potensial lest ut av energien, likevekt og små svingninger, konservative krefter, tyngdefeltet og den dempede oscillatoren."
 importance: core
-tag: "Uke 34"
-updated: 2026-09-27
+tag: "Uke 34 · Tong kap. 1–2"
+updated: 2026-10-22
 ---
 
 <LearningGoals>
-- Forklare hva Newtons første lov fastsetter og hvorfor den andre loven ikke gir mening før du har valgt referansesystem.
-- Sette opp den mest generelle lineære transformasjonen mellom to inertialsystemer og vise hvilken antakelse som gir Galilei-transformasjonen.
-- Avgjøre om et kraftfelt er konservativt og finne potensialet til et konservativt felt.
-- Lese likevektspunkter, stabilitet og vendepunkter ut av $V(x)$.
+
+- Avgjøre om et referansesystem er et <Term name="Inertialsystem">inertialsystem</Term>, og forklare hvorfor Newtons andre lov har samme form i alle inertialsystemer.
+- Finne den mest generelle lineære transformasjonen mellom to inertialsystemer, og si hvilken antakelse som gjør den til <Term name="Galilei-transformasjon">Galilei-transformasjonen</Term>.
+- Lese <Term name="Vendepunkt">vendepunkter</Term>, <Term name="Likevektspunkt">likevekter</Term> og stabilitet ut av et potensial $V(x)$, og regne ut perioden og frekvensen til små svingninger.
+- Avgjøre om et kraftfelt er <Term name="Konservativ kraft">konservativt</Term>, og finne potensialet.
+- Finne tyngdefeltet fra en kulesymmetrisk massefordeling.
+- Skille underkritisk, <Term name="Kritisk demping">kritisk</Term> og overkritisk demping av en oscillator, og se dem i faserommet.
+
 </LearningGoals>
+
+Slipp en ball i et tog som kjører med jevn fart, og den faller rett ned foran
+føttene dine, akkurat som den ville gjort på perrongen. Ser noen på perrongen det
+samme slippet gjennom vinduet, følger ballen en parabel, fordi den også har
+togets fart framover. Begge forklarer bevegelsen med den samme loven og den samme
+kraften, tyngden. Bremser toget mens ballen faller, lander den et stykke foran
+føttene dine, selv om ingenting har dyttet den framover. Newtons lover gjelder
+altså i noen referansesystemer og ikke i andre.
 
 ## Inertialsystemer
 
-Et referansesystem er et origo, et sett akser og en klokke. Referansesystemet gir hver
-hendelse, noe som skjer på ett sted ved ett tidspunkt, fire tall $(t, x, y, z)$.
+Et referansesystem er et origo, tre akser og en klokke, slik at hver hendelse får
+et sted og et tidspunkt. Perrongen er ett referansesystem, som her heter $K$, og
+toget et annet, $K'$. En størrelse målt i $K'$ får merke, som $\vec a\,'$.
 
-<Formula
-  tex="\vec F = \dot{\vec p} = m\ddot{\vec r}"
-  caption="Newtons andre lov for konstant masse."
+<Simulation
+  src="/sims/toget.js"
+  host="dom"
+  title="Ballen i toget"
+  caption="En togvogn med en krok i taket, sett fra siden. Krysset på gulvet står rett under kroken. Prikkene er ballens posisjon med faste tidsmellomrom. Under fallet er den grå pila tyngden delt på massen, $\vec g$, og den oransje pila akselerasjonen ballen har i systemet du ser fra. Alt går i sakte film."
+  height={180}
 />
 
-Akselerasjonen $\ddot{\vec r}$ er målt i ett referansesystem, og i mange systemer stemmer ikke loven. Står du på en karusell og slipper en ball, krummer
-banen seg selv om ingen vannrett kraft virker på ballen. Der må du innføre ekstra
-krefter for at $\vec F = m\vec a$ skal stemme.
+Velg «Fra perrongen (K)» og «Jevn fart». Prikkene ligger langs en parabel, og
+ballen lander på krysset. Bytt til «Fra toget (K′)», og de samme prikkene står
+på en loddrett linje. I begge systemene peker akselerasjonen rett ned og er like
+stor som tyngden delt på massen, så de to pilene ligger oppå hverandre, og
+${m\vec a = \vec F}$ stemmer.
 
-<Statement kind="law" name="Newtons første lov">
-Det finnes referansesystemer der en fri partikkel, en partikkel uten krefter på
-seg, beveger seg med konstant hastighet. Slike systemer kalles <Term name="inertialsystem">inertialsystemer</Term>,
-og Newtons andre lov er formulert i dem.
-</Statement>
+Velg så «Bremser». Fra perrongen er banen fortsatt en parabel med akselerasjonen
+$\vec g$. Ballen beholder farten framover den hadde da den ble sluppet, mens toget
+sakker ned under den, og derfor lander den foran krysset. Fra toget går banen i en
+rett linje skrått framover, langs akselerasjonen $\vec a\,'$, som peker skrått
+framover selv om ingen kraft virker den veien. I $K'$ stemmer ikke
+${m\vec a\,' = \vec F}$.
 
-Loven ser ut som spesialtilfellet $\vec F = 0$ av den andre loven, men den slår
-fast at det finnes systemer der den andre loven gjelder.
+Newtons første lov sier at det finnes referansesystemer der et legeme som ingen
+kraft virker på, går rett fram med konstant fart. Slike systemer kalles
+<Term name="Inertialsystem">inertialsystemer</Term>, og det er i dem Newtons andre
+lov gjelder:
 
-## Fra ett inertialsystem til alle andre
+<Formula tex="m\ddot{\vec r} = \vec F" caption="Newtons andre lov for konstant masse. Akselerasjonen er målt i et inertialsystem." />
 
-La $K'$ bevege seg med farten $v$ langs $x$-aksen i inertialsystemet $K$, med
-parallelle akser og felles origo ved $t = t' = 0$. Da er $y' = y$ og $z' = z$, og
-transformasjonene som gjør $K'$ til et inertialsystem, er
+Perrongen er et inertialsystem så langt dette forsøket kan avgjøre, og et tog som
+bremser, er det ikke. Bakken er bare nesten et inertialsystem, siden jorda roterer.
+Ved ekvator gir rotasjonen en akselerasjon på ${\omega^2 R = 0{,}034}$ m/s², der
+$\omega$ er jordas vinkelfart og $R$ radien. Akselerasjonen er 0,35 prosent av $g$,
+så i de fleste forsøk kan du se bort fra den.
 
-<Formula
-  tex="t' = At + Bx, \qquad x' = A\,(x - vt)"
-  caption="Den mest generelle lineære transformasjonen mellom to inertialsystemer med parallelle akser og felles origo ved $t = 0$."
-/>
+<Callout title="Inertialsystem">
+Et inertialsystem er et referansesystem der et legeme uten krefter på seg går rett fram med konstant fart. Newtons andre lov gjelder bare i inertialsystemer. I et tog som bremser, akselererer ballen framover uten at noen kraft virker den veien.
+</Callout>
 
-Ingen av systemene er spesielle, så transformasjonen tilbake er den samme med
-$-v$ i stedet for $v$. Ingen retning langs $x$-aksen er spesiell heller. De to
-kravene binder konstantene, så bare én av dem er fri:
+<SelfCheck question="En bil akselererer med $2{,}0$ m/s² på en flat vei. En kule henger i en snor fra taket og står i ro i forhold til bilen. Hvilken vinkel har snora med loddlinja, og hvilken vei heller den?">
+Regn i bakkens system, som er et inertialsystem. Der akselererer kula sammen med bilen, så summen av snordraget $S$ og tyngden $mg$ må være $ma$ framover. Den loddrette komponenten gir ${S\cos\theta = mg}$, og den vannrette ${S\sin\theta = ma}$. Del den ene på den andre, så ${\tan\theta = a/g = 2{,}0/9{,}81}$ og ${\theta = 11{,}5°}$, med kula bakover. I bilens system står kula i ro, men snordraget har en komponent framover som ingen annen kraft balanserer, så Newtons andre lov stemmer ikke der.
+</SelfCheck>
 
-<Formula
-  tex="A^2 + ABv = 1"
-  caption="Bindingen mellom de to konstantene."
-/>
+## Galilei-transformasjonen
 
-<Derivation title="Utledning av transformasjonen">
-En fri partikkel går med konstant hastighet i $K$, altså langs en rett linje i
-$(t, x)$-planet, og skal gjøre det samme i $K'$. Transformasjonen må derfor sende
-rette linjer over i rette linjer. Det kravet alene gir ikke linearitet.
-Avbildningen $t' = t/(1 + at)$, $x' = x/(1 + at)$ sender også hver rett linje
-over i en rett linje, men gir hendelsene ved $t = -1/a$ uendelige koordinater.
-Hver hendelse har endelige koordinater i begge systemer, så transformasjonen må
-være definert og inverterbar i hele planet. En slik avbildning som sender rette
-linjer over i rette linjer, er lineær pluss en konstant forskyvning, og
-forskyvningen er null når origoene faller sammen ved $t = t' = 0$:
+Toget kjører med farten $v$ langs $x$-aksen, og de to origoene faller sammen ved
+${t = 0}$. En hendelse som skjer i $x$ ved tida $t$, ligger $vt$ kortere fram målt fra
+toget, og klokkene i de to systemene går likt:
+
+<Formula tex="t' = t, \qquad \vec r\,' = \vec r - \vec v t" caption="Galilei-transformasjonen mellom to inertialsystemer, der $K'$ beveger seg med hastigheten $\vec v$ i forhold til $K$." />
+
+Med «Jevn fart» gjør simuleringen nettopp denne transformasjonen når du bytter
+visning. Hver prikk flyttes bakover med $vt$, der $t$ er tidspunktet prikken ble
+satt.
+
+Deriver ${\vec r\,' = \vec r - \vec v t}$ med hensyn på tida. Et legeme med
+hastigheten $\vec u$ på perrongen har ${\vec u\,' = \vec u - \vec v}$ i toget, og
+siden $\vec v$ er konstant, er akselerasjonen den samme i begge systemene,
+${\vec a\,' = \vec a}$. Kreftene er også de samme. De avhenger av avstander mellom
+legemer og av hvor fort legemene beveger seg i forhold til hverandre, og
+transformasjonen endrer ingen av delene. Massen er den samme. Gjelder
+${m\vec a = \vec F}$ i $K$, gjelder derfor ${m\vec a\,' = \vec F}$ i $K'$. Et
+referansesystem som beveger seg med konstant hastighet i forhold til et
+inertialsystem, er derfor også et inertialsystem, og ingen mekanisk måling inne i et
+tog med jevn fart kan avgjøre hvor fort det går.
+
+<Callout title="Galilei-transformasjonen">
+Mellom to inertialsystemer med den relative hastigheten $\vec v$ er ${t' = t}$ og ${\vec r\,' = \vec r - \vec v t}$. Hastigheter forskyves med $\vec v$, mens akselerasjoner, krefter og masser er de samme, så Newtons andre lov har samme form i begge.
+</Callout>
+
+Transformasjonen bygger på at klokkene går likt i begge systemene. Uten den
+antakelsen bestemmer de andre kravene alt unntatt to konstanter. Rom og tid er like overalt,
+så forskjellen mellom to hendelser må transformeres på samme måte uansett hvor
+hendelsene skjer. Dette kravet gjør transformasjonen lineær, og med parallelle akser og
+felles origo ved ${t = 0}$ er den mest generelle formen
 
 $$
 t' = At + Bx, \qquad x' = Dt + Ex
 $$
 
-Origo i $K'$, punktet $x' = 0$, beveger seg langs $x = vt$ i $K$. Innsatt i $x' = Dt + Ex$ gir origo-kravet
-$0 = Dt + Evt$, altså $D = -Ev$.
+med ${y' = y}$ og ${z' = z}$. To krav binder de fire konstantene. Origo i $K'$ har
+${x' = 0}$ og ligger i ${x = vt}$, så ${0 = Dt + Evt}$ for alle $t$, og ${D = -Ev}$.
+Origo i $K$ har ${x = 0}$ og beveger seg med farten $-v$ sett fra $K'$, altså
+${x' = -vt'}$. Sett ${x = 0}$ i transformasjonen: da er ${t' = At}$ og
+${x' = Dt = -Evt}$, og kravet ${x' = -vAt}$ gir ${E = A}$. Igjen står
 
-Ingen av systemene er spesielle, så transformasjonen tilbake er den samme med
-$-v$ i stedet for $v$. Transformasjonen er matrisen $M(v)$ med radene
-$(A, B)$ og $(-Ev, E)$, så kravet er $M(-v) = M(v)^{-1}$.
+<Formula tex="\begin{aligned} t' &= At + Bx \\ x' &= A\,(x - vt) \end{aligned}" caption="Den mest generelle lineære transformasjonen mellom to inertialsystemer med parallelle akser og felles origo ved $t = 0$." />
 
-Ingen retning langs $x$-aksen er spesiell heller. Bytt $x$ med $-x$ og $x'$ med
-$-x'$. Da blir $t' = At - Bx$ og $x' = -Dt + Ex$, og $K'$ beveger seg med $-v$.
-Speilingen gir altså transformasjonen for $-v$, så $B$ og $D$ skifter fortegn
-med $v$, mens $A$ og $E$ ikke endres.
+med to ukjente konstanter. Absolutt tid, ${t' = t}$ for hver hendelse, gir ${A = 1}$ og
+${B = 0}$, og det er Galilei-transformasjonen.
 
-Nederst til venstre har $M(v)^{-1}$ elementet $Ev/\det M$ og $M(-v)$ elementet
-$Ev$, så $\det M = 1$. Øverst til venstre har de $E$ og $A$, så $E = A$.
-Determinanten gir da
+<Derivation title="Et invariant intervall gir Lorentz-transformasjonen">
+Krev i stedet at ${c^2t^2 - x^2 - y^2 - z^2}$ har samme verdi i begge systemene for hver hendelse. For et lysglimt sendt ut fra origo ved ${t = 0}$ er størrelsen null i begge, så kravet gir lyset farten $c$ i begge. Med ${y' = y}$ og ${z' = z}$ er kravet
 
 $$
-A^2 + ABv = 1
+\begin{aligned}
+&c^2(At + Bx)^2 - A^2(x - vt)^2 \\
+&\quad = c^2t^2 - x^2
+\end{aligned}
 $$
+
+for alle $t$ og $x$. Leddene med $t^2$ gir ${A^2(c^2 - v^2) = c^2}$, så
+
+$$
+A = \frac{1}{\sqrt{1 - v^2/c^2}}
+$$
+
+Leddene med $tx$ gir ${2ABc^2 + 2A^2v = 0}$, så ${B = -Av/c^2}$. Leddene med $x^2$ krever ${B^2c^2 - A^2 = -1}$, og det kravet holder med disse verdiene:
+
+$$
+B^2c^2 - A^2 = -A^2\left(1 - \frac{v^2}{c^2}\right) = -1
+$$
+
+Transformasjonen er
+
+$$
+\begin{aligned}
+t' &= A\left(t - \frac{vx}{c^2}\right) \\
+x' &= A\,(x - vt)
+\end{aligned}
+$$
+
+med $A$ som over, Lorentz-faktoren. Når $v$ er liten mot $c$, går $A$ mot 1 og $vx/c^2$ mot null, og Galilei-transformasjonen står igjen.
 </Derivation>
-
-Den frie konstanten bestemmes av en antakelse om tida.
-
-<Compare>
-<CompareCol title="Tida er absolutt">
-Alle klokker går likt, så $t' = t$. Kravet gir $A = 1$ og $B = 0$, altså
-Galilei-transformasjonen.
-</CompareCol>
-<CompareCol title="Intervallet er invariant">
-$\Delta s^2 = c^2\Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2$ er lik i begge
-systemer. En lyspuls har $\Delta s^2 = 0$, så kravet sier blant annet at lyset
-har farten $c$ i begge systemer. Invariansen gir $A = \gamma$ og
-$B = -\gamma v/c^2$, med $\gamma = 1/\sqrt{1 - v^2/c^2}$, altså
-Lorentz-transformasjonen. For $v \ll c$ er $\gamma \approx 1$ og $B \approx 0$,
-og Galilei-transformasjonen kommer tilbake.
-</CompareCol>
-</Compare>
-
-<Derivation title="Fra invariant intervall til Lorentz-transformasjonen">
-Leddene med $y$ og $z$ er like i begge systemer og faller ut. Sett $t' = At + Bx$ og
-$x' = A(x - vt)$ inn i $c^2t'^2 - x'^2 = c^2t^2 - x^2$, og sammenlign leddene. Leddene med $t^2$ gir
-
-$$
-A^2(c^2 - v^2) = c^2 \quad\Rightarrow\quad A = \frac{1}{\sqrt{1 - v^2/c^2}} = \gamma
-$$
-
-Leddene med $xt$ gir
-
-$$
-2A(c^2B + Av) = 0 \quad\Rightarrow\quad B = -\frac{\gamma v}{c^2}
-$$
-
-Leddene med $x^2$ gir $c^2B^2 - A^2 = -1$, som stemmer med $A$ og $B$ over.
-</Derivation>
-
-Newtons mekanikk antar at tida er absolutt og bygger derfor på
-Galilei-transformasjonen.
-
-<Formula
-  tex="t' = t, \qquad \vec r\,' = \vec r - \vec v t"
-  caption="<b>Galilei-transformasjonen</b>. Den følger av at tida regnes som absolutt."
-/>
-
-Deriver <FormulaRef id="galilei">Galilei-transformasjonen</FormulaRef> med hensyn
-på tida, og hastighetene forskyves med $\vec v$. Deriver en gang til, og $\vec v$
-faller ut.
-
-<Formula
-  tex="\vec u\,' = \vec u - \vec v, \qquad \vec a\,' = \vec a"
-  caption="Hastigheter avhenger av systemet, mens akselerasjonen er den samme i begge systemer."
-/>
-
-Massen er den samme i begge systemer, og de vanlige kreftene i mekanikken
-avhenger bare av avstander mellom partikler og av relative hastigheter. Begge
-deler er uendret under transformasjonen, så $\vec F\,' = \vec F$, og
-$m\vec a = \vec F$ har samme form i $K$ og $K'$. En ball som ei vogn skyter rett
-opp, går i en parabel sett fra bakken og rett opp og ned sett fra vogna, uansett
-hvor fort vogna kjører.
-
-<Simulation
-  src="/sims/inertialsystem.js"
-  title="Samme kast, to inertialsystemer"
-  caption="Ei vogn med farten $v$ skyter en ball rett opp og tar den imot igjen. Prikkene er ballens posisjon med faste tidsmellomrom, sett fra bakken ($K$) eller fra vogna ($K'$)."
-  host="dom"
-  height={320}
-/>
-
-<Statement kind="principle" name="Galileis relativitetsprinsipp">
-Newtons lover har samme form i alle inertialsystemer. Ingen mekanisk måling inne
-i et lukket laboratorium kan avgjøre hvilken konstant hastighet laboratoriet har.
-</Statement>
-
-Galileo brukte et skip til å vise prinsippet. Under dekk faller dråper rett ned i
-en kopp, og du kaster like langt forover som bakover, fordi $m\vec a = \vec F$ har
-samme form om bord som på land så lenge skipet seiler med jevn fart.
-
-<SelfCheck question="Systemet $K'$ har $t' = t$ og $x' = x - \tfrac12 a_0 t^2$ i forhold til inertialsystemet $K$. Hvorfor er ikke $K'$ et inertialsystem?">
-En fri partikkel med $x = x_0 + ut$ får $x' = x_0 + ut - \tfrac12 a_0 t^2$, en
-parabel i $(t, x')$-planet. Partikkelen akselererer i $K'$ uten at noen kraft
-virker på den, så Newtons første lov gjelder ikke der. Transformasjonen sender
-rette linjer over i krumme, og den er ikke lineær i $t$.
-</SelfCheck>
-
-## Krefter som kommer fra et potensial
-
-Arbeidet en kraft gjør på en partikkel som går fra $a$ til $b$ langs banen $C$,
-er linjeintegralet
-
-<Formula tex="W = \int_C \vec F \cdot d\vec r" />
-
-og arbeidet er lik økningen i den kinetiske energien $T$. Kan du skrive arbeidet
-som en differanse $V(a) - V(b)$ i en funksjon $V$ av posisjonen, er
-$T(b) - T(a) = V(a) - V(b)$, og energien $T + V$ er bevart.
-
-For en vilkårlig $\vec F(\vec r)$ avhenger arbeidet av hele banen, og da finnes
-ingen slik $V$. En kraft er <Term name="konservativ kraft">konservativ</Term> når
-arbeidet bare avhenger av endepunktene $a$ og $b$, ikke av banen mellom dem. Da
-finnes $V$, for du kan velge $V(\vec r)$ lik minus arbeidet fra et fast punkt
-til $\vec r$. De fleste kreftene i mekanikken er konservative.
-
-Uttrykket $\vec F \cdot d\vec r = F_x\,dx + F_y\,dy + F_z\,dz$ er et
-<Term name="eksakt differensial">eksakt differensial</Term> når $\vec F \cdot d\vec r = -dV$
-for en funksjon $V$, altså når $F_x = -\partial V/\partial x$ og tilsvarende for
-$y$ og $z$. Da blir linjeintegralet en differanse:
-
-<Formula
-  tex="\int_C \vec F \cdot d\vec r = -\int_C dV = V(a) - V(b)"
-  caption="Bare endepunktene står igjen, så arbeidet er uavhengig av banen."
-/>
-
-Definisjonen av en konservativ kraft er vanskelig å bruke direkte, fordi du da må sammenligne arbeidet
-langs alle baner mellom $a$ og $b$. Test heller om en $V$ finnes. Finnes
-$V$, er $F_x = -\partial V/\partial x$ og $F_y = -\partial V/\partial y$.
-For en glatt $V$ spiller rekkefølgen av derivasjonene ingen rolle, så
-
-$$
-\frac{\partial F_x}{\partial y} = -\frac{\partial^2 V}{\partial y\,\partial x} = \frac{\partial F_y}{\partial x}
-$$
-
-Parene $(x, z)$ og $(y, z)$ gir tilsvarende likheter, og de tre likhetene er til sammen
-$\nabla \times \vec F = 0$. En konservativ kraft har altså $\nabla \times \vec F = 0$.
-
-Det omvendte, at $\nabla \times \vec F = 0$ gir en $V$, gjelder når området er
-<Term name="enkeltsammenhengende område">enkeltsammenhengende</Term>, altså når
-enhver lukket kurve kan trekkes sammen til et punkt uten å forlate området.
-Stokes' teorem gjør arbeidet rundt en lukket kurve om til fluksen av
-$\nabla \times \vec F$ gjennom en flate som kurven spenner ut, og den flaten må
-ligge der feltet er definert. Rundt et hull finnes ingen slik flate. Feltet
-$\vec F = (-y\,\hat x + x\,\hat y)/(x^2 + y^2)$ har $\nabla \times \vec F = 0$
-overalt utenfor $z$-aksen, men arbeidet én gang rundt $z$-aksen mot klokka er
-$2\pi$. Med et potensial ville arbeidet rundt en lukket kurve vært
-$V(a) - V(a) = 0$, så feltet har ikke noe potensial.
-
-<Statement kind="theorem" name="Konservative krefter">
-For et glatt kraftfelt $\vec F(\vec r)$ på et enkeltsammenhengende område er
-disse fire utsagnene ekvivalente:
-
-- $\vec F \cdot d\vec r$ er et eksakt differensial
-- arbeidet $\int_C \vec F \cdot d\vec r$ er uavhengig av banen
-- $\nabla \times \vec F = 0$
-- det finnes et <Term name="potensial" /> $V$ med $\vec F = -\nabla V$
-</Statement>
-
-<Example title="Er dette kraftfeltet konservativt?">
-Et kraftfelt i $\mathbb{R}^3$ er gitt ved
-
-<Formula tex="\vec F = (2xy + z^3)\,\hat x + x^2\,\hat y + 3xz^2\,\hat z" />
-
-Avgjør om feltet er konservativt, og finn potensialet dersom feltet er konservativt.
-
-<Solution>
-Regn ut de tre parene av kryssderiverte som utgjør $\nabla \times \vec F$:
-
-<Formula tex="\frac{\partial F_x}{\partial y} = 2x = \frac{\partial F_y}{\partial x}, \qquad \frac{\partial F_x}{\partial z} = 3z^2 = \frac{\partial F_z}{\partial x}, \qquad \frac{\partial F_y}{\partial z} = 0 = \frac{\partial F_z}{\partial y}" />
-
-Alle tre stemmer, så $\nabla \times \vec F = 0$. Feltet er definert på hele
-$\mathbb{R}^3$, som er enkeltsammenhengende, så feltet er konservativt. Finn $V$ ved å integrere $-\partial V/\partial x = F_x$ med
-hensyn på $x$. Integrasjonskonstanten kan avhenge av $y$ og $z$:
-
-<Formula tex="V = -(x^2 y + x z^3) + f(y, z)" />
-
-Deriver $V$ med hensyn på $y$ og sett inn i $F_y = -\partial V/\partial y$.
-Innsettingen gir $x^2 = x^2 - \partial f/\partial y$, altså $\partial f/\partial y = 0$.
-Med $F_z$ gir den samme regningen $\partial f/\partial z = 0$, så $f$ er en konstant.
-
-<Answer>$V(x, y, z) = -(x^2 y + x z^3) + \text{konst}$</Answer>
-</Solution>
-</Example>
 
 ## Bevegelse i et potensial
 
-I én dimensjon er $F = -dV/dx$, så bevegelsesligningen er $m\ddot x = -V'(x)$.
-Energien $E = \tfrac12 m\dot x^2 + V(x)$ er da bevart, fordi den tidsderiverte
-$\dot E = \dot x\,(m\ddot x + V'(x))$ er null etter bevegelsesligningen.
+En kloss på en fjær bruker like lang tid på én svingning enten du drar den ut 1 cm
+eller 10 cm. Spenn i stedet en kule midt mellom to like fjærer som så vidt er uten
+strekk, og dra den ut til siden en avstand $x$. Fjærene strekkes da bare med
+omtrent $x^2/2L$, der $L$ er lengden til hver fjær, så potensialet går som $x^4$.
+Med et slikt kvartisk potensial gir dobbelt så stort utslag halvparten så lang
+periode. Begge deler kan du lese ut av energien, uten å løse bevegelsesligningen.
 
-<Formula
-  tex="E = \tfrac12 m\dot x^2 + V(x)"
-  caption="Bevart energi i én dimensjon."
-/>
+I én dimensjon har hver kraft $F(x)$ som bare avhenger av posisjonen, et
+<Term name="Potensial">potensial</Term> $V(x) = -\int F\,dx$, slik at
+${F = -dV/dx}$. Over et lite steg $dx$ gjør kraften arbeidet ${F\,dx = -dV}$, og det
+arbeidet går til den kinetiske energien. Gang ${m\ddot x = -V'(x)}$ med $\dot x$, og
+begge sider blir tidsderiverte, ${\tfrac{d}{dt}\bigl(\tfrac12 m\dot x^2\bigr) = -\tfrac{d}{dt}V(x)}$.
+Summen er derfor konstant:
 
-Det kinetiske leddet $\tfrac12 m\dot x^2$ kan ikke være negativt, så partikkelen
-holder seg der $V(x) \le E$. Grensene for dette området er
-<Term name="vendepunkt">vendepunktene</Term>, der $V(x) = E$ og farten er null.
-En partikkel i en brønn med for lav energi til å komme over kanten, svinger
-mellom to vendepunkter.
+<Formula tex="E = \tfrac12 m\dot x^2 + V(x)" caption="Energien er bevart når kraften bare avhenger av posisjonen." />
 
-Et <Term name="likevektspunkt">likevektspunkt</Term> er et punkt der kraften er
-null, altså der $V'(x_0) = 0$. Taylorutvikler du $V'$ om $x_0$, er
-$V'(x) \approx V'(x_0) + V''(x_0)\,\xi = V''(x_0)\,\xi$ ved et lite utslag
-$\xi = x - x_0$, så kraften er $F \approx -V''(x_0)\,\xi$. Er $V''(x_0) > 0$, ligger
-$x_0$ i et minimum, og kraften peker tilbake mot $x_0$. Er $V''(x_0) < 0$, ligger
-$x_0$ på en topp, og kraften skyver partikkelen videre vekk. Er $V''(x_0) = 0$,
-avgjør de høyere leddene i Taylorrekka stabiliteten.
+Det kinetiske leddet er aldri negativt, så partikkelen kan bare være der
+${V(x) \le E}$. Der ${V(x) = E}$, er farten null, og partikkelen snur. Slike punkter
+kalles <Term name="Vendepunkt">vendepunkter</Term>. Mellom dem er den kinetiske
+energien ${E - V(x)}$, så partikkelen går fortest der $V$ er lavest.
 
-Med $V''(x_0) > 0$ er bevegelsesligningen $m\ddot\xi = -V''(x_0)\,\xi$. Dette er
-ligningen for en harmonisk oscillator med fjærkonstanten $V''(x_0)$, så
-partikkelen svinger med vinkelfrekvensen $\omega = \sqrt{V''(x_0)/m}$. For en
-fjær er $V = \tfrac12 kx^2$ og $V'' = k$, og formelen gir den kjente
-$\omega = \sqrt{k/m}$.
-
-<Formula
-  tex="V'(x_0) = 0, \qquad \omega = \sqrt{V''(x_0)/m}"
-  caption="Likevekt der $V'$ har et nullpunkt. Om et minimum svinger partikkelen harmonisk med vinkelfrekvens $\omega$."
-/>
-
-<Callout title="Potensialkurven">
-Partikkelen holder seg der $V(x) \le E$ og snur i vendepunktene, der $V(x) = E$.
-Likevektspunktene er nullpunktene til $V'$, stabile der $V'' > 0$ og ustabile der
-$V'' < 0$.
-</Callout>
+Tenk på kurven $V(x)$ som en bakke, og på partikkelen som en kule som slippes på
+den i høyden $E$. Kula ruller ned, får fart og klatrer opp på den andre siden til
+samme høyde, der den snur. En ekte kule beveger seg også opp og ned, så den bruker
+ikke like lang tid som partikkelen, men den snur og ligger i ro på de samme
+stedene.
 
 <Simulation
-  src="/sims/potensial.js"
-  title="Potensialkurve, likevekt og vendepunkter"
-  caption="Potensialet $V(x) = \tfrac12 kx^2 + \tfrac14 \lambda x^4$ med energilinja $E$. Utfylt markør er stabil likevekt og åpen ring ustabil likevekt. De loddrette strekene på energilinja er vendepunktene, og det skyggelagte området er der $V(x) \le E$."
+  src="/sims/potensialbronn.js"
   host="dom"
-  height={320}
+  title="Kula i potensialet"
+  caption="Kula ligger på potensialkurven $V(x)$ og beveger seg som en partikkel med dette potensialet. Den oransje linja er energien $E$, heltrukket mellom vendepunktene, og den grå streken fra kula opp til linja er den kinetiske energien. Fylte oransje prikker er stabile likevekter, åpne ringer ustabile. Den stiplede kurven i en brønn er parabelen med samme krumning i bunnen."
+  height={300}
 />
 
-<Example title="Likevekt i en dobbeltbrønn">
-En partikkel med masse $m = 0{,}20$ kg beveger seg i potensialet
-$V(x) = \tfrac12 kx^2 + \tfrac14 \lambda x^4$ med $k = -1{,}2$ N/m og
-$\lambda = 3{,}0$ N/m³. Finn likevektspunktene, avgjør stabiliteten og regn ut
-vinkelfrekvensen for små svingninger om et stabilt punkt.
+I fjærbrønnen svinger kula mellom de to vendepunktene, og den grå streken er
+lengst i bunnen, der farten er størst. Trykk et annet sted på kurven for å slippe
+kula fra ro der. Velg «Brønn mellom topper», og slipp kula like utenfor en av
+toppene. Kula ruller utover og forsvinner ut av bildet, fordi $V$ bare faller
+videre den veien.
+
+Energien gir også tida. Løs energien for farten, ${|\dot x| = \sqrt{2(E - V(x))/m}}$.
+Et lite steg $dx$ tar tida $dx/|\dot x|$, og en hel svingning går fra vendepunktet
+$x_1$ til vendepunktet $x_2$ og tilbake:
+
+<Formula tex="T = 2\int_{x_1}^{x_2} \frac{dx}{\sqrt{2\,(E - V(x))/m}}" caption="Perioden til en svingning mellom vendepunktene $x_1$ og $x_2$." />
+
+Med amplituden $A$ ligger vendepunktene i ${\pm A}$. I fjærbrønnen gir dobbelt så stor
+amplitude dobbelt så lang vei, men ${E - V}$ blir fire ganger så stor i hvert
+tilsvarende punkt, så farten blir dobbelt så stor, og tida er den samme. I den
+kvartiske brønnen blir ${E - V}$ seksten ganger så stor og farten fire ganger så
+stor, så den dobbelt så lange veien tar halvparten så lang tid. Perioden er
+omvendt proporsjonal med amplituden.
+
+Velg «To kuler» i simuleringen. Den andre kula slippes halvveis inn mot midten,
+samtidig med den første. I fjærbrønnen når de bunnen samtidig hver gang. Velg
+«Kvartisk», og den øverste kula når bunnen først. Den svinger to ganger hver gang
+den nederste svinger én gang, fordi dobbelt så stort utslag gir halvparten så lang
+periode.
+
+<Callout title="Bevegelse i et potensial">
+I én dimensjon er ${E = \tfrac12 m\dot x^2 + V(x)}$ bevart. Partikkelen holder seg der ${V(x) \le E}$, snur i vendepunktene der ${V = E}$, og perioden er ${T = 2\int dx/|\dot x|}$ mellom dem. I fjærbrønnen er perioden den samme for alle amplituder, i en kvartisk brønn omvendt proporsjonal med amplituden.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Kvartisk oscillator">
+<ExamRef id="2013-mai" task="2 a" />
+
+(a) Utled et analytisk uttrykk for svingningsperioden til en en-dimensjonal
+oscillator med potensiale ${U(x) = \frac14\gamma x^4}$ hvor ${\gamma > 0}$ er en positiv
+konstant. Uttrykk ditt svar via $m$, $\gamma$ og $E$, hvor $m$ og $E$ er massen og
+energien til oscillatoren, henholdsvis. Du vil kanskje finne følgende integral
+nyttig:
+
+$$
+\int_0^1 dz \frac{1}{\sqrt{1 - z^4}} \simeq 1.31
+$$
 
 <Solution>
-Likevekt krever $V'(x) = kx + \lambda x^3 = x\,(k + \lambda x^2) = 0$, som gir
-$x_0 = 0$ og $x_0 = \pm\sqrt{-k/\lambda}$. Med tallene er
-$-k/\lambda = 1{,}2/3{,}0 = 0{,}40$ m², altså $x_0 = \pm 0{,}63$ m.
+Her er $U$ potensialet og $\gamma$ koeffisienten foran $x^4$. Vendepunktene ligger
+der ${U = E}$, i ${\pm A}$ med ${E = \tfrac14\gamma A^4}$, så
+${A = (4E/\gamma)^{1/4}}$. Potensialet er symmetrisk, så en periode er fire ganger
+tida fra ${x = 0}$ til ${x = A}$:
 
-Den andre deriverte er $V''(x) = k + 3\lambda x^2$. I origo er
-$V''(0) = -1{,}2$ N/m, som er negativt, så likevekten i origo er ustabil. I de to andre
-punktene er
+$$
+T = 4\int_0^A \frac{dx}{\sqrt{2\,(E - \tfrac14\gamma x^4)/m}}
+$$
 
-<Formula tex="V''(\pm 0{,}63\ \text{m}) = -1{,}2 + 3 \cdot 3{,}0 \cdot 0{,}40 = 2{,}4\ \text{N/m}" />
+Sett ${x = Az}$. Da er ${E - \tfrac14\gamma x^4 = E\,(1 - z^4)}$ og $dx = A\,dz$, så
 
-som er positivt, så begge er stabile. Vinkelfrekvensen om et av dem er
+$$
+\begin{aligned}
+T &= 4A\sqrt{\frac{m}{2E}}\int_0^1 \frac{dz}{\sqrt{1 - z^4}} \\
+&\simeq 5{,}24\,A\sqrt{\frac{m}{2E}}
+\end{aligned}
+$$
 
-<Formula tex="\omega = \sqrt{\frac{V''(x_0)}{m}} = \sqrt{\frac{2{,}4\ \text{N/m}}{0{,}20\ \text{kg}}} = \sqrt{12\ \text{s}^{-2}} = 3{,}5\ \text{rad/s}" />
+Sett inn $A$. Faktorene samler seg til
+${A\sqrt{m/2E} = \sqrt m\,(\gamma E)^{-1/4}}$, siden
+${(4E/\gamma)^{1/4}(2E)^{-1/2} = (\gamma E)^{-1/4}}$.
 
-<Answer>$x_0 = 0$ er ustabil, $x_0 = \pm 0{,}63$ m er stabile og $\omega = 3{,}5$ rad/s</Answer>
+<Answer>$T \simeq 5{,}24\,\sqrt m\,(\gamma E)^{-1/4}$. Med $E \propto A^4$ er $T \propto 1/A$, som i simuleringen.</Answer>
 </Solution>
 </Example>
 
-<Quiz
-  question="Et kraftfelt har $\nabla \times \vec F = 0$ overalt unntatt i origo, der det er udefinert, slik gravitasjonsfeltet fra en punktmasse er. Er feltet konservativt?"
-  options={["Ja, enhver lukket kurve kan trekkes sammen utenom origo", "Nei, origo er et hull som en lukket kurve kan gå rundt", "Bare hvis arbeidet rundt origo er regnet ut og er null"]}
-  answer={0}
-  explanation="Et område der bare ett punkt mangler, er enkeltsammenhengende i tre dimensjoner, fordi en flate som en lukket kurve spenner ut, alltid kan bøyes litt til siden for origo. Stokes' teorem gir da null arbeid rundt enhver lukket kurve, og feltet har et potensial. En hel linje som $z$-aksen lager derimot et hull, for en kurve rundt linja kan ikke trekkes sammen uten å krysse den."
+## Likevekt og små svingninger
+
+Der ${V'(x_0) = 0}$, er kraften null, og en partikkel som ligger i ro der, blir
+liggende. Punktet er et <Term name="Likevektspunkt">likevektspunkt</Term>. I bunnen
+av en brønn er likevekten stabil: flytter du partikkelen litt til en av sidene,
+peker kraften $-V'$ tilbake mot bunnen. På en topp peker kraften bort fra toppen,
+og likevekten er ustabil. Fortegnet til $V''(x_0)$ skiller de to, positivt i en
+bunn og negativt på en topp.
+
+Nær en bunn ligner hver jevn kurve på en parabel. Taylorutvikle om $x_0$. Leddet
+med $V'(x_0)$ er null, så
+
+$$
+V(x) \approx V(x_0) + \tfrac12 V''(x_0)\,(x - x_0)^2
+$$
+
+Tilnærmingen er potensialet til en fjær med fjærkonstanten $V''(x_0)$, så små
+svingninger om bunnen er harmoniske:
+
+<Formula tex="\begin{aligned} V'(x_0) &= 0 \\ \omega &= \sqrt{V''(x_0)/m} \end{aligned}" caption="Likevekt, og vinkelfrekvensen til små svingninger om et minimum med $V''(x_0) > 0$." />
+
+Tilnærmingen holder så lenge neste ledd i Taylorrekken,
+${\tfrac16 V'''(x_0)\,(x - x_0)^3}$, er lite mot leddet med $V''$, altså når
+${|x - x_0| \ll 3V''(x_0)/|V'''(x_0)|}$.
+
+For fjæra selv er ${V'' = k}$, og formelen gir ${\omega = \sqrt{k/m}}$. Det kvartiske
+potensialet har ${V''(0) = 0}$, så parabelen er flat og gir ${\omega = 0}$. Perioden
+vokser uten grense når amplituden går mot null, slik ${T \propto 1/A}$ sier.
+
+Velg «Dobbeltbrønn» i simuleringen. Den stiplede kurven i hver brønn er parabelen
+over. Slipp kula nær bunnen av en brønn, der kurven og parabelen ligger oppå
+hverandre, og den svinger som på en fjær. Slipp kula like ved siden av toppen i
+midten, og den ruller ned på den siden du slapp den.
+
+<Callout title="Likevekt og små svingninger">
+En likevekt ligger der ${V'(x_0) = 0}$. Den er stabil i en bunn, der ${V''(x_0) > 0}$, og ustabil på en topp. Nær en bunn er potensialet en parabel, så små svingninger er harmoniske med ${\omega = \sqrt{V''(x_0)/m}}$.
+</Callout>
+
+<SelfCheck question="En partikkel med masse $m$ har potensialet $V(x) = V_0\,(x^2/a^2 - 1)^2$ med $V_0 > 0$. Finn likevektspunktene, avgjør hvilke som er stabile, og finn vinkelfrekvensen til små svingninger om de stabile.">
+${V'(x) = (4V_0/a^2)\,x\,(x^2/a^2 - 1)}$ er null i ${x = 0}$ og ${x = \pm a}$. I ${x = 0}$ er ${V = V_0}$, en topp mellom to brønner, så likevekten er ustabil. I ${x = \pm a}$ er ${V = 0}$, bunnen av hver brønn. Der er ${V''(\pm a) = 8V_0/a^2 > 0}$, så likevektene er stabile, og ${\omega = \sqrt{8V_0/(ma^2)}}$. Med ${V'''(a) = 24V_0/a^3}$ holder tilnærmingen for ${|x - a| \ll a}$.
+</SelfCheck>
+
+## Krefter med potensial
+
+I én dimensjon har hver kraft $F(x)$ et potensial. I tre dimensjoner er det ikke
+slik. Bær en stein opp på en hylle, rett opp eller i en lang omvei, og tyngden gjør
+arbeidet $-mgh$ uansett. Rør rundt i en kopp kaffe til den går rundt av seg selv,
+og hold skjeen stille i kaffen. Du kjenner at kaffen drar skjeen med seg. Før
+skjeen en runde samme vei som kaffen går, så sakte at kraften fra kaffen bare
+avhenger av hvor skjeen er. Kaffen dytter skjeen framover hele veien og gjør
+positivt arbeid på den, selv om skjeen ender der den startet.
+
+En kraft $\vec F(\vec r)$ er <Term name="Konservativ kraft">konservativ</Term> når
+arbeidet ${\int_C \vec F\cdot d\vec r}$ fra ett punkt til et annet er det samme
+langs alle veier $C$ mellom dem. Da kan du velge et fast punkt $\vec r_0$ og
+definere potensialet som arbeidet med motsatt fortegn:
+
+$$
+V(\vec r) = -\int_{\vec r_0}^{\vec r} \vec F\cdot d\vec r
+$$
+
+Integralet avhenger ikke av veien, så $V$ er en funksjon av $\vec r$ alene, og et
+lite steg $d\vec r$ endrer den med ${dV = -\vec F\cdot d\vec r}$. Sammenhengen
+${dV = -\vec F\cdot d\vec r}$ for hvert steg er det samme som
+
+<Formula tex="\vec F = -\nabla V" caption="En konservativ kraft er minus gradienten av potensialet." />
+
+Som i én dimensjon går arbeidet ${\vec F\cdot d\vec r = -dV}$ til den kinetiske
+energien, så ${\tfrac12 mv^2 + V(\vec r)}$ er bevart. En kraft som peker rundt, slik
+kraften fra kaffen på skjeen gjør, har ingen slik $V$. Etter én runde er skjeen
+tilbake i samme punkt, så $V$ måtte hatt samme verdi igjen, men kraften har gjort
+positivt arbeid på veien.
+
+Arbeidet er det samme langs to veier mellom de samme punktene nøyaktig når
+arbeidet rundt den lukkede kurven de danner, er null. Rundt en liten lukket kurve
+er arbeidet ${(\nabla\times\vec F)\cdot\hat n\,dA}$, der $dA$ er arealet kurven
+omslutter og $\hat n$ normalen til det. Sett et lite hjul ned i kraftfeltet, så
+kraften dytter på hver bit av kanten. Dytter kraften kanten mer den ene veien rundt
+enn den andre, snurrer hjulet, og det skjer nøyaktig når arbeidet rundt kanten ikke
+er null. For et lite hjul er det arbeidet ${\nabla\times\vec F}$ ganger arealet, så
+hjulet snurrer der ${\nabla\times\vec F \ne 0}$.
+
+<Simulation
+  src="/sims/hjul.js"
+  host="dom"
+  title="Et hjul i kraftfeltet"
+  caption="Et kraftfelt i planet tegnet som piler, et lite hjul som snurrer når feltet gjør arbeid rundt kanten av det, og en stiplet sirkel om origo gjennom hjulet. Tallet $W$ på sirkelen er arbeidet feltet gjør på én runde mot klokka. Pilenes lengde og hvor fort hjulet snurrer, er ikke i skala."
+  height={320}
 />
 
+Velg «Virvel», som er kraften fra kaffen på skjeen, og dra hjulet rundt. Det
+snurrer like fort hvor du enn setter det, også langt fra midten, fordi
+${\nabla\times\vec F}$ er den samme overalt i dette feltet. Den stiplede sirkelen går
+gjennom hjulet, og arbeidet på én runde er $2\pi r^2$, som er
+${\nabla\times\vec F = 2}$ ganger arealet sirkelen omslutter. Velg «Sentralkraft»,
+og hjulet står stille overalt, også over sentrum, mens arbeidet rundt sirkelen er
+null.
+
+En konservativ kraft har alltid ${\nabla\times\vec F = -\nabla\times\nabla V = 0}$.
+Omvendt, er ${\nabla\times\vec F = 0}$ overalt, gir Stokes' sats null arbeid rundt
+hver lukket kurve som er randen til en flate der kraften er definert, og da er
+kraften konservativ:
+
+<Formula tex="\nabla\times\vec F = 0" caption="Testen for om en kraft er konservativ. Den er nok i et område der hver lukket kurve kan trekkes sammen til et punkt." />
+
+I to dimensjoner er testen ${\partial F_x/\partial y = \partial F_y/\partial x}$, og
+den sier at ${F_x\,dx + F_y\,dy}$ er en
+<Term name="Eksakt differensial">eksakt differensial</Term>, $-dV$.
+
+Velg «Rundt en akse». Kraften ${\vec F = (-y, x, 0)/(x^2 + y^2)}$ peker rundt
+$z$-aksen og blir svakere utover, slik magnetfeltet rundt en rett ledning gjør.
+Et steg rett ut fra aksen står vinkelrett på kraften og gir ikke noe arbeid.
+Kraften er 1 delt på avstanden til aksen, og en bue som dreier vinkelen $d\phi$
+rundt aksen, er avstanden ganger $d\phi$. Et lite steg gir derfor arbeidet
+${\vec F\cdot d\vec r = d\phi}$, uansett hvor langt fra aksen steget er. En lukket
+vei som ikke går rundt aksen, dreier like mye fram som tilbake, så arbeidet rundt
+den er null. Derfor står hjulet stille overalt der kanten ikke går rundt aksen, og
+${\nabla\times\vec F = 0}$ overalt utenom på aksen. En vei rundt aksen dreier
+$2\pi$, så arbeidet rundt den stiplede sirkelen er $2\pi$ for alle radier. Sett
+hjulet over aksen, og kanten går rundt aksen, så hjulet snurrer, selv om
+${\nabla\times\vec F = 0}$ overalt der feltet er definert. Arbeidet rundt kanten
+kommer fra aksen inne i hjulet, der feltet ikke er definert, og for magnetfeltet er
+aksen ledningen der strømmen går. Ingen flate med en slik sirkel som rand unngår
+aksen.
+Testen er derfor nok bare i et <Term name="Enkeltsammenhengende område">enkeltsammenhengende område</Term>,
+der hver lukket kurve kan trekkes sammen til et punkt uten å forlate området.
+
+En sentralkraft peker mot eller bort fra et fast punkt, og størrelsen avhenger bare
+av avstanden til punktet: ${\vec F = f(r)\,\hat r}$. Den er alltid konservativ. Et
+lite steg på tvers av $\hat r$ endrer ikke $r$, og kraften gjør ikke noe arbeid på
+det, så arbeidet langs en hvilken som helst vei er $\int f(r)\,dr$, og
+${V(r) = -\int f(r)\,dr}$. Kraften er parallell med $\vec r$, så dreiemomentet
+${\vec r\times\vec F}$ om punktet er null, og dreieimpulsen ${\vec L = \vec r\times\vec p}$
+er konstant. Både $\vec r$ og $\vec p$ står vinkelrett på $\vec L$, så bevegelsen
+holder seg i det faste planet gjennom punktet vinkelrett på $\vec L$.
+
+<SelfCheck question="Er kraftfeltet ${\vec F = (2xy,\ x^2 + 3y^2)}$ i planet konservativt? Finn i så fall potensialet.">
+${\partial F_x/\partial y = 2x}$ og ${\partial F_y/\partial x = 2x}$, så testen er oppfylt, og hele planet har ingen hull. Potensialet må ha ${-\partial V/\partial x = 2xy}$, så ${V = -x^2y + f(y)}$ for en funksjon $f$ av $y$ alene. Da er ${-\partial V/\partial y = x^2 - f'(y)}$, og det skal være ${x^2 + 3y^2}$, så ${f'(y) = -3y^2}$ og ${f = -y^3}$. Potensialet er ${V = -x^2y - y^3}$, pluss en konstant.
+</SelfCheck>
+
+<Callout title="Konservative krefter">
+En kraft er konservativ når arbeidet mellom to punkter er det samme langs alle veier. Da er ${\vec F = -\nabla V}$, og ${\tfrac12 mv^2 + V}$ er bevart. Testen er ${\nabla\times\vec F = 0}$, som er nok i et område uten hull. En sentralkraft $f(r)\,\hat r$ er konservativ og holder dreieimpulsen om sentrum konstant.
+</Callout>
+
+<Quiz
+  question="Hvilket av disse kraftfeltene i $xy$-planet er konservativt?"
+  options={[
+    "${\\vec F = (y,\\ x)}$",
+    "${\\vec F = (y,\\ -x)}$",
+    "${\\vec F = (xy,\\ xy)}$",
+    "${\\vec F = (-y,\\ x)/(x^2 + y^2)}$, overalt utenom origo"
+  ]}
+  answer={0}
+  explanation={"$\\partial F_x/\\partial y = 1 = \\partial F_y/\\partial x$, og $V = -xy$ gir $-\\nabla V = (y, x)$. Feltet $(y, -x)$ peker rundt origo med $\\partial F_y/\\partial x - \\partial F_x/\\partial y = -2$. For $(xy, xy)$ er $\\partial F_x/\\partial y = x$ og $\\partial F_y/\\partial x = y$, som ikke er like. Det siste feltet har $\\nabla\\times\\vec F = 0$ overalt der det er definert, men arbeidet rundt origo er $2\\pi$ per runde, fordi planet uten origo har et hull."}
+/>
+
+## Tyngdefeltet
+
+Tyngden din på jordoverflaten er den samme som om hele jordas masse satt samlet i
+ett punkt i sentrum, 6370 km under deg.
+
+To punktmasser trekker hverandre med kraften $Gm_1m_2/r^2$ langs linja mellom dem.
+Sett fra den ene massen er kraften på den andre en sentralkraft med potensialet
+${V = -Gm_1m_2/r}$.
+Tyngdefeltet $\vec g(\vec r)$ er kraften per masse på en liten prøvemasse i
+$\vec r$, og tyngdepotensialet $\Phi(\vec r)$ er potensialet per masse, så
+${\vec g = -\nabla\Phi}$. Fra en utstrakt masse med tettheten $\rho$ legger du sammen
+bidragene fra hver bit. Tyngdekraften følger den samme $1/r^2$-loven som Coulombs
+lov, så Gauss' lov gjelder for den også. Coulombs lov har $1/4\pi\epsilon_0$ og
+frastøting mellom like ladninger der tyngden har $G$ og tiltrekning, så $1/\epsilon_0$
+blir $-4\pi G$, og ladningstettheten blir massetettheten:
+
+<Formula tex="\begin{aligned} \nabla\cdot\vec g &= -4\pi G\rho \\ \nabla^2\Phi &= 4\pi G\rho \end{aligned}" caption="Gauss' lov for tyngdefeltet, og den samme loven skrevet for potensialet." />
+
+For en kulesymmetrisk massefordeling peker $\vec g$ rett mot sentrum og har samme
+størrelse overalt på en kuleflate med radius $r$ om sentrum. Integrer Gauss' lov
+over volumet innenfor flaten. Fluksen ut gjennom flaten er $4\pi r^2 g(r)$, der $g(r)$
+er den radielle komponenten av $\vec g$, og høyresiden er $-4\pi G M(r)$, der
+$M(r)$ er massen innenfor $r$:
+
+<Formula tex="g(r) = -\frac{G M(r)}{r^2}" caption="Tyngdefeltet fra en kulesymmetrisk masse, der $M(r)$ er massen innenfor radien $r$. Minustegnet betyr at feltet peker inn mot sentrum." />
+
+Utenfor kula er $M(r)$ hele massen $M$, og feltet er det samme som fra en
+punktmasse $M$ i sentrum, slik tyngden din på overflaten er. Inne i kula trekker
+bare massen innenfor $r$, og skallet utenfor gir ikke noe felt. Med jevn tetthet er
+${M(r) = Mr^3/R^3}$ inni, så $|g|$ vokser lineært fra null i sentrum til $GM/R^2$ på
+overflaten.
+
+<Derivation title="En tunnel gjennom jorda">
+Bor en rett tunnel gjennom sentrum, og slipp en stein i den. Med jevn tetthet er kraften på steinen $-(GMm/R^3)\,x$, der $x$ er posisjonen langs tunnelen målt fra sentrum. Kraften er en fjærkraft med fjærkonstanten ${GMm/R^3 = mg/R}$, siden tyngdeakselerasjonen på overflaten er ${g = GM/R^2}$. Steinen svinger derfor harmonisk med ${\omega = \sqrt{g/R}}$, og en hel periode tar
+
+$$
+\begin{aligned}
+T &= 2\pi\sqrt{\frac{R}{g}} \\
+&= 2\pi\sqrt{\frac{6{,}37\cdot 10^6\ \text{m}}{9{,}81\ \text{m/s}^2}} \\
+&= 5060\ \text{s}
+\end{aligned}
+$$
+
+altså 84 minutter. En satellitt i sirkelbane like over bakken har den samme omløpstida: ${v^2/R = g}$ gir ${2\pi R/v = 2\pi\sqrt{R/g}}$. Jorda er tettere innerst enn ytterst, så i en ekte tunnel ville steinen brukt noe kortere tid.
+</Derivation>
+
+<Callout title="Tyngdefeltet">
+Tyngdefeltet er ${\vec g = -\nabla\Phi}$ med ${\nabla^2\Phi = 4\pi G\rho}$. Fra en kulesymmetrisk masse er ${g(r) = -GM(r)/r^2}$, der $M(r)$ er massen innenfor $r$. Utenfor virker kula som en punktmasse i sentrum, og skallet utenfor $r$ gir ikke noe felt.
+</Callout>
+
+## Dempet svingning
+
+Kjører du over en fartsdump med gode støtdempere, kommer bilen tilbake til normal
+høyde nesten uten å gynge. Er støtdemperne slitte, gynger bilen opp og ned flere
+ganger før den roer seg.
+
+Bilen hviler på fjærer, og ved siden av hver fjær sitter en støtdemper, som presser
+olje gjennom små hull. Oljen bremser med en kraft som er proporsjonal med farten.
+Modellen er en kloss med massen $m$ på en fjær med fjærkonstanten $k$, som glir
+gjennom olje og bremses av motstandskraften $-\gamma\dot x$, med
+friksjonskoeffisienten $\gamma$:
+
+<Formula tex="m\ddot x + \gamma\dot x + kx = 0" caption="Dempet harmonisk oscillator med friksjonskoeffisienten $\gamma$." />
+
+Energien ${E = \tfrac12 m\dot x^2 + \tfrac12 kx^2}$ er ikke lenger bevart.
+Motstandskraften peker alltid motsatt vei av hastigheten, så arbeidet den gjør, er
+alltid negativt. Deriver $E$ og sett inn bevegelsesligningen:
+
+$$
+\dot E = \dot x\,(m\ddot x + kx) = -\gamma\dot x^2
+$$
+
+Newtons andre lov er en ligning av andre orden, så posisjonen og farten i ett
+øyeblikk bestemmer resten av bevegelsen. Tilstanden til klossen er derfor ett punkt
+$(x, p)$, med impulsen ${p = m\dot x}$, og bevegelsen er en kurve i planet av alle
+slike punkter, <Term name="Faserom">faserommet</Term>. Uten demping er
+${E = p^2/2m + \tfrac12 kx^2}$ konstant, og kurven er en ellipse. Med demping minker
+$E$, og kurven går innover til stadig mindre ellipser.
+
+Hvor sterk dempingen er, måles mot fjæra. Del bevegelsesligningen på $m$:
+
+$$
+\begin{aligned}
+&\ddot x + 2\alpha\dot x + \omega_0^2 x = 0 \\
+&\alpha = \frac{\gamma}{2m}, \qquad \omega_0 = \sqrt{\frac{k}{m}}
+\end{aligned}
+$$
+
+Her er $\omega_0$ vinkelfrekvensen uten demping, og $\alpha$ har samme enhet.
+Simuleringen styrer forholdet $\alpha/\omega_0$.
+
+<Simulation
+  src="/sims/dempet-svingning.js"
+  host="dom"
+  title="Dempet svingning"
+  caption="Øverst en kloss på en fjær i et kar med olje, og under den faserommet med impulsen $p$ oppover. Klossen og punktet i faserommet står på samme $x$. Oljen er tegnet tydeligere jo sterkere dempingen er. De stiplede ellipsene har konstant energi, og den oransje prikken er likevekten. Dempingen er gitt ved $\alpha/\omega_0$, med $\alpha = \gamma/2m$ og $\omega_0 = \sqrt{k/m}$."
+  height={360}
+/>
+
+Sett dempingen til null. Punktet går rundt den samme ellipsen igjen og igjen, og
+klossen svinger like langt ut hver gang. Med ${\alpha/\omega_0 = 0{,}15}$ går kurven
+i spiral inn mot origo, og klossen svinger med stadig mindre utslag. Ved
+${\alpha/\omega_0 = 1}$ går punktet inn mot origo uten å gå rundt, og klossen kommer
+tilbake til likevekten uten å svinge forbi den. Med enda sterkere demping kryper
+klossen stadig saktere inn mot likevekten.
+
+Ved grensen ${\alpha = \omega_0}$ er to tider like: $1/\alpha$, omtrent tida
+dempingen bruker på å ta ut energien, og $1/\omega_0$, omtrent tida fjæra bruker på
+å trekke klossen tilbake til likevekten. Tar dempingen ut energien før fjæra rekker
+å trekke klossen forbi likevekten, blir det ingen svingning.
+
+Grensen kommer fram når du prøver ${x = e^{\lambda t}}$ i bevegelsesligningen. Hver
+derivasjon gir en faktor $\lambda$, så ${m\lambda^2 + \gamma\lambda + k = 0}$. Del
+på $m$, og røttene er
+
+<Formula tex="\lambda = -\alpha \pm \sqrt{\alpha^2 - \omega_0^2}" caption="Røttene til det karakteristiske polynomet for den dempede oscillatoren, med $\alpha = \gamma/2m$ og $\omega_0 = \sqrt{k/m}$." />
+
+Begge røttene har negativ realdel når ${\gamma > 0}$, så utslaget dør ut. Fortegnet
+under rottegnet bestemmer hvordan:
+
+- Med ${\alpha < \omega_0}$ er røttene komplekse, og
+  ${x = A\,e^{-\alpha t}\cos(\Omega t + \varphi)}$ med
+  ${\Omega = \sqrt{\omega_0^2 - \alpha^2}}$. Klossen svinger, litt saktere enn uten
+  demping, mens utslaget dør ut. Det kalles underkritisk demping, og det er spiralen
+  i simuleringen. Med ${\alpha = 0}$ er ${\Omega = \omega_0}$.
+- Med ${\alpha > \omega_0}$ er begge røttene reelle og negative, og $x$ er en sum av
+  to fallende eksponentialfunksjoner. Klossen svinger ikke, og dempingen kalles
+  overkritisk. Den langsomste av de to, med
+  ${\lambda = -\alpha + \sqrt{\alpha^2 - \omega_0^2}}$, går mot null når $\alpha$
+  vokser, og derfor kryper klossen.
+- Med ${\alpha = \omega_0}$, altså ${\gamma = 2\sqrt{km}}$, faller røttene sammen, og
+  ${x = (A + Bt)\,e^{-\alpha t}}$. Det er <Term name="Kritisk demping">kritisk demping</Term>,
+  den raskeste veien tilbake til likevekten uten å svinge forbi.
+
+En bil er dempet noe under kritisk, så den gynger litt én gang etter en fartsdump.
+Slitte støtdempere har mindre $\gamma$, og bilen gynger flere ganger, slik spiralen
+med liten demping gjør.
+
+<Callout title="Dempet svingning">
+Med ${m\ddot x + \gamma\dot x + kx = 0}$ minker energien som ${\dot E = -\gamma\dot x^2}$. Er ${\alpha = \gamma/2m}$ mindre enn ${\omega_0 = \sqrt{k/m}}$, svinger oscillatoren med vinkelfrekvensen ${\sqrt{\omega_0^2 - \alpha^2}}$ og fallende utslag. Er $\alpha$ større, kryper den inn uten å svinge, og ved ${\alpha = \omega_0}$ er dempingen kritisk.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Partikkel i en vannfylt sylinder">
+<ExamRef id="2022-aug-kont" task="3 b" />
+
+Let us consider a particle (mass $m$) sliding down a cylinder cavity surface without
+any friction from the support. The cavity is filled with water. The particle
+experiences a drag force due to solvent that is directly proportional to velocity and
+has the form ${F = -kmv}$, where $k$ is a constant. The radius of the cavity is $R$.
+The particle (point) experiences gravity but it has no volume, and you can neglect the
+buoyancy effect in water.
+
+(b) Let us assume small displacements around the equilibrium point in the bottom of
+the cylinder. By using new constants ${\delta = k/(2R)}$ and ${\omega_0 = \sqrt{g/R}}$,
+solve the resulting equation of motion (differential equation). What kind of solutions
+will you get and what kind of physical behavior they correspond to? [3p]
+
+<Solution>
+Sylinderen ligger med aksen vannrett, så partikkelen går langs en sirkel med radius
+$R$. La $\theta$ være vinkelen fra bunnen av sylinderen, målt fra aksen, så farten
+langs sirkelen er ${v = R\dot\theta}$. Normalkraften fra veggen står vinkelrett på
+sirkelen, så langs sirkelen virker bare tyngden, med komponenten
+${-mg\sin\theta}$, og motstandskraften ${-kmR\dot\theta}$. Newtons andre lov langs
+sirkelen er
+
+$$
+mR\ddot\theta = -mg\sin\theta - kmR\dot\theta
+$$
+
+For små utslag er ${\sin\theta \approx \theta}$. Del på $mR$:
+
+$$
+\ddot\theta + k\dot\theta + \frac{g}{R}\,\theta = 0
+$$
+
+Her er $k$ ikke en fjærkonstant. Motstandskraften ${-kmv}$ er ${-\gamma v}$ med
+${\gamma = km}$, så dette er bevegelsesligningen til den dempede oscillatoren med
+${\omega_0 = \sqrt{g/R}}$ og dempingen ${\delta = \gamma/2m = k/2}$, som er $\alpha$
+i teksten. Sjekk enhetene. $kmv$ er en kraft, så $k$ har enheten s⁻¹, og ${2\delta\dot\theta}$
+har samme enhet som $\ddot\theta$ bare når $\delta$ også har enheten s⁻¹.
+Oppgavens ${k/(2R)}$ har enheten m⁻¹s⁻¹ og kan ikke være dempingen. Prøv
+${\theta = e^{\lambda t}}$, så er ${\lambda^2 + 2\delta\lambda + \omega_0^2 = 0}$ og
+${\lambda = -\delta \pm \sqrt{\delta^2 - \omega_0^2}}$. Løsningen har tre former:
+
+- ${\delta < \omega_0}$: ${\theta = A\,e^{-\delta t}\cos(\Omega t + \varphi)}$ med
+  ${\Omega = \sqrt{\omega_0^2 - \delta^2}}$. Partikkelen svinger fram og tilbake
+  gjennom bunnen med stadig mindre utslag. Det er underkritisk demping.
+- ${\delta = \omega_0}$: ${\theta = (A + Bt)\,e^{-\delta t}}$. Partikkelen kommer
+  raskest tilbake til bunnen uten å svinge forbi. Det er kritisk demping.
+- ${\delta > \omega_0}$: ${\theta = e^{-\delta t}\big(A\,e^{qt} + B\,e^{-qt}\big)}$
+  med ${q = \sqrt{\delta^2 - \omega_0^2}}$. Partikkelen kryper inn mot bunnen uten å
+  svinge. Det er overkritisk demping.
+
+<Answer>Med ${\delta = k/2}$ er ${\ddot\theta + 2\delta\dot\theta + \omega_0^2\theta = 0}$. For ${\delta < \omega_0}$ svinger partikkelen med fallende utslag, ${\theta = A\,e^{-\delta t}\cos(\Omega t + \varphi)}$ (underkritisk). For ${\delta = \omega_0}$ kommer den raskest tilbake uten å svinge forbi, ${\theta = (A + Bt)\,e^{-\delta t}}$ (kritisk). For ${\delta > \omega_0}$ kryper den inn uten å svinge, ${\theta = e^{-\delta t}(A\,e^{qt} + B\,e^{-qt})}$ med ${q = \sqrt{\delta^2 - \omega_0^2}}$ (overkritisk).</Answer>
+
+</Solution>
+</Example>
+
 <KeyTakeaways>
-- Newtons første lov slår fast at inertialsystemer finnes. Den andre loven gjelder i dem.
-- Transformasjonen mellom to inertialsystemer må sende den rette linja en fri partikkel følger i $(t, x)$-planet, over i en rett linje, og være inverterbar i hele planet. Med felles origo er den da lineær, og med parallelle akser har den bare én fri konstant.
-- Absolutt tid gir Galilei-transformasjonen. Et invariant $\Delta s^2$ gir Lorentz-transformasjonen.
-- Under en Galilei-transformasjon forskyves hastigheter med $\vec v$, mens akselerasjoner, masser og krefter er uendret.
-- En kraft er konservativ når $\nabla \times \vec F = 0$ på et enkeltsammenhengende område, og da finnes et potensial med $\vec F = -\nabla V$.
-- Nullpunktene til $V'$ er likevektspunkter. $V'' > 0$ gir stabil likevekt, $V'' < 0$ ustabil.
+
+- Newtons andre lov gjelder i inertialsystemer, der et legeme uten krefter går rett fram med konstant fart. Galilei-transformasjonen ${t' = t}$, ${\vec r\,' = \vec r - \vec vt}$ tar ett inertialsystem over i et annet og endrer verken akselerasjoner, krefter eller masser.
+- Den mest generelle lineære transformasjonen er ${t' = At + Bx}$, ${x' = A(x - vt)}$. Absolutt tid gir Galilei. Krever du at $c^2t^2 - x^2$ er det samme i begge systemene, får du Lorentz.
+- I én dimensjon er ${E = \tfrac12 m\dot x^2 + V(x)}$ bevart. Partikkelen holder seg der ${V \le E}$, snur der ${V = E}$, og perioden er ${T = 2\int dx/|\dot x|}$ mellom vendepunktene.
+- En likevekt der ${V'' > 0}$ er stabil, og små svingninger om den har ${\omega = \sqrt{V''(x_0)/m}}$.
+- En kraft er konservativ når arbeidet ikke avhenger av veien. Da er ${\vec F = -\nabla V}$, og testen ${\nabla\times\vec F = 0}$ er nok i et område uten hull.
+- Fra en kulesymmetrisk masse er tyngdefeltet ${g(r) = -GM(r)/r^2}$, med $M(r)$ massen innenfor $r$.
+- En dempet oscillator ${m\ddot x + \gamma\dot x + kx = 0}$ svinger når ${\alpha = \gamma/2m < \omega_0}$, kryper inn når ${\alpha > \omega_0}$ og er kritisk dempet ved ${\alpha = \omega_0}$.
+
 </KeyTakeaways>

@@ -20,8 +20,8 @@ maintainer), **rewritten** (approved and committed).
 
 | Module | Status | Notes |
 |---|---|---|
-| 01 Newtonsk mekanikk og krefter | to rewrite |  |
-| 02 Greens funksjon og partikkelsystemer | to rewrite | Approved restructure, on hold until the writing review is finished: split into «Greens funksjon» and «Partikkelsystemer og støt», cutting the reduced-mass and Noether duplicates. |
+| 01 Newtonsk mekanikk og krefter | rewritten | Approved after round 2 (2026-10-22). Scope widened to central forces, the gravitational field and the damped oscillator; terminal velocity left out as first-year material, and fixed-point classification left out because this year's lectures do not teach it. |
+| 02 Greens funksjon og partikkelsystemer | to rewrite | Approved restructure, done as part of the rewrite: split into «Greens funksjon» and «Partikkelsystemer og støt», cutting the reduced-mass and Noether duplicates. |
 | 03 Virkningsprinsippet og Lagranges ligninger | to rewrite | Later pass: takes the Lagrange multipliers from 05. |
 | 04 Roterende referansesystemer | to rewrite |  |
 | 05 Føringskrefter, symmetrier og bevaringslover | to rewrite | Later pass: the Lagrange multipliers move to 03. |
