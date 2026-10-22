@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 196" width="340" height="196">
+  <!-- To partikler med like store og motsatt rettede krefter på hverandre. Til venstre ligger
+       kreftene langs linja gjennom partiklene, til høyre på hver sin side av den, så de ville dreid paret. -->
+  <defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#c0703a"/></marker><marker id="ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#7c8795"/></marker></defs>
+  <line x1="30" y1="96" x2="140" y2="70" stroke="#8d98a6" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <line x1="38.8" y1="93.9" x2="72.8" y2="85.9" stroke="#c0703a" stroke-width="2.4" marker-end="url(#fa)"/>
+  <line x1="131.2" y1="72.1" x2="97.2" y2="80.1" stroke="#c0703a" stroke-width="2.4" marker-end="url(#fa)"/>
+  <circle cx="30" cy="96" r="7" fill="#3f9a6c"/>
+  <text x="30" y="123" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="middle">i</text>
+  <circle cx="140" cy="70" r="7" fill="#3f9a6c"/>
+  <text x="140" y="97" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="middle">j</text>
+  <text x="86" y="166" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="middle">langs linja</text>
+  <line x1="206" y1="112" x2="306" y2="64" stroke="#8d98a6" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <line x1="206" y1="103" x2="206" y2="62" stroke="#c0703a" stroke-width="2.4" marker-end="url(#fa)"/>
+  <line x1="306" y1="73" x2="306" y2="114" stroke="#c0703a" stroke-width="2.4" marker-end="url(#fa)"/>
+  <circle cx="206" cy="112" r="7" fill="#3f9a6c"/>
+  <text x="190" y="118" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="middle">i</text>
+  <circle cx="306" cy="64" r="7" fill="#3f9a6c"/>
+  <text x="322" y="70" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="middle">j</text>
+  <path d="M 241.3 71.6 A 22 22 0 0 1 275.3 98.5" fill="none" stroke="#7c8795" stroke-width="1.6" marker-end="url(#ma)"/>
+  <text x="256" y="166" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="middle">ved siden av</text>
+</svg>

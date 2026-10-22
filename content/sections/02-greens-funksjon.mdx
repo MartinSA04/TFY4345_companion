@@ -1,0 +1,380 @@
+---
+order: 2
+title: "Greens funksjon"
+summary: "Responsen til en oscillator på en vilkårlig kraft bygd av responsen på ett kort dytt, Greens funksjon fra en Fourier-transform med polene lagt slik at responsen kommer etter dyttet, og resonansen i en dempet oscillator som drives av en harmonisk kraft."
+importance: core
+tag: "Uke 35 · notat om Greens funksjon"
+updated: 2026-10-22
+---
+
+<LearningGoals>
+
+- Finne responsen til en oscillator på ett kort dytt, og bygge responsen på en vilkårlig kraft $J(t)$ av slike responser.
+- Finne <Term name="Greens funksjon">Greens funksjon</Term> med en Fourier-transform, og forklare hvorfor kravet om at responsen kommer etter dyttet legger polene under den reelle aksen.
+- Regne ut den <Term name="Retardert Greens funksjon">retarderte Greens funksjonen</Term> med residuesetningen.
+- Finne amplituden og faseforskyvningen til en dempet oscillator som drives av en harmonisk kraft, og knytte <Term name="Resonans">resonansen</Term> til hvor polene ligger.
+
+</LearningGoals>
+
+Et barn sitter på en huske, og du gir huska et kort dytt hver gang den er på vei bort
+fra deg. For hvert dytt svinger den høyere. Henger huska i ro og du gir like harde dytt
+med halvannen periode imellom, stopper det andre dyttet huska nesten helt, og det
+tredje setter den i gang igjen. Hvordan huska svinger, avhenger både av dyttene og av når de kommer.
+Likevel kan du regne ut alt sammen fra hvordan huska svinger etter ett enkelt dytt.
+
+## Ett dytt
+
+Huska er en pendel, og for små utslag svinger den som en harmonisk oscillator. Her er
+oscillatoren en kloss med massen $m$ i en fjær med fjærkonstanten $k$, og $x$ er
+utslaget fra likevekten. En ytre kraft $J(t)$ virker på klossen:
+
+<Formula tex="m\ddot x + kx = J(t)" caption="Harmonisk oscillator med en ytre kraft $J(t)$. Uten kraften svinger den med vinkelfrekvensen $\omega_0 = \sqrt{k/m}$." />
+
+Et dytt er en kraft som virker så kort tid at klossen ikke rekker å flytte seg mens den
+virker. Det eneste dyttet gjør, er å endre impulsen, med tidsintegralet av kraften,
+${\Delta p = \int J\,dt}$. Et dytt med ${\Delta p = 1}$ ved tida $t'$ er
+${J(t) = \delta(t - t')}$, siden integralet av deltafunksjonen er 1.
+
+Ligger klossen i ro i likevekten før dyttet, står den der fortsatt rett etter, men nå
+med impulsen 1 og farten $1/m$. Etter dyttet virker ingen ytre kraft, så klossen
+svinger fritt. Den frie svingningen som starter i ${x = 0}$ med farten $1/m$, er
+${x = \sin(\omega_0 \tau)/(m\omega_0)}$, der ${\tau = t - t'}$ er tida som har gått siden
+dyttet. Før dyttet ligger klossen i ro. Massen og fjæra er de samme hele tida, så
+responsen avhenger bare av $\tau$ og ikke av når dyttet kom. Responsen på et slikt
+enhetsdytt heter den <Term name="Retardert Greens funksjon">retarderte Greens funksjonen</Term>,
+der retardert betyr at den kommer etter dyttet:
+
+<Formula tex="G_R(\tau) = \vartheta(\tau)\,\frac{\sin(\omega_0\tau)}{m\omega_0}" caption="Responsen til oscillatoren på et enhetsdytt for tida $\tau$ siden. Trinnfunksjonen $\vartheta(\tau)$ er 0 for $\tau < 0$ og 1 for $\tau > 0$." />
+
+<Simulation
+  src="/sims/dytt.js"
+  host="dom"
+  title="Dytt oscillatoren"
+  caption="En kloss i en fjær med en penn som skriver utslaget $x$ på et papir som trekkes forbi mot venstre. Det nyeste står ved pennen, de tynne loddrette strekene står én periode fra hverandre, og den stiplede vannrette linja er likevekten. Hvert dytt gir klossen like mye impuls oppover og er vist som en oransje pil under klossen og en oransje prikk på likevektslinja. Den stiplede oransje kurven fra en prikk er responsen dyttet ville gitt alene, og den heltrukne kurven er det klossen gjør."
+  height={330}
+/>
+
+Trykk «Nullstill» og så «Dytt». Pennen skriver en sinus som starter på likevektslinja
+der dyttet kom, og til venstre for prikken, før dyttet, er linja flat. Utslaget er det
+samme hver gang du gjentar forsøket, fordi responsen bare avhenger av tida siden dyttet.
+
+<Callout title="Responsen på ett dytt">
+Et dytt endrer bare impulsen. Etter et enhetsdytt svinger oscillatoren fritt ut fra likevekten med farten $1/m$, så responsen er ${G_R(\tau) = \vartheta(\tau)\sin(\omega_0\tau)/(m\omega_0)}$, null før dyttet.
+</Callout>
+
+## Mange dytt
+
+Trykk «Dytt» én gang til. Hvert dytt får sin egen stiplede kurve, og det klossen gjør,
+er summen av de to. Hvor stor svingningen blir, avhenger av når det andre dyttet
+kommer. Kommer det når klossen passerer likevekten på vei oppover, blir svingningen
+dobbelt så stor. Kommer det når klossen passerer likevekten på vei nedover, stopper
+klossen.
+
+Summen gjelder fordi venstresiden i bevegelsesligningen er lineær i $x$. Gir kraften
+$J_1$ responsen $x_1$ og kraften $J_2$ responsen $x_2$, så er summen av de to ligningene
+
+$$
+m(\ddot x_1 + \ddot x_2) + k(x_1 + x_2) = J_1 + J_2
+$$
+
+og ${x_1 + x_2}$ er responsen på ${J_1 + J_2}$. Det er
+<Term name="Superposisjonsprinsippet">superposisjonsprinsippet</Term>.
+
+Trykk «Tre dytt, én periode imellom». Hvert dytt kommer en hel periode etter det
+forrige, når klossen passerer likevekten på vei oppover. Responsen på hvert dytt er den
+samme sinusen forskjøvet én periode, så de stiplede kurvene ligger oppå hverandre, og
+summen blir to og så tre ganger så stor som etter det første dyttet. Slik
+kommer huska høyere for hvert dytt. Trykk «Tre dytt, 1,5 periode imellom». Halvannen
+periode etter det første dyttet er den første responsen akkurat motsatt av den andre, så
+det andre dyttet stopper klossen helt, og det tredje setter den i gang igjen.
+
+En kraft som virker hele tida, kan deles opp i dytt på samme måte. Del tida i korte
+biter $dt'$. I biten ved $t'$ gir kraften impulsen ${J(t')\,dt'}$, et dytt med den
+styrken, og det dyttet gir responsen ${G_R(t - t')\,J(t')\,dt'}$. Summen over alle
+bitene er et integral:
+
+<Formula tex="x(t) = \int_{-\infty}^{\infty} G_R(t - t')\,J(t')\,dt'" caption="Responsen på en vilkårlig kraft, satt sammen av responsene på dytt, for en oscillator som lå i ro før kraften kom." />
+
+Trinnfunksjonen i $G_R$ er null for ${t' > t}$, så bare kraften før $t$ bidrar. Var
+oscillatoren ikke i ro da kraften kom, legger du til den frie svingningen den hadde fra
+før. Den løser ligningen med ${J = 0}$, og superposisjonsprinsippet legger den oppå
+responsen.
+
+<Callout title="Superposisjon">
+Bevegelsesligningen er lineær, så responsen på en sum av krefter er summen av responsene. En kraft er en rekke dytt ${J(t')\,dt'}$, og responsen er ${x(t) = \int G_R(t - t')\,J(t')\,dt'}$.
+</Callout>
+
+<Example title="Kraft som slås på">
+Klossen ligger i ro i likevekten når en konstant kraft $J_0$ slås på ved ${t = 0}$ og
+blir stående på. Finn $x(t)$.
+
+<Solution>
+Kraften er null før ${t = 0}$, og $G_R(t - t')$ er null for ${t' > t}$, så integralet går
+fra 0 til $t$:
+
+$$
+x(t) = \frac{J_0}{m\omega_0}\int_0^t \sin\bigl(\omega_0(t - t')\bigr)\,dt'
+$$
+
+Bytt til ${u = t - t'}$, som går fra $t$ til 0 når $t'$ går fra 0 til $t$:
+
+$$
+\begin{aligned}
+x(t) &= \frac{J_0}{m\omega_0}\int_0^t \sin(\omega_0 u)\,du \\
+&= \frac{J_0}{m\omega_0^2}\bigl(1 - \cos(\omega_0 t)\bigr)
+\end{aligned}
+$$
+
+Med ${m\omega_0^2 = k}$ er ${J_0/(m\omega_0^2) = J_0/k}$ utslaget der fjæra holder igjen
+kraften, altså den nye likevekten. Klossen starter i ro i den gamle likevekten
+${x = 0}$, så den svinger mellom 0 og ${2J_0/k}$ om den nye.
+
+<Answer>${x(t) = (J_0/k)\bigl(1 - \cos(\omega_0 t)\bigr)}$, en svingning med amplituden $J_0/k$ om den nye likevekten $J_0/k$.</Answer>
+</Solution>
+</Example>
+
+<SelfCheck question="Kraften $J_0$ slås på ved $t = 0$ og av igjen ved $t = T$. Hvordan svinger klossen etter $T$? Hvor lenge må kraften stå på for at klossen skal ligge i ro etterpå, og hvor lenge for at utslaget skal bli størst?">
+Å slå av kraften ved $T$ er det samme som å legge til kraften $-J_0$ fra $T$. Den gir responsen fra eksempelet med motsatt fortegn og forskjøvet med $T$. Summen av de to responsene er for ${t > T}$
+
+$$
+x = \frac{J_0}{k}\bigl(\cos(\omega_0(t - T)) - \cos(\omega_0 t)\bigr)
+$$
+
+en fri svingning om den gamle likevekten. Den er null når ${\omega_0 T}$ er et helt antall ganger $2\pi$: står kraften på i et helt antall perioder, ligger klossen i ro etterpå. De to cosinusene er motsatte når ${\omega_0 T = \pi}$, og da er ${x = -2(J_0/k)\cos(\omega_0 t)}$, med amplituden ${2J_0/k}$. Det skjer når kraften står på i en halv periode, eller et odde antall halve perioder.
+</SelfCheck>
+
+## Harmoniske krefter
+
+Responsen på ett dytt fant du fra den frie svingningen. Fourier-metoden under gir
+Greens funksjon rett fra bevegelsesligningen, uten at du først finner den frie
+bevegelsen, og den virker for enhver lineær ligning med konstante koeffisienter. Den
+viser også hvordan oscillatoren svarer på en kraft med én bestemt frekvens.
+
+Skriv bevegelsesligningen som ${D(t)\,x(t) = J(t)}$, med differensialoperatoren
+${D(t) = m\,(d^2/dt^2 + \omega_0^2)}$. $G_R$ er responsen på kraften $\delta(t - t')$, så
+
+<Formula tex="D(t)\,G_R(t - t') = \delta(t - t')" caption="$D(t)$ brukt på $G_R$ gir deltafunksjonen tilbake." />
+
+Sett inn integralet for $x(t)$ i ${D(t)\,x(t)}$. $D(t)$ virker bare på $G_R$, og
+deltafunksjonen plukker ut $J(t)$, så integralet løser ligningen for enhver $J$. En
+løsning av ${D\,G = \delta}$ heter derfor en <Term name="Greens funksjon">Greens funksjon</Term>
+til ligningen, og den virker som det inverse av $D$. $G_R$ er den som er null før
+dyttet.
+
+Én kraft har en respons du kan skrive opp uten å løse noe, en harmonisk kraft
+${J(t) = e^{-i\Omega t}}$ med vinkelfrekvensen $\Omega$. Prøv ${x = G(\Omega)\,e^{-i\Omega t}}$.
+Hver tidsderivasjon gir faktoren $-i\Omega$, så ${\ddot x = -\Omega^2 x}$, og ligningen
+blir ${m(\omega_0^2 - \Omega^2)\,G(\Omega)\,e^{-i\Omega t} = e^{-i\Omega t}}$:
+
+<Formula tex="G(\Omega) = \frac{1}{m\,(\omega_0^2 - \Omega^2)}" caption="Responsen per kraftenhet på en kraft som svinger med vinkelfrekvensen $\Omega$. Uten demping." />
+
+$G(\Omega)$ er hvor stor responsen er når kraften svinger med $\Omega$. Den reelle
+kraften ${J_0\cos(\Omega t)}$ gir realdelen, ${x = J_0\,G(\Omega)\cos(\Omega t)}$. Når
+$\Omega$ går mot null, går utslaget mot $J_0/k$, der fjæra holder igjen kraften. Over
+$\omega_0$ er $G$ negativ, og klossen beveger seg motsatt vei av kraften.
+
+Et dytt er en sum av harmoniske krefter med alle frekvenser og samme vekt,
+${\delta(\tau) = \int e^{-i\Omega\tau}\,d\Omega/2\pi}$. Hver av dem gir responsen
+${G(\Omega)\,e^{-i\Omega\tau}}$, og superposisjon gir responsen på dyttet:
+
+$$
+G_R(\tau) = \int_{-\infty}^{\infty} \frac{d\Omega}{2\pi}\,\frac{e^{-i\Omega\tau}}{m\,(\omega_0^2 - \Omega^2)}
+$$
+
+Du kan altså dele en kraft opp på to måter: i dytt etter hverandre i tid, eller i
+harmoniske krefter med hver sin frekvens. $G_R(\tau)$ er responsen i det ene bildet og
+$G(\Omega)$ i det andre, og de er Fourier-transformer av hverandre. Integralet over er
+likevel ikke ferdig, for integranden har poler på den reelle aksen.
+
+<Callout title="Greens funksjon i frekvens">
+En harmonisk kraft $e^{-i\Omega t}$ gir responsen $G(\Omega)\,e^{-i\Omega t}$ med ${G(\Omega) = 1/[m(\omega_0^2 - \Omega^2)]}$, fordi hver tidsderivasjon blir en faktor $-i\Omega$. Et dytt er en sum av alle frekvensene, så $G_R(\tau)$ er Fourier-transformen av $G(\Omega)$.
+</Callout>
+
+## Hvor polene ligger
+
+Integranden har poler i ${\Omega = \pm\omega_0}$. Der er $G(\Omega)$ uendelig: en kraft
+med akkurat oscillatorens egen frekvens gir uten demping ingen svingning med fast
+utslag, for kraften dytter i takt og gjør utslaget større hver periode, slik dyttene
+med én periode imellom gjorde. Integralet langs den reelle aksen er ikke definert før
+du har bestemt om veien skal gå over eller under hver pol.
+
+Valget avgjør hvilken løsning av ${D\,G = \delta}$ du får. To veier som går forskjellig
+forbi en pol, skiller seg med $2\pi i$ ganger residuet i polen, og det er
+proporsjonalt med $e^{\mp i\omega_0\tau}$, en fri svingning som løser ligningen uten kraft. Ligningen
+${D\,G = \delta}$ bestemmer derfor ikke $G$ alene. Kravet som mangler, er at responsen
+kommer etter dyttet:
+
+$$
+G_R(\tau) = 0 \quad \text{for} \quad \tau < 0
+$$
+
+Integranden inneholder ${|e^{-i\Omega\tau}| = e^{\tau\,\mathrm{Im}\,\Omega}}$. For
+${\tau < 0}$ går den faktoren mot null langt oppe i det øvre halvplanet, så der kan du
+lukke veien med en stor halvsirkel uten å endre integralet (figur 1). Ligger ingen poler
+innenfor, er integralet null etter Cauchys integralsats. Kravet er altså oppfylt når
+begge polene ligger under veien. Flytt dem ned til ${\pm\omega_0 - i\varepsilon}$ med en
+liten ${\varepsilon > 0}$.
+
+<Figure src="/figures/polene.svg" alt="Det komplekse Omega-planet med to poler like under den reelle aksen, i pluss og minus omega null minus i epsilon. Veien går langs den reelle aksen. En stiplet halvsirkel over aksen er merket tau mindre enn null, ingen poler, og en stiplet halvsirkel under aksen er merket tau større enn null, to poler." width={340} height={330} number={1} caption="$\Omega$-planet. Polene ligger i $\pm\omega_0 - i\varepsilon$, like under den reelle aksen, og veien går langs aksen. For $\tau < 0$ lukkes den med halvsirkelen over, der ingen poler ligger, og for $\tau > 0$ med halvsirkelen under, som omslutter begge. $\varepsilon$ er tegnet mye større enn den er." />
+
+Polene har en fysisk grunn til å ligge under aksen. Legg til en svak friksjonskraft
+$-\gamma\dot x$, med dempingen ${\alpha = \gamma/2m}$. Da gir hver tidsderivasjon i $\gamma\dot x$
+også en faktor $-i\Omega$, og nevneren i $G(\Omega)$ blir
+${m(\omega_0^2 - \Omega^2 - 2i\alpha\Omega)}$. Nullpunktene er
+
+$$
+\Omega = -i\alpha \pm \sqrt{\omega_0^2 - \alpha^2}
+$$
+
+begge en avstand $\alpha$ under den reelle aksen. En virkelig oscillator har alltid litt
+friksjon, og $\varepsilon$ er $\alpha$ i grensen der dempingen går mot null.
+
+For ${\tau > 0}$ går $e^{-i\Omega\tau}$ mot null i det nedre halvplanet, så veien lukkes
+der, med klokka, og omslutter begge polene. Residuesetningen gir
+
+<Formula tex="G_R(\tau) = \frac{\sin(\omega_0\tau)}{m\omega_0} \quad \text{for} \quad \tau > 0" caption="Konturintegralet med polene under aksen gir den samme responsen som du fant fra dyttet." />
+
+som er responsen du fant fra dyttet.
+
+<Derivation title="Residuene">
+Med polene flyttet til ${\pm\omega_0 - i\varepsilon}$ er nevneren, når ${\varepsilon \to 0}$,
+
+$$
+\omega_0^2 - \Omega^2 = -(\Omega - \omega_0 + i\varepsilon)(\Omega + \omega_0 + i\varepsilon)
+$$
+
+så
+
+$$
+G_R(\tau) = -\frac{1}{2\pi m}\int_{-\infty}^{\infty} \frac{e^{-i\Omega\tau}\,d\Omega}{(\Omega - \omega_0 + i\varepsilon)(\Omega + \omega_0 + i\varepsilon)}
+$$
+
+For ${\tau > 0}$ lukkes veien under aksen, med klokka, så integralet er $-2\pi i$ ganger summen av residuene. Residuet i en enkel pol $\Omega_p$ er grensen av ${(\Omega - \Omega_p)}$ ganger integranden. I ${\Omega = \omega_0}$ er residuet ${e^{-i\omega_0\tau}/(2\omega_0)}$, og i ${\Omega = -\omega_0}$ er det ${e^{i\omega_0\tau}/(-2\omega_0)}$. Faktorene ${-1/(2\pi m)}$ og ${-2\pi i}$ gir sammen ${i/m}$, så
+
+$$
+\begin{aligned}
+G_R(\tau) &= \frac{i}{m}\,\frac{e^{-i\omega_0\tau} - e^{i\omega_0\tau}}{2\omega_0} \\
+&= \frac{\sin(\omega_0\tau)}{m\omega_0}
+\end{aligned}
+$$
+
+siden ${e^{-i\omega_0\tau} - e^{i\omega_0\tau} = -2i\sin(\omega_0\tau)}$.
+</Derivation>
+
+<Callout title="Hvor polene ligger">
+Hvordan veien går forbi polene, bestemmer hvilken løsning av ${D\,G = \delta}$ du får. Kravet om at responsen kommer etter dyttet legger begge polene under den reelle aksen, i ${\pm\omega_0 - i\varepsilon}$, der dempingen også legger dem.
+</Callout>
+
+<SelfCheck question="Hva blir $G(\tau)$ om du i stedet legger begge polene over den reelle aksen, i $\pm\omega_0 + i\varepsilon$? Hva gjør klossen da?">
+For ${\tau > 0}$ lukkes veien under aksen, der det nå ikke ligger noen poler, så ${G = 0}$ etter dyttet. For ${\tau < 0}$ lukkes den over aksen, mot klokka, og omslutter begge polene. Residuene er de samme som før, men omløpet har motsatt retning, så ${G(\tau) = -\sin(\omega_0\tau)/(m\omega_0)}$ for ${\tau < 0}$. Rett før dyttet er klossen i likevekten med farten $-1/m$, og dyttet tar den farten bort. Klossen svinger før dyttet og ligger i ro etter det. Funksjonen løser ${D\,G = \delta}$, men bryter kravet om at responsen kommer etter dyttet.
+</SelfCheck>
+
+## Resonans
+
+Hold et nøkkelknippe i en snor, og beveg hånda fram og tilbake. Beveger du hånda sakte,
+følger nøklene med. I én bestemt takt svinger nøklene langt ut, mye lenger enn hånda
+beveger seg. Beveger du hånda fort, går nøklene motsatt vei av hånda, og de beveger seg
+knapt.
+
+Simuleringen under gjør det samme med klossen. Fjæra henger i en hånd som beveger seg
+opp og ned med ${x_h = a\cos(\Omega t)}$, der $\Omega$ er vinkelfrekvensen til hånda.
+Fjærkraften er ${-k(x - x_h)}$, så hånda virker som en ytre kraft
+${J(t) = ka\cos(\Omega t)}$. Klossen bremses også av en friksjonskraft $-\gamma\dot x$,
+med dempingen ${\alpha = \gamma/2m}$.
+
+<Simulation
+  src="/sims/rist.js"
+  host="dom"
+  title="Rist i fjæra"
+  caption="Klossen henger i en fjær fra en hånd som går opp og ned med vinkelfrekvensen $\Omega$. Pennen skriver utslaget til klossen, og utslaget til hånda er tegnet tynt på den samme linja. Det nyeste står ved pennen. $\omega_0$ er vinkelfrekvensen klossen svinger med når hånda står stille og uten demping."
+  height={330}
+/>
+
+Med takten 0,4 ligger kurven til klossen nesten oppå kurven til hånda. Sett takten
+til 1. Klossen svinger stadig lenger ut og legger seg på et utslag fem ganger så stort
+som håndas, med toppene en kvart periode etter håndas topper. Sett takten til 2. Klossen
+svinger lite og går ned når hånda går opp. Hver gang du endrer takten, svinger klossen
+en stund uregelmessig før den følger takten til hånda. Den uregelmessige delen er en fri
+svingning, som dør ut som $e^{-\alpha t}$.
+
+Alle tre følger av $G(\Omega)$. Med friksjonskraften er bevegelsesligningen
+
+<Formula tex="m\ddot x + \gamma\dot x + kx = J_0\cos(\Omega t)" caption="Dempet oscillator drevet av en harmonisk kraft med amplituden $J_0$ og vinkelfrekvensen $\Omega$. Med hånda er $J_0 = ka$." />
+
+Kraften er realdelen av ${J_0\,e^{-i\Omega t}}$. Leddet $\gamma\dot x$ gir også en faktor
+$-i\Omega$, så når kraften har virket en stund, er responsen realdelen av
+${J_0\,G(\Omega)\,e^{-i\Omega t}}$ med
+
+<Formula tex="G(\Omega) = \frac{1}{m\,(\omega_0^2 - \Omega^2 - 2i\alpha\Omega)}" caption="Responsen per kraftenhet med demping. Polene ligger i $\Omega = -i\alpha \pm \sqrt{\omega_0^2 - \alpha^2}$." />
+
+Skriv ${G = |G|\,e^{i\varphi}}$. Da er ${x = J_0|G|\cos(\Omega t - \varphi)}$: klossen
+svinger med amplituden $J_0|G|$ og ligger vinkelen $\varphi$ etter kraften. Med
+nevneren ${m(A - iB)}$, der ${A = \omega_0^2 - \Omega^2}$ og ${B = 2\alpha\Omega}$, er
+${G = (A + iB)/\bigl(m(A^2 + B^2)\bigr)}$, og
+
+<Formula tex="\begin{aligned} |G| &= \frac{1}{m\sqrt{(\omega_0^2 - \Omega^2)^2 + 4\alpha^2\Omega^2}} \\ \tan\varphi &= \frac{2\alpha\Omega}{\omega_0^2 - \Omega^2} \end{aligned}" caption="Amplitude per kraftenhet og faseforskyvning for en dempet, drevet oscillator. $\varphi$ går fra 0 ved lav $\Omega$ via $\pi/2$ ved $\omega_0$ til $\pi$ ved høy $\Omega$." />
+
+Formlene gir det du så i simuleringen:
+
+- Med ${\Omega \ll \omega_0}$ er ${\varphi \approx 0}$ og amplituden ${J_0/k = a}$, så
+  klossen følger hånda.
+- Med ${\Omega = \omega_0}$ er ${\varphi = \pi/2}$ og amplituden
+  ${J_0/(\gamma\omega_0) = a\omega_0/2\alpha}$, fem ganger $a$ med dempingen
+  ${\alpha = 0{,}1\,\omega_0}$. Klossen ligger en kvart periode etter hånda.
+- Med ${\Omega \gg \omega_0}$ er ${\varphi \approx \pi}$ og amplituden ${J_0/(m\Omega^2)}$.
+  Kraften skifter retning så fort at bare massen teller, ${m\ddot x \approx J}$, og en
+  harmonisk $x$ med ${\ddot x = -\Omega^2 x}$ må da gå motsatt vei av kraften.
+
+Amplituden er størst der ${(\omega_0^2 - \Omega^2)^2 + 4\alpha^2\Omega^2}$ er minst.
+Deriver med hensyn på $\Omega^2$, og sett lik null: ${-2(\omega_0^2 - \Omega^2) + 4\alpha^2 = 0}$,
+så toppen ligger i ${\Omega^2 = \omega_0^2 - 2\alpha^2}$, rett under $\omega_0$ når
+dempingen er svak. Er ${2\alpha^2 > \omega_0^2}$, er utslaget størst ved ${\Omega = 0}$.
+
+Resonanstoppen og responsen på et dytt kommer fra de samme polene,
+${\Omega_\pm = -i\alpha \pm \sqrt{\omega_0^2 - \alpha^2}}$. Nevneren i $G(\Omega)$ er
+${-m(\Omega - \Omega_+)(\Omega - \Omega_-)}$. Nær toppen er den siste faktoren omtrent
+$2\omega_0$, så
+
+$$
+\begin{aligned}
+|G|^2 &\approx \frac{1}{4m^2\omega_0^2\,|\Omega - \Omega_+|^2} \\
+&= \frac{1}{4m^2\omega_0^2\bigl[(\Omega - \sqrt{\omega_0^2 - \alpha^2})^2 + \alpha^2\bigr]}
+\end{aligned}
+$$
+
+$|G|^2$ er halvparten av toppverdien når $\Omega$ ligger $\alpha$ fra toppen, så toppen er
+omtrent $2\alpha$ bred. Jo svakere dempingen er, jo nærmere aksen ligger polen, og jo
+høyere og smalere er toppen (figur 2). Den samme polen gir responsen på et dytt. Residuet
+i polen inneholder ${e^{-i\Omega_+\tau}}$, og ${|e^{-i\Omega_+\tau}| = e^{-\alpha\tau}}$.
+Etter et dytt svinger oscillatoren derfor med vinkelfrekvensen
+${\sqrt{\omega_0^2 - \alpha^2}}$, den samme som den dempede oscillatoren svinger med uten
+kraft, og et utslag som dør ut som $e^{-\alpha\tau}$. Avstanden $\alpha$ fra polene til
+aksen bestemmer altså både hvor lenge oscillatoren svinger etter et dytt og hvor bred
+resonanstoppen er.
+
+<Figure src="/figures/resonans.svg" alt="Absoluttverdien av G som funksjon av Omega for to verdier av dempingen. Med svak demping er toppen ved omega null høy og smal, med sterkere demping lav og bred. Under aksen er polen til hver kurve tegnet som et kryss, den med svak demping like under aksen og den med sterkere demping lenger ned." width={340} height={300} number={2} caption="$|G(\Omega)|$ langs den reelle aksen for svak og sterkere demping, og polen til hver under aksen. Polene er tegnet med samme skala loddrett som vannrett, så dybden er $\alpha$. Bare $\Omega > 0$ er tegnet; kurven er lik for $-\Omega$." />
+
+Huska fra starten svinger på samme måte. Uten demping ligger polene på aksen, og hvert
+dytt i takt legger like mye til utslaget, så utslaget vokser uten grense. Med demping
+minker utslaget med en fast andel per periode, så jo større utslaget er, jo mer tar
+dempingen bort. Utslaget vokser til dempingen tar bort like mye per periode som ett dytt
+legger til. Sett dempingen til 0,1 i simuleringen «Dytt oscillatoren», og trykk «Tre
+dytt, én periode imellom»: utslaget vokser mindre for hvert dytt.
+
+<Callout title="Resonans">
+En dempet oscillator drevet med ${J_0\cos(\Omega t)}$ svinger med amplituden $J_0|G(\Omega)|$ og ligger vinkelen $\varphi$ etter kraften: i takt med kraften ved lav $\Omega$, en kvart periode etter ved $\omega_0$ og motsatt ved høy $\Omega$. Polene ligger avstanden $\alpha$ under aksen, og den avstanden bestemmer både at resonanstoppen er omtrent $2\alpha$ bred og hvor fort svingningen etter et dytt dør ut.
+</Callout>
+
+<SelfCheck question="Et nøkkelknippe henger i en 25 cm lang snor. Omtrent hvor mange ganger i sekundet må du føre hånda fram og tilbake for at nøklene skal svinge mest, og hvor er nøklene når hånda er lengst ute til høyre?">
+For små utslag er knippet en pendel. Med ${x_h = a\cos(\Omega t)}$ for hånda er kraften fra snora på nøklene ${-(mg/l)(x - x_h)}$, så ligningen har samme form som for klossen, med ${\omega_0 = \sqrt{g/l}}$, som er ${6{,}26\ \text{s}^{-1}}$ for ${l = 0{,}25}$ m. Med svak demping ligger toppen nesten i $\omega_0$, altså ${f = \omega_0/2\pi = 1{,}0}$ ganger i sekundet. Der ligger nøklene en kvart periode etter hånda, ${x = A\sin(\Omega t)}$: når hånda er lengst ute til høyre, ved ${t = 0}$, passerer nøklene midten på vei mot høyre.
+</SelfCheck>
+
+<KeyTakeaways>
+
+- Et dytt endrer bare impulsen. Responsen på et enhetsdytt er ${G_R(\tau) = \vartheta(\tau)\sin(\omega_0\tau)/(m\omega_0)}$, og den er null før dyttet.
+- Bevegelsesligningen er lineær, så responsen på en vilkårlig kraft er summen av responsene på dyttene den består av, ${x(t) = \int G_R(t - t')\,J(t')\,dt'}$.
+- En harmonisk kraft $e^{-i\Omega t}$ gir responsen $G(\Omega)\,e^{-i\Omega t}$, og $G_R(\tau)$ er Fourier-transformen av $G(\Omega)$.
+- Kravet om at responsen kommer etter dyttet legger polene under den reelle aksen. For ${\tau < 0}$ lukkes veien over aksen og gir null, for ${\tau > 0}$ under aksen og gir den frie svingningen.
+- Med demping ligger polene avstanden $\alpha$ under aksen. Den drevne oscillatoren har amplituden $J_0|G(\Omega)|$ med toppen i ${\Omega^2 = \omega_0^2 - 2\alpha^2}$, og fasen går fra 0 via $\pi/2$ til $\pi$.
+
+</KeyTakeaways>

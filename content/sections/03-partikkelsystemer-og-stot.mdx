@@ -1,0 +1,368 @@
+---
+order: 3
+title: "Partikkelsystemer og støt"
+summary: "Kreftene mellom partiklene i et system endrer verken impulsen eller, når de virker langs linja mellom partiklene, dreieimpulsen, men de kan endre den kinetiske energien, og det bestemmer hvordan to legemer støter."
+importance: core
+tag: "Uke 35 · Tong 4.1–4.2"
+updated: 2026-10-22
+---
+
+<LearningGoals>
+
+- Vise at kreftene mellom partiklene i et system ikke endrer den totale impulsen, og at <Term name="Massesenter">massesenteret</Term> beveger seg som én partikkel påvirket av de ytre kreftene.
+- Avgjøre når kreftene mellom partiklene heller ikke endrer dreieimpulsen.
+- Dele den kinetiske energien i massesenterets del og delen rundt massesenteret, og avgjøre når energien er bevart.
+- Bruke impuls og energi på <Term name="Elastisk støt">elastiske</Term> og uelastiske støt, og forklare hvorfor et støt i én dimensjon er bestemt av bevaringslovene og et støt i tre ikke er det.
+- Telle støtene mellom to klosser og en vegg med tilstanden tegnet på en sirkel.
+
+</LearningGoals>
+
+En kunstløper som snurrer på isen med armene ut, snurrer fortere når hun trekker dem
+inntil kroppen. Blir treghetsmomentet hennes om den loddrette aksen en tredel så stort,
+snurrer hun tre ganger så fort, og den kinetiske energien hennes blir tre ganger så
+stor. Ingenting utenfor henne har dreid henne rundt. Kreftene mellom delene av kroppen
+har økt energien, men ikke dreieimpulsen.
+
+## Indre og ytre krefter
+
+Et system har $N$ partikler. Partikkel $i$ har massen $m_i$, posisjonen $\vec r_i$ og
+impulsen ${\vec p_i = m_i\dot{\vec r}_i}$. Kraften på den er en ytre kraft
+$\vec F_i^{(e)}$ fra noe utenfor systemet, pluss de indre kreftene $\vec F_{ij}$ fra de
+andre partiklene $j$:
+
+$$
+\dot{\vec p}_i = \vec F_i^{(e)} + \sum_{j \ne i} \vec F_{ij}
+$$
+
+To partikler virker på hverandre med like store og motsatt rettede krefter,
+${\vec F_{ij} = -\vec F_{ji}}$. Det er Newtons tredje lov, som her heter den svake loven
+om aksjon og reaksjon.
+
+Legg sammen bevegelsesligningene for alle partiklene. Hvert par $i, j$ bidrar med
+${\vec F_{ij} + \vec F_{ji} = 0}$, så de indre kreftene faller ut, og den totale
+impulsen ${\vec P = \sum_i \vec p_i}$ endres bare av de ytre kreftene:
+
+<Formula tex="\dot{\vec P} = \sum_i \vec F_i^{(e)}" caption="Den totale impulsen endres bare av de ytre kreftene. Er summen av dem null, er $\vec P$ bevart." />
+
+Med massesenteret og den totale massen
+
+<Formula tex="\vec R = \frac{1}{M}\sum_i m_i\vec r_i" caption="Massesenteret til et system av partikler med den totale massen $M = \sum_i m_i$." />
+
+er ${\vec P = M\dot{\vec R}}$, så ${M\ddot{\vec R} = \sum_i \vec F_i^{(e)}}$. Massesenteret
+beveger seg som én partikkel med hele massen, påvirket av summen av de ytre kreftene,
+hvordan delene enn beveger seg i forhold til hverandre.
+
+## Dreieimpulsen
+
+Den totale dreieimpulsen om origo er ${\vec L = \sum_i \vec r_i \times \vec p_i}$.
+Deriver den. Leddet ${\dot{\vec r}_i \times \vec p_i}$ er null, siden $\vec p_i$ er
+parallell med $\dot{\vec r}_i$, så ${\dot{\vec L} = \sum_i \vec r_i \times \dot{\vec p}_i}$.
+Sett inn kraften på hver partikkel, og samle de indre kreftene parvis. Med den svake
+loven bidrar paret $i, j$ med
+${\vec r_i \times \vec F_{ij} + \vec r_j \times \vec F_{ji} = (\vec r_i - \vec r_j) \times \vec F_{ij}}$,
+så
+
+$$
+\frac{d\vec L}{dt} = \sum_i \vec r_i \times \vec F_i^{(e)} \allowbreak + \sum_{i<j} (\vec r_i - \vec r_j) \times \vec F_{ij}
+$$
+
+Det siste leddet er null når kraften mellom hver to partikler ligger langs linja gjennom
+dem. Figur 1 viser hvorfor det kravet trengs i tillegg til den svake loven. Ligger de to
+like store og motsatt rettede kreftene på hver sin side av linja, dreier de paret, og et
+system i ro ville begynt å rotere uten at noe utenfor virket på det. Tyngdekraften og
+Coulombkraften mellom to ladninger i ro virker langs linja gjennom partiklene. Kravet
+heter den sterke loven om aksjon og reaksjon, og slike krefter kalles
+<Term name="Sentrale krefter">sentrale krefter</Term>. Kraften på hver av partiklene peker
+mot eller bort fra den andre, slik en sentralkraft peker mot eller bort fra et fast
+punkt.
+
+<Figure src="/figures/aksjon-reaksjon.svg" alt="To par av partikler i og j med like store og motsatt rettede krefter på hverandre. I det venstre paret ligger kreftene langs den stiplede linja mellom partiklene. I det høyre paret peker kreftene opp og ned på hver sin side av linja, og en buet pil viser at paret ville dreid med klokka." width={340} height={196} number={1} caption="Like store og motsatt rettede krefter mellom partiklene $i$ og $j$. Til venstre ligger de langs linja gjennom partiklene, til høyre på hver sin side av den, og da ville de dreid paret." />
+
+Med sentrale indre krefter står bare dreiemomentet fra de ytre kreftene igjen,
+${\vec N^{(e)} = \sum_i \vec r_i \times \vec F_i^{(e)}}$:
+
+<Formula tex="\frac{d\vec L}{dt} = \vec N^{(e)}" caption="Med sentrale indre krefter endres dreieimpulsen bare av det ytre dreiemomentet." />
+
+Kunstløperen står på is som nesten ikke har friksjon. Tyngden og normalkraften fra isen
+er loddrette, så dreiemomentet de gir, har ingen komponent langs den loddrette aksen.
+Komponenten $L_z$ av dreieimpulsen langs aksen er derfor bevart. Når armene kommer
+nærmere aksen, må hun snurre fortere for at $L_z$ skal være den samme.
+
+<Callout title="Impuls og dreieimpuls">
+De indre kreftene kommer i par og endrer ikke den totale impulsen, så ${\dot{\vec P} = \sum_i \vec F_i^{(e)}}$, og massesenteret beveger seg som én partikkel med hele massen. Ligger kraften i hvert par langs linja mellom partiklene, endrer de indre kreftene heller ikke dreieimpulsen, og ${d\vec L/dt = \vec N^{(e)}}$.
+</Callout>
+
+## Energien
+
+Med ${L_z = I\omega}$, der $I$ er treghetsmomentet om aksen, er
+${T = \tfrac12 I\omega^2 = L_z^2/2I}$. $L_z$ er den samme og $I$ en tredel så stor, så
+kunstløperens kinetiske energi ble tre ganger så stor, og det var musklene hennes som
+gjorde arbeidet. Arbeidet de indre kreftene gjør, faller ikke ut slik bidraget deres
+til impulsen gjorde. Flytter partiklene i et par seg $d\vec r_i$ og $d\vec r_j$, gjør de
+to kreftene arbeidet
+
+$$
+\vec F_{ij}\cdot d\vec r_i + \vec F_{ji}\cdot d\vec r_j \allowbreak = \vec F_{ij}\cdot d(\vec r_i - \vec r_j)
+$$
+
+Arbeidet avhenger av hvordan de to flytter seg i forhold til hverandre. Ligger kraften
+langs linja og avstanden er fast, står ${d(\vec r_i - \vec r_j)}$ vinkelrett på kraften,
+og arbeidet er null. Det er tilfellet i et stivt legeme. Når kunstløperen trekker armene
+inn, flytter hendene seg mot kroppen, og musklene gjør positivt arbeid.
+
+Er de indre kreftene konservative, med et potensial $V_{ij}(|\vec r_i - \vec r_j|)$ for
+hvert par, er arbeidet paret gjør, ${-dV_{ij}}$. Kommer også de ytre kreftene fra
+potensialer $V_i(\vec r_i)$, er energien bevart:
+
+<Formula tex="E = T + \sum_i V_i(\vec r_i) \allowbreak + \sum_{i<j} V_{ij}(|\vec r_i - \vec r_j|)" caption="Energien til et partikkelsystem med konservative ytre og indre krefter." />
+
+De indre kreftene kan bare endre en del av den kinetiske energien. Skriv
+${\vec r_i = \vec R + \vec y_i}$, der $\vec y_i$ er posisjonen målt fra massesenteret.
+Definisjonen av $\vec R$ gir ${\sum_i m_i\vec y_i = \sum_i m_i\vec r_i - M\vec R = 0}$,
+og dermed ${\sum_i m_i\dot{\vec y}_i = 0}$. Kvadrer ${\dot{\vec r}_i = \dot{\vec R} + \dot{\vec y}_i}$
+i ${T = \tfrac12\sum_i m_i\dot{\vec r}_i^{\,2}}$. Kryssleddet er
+${\dot{\vec R}\cdot\sum_i m_i\dot{\vec y}_i = 0}$, så
+
+<Formula tex="T = \tfrac12 M\dot{\vec R}^2 + \tfrac12\sum_i m_i\dot{\vec y}_i^{\,2}" caption="Den kinetiske energien til massesenteret pluss energien i bevegelsen rundt massesenteret." />
+
+Den første delen endres med
+${\tfrac{d}{dt}\bigl(\tfrac12 M\dot{\vec R}^2\bigr) = M\ddot{\vec R}\cdot\dot{\vec R} = \sum_i \vec F_i^{(e)}\cdot\dot{\vec R}}$,
+altså bare av de ytre kreftene. De indre kreftene kan bare endre den andre delen,
+bevegelsen rundt massesenteret. Kunstløperens ekstra energi er rotasjon om hennes eget
+massesenter.
+
+<Callout title="Energien">
+De indre kreftene gjør arbeid når partiklene flytter seg i forhold til hverandre, så de kan endre den kinetiske energien. ${T = \tfrac12 M\dot{\vec R}^2 + \tfrac12\sum_i m_i\dot{\vec y}_i^{\,2}}$, og de indre kreftene endrer bare delen rundt massesenteret. Er alle kreftene konservative, er energien bevart.
+</Callout>
+
+<Quiz
+  question="Du sitter på en kontorstol som snurrer uten friksjon, med en tung bok i hver hånd og armene ut til siden. Treghetsmomentet ditt om aksen er 3,0 kg·m², og du snurrer én gang i sekundet. Så trekker du bøkene inntil brystet, og treghetsmomentet blir 1,5 kg·m². Hvor fort snurrer du da, og hva skjer med den kinetiske energien?"
+  options={[
+    "To ganger i sekundet, og den kinetiske energien blir dobbelt så stor",
+    "To ganger i sekundet, og den kinetiske energien er den samme",
+    "1,4 ganger i sekundet, og den kinetiske energien er den samme",
+    "Én gang i sekundet, siden ingen ytre kraft dreier deg"
+  ]}
+  answer={0}
+  explanation={"Tyngden og kraften fra stolen gir ikke noe dreiemoment om aksen, så $L_z = I\\omega$ er bevart. Halvert $I$ gir dobbelt så stor $\\omega$, to ganger i sekundet, og $T = L_z^2/2I$ blir dobbelt så stor. Musklene gjør arbeidet, fordi hendene flytter seg i forhold til kroppen. 1,4 ganger i sekundet får du om du holder $T$ fast, men energien er ikke bevart selv om ingen ytre kraft gjør arbeid: de indre kreftene gjør det. Det som er bevart, er dreieimpulsen, og vinkelfarten endres når treghetsmomentet endres."}
+/>
+
+## Støt
+
+Legg en tennisball oppå en basketball, og slipp dem sammen. Er alle støtene elastiske,
+spretter tennisballen sju ganger så høyt som du slapp den fra.
+
+I et støt er kraften mellom de to legemene stor, varer kort og avhenger av hvordan
+legemene trykkes sammen. Du trenger ikke kjenne den i detalj. Endringen i impuls er
+tidsintegralet av kraften, <Term name="Kraftstøt">kraftstøtet</Term>:
+
+<Formula tex="\vec I = \int \vec F\,dt = \Delta\vec p" caption="Kraftstøtet er lik endringen i impuls." />
+
+For de to legemene sammen er kraften mellom dem indre, så den totale impulsen er bevart
+gjennom støtet. Ytre krefter som tyngden virker også, men de er endelige, så
+kraftstøtet de gir mens støtet varer, går mot null med varigheten. Et støt er
+<Term name="Elastisk støt">elastisk</Term> når den kinetiske energien også er den samme
+før og etter. Det skjer når kraften mellom legemene er konservativ: legemene er langt
+fra hverandre både før og etter, så potensialet mellom dem er det samme, og da er den
+kinetiske energien også det. Ellers går noe av energien til varme og deformasjon, og
+støtet er uelastisk.
+
+<Simulation
+  src="/sims/stot.js"
+  host="dom"
+  title="To kuler som støter"
+  caption="To glatte, harde kuler sett ovenfra. Kule 1 kommer inn fra venstre, og kule 2 ligger i ro på bordet. Prikkene er sentrene med faste tidsmellomrom, så avstanden mellom prikkene viser farten, og det oransje krysset er massesenteret. I laben er linja gjennom sentrene ved støtet stiplet, og vinkelen mellom banene etter støtet er merket. «Treff» er hvor langt fra midten kule 1 sikter, som andel av summen av radiene."
+  height={280}
+/>
+
+Velg «Fra massesenteret». Krysset står stille, og kulene kommer mot hverandre fra hver
+sin side. For hver kule ligger prikkene like tett før og etter støtet, så farten er den
+samme, og begge banene er dreid like mye. Flytt «Treff», og dreiningen endres. Med
+«Treff» på null treffer kulene rett på og snur begge.
+
+Massesenteret går med konstant fart, siden $\vec P$ er bevart, og sett fra det
+er den totale impulsen null, så de to legemene har like store og motsatt rettede
+impulser $\vec p$ og $-\vec p$, både før og etter støtet. Den kinetiske energien er
+${p^2/2m_1 + p^2/2m_2}$ og avhenger bare av lengden $p$. I et elastisk støt er den
+energien den samme etterpå, så $p$ har samme lengde. Støtet kan altså bare dreie de to
+impulsene, og de dreies like mye, fordi de alltid peker motsatt vei. Hvert legeme har
+samme fart etter støtet som før.
+
+I én dimensjon er den eneste dreiningen å snu. Sett fra massesenteret går begge
+legemene tilbake med den farten de kom med. Relativhastigheten er den samme sett fra
+alle systemer som går med konstant fart i forhold til hverandre, så sett fra laben
+fjerner legemene seg fra hverandre like fort som de nærmet seg:
+
+<Formula tex="v_1 - v_2 = -(u_1 - u_2)" caption="Elastisk støt i én dimensjon, med hastighetene $u_1$ og $u_2$ før og $v_1$ og $v_2$ etter: relativhastigheten snur." />
+
+Sammen med impulsbevaringen er det to ligninger for de to hastighetene etterpå, så
+utfallet er bestemt. I tre dimensjoner er dreiningen en retning, gitt ved to vinkler,
+og impuls og energi bestemmer den ikke. Den avhenger av hvor legemene treffer hverandre
+og av kraften mellom dem. Det stemmer med tellingen: impulsen gir tre ligninger og
+energien én, for seks ukjente komponenter i de to hastighetene etterpå.
+
+Velg «Fra laben» og «Like masser». Kule 2 går ut langs linja gjennom de to sentrene ved
+støtet, der kraften virker, og kule 1 går ut vinkelrett på den, uansett treff, så lenge
+den ikke treffer rett på. Den rette
+vinkelen følger av bevaringslovene. Kule 1 har hastigheten $\vec u$, kule 2 ligger i
+ro, og massene er like, så massen forkortes. Impulsen gir
+${\vec u = \vec v_1 + \vec v_2}$ og energien ${u^2 = v_1^2 + v_2^2}$. Kvadrer den første,
+${u^2 = v_1^2 + v_2^2 + 2\vec v_1\cdot\vec v_2}$, og sammenlign med den andre:
+
+<Formula tex="\vec v_1\cdot\vec v_2 = 0" caption="Elastisk støt mellom like masser der den ene ligger i ro." />
+
+Enten ligger kule 1 i ro etterpå, som når den treffer rett på, eller så går kulene ut
+vinkelrett på hverandre. Velg «Tung mot lett» og «Lett mot tung», og vinkelen er
+mindre og større enn rett.
+
+<Callout title="Støt">
+Gjennom et støt er den totale impulsen bevart, og i et elastisk støt også den kinetiske energien. Sett fra massesenteret dreier et elastisk støt de to impulsene like mye uten å endre lengden. I én dimensjon snur relativhastigheten, og i tre dimensjoner er retningen etterpå ikke bestemt av bevaringslovene.
+</Callout>
+
+<Quiz
+  question="En lastebil kjører med 20 m/s rett mot en pingpongball som ligger i ro på veien, og støtet er elastisk. Omtrent hvor fort går ballen etterpå?"
+  options={["20 m/s", "40 m/s", "60 m/s", "Det avhenger av massen til ballen"]}
+  answer={1}
+  explanation={"Lastebilen er så mye tyngre at den nesten ikke merker støtet og fortsetter med 20 m/s. I et elastisk støt i én dimensjon snur relativhastigheten: ballen nærmet seg lastebilen med 20 m/s og fjerner seg fra den med 20 m/s, altså 40 m/s i forhold til veien. Nøyaktig er farten $2M/(M + m)$ ganger 20 m/s, og massen til ballen endrer bare desimalene. 20 m/s er farten ballen ville fått om den ble hengende fast på lastebilen, et fullstendig uelastisk støt."}
+/>
+
+<Example title="Tennisball oppå basketball">
+En tennisball med massen ${m = 0{,}058}$ kg ligger oppå en basketball med massen
+${M = 0{,}60}$ kg, og de slippes sammen fra høyden $h$. Alle støtene er elastiske. Hvor
+høyt spretter tennisballen?
+
+<Solution>
+Tenk på ballene som så vidt adskilte, så støtene skjer ett om gangen. Begge har farten
+$u$ når basketballen treffer gulvet, der ${u^2 = 2gh}$. Basketballen treffer gulvet først og snur med
+farten $u$ oppover. Rett etterpå treffer den tennisballen, som fortsatt er på vei ned med
+farten $u$. Regn med positiv retning oppover, og kall hastighetene etter støtet mellom
+ballene $v$ og $V$.
+
+Ballene nærmet seg hverandre med $2u$, så relativhastigheten snur:
+${v - V = 2u}$. Impulsen er bevart:
+
+$$
+Mu - mu = MV + mv
+$$
+
+Sett inn ${V = v - 2u}$:
+
+$$
+Mu - mu = Mv - 2Mu + mv
+$$
+
+og løs for $v$:
+
+$$
+v = \frac{3M - m}{M + m}\,u
+$$
+
+Er tennisballen mye lettere, går $v$ mot $3u$. Basketballen er da som en vegg som
+kommer mot tennisballen med farten $u$. Tennisballen spretter fra den med
+relativhastigheten $2u$, altså $3u$ i forhold til gulvet. Med tallene er
+
+$$
+\begin{aligned}
+\frac{v}{u} &= \frac{3 \cdot 0{,}60 - 0{,}058}{0{,}60 + 0{,}058} \\
+&= \frac{1{,}742}{0{,}658} = 2{,}65
+\end{aligned}
+$$
+
+Høyden går som kvadratet av farten, ${h' = v^2/2g}$, så ${h'/h = 2{,}65^2 = 7{,}0}$.
+
+<Answer>${v = (3M - m)u/(M + m) = 2{,}65\,u}$, og tennisballen når $7{,}0\,h$. En tennisball oppå en mye tyngre ball kan nå høyst $9h$.</Answer>
+</Solution>
+</Example>
+
+<SelfCheck question="En vogn med massen $m$ og farten $u$ kjører inn i en vogn med massen $M$ som står i ro på en skinne, og de blir hengende sammen. Hvor stor del av den kinetiske energien går tapt, og hvorfor kan ingen støt mellom de to vognene tape mer?">
+Impulsen er bevart, så vognene går sammen med farten ${V = mu/(m + M)}$, massesenterets fart. Den kinetiske energien etterpå er ${\tfrac12(m + M)V^2}$, som er ${m/(m + M)}$ ganger ${\tfrac12 mu^2}$, så andelen ${M/(m + M)}$ går tapt, halvparten med like masser. Delen ${\tfrac12(m + M)V^2}$ er massesenterets energi, som bare ytre krefter kan endre. Vognene som henger sammen, har ingen bevegelse rundt massesenteret igjen, så støtet har tatt hele den delen kreftene mellom vognene kan endre.
+</SelfCheck>
+
+## Klossene og veggen
+
+En tung kloss glir mot en lett kloss som ligger i ro foran en vegg. Underlaget er
+glatt, og alle støtene er elastiske. Den lette klossen spretter fram og tilbake mellom
+veggen og den tunge, som bremser opp, snur og glir bort igjen. Med like masser blir det
+3 støt. Er den tunge 100 ganger så tung, blir det 31, og er den 10 000 ganger
+så tung, blir det 314.
+
+<Simulation
+  src="/sims/klosser.js"
+  host="dom"
+  title="Klossene og veggen"
+  caption="Øverst den tunge klossen $M$, den lette $m$ og veggen, og tallet på støt så langt. Under er tilstanden et punkt med koordinatene $\sqrt M\,V$ og $\sqrt m\,v$, der $V$ og $v$ er farten til den tunge og den lette klossen, positiv mot høyre. Hvert støt er en rett strek fra punktet før til punktet etter, og den fargede kilen er tilstandene der klossene aldri møtes igjen. Bevegelsen går i sakte film."
+  height={420}
+/>
+
+Kraften fra veggen er en ytre kraft på systemet av de to klossene, så impulsen endres i
+støtene mot veggen. Energien er bevart også der, fordi veggen står i ro og ikke gjør arbeid. I
+støtene mellom klossene er både impulsen og energien bevart.
+
+Tilstanden er punktet med ${X = \sqrt M\,V}$ og ${Y = \sqrt m\,v}$. Energien er
+${\tfrac12 MV^2 + \tfrac12 mv^2 = \tfrac12(X^2 + Y^2)}$, så punktet ligger hele tida på
+en sirkel. Impulsen er ${MV + mv = \sqrt M\,X + \sqrt m\,Y}$, så et støt mellom klossene
+flytter punktet langs en rett linje med fast stigning til det andre stedet linja
+skjærer sirkelen. Et støt mot veggen snur $v$, så punktet hopper loddrett fra $Y$ til
+$-Y$. Velg «M = 100m» i simuleringen: strekene fra støtene mellom klossene er
+parallelle, strekene fra veggen er loddrette, og punktet går skritt for skritt rundt
+sirkelen.
+
+Hvert hopp er en speiling. Et støt mot veggen speiler punktet i $X$-aksen. De to
+skjæringspunktene mellom en linje og en sirkel ligger speilvendt om diameteren som står
+vinkelrett på linja. Linja ${\sqrt M\,X + \sqrt m\,Y = \text{konstant}}$ har normalen
+${(\sqrt M, \sqrt m)}$, så et støt mellom klossene speiler punktet i diameteren langs
+den, som danner vinkelen $\theta$ med $X$-aksen:
+
+$$
+\tan\theta = \sqrt{\frac{m}{M}}
+$$
+
+To speilinger etter hverandre, i to linjer med vinkelen $\theta$ mellom seg, er en
+dreining med $2\theta$. Hvert par av støt flytter derfor punktet $2\theta$ rundt
+sirkelen.
+
+Støtene tar slutt når begge klossene går mot høyre og den lette ikke tar igjen den
+tunge, altså ${0 \le v \le V}$. Disse tilstandene fyller kilen mellom $X$-aksen og
+linja med vinkelen $\theta$, den fargede kilen i simuleringen. Punktet starter på den
+negative $X$-aksen, med den tunge på vei mot venstre og den lette i ro, og må nesten en
+halv runde, vinkelen $\pi$, rundt for å komme inn i kilen.
+
+Med $2\theta$ per to støt ligger punktet etter et like antall støt $n$ vinkelen
+${\pi - n\theta}$ over den positive $X$-aksen. Etter et odde antall ligger det vinkelen
+${\pi - (n + 1)\theta}$ under den, så lenge den vinkelen er positiv. Under aksen er
+${v < 0}$, og den lette klossen er på vei mot veggen, så støtene fortsetter. I begge
+tilfeller er punktet i kilen første gang ${(n + 1)\theta \ge \pi}$, så tallet på støt
+er det største hele tallet $n$ med ${n\theta < \pi}$, omtrent $\pi/\theta$. For en tung
+kloss er ${\theta \approx \sqrt{m/M}}$, og
+
+$$
+n \approx \pi\sqrt{\frac{M}{m}}
+$$
+
+Med ${M/m = 100^N}$ er ${\sqrt{M/m} = 10^N}$. Tilnærmingen gjør $\pi/\theta$ bare
+omtrent ${\pi \cdot 10^{-N}/3}$ større enn ${\pi \cdot 10^N}$, for lite til å endre
+heltallsdelen her, så tallet på støt er de første ${N + 1}$ sifrene i $\pi$: 3, 31,
+314, 3141.
+
+<Callout title="Klossene og veggen">
+Med ${X = \sqrt M\,V}$ og ${Y = \sqrt m\,v}$ er energien en sirkel. Et støt mellom klossene speiler tilstanden i en diameter med vinkelen $\theta$, ${\tan\theta = \sqrt{m/M}}$, og et støt mot veggen speiler den i $X$-aksen, så hvert par av støt dreier den $2\theta$. Etter omtrent $\pi/\theta$ støt går klossene fra hverandre for godt.
+</Callout>
+
+<Video
+  id="https://www.youtube.com/watch?v=6dTyOl1fmDo"
+  title="Why colliding blocks compute pi"
+  channel="3Blue1Brown"
+  duration="26:07"
+  caption="Klossene og sirkelen fra simuleringen, tellingen gjort med vinklene i sirkelen, og hvorfor tilnærmingen $\theta \approx \sqrt{m/M}$ ikke ødelegger sifrene."
+  number={1}
+/>
+
+<KeyTakeaways>
+
+- De indre kreftene kommer i par og endrer ikke den totale impulsen, så ${\dot{\vec P} = \sum_i \vec F_i^{(e)}}$, og massesenteret beveger seg som én partikkel med hele massen.
+- Med sentrale indre krefter, langs linja mellom partiklene, er ${d\vec L/dt = \vec N^{(e)}}$.
+- De indre kreftene gjør arbeid når partiklene flytter seg i forhold til hverandre. ${T = \tfrac12 M\dot{\vec R}^2 + \tfrac12\sum_i m_i\dot{\vec y}_i^{\,2}}$, og de indre kreftene endrer bare delen rundt massesenteret.
+- Et støt bevarer impulsen, og et elastisk støt også den kinetiske energien. Sett fra massesenteret dreier et elastisk støt impulsene uten å endre lengden. I én dimensjon snur relativhastigheten, og like masser der den ene ligger i ro, går ut vinkelrett på hverandre.
+- Med energien som en sirkel er hvert støt en speiling, og to klosser og en vegg gir omtrent ${\pi\sqrt{M/m}}$ støt.
+
+</KeyTakeaways>

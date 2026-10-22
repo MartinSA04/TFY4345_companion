@@ -167,15 +167,23 @@ formulas:
   - id: green-respons
     section: Greens funksjon
     tex: "x(t) = \\int_{-\\infty}^{\\infty} dt'\\, G_R(t - t')\\, J(t')"
-    label: "Responsen på en vilkårlig kraft $J(t)$, satt sammen som en superposisjon av responser på deltadytt. Krever at bevegelsesligningen er lineær."
+    label: "Responsen på en vilkårlig kraft $J(t)$, satt sammen av responsene på dyttene $J(t')\\,dt'$, for en oscillator i ro før kraften kom. Krever at bevegelsesligningen er lineær."
   - id: green-invers
     section: Greens funksjon
     tex: "D(t)\\, G_R(t - t') = \\delta(t - t')"
-    label: "Greens funksjonen inverterer differensialoperatoren $D(t)$ i bevegelsesligningen $D(t)\\,x(t) = J(t)$."
+    label: "Greens funksjon inverterer differensialoperatoren $D(t)$ i bevegelsesligningen $D(t)\\,x(t) = J(t)$."
   - id: green-oscillator
     section: Greens funksjon
-    tex: "G_R(\\tau) = \\frac{1}{m}\\, \\frac{\\sin(\\omega\\tau)}{\\omega}\\, \\theta(\\tau)"
-    label: "Retardert Greens funksjon for den harmoniske oscillatoren. Trinnfunksjonen $\\theta$ gjør at responsen kommer etter dyttet."
+    tex: "G_R(\\tau) = \\vartheta(\\tau)\\,\\frac{\\sin(\\omega_0\\tau)}{m\\omega_0}"
+    label: "Retardert Greens funksjon for den harmoniske oscillatoren, responsen på et enhetsdytt for tida $\\tau$ siden. Trinnfunksjonen $\\vartheta$ gjør at responsen kommer etter dyttet."
+  - id: green-frekvens
+    section: Greens funksjon
+    tex: "G(\\Omega) = \\frac{1}{m\\,(\\omega_0^2 - \\Omega^2 - 2i\\alpha\\Omega)}"
+    label: "Responsen per kraftenhet på en harmonisk kraft $e^{-i\\Omega t}$, med dempingen $\\alpha = \\gamma/2m$. $G_R(\\tau)$ er Fourier-transformen av $G(\\Omega)$. Polene ligger i $\\Omega = -i\\alpha \\pm \\sqrt{\\omega_0^2 - \\alpha^2}$, under den reelle aksen."
+  - id: resonans
+    section: Greens funksjon
+    tex: "\\begin{aligned} |G| &= \\frac{1}{m\\sqrt{(\\omega_0^2 - \\Omega^2)^2 + 4\\alpha^2\\Omega^2}} \\\\ \\tan\\varphi &= \\frac{2\\alpha\\Omega}{\\omega_0^2 - \\Omega^2} \\end{aligned}"
+    label: "Amplitude per kraftenhet og faseforskyvning for en dempet oscillator drevet av $J_0\\cos(\\Omega t)$, med $x = J_0|G|\\cos(\\Omega t - \\varphi)$. Amplituden er størst i $\\Omega^2 = \\omega_0^2 - 2\\alpha^2$."
   - id: massesenter
     section: Partikkelsystemer
     tex: "\\vec R = \\frac{1}{M} \\sum_i m_i \\vec r_i, \\qquad \\vec P = M \\dot{\\vec R}"
@@ -192,10 +200,10 @@ formulas:
     section: Partikkelsystemer
     tex: "T = \\tfrac12 M \\dot{\\vec R}^2 + \\tfrac12 \\sum_i m_i \\dot{\\vec y}_i^{\\,2}"
     label: "Kinetisk energi delt i massesenterets bevegelse og bevegelsen rundt massesenteret, med $\\vec y_i = \\vec r_i - \\vec R$."
-  - id: redusert-masse
+  - id: energi-system
     section: Partikkelsystemer
-    tex: "\\mu \\ddot{\\vec r} = \\vec F_{12}, \\qquad \\mu = \\frac{m_1 m_2}{m_1 + m_2}"
-    label: "Tolegemeproblemet uten ytre krefter, redusert til ett legeme med redusert masse $\\mu$ for relativkoordinaten $\\vec r = \\vec r_1 - \\vec r_2$."
+    tex: "E = T + \\sum_i V_i(\\vec r_i) \\allowbreak + \\sum_{i<j} V_{ij}(|\\vec r_i - \\vec r_j|)"
+    label: "Energien til et partikkelsystem med konservative ytre og indre krefter er bevart. De indre kreftene gjør arbeid når partiklene flytter seg i forhold til hverandre."
   - id: kraftstot
     section: Støt
     tex: "\\vec I = \\int \\vec F\\, dt = \\Delta\\vec p"
@@ -204,6 +212,10 @@ formulas:
     section: Støt
     tex: "\\vec v_1 \\cdot \\vec v_2 = 0"
     label: "Elastisk støt mellom like masser der den ene starter i ro: enten stopper den første, eller de to går ut vinkelrett på hverandre."
+  - id: elastisk-1d
+    section: Støt
+    tex: "v_1 - v_2 = -(u_1 - u_2)"
+    label: "Elastisk støt i én dimensjon, med $u$ før og $v$ etter: relativhastigheten snur. Sett fra massesenteret går hvert legeme tilbake med den farten det kom med."
   - id: frihetsgrader
     section: Lagrangeformalismen
     tex: "n = 3N - k"
@@ -299,6 +311,10 @@ formulas:
     tex: "\\begin{aligned} &q_i \\to q_i + \\epsilon F_i, \\qquad \\delta L = \\epsilon\\,\\frac{dF}{dt} \\\\ &Q = \\sum_i p_i F_i - F = \\text{konst} \\end{aligned}"
     label: "Noethers teorem. Forskyvning av alle partikler langs $\\hat n$ gir $\\vec P \\cdot \\hat n$, rotasjon om $\\hat n$ gir dreieimpulsen langs $\\hat n$, og en syklisk koordinat $q_j$ er tilfellet $F_i = \\delta_{ij}$, $F = 0$."
 
+  - id: redusert-masse
+    section: Tolegemeproblemet
+    tex: "\\mu \\ddot{\\vec r} = \\vec F_{12}, \\qquad \\mu = \\frac{m_1 m_2}{m_1 + m_2}"
+    label: "Tolegemeproblemet uten ytre krefter, redusert til ett legeme med redusert masse $\\mu$ for relativkoordinaten $\\vec r = \\vec r_1 - \\vec r_2$."
   - id: sentralkraft-lagrange
     section: Tolegemeproblemet
     tex: "\\begin{aligned} L &= \\tfrac12\\mu\\left(\\dot r^2 + r^2\\dot\\phi^2\\right) - V(r) \\\\ J &= p_\\phi = \\mu r^2\\dot\\phi \\end{aligned}"
@@ -545,7 +561,7 @@ symbols:
   - { tex: "E", meaning: "Energien, $T + V$", unit: "J", section: "Newtonsk mekanikk", formula: energi-1d, note: "Ikke det elektriske feltet $\\vec E$ hos den ladde partikkelen." }
   - { tex: "x_0,\\ q_0", meaning: "Likevektspunkt, der $V' = 0$", section: "Newtonsk mekanikk", term: "Likevektspunkt", formula: likevekt }
   - { tex: "\\omega", meaning: "Vinkelfrekvensen til en svingning", unit: "rad/s", section: "Newtonsk mekanikk", formula: likevekt, id: omega, note: "Om et minimum er $\\omega = \\sqrt{V''(x_0)/m}$. $\\omega_0$ er frekvensen uten forstyrrelse, som $\\sqrt{k/m}$ for den dempede oscillatoren og $\\sqrt{g/l}$ for Foucaults pendel. Verken $\\Omega$ eller vinkelfarten $\\vec\\omega$ til et roterende system." }
-  - { tex: "\\Omega", meaning: "Vinkelfrekvens som settes utenfra", unit: "rad/s", section: "Newtonsk mekanikk", id: omega-stor, note: "Frekvensvariabelen i Greens funksjon, drivfrekvensen til Kapitzas pendel og ringens vinkelfart i modulen om små svingninger. Ikke $\\omega$, frekvensen systemet selv svinger med, men for den dempede oscillatoren er $\\Omega = \\sqrt{\\omega_0^2 - \\alpha^2}$ frekvensen den svinger med. I $d\\sigma/d\\Omega$ er $\\Omega$ en romvinkel, og $\\Omega_\\text{F}$ er dreiefarten til svingeplanet i Foucaults pendel." }
+  - { tex: "\\Omega", meaning: "Vinkelfrekvens som settes utenfra", unit: "rad/s", section: "Newtonsk mekanikk", id: omega-stor, note: "Vinkelfrekvensen til kraften i Greens funksjon og resonansen, drivfrekvensen til Kapitzas pendel og ringens vinkelfart i modulen om små svingninger. Ikke $\\omega$, frekvensen systemet selv svinger med, men for den dempede oscillatoren uten kraft er $\\Omega = \\sqrt{\\omega_0^2 - \\alpha^2}$ frekvensen den svinger med. I $d\\sigma/d\\Omega$ er $\\Omega$ en romvinkel, og $\\Omega_\\text{F}$ er dreiefarten til svingeplanet i Foucaults pendel." }
   - { tex: "\\gamma", meaning: "Friksjonskoeffisienten i motstandskraften $-\\gamma v$", unit: "kg/s", section: "Newtonsk mekanikk", formula: dempet-oscillator, id: gamma-friksjon, note: "Lorentz-faktoren $1/\\sqrt{1 - v^2/c^2}$ heter også ofte $\\gamma$. Skrives motstandskraften $-m\\gamma\\dot x$ eller $-2m\\gamma\\dot q$, har $\\gamma$ enheten s⁻¹. I eksamensoppgaven om den kvartiske oscillatoren er $\\gamma$ koeffisienten i $\\tfrac14\\gamma x^4$." }
   - { tex: "\\alpha", meaning: "Dempingen $\\gamma/2m$ i den dempede oscillatoren", unit: "s⁻¹", section: "Newtonsk mekanikk", formula: dempet-rotter, id: alpha-demping, note: "Kritisk demping er $\\alpha = \\omega_0$. I trelegemeproblemet er $\\alpha$ masseforholdet." }
   - { tex: "A", meaning: "Amplituden til en svingning", unit: "m", section: "Newtonsk mekanikk", formula: periode-1d, id: a-amplitude, note: "Ellers en konstant, som i den lineære transformasjonen $t' = At + Bx$." }
@@ -553,13 +569,13 @@ symbols:
   - { tex: "\\Phi", meaning: "Tyngdepotensialet, potensialet per masse, med $\\vec g = -\\nabla\\Phi$", unit: "J/kg", section: "Newtonsk mekanikk", formula: tyngde-gauss }
   - { tex: "M(r)", meaning: "Massen innenfor radien $r$ i en kulesymmetrisk massefordeling", unit: "kg", section: "Newtonsk mekanikk", formula: tyngde-kule }
   - { tex: "k", meaning: "Fjærkonstant, koeffisienten i $\\tfrac12 kx^2$", unit: "N/m", section: "Newtonsk mekanikk", formula: kjede-dispersjon, note: "Samme bokstav som styrken i $V = -k/r$, antallet føringer i $n = 3N - k$ og raten i motstandskraften $-kmv$." }
-  - { tex: "\\mu", meaning: "Redusert masse, $m_1m_2/(m_1 + m_2)$", unit: "kg", section: "Newtonsk mekanikk", term: "Redusert masse", formula: redusert-masse, id: mu }
+
   - { tex: "\\vec R", meaning: "Massesenteret, $\\sum_i m_i\\vec r_i/M$", unit: "m", section: "Newtonsk mekanikk", term: "Massesenter", formula: massesenter, note: "I roterende systemer er $\\vec R$ posisjonen målt fra jordas sentrum. $R$ alene er en radius: jordas, kulas, ringens eller hjulets." }
   - { tex: "\\vec y_i", meaning: "Posisjonen til partikkel $i$ målt fra massesenteret, $\\vec r_i - \\vec R$", unit: "m", section: "Newtonsk mekanikk", formula: kinetisk-splitt, note: "$\\sum_i m_i\\vec y_i = 0$." }
   - { tex: "\\vec L", meaning: "Dreieimpuls, $\\sum_i \\vec r_i \\times \\vec p_i$", unit: "kg·m²/s", section: "Newtonsk mekanikk", formula: dreieimpuls-ytre, note: "Ikke Lagrangefunksjonen $L$. I tolegemeproblemet heter lengden $J$." }
   - { tex: "\\vec N", meaning: "Dreiemomentet, $\\sum_i \\vec r_i \\times \\vec F_i$", unit: "N·m", section: "Newtonsk mekanikk", formula: dreieimpuls-ytre, note: "$\\vec N^{(e)}$ er dreiemomentet fra de ytre kreftene." }
-  - { tex: "G_R(\\tau)", meaning: "Retardert Greens funksjon, responsen på et enhetsdytt", unit: "s/kg", section: "Newtonsk mekanikk", term: "Retardert Greens funksjon", formula: green-oscillator, note: "$\\tau = t - t'$ er tida siden dyttet, og $\\theta(\\tau)$ er trinnfunksjonen, ikke en vinkel." }
-  - { tex: "J(t)", meaning: "Den ytre kraften som driver oscillatoren", unit: "N", section: "Newtonsk mekanikk", formula: green-respons, note: "Ikke dreieimpulsen $J$ i tolegemeproblemet." }
+  - { tex: "G_R(\\tau)", meaning: "Retardert Greens funksjon, responsen på et enhetsdytt", unit: "s/kg", section: "Newtonsk mekanikk", term: "Retardert Greens funksjon", formula: green-oscillator, note: "$\\tau = t - t'$ er tida siden dyttet, og $\\vartheta(\\tau)$ er trinnfunksjonen, 0 for $\\tau < 0$ og 1 for $\\tau > 0$." }
+  - { tex: "J(t)", meaning: "Den ytre kraften som driver oscillatoren", unit: "N", section: "Newtonsk mekanikk", formula: green-respons, note: "$J_0$ er amplituden til en harmonisk kraft. Ikke dreieimpulsen $J$ i tolegemeproblemet." }
   # ── Lagrangeformalismen ──
   - { tex: "q_i,\\ \\dot q_i", meaning: "Generaliserte koordinater og hastigheter", section: "Lagrangeformalismen", term: "Generaliserte koordinater", formula: euler-lagrange, id: q, note: "Ikke ladningen $q$ i Lagrangefunksjonen for en ladd partikkel." }
   - { tex: "n", meaning: "Antall frihetsgrader, $3N - k$", section: "Lagrangeformalismen", term: "Frihetsgrader", formula: frihetsgrader, note: "$N$ partikler med $k$ holonome føringer; her er $k$ et antall og ikke en fjærkonstant. I modulen om små svingninger heter antallet frihetsgrader $N$, og $n$ nummererer modene. I virialteoremet er $n$ graden til potensialet." }
@@ -579,6 +595,7 @@ symbols:
   - { tex: "V_\\text{s}", meaning: "Sentrifugalpotensialet, $-\\tfrac12 m\\omega^2 d^2$", unit: "J", section: "Roterende referansesystemer", term: "Sentrifugalkraft", formula: sentrifugalkraft, note: "Inngår i $U$ i trelegemeproblemet og i $H$ for et roterende system." }
   - { tex: "\\vec F_\\text{s},\\ \\vec F_\\text{C}", meaning: "Sentrifugalkraften og Corioliskraften", unit: "N", section: "Roterende referansesystemer", term: "Corioliskraft", formula: corioliskraft }
   # ── To- og trelegemeproblemet ──
+  - { tex: "\\mu", meaning: "Redusert masse, $m_1m_2/(m_1 + m_2)$", unit: "kg", section: "To- og trelegemeproblemet", term: "Redusert masse", formula: redusert-masse, id: mu }
   - { tex: "J", meaning: "Dreieimpulsen, $p_\\phi = \\mu r^2\\dot\\phi$", unit: "kg·m²/s", section: "To- og trelegemeproblemet", formula: sentralkraft-lagrange, id: j, note: "$J = |\\vec L|$. «Kjente systemer» skriver $p_\\phi$ for den samme størrelsen. Ikke kraften $J(t)$ i Greens funksjon." }
   - { tex: "V_\\text{eff}", meaning: "Det effektive potensialet, $V + J^2/2\\mu r^2$", unit: "J", section: "To- og trelegemeproblemet", term: "Effektivt potensial", formula: effektivt-potensial, id: veff, note: "Den sfæriske pendelen har sin egen $V_\\text{eff}(\\theta)$ og Kapitzas pendel en midlet $V_\\text{eff}(\\Theta)$." }
   - { tex: "k", meaning: "Styrken i $V = -k/r$, $Gm_1m_2$ for gravitasjon", unit: "J·m", section: "To- og trelegemeproblemet", formula: kepler-bane, id: k, note: "Negativ for frastøting, $k = -qQ/4\\pi\\epsilon_0$. Ikke fjærkonstanten $k$." }
@@ -624,7 +641,7 @@ symbols:
   - { tex: "\\omega_c", meaning: "Vinkelfrekvensen $qB/m$ i et uniformt magnetfelt, med fortegn", unit: "rad/s", section: "Hamiltonformalismen", term: "Syklotronfrekvens", formula: syklotronfrekvens, note: "Syklotronfrekvensen er $|\\omega_c| = |q|B/m$. For $q < 0$ er $\\omega_c < 0$, og sirkelen går mot klokka sett fra spissen av $\\vec B$." }
   # ── Kjente systemer ──
   - { tex: "l", meaning: "Lengden til pendelen; $l_1$ og $l_2$ for dobbeltpendelen", unit: "m", section: "Kjente systemer", formula: plan-pendel, note: "I eksamensoppgavene står $\\ell$ både for en stanglengde og for dreieimpulsen." }
-  - { tex: "\\theta", meaning: "Vinkelen fra loddlinja nedover for en pendel, og fra bunnpunktet for perla på ringen", unit: "rad", section: "Kjente systemer", formula: plan-pendel, note: "$\\theta = \\pi$ er opp ned. For et legeme som ruller, er $\\theta$ dreievinkelen. I Greens funksjon er $\\theta(\\tau)$ trinnfunksjonen." }
+  - { tex: "\\theta", meaning: "Vinkelen fra loddlinja nedover for en pendel, og fra bunnpunktet for perla på ringen", unit: "rad", section: "Kjente systemer", formula: plan-pendel, note: "$\\theta = \\pi$ er opp ned. For et legeme som ruller, er $\\theta$ dreievinkelen." }
   - { tex: "\\phi", meaning: "Vinkelen rundt loddlinja for den sfæriske pendelen, og vinkelen i baneplanet i tolegemeproblemet", unit: "rad", section: "Kjente systemer", formula: sfaerisk-pendel, note: "I roterende systemer er $\\phi$ breddegraden, og for den ladde partikkelen skalarpotensialet." }
   - { tex: "g", meaning: "Tyngdeakselerasjonen", unit: "m/s²", section: "Kjente systemer", note: "$9{,}81$ m/s²." }
   - { tex: "y_\\text{p},\\ A", meaning: "Høyden til opphenget på Kapitzas pendel og amplituden, $y_\\text{p} = A\\cos\\Omega t$", unit: "m", section: "Kjente systemer", formula: kapitza, note: "Pendelen står stabilt opp ned når $A^2\\Omega^2 > 2gl$." }
@@ -663,22 +680,22 @@ glossary:
     definition: "For en lineær bevegelsesligning er responsen på en sum av krefter summen av responsene. Gir $J_1$ responsen $x_1$ og $J_2$ responsen $x_2$, er $x_1 + x_2$ responsen på $J_1 + J_2$."
   - term: Greens funksjon
     section: Greens funksjon
-    definition: "Responsen på et deltadytt: løsningen av $D(t)\\,G(t - t') = \\delta(t - t')$. Den inverterer differensialoperatoren, og superposisjon gir responsen på en vilkårlig kraft."
+    definition: "En løsning av $D(t)\\,G(t - t') = \\delta(t - t')$. Integralet $\\int G(t - t')\\,J(t')\\,dt'$ løser bevegelsesligningen $D(t)\\,x = J$ for enhver kraft, så $G$ er det inverse av $D$."
   - term: Retardert Greens funksjon
     section: Greens funksjon
-    definition: "Greens funksjonen som er null for $\\tau < 0$, slik at responsen kommer etter dyttet. Valget svarer til å skyve polene under den reelle aksen."
+    definition: "Greens funksjonen som er null for $\\tau < 0$, slik at responsen kommer etter dyttet. Kravet legger polene til $G(\\Omega)$ under den reelle aksen, der dempingen også legger dem."
+  - term: Resonans
+    section: Greens funksjon
+    definition: "Det store utslaget en drevet oscillator får når kraften svinger med en frekvens nær oscillatorens egen. Med dempingen $\\alpha$ er utslaget størst i $\\Omega^2 = \\omega_0^2 - 2\\alpha^2$, og toppen er omtrent $2\\alpha$ bred, fordi polene til $G(\\Omega)$ ligger avstanden $\\alpha$ under den reelle aksen."
   - term: Massesenter
     section: Partikkelsystemer
     definition: "Punktet $\\vec R = \\frac{1}{M}\\sum_i m_i \\vec r_i$. Det beveger seg som én partikkel med hele massen $M$, påvirket av summen av de ytre kreftene."
   - term: Sentrale krefter
     section: Partikkelsystemer
-    definition: "Indre krefter som virker langs forbindelseslinja mellom partiklene. Kravet om slike krefter kalles også den sterke loven om aksjon og reaksjon. Med sentrale indre krefter endres dreieimpulsen bare av det ytre dreiemomentet."
-  - term: Redusert masse
-    section: Partikkelsystemer
-    definition: "Massen $\\mu = m_1 m_2/(m_1 + m_2)$ som relativbevegelsen i tolegemeproblemet følger, $\\mu\\ddot{\\vec r} = \\vec F_{12}$. Relativkoordinaten $\\vec r = \\vec r_1 - \\vec r_2$ er $m_1$ sett fra $m_2$, så den beveger seg som ett legeme med masse $\\mu$ om et fast kraftsentrum der $m_2$ er."
+    definition: "Indre krefter som virker langs linja gjennom de to partiklene. Kravet om slike krefter kalles den sterke loven om aksjon og reaksjon. Med sentrale indre krefter endres dreieimpulsen bare av det ytre dreiemomentet."
   - term: Elastisk støt
     section: Støt
-    definition: "Støt der både impulsen og den kinetiske energien er bevart. Det er utfallet når kraften mellom partiklene er konservativ."
+    definition: "Støt der både impulsen og den kinetiske energien er bevart. Det skjer når kraften mellom legemene er konservativ. Sett fra massesenteret dreier et elastisk støt de to impulsene like mye uten å endre lengden."
   - term: Kraftstøt
     section: Støt
     definition: "Tidsintegralet av kraften over støtet, $\\vec I = \\int \\vec F\\,dt$. Det er lik endringen i impuls."
@@ -757,6 +774,9 @@ glossary:
   - term: Sentrifugalbarriere
     section: Tolegemeproblemet
     definition: "Leddet $J^2/2\\mu r^2$ i det effektive potensialet, den kinetiske energien i vinkelbevegelsen skrevet med den bevarte dreieimpulsen. Det vokser uten grense når $r \\to 0$ og holder legemet unna kraftsentrum så lenge $J \\ne 0$ og $-V$ vokser langsommere enn $1/r^2$ når $r \\to 0$."
+  - term: Redusert masse
+    section: Tolegemeproblemet
+    definition: "Massen $\\mu = m_1 m_2/(m_1 + m_2)$ som relativbevegelsen i tolegemeproblemet følger, $\\mu\\ddot{\\vec r} = \\vec F_{12}$. Relativkoordinaten $\\vec r = \\vec r_1 - \\vec r_2$ er $m_1$ sett fra $m_2$, så den beveger seg som ett legeme med masse $\\mu$ om et fast kraftsentrum der $m_2$ er."
   - term: Eksentrisitet
     section: Tolegemeproblemet
     definition: "Tallet $e \\ge 0$ i kjeglesnittet $r = r_0/(1 + e\\cos\\phi)$. Det fastlegger formen på banen: $e = 0$ er en sirkel, $e < 1$ en ellipse, $e = 1$ en parabel og $e > 1$ en hyperbel. For $V = -k/r$ er $e^2 = 1 + 2EJ^2/\\mu k^2$."
