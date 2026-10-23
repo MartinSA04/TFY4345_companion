@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 412" width="340" height="412">
+  <!-- Pendel som henger fra m₁, som glir på ei skinne. Heltrukket: konfigurasjonen med føringskreftene
+       (stangas trekk på hver ende og skinnas trykk på m₁). Stiplet: konfigurasjonen etter forskyvningen.
+       Øverst flyttes begge legemene δx; nederst flytter bare m₂ seg, vinkelrett på stanga. -->
+  <defs><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#3f9a6c"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#c0703a"/></marker><marker id="d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#7c8795"/></marker></defs>
+  <line x1="14" y1="58" x2="326" y2="58" stroke="#8d98a6" stroke-width="2"/>
+  <line x1="24" y1="52" x2="24" y2="80" stroke="#8d98a6" stroke-width="1.2"/>
+  <line x1="26" y1="74" x2="91" y2="74" stroke="#7c8795" stroke-width="1.1" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="58" y="92" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="middle">x</text>
+  <line x1="104" y1="66" x2="104" y2="163.6" stroke="#8d98a6" stroke-width="1.1" stroke-dasharray="3 4"/>
+  <path d="M 104 122 A 64 64 0 0 0 139.8 111.1" fill="none" stroke="#7c8795" stroke-width="1.1"/>
+  <text x="124.2" y="136.7" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="middle">θ</text>
+  <line x1="164" y1="58" x2="237.8" y2="167.4" stroke="#8d98a6" stroke-width="1.4" stroke-dasharray="4 4"/>
+  <rect x="153" y="51" width="22" height="14" rx="2" fill="none" stroke="#8d98a6" stroke-width="1.4" stroke-dasharray="3 3"/>
+  <circle cx="237.8" cy="167.4" r="8" fill="none" stroke="#8d98a6" stroke-width="1.4" stroke-dasharray="3 3"/>
+  <line x1="116" y1="44" x2="160" y2="44" stroke="#3f9a6c" stroke-width="2.4" marker-end="url(#g)"/>
+  <line x1="188.8" y1="169.4" x2="227.8" y2="169.4" stroke="#3f9a6c" stroke-width="2.4" marker-end="url(#g)"/>
+  <text x="138" y="36" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#3f9a6c" text-anchor="middle">δx</text>
+  <text x="207.8" y="189.4" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#3f9a6c" text-anchor="middle">δx</text>
+  <line x1="104" y1="58" x2="177.8" y2="167.4" stroke="#6f7a88" stroke-width="2.6"/>
+  <rect x="93" y="51" width="22" height="14" rx="2" fill="#6f7a88"/>
+  <circle cx="177.8" cy="167.4" r="8" fill="#3f9a6c"/>
+  <text x="88" y="46" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="end">m<tspan dy="5" font-size="13">1</tspan></text>
+  <text x="163.8" y="189.4" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="end">m<tspan dy="5" font-size="13">2</tspan></text>
+  <text x="161.8" y="123.8" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="middle">l</text>
+  <line x1="108.5" y1="64.6" x2="127.5" y2="92.8" stroke="#c0703a" stroke-width="2.4" marker-end="url(#o)"/>
+  <line x1="172.8" y1="160" x2="153.8" y2="131.8" stroke="#c0703a" stroke-width="2.4" marker-end="url(#o)"/>
+  <line x1="104" y1="49" x2="104" y2="19" stroke="#c0703a" stroke-width="2.4" marker-end="url(#o)"/>
+  <text x="14" y="18" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="start">x endres, θ holdes fast</text>
+  <line x1="14" y1="264" x2="326" y2="264" stroke="#8d98a6" stroke-width="2"/>
+  <line x1="24" y1="258" x2="24" y2="286" stroke="#8d98a6" stroke-width="1.2"/>
+  <line x1="26" y1="280" x2="91" y2="280" stroke="#7c8795" stroke-width="1.1" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="58" y="298" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="middle">x</text>
+  <line x1="104" y1="272" x2="104" y2="369.6" stroke="#8d98a6" stroke-width="1.1" stroke-dasharray="3 4"/>
+  <path d="M 104 328 A 64 64 0 0 0 139.8 317.1" fill="none" stroke="#7c8795" stroke-width="1.1"/>
+  <text x="124.2" y="342.7" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="middle">θ</text>
+  <line x1="104" y1="264" x2="203.6" y2="350.6" stroke="#8d98a6" stroke-width="1.4" stroke-dasharray="4 4"/>
+  <circle cx="203.6" cy="350.6" r="8" fill="none" stroke="#8d98a6" stroke-width="1.4" stroke-dasharray="3 3"/>
+  <line x1="186.1" y1="367.8" x2="206" y2="354.4" stroke="#3f9a6c" stroke-width="2.4" marker-end="url(#g)"/>
+  <text x="218.7" y="370.7" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#3f9a6c" text-anchor="start">l δθ</text>
+  <path d="M 172.8 366 L 180.2 360.9 L 185.3 368.4" fill="none" stroke="#7c8795" stroke-width="1.1"/>
+  <line x1="104" y1="264" x2="177.8" y2="373.4" stroke="#6f7a88" stroke-width="2.6"/>
+  <rect x="93" y="257" width="22" height="14" rx="2" fill="#6f7a88"/>
+  <circle cx="177.8" cy="373.4" r="8" fill="#3f9a6c"/>
+  <text x="88" y="252" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="end">m<tspan dy="5" font-size="13">1</tspan></text>
+  <text x="163.8" y="395.4" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="end">m<tspan dy="5" font-size="13">2</tspan></text>
+  <text x="161.8" y="329.8" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="middle">l</text>
+  <line x1="108.5" y1="270.6" x2="127.5" y2="298.8" stroke="#c0703a" stroke-width="2.4" marker-end="url(#o)"/>
+  <line x1="172.8" y1="366" x2="153.8" y2="337.8" stroke="#c0703a" stroke-width="2.4" marker-end="url(#o)"/>
+  <line x1="104" y1="255" x2="104" y2="225" stroke="#c0703a" stroke-width="2.4" marker-end="url(#o)"/>
+  <text x="14" y="224" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="start">θ endres, x holdes fast</text>
+</svg>

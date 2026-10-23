@@ -1,169 +1,187 @@
 /**
- * Stasjonær virkning: prøvebaner for en ball kastet rett opp.
+ * Virkningen for en kastet ball: ballen forlater hånden ved t = 0 og er
+ * tilbake i hånden ved t = 2 s. Prøvebanene er
  *
- * Et drag i diagrammet former en prøvebane y(t) mellom de to faste
- * endepunktene: banen bules mot fingeren rundt punktet du drar i. Den stiplede
- * kurven er den virkelige banen. Søylen til høyre viser S − S*, hvor mye mer
- * virkning prøvebanen har enn den virkelige; førsteordensbidraget er null, så
- * nær den virkelige banen rører søylen seg knapt.
+ *   z(t) = h · 4t(T − t)/T² + a · sin(2πt/T),
  *
- * Enheter: m = 1, g = 1, T = 2, så y*(t) = t(T − t)/2 og
- * S − S* = ½∫η̇² dt for avviket η(t).
+ * altså en parabel med høyden h midtveis og en bølge med utslag a som gjør
+ * banen skjev. Alle går gjennom de to faste hendelsene. Til venstre for
+ * tidsaksen går ballen selv opp og ned langs prøvebanen i virkelig tid.
+ * Til høyre er virkningen S tegnet mot høyden midtveis, på den samme
+ * høydeaksen: kurven er S for alle parabler med den valgte skjevheten, og
+ * prikken er prøvebanen. Med L = T − V ligger bunnen av kurven i høyden til
+ * den virkelige ballen, 4,9 m; med L = T + V ligger den i −4,9 m.
+ *
+ * For disse banene er (med m = 1)
+ *   ∫T dt = 8h²/3T + π²a²/T,   ∫V dt = 2ghT/3,
+ * så S = ∫T dt ∓ ∫V dt, og bølgen bidrar bare til den kinetiske delen.
  *
  * Kontrakt: default-eksportert init(api), api = { stage, controls, getSize,
- * onResize, signal }. Fargene er sidens egne CSS-variabler, så figuren bytter
- * tema selv.
+ * onResize, signal }. Fargene er sidens egne CSS-variabler.
  */
+import { nb, slider, button, animate, svg, txt, line, circle, poly, FIXED, MOVING, DERIVED, HINT, LABEL } from "./_mekanikk.js";
+
 export default function init({ stage, controls, getSize, onResize, signal }) {
-  const T = 2; // kastets varighet
-  const N = 240; // punkter langs kurven
-  const W = 0.35; // bulens bredde
-  const YMIN = -0.75;
-  const YMAX = 1.55;
-  const DSMAX = 2.6; // søylens toppverdi, funnet numerisk fra maksimalt drag
+  const T = 2; // s, tida ballen er i lufta
+  const G = 9.8; // m/s²
+  const ZMIN = -8;
+  const ZMAX = 12;
+  const PAUSE = 0.7; // s mellom hver gjennomkjøring
+  const SMIN = -40;
+  const SMAX = 130;
 
-  const ytrue = (t) => 0.5 * t * (T - t);
-  const win = (t) => (t * (T - t)) / ((T * T) / 4); // nuller avviket i endepunktene
+  let h = 2; // høyden midtveis, m
+  let a = 0; // bølgens utslag, m
+  let sign = -1; // L = T + sign·V
+  let tAnim = 0;
 
-  // Bulen: senter t0 og utslag d, altså q(t0) − y*(t0).
-  let t0 = 0.7;
-  let d = 0.25;
+  const zTrue = (t) => 0.5 * G * t * (T - t);
+  const zTrial = (t) => (h * 4 * t * (T - t)) / (T * T) + a * Math.sin((2 * Math.PI * t) / T);
+  const action = (hh) => (8 * hh * hh) / (3 * T) + (Math.PI * Math.PI * a * a) / T + sign * ((2 * G * hh * T) / 3);
 
-  const eta = (t) => {
-    const u = (t - t0) / W;
-    return (d / win(t0)) * Math.exp(-u * u) * win(t);
-  };
-  const q = (t) => ytrue(t) + eta(t);
-
-  // S − S* = ½∫η̇² dt: førsteordensleddet forsvinner fordi y* løser
-  // bevegelsesligningen og η er null i endepunktene.
-  function deltaS() {
-    let s = 0;
-    const n = 300;
-    const h = 1e-5;
-    for (let i = 0; i < n; i++) {
-      const t = ((i + 0.5) * T) / n;
-      const ed = (eta(t + h) - eta(t - h)) / (2 * h);
-      s += 0.5 * ed * ed * (T / n);
-    }
-    return s;
-  }
-
-  const resetBtn = document.createElement("button");
-  resetBtn.type = "button";
-  resetBtn.className = "sim-btn";
-  resetBtn.textContent = "Til virkelig bane";
-  resetBtn.setAttribute("aria-label", "Legg prøvebanen oppå den virkelige banen");
-  controls.append(resetBtn);
-
-  // ── tegning ───────────────────────────────────────────────────────────────
-  let geom = null; // px-avbildningen fra siste render, brukt av drag-handleren
-
-  function render() {
-    const { w, h } = getSize();
-    const padL = 30;
-    const padR = 46; // plass til søylen
-    const padT = 14;
-    const padB = 26;
-    const pw = Math.max(40, w - padL - padR);
-    const ph = Math.max(40, h - padT - padB);
-
-    const px = (t) => padL + (t / T) * pw;
-    const py = (y) => padT + (1 - (y - YMIN) / (YMAX - YMIN)) * ph;
-    geom = { padL, pw, padT, ph };
-
-    const curve = (f) => {
-      let dd = "";
-      for (let i = 0; i <= N; i++) {
-        const t = (T * i) / N;
-        dd += `${i === 0 ? "M" : "L"} ${px(t).toFixed(1)} ${py(f(t)).toFixed(1)} `;
-      }
-      return dd;
-    };
-
-    const yZero = py(0);
-    let g = "";
-    // Tidsaksen gjennom endepunktene.
-    g += `<line x1="${padL}" y1="${yZero.toFixed(1)}" x2="${(padL + pw).toFixed(1)}" y2="${yZero.toFixed(1)}" stroke="var(--border)" stroke-width="1"/>`;
-
-    // Virkelig bane, stiplet, og prøvebanen oppå.
-    g += `<path d="${curve(ytrue)}" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 4"/>`;
-    g += `<path d="${curve(q)}" fill="none" stroke="var(--accent)" stroke-width="2.5"/>`;
-
-    // Faste endepunkter og håndtaket der det sist ble dratt.
-    g += `<circle cx="${px(0).toFixed(1)}" cy="${yZero.toFixed(1)}" r="4.5" style="fill:var(--muted)"/>`;
-    g += `<circle cx="${px(T).toFixed(1)}" cy="${yZero.toFixed(1)}" r="4.5" style="fill:var(--muted)"/>`;
-    g += `<circle cx="${px(t0).toFixed(1)}" cy="${py(q(t0)).toFixed(1)}" r="5.5" style="fill:var(--accent);stroke:var(--bg-elevated);stroke-width:1.5"/>`;
-
-    // Søylen: S − S* fra null og opp, med rammen som fast skala.
-    const bx = padL + pw + 18;
-    const bw = 10;
-    const frac = Math.min(1, deltaS() / DSMAX);
-    const bh = frac * ph;
-    g += `<rect x="${bx}" y="${padT}" width="${bw}" height="${ph}" rx="3" fill="none" stroke="var(--border)" stroke-width="1"/>`;
-    if (bh > 0.5) {
-      g += `<rect x="${bx}" y="${(padT + ph - bh).toFixed(1)}" width="${bw}" height="${bh.toFixed(1)}" rx="3" style="fill:var(--orange)"/>`;
-    }
-    g += `<text x="${bx + bw / 2}" y="${(padT + ph + 18).toFixed(1)}" text-anchor="middle" style="fill:var(--orange);font-family:var(--font-mono);font-size:12px">S−S*</text>`;
-
-    // Etiketter.
-    g += `<text x="${padL + 4}" y="${padT + 10}" style="fill:var(--muted);font-family:var(--font-mono);font-size:12px">y(t)</text>`;
-    g += `<text x="${(padL + pw - 4).toFixed(1)}" y="${(yZero + 18).toFixed(1)}" text-anchor="end" style="fill:var(--muted);font-family:var(--font-mono);font-size:12px">t</text>`;
-    if (Math.abs(d) < 0.02) {
-      g += `<text x="${(padL + pw / 2).toFixed(1)}" y="${(py(YMAX) + 26).toFixed(1)}" text-anchor="middle" style="fill:var(--muted);font-family:var(--font-mono);font-size:12px">Dra i kurven for å prøve en annen bane</text>`;
-    }
-
-    stage.innerHTML = `<svg width="100%" height="100%" viewBox="0 0 ${w.toFixed(0)} ${h.toFixed(0)}" preserveAspectRatio="none" role="img" aria-hidden="true" style="display:block;touch-action:none;user-select:none;-webkit-user-select:none">${g}</svg>`;
-  }
-
-  // ── drag ──────────────────────────────────────────────────────────────────
-  let dragging = false;
-
-  function applyDrag(e) {
-    if (!geom) return;
-    const rect = stage.getBoundingClientRect();
-    let t = (((e.clientX - rect.left) - geom.padL) / geom.pw) * T;
-    t = Math.max(0.25, Math.min(T - 0.25, t));
-    const y = YMIN + (1 - (e.clientY - rect.top - geom.padT) / geom.ph) * (YMAX - YMIN);
-    t0 = t;
-    d = Math.max(-0.65, Math.min(0.9, y - ytrue(t)));
-    render();
-  }
-
-  stage.style.cursor = "grab";
-  stage.addEventListener(
-    "pointerdown",
-    (e) => {
-      dragging = true;
-      stage.setPointerCapture(e.pointerId);
-      stage.style.cursor = "grabbing";
-      applyDrag(e);
-    },
-    { signal },
-  );
-  stage.addEventListener(
-    "pointermove",
-    (e) => {
-      if (dragging) applyDrag(e);
-    },
-    { signal },
-  );
-  const endDrag = () => {
-    dragging = false;
-    stage.style.cursor = "grab";
-  };
-  stage.addEventListener("pointerup", endDrag, { signal });
-  stage.addEventListener("pointercancel", endDrag, { signal });
-
-  resetBtn.addEventListener(
-    "click",
-    () => {
-      d = 0;
+  // ── kontroller ────────────────────────────────────────────────────────────
+  const hSlider = slider({
+    text: "Høyde midtveis",
+    aria: "Høyden til prøvebanen midt i kastet",
+    min: -6,
+    max: 10,
+    step: 0.1,
+    value: h,
+    format: (v) => `${nb(v)} m`,
+    signal,
+    onInput: (v) => {
+      h = v;
       render();
     },
-    { signal },
-  );
+  });
+  const aSlider = slider({
+    text: "Skjevhet",
+    aria: "Utslaget til bølgen som gjør prøvebanen skjev",
+    min: -3,
+    max: 3,
+    step: 0.1,
+    value: a,
+    format: (v) => `${nb(v)} m`,
+    signal,
+    onInput: (v) => {
+      a = v;
+      render();
+    },
+  });
+  const minus = button("L = T − V", "Regn virkningen med L = T − V", () => setSign(-1), signal);
+  const plus = button("L = T + V", "Regn virkningen med L = T + V", () => setSign(1), signal);
+  function setSign(s) {
+    sign = s;
+    minus.setAttribute("aria-pressed", String(s === -1));
+    plus.setAttribute("aria-pressed", String(s === 1));
+    render();
+  }
+  setSign(-1);
+  controls.append(hSlider, aSlider, minus, plus);
 
+  // ── tegning ───────────────────────────────────────────────────────────────
+  function render() {
+    const { w, h: H } = getSize();
+    if (w < 60 || H < 60) return;
+    const padT = 16;
+    const padB = 34;
+    const colW = 30; // søylen der ballen selv går opp og ned
+    const axL = colW + 26; // plass til høydeetikettene
+    const sW = Math.max(84, Math.min(150, 0.3 * w));
+    const gap = 14;
+    const pw = Math.max(60, w - axL - gap - sW - 6);
+    const ph = Math.max(60, H - padT - padB);
+    const px = (t) => axL + (t / T) * pw;
+    const pz = (z) => padT + (1 - (z - ZMIN) / (ZMAX - ZMIN)) * ph;
+    const sx0 = axL + pw + gap;
+    const ps = (s) => sx0 + ((s - SMIN) / (SMAX - SMIN)) * sW;
+    const clip = (z) => Math.max(ZMIN, Math.min(ZMAX, z));
+
+    let g = "";
+    g += `<defs><clipPath id="vk-plot"><rect x="${axL}" y="${padT}" width="${pw.toFixed(1)}" height="${ph.toFixed(1)}"/></clipPath>`;
+    g += `<clipPath id="vk-s"><rect x="${sx0}" y="${padT}" width="${sW.toFixed(1)}" height="${ph.toFixed(1)}"/></clipPath></defs>`;
+
+    // Høydeakse med merker, og hånden i høyde 0.
+    for (const z of [-5, 0, 5, 10]) {
+      g += line(axL - 4, pz(z), axL, pz(z), { color: LABEL, width: 1 });
+      g += txt(axL - 7, pz(z) + 4, z === 10 ? "10 m" : String(z), { anchor: "end", size: 11 });
+    }
+    g += line(axL, padT, axL, padT + ph, { color: HINT, width: 1 });
+    g += line(axL, pz(0), axL + pw, pz(0), { color: HINT, width: 1 });
+    // Tidsakse nederst.
+    const yB = padT + ph;
+    for (const t of [0, 1, 2]) {
+      g += line(px(t), yB, px(t), yB + 4, { color: LABEL, width: 1 });
+      g += txt(px(t), yB + 16, t === 2 ? "2 s" : String(t), { anchor: "middle", size: 11 });
+    }
+    g += txt(axL + pw / 2, yB + 30, "t", { anchor: "middle", size: 12 });
+
+    // Søylen: ballen selv over hånden.
+    const cx = colW / 2 + 2;
+    g += line(cx - 9, pz(0) + 7, cx + 9, pz(0) + 7, { color: FIXED, width: 3 });
+
+    // Banene.
+    const pts = (f) => {
+      const out = [];
+      for (let i = 0; i <= 160; i++) {
+        const t = (T * i) / 160;
+        out.push([px(t), pz(f(t))]);
+      }
+      return out;
+    };
+    g += `<g clip-path="url(#vk-plot)">`;
+    g += poly(pts(zTrue), `stroke="${LABEL}" stroke-width="1.5" stroke-dasharray="5 4"`);
+    g += poly(pts(zTrial), `stroke="${MOVING}" stroke-width="2.5"`);
+    g += `</g>`;
+    // De to faste hendelsene.
+    g += circle(px(0), pz(0), 4.5, { fill: FIXED, stroke: "none" });
+    g += circle(px(T), pz(0), 4.5, { fill: FIXED, stroke: "none" });
+
+    // Midtpunktet på prøvebanen og linja over til virkningskurven.
+    const zMid = h;
+    const sNow = action(h);
+    const sDot = Math.max(SMIN, Math.min(SMAX, sNow));
+    g += line(px(T / 2), pz(zMid), ps(sDot), pz(zMid), { color: HINT, width: 1, dash: "2 3" });
+    g += circle(px(T / 2), pz(zMid), 4, { fill: "var(--bg-elevated)", stroke: MOVING, width: 2 });
+
+    // Virkningen mot høyden midtveis.
+    g += line(sx0, padT, sx0, yB, { color: HINT, width: 1 });
+    const sCurve = [];
+    for (let i = 0; i <= 120; i++) {
+      const hh = ZMIN + ((ZMAX - ZMIN) * i) / 120;
+      sCurve.push([ps(action(hh)), pz(hh)]);
+    }
+    g += `<g clip-path="url(#vk-s)">`;
+    g += poly(sCurve, `stroke="${DERIVED}" stroke-width="2"`);
+    g += `</g>`;
+    if (sNow <= SMAX) g += circle(ps(sNow), pz(zMid), 5, { fill: DERIVED, stroke: "none" });
+    else {
+      // S er større enn panelet viser: en pil ved kanten i stedet for prikken.
+      const xe = sx0 + sW;
+      const ye = pz(zMid);
+      g += `<path d="M ${(xe - 9).toFixed(1)} ${(ye - 6).toFixed(1)} L ${xe.toFixed(1)} ${ye.toFixed(1)} L ${(xe - 9).toFixed(1)} ${(ye + 6).toFixed(1)} Z" style="fill:${DERIVED}"/>`;
+    }
+    g += txt(sx0 + 4, yB + 16, "S →", { size: 12, fill: DERIVED });
+
+    // Ballen, som går langs prøvebanen.
+    const tb = Math.min(tAnim, T);
+    const zb = clip(zTrial(tb));
+    g += line(cx, pz(zb), px(tb), pz(zb), { color: HINT, width: 1, dash: "1 4" });
+    g += circle(cx, pz(zb), 6.5, { fill: MOVING, stroke: "none" });
+    g += circle(px(tb), pz(zb), 3.5, { fill: MOVING, stroke: "none" });
+
+    stage.innerHTML = svg(w, H, g);
+  }
+
+  animate({
+    stage,
+    signal,
+    onFrame: (dt) => {
+      tAnim += dt;
+      if (tAnim > T + PAUSE) tAnim = 0;
+      render();
+    },
+  });
   onResize(render);
   render();
 }

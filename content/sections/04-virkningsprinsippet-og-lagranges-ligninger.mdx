@@ -1,434 +1,801 @@
 ---
 order: 4
 title: "Virkningsprinsippet og Lagranges ligninger"
-summary: "Den virkelige banen gjør virkningen stasjonær, og kravet gir Lagranges ligninger. De har samme form i alle koordinatsystemer, føringskreftene forsvinner fra regningen, og en total tidsderivert i Lagrangefunksjonen endrer ikke bevegelsen, som gaugeinvariansen for en ladd partikkel viser."
+summary: "Den virkelige banen gjør virkningen stasjonær, og kravet gir Lagranges ligninger, som gjelder i alle koordinater, holder føringskreftene utenfor, gir dem tilbake med Lagrange-multiplikatorer og gir Lorentzkraften for en ladd partikkel."
 importance: core
-tag: "Uke 36"
-updated: 2026-09-03
+tag: "Uke 36 og 38 · Tong 7.1–7.4, 7.6.2"
+updated: 2026-10-22
 ---
 
 <LearningGoals>
-- Telle frihetsgrader og velge generaliserte koordinater for et system med holonome føringer, og kjenne igjen føringer som ikke er holonome.
-- Formulere Hamiltons prinsipp og utlede Lagranges ligninger fra kravet $\delta S = 0$.
-- Vise at Lagranges ligninger i kartesiske koordinater er Newtons andre lov, og bruke dem i koordinater som passer problemet.
-- Sette føringer rett inn i Lagrangefunksjonen og regne med de frie koordinatene alene.
-- Forklare hvorfor $L + df/dt$ gir samme bevegelse som $L$, og bruke resultatet til å vise at en gaugetransformasjon av $\phi$ og $\vec A$ ikke endrer bevegelsen til en ladd partikkel.
+- Forklare hva det betyr at den virkelige banen gjør virkningen ${S = \int (T - V)\,dt}$ stasjonær, og hvorfor det står minus mellom $T$ og $V$.
+- Utlede Lagranges ligninger fra kravet $\delta S = 0$.
+- Telle frihetsgrader, velge generaliserte koordinater og sette opp Lagranges ligninger for et system med holonome føringer.
+- Forklare hvorfor føringskreftene ikke står i Lagranges ligninger, og finne dem med Lagrange-multiplikatorer.
+- Vise at $L$ og ${L + dF/dt}$ gir samme bevegelse, og bruke det på Lagrangefunksjonen for en ladd partikkel.
 </LearningGoals>
 
-## Frihetsgrader og føringer
+Kast en ball rett opp og ta den igjen i samme høyde 2,0 s senere. Midt i kastet er ballen
+4,9 m over hånden, og høyden følger parabelen ${z(t) = \tfrac12 g\,t\,(2{,}0\ \text{s} - t)}$.
+Newtons andre lov finner denne banen fra øyeblikk til øyeblikk: kraften gir akselerasjonen, og
+akselerasjonen sier hvordan farten endrer seg. Den samme banen kan også finnes ved å sammenligne
+hele baner fra hånden og tilbake med hverandre og velge den som gjør ett bestemt tall minst. Den
+måten gir Lagranges ligninger, som du kan skrive i de koordinatene som passer systemet, og der
+kreftene fra stenger, snorer og underlag ikke står.
 
-En pendel i planet beskrives av to koordinater $x$ og $y$, men snora holder kula på avstanden $l$ fra opphenget, så $x^2 + y^2 = l^2$. Bare én størrelse kan velges fritt. En betingelse på koordinatene av formen $f(\vec r_1, \dots, \vec r_N, t) = 0$ kalles en <Term name="holonom føring">holonom føring</Term>. Du kan løse hver slik ligning for én koordinat, så $N$ partikler med $k$ føringer har $n = 3N - k$ <Term name="frihetsgrader">frihetsgrader</Term>.
+## Virkningen
 
-De $n$ frihetsgradene beskrives av <Term name="generaliserte koordinater">generaliserte koordinater</Term> $q_1, \dots, q_n$. De er uavhengige og gir posisjonene slik at føringene er oppfylt for alle verdier av $q$-ene. For pendelen er $q = \theta$, vinkelen fra loddlinja. Rommet med $q$-ene som akser kalles <Term name="konfigurasjonsrom">konfigurasjonsrommet</Term>, og hele systemets bevegelse er én kurve der.
-
-Slipper du pendelen fri i alle retninger, har den tre koordinater og fortsatt én føring, $x^2 + y^2 + z^2 = l^2$, så to frihetsgrader. Vinkelen $\theta$ fra loddlinja og vinkelen $\phi$ rundt den er generaliserte koordinater for denne sfæriske pendelen.
-
-Ikke alle føringer har formen $f = 0$. En partikkel som ligger oppå en fast kule med radius $R$, oppfyller bare ulikheten $x^2 + y^2 + z^2 \ge R^2$. Den glir et stykke nedover kula før den mister kontakten med overflaten. En mynt som ruller uten å gli på et bord, har en føring på hastigheten, $v = R\dot\psi$ der $\psi$ er dreievinkelen, men ingen på posisjonen. Mynten kan rulle en omvei og komme tilbake til samme punkt med en annen dreievinkel, så betingelsen lar seg ikke integrere til en ligning mellom koordinatene. Begge er <Term name="ikke-holonom føring">ikke-holonome føringer</Term>, og ingen av dem fjerner en koordinat for hele bevegelsen. Så lenge partikkelen ligger an mot kula, gjelder likheten $x^2 + y^2 + z^2 = R^2$, og likheten kan du behandle som en holonom føring fram til partikkelen mister kontakten der normalkraften blir null. Rullebetingelsen til mynten fjerner ingen koordinat på noe tidspunkt. Utledningene i denne modulen forutsetter holonome føringer.
-
-Føringen kan avhenge av tida, slik $t$ i $f(\vec r_1, \dots, \vec r_N, t) = 0$ tillater. En slik føring kalles rheonom, en tidsuavhengig føring skleronom. En perle på en rett stang som roterer i horisontalplanet med gitt vinkelfart $\omega$, har posisjonen $x = r\cos\omega t$, $y = r\sin\omega t$. Avstanden $r$ langs stanga er eneste generaliserte koordinat, og tida inngår eksplisitt i $x$ og $y$, så stanga er en rheonom føring. Snora til pendelen er skleronom. En føring av formen $f = 0$ er holonom og fjerner én koordinat, enten den avhenger av tida eller ikke.
-
-<Callout title="Frihetsgrader">
-$N$ partikler med $k$ holonome føringer har $n = 3N - k$ frihetsgrader. En ulikhet eller en hastighetsbetingelse som ikke kan integreres, fjerner ingen koordinat.
-</Callout>
-
-Kraften som holder et system på føringen, kalles en <Term name="føringskraft">føringskraft</Term>. For den plane pendelen er føringskraften snordraget. Regner du pendelen med $\vec F = m\vec a$, må snordraget inn som ukjent. Komponentligningene gir $\ddot\theta = -(g/l)\sin\theta$ og i tillegg snordraget $ml\dot\theta^2 + mg\cos\theta$, som du ofte ikke trenger. Med Lagranges ligninger slipper du å regne ut snordraget.
-
-## Virkningen og Hamiltons prinsipp
-
-En ball som kastes rett opp ved $t_1$ og tas imot i samme høyde ved $t_2$, kunne tenkes å følge mange baner $y(t)$ mellom de to hendelsene. Hamiltons prinsipp sier hvilken den følger. Prinsippet bygger på en funksjon $L(q, \dot q, t)$ av koordinatene, hastighetene og tida, Lagrangefunksjonen. Hver glatt bane $q(t)$ som starter i en gitt konfigurasjon ved $t_1$ og ender i en annen ved $t_2$, får et tall, <Term name="virkning">virkningen</Term>:
-
-<Formula
-  tex="S[q] = \int_{t_1}^{t_2} L(q, \dot q, t)\, dt"
-  caption="Virkningen er en funksjonal: den tar en hel bane og gir ett tall."
-/>
-
-<Statement kind="principle" name="Hamiltons prinsipp">
-Den virkelige banen mellom de to konfigurasjonene gjør virkningen stasjonær. En
-liten endring av banen endrer ikke $S$ i første orden, $\delta S = 0$.
-</Statement>
-
-For å finne banen som oppfyller $\delta S = 0$, legg et lite avvik $\eta(t)$ på en bane $q(t)$, med $\eta(t_1) = \eta(t_2) = 0$ fordi endepunktene ligger fast. Taylorutvikler du $L(q + \eta, \dot q + \dot\eta, t)$ til første orden i $\eta$, endres virkningen med
+Begynn med en bevegelse der tyngden ikke spiller noen rolle. En puck glir 10 m over isen på 5,0 s, med konstant fart 2,0 m/s. Tenk deg
+alle andre måter å dekke de samme 10 m på de samme 5,0 s: først fort og så sakte, eller med en
+stopp på veien og fortere etterpå. Middelfarten $\bar v$ er 2,0 m/s for alle, men
+middelverdien av $v^2$ er $\bar v^{\,2}$ pluss et ledd for hvor mye farten varierer:
 
 $$
-\delta S = \int_{t_1}^{t_2} \left( \frac{\partial L}{\partial q}\,\eta + \frac{\partial L}{\partial \dot q}\,\dot\eta \right) dt
+\overline{v^2} = \bar v^{\,2} + \overline{(v - \bar v)^2}
 $$
 
-Delvis integrasjon flytter tidsderivasjonen fra $\eta$ over på $\partial L/\partial \dot q$, slik at $\eta$ blir en felles faktor. Randleddet er null fordi $\eta$ er null i endepunktene:
+Det siste leddet er null bare når farten er konstant. Den virkelige bevegelsen er altså den som
+gjør ${\int \tfrac12 mv^2\,dt}$ minst.
+
+For ballen holder ikke det. Integralet av den kinetiske energien over de 2,0 sekundene er minst,
+null, hvis ballen blir liggende i hånden. Noe må gjøre det lønnsomt å gå opp, og det gjør den
+potensielle energien ${V = mgz}$ hvis du trekker den fra. Tallet
 
 $$
-\delta S = \int_{t_1}^{t_2} \left( \frac{\partial L}{\partial q} - \frac{d}{dt}\frac{\partial L}{\partial \dot q} \right) \eta\, dt
+S = \int_{t_1}^{t_2} (T - V)\,dt
 $$
 
-Parentesen er kontinuerlig. Hvis den var ulik null ved et tidspunkt, ville den hatt samme fortegn i et lite intervall rundt tidspunktet, og en $\eta$ med samme fortegn der og null ellers ville gitt $\delta S > 0$. Parentesen er altså null langs hele banen. Med flere generaliserte koordinater er $q$-ene uavhengige, så du kan variere én av dem om gangen, og hver gir sin ligning:
-
-<Formula
-  tex="\frac{d}{dt}\frac{\partial L}{\partial \dot q_i} - \frac{\partial L}{\partial q_i} = 0"
-  caption="<b>Lagranges ligninger</b>, én for hver generalisert koordinat $q_i$."
-/>
-
-Hvilken $L$ et system har, bestemmes av at ligningene skal gi riktig bevegelse. For én partikkel i kartesiske koordinater er bevegelsen gitt av Newtons andre lov, for $x$-koordinaten $\frac{d}{dt}(m\dot x) = -\partial V/\partial x$. Lagranges ligning for $x$ har denne formen hvis $\partial L/\partial\dot x = m\dot x$ og $\partial L/\partial x = -\partial V/\partial x$. Det første kravet gir leddet $\tfrac12 m\dot x^2$ i $L$, det andre gir $-V(\vec r)$. Med $y$ og $z$ på samme måte blir $L = \tfrac12 m\dot{\vec r}^2 - V(\vec r)$, og for flere partikler summerer du de kinetiske energiene:
-
-<Formula
-  tex="L = T - V"
-  caption="<b>Lagrangefunksjonen</b>, med et minustegn der energien har pluss."
-/>
-
-Navnet «prinsippet om minste virkning» henger igjen, men kravet er bare at $S$ er stasjonær. Den virkelige banen gir aldri et maksimum av $S$. Legger du en liten, rask svingning på den, holder prøvebanen seg nær den virkelige, men den kinetiske energien, og dermed $S$, blir så stor du vil. Minimum og sadelpunkt er begge mulige. For ballen som kastes rett opp, er $V = mgy$ lineær i $y$, så et avvik $\eta$ fra den virkelige banen gir ingen ledd av andre orden fra $V$. Leddene av første orden er null langs den virkelige banen, og $S$ endres med nøyaktig $\int \tfrac12 m\dot\eta^2\, dt$, som er positivt for ethvert avvik. Den virkelige banen er altså et minimum.
+er <Term name="virkning">virkningen</Term> til banen. En bane som går høyere, trekker fra mer
+potensiell energi, men den må også gå fortere for å rekke opp og ned igjen på 2,0 s, og det
+øker den kinetiske energien.
 
 <Simulation
   src="/sims/virkning.js"
-  title="Varier banen"
-  caption="Ballen kastes rett opp. Den stiplede kurven er den virkelige banen $y(t)$ mellom de to faste endepunktene, den heltrukne er en prøvebane, og søylen viser $S - S^*$, hvor mye virkningen til prøvebanen overstiger den virkelige banens."
+  title="Virkningen for en kastet ball"
+  caption="Prøvebaner for en ball som forlater hånden ved $t = 0$ og er tilbake i hånden ved $t = 2$ s. Den stiplede banen er den virkelige. Til venstre for høydeaksen går ballen langs prøvebanen i virkelig tid. Til høyre er virkningen $S$ tegnet mot høyden midtveis, på den samme høydeaksen: kurven gjelder alle prøvebanene med den valgte skjevheten, og prikken er prøvebanen."
   host="dom"
-  height={320}
+  height={340}
 />
+
+Dra «Høyde midtveis» opp og ned i simuleringen. Prikken følger kurven, og $S$ er minst, der
+kurven ligger lengst til venstre, i 4,9 m, samme høyde som den virkelige ballen. Der står kurven
+loddrett, så en liten endring av banen endrer nesten ikke $S$. Gi så banen litt «Skjevhet».
+Hele kurven flytter seg mot større $S$: en skjev bane er like høyt oppe i snitt, men farten
+varierer mer, og $\overline{v^2}$ vokser som for pucken.
+
+Trykk til slutt «L = T + V». Nå er $S$ minst for banen 4,9 m under hånden. Den banen synker
+først og kommer opp igjen, slik en ball ville gjort om tyngden pekte oppover. Minustegnet er det
+som får tyngden til å trekke nedover.
+
+Med flere partikler eller flere koordinater $q_1, \dots, q_n$ er en bane en kurve i
+<Term name="konfigurasjonsrom">konfigurasjonsrommet</Term>, rommet med koordinatene som akser,
+som systemet går gjennom i løpet av tida. Funksjonen ${L = T - V}$ heter
+<Term name="lagrangefunksjon">Lagrangefunksjonen</Term>.
+
+<Statement kind="principle" name="Hamiltons prinsipp">
+Av alle baner som går fra konfigurasjonen $q(t_1)$ ved tida $t_1$ til konfigurasjonen $q(t_2)$
+ved tida $t_2$, følger systemet den som gjør virkningen ${S = \int_{t_1}^{t_2} L\,dt}$
+stasjonær.
+</Statement>
+
+Stasjonær betyr at en liten endring av banen, med endepunktene holdt fast, endrer $S$ bare i
+andre orden, slik kurven i simuleringen står loddrett der $S$ er minst. For ballen er den stasjonære banen
+et minimum. Det trenger den ikke være over lengre tider: for en kloss på en fjær som svinger
+lenger enn en halv periode, er den virkelige banen et sadelpunkt for $S$. Prinsippet krever
+derfor bare at $S$ er stasjonær, ${\delta S = 0}$, og navnet «prinsippet om minste virkning»
+er upresist.
+
+<Callout title="Virkningen">
+Den virkelige banen mellom to faste hendelser gjør virkningen ${S = \int (T - V)\,dt}$
+stasjonær. For ballen trekker en høyere bane fra mer potensiell energi, men koster mer kinetisk
+energi, og den virkelige banen er den beste avveiningen.
+</Callout>
 
 <Video
   id="https://www.youtube.com/watch?v=Q10_srZ-pbs"
   title="The Closest We've Come to a Theory of Everything"
   channel="Veritasium"
   duration="32:44"
-  caption="Historien bak prinsippet, fra brachistokronen via Fermats minste tid til Maupertuis, Euler og Lagrange, og fram til Lagranges ligninger og virkningen som integralet av kinetisk minus potensiell energi."
+  caption="Historien om prinsippet, fra problemet med raskeste nedstigning og Fermats prinsipp for lys til Maupertuis, Euler og Lagrange, og et kapittel om hvorfor prinsippet virker."
   number={1}
 />
 
-<Quiz
-  question="Ballen kastes rett opp ved $t_1$ og tas imot i hånda ved $t_2$. Hvilken bane er med blant prøvebanene i Hamiltons prinsipp?"
-  options={["En bane som når høyere, men forlater hånda ved $t_1$ og når den igjen ved $t_2$", "En bane med samme energi som den virkelige, men som lander et annet sted", "Den virkelige banen gjennomløpt saktere, så ballen når hånda først etter $t_2$", "Bare den virkelige banen, siden en prøvebane må følge Newtons andre lov"]}
-  answer={0}
-  explanation="Variasjonen holder konfigurasjonen fast ved $t_1$ og $t_2$ og lar alt imellom være fritt, så en bane som når høyere, er med. Energien holdes ikke fast, og både en bane som lander et annet sted og en som når hånda etter $t_2$, har feil endepunkt. Prøvebanene trenger ikke følge noen bevegelsesligning, for det er kravet $\delta S = 0$ som plukker ut den virkelige banen blant dem."
-/>
+## Lagranges ligninger
 
-## Koordinatfrihet og føringer
-
-Virkningen $S$ til en bane er den samme uansett hvilke koordinater du beskriver banen med, og utledningen av Lagranges ligninger fra $\delta S = 0$ brukte aldri at $q$ er en kartesisk koordinat. Lagranges ligninger har derfor samme form i alle koordinater, mens $\vec F = m\vec a$ har sin enkle form bare i kartesiske koordinater. Du kan velge de koordinatene som passer problemet, en vinkel like gjerne som en lengde, og spesielt koordinater som oppfyller føringene.
-
-<Statement kind="theorem" name="Lagranges ligninger med føringer">
-For et system med holonome, friksjonsfrie føringer kan posisjonene uttrykkes ved de
-generaliserte koordinatene. Sett uttrykkene inn i $L = T - V$ og bruk Lagranges
-ligninger på de frie koordinatene alene; føringskreftene inngår ikke.
-</Statement>
-
-For pendelen er $x = l\sin\theta$ og $y = -l\cos\theta$, så
+Prinsippet sammenligner hele baner. For å regne ut en bevegelse trenger du en ligning som
+gjelder i hvert øyeblikk, og den følger av kravet ${\delta S = 0}$. Ta én koordinat $q$ og en
+Lagrangefunksjon $L(q, \dot q, t)$. Endre banen litt, ${q(t) \to q(t) + \epsilon\,\eta(t)}$,
+der $\eta$ er null i endepunktene, så den endrede banen går mellom de samme to hendelsene. Til
+første orden i $\epsilon$ endres virkningen med
 
 $$
-L = \tfrac12 ml^2\dot\theta^2 + mgl\cos\theta
+\delta S = \epsilon \int_{t_1}^{t_2} \left( \frac{\partial L}{\partial q}\,\eta + \frac{\partial L}{\partial \dot q}\,\dot\eta \right) dt
 $$
 
-og ligningen for $\theta$ gir $ml^2\ddot\theta = -mgl\sin\theta$, altså $\ddot\theta = -(g/l)\sin\theta$. Newton gir samme ligning, men her inngår ikke snordraget.
+Det andre leddet har $\dot\eta$, og delvis integrasjon gjør det om til et ledd med $\eta$.
+Randleddet ${\bigl[(\partial L/\partial\dot q)\,\eta\bigr]_{t_1}^{t_2}}$ er null, ettersom
+${\eta(t_1) = \eta(t_2) = 0}$, så
 
-Snordraget faller ut fordi Lagranges ligning for en koordinat $q_i$ er Newtons andre lov projisert på forskyvningen $\partial\vec r/\partial q_i$, den veien partikkelen flytter seg når bare $q_i$ endres litt mens tida står fast. En slik forskyvning holder føringen oppfylt. En friksjonsfri føringskraft står vinkelrett på føringen og dermed på forskyvningen, så projeksjonen tar den bort. For pendelen er forskyvningen et lite stykke langs sirkelen, og snordraget peker langs snora, vinkelrett på sirkelen. Trenger du snordraget, gir Newton-regningen det.
+$$
+\delta S = \epsilon \int_{t_1}^{t_2} \left( \frac{\partial L}{\partial q} - \frac{d}{dt}\frac{\partial L}{\partial \dot q} \right) \eta\,dt
+$$
 
-Ved en rheonom føring er den virkelige bevegelsen ikke en slik forskyvning. Når ei perle glir på ei stang som roterer med gitt vinkelfart, dytter stanga perla vinkelrett på stanga, men stanga dreier, så perla flytter seg også langs kraften, og føringskraften gjør arbeid. Projeksjonen bruker bare forskyvningene ved fast tid, så føringskraften faller ut av Lagranges ligninger også her.
+Velg en $\eta$ som er null overalt unntatt i et kort intervall rundt et tidspunkt $t_0$, en
+liten bule på banen der. Da er $\delta S$ parentesen ved $t_0$ ganget med $\epsilon$ og
+arealet under bulen, og ${\delta S = 0}$ krever at parentesen er null ved $t_0$. Bulen kan
+legges hvor som helst, så parentesen er null i hvert øyeblikk. Med flere koordinater kan du endre
+én av dem om gangen og få én ligning for hver:
 
-<Callout title="Føringskraften faller ut">
-En friksjonsfri føringskraft står vinkelrett på hver forskyvning ved fast tid og faller derfor ut av Lagranges ligninger. Ved en rheonom føring kan den likevel gjøre arbeid.
+<Formula tex="\frac{d}{dt}\frac{\partial L}{\partial \dot q_i} - \frac{\partial L}{\partial q_i} = 0" caption="Lagranges ligninger, én for hver koordinat $q_i$. De gjelder i hvert øyeblikk langs banen som gjør virkningen stasjonær." />
+
+Nå kan du se hvorfor Lagrangefunksjonen er ${T - V}$. For én partikkel på en linje sier Newtons
+andre lov ${\frac{d}{dt}(m\dot x) = -dV/dx}$, og Lagranges ligning sier
+${\frac{d}{dt}\,\partial L/\partial\dot x = \partial L/\partial x}$. Skal de være den samme
+ligningen, må ${\partial L/\partial\dot x = m\dot x}$, og det krever leddet
+$\tfrac12 m\dot x^2$ i $L$. Og ${\partial L/\partial x}$ må være ${-dV/dx}$, som krever leddet
+$-V(x)$. Dermed er ${L = \tfrac12 m\dot x^2 - V = T - V}$, og for $N$ partikler gir det samme
+ledd for ledd:
+
+<Formula tex="L = \sum_{a=1}^{N} \tfrac12 m_a \dot{\vec r}_a^{\,2} \allowbreak - V(\vec r_1, \dots, \vec r_N)" caption="Lagrangefunksjonen for $N$ partikler med den potensielle energien $V$. Lagranges ligning for hver kartesiske koordinat er Newtons andre lov for den komponenten." />
+
+For ballen er ${L = \tfrac12 m\dot z^2 - mgz}$, og Lagranges ligning gir ${m\ddot z = -mg}$.
+Løsningen som starter og slutter i hånden etter 2,0 s, er parabelen fra starten.
+
+<Callout title="Lagranges ligninger">
+Kravet ${\delta S = 0}$ gir én ligning for hver koordinat,
+${\frac{d}{dt}\,\partial L/\partial\dot q_i = \partial L/\partial q_i}$, i hvert øyeblikk. Med
+${L = T - V}$ i kartesiske koordinater er den Newtons andre lov.
 </Callout>
 
-<Derivation title="Hvorfor føringskreftene faller ut">
-Ta én partikkel med posisjon $\vec r(q_1, \dots, q_n, t)$. Newtons andre lov er $m\ddot{\vec r} = -\nabla V + \vec N$, der $\vec N$ er føringskraften. Projiser Newtons lov på $\partial\vec r/\partial q_i$. Etter kjerneregelen er $\nabla V \cdot \partial\vec r/\partial q_i = \partial V/\partial q_i$, så
+<Example label="Eksamensoppgave" title="Virkningen for en konstant kraft">
+<ExamRef id="2011-jun" task="1 a–d" />
+
+A massive particle moves along the $z$-axis and is subject to a potential $V(z) = -Fz$, where
+$F$ is a constant.
+
+(a) Describe the force acting on this particle and the resulting motion. You may assume that
+the particle is initially at rest.
+
+The particle is now seen to move from $z(t = 0) = 0$ to $z(t = t_0) = a$, in effect covering a
+distance $a$ in a time interval $t_0$. Assume that the motion of the particle can be parametrized
+as ${z(t) = \mathcal A + \mathcal B t + \mathcal C t^2}$.
+
+(b) Identify the values of $\mathcal A, \mathcal B, \mathcal C$ such that the action of the
+particle is a minimum.
+
+Consider now a different problem. It is known that if a Lagrangian can be written like
+$L = L(q, \dot q, t)$, the Lagrange-equation may be derived by Hamilton's principle
+$\delta I = 0$, where $I$ is the action of the system given by:
 
 $$
-m\ddot{\vec r} \cdot \frac{\partial\vec r}{\partial q_i} = -\frac{\partial V}{\partial q_i} + \vec N \cdot \frac{\partial\vec r}{\partial q_i}
+I = \int_{t_1}^{t_2} L(q, \dot q, t)\,\mathrm dt. \qquad (1)
 $$
 
-Hastigheten er $\dot{\vec r} = \sum_j \dfrac{\partial\vec r}{\partial q_j}\dot q_j + \dfrac{\partial\vec r}{\partial t}$. Den er lineær i $\dot q_i$ med koeffisient $\partial\vec r/\partial q_i$, og den tidsderiverte av $\partial\vec r/\partial q_i$ langs banen er $\partial\dot{\vec r}/\partial q_i$, fordi rekkefølgen av derivasjonene kan byttes:
+From this equation, one obtains:
 
 $$
-\frac{\partial\dot{\vec r}}{\partial\dot q_i} = \frac{\partial\vec r}{\partial q_i}, \qquad \frac{d}{dt}\frac{\partial\vec r}{\partial q_i} = \frac{\partial\dot{\vec r}}{\partial q_i}
+\delta I = \int_{t_1}^{t_2} \Big[\frac{\partial L}{\partial q}\delta q + \frac{\partial L}{\partial \dot q}\delta\dot q\Big]\,\mathrm dt. \qquad (2)
 $$
 
-Da kan venstresida skrives med $T = \tfrac12 m\dot{\vec r}^2$:
+To finally derive the Lagrange-equation, one makes use of the fact that $\delta q$ has no
+variation at the end-points $t_1$ and $t_2$, and that any variations are performed at a fixed
+time $t$ such that $\delta t = 0$.
 
+(c) Consider now a Lagrangian which can be written like $L = L(q, \dot q, \ddot q, t)$. Derive in
+detail, by means of Hamilton's principle, that the resulting equation reads:
+
+$$
+\frac{\mathrm d^{j+1}}{\mathrm dt^{j+1}}\Big(\frac{\partial L}{\partial \ddot q}\Big) - \frac{\mathrm d}{\mathrm dt}\Big(\frac{\partial L}{\partial \dot q}\Big) + \frac{\partial^n L}{\partial q^n} = 0. \qquad (3)
+$$
+
+Identify the value of the integer quantities $j$ and $n$. Use that $\delta\dot q = 0$ at the
+end-points $t_1$ and $t_2$.
+
+(d) Apply this result to the Lagrangian $L = -mq\ddot q/2 - kq^2/2$ and identify what type of
+system the equation of motion describes.
+
+<Solution>
+a) Kraften er ${-dV/dz = F}$, konstant og langs $+z$ når ${F > 0}$. Partikkelen starter i ro
+og akselererer jevnt med ${F/m}$, så ${z = Ft^2/2m}$ når den starter i origo.
+
+b) Startpunktet gir ${\mathcal A = 0}$, og sluttpunktet gir
+${\mathcal B = a/t_0 - \mathcal C t_0}$, så $\mathcal C$ er den eneste frie parameteren. Med
+${L = \tfrac12 m\dot z^2 + Fz}$ og ${\dot z = \mathcal B + 2\mathcal C t}$ gir integralene
+
+$$
+\begin{aligned} \int_0^{t_0} \dot z^2\,dt &= \frac{a^2}{t_0} + \frac{\mathcal C^2 t_0^3}{3} \\ \int_0^{t_0} z\,dt &= \frac{a t_0}{2} - \frac{\mathcal C t_0^3}{6} \end{aligned}
+$$
+
+så virkningen er
+
+$$
+S(\mathcal C) = \frac{ma^2}{2t_0} + \frac{m\,\mathcal C^2 t_0^3}{6} \allowbreak + \frac{Fat_0}{2} - \frac{F\,\mathcal C t_0^3}{6}
+$$
+
+Den er en parabel i $\mathcal C$ som åpner oppover, med minimum der ${dS/d\mathcal C = 0}$, i
+${\mathcal C = F/2m}$, halvparten av akselerasjonen, som for ${z = \mathcal B t + \tfrac12(F/m)t^2}$.
+Lagranges ligning ${m\ddot z = F}$ gir det samme direkte.
+
+c) Med ${\delta\ddot q = \frac{d}{dt}\delta\dot q}$ og ${\delta\dot q = \frac{d}{dt}\delta q}$ er
+
+$$
+\delta I = \int_{t_1}^{t_2} \Big[\frac{\partial L}{\partial q}\delta q + \frac{\partial L}{\partial \dot q}\delta\dot q \allowbreak + \frac{\partial L}{\partial \ddot q}\delta\ddot q\Big]\,dt
+$$
+
+Integrer leddet med $\delta\dot q$ delvis én gang og leddet med $\delta\ddot q$ to ganger. Hvert
+randledd inneholder $\delta q$ eller $\delta\dot q$ i $t_1$ og $t_2$, og de er null. Hver delvise
+integrasjon gir et minustegn, så
+
+$$
+\delta I = \int_{t_1}^{t_2} \Big[\frac{\partial L}{\partial q} - \frac{d}{dt}\frac{\partial L}{\partial \dot q} \allowbreak + \frac{d^2}{dt^2}\frac{\partial L}{\partial \ddot q}\Big]\,\delta q\,dt
+$$
+
+og bulen fra utledningen over gjør parentesen null i hvert øyeblikk. Det er (3) med
+${j = 1}$ og ${n = 1}$.
+
+d) Med ${L = -\tfrac12 mq\ddot q - \tfrac12 kq^2}$ er
+${\partial L/\partial q = -\tfrac12 m\ddot q - kq}$, ${\partial L/\partial\dot q = 0}$ og
+${\partial L/\partial\ddot q = -\tfrac12 mq}$, som gir leddet ${-\tfrac12 m\ddot q}$. Summen er
+${-m\ddot q - kq = 0}$, altså ${m\ddot q + kq = 0}$.
+
+<Answer>
+${\mathcal A = 0}$, ${\mathcal B = a/t_0 - Ft_0/2m}$, ${\mathcal C = F/2m}$; ${j = n = 1}$; en
+harmonisk oscillator med ${\omega^2 = k/m}$.
+</Answer>
+</Solution>
+</Example>
+
+## Koordinater som passer
+
+Snurr en kule i ei snor rundt i en sirkel på et glatt bord, med radius 0,50 m og to runder i
+sekundet. Radien er konstant, så ${\ddot r = 0}$, og likevel trekker snora kula innover. Newtons
+lov i polarkoordinater er derfor ikke ${m\ddot r = F_r}$. Den radielle akselerasjonen er
+${\ddot r - r\dot\phi^2}$, her ${-0{,}50 \cdot (4\pi)^2 = -79\ \text{m/s}^2}$, og leddet
+${-r\dot\phi^2}$ må du huske å ta med.
+
+Lagranges ligning trenger ikke det leddet fra deg. Med ${v^2 = \dot r^2 + r^2\dot\phi^2}$ i
+polarkoordinater er
+
+$$
+L = \tfrac12 m\left(\dot r^2 + r^2\dot\phi^2\right) - V(r, \phi)
+$$
+
+og Lagranges ligning for $r$ er
+
+$$
+m\ddot r - mr\dot\phi^2 = -\frac{\partial V}{\partial r}
+$$
+
+Leddet ${-mr\dot\phi^2}$ kommer fra ${\partial T/\partial r}$: med samme $\dot\phi$ går kula
+fortere jo lenger ut den er. Ligningen for $\phi$ er
+${\frac{d}{dt}(mr^2\dot\phi) = -\partial V/\partial\phi}$, som sier at dreiemomentet endrer
+dreieimpulsen.
+
+Lagranges ligninger har samme form i alle koordinater fordi Hamiltons prinsipp handler om baner.
+Virkningen er et tall for hver bane, uansett hvilke koordinater du beskriver banen med, og
+utledningen av Lagranges ligninger brukte aldri at $q$ var en kartesisk koordinat. Det
+du må gjøre, er å skrive $T$ og $V$ riktig i de koordinatene du velger.
+
+<Callout title="Alle koordinater">
+Lagranges ligninger har samme form i alle koordinater. Ledd som du må huske i Newtons lov, som
+${-r\dot\phi^2}$ i polarkoordinater, kommer ut av $T$.
+</Callout>
+
+## Føringer
+
+En pendel er en kule på ei stang med lengde $l$. I planet har kula to koordinater, men stanga
+holder den på sirkelen ${x^2 + y^2 = l^2}$, så bare vinkelen $\theta$ fra loddlinja kan velges
+fritt. I Newtons lov står kraften fra stanga, som du ikke kjenner på forhånd. Pendelligningen
+${ml\ddot\theta = -mg\sin\theta}$ får du ved å ta komponenten av Newtons lov langs sirkelen,
+der stangkraften ikke har noen komponent.
+
+Lagranges ligning for $\theta$ gjør det samme. Med ${x = l\sin\theta}$ og ${y = -l\cos\theta}$
+er farten $l\dot\theta$ og ${L = \tfrac12 ml^2\dot\theta^2 + mgl\cos\theta}$, og Lagranges
+ligning gir ${ml^2\ddot\theta = -mgl\sin\theta}$, den samme ligningen, uten stangkraften.
+
+Det er ikke tilfeldig. Lagranges ligning for en koordinat $q_i$ er Newtons andre lov tatt langs
+retningen ${\partial\vec r_a/\partial q_i}$, den veien hver partikkel flytter seg når bare $q_i$
+endres og tida holdes fast. En slik forskyvning, som føringene tillater ved fast tid, er en
+<Term name="virtuell forskyvning">virtuell forskyvning</Term>. Kreftene som holder føringene
+oppfylt, <Term name="føringskraft">føringskreftene</Term>, gjør til sammen null arbeid i enhver
+virtuell forskyvning når stenger, snorer og flater er friksjonsfrie, og derfor står de ikke i
+Lagranges ligninger.
+
+Med flere legemer står ikke hver føringskraft vinkelrett på hver forskyvning, men arbeidet blir
+null til sammen. Figur 1 viser en pendel som henger fra en kloss $m_1$, og klossen glir fritt
+langs ei skinne. Øverst flyttes klossen $\delta x$ med $\theta$ holdt fast, så begge legemene
+flytter seg $\delta x$. Stanga trekker $m_1$ mot $m_2$ og $m_2$ mot $m_1$ med like store krefter
+langs stanga, så arbeidet den gjør på $m_1$, er minus arbeidet den gjør på $m_2$, og skinna
+trykker vinkelrett på $\delta x$. Nederst endres $\theta$ med $x$ holdt fast. Da står $m_1$ i ro,
+og $m_2$ flytter seg $l\,\delta\theta$ vinkelrett på stanga.
+
+<Figure src="/figures/forskyvninger.svg" alt="To tegninger av en kloss på ei vannrett skinne med en pendel under. Øverst er klossen og kula flyttet like langt mot høyre, nederst har bare kula flyttet seg, vinkelrett på stanga. Kreftene fra stanga peker langs stanga mot den andre enden, og kraften fra skinna peker loddrett opp." width={340} height={412} number={1} caption="De to virtuelle forskyvningene for en pendel som henger fra en kloss $m_1$ på ei friksjonsfri skinne. Pilene langs stanga og den loddrette pila ved $m_1$ er føringskreftene, de andre pilene er forskyvningene, og den stiplede tegningen er systemet etter forskyvningen." />
+
+<Derivation title="Lagranges ligning er Newtons lov langs en virtuell forskyvning">
+Skriv posisjonene ved de generaliserte koordinatene, ${\vec r_a(q_1, \dots, q_n, t)}$. Farten
+er
+
+$$
+\dot{\vec r}_a = \sum_j \frac{\partial\vec r_a}{\partial q_j}\,\dot q_j + \frac{\partial\vec r_a}{\partial t}
+$$
+
+Deriverer du med hensyn på $\dot q_i$, står bare koeffisienten igjen,
+${\partial\dot{\vec r}_a/\partial\dot q_i = \partial\vec r_a/\partial q_i}$. Og derivasjon med
+hensyn på $q_i$ og med hensyn på tida kan byttes om,
+${\partial\dot{\vec r}_a/\partial q_i = \frac{d}{dt}\,\partial\vec r_a/\partial q_i}$. Med
+${T = \sum_a \tfrac12 m_a\dot{\vec r}_a^{\,2}}$ gir den første
+
+$$
+\frac{\partial T}{\partial\dot q_i} = \sum_a m_a\,\dot{\vec r}_a\cdot\frac{\partial\vec r_a}{\partial q_i}
+$$
+
+Deriver med hensyn på tida. Produktregelen gir to ledd, og ifølge den andre sammenhengen er det
+andre leddet ${\partial T/\partial q_i}$:
+
+$$
+\frac{d}{dt}\frac{\partial T}{\partial\dot q_i} - \frac{\partial T}{\partial q_i} = \sum_a m_a\,\ddot{\vec r}_a\cdot\frac{\partial\vec r_a}{\partial q_i}
+$$
+
+Newtons lov for partikkel $a$ er ${m_a\ddot{\vec r}_a = -\nabla_a V + \vec R_a}$, der
+$\vec R_a$ er føringskraften på den. Kjerneregelen gir
+${\sum_a \nabla_a V\cdot\partial\vec r_a/\partial q_i = \partial V/\partial q_i}$, så
+
+$$
+\frac{d}{dt}\frac{\partial T}{\partial\dot q_i} - \frac{\partial T}{\partial q_i} = -\frac{\partial V}{\partial q_i} \allowbreak + \sum_a \vec R_a\cdot\frac{\partial\vec r_a}{\partial q_i}
+$$
+
+Den siste summen er arbeidet føringskreftene gjør i den virtuelle forskyvningen
+${\delta\vec r_a = (\partial\vec r_a/\partial q_i)\,\delta q_i}$, delt på $\delta q_i$. Den er
+null, og fordi $V$ ikke avhenger av hastighetene, er dette Lagranges ligning for ${L = T - V}$.
+Forskyvningen er tatt ved fast tid fordi ${\partial\vec r_a/\partial q_i}$ er den partielle
+deriverte med $t$ holdt fast.
+</Derivation>
+
+Uten føringer har $N$ partikler $3N$ koordinater. En <Term name="holonom føring">holonom
+føring</Term> er en betingelse på formen ${f(\vec r_1, \dots, \vec r_N, t) = 0}$, og hver slik
+føring lar deg uttrykke én koordinat ved de andre. Med $k$ føringer står ${n = 3N - k}$
+<Term name="frihetsgrader">frihetsgrader</Term> igjen, og systemet beskrives av $n$
+<Term name="generaliserte koordinater">generaliserte koordinater</Term> $q_1, \dots, q_n$, som
+du velger fritt så lenge de fastlegger alle posisjonene. Pendelen i figur 1 har ${3 \cdot 2 = 6}$
+koordinater og fire føringer: $m_1$ ligger på skinna (${y_1 = 0}$ og ${z_1 = 0}$), $m_2$ holder
+seg i samme loddrette plan (${z_2 = 0}$), og stanga holder avstanden $l$. Det gir to
+frihetsgrader, $x$ og $\theta$.
+
+<Steps>
+<Step title="Velg koordinatene">
+Tell frihetsgradene og velg like mange generaliserte koordinater, slik at føringene er oppfylt
+for alle verdier av dem.
+</Step>
+<Step title="Skriv posisjonene">
+Uttrykk posisjonen til hver partikkel ved koordinatene, og deriver for å få farten.
+</Step>
+<Step title="Sett opp L">
+Regn ut $T$ og $V$ og sett ${L = T - V}$.
+</Step>
+<Step title="Én ligning per koordinat">
+Skriv Lagranges ligning for hver koordinat. Føringskreftene er ikke med.
+</Step>
+</Steps>
+
+Føringen kan avhenge av tida. Ei perle glir friksjonsfritt på en stang som en motor dreier i et
+vannrett plan med konstant vinkelfart $\omega$. Med avstanden $r$ langs stanga som koordinat er
+${L = \tfrac12 m(\dot r^2 + r^2\omega^2)}$, og Lagranges ligning gir ${\ddot r = \omega^2 r}$,
+så perla glir utover stadig fortere. Stanga gjør arbeid på perla, fordi den skyver perla
+sidelengs mens den dreier. Men ved fast tid kan perla bare gli langs stanga, og stangkraften står
+vinkelrett på den forskyvningen. Derfor gjelder kravet virtuelle forskyvninger ved fast tid og
+ikke den virkelige bevegelsen.
+
+Ikke alle føringer har formen ${f = 0}$. Ei snor kan bli slakk, og en vegg kan bare skyve, så de
+gir en ulikhet. En mynt som ruller uten å gli på et bord og kan svinge, gir en betingelse på
+hastighetene: hvor mye mynten har dreid seg, avhenger av veien den har rullet, og ikke bare av
+hvor den står. Slike <Term name="ikke-holonom føring">ikke-holonome føringer</Term> kan ikke
+fjerne en koordinat. En ulikhet kan likevel behandles som en likhet så lenge kontakten holder,
+og føringskraften sier når den slipper.
+
+<Callout title="Føringer">
+Føringskreftene fra friksjonsfrie stenger, snorer og flater gjør til sammen ikke arbeid i noen
+virtuell forskyvning, så de står ikke i Lagranges ligninger. $N$ partikler med $k$ holonome
+føringer har ${3N - k}$ generaliserte koordinater og like mange ligninger.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Tre kuler på en glidende pendel">
+<ExamRef id="2023-nov" task="1.7" />
+
+<Figure src="/figures/eksamen-2023-11-oppgave-1-7.png" alt="Opphenget A ligger på x-aksen. Fra A henger tre kuler etter hverandre, forbundet med tre stenger." width={380} height={270} caption="Figuren fra oppgavesettet." />
+
+<Quiz
+  question="A triple planar pendulum consists of three balls (point masses) connected by two massless rods of fixed length, and by a third massless rod to the support at A, which may slide without friction in the x direction. The balls are allowed to move in the xy plane. How many independent coordinates $q_j$ are needed to describe this system?"
+  options={["3", "4", "5", "6", "7", "8"]}
+  answer={1}
+  explanation="Kulene har to koordinater hver i planet, til sammen 6, og opphenget A har én, $x$. De tre stengene gir tre holonome føringer, så $6 + 1 - 3 = 4$, for eksempel $x$ og vinkelen til hver stang. Svaret 3 glemmer at opphenget kan gli, og 7 glemmer stengene."
+/>
+</Example>
+
+<Example label="Eksamensoppgave" title="Pendel med glidende oppheng">
+<ExamRef id="2018-aug-kont" task="2" />
+
+<Figure src="/figures/eksamen-2018-08-oppgave-2.png" alt="Massen m1 ligger på x-aksen i avstanden x fra y-aksen. En stang med lengde l henger fra den ned til massen m2, med vinkelen θ fra loddlinja." width={815} height={420} caption="Figuren fra oppgavesettet." />
+
+A pendulum system (see above) comprises two masses $m_1$ and $m_2$ where the first one acts as a
+frictionless sliding pivot along the x-axis for the latter mass.
+
+(a) Determine the Lagrangian function. Is the system holonomic?
+
+(b) Derive the equations of motion from Lagrange's equations.
+
+(c) Let us assume next that the pivot (first mass, $m_1$) stops moving (i.e., it jams). What is
+the effect on the equations of motion?
+
+<Solution>
+a) $m_1$ er i ${(x, 0)}$ og $m_2$ i ${(x + l\sin\theta,\ -l\cos\theta)}$. Farten til $m_2$ har
+komponentene ${\dot x + l\dot\theta\cos\theta}$ og ${l\dot\theta\sin\theta}$, så
+${v_2^2 = \dot x^2 + 2l\dot x\dot\theta\cos\theta + l^2\dot\theta^2}$. Med
+${V = -m_2gl\cos\theta}$ er
+
+$$
+L = \tfrac12 (m_1 + m_2)\dot x^2 \allowbreak + m_2l\dot x\dot\theta\cos\theta \allowbreak + \tfrac12 m_2l^2\dot\theta^2 + m_2gl\cos\theta
+$$
+
+Føringene, at $m_1$ ligger på $x$-aksen og at stanga har lengden $l$, er ligninger mellom
+koordinatene, så systemet er holonomt, med to frihetsgrader.
+
+b) For $x$ er ${\partial L/\partial x = 0}$, så
+${\frac{d}{dt}\bigl[(m_1 + m_2)\dot x + m_2l\dot\theta\cos\theta\bigr] = 0}$, altså
+
+$$
+(m_1 + m_2)\ddot x \allowbreak = m_2l\left(\dot\theta^2\sin\theta - \ddot\theta\cos\theta\right)
+$$
+
+For $\theta$ er ${\partial L/\partial\dot\theta = m_2l\dot x\cos\theta + m_2l^2\dot\theta}$ og
+${\partial L/\partial\theta = -m_2l\dot x\dot\theta\sin\theta - m_2gl\sin\theta}$. Leddene med
+${\dot x\dot\theta\sin\theta}$ faller mot hverandre, og ligningen er
+
+$$
+l\ddot\theta + \ddot x\cos\theta + g\sin\theta = 0
+$$
+
+Med ${m_1 \to \infty}$ står klossen stille, og den andre ligningen blir pendelligningen.
+
+c) Når klossen sitter fast, er $x$ ikke lenger en koordinat, og systemet har én frihetsgrad.
+Ligningen for $x$ faller bort, og med ${\ddot x = 0}$ blir ligningen for $\theta$ den for en
+vanlig pendel, ${\ddot\theta + (g/l)\sin\theta = 0}$.
+
+<Answer>
 $$
 \begin{aligned}
-m\ddot{\vec r} \cdot \frac{\partial\vec r}{\partial q_i} &= \frac{d}{dt}\Bigl(m\dot{\vec r} \cdot \frac{\partial\vec r}{\partial q_i}\Bigr) - m\dot{\vec r} \cdot \frac{d}{dt}\frac{\partial\vec r}{\partial q_i} \\
-&= \frac{d}{dt}\Bigl(m\dot{\vec r} \cdot \frac{\partial\dot{\vec r}}{\partial\dot q_i}\Bigr) - m\dot{\vec r} \cdot \frac{\partial\dot{\vec r}}{\partial q_i} \\
-&= \frac{d}{dt}\frac{\partial T}{\partial\dot q_i} - \frac{\partial T}{\partial q_i}
+&(m_1 + m_2)\ddot x = m_2l(\dot\theta^2\sin\theta - \ddot\theta\cos\theta) \\
+&l\ddot\theta + \ddot x\cos\theta + g\sin\theta = 0
 \end{aligned}
 $$
 
-Sett venstresida inn i projeksjonen. $V$ avhenger ikke av $\dot q_i$, så $T$ og $V$ kan slås sammen til $L = T - V$:
-
-$$
-\frac{d}{dt}\frac{\partial L}{\partial\dot q_i} - \frac{\partial L}{\partial q_i} = \vec N \cdot \frac{\partial\vec r}{\partial q_i}
-$$
-
-La nå $\vec r(q, t)$ oppfylle føringene for alle verdier av $q$-ene. Hvis $q_i$ endres litt mens tida og de andre $q$-ene holdes fast, flytter partikkelen seg langs $\partial\vec r/\partial q_i$, og føringen er fortsatt oppfylt. En friksjonsfri føringskraft, som bare holder partikkelen på føringen, står vinkelrett på alle slike forskyvninger, så $\vec N \cdot \partial\vec r/\partial q_i = 0$. Da er høyresida null, ligningen er Lagranges ligning for $L$, og $\vec N$ er borte. Med flere partikler summerer du over dem, og da er det summen $\sum_k \vec N_k \cdot \partial\vec r_k/\partial q_i$ som er null.
-</Derivation>
-
-<Example title="Den sfæriske pendelen">
-En kule med masse $m$ henger i en stiv, masseløs stang med lengde $l$ og kan
-svinge fritt i alle retninger. Finn Lagrangefunksjonen og bevegelsesligningene.
-
-<Solution>
-Føringen $x^2 + y^2 + z^2 = l^2$ fjerner én av tre koordinater. Med vinkelen
-$\theta$ fra loddlinja nedover og vinkelen $\phi$ rundt den er
-
-$$
-x = l\sin\theta\cos\phi, \qquad y = l\sin\theta\sin\phi, \qquad z = -l\cos\theta
-$$
-
-Deriver og summer kvadratene. Kryssleddene faller bort, og
-$\dot x^2 + \dot y^2 + \dot z^2 = l^2(\dot\theta^2 + \dot\phi^2\sin^2\theta)$. Med
-$V = mgz$ blir
-
-$$
-L = \tfrac12 ml^2\left(\dot\theta^2 + \dot\phi^2\sin^2\theta\right) + mgl\cos\theta
-$$
-
-Ligningen for $\theta$ er $ml^2\ddot\theta = ml^2\dot\phi^2\sin\theta\cos\theta - mgl\sin\theta$.
-Med $\dot\phi = 0$ er dette ligningen for den plane pendelen. $L$ avhenger ikke av $\phi$, så
-ligningen for $\phi$ sier at $\partial L/\partial\dot\phi = ml^2\dot\phi\sin^2\theta$ er
-konstant. Denne størrelsen er dreieimpulsen om loddlinja.
-
-<Answer>$L = \tfrac12 ml^2(\dot\theta^2 + \dot\phi^2\sin^2\theta) + mgl\cos\theta$, med $\ddot\theta = \dot\phi^2\sin\theta\cos\theta - (g/l)\sin\theta$ og $ml^2\dot\phi\sin^2\theta$ konstant.</Answer>
+Når opphenget sitter fast, er ${\ddot\theta + (g/l)\sin\theta = 0}$.
+</Answer>
 </Solution>
 </Example>
 
-<Example title="Atwood-maskinen">
-To lodd med massene $m_1 = 0{,}60$ kg og $m_2 = 0{,}50$ kg henger i hver sin
-ende av en snor over en lett trinse uten friksjon. Finn akselerasjonen.
+## Lagrange-multiplikatorer
+
+Snurr ei kule i ei snor rundt i en loddrett sirkel. Har kula for liten fart i bunnen til å gå
+rundt, men nok til å komme over vannrett, blir snora slakk et sted over midten, og kula faller
+innover i en kastebane. Hvor det skjer, avgjøres av snordraget, og Lagranges ligning for
+$\theta$ gir aldri snordraget.
+
+For å få føringskraften med beholder du koordinaten som føringen låser. For kula i snora er det
+avstanden $r$ fra opphenget, og føringen er ${f = r - l = 0}$. Metoden er den samme som
+<Term name="lagrange-multiplikator">Lagrange-multiplikatoren</Term> fra matematikken, der du
+finner største eller minste verdi av en funksjon $h$ på en kurve ${f = 0}$ ved å kreve
+${\nabla h = \lambda\nabla f}$. Det kravet sier at ${h - \lambda f}$ er stasjonær når $\lambda$
+regnes som en variabel til, fordi den deriverte med hensyn på $\lambda$ gir ${f = 0}$ tilbake. Her
+er $h$ virkningen og $f$ føringen, så du gjør virkningen til ${L - \lambda f}$ stasjonær. Fordi
+føringen må holde i hvert øyeblikk, er multiplikatoren en funksjon av tida, $\lambda(t)$:
+
+$$
+L' = \tfrac12 m\left(\dot r^2 + r^2\dot\theta^2\right) \allowbreak + mgr\cos\theta - \lambda\,(r - l)
+$$
+
+Behandle $r$, $\theta$ og $\lambda$ som frie koordinater. Ligningen for $\lambda$ er
+${\partial L'/\partial\lambda = 0}$, altså ${r = l}$, så føringen kommer tilbake som en av
+ligningene. Ligningen for $r$ er
+
+$$
+m\ddot r - mr\dot\theta^2 - mg\cos\theta = -\lambda
+$$
+
+og med ${r = l}$ og ${\ddot r = 0}$ gir den
+
+$$
+\lambda = ml\dot\theta^2 + mg\cos\theta
+$$
+
+Det er snordraget. Leddet $ml\dot\theta^2$ er kraften som skal til for å holde kula i
+sirkelbanen, og ${mg\cos\theta}$ er tyngdens komponent langs snora, som snora også må holde
+igjen. Ligningen for $\theta$ har ingen $\lambda$, fordi $f$ ikke avhenger av $\theta$, og den er
+pendelligningen fra før.
+
+$\lambda$ er en kraft fordi leddet ${-\lambda f}$ står i $L'$ der en potensiell energi
+${\lambda f}$ ville stått, og en potensiell energi ${\lambda f}$ gir kraften
+${-\lambda\nabla f}$. Ligningen for $\lambda$ krever at føringen holder, så ${-\lambda\nabla f}$
+er kraften som holder ${f = 0}$. For ${f = r - l}$ er ${\nabla f = \hat r}$, og med
+${\lambda > 0}$ trekker kraften kula mot opphenget med størrelsen $\lambda$. Med flere føringer
+$f_\alpha$ får hver sin multiplikator:
+
+<Formula tex="\begin{aligned} &L' = L - \sum_\alpha \lambda_\alpha f_\alpha \\ &\frac{d}{dt}\frac{\partial L}{\partial\dot q_k} - \frac{\partial L}{\partial q_k} = -\sum_\alpha \lambda_\alpha\frac{\partial f_\alpha}{\partial q_k} \end{aligned}" caption="Lagranges ligninger med føringene $f_\alpha(q, t) = 0$. Høyresida er føringskraften i retning $q_k$, og ligningene for $\lambda_\alpha$ gir føringene tilbake." />
+
+Ei snor kan bare trekke, så føringen gjelder bare så lenge ${\lambda \ge 0}$. Med farten $v_0$ i
+bunnen gir energibevarelsen ${ml\dot\theta^2 = mv_0^2/l - 2mg(1 - \cos\theta)}$, og
+
+$$
+\lambda = \frac{mv_0^2}{l} - 2mg + 3mg\cos\theta
+$$
+
+Slipper du kula fra vannrett, er ${v_0^2 = 2gl}$ og ${\lambda = 3mg\cos\theta}$, tre ganger
+tyngden i bunnen. Snora blir slakk der ${\lambda = 0}$, i
+${\cos\theta = (2 - v_0^2/gl)/3}$, hvis kula kommer så langt. Med ${v_0^2 < 2gl}$ snur kula før
+den når vannrett, og $\lambda$ er positiv hele veien. Med ${v_0^2 \ge 5gl}$ er ${\lambda \ge 0}$
+også på toppen, og kula går rundt.
+
+<Simulation
+  src="/sims/snorkraft.js"
+  title="Snordraget i pendelen"
+  caption="En kule med massen $m$ i ei snor med lengden $l$, med en gitt fart i bunnpunktet. Pila langs snora er snordraget $\lambda$ og den grå pila tyngden $mg$, i samme målestokk. Prikkene er stedene der $\lambda$ blir null, og den stiplede kurven er kastebanen mens snora er slakk."
+  host="dom"
+  height={340}
+/>
+
+Sett «Fart i bunnpunktet» til 1,9 $\sqrt{gl}$. Kula når over vannrett, og pila for $\lambda$
+krymper. Der den blir null, ved prikken i ${\theta = 122^\circ}$, blir snora slakk, og kula går
+i en kastebane til snora strammes igjen. Med 2,3 $\sqrt{gl}$ holder snora hele veien rundt.
+
+<Callout title="Lagrange-multiplikatorer">
+Vil du ha føringskraften, behold koordinaten føringen låser og legg ${-\lambda f}$ til $L$.
+Ligningen for den koordinaten gir $\lambda$, og ${-\lambda\nabla f}$ er føringskraften. Ei snor,
+et underlag eller en vegg slipper der $\lambda$ blir null.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Stigen som glir">
+<ExamRef id="2025-nov" task="1 a–d" />
+
+Consider a uniform ladder of length $l$ and total mass $m$, as shown in Fig. 1.
+
+<Figure src="/figures/eksamen-2025-11-oppgave-1.png" alt="En stige lener seg mot en vegg. Vinkelen mellom stigen og gulvet er θ, mellom stigen og veggen π/2 − θ, og lengden er l." width={500} height={440} caption="Figuren fra oppgavesettet." />
+
+The ladder starts to slide without friction. The initial conditions are $\theta(0) = \theta_0$ and
+$\dot\theta(0) = 0$.
+
+a) Show that the Lagrangian of the systems is
+
+$$
+L = \frac12 m(\dot x_{\text{cm}}^2 + \dot y_{\text{cm}}^2) \allowbreak + \frac12 I_{\text{cm}}\dot\theta^2 - mgy_{\text{cm}}, \qquad (1)
+$$
+
+where $I_{\text{cm}} = \frac{1}{12}ml^2$.
+
+b) The system is described in terms of the three coordinates $x_{\text{cm}}$, $y_{\text{cm}}$, and
+$\theta$. As long as the ladder is in contact with the wall, the system is constrained, with a
+single degree of freedom. Write down the two constraint equations and classify the constraints.
+
+c) Use the Lagrange multiplier method and write down the Lagrangian for the constrained system.
+Derive the equations of motion.
+
+d) Find the constraint forces as functions of $m$, $g$, and $\theta$. For which value of
+$\theta$ does the ladder lose contact with the wall?
 
 <Solution>
-Snora er like lang hele tida, så når $m_1$ har falt et stykke $x$, har $m_2$
-steget like mye. Systemet har én frihetsgrad, og begge loddene har farten
-$|\dot x|$:
+a) Den kinetiske energien er massesenterets bevegelse pluss rotasjonen om massesenteret,
+${T = \tfrac12 m(\dot x_{\text{cm}}^2 + \dot y_{\text{cm}}^2) + \tfrac12 I_{\text{cm}}\dot\theta^2}$,
+med ${I_{\text{cm}} = \tfrac1{12}ml^2}$ for en jevn stang om midten. Den potensielle energien er
+${mgy_{\text{cm}}}$, og ${L = T - V}$ er (1).
+
+b) Mål $x$ fra veggen og $y$ fra gulvet. Toppen ligger mot veggen og foten på gulvet når
 
 $$
-T = \tfrac12 (m_1 + m_2)\dot x^2, \qquad V = -m_1 g x + m_2 g x
+\begin{aligned} f_1 &= x_{\text{cm}} - \tfrac12 l\cos\theta = 0 \\ f_2 &= y_{\text{cm}} - \tfrac12 l\sin\theta = 0 \end{aligned}
 $$
 
-med nullnivå i startposisjonene. Lagrangefunksjonen blir
-$L = \tfrac12(m_1 + m_2)\dot x^2 + (m_1 - m_2)\,g x$, og ligningen for $x$:
+Begge er ligninger mellom koordinatene, uten tida, så de er holonome. Veggen kan bare skyve, så
+${f_1 = 0}$ gjelder bare så lenge stigen ligger an mot den.
 
-$$
-(m_1 + m_2)\,\ddot x = (m_1 - m_2)\,g \quad\Rightarrow\quad \ddot x = \frac{m_1 - m_2}{m_1 + m_2}\, g
-$$
-
-Med tallene er $\ddot x = \dfrac{0{,}10}{1{,}10} \cdot 9{,}81$ m/s² $= 0{,}89$
-m/s², rettet slik at det tunge loddet faller. Snordraget inngår ikke. Med
-$m_1 = m_2$ gir formelen $\ddot x = 0$, og med $m_2 = 0$ gir den $\ddot x = g$,
-fritt fall for $m_1$.
-
-<Answer>$\ddot x = \dfrac{m_1 - m_2}{m_1 + m_2}\, g = 0{,}89$ m/s²</Answer>
-</Solution>
-</Example>
-
-<SelfCheck question="En kloss glir nedover et fast skråplan med helningsvinkel $\alpha$ og friksjonstallet $\mu$, med avstanden $s$ nedover planet som koordinat. Hvilke av kreftene fra planet faller ut av Lagranges ligning for $s$?">
-Forskyvningen $\partial\vec r/\partial s$ peker nedover langs planet. Normalkraften
-står vinkelrett på planet og faller ut. Friksjonskraften har størrelsen
-$\mu mg\cos\alpha$ og peker oppover langs planet, mot bevegelsen, så projeksjonen
-på forskyvningen er $-\mu mg\cos\alpha$ og ikke null. Den står igjen som høyresida i
-Lagranges ligning for $s$. Med $L = \tfrac12 m\dot s^2 + mgs\sin\alpha$ blir
-$m\ddot s = mg\sin\alpha - \mu mg\cos\alpha$, og for å finne friksjonskraften
-trengte du normalkraften $mg\cos\alpha$ fra Newtons lov vinkelrett på planet.
-</SelfCheck>
-
-<Example label="Eksamensoppgave" title="Stang med to masser">
-<ExamRef id="2023-nov" task="3 a–c" />
-
-A rod with negligible mass and length $\ell$ has equal masses $m$ at its two
-ends. (See figure below.) One mass can slide without friction along a
-horizontal constraint on the $x$ axis. The other mass is restricted to move
-in the $xy$ plane. We consider a situation where the center of mass is all
-the time located on the $y$ axis, i.e., in $x = 0$. Zero potential energy is
-chosen in vertical position $y = 0$.
-
-<Figure src="/figures/eksamen-2023-11-oppgave-3.png" alt="Den øvre massen ligger på x-aksen, stangen henger skrått ned med vinkelen θ fra vertikalen til den nedre massen, og tyngden peker nedover." width={720} height={440} caption="Figuren fra oppgavesettet." />
-
-a) (7%) Show that the Lagrangian of the system is
-
-$$
-L(\theta, \dot\theta) = T - V \allowbreak = \frac{m\ell^2\dot\theta^2}{4}(1 + \sin^2\theta) \allowbreak + mg\ell\cos\theta.
-$$
-
-Hint: $a\sin^2 x + b\cos^2 x = b + (a - b)\sin^2 x$.
-
-b) (7%) Find the equation of motion (i.e., the Lagrange equation).
-
-c) (5%) If the oscillation amplitude is small, the system is a harmonic
-oscillator. Show this by including only linear terms in the equation of
-motion, and determine the oscillation frequency $\omega$.
-
-<Solution>
-a) Én frihetsgrad, $\theta$. Massesenteret skal ligge på $y$-aksen, så den
-øvre massen står i $x_1 = -\tfrac{\ell}{2}\sin\theta$ og den nedre i
-$x_2 = \tfrac{\ell}{2}\sin\theta$, $y_2 = -\ell\cos\theta$. Da er
-$\dot x_1^2 = \dot x_2^2 = \tfrac{\ell^2}{4}\cos^2\theta\,\dot\theta^2$ og
-$\dot y_2^2 = \ell^2\sin^2\theta\,\dot\theta^2$, så
+c) ${L' = L - \lambda_1 f_1 - \lambda_2 f_2}$. Ligningene for $\lambda_1$ og $\lambda_2$ gir
+føringene tilbake, og ligningene for de tre koordinatene er
 
 $$
 \begin{aligned}
-T &= \frac{m\ell^2\dot\theta^2}{2}\left(\tfrac12\cos^2\theta + \sin^2\theta\right) \\
-  &= \frac{m\ell^2\dot\theta^2}{4}(1 + \sin^2\theta),
+m\ddot x_{\text{cm}} &= -\lambda_1 \\
+m\ddot y_{\text{cm}} &= -mg - \lambda_2 \\
+I_{\text{cm}}\ddot\theta &= \tfrac12 l(\lambda_2\cos\theta - \lambda_1\sin\theta)
 \end{aligned}
 $$
 
-med hintet brukt på $\cos^2\theta + 2\sin^2\theta$. Bare den nedre massen
-har potensiell energi, $V = -mg\ell\cos\theta$, og $L = T - V$ er uttrykket i
-oppgaven.
-
-b) $\partial L/\partial\dot\theta = \tfrac{m\ell^2}{2}\dot\theta(1 + \sin^2\theta)$
-og $\partial L/\partial\theta = \tfrac{m\ell^2}{2}\dot\theta^2\sin\theta\cos\theta - mg\ell\sin\theta$.
-Den tidsderiverte av den første er
-$\tfrac{m\ell^2}{2}\bigl[\ddot\theta(1 + \sin^2\theta) + 2\dot\theta^2\sin\theta\cos\theta\bigr]$.
-Trekk fra $\partial L/\partial\theta$. Da blir $\dot\theta^2$-leddene
-$2\dot\theta^2\sin\theta\cos\theta - \dot\theta^2\sin\theta\cos\theta = \dot\theta^2\sin\theta\cos\theta$,
-og Lagranges ligning gir, etter forkorting med $m\ell^2/2$,
+d) Deriver føringene to ganger:
+${\ddot x_{\text{cm}} = -\tfrac12 l(\ddot\theta\sin\theta + \dot\theta^2\cos\theta)}$ og
+${\ddot y_{\text{cm}} = \tfrac12 l(\ddot\theta\cos\theta - \dot\theta^2\sin\theta)}$. De to
+første ligningene gir da $\lambda_1$ og $\lambda_2$ uttrykt ved $\theta$, $\dot\theta$ og
+$\ddot\theta$, og satt inn i den
+tredje gir de ${\tfrac13 ml^2\ddot\theta = -\tfrac12 mgl\cos\theta}$. Med
+${\ddot\theta = \dot\theta\,d\dot\theta/d\theta}$ og ${\dot\theta = 0}$ ved $\theta_0$ blir
+${\dot\theta^2 = (3g/l)(\sin\theta_0 - \sin\theta)}$, og
 
 $$
-\ddot\theta\,(1 + \sin^2\theta) \allowbreak + \dot\theta^2\sin\theta\cos\theta \allowbreak + \frac{2g}{\ell}\sin\theta = 0.
+\lambda_1 = \tfrac32 mg\cos\theta\,(\sin\theta_0 \allowbreak - \tfrac32\sin\theta)
 $$
 
-c) For små utslag er $\sin\theta \approx \theta$, og leddene
-$\ddot\theta\sin^2\theta$ og $\dot\theta^2\sin\theta\cos\theta$ er av tredje orden
-i utslaget. Bare de lineære leddene står igjen, så ligningen blir
-$\ddot\theta + (2g/\ell)\,\theta = 0$, en harmonisk oscillator med $\omega = \sqrt{2g/\ell}$.
-Det er $\sqrt2$ ganger vinkelfrekvensen til en plan pendel med lengde $\ell$. For små
-utslag flytter hver masse seg bare $\ell\theta/2$ vannrett, så det kinetiske leddet
-$\tfrac14 m\ell^2\dot\theta^2$ er halvparten av pendelens, mens det potensielle
-leddet $mg\ell\cos\theta$ er det samme.
+$$
+\lambda_2 = -\tfrac14 mg\,(1 + 9\sin^2\theta \allowbreak - 6\sin\theta\sin\theta_0)
+$$
 
-<Answer>b) $\ddot\theta(1+\sin^2\theta) + \dot\theta^2\sin\theta\cos\theta + (2g/\ell)\sin\theta = 0$. c) $\omega = \sqrt{2g/\ell}$.</Answer>
+Føringskraften er ${-\lambda\nabla f}$. Veggen skyver stigen bort fra seg med
+${-\lambda_1 = \tfrac32 mg\cos\theta\,(\tfrac32\sin\theta - \sin\theta_0)}$, og gulvet skyver
+opp med $-\lambda_2$. Ved start er veggkraften ${\tfrac34 mg\sin\theta_0\cos\theta_0}$, og
+den er null når ${\sin\theta = \tfrac23\sin\theta_0}$. Etter det måtte
+veggen ha trukket i stigen for å holde den inntil seg, og det kan den ikke.
+
+<Answer>
+Veggen skyver med ${\tfrac32 mg\cos\theta\,(\tfrac32\sin\theta - \sin\theta_0)}$ og gulvet med
+${\tfrac14 mg\,(1 + 9\sin^2\theta - 6\sin\theta\sin\theta_0)}$. Stigen mister kontakten med
+veggen når ${\sin\theta = \tfrac23\sin\theta_0}$.
+</Answer>
 </Solution>
 </Example>
 
-## Lagrangefunksjonen er ikke entydig
+## Ulike L for samme bevegelse
 
-Bevegelsen er banen som gjør $S$ stasjonær. To Lagrangefunksjoner som gjør de samme banene stasjonære, gir derfor samme bevegelse. Ganger du $L$ med en konstant $\alpha$, ganges $S$ med $\alpha$, og en bane som gjør $S$ stasjonær, gjør også $\alpha S$ stasjonær. Legger du til den totale tidsderiverte av en funksjon $f(q, t)$ av koordinatene og tida, endres virkningen bare med et randledd:
-
-$$
-S' = \int_{t_1}^{t_2} \left( L + \frac{df}{dt} \right) dt = S + f(q_2, t_2) - f(q_1, t_1)
-$$
-
-Endepunktene ligger fast, så randleddet er det samme tallet for alle prøvebanene, og $\delta S' = \delta S$.
-
-<Statement kind="theorem" name="Ekvivalente Lagrangefunksjoner">
-$L' = \alpha L$ og $L' = L + \dfrac{df(q, t)}{dt}$ gir samme bevegelsesligninger som $L$,
-for enhver konstant $\alpha \neq 0$ og enhver funksjon $f$ av koordinatene og tida.
-</Statement>
-
-Skrevet ut er $df/dt = \dfrac{\partial f}{\partial q}\dot q + \dfrac{\partial f}{\partial t}$, lineært i hastigheten, så et ledd som er kvadratisk i $\dot q$ kan aldri være en total tidsderivert. En transformasjon av koordinatene som lar $L$ være uendret eller bare endrer $L$ med en total tidsderivert, for eksempel en forskyvning eller en rotasjon, kalles en symmetri av systemet. Etter teoremet gir den samme bevegelsesligninger.
-
-<Derivation title="Direkte i Lagranges ligninger">
-Hvis $L' = L + df/dt$, er $df/dt = \sum_j \dfrac{\partial f}{\partial q_j}\dot q_j + \dfrac{\partial f}{\partial t}$ det eneste nye leddet i ligningen for $q_i$:
+En kloss glir friksjonsfritt på gulvet i et tog som kjører med konstant fart $v$. På perrongen
+skriver du ${L = \tfrac12 m\dot x^2}$. I toget er klossens posisjon ${x' = x - vt}$, og der skriver
+du ${L' = \tfrac12 m\dot x'^2}$. Uttrykt ved $\dot x$ er
 
 $$
-\frac{\partial}{\partial\dot q_i}\frac{df}{dt} = \frac{\partial f}{\partial q_i} \quad\Rightarrow\quad \frac{d}{dt}\frac{\partial f}{\partial q_i} = \sum_j \frac{\partial^2 f}{\partial q_j\,\partial q_i}\dot q_j + \frac{\partial^2 f}{\partial t\,\partial q_i}
+L' = \tfrac12 m(\dot x - v)^2 \allowbreak = L + \frac{d}{dt}\left(-mvx + \tfrac12 mv^2t\right)
 $$
 
-Den deriverte med hensyn på $q_i$ er
+Lagrangefunksjonene er forskjellige, men begge gir ${m\ddot x = 0}$, slik de må, siden
+Galilei-transformasjonen ikke endrer Newtons lov.
+
+Et ledd ${dF(q, t)/dt}$ i $L$ endrer bare virkningen med verdiene av $F$ i endepunktene:
 
 $$
-\frac{\partial}{\partial q_i}\frac{df}{dt} = \sum_j \frac{\partial^2 f}{\partial q_i\,\partial q_j}\dot q_j + \frac{\partial^2 f}{\partial q_i\,\partial t}
+S' = S + F(q(t_2), t_2) \allowbreak - F(q(t_1), t_1)
 $$
 
-Dette betyr at de to bidragene er like, ettersom rekkefølgen av partielle derivasjoner kan byttes. Da opphever de hverandre i $\frac{d}{dt}\partial L'/\partial\dot q_i - \partial L'/\partial q_i$, og $L'$ gir de samme ligningene som $L$.
-</Derivation>
+Alle banene som sammenlignes, har de samme endepunktene, så tillegget er det samme tallet for
+alle, og banen som gjør $S$ stasjonær, gjør også $S'$ stasjonær. En konstant faktor
+${\alpha \ne 0}$ i $\alpha L$ ganger alle virkningene med det samme tallet og endrer heller ikke
+hvilken bane som er stasjonær. $F$ kan avhenge av koordinatene og tida, men ikke av
+hastighetene, fordi tillegget da ville avhenge av hastighetene i endepunktene, som ikke holdes
+fast.
 
-<Quiz
-  question="Hvilken Lagrangefunksjon gir samme bevegelse som $L = \tfrac12 m\dot z^2 - mgz$ for fritt fall?"
-  options={["$\\tfrac12 m\\dot z^2 + mgt\\,\\dot z$", "$\\tfrac12 m\\dot z^2 - mg\\dot z$", "$\\tfrac12 m\\dot z^2 + mgz$", "$\\tfrac12 m\\dot z^2 - \\tfrac12 mgz^2$"]}
-  answer={0}
-  explanation="Det første alternativet er $L + \frac{d}{dt}(mgzt)$, for $\frac{d}{dt}(mgzt) = mgt\dot z + mgz$. Begge gir $m\ddot z = -mg$. Leddet $-mg\dot z$ i det andre alternativet er også en total tidsderivert, av $-mgz$, så det alternativet beskriver en fri partikkel. De to siste gir andre krefter."
-/>
+<Formula tex="\begin{aligned} &L' = \alpha L \\ &L' = L + \frac{dF(q, t)}{dt} \end{aligned}" caption="Lagrangefunksjoner som gir de samme bevegelsesligningene som $L$, med en konstant $\alpha \ne 0$ og en funksjon $F$ av koordinatene og tida." />
 
-## Ladd partikkel og gaugeinvarians
-
-Lagranges ligninger for $L = \tfrac12 m\dot{\vec r}^2 - V$ gir $m\ddot{\vec r} = -\nabla V$, så $L = T - V$ gir bare krefter av formen $-\nabla V$. Lorentzkraften $q(\vec E + \dot{\vec r}\times\vec B)$ avhenger av hastigheten og har ikke den formen. Den har likevel en Lagrangefunksjon hvis potensialet får avhenge av hastigheten. Med $L = T - U(\vec r, \dot{\vec r}, t)$ gir Lagranges ligninger
+<SelfCheck question="Lagrangefunksjonen ${L = -\tfrac12 mq\ddot q - \tfrac12 kq^2}$ fra eksamensoppgaven «Virkningen for en konstant kraft» ga bevegelsesligningen for en harmonisk oscillator. Skriv den som oscillatorens Lagrangefunksjon pluss en total tidsderivert. Hvorfor endrer tillegget ikke bevegelsen der, selv om det avhenger av $\dot q$?">
+Produktregelen gir ${\frac{d}{dt}(q\dot q) = \dot q^2 + q\ddot q}$, så
 
 $$
-m\ddot{\vec r} = -\frac{\partial U}{\partial\vec r} + \frac{d}{dt}\frac{\partial U}{\partial\dot{\vec r}}
+L = \tfrac12 m\dot q^2 - \tfrac12 kq^2 - \frac{d}{dt}\left(\tfrac12 mq\dot q\right)
 $$
 
-Sammenlignet med $-\nabla V$ er det siste leddet nytt, og det er en tidsderivert. Skriv feltene med skalarpotensialet $\phi$ og vektorpotensialet $\vec A$:
+Tillegget endrer virkningen med ${-\tfrac12 mq\dot q}$ i endepunktene. I eksamensoppgaven holdes
+også $\dot q$ fast der (${\delta\dot q = 0}$), som en Lagrangefunksjon med $\ddot q$ krever, så
+tillegget er det samme tallet for alle banene som sammenlignes.
+</SelfCheck>
 
-$$
-\vec E = -\nabla\phi - \frac{\partial\vec A}{\partial t}, \qquad \vec B = \nabla\times\vec A
-$$
-
-Den elektriske kraften $q\vec E$ har to ledd. Leddet $-q\nabla\phi$ er en vanlig potensialkraft, så $U$ inneholder $q\phi$. Leddet $-q\,\partial\vec A/\partial t$ er en tidsderivert, og i ligningen over kan en tidsderivert bare komme fra $\frac{d}{dt}\partial U/\partial\dot{\vec r}$. Leddet krever derfor $\partial U/\partial\dot{\vec r} = -q\vec A$, altså $-q\,\dot{\vec r}\cdot\vec A$ i $U$. Med $U = q\phi - q\,\dot{\vec r}\cdot\vec A$ er Lagrangefunksjonen
-
-<Formula
-  tex="L = \tfrac12 m\dot{\vec r}^2 + q\,\dot{\vec r} \cdot \vec A - q\phi"
-  caption="Lagrangefunksjonen for en partikkel med ladning $q$ i et elektromagnetisk felt. Potensialene avhenger av $\vec r$ og $t$."
-/>
-
-Konstruksjonen brukte bare $\vec E$, men Lagranges ligninger gir også det magnetiske leddet. Tidsderiverten av $\vec A$ langs banen og den romderiverte av $\dot{\vec r}\cdot\vec A$ gir sammen $q\,\dot{\vec r}\times\vec B$, og ligningene gir hele Lorentzkraften:
-
-$$
-m\ddot{\vec r} = q\left(\vec E + \dot{\vec r} \times \vec B\right)
-$$
-
-<Derivation title="Utledning av Lorentzkraften">
-Den totale tidsderiverte av $\vec A(\vec r(t), t)$ langs banen er
-
-$$
-\frac{d\vec A}{dt} = \frac{\partial\vec A}{\partial t} + (\dot{\vec r} \cdot \nabla)\vec A
-$$
-
-Den deriverte med hensyn på posisjonen er $\partial L/\partial\vec r = q\nabla(\dot{\vec r} \cdot \vec A) - q\nabla\phi$, der $\nabla$ virker på $\vec A$ og $\phi$ alene. Lagranges ligninger, $\frac{d}{dt}(m\dot{\vec r} + q\vec A) = \partial L/\partial\vec r$, gir
-
-$$
-m\ddot{\vec r} = -q\nabla\phi - q\frac{\partial\vec A}{\partial t} + q\left[\nabla(\dot{\vec r} \cdot \vec A) - (\dot{\vec r} \cdot \nabla)\vec A\right]
-$$
-
-De to første leddene er $q\vec E$. Hakeparentesen er $\dot{\vec r} \times (\nabla \times \vec A) = \dot{\vec r} \times \vec B$ etter identiteten $\nabla(\vec u \cdot \vec A) - (\vec u \cdot \nabla)\vec A = \vec u \times (\nabla \times \vec A)$ for en vektor $\vec u$ som $\nabla$ ikke virker på.
-</Derivation>
-
-Lagrangefunksjonen inneholder potensialene $\phi$ og $\vec A$, men kraften avhenger bare av feltene $\vec E$ og $\vec B$. Potensialene er ikke entydige. Bytter du ut $\vec A$ med $\vec A + \nabla\chi$ og $\phi$ med $\phi - \partial\chi/\partial t$, der $\chi(\vec r, t)$ er en vilkårlig funksjon, får du de samme feltene. $\vec B$ er uendret fordi $\nabla \times \nabla\chi = 0$, og i $\vec E$ opphever de nye leddene $-\partial(\nabla\chi)/\partial t$ og $+\nabla(\partial\chi/\partial t)$ hverandre. Ethvert bytte som bevarer feltene, har denne formen. Byttet kalles en gaugetransformasjon:
-
-<Formula
-  tex="\vec A \to \vec A + \nabla\chi, \qquad \phi \to \phi - \frac{\partial\chi}{\partial t}"
-  caption="<b>Gaugetransformasjon</b> av potensialene, med en vilkårlig funksjon $\chi(\vec r, t)$."
-/>
-
-<Derivation title="Hvorfor byttet har denne formen">
-Hvis et annet vektorpotensial $\vec A'$ gir det samme magnetfeltet, er
-
-$$
-\nabla \times \vec A' - \nabla \times \vec A = 0 \quad\Rightarrow\quad \nabla \times (\vec A' - \vec A) = 0
-$$
-
-Dette betyr at $\vec A' - \vec A$ kan skrives som en gradient, ettersom et vektorfelt med $\nabla \times \vec F = 0$ i hele rommet er en gradient. Da kan $\vec A'$ skrives som $\vec A + \nabla\chi$ for en funksjon $\chi(\vec r, t)$.
-
-Hvis $\vec A'$ og et nytt skalarpotensial $\phi'$ også skal gi det samme elektriske feltet, er $-\nabla\phi' - \partial\vec A'/\partial t = -\nabla\phi - \partial\vec A/\partial t$. Med $\vec A' = \vec A + \nabla\chi$ blir ligningen
-
-$$
-\nabla\phi' + \nabla\frac{\partial\chi}{\partial t} = \nabla\phi \quad\Rightarrow\quad \nabla\Bigl(\phi' - \phi + \frac{\partial\chi}{\partial t}\Bigr) = 0
-$$
-
-Dette betyr at $\phi' - \phi + \partial\chi/\partial t$ ikke avhenger av $\vec r$. En funksjon av $t$ alene kan du ta inn i $\chi$, så $\phi'$ kan skrives som $\phi - \partial\chi/\partial t$.
-</Derivation>
-
-Lagrangefunksjonen endres likevel:
-
-$$
-L \to L + q\,\dot{\vec r} \cdot \nabla\chi + q\frac{\partial\chi}{\partial t} = L + q\frac{d\chi}{dt}
-$$
-
-Tillegget er den totale tidsderiverte av $q\chi(\vec r, t)$, så bevegelsesligningene er de samme. <Term name="gaugeinvarians">Gaugeinvarians</Term> betyr at ingen målbar størrelse avhenger av hvilken $\chi$ du velger.
-
-<Callout title="Gaugeinvarians">
-En gaugetransformasjon endrer $L$ med den totale tidsderiverte $q\,d\chi/dt$, så bevegelsen til en ladd partikkel er den samme med begge settene av potensialer.
+<Callout title="Ulike L for samme bevegelse">
+$L$ og ${L + dF(q, t)/dt}$ gir samme bevegelse, fordi virkningene skiller seg bare med $F$ i
+endepunktene, og tillegget er det samme for alle banene som sammenlignes.
 </Callout>
 
-<SelfCheck question="Potensialene $\phi = -\vec E_0 \cdot \vec r$, $\vec A = 0$ og potensialene $\phi = 0$, $\vec A = -\vec E_0 t$ gir begge det konstante feltet $\vec E_0$. Hvilken $\chi$ fører fra det første settet til det andre?">
-Vektorpotensialet skal bli $\nabla\chi = -\vec E_0 t$, så $\chi = -(\vec E_0 \cdot \vec r)\,t$
-opp til en funksjon av $t$ alene. Da er $\partial\chi/\partial t = -\vec E_0 \cdot \vec r$,
-og det nye skalarpotensialet blir
-$\phi - \partial\chi/\partial t = -\vec E_0 \cdot \vec r + \vec E_0 \cdot \vec r = 0$.
-Begge settene gir $\vec E = \vec E_0$ og $\vec B = 0$, og
-Lagrangefunksjonene skiller seg med $q\,d\chi/dt$.
+## Ladd partikkel
+
+Et elektron i et magnetfelt går i sirkel. Kraften ${q\dot{\vec r}\times\vec B}$ avhenger av
+farten, så den kan ikke skrives som ${-\nabla V}$ for noen $V(\vec r)$, og ${L = T - V}$ kan ikke
+gi den. Lagrangefunksjonen må bygges slik at Lagranges ligning gir Lorentzkraften
+
+$$
+m\ddot{\vec r} = q\left(\vec E + \dot{\vec r}\times\vec B\right)
+$$
+
+med feltene uttrykt ved potensialene, ${\vec E = -\nabla\phi - \partial\vec A/\partial t}$ og
+${\vec B = \nabla\times\vec A}$.
+
+Bygg $L$ ledd for ledd. Kraften ${-q\nabla\phi}$ er den samme som fra en potensiell energi
+$q\phi$, så $L$ får leddet ${-q\phi}$. Kraften ${-q\,\partial\vec A/\partial t}$ er en
+tidsderivert, og i Lagranges ligning er det bare ${\frac{d}{dt}\,\partial L/\partial\dot{\vec r}}$
+som kan gi en tidsderivert. Det leddet står på samme side som $m\ddot{\vec r}$, så det må
+inneholde ${+q\,d\vec A/dt}$, og da må ${\partial L/\partial\dot{\vec r}}$ inneholde $q\vec A$.
+Det gjør leddet
+${q\,\dot{\vec r}\cdot\vec A}$:
+
+<Formula tex="L = \tfrac12 m\dot{\vec r}^{\,2} + q\,\dot{\vec r}\cdot\vec A - q\phi" caption="Lagrangefunksjonen for en partikkel med ladningen $q$ i et elektromagnetisk felt med potensialene $\phi$ og $\vec A$." />
+
+Den magnetiske kraften ble ikke bygget inn, og den kommer likevel ut. Langs banen endrer
+$\vec A$ seg både med tida og fordi partikkelen flytter seg,
+${d\vec A/dt = \partial\vec A/\partial t + (\dot{\vec r}\cdot\nabla)\vec A}$, og leddet
+${q\,\dot{\vec r}\cdot\vec A}$ gir også ${q\nabla(\dot{\vec r}\cdot\vec A)}$ i
+${\partial L/\partial\vec r}$. De to delene som ikke er ${\partial\vec A/\partial t}$, er sammen
+${q\,\dot{\vec r}\times(\nabla\times\vec A) = q\,\dot{\vec r}\times\vec B}$.
+
+<Derivation title="Lorentzkraften fra Lagrangefunksjonen">
+Med ${L = \tfrac12 m\dot{\vec r}^{\,2} + q\,\dot{\vec r}\cdot\vec A - q\phi}$ er
+
+$$
+\begin{aligned} \frac{\partial L}{\partial\dot{\vec r}} &= m\dot{\vec r} + q\vec A \\ \frac{\partial L}{\partial\vec r} &= q\nabla(\dot{\vec r}\cdot\vec A) - q\nabla\phi \end{aligned}
+$$
+
+der $\nabla$ virker på $\vec A$ med $\dot{\vec r}$ holdt fast. Tidsderivert langs banen er
+
+$$
+\frac{d}{dt}\frac{\partial L}{\partial\dot{\vec r}} = m\ddot{\vec r} + q\frac{\partial\vec A}{\partial t} + q(\dot{\vec r}\cdot\nabla)\vec A
+$$
+
+og Lagranges ligning gir
+
+$$
+m\ddot{\vec r} = -q\nabla\phi - q\frac{\partial\vec A}{\partial t} \allowbreak + q\left[\nabla(\dot{\vec r}\cdot\vec A) - (\dot{\vec r}\cdot\nabla)\vec A\right]
+$$
+
+De to første leddene er $q\vec E$. For en vektor $\vec u$ som $\nabla$ ikke virker på, er
+${\vec u\times(\nabla\times\vec A) = \nabla(\vec u\cdot\vec A) - (\vec u\cdot\nabla)\vec A}$. Med
+${\vec u = \dot{\vec r}}$ er hakeparentesen ${\dot{\vec r}\times\vec B}$, og
+${m\ddot{\vec r} = q(\vec E + \dot{\vec r}\times\vec B)}$.
+</Derivation>
+
+Potensialene er ikke entydige. Med en vilkårlig funksjon $\chi(\vec r, t)$ gir byttet
+
+$$
+\vec A \to \vec A + \nabla\chi, \qquad \phi \to \phi - \frac{\partial\chi}{\partial t}
+$$
+
+de samme feltene, fordi ${\nabla\times\nabla\chi = 0}$, og i $\vec E$ faller
+${\nabla\,\partial\chi/\partial t}$ og ${\partial(\nabla\chi)/\partial t}$ mot hverandre. Et
+slikt bytte er en <Term name="gaugetransformasjon">gaugetransformasjon</Term>. Lagrangefunksjonen
+endres med
+
+$$
+q\,\dot{\vec r}\cdot\nabla\chi + q\frac{\partial\chi}{\partial t} = q\frac{d\chi}{dt}
+$$
+
+som er en total tidsderivert, ettersom $\chi$ langs banen endrer seg både med tida og fordi
+partikkelen flytter seg. Bevegelsen er derfor den samme uansett hvilke potensialer du bruker, og
+det er <Term name="gaugeinvarians">gaugeinvariansen</Term> til bevegelsen.
+
+Gaugeinvariansen er også en annen vei til leddet ${q\,\dot{\vec r}\cdot\vec A}$. Start med
+${L = \tfrac12 m\dot{\vec r}^{\,2} - q\phi}$, som er riktig for et statisk elektrisk felt. En
+gaugetransformasjon legger ${q\,\partial\chi/\partial t}$ til $L$, og det er ikke en total
+tidsderivert, fordi ${q\,\dot{\vec r}\cdot\nabla\chi}$ mangler. Det leddet kommer fra
+${q\,\dot{\vec r}\cdot\vec A}$ når ${\vec A \to \vec A + \nabla\chi}$. Kravet om at bevegelsen
+ikke skal avhenge av potensialene, tvinger altså fram leddet.
+
+<SelfCheck question="Det konstante feltet $\vec E_0$ kan beskrives med $\phi = -\vec E_0\cdot\vec r$ og $\vec A = 0$, eller med $\phi = 0$ og ${\vec A = -\vec E_0 t}$. Hvilken $\chi$ fører fra det første settet til det andre, og hvilken total tidsderivert skiller de to Lagrangefunksjonene?">
+Fra ${\vec A' = \vec A + \nabla\chi}$ må ${\nabla\chi = -\vec E_0 t}$, så
+${\chi = -t\,\vec E_0\cdot\vec r + c(t)}$ med en funksjon $c$ av tida alene. Da er
+
+$$
+\phi' = \phi - \frac{\partial\chi}{\partial t} \allowbreak = -\vec E_0\cdot\vec r + \vec E_0\cdot\vec r - \dot c = -\dot c
+$$
+
+og ${\phi' = 0}$ krever at $c$ er konstant, så ${\chi = -t\,\vec E_0\cdot\vec r}$ holder.
+Lagrangefunksjonene er
+${L_1 = \tfrac12 m\dot{\vec r}^{\,2} + q\vec E_0\cdot\vec r}$ og
+${L_2 = \tfrac12 m\dot{\vec r}^{\,2} - qt\,\dot{\vec r}\cdot\vec E_0}$, og
+
+$$
+L_2 - L_1 = -q\frac{d}{dt}\left(t\,\vec E_0\cdot\vec r\right) \allowbreak = q\frac{d\chi}{dt}
+$$
+
+Begge gir ${m\ddot{\vec r} = q\vec E_0}$.
 </SelfCheck>
+
+<Callout title="Ladd partikkel">
+En ladd partikkel har ${L = \tfrac12 m\dot{\vec r}^{\,2} + q\,\dot{\vec r}\cdot\vec A - q\phi}$,
+bygget slik at Lagranges ligning gir Lorentzkraften. En gaugetransformasjon endrer $L$ med den
+totale tidsderiverte ${q\,d\chi/dt}$, så bevegelsen er den samme for alle valg av potensialer.
+</Callout>
 
 <KeyTakeaways>
-- $k$ holonome føringer $f(\vec r_1, \dots, \vec r_N, t) = 0$ reduserer $3N$ koordinater til $n = 3N - k$ frihetsgrader, beskrevet av generaliserte koordinater $q_1, \dots, q_n$. Ulikheter og hastighetsbetingelser som ikke kan integreres, er ikke-holonome og fjerner ingen koordinat.
-- Virkningen $S = \int L\, dt$ med $L = T - V$ gir hver bane mellom faste endepunkter ved faste tider ett tall, og den virkelige banen gjør $S$ stasjonær.
-- Kravet $\delta S = 0$ er ekvivalent med Lagranges ligninger $\frac{d}{dt}\partial L/\partial\dot q_i - \partial L/\partial q_i = 0$, som i kartesiske koordinater er Newtons andre lov.
-- Ligningene har samme form i alle koordinatsystemer, så koordinatene kan velges etter problemet.
-- Holonome føringer settes rett inn i $L$, og friksjonsfrie føringskrefter forsvinner fra regningen, fordi de står vinkelrett på hver forskyvning ved fast tid. Trengs en føringskraft, må den tas med som ukjent, som i Newton-regningen.
-- $\alpha L$ og $L + df(q, t)/dt$ gir samme bevegelsesligninger som $L$. Virkningen endres bare med en faktor eller med et randledd som er likt for alle prøvebaner.
-- $L = \tfrac12 m\dot{\vec r}^2 + q\,\dot{\vec r} \cdot \vec A - q\phi$ gir Lorentzkraften. En gaugetransformasjon av potensialene endrer $L$ med $q\,d\chi/dt$, så bevegelsen er gaugeinvariant.
+
+- Den virkelige banen mellom to faste hendelser gjør virkningen ${S = \int (T - V)\,dt}$ stasjonær, og kravet ${\delta S = 0}$ gir Lagranges ligning ${\frac{d}{dt}\,\partial L/\partial\dot q_i = \partial L/\partial q_i}$ for hver koordinat.
+- ${L = T - V}$ er Lagrangefunksjonen som gir Newtons andre lov. Ligningene har samme form i alle koordinater, og ledd som ${-r\dot\phi^2}$ kommer ut av $T$.
+- Friksjonsfrie føringskrefter gjør til sammen ikke arbeid i noen virtuell forskyvning og står ikke i ligningene. $N$ partikler med $k$ holonome føringer har ${3N - k}$ generaliserte koordinater.
+- Med ${-\lambda f}$ i $L$ er ${-\lambda\nabla f}$ føringskraften. Ei snor eller en vegg slipper der $\lambda$ blir null.
+- Et tillegg som er en total tidsderivert, endrer ikke bevegelsen, fordi virkningen bare endres i endepunktene.
+- En ladd partikkel har ${L = \tfrac12 m\dot{\vec r}^{\,2} + q\,\dot{\vec r}\cdot\vec A - q\phi}$. En gaugetransformasjon legger den totale tidsderiverte ${q\,d\chi/dt}$ til $L$, så bevegelsen er gaugeinvariant.
+
 </KeyTakeaways>

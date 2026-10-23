@@ -1,8 +1,9 @@
 /**
  * Snordraget i pendelen: kule i ei snor med lengde l, tegnet med vinkelen θ
  * fra loddlinja. Glidebryteren setter farten i bunnpunktet. Den oransje pila
- * er snordraget S = mlθ̇² + mg cos θ, den grå er tyngden mg, i samme
- * målestokk. Blir S negativ, kan snora ikke holde igjen: den blir slakk, og
+ * er snordraget λ = mlθ̇² + mg cos θ, Lagrange-multiplikatoren for føringen
+ * r = l, og den grå er tyngden mg, i samme målestokk. Blir λ negativ, kan
+ * snora ikke holde igjen: den blir slakk, og
  * kula går i en kastebane til snora strammes igjen. Da forsvinner den
  * radielle delen av farten, slik en snor som ikke tøyer seg gjør det.
  *
@@ -99,19 +100,19 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     const cx = w / 2;
     const cy = h / 2;
     let th = 0;
-    let S = 0;
+    let lam = 0;
     let bx;
     let by;
     if (taut) {
       th = y[0];
-      S = tension(th, y[1]);
+      lam = tension(th, y[1]);
       bx = cx + L * Math.sin(th);
       by = cy + L * Math.cos(th);
     } else {
       bx = cx + L * z[0];
       by = cy - L * z[1];
     }
-    // Pillengde for mg: så stor som mulig uten at S-pila rekker forbi opphenget.
+    // Pillengde for mg: så stor som mulig uten at λ-pila rekker forbi opphenget.
     const F = Math.min(0.3, 0.95 / (v0 * v0 + 1)) * L;
     let g = "";
 
@@ -126,13 +127,10 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
       for (const sgn of [1, -1]) {
         g += circle(cx + sgn * L * Math.sin(ts), cy + L * Math.cos(ts), 4, { fill: DERIVED, stroke: DERIVED });
       }
-      if (Math.sin(ts) > 0.2) {
-        g += txt(cx + L * Math.sin(ts) + 6, cy + L * Math.cos(ts) - 9, "S = 0", { fill: DERIVED });
-      } else {
-        g += txt(cx, cy - L - 18, "S = 0", { fill: DERIVED, anchor: "middle" });
-      }
+      // Over sirkelen, der kula aldri kommer, så etiketten aldri havner oppå kula.
+      g += txt(cx, cy - L - 18, "λ = 0 ved prikkene", { fill: DERIVED, anchor: "middle" });
     } else if (k >= 5) {
-      g += txt(cx, cy - L - 18, "S ≥ 0 hele veien rundt", { fill: DERIVED, anchor: "middle" });
+      g += txt(cx, cy - L - 18, "λ > 0 hele veien rundt", { fill: DERIVED, anchor: "middle" });
     }
 
     // Kastebanen mens snora er slakk.
@@ -160,24 +158,27 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     // Kreftene på kula, i samme målestokk: tyngden ned, snordraget langs snora.
     g += arrow(bx, by, bx, by + F, LABEL, 1.5);
     g += txt(bx + 7, by + F + 4, "mg");
-    if (taut && S > 0) {
-      const len = F * S;
+    if (taut && lam > 0) {
+      const len = F * lam;
       const ux = (cx - bx) / L;
       const uy = (cy - by) / L;
       g += arrow(bx, by, bx + ux * len, by + uy * len, DERIVED, 2.5);
-      // Etiketten på den sida av pila som vender opp, vekk fra mg-pila under kula.
+      // Etiketten på venstre side av pila, vekk fra «m» til høyre for kula. Ligger pila nesten
+      // vannrett, går etiketten over den, vekk fra mg-pila under kula. Den sitter et stykke opp
+      // langs pila, så den holder seg unna θ-etiketten nær opphenget.
       let px = -uy;
       let py = ux;
-      if (py > 0) {
+      if (Math.abs(px) < 0.35 ? py > 0 : px > 0) {
         px = -px;
         py = -py;
       }
-      const lx = bx + ux * len * 0.55 + 12 * px;
-      const ly = by + uy * len * 0.55 + 12 * py;
-      g += txt(lx, ly + 4, "S", { fill: DERIVED, anchor: "middle" });
+      const along = Math.min(len, Math.max(16, 0.3 * len));
+      const lx = bx + ux * along + 12 * px;
+      const ly = by + uy * along + 12 * py;
+      g += txt(lx, ly + 4, "λ", { fill: DERIVED, anchor: "middle" });
     }
 
-    g += bob(bx, by, 9, MOVING, "m");
+    g += bob(bx, by, 9, MOVING);
     if (taut) g += angleFromDown(cx, cy, 0.42 * L, th, "θ");
     g += gravity(cx - L - 30, cy - L + 4);
 

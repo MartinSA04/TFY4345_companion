@@ -84,6 +84,13 @@ exams:
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_211200.pdf/f36d4cc9-75af-0a20-7b4d-3fe6a5326437",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_211200.pdf/50431bfb-3ec6-01f9-e76c-bb16b6236931",
     }
+  - {
+      label: "Kontinuasjonseksamen, august 2018",
+      id: "2018-aug-kont",
+      date: 2018-08-11,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_180811.pdf/b59f2777-3398-a215-d8be-009cd77cbe93",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_180811.pdf/6df647e3-7746-1a04-7f72-faa968a37278",
+    }
 
   # Settet fra 2013 har ingen dato på forsiden; dagen er hentet fra NTNUs filnavn
   # (E-TFY4345-25mai2013.pdf).
@@ -93,6 +100,13 @@ exams:
       date: 2013-05-25,
       url: "https://www.ntnu.no/documents/10422/1270665911/E-TFY4345-25mai2013.pdf/04cb9b52-18f2-448e-a0d5-d12cfef9d786",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L-TFY4345-25mai2013.pdf/a31d9494-70d8-4e64-aa64-cb694c759c1d",
+    }
+  - {
+      label: "Ordinær eksamen, juni 2011",
+      id: "2011-jun",
+      date: 2011-06-07,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E-TFY4345-07jun2011.pdf/5672a703-7672-4769-bbb9-23a412f8a632",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L-TFY4345-07jun2011.pdf/c362b3f8-444c-40c2-bd6a-b93b7845d229",
     }
 
 # Hele arkivet hos Institutt for fysikk — rendres som siste rad i lista.
@@ -227,7 +241,7 @@ formulas:
   - id: lagrangefunksjon
     section: Lagrangeformalismen
     tex: "L = T - V"
-    label: "Lagrangefunksjonen, kinetisk energi minus potensiell energi. Minustegnet skiller den fra den totale energien."
+    label: "Lagrangefunksjonen, kinetisk energi minus potensiell energi. Med den er Lagranges ligninger Newtons andre lov; med $T + V$ ville tyngden trukket oppover."
   - id: virkning
     section: Lagrangeformalismen
     tex: "S[q] = \\int_{t_1}^{t_2} L(q, \\dot q, t)\\, dt"
@@ -238,8 +252,8 @@ formulas:
     label: "Lagranges ligninger, én for hver generalisert koordinat. De følger av $\\delta S = 0$ og har samme form i alle koordinatsystemer."
   - id: ekvivalente-lagrangefunksjoner
     section: Lagrangeformalismen
-    tex: "L' = \\alpha L, \\qquad L' = L + \\frac{df(q, t)}{dt}"
-    label: "Lagrangefunksjoner som gir samme bevegelsesligninger som $L$. Virkningen endres med en faktor eller med randleddet $f(q_2, t_2) - f(q_1, t_1)$, som er likt for alle baner med faste endepunkter."
+    tex: "L' = \\alpha L, \\qquad L' = L + \\frac{dF(q, t)}{dt}"
+    label: "Lagrangefunksjoner som gir samme bevegelsesligninger som $L$, med en konstant $\\alpha \\ne 0$. Virkningen endres med en faktor eller med randleddet $F(q(t_2), t_2) - F(q(t_1), t_1)$, som er likt for alle baner med faste endepunkter."
   - id: lagrange-ladd-partikkel
     section: Lagrangeformalismen
     tex: "L = \\tfrac12 m\\dot{\\vec r}^2 + q\\,\\dot{\\vec r} \\cdot \\vec A - q\\phi"
@@ -250,8 +264,8 @@ formulas:
     label: "Gaugetransformasjon av potensialene med en vilkårlig funksjon $\\chi(\\vec r, t)$. $\\vec E$ og $\\vec B$ er uendret, og $L$ endres med $q\\,d\\chi/dt$, en total tidsderivert, så bevegelsen er den samme."
   - id: lagrange-multiplikator
     section: Lagrangeformalismen
-    tex: "\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot q_k} - \\frac{\\partial L}{\\partial q_k} = \\sum_\\alpha \\lambda_\\alpha \\frac{\\partial f_\\alpha}{\\partial q_k}"
-    label: "Lagranges ligninger med multiplikatorer for føringene $f_\\alpha(q, t) = 0$, fra $L' = L + \\sum_\\alpha \\lambda_\\alpha f_\\alpha$. Høyresida er føringskraften i retning $q_k$; for pendelen med $f = r - l$ er $\\lambda = -S$, snordraget med motsatt fortegn."
+    tex: "\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot q_k} - \\frac{\\partial L}{\\partial q_k} = -\\sum_\\alpha \\lambda_\\alpha \\frac{\\partial f_\\alpha}{\\partial q_k}"
+    label: "Lagranges ligninger med multiplikatorer for føringene $f_\\alpha(q, t) = 0$, fra $L' = L - \\sum_\\alpha \\lambda_\\alpha f_\\alpha$. Høyresida er føringskraften i retning $q_k$. For pendelen med $f = r - l$ er $\\lambda$ snordraget."
 
   - id: rotasjon-tidsderivert
     section: Roterende referansesystemer
@@ -580,9 +594,9 @@ symbols:
   - { tex: "q_i,\\ \\dot q_i", meaning: "Generaliserte koordinater og hastigheter", section: "Lagrangeformalismen", term: "Generaliserte koordinater", formula: euler-lagrange, id: q, note: "Ikke ladningen $q$ i Lagrangefunksjonen for en ladd partikkel." }
   - { tex: "n", meaning: "Antall frihetsgrader, $3N - k$", section: "Lagrangeformalismen", term: "Frihetsgrader", formula: frihetsgrader, note: "$N$ partikler med $k$ holonome føringer; her er $k$ et antall og ikke en fjærkonstant. I modulen om små svingninger heter antallet frihetsgrader $N$, og $n$ nummererer modene. I virialteoremet er $n$ graden til potensialet." }
   - { tex: "L", meaning: "Lagrangefunksjonen, $T - V$", unit: "J", section: "Lagrangeformalismen", term: "Lagrangefunksjon", formula: lagrangefunksjon, id: lagrangefunksjon, note: "Ikke dreieimpulsen $\\vec L$ eller Lagrangepunktene $L_1$ til $L_5$." }
-  - { tex: "S", meaning: "Virkningen, $\\int L\\,dt$ langs en bane", unit: "J·s", section: "Lagrangeformalismen", term: "Virkning", formula: virkning, note: "Med Lagrange-multiplikatorer er $S$ snordraget i pendelen, $S = -\\lambda$." }
-  - { tex: "f(q, t)", meaning: "Føringen, skrevet $f(q, t) = 0$; med flere føringer $f_\\alpha$", section: "Lagrangeformalismen", term: "Holonom føring", formula: lagrange-multiplikator, note: "I $L' = L + df/dt$ er $f$ en vilkårlig funksjon av koordinatene og tida, ikke en føring." }
-  - { tex: "\\lambda", meaning: "Lagrange-multiplikatoren; $\\lambda\\,\\partial f/\\partial q_k$ er føringskraften", section: "Lagrangeformalismen", term: "Lagrange-multiplikator", formula: lagrange-multiplikator, id: lambda, note: "Positiv $\\lambda$ peker mot økende $f$. Er føringen skrevet med $|\\nabla f| = 1$, er $|\\lambda|$ størrelsen av føringskraften. Ikke vekstraten $\\lambda$ i $e^{\\lambda t}$ nær en ustabil likevekt." }
+  - { tex: "S", meaning: "Virkningen, $\\int L\\,dt$ langs en bane", unit: "J·s", section: "Lagrangeformalismen", term: "Virkning", formula: virkning, note: "Ikke snordraget $S$." }
+  - { tex: "f(q, t)", meaning: "Føringen, skrevet $f(q, t) = 0$; med flere føringer $f_\\alpha$", section: "Lagrangeformalismen", term: "Holonom føring", formula: lagrange-multiplikator, note: "Ikke funksjonen $F(q, t)$ i $L' = L + dF/dt$." }
+  - { tex: "\\lambda", meaning: "Lagrange-multiplikatoren; $-\\lambda\\,\\partial f/\\partial q_k$ er føringskraften", section: "Lagrangeformalismen", term: "Lagrange-multiplikator", formula: lagrange-multiplikator, id: lambda, note: "Føringskraften er $-\\lambda\\nabla f$, så positiv $\\lambda$ peker mot minkende $f$. For pendelen med $f = r - l$ er $\\lambda$ snordraget. Ikke vekstraten $\\lambda$ i $e^{\\lambda t}$ nær en ustabil likevekt." }
   - { tex: "p_i", meaning: "Generalisert impuls, $\\partial L/\\partial\\dot q_i$", section: "Lagrangeformalismen", term: "Generalisert impuls", formula: generalisert-impuls, id: p-i, note: "Bevart når $q_i$ er syklisk. For en ladd partikkel er $\\vec p = m\\dot{\\vec r} + q\\vec A$ og ikke bare $m\\dot{\\vec r}$." }
   - { tex: "H", meaning: "Energifunksjonen, $\\sum_i \\dot q_i p_i - L$; skrevet ved $q$, $p$ og $t$ er den Hamiltonfunksjonen", unit: "J", section: "Lagrangeformalismen", term: "Energifunksjon", formula: energifunksjon, id: h, note: "Lik $T + V$ bare når føringene er tidsuavhengige og $V$ ikke avhenger av hastighetene. Som Hamiltonfunksjon tas $\\partial H/\\partial q_i$ med impulsene holdt fast." }
   - { tex: "\\epsilon,\\ F_i", meaning: "Parameteren og retningen i symmetrien $q_i \\to q_i + \\epsilon F_i$", section: "Lagrangeformalismen", term: "Kontinuerlig symmetri", formula: noether, note: "$F_i$ er ikke en kraft. Ikke $\\varepsilon$ i den anharmoniske oscillatoren." }
@@ -613,7 +627,7 @@ symbols:
   - { tex: "C", meaning: "Jacobis konstant, $\\tfrac12 v'^2 + U$", unit: "J/kg", section: "To- og trelegemeproblemet", term: "Jacobis konstant", formula: jacobi-konstant, id: jacobi, note: "Legemet kan bare være der $U \\le C$." }
   - { tex: "L_1\\text{–}L_5", meaning: "Lagrangepunktene, likevektspunktene i det roterende systemet", section: "To- og trelegemeproblemet", term: "Lagrangepunkt", formula: lagrangepunkter, note: "Ikke Lagrangefunksjonen $L$. $L_4$ og $L_5$ er stabile når $m_1/m_2 > 24{,}96$." }
   # ── Små svingninger ──
-  - { tex: "\\eta,\\ \\eta_i", meaning: "Utslaget fra likevekten, $q_i - q_{0i}$", section: "Små svingninger", formula: kvadratisk-lagrange, note: "I utledningen av Lagranges ligninger er $\\eta(t)$ variasjonen av banen." }
+  - { tex: "\\eta,\\ \\eta_i", meaning: "Utslaget fra likevekten, $q_i - q_{0i}$", section: "Små svingninger", formula: kvadratisk-lagrange, note: "I utledningen av Lagranges ligninger er $\\epsilon\\,\\eta(t)$ variasjonen av banen, med en liten parameter $\\epsilon$." }
   - { tex: "\\boldsymbol T,\\ \\boldsymbol V", meaning: "Matrisene til den kinetiske og den potensielle energien nær likevekten", section: "Små svingninger", formula: kvadratisk-lagrange, note: "$T_{ij} = m_{ij}(q_0)$ og $V_{ij} = \\partial^2 V/\\partial q_i\\,\\partial q_j$ i likevekten. Fete bokstaver, ikke energiene $T$ og $V$ selv." }
   - { tex: "\\omega_n", meaning: "Egenfrekvensene, røttene av sekulærligningen", unit: "rad/s", section: "Små svingninger", term: "Egenfrekvens", formula: sekulaerligning }
   - { tex: "\\mathbf A_n", meaning: "Modevektoren, forholdet mellom utslagene i mode $n$", section: "Små svingninger", term: "Normalmode", formula: sekulaerligning }
@@ -701,10 +715,10 @@ glossary:
     definition: "Tidsintegralet av kraften over støtet, $\\vec I = \\int \\vec F\\,dt$. Det er lik endringen i impuls."
   - term: Holonom føring
     section: Lagrangeformalismen
-    definition: "Betingelse på koordinatene på formen $f(\\vec r_1, \\dots, \\vec r_N, t) = 0$, som snorlengden til en pendel. Hver slik føring fjerner én frihetsgrad. Tidsavhengige føringer kalles rheonome, tidsuavhengige skleronome."
+    definition: "Betingelse på koordinatene på formen $f(\\vec r_1, \\dots, \\vec r_N, t) = 0$, som stanglengden til en pendel. Hver slik føring fjerner én frihetsgrad, også når den avhenger av tida."
   - term: Ikke-holonom føring
     section: Lagrangeformalismen
-    definition: "Føring som ikke kan skrives som $f(\\vec r_1, \\dots, \\vec r_N, t) = 0$: en ulikhet, som en partikkel oppå en fast kule, eller en betingelse på hastighetene som ikke kan integreres, som rulling uten å gli. Den fjerner ingen koordinat. Så lenge partikkelen ligger an mot kula, er avstanden til sentrum lik radien, og den likheten kan behandles som en holonom føring."
+    definition: "Føring som ikke kan skrives som $f(\\vec r_1, \\dots, \\vec r_N, t) = 0$: en ulikhet, som ei snor som kan bli slakk eller en vegg som bare kan skyve, eller en betingelse på hastighetene som ikke kan integreres, som en mynt som ruller uten å gli og kan svinge. Den fjerner ingen koordinat. En ulikhet kan behandles som en holonom føring så lenge kontakten holder, og føringskraften sier når den slipper."
   - term: Frihetsgrader
     section: Lagrangeformalismen
     definition: "Antall uavhengige størrelser som trengs for å angi systemets konfigurasjon. $N$ partikler med $k$ holonome føringer har $3N - k$."
@@ -716,10 +730,10 @@ glossary:
     definition: "Rommet med de generaliserte koordinatene som akser. Hele systemets bevegelse er én kurve der."
   - term: Føringskraft
     section: Lagrangeformalismen
-    definition: "Kraften som holder en føring oppfylt, som snordrag og normalkrefter. En friksjonsfri føringskraft står vinkelrett på forskyvningene føringen tillater ved fast tid, så den forsvinner når føringene settes inn i Lagrangefunksjonen. Avhenger føringen av tida, som en ring som en motor dreier, kan føringskraften likevel gjøre arbeid. En Lagrange-multiplikator henter føringskraften tilbake."
+    definition: "Kraften som holder en føring oppfylt, som snordrag og normalkrefter. Friksjonsfrie føringskrefter gjør til sammen ikke arbeid i noen virtuell forskyvning, så de forsvinner når føringene settes inn i Lagrangefunksjonen. Avhenger føringen av tida, som en ring som en motor dreier, kan føringskraften likevel gjøre arbeid. En Lagrange-multiplikator henter føringskraften tilbake."
   - term: Lagrangefunksjon
     section: Lagrangeformalismen
-    definition: "Funksjonen $L = T - V$ av koordinater og hastigheter. Den bestemmer dynamikken gjennom Lagranges ligninger."
+    definition: "Funksjonen $L = T - V$ av koordinater og hastigheter. Den bestemmer dynamikken gjennom Lagranges ligninger. For en ladd partikkel har den i tillegg leddet $q\\,\\dot{\\vec r} \\cdot \\vec A$."
   - term: Virkning
     section: Lagrangeformalismen
     definition: "Tallet $S = \\int L\\, dt$ tilordnet en bane mellom faste endepunkter ved faste tider. Den virkelige banen gjør virkningen stasjonær."
@@ -731,7 +745,10 @@ glossary:
     definition: "At ingen målbar størrelse avhenger av hvilke potensialer $\\phi$ og $\\vec A$ som beskriver feltene. Bevegelsen til en ladd partikkel er gaugeinvariant fordi en gaugetransformasjon bare legger en total tidsderivert til $L$."
   - term: Lagrange-multiplikator
     section: Lagrangeformalismen
-    definition: "Ukjent funksjon $\\lambda(t)$ som ganges med føringen $f(q, t)$ og legges til $L$. Ligningen for $\\lambda$ gir føringen tilbake, og $\\lambda\\,\\partial f/\\partial q_k$ er føringskraften i retning $q_k$. Der ei snor eller et underlag har $\\lambda = 0$, slipper føringen."
+    definition: "Ukjent funksjon $\\lambda(t)$ som ganges med føringen $f(q, t)$ og trekkes fra $L$. Ligningen for $\\lambda$ gir føringen tilbake, og $-\\lambda\\,\\partial f/\\partial q_k$ er føringskraften i retning $q_k$. Der $\\lambda$ for ei snor, et underlag eller en vegg blir null, slipper føringen."
+  - term: Virtuell forskyvning
+    section: Lagrangeformalismen
+    definition: "Forskyvning av systemet som føringene tillater ved fast tid, som når én generalisert koordinat endres litt og tida holdes fast. Friksjonsfrie føringskrefter gjør til sammen ikke arbeid i en virtuell forskyvning, og derfor står de ikke i Lagranges ligninger."
 
   - term: Vinkelhastighet
     section: Roterende referansesystemer
