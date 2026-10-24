@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" width="340" height="340">
+  <!-- Figur 1, modul 05: tyngden og sentrifugalleddet per masse i et punkt på breddegraden φ,
+       og summen g_eff som loddlinja følger. Rotasjonen er sterkt overdrevet. -->
+  <defs><marker id="al" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8d98a6"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#3f9a6c"/></marker><marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#c0703a"/></marker><marker id="am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#7c8795"/></marker></defs>
+  <circle cx="135" cy="195" r="125" fill="none" stroke="#8d98a6" stroke-width="2"/>
+  <line x1="135" y1="334" x2="135" y2="56" stroke="#8d98a6" stroke-width="1.5"/>
+  <line x1="135" y1="56" x2="135" y2="24" stroke="#8d98a6" stroke-width="2.2" marker-end="url(#al)"/>
+  <text x="149" y="36" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="start">ω</text>
+  <line x1="0" y1="195" x2="270" y2="195" stroke="#8d98a6" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <line x1="135" y1="195" x2="230.8" y2="114.7" stroke="#8d98a6" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <path d="M 159 195 A 24 24 0 0 0 153.4 179.6" fill="none" stroke="#7c8795" stroke-width="1.4"/>
+  <text x="168.8" y="188.7" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="middle">φ</text>
+  <circle cx="135" cy="195" r="2.5" fill="#8d98a6"/>
+  <text x="121" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="middle">N</text>
+  <text x="121" y="310" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="middle">S</text>
+  <line x1="135" y1="114.7" x2="230.8" y2="114.7" stroke="#8d98a6" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="182.9" y="106.7" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="middle">d</text>
+  <line x1="230.8" y1="114.7" x2="163.3" y2="171.2" stroke="#6f7a88" stroke-width="2.2" marker-end="url(#al)"/>
+  <line x1="230.8" y1="114.7" x2="280.8" y2="114.7" stroke="#c0703a" stroke-width="2.4" marker-end="url(#ao)"/>
+  <line x1="280.8" y1="114.7" x2="213.3" y2="171.2" stroke="#8d98a6" stroke-width="1" stroke-dasharray="5 4"/>
+  <line x1="163.3" y1="171.2" x2="213.3" y2="171.2" stroke="#8d98a6" stroke-width="1" stroke-dasharray="5 4"/>
+  <line x1="230.8" y1="114.7" x2="213.3" y2="171.2" stroke="#3f9a6c" stroke-width="2.6" marker-end="url(#ag)"/>
+  <path d="M 220.8 147.1 A 34 34 0 0 1 204.7 136.5" fill="none" stroke="#7c8795" stroke-width="1.4"/>
+  <text x="203.1" y="162.3" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="middle">α</text>
+  <text x="185" y="134.9" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="end">g</text>
+  <text x="286.8" y="106.7" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="start">ω<tspan font-family="KaTeX_Main, 'Times New Roman', serif" font-style="normal">²</tspan>d</text>
+  <text x="221.3" y="185.2" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#3f9a6c" text-anchor="start">g<tspan dy="5" font-size="12"><tspan font-family="KaTeX_Main, 'Times New Roman', serif" font-style="normal">eff</tspan></tspan></text>
+  <circle cx="230.8" cy="114.7" r="3.5" fill="#6f7a88"/>
+</svg>

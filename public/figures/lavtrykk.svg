@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <!-- Figur 3, modul 05: luft som strømmer inn mot et lavtrykk på den nordlige halvkula. Corioliskraften
+       bøyer hver strøm mot høyre, så lufta går rundt sentrum mot klokka. De stiplede linjene er
+       retningen lufta startet i. -->
+  <defs><marker id="al" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8d98a6"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#3f9a6c"/></marker><marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#c0703a"/></marker><marker id="am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#7c8795"/></marker></defs>
+  <path d="M 150 22 L 149.7 25.3 L 148.9 28.5 L 147.7 31.8 L 146 35.1 L 143.9 38.4 L 141.5 41.8 L 138.8 45.3 L 135.9 49 L 132.7 52.8 L 129.4 56.7 L 126.1 60.9 L 122.6 65.3 L 119.3 70 L 116 74.9 L 112.8 80 L 109.9 85.4 L 107.3 91.1 L 105.1 97 L 103.2 103.1 L 101.9 109.3 L 101.2 115.6 L 101 121.9 L 101.4 128.2 L 102.6 134.2" fill="none" stroke="#3f9a6c" stroke-width="2.4" marker-end="url(#ag)"/>
+  <line x1="150" y1="22" x2="150" y2="88" stroke="#8d98a6" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <path d="M 278 150 L 274.7 149.7 L 271.5 148.9 L 268.2 147.7 L 264.9 146 L 261.6 143.9 L 258.2 141.5 L 254.7 138.8 L 251 135.9 L 247.2 132.7 L 243.3 129.4 L 239.1 126.1 L 234.7 122.6 L 230 119.3 L 225.1 116 L 220 112.8 L 214.6 109.9 L 208.9 107.3 L 203 105.1 L 196.9 103.2 L 190.7 101.9 L 184.4 101.2 L 178.1 101 L 171.8 101.4 L 165.8 102.6" fill="none" stroke="#3f9a6c" stroke-width="2.4" marker-end="url(#ag)"/>
+  <line x1="278" y1="150" x2="212" y2="150" stroke="#8d98a6" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <path d="M 150 278 L 150.3 274.7 L 151.1 271.5 L 152.3 268.2 L 154 264.9 L 156.1 261.6 L 158.5 258.2 L 161.2 254.7 L 164.1 251 L 167.3 247.2 L 170.6 243.3 L 173.9 239.1 L 177.4 234.7 L 180.7 230 L 184 225.1 L 187.2 220 L 190.1 214.6 L 192.7 208.9 L 194.9 203 L 196.8 196.9 L 198.1 190.7 L 198.8 184.4 L 199 178.1 L 198.6 171.8 L 197.4 165.8" fill="none" stroke="#3f9a6c" stroke-width="2.4" marker-end="url(#ag)"/>
+  <line x1="150" y1="278" x2="150" y2="212" stroke="#8d98a6" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <path d="M 22 150 L 25.3 150.3 L 28.5 151.1 L 31.8 152.3 L 35.1 154 L 38.4 156.1 L 41.8 158.5 L 45.3 161.2 L 49 164.1 L 52.8 167.3 L 56.7 170.6 L 60.9 173.9 L 65.3 177.4 L 70 180.7 L 74.9 184 L 80 187.2 L 85.4 190.1 L 91.1 192.7 L 97 194.9 L 103.1 196.8 L 109.3 198.1 L 115.6 198.8 L 121.9 199 L 128.2 198.6 L 134.2 197.4" fill="none" stroke="#3f9a6c" stroke-width="2.4" marker-end="url(#ag)"/>
+  <line x1="22" y1="150" x2="88" y2="150" stroke="#8d98a6" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <path d="M 176.7 163.6 A 30 30 0 1 0 145.3 179.6" fill="none" stroke="#7c8795" stroke-width="1.8"/>
+  <line x1="139.4" y1="178.7" x2="145.3" y2="179.6" stroke="#7c8795" stroke-width="1.8" marker-end="url(#am)"/>
+  <text x="150" y="156" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#6f7a88" text-anchor="middle">L</text>
+  <text x="150" y="16" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="middle">N</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 300" width="320" height="300">
+  <!-- Figur 4, modul 05: banen til et elektron rundt en fast ladning i et svakt magnetfelt B ut av
+       arket, i tre stillinger etter hverandre (den svakeste først). Ellipsen dreier mot klokka med ω_L.
+       Dreiningen er sterkt overdrevet. -->
+  <defs><marker id="al" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8d98a6"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#3f9a6c"/></marker><marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#c0703a"/></marker><marker id="am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#7c8795"/></marker></defs>
+  <ellipse cx="135.3" cy="126.4" rx="75" ry="62" transform="rotate(-200 135.3 126.4)" fill="none" stroke="#3f9a6c" stroke-width="1.6" opacity="0.3"/>
+  <ellipse cx="153.9" cy="148.5" rx="75" ry="62" transform="rotate(-240 153.9 148.5)" fill="none" stroke="#3f9a6c" stroke-width="1.9" opacity="0.6"/>
+  <ellipse cx="182.3" cy="153.6" rx="75" ry="62" transform="rotate(-280 182.3 153.6)" fill="none" stroke="#3f9a6c" stroke-width="2.4" opacity="1"/>
+  <circle cx="175" cy="112" r="5" fill="#6f7a88"/>
+  <path d="M 49.1 157.8 A 134 134 0 0 0 198.3 244" fill="none" stroke="#c0703a" stroke-width="2"/>
+  <line x1="191.4" y1="245.2" x2="198.3" y2="244" stroke="#c0703a" stroke-width="2" marker-end="url(#ao)"/>
+  <text x="81.4" y="237.8" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#c0703a" text-anchor="middle">ω<tspan dy="5" font-size="12"><tspan font-family="KaTeX_Main, 'Times New Roman', serif" font-style="normal">L</tspan></tspan></text>
+  <circle cx="282" cy="34" r="10" fill="none" stroke="#8d98a6" stroke-width="1.6"/>
+  <circle cx="282" cy="34" r="2.6" fill="#8d98a6"/>
+  <text x="268" y="40" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="end">B</text>
+</svg>

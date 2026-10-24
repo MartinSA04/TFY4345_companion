@@ -85,6 +85,13 @@ exams:
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_211200.pdf/50431bfb-3ec6-01f9-e76c-bb16b6236931",
     }
   - {
+      label: "Ordinær eksamen, desember 2018",
+      id: "2018-des",
+      date: 2018-12-11,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_181211.pdf/975ccfe8-c496-a0fc-220d-a3850e0f59cc",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_181211.pdf/f30f2fc7-f315-a3d0-8a6b-3c9e56642dcd",
+    }
+  - {
       label: "Kontinuasjonseksamen, august 2018",
       id: "2018-aug-kont",
       date: 2018-08-11,
@@ -274,39 +281,39 @@ formulas:
   - id: hastighet-roterende
     section: Roterende referansesystemer
     tex: "\\vec v = \\vec v\\,' + \\vec\\omega \\times \\vec r"
-    label: "Hastigheten i $K$ er hastigheten målt i det roterende systemet pluss farten $\\vec\\omega \\times \\vec r$ til det medroterende punktet."
+    label: "Hastigheten i $K$ er hastigheten målt i det roterende systemet $K'$ pluss hastigheten $\\vec\\omega \\times \\vec r$ til punktet i $K'$ der legemet er."
   - id: akselerasjon-roterende
     section: Roterende referansesystemer
-    tex: "\\vec a = \\vec a\\,' + 2\\,\\vec\\omega \\times \\vec v\\,' + \\dot{\\vec\\omega} \\times \\vec r + \\vec\\omega \\times (\\vec\\omega \\times \\vec r)"
-    label: "Akselerasjonen i $K$ uttrykt ved størrelser målt i $K'$. Det siste leddet er $-\\omega^2\\vec d$ med $\\vec d$ vinkelrett fra aksen, altså sentripetalakselerasjonen for et medroterende punkt."
+    tex: "\\vec a = \\vec a\\,' + 2\\,\\vec\\omega \\times \\vec v\\,' + \\vec\\omega \\times (\\vec\\omega \\times \\vec r) \\allowbreak + \\dot{\\vec\\omega} \\times \\vec r"
+    label: "Akselerasjonen i $K$ uttrykt ved størrelser målt i $K'$. Leddet $\\vec\\omega \\times (\\vec\\omega \\times \\vec r) = -\\omega^2\\vec d$ er sentripetalakselerasjonen til et punkt som følger $K'$."
   - id: newton-roterende
     section: Roterende referansesystemer
     tex: "m\\vec a\\,' = \\vec F - 2m\\,\\vec\\omega \\times \\vec v\\,' - m\\,\\vec\\omega \\times (\\vec\\omega \\times \\vec r) - m\\,\\dot{\\vec\\omega} \\times \\vec r"
     label: "Newtons andre lov i et roterende system. De tre ekstra leddene er Corioliskraften, sentrifugalkraften og Eulerkraften; de er proporsjonale med $m$ og har ingen motkraft."
   - id: sentrifugalkraft
     section: Roterende referansesystemer
-    tex: "\\vec F_\\text{s} = m\\omega^2\\vec d = -\\nabla V_\\text{s}, \\qquad V_\\text{s} = -\\tfrac12 m\\,|\\vec\\omega \\times \\vec r|^2"
+    tex: "\\vec F_\\text{s} = m\\omega^2\\vec d = -\\nabla V_\\text{s}, \\qquad V_\\text{s} = -\\tfrac12 m\\omega^2 d^2"
     label: "Sentrifugalkraften peker ut fra aksen med størrelsen $m\\omega^2 d$ og er konservativ med potensialet $-\\tfrac12 m\\omega^2 d^2$. Vannflaten i ei roterende bøtte er paraboloiden $z = z_0 + \\omega^2 d^2/2g$."
   - id: effektiv-tyngde
     section: Roterende referansesystemer
     tex: "\\vec g_\\text{eff} = \\vec g - \\vec\\omega \\times (\\vec\\omega \\times \\vec R), \\qquad \\tan\\alpha \\approx \\frac{\\omega^2 R\\sin\\phi\\cos\\phi}{g}"
-    label: "Den effektive tyngdeakselerasjonen på breddegraden $\\phi$, og vinkelen loddlinja avviker fra retningen mot sentrum. $\\omega^2 R = 3{,}4$ cm/s² for jorda, og $\\alpha$ er størst ved $45°$, omtrent $0{,}1°$."
+    label: "Den effektive tyngdeakselerasjonen på breddegraden $\\phi$, og vinkelen loddlinja avviker fra retningen mot sentrum. $\\omega^2 R = 3{,}4$ cm/s² for jorda, og for ei kuleforma jord er $\\alpha$ størst ved $45°$, omtrent $0{,}1°$."
   - id: corioliskraft
     section: Roterende referansesystemer
-    tex: "\\vec F_\\text{C} = -2m\\,\\vec\\omega \\times \\vec v\\,', \\qquad F_\\text{C,\\,horisontal} = 2m\\omega v\\sin\\phi"
-    label: "Corioliskraften står vinkelrett på $\\vec v\\,'$ og gjør ikke arbeid. For bevegelse langs bakken på breddegraden $\\phi$ peker den horisontale komponenten mot høyre for fartsretningen på den nordlige halvkula."
+    tex: "\\vec F_\\text{C} = -2m\\,\\vec\\omega \\times \\vec v\\,', \\qquad F_\\text{C,\\,langs bakken} = 2m\\omega v\\sin\\phi"
+    label: "Corioliskraften står vinkelrett på $\\vec v\\,'$ og gjør ikke arbeid. For bevegelse langs bakken på breddegraden $\\phi$ peker delen langs bakken mot høyre for fartsretningen på den nordlige halvkula."
   - id: fall-avboyning
     section: Roterende referansesystemer
-    tex: "d = \\tfrac13\\, g\\omega\\cos\\phi\\, t^3, \\qquad t = \\sqrt{2h/g}"
-    label: "Avbøyningen mot øst for et legeme som faller fra ro fra høyden $h$, til første orden i $\\omega$. Fra $\\ddot{\\vec r} = \\vec g - 2\\vec\\omega \\times \\vec g\\,t$ integrert to ganger."
+    tex: "x = \\tfrac13\\, g\\omega\\cos\\phi\\, t^3, \\qquad t = \\sqrt{2h/g}"
+    label: "Avbøyningen $x$ mot øst for et legeme som faller fra ro gjennom høyden $h$, til første orden i $\\omega$. Fra $\\vec a\\,' \\approx \\vec g - 2t\\,\\vec\\omega \\times \\vec g$ integrert to ganger."
   - id: foucault
     section: Roterende referansesystemer
-    tex: "\\Omega_\\text{F} = \\omega\\sin\\phi, \\qquad T_\\text{F} = \\frac{24\\ \\text{h}}{\\sin\\phi}"
-    label: "Foucaults pendel: svingeplanet dreier med klokka på den nordlige halvkula med vinkelfarten $\\omega\\sin\\phi$. Løsningen er $x + iy = e^{-i\\omega\\sin\\phi\\,t}(A\\cos\\omega_0 t + B\\sin\\omega_0 t)$."
+    tex: "T_\\text{F} = \\frac{2\\pi}{\\omega\\sin\\phi}"
+    label: "Tida svingeplanet til Foucaults pendel bruker på én runde på breddegraden $\\phi$. Det dreier med vinkelfarten $\\omega\\sin\\phi$, med klokka på den nordlige halvkula, og i Trondheim tar runden 26,8 timer."
   - id: larmor
     section: Roterende referansesystemer
     tex: "\\vec\\omega_\\text{L} = -\\frac{q\\vec B}{2m}"
-    label: "Larmor-presesjonen. I systemet som roterer med $\\vec\\omega_\\text{L}$ opphever Corioliskraften magnetkraften $q\\vec v\\,' \\times \\vec B$, og banen i et svakt felt er den upåvirkede banen som dreier om feltretningen."
+    label: "Larmor-presesjonen. I systemet som roterer med $\\vec\\omega_\\text{L}$, opphever Corioliskraften magnetkraften $q\\vec v\\,' \\times \\vec B$, og en bane i et svakt felt er banen uten felt, som dreier med $\\vec\\omega_\\text{L}$."
 
   - id: generalisert-impuls
     section: Symmetrier og bevarte størrelser
@@ -605,7 +612,7 @@ symbols:
   # ── Roterende referansesystemer ──
   - { tex: "\\vec\\omega", meaning: "Vinkelhastigheten til et roterende system eller et stivt legeme", unit: "s⁻¹", section: "Roterende referansesystemer", term: "Vinkelhastighet", formula: rotasjon-tidsderivert, note: "For jorda er $\\omega = 7{,}29 \\cdot 10^{-5}$ s⁻¹. Perla på roterende ring i «Kjente systemer» bruker $\\omega$ for ringens vinkelfart, som modulen om små svingninger kaller $\\Omega$." }
   - { tex: "\\vec v\\,',\\ \\vec a\\,'", meaning: "Hastighet og akselerasjon målt i det roterende systemet $K'$", unit: "m/s, m/s²", section: "Roterende referansesystemer", formula: akselerasjon-roterende }
-  - { tex: "\\vec d", meaning: "Komponenten av $\\vec r$ vinkelrett på rotasjonsaksen", unit: "m", section: "Roterende referansesystemer", formula: sentrifugalkraft, note: "Ellers er $d$ avbøyningen i fall fra et tårn og avstanden mellom $m_1$ og $m_2$ i trelegemeproblemet." }
+  - { tex: "\\vec d", meaning: "Komponenten av $\\vec r$ vinkelrett på rotasjonsaksen", unit: "m", section: "Roterende referansesystemer", formula: sentrifugalkraft, note: "Ellers er $d$ avstanden mellom $m_1$ og $m_2$ i trelegemeproblemet." }
   - { tex: "V_\\text{s}", meaning: "Sentrifugalpotensialet, $-\\tfrac12 m\\omega^2 d^2$", unit: "J", section: "Roterende referansesystemer", term: "Sentrifugalkraft", formula: sentrifugalkraft, note: "Inngår i $U$ i trelegemeproblemet og i $H$ for et roterende system." }
   - { tex: "\\vec F_\\text{s},\\ \\vec F_\\text{C}", meaning: "Sentrifugalkraften og Corioliskraften", unit: "N", section: "Roterende referansesystemer", term: "Corioliskraft", formula: corioliskraft }
   # ── To- og trelegemeproblemet ──
@@ -752,7 +759,7 @@ glossary:
 
   - term: Vinkelhastighet
     section: Roterende referansesystemer
-    definition: "Vektoren $\\vec\\omega$ som beskriver en rotasjon: retningen ligger langs aksen etter høyrehåndsregelen, og lengden er vinkelfarten. Et punkt som følger rotasjonen har hastigheten $\\vec\\omega \\times \\vec r$."
+    definition: "Vektoren $\\vec\\omega$ som beskriver en rotasjon: retningen ligger langs aksen etter høyrehåndsregelen, og lengden er vinkelfarten. Et punkt som følger rotasjonen, har hastigheten $\\vec\\omega \\times \\vec r$."
   - term: Fiktiv kraft
     section: Roterende referansesystemer
     definition: "Et av leddene som må regnes som kraft for at $m\\vec a\\,' = \\text{kraft}$ skal gjelde i et system som ikke er inertialt. Fiktive krefter skyldes ikke noe annet legeme, har ingen motkraft og er proporsjonale med massen."
@@ -764,10 +771,10 @@ glossary:
     definition: "Den fiktive kraften $-2m\\vec\\omega \\times \\vec v\\,'$ på et legeme som beveger seg i et roterende system. Den står vinkelrett på hastigheten, gjør ikke arbeid og dytter det som beveger seg langs bakken, mot høyre på den nordlige halvkula."
   - term: Eulerkraft
     section: Roterende referansesystemer
-    definition: "Den fiktive kraften $-m\\dot{\\vec\\omega} \\times \\vec r$ som kommer når vinkelfarten til systemet endrer seg. Jordas $\\vec\\omega$ endrer seg så langsomt at Eulerkraften kan sløyfes."
+    definition: "Den fiktive kraften $-m\\dot{\\vec\\omega} \\times \\vec r$ som kommer når $\\vec\\omega$ endrer seg, i størrelse eller retning. Jordas $\\vec\\omega$ endrer seg så langsomt at Eulerkraften kan sløyfes."
   - term: Effektiv tyngdeakselerasjon
     section: Roterende referansesystemer
-    definition: "$\\vec g_\\text{eff} = \\vec g - \\vec\\omega \\times (\\vec\\omega \\times \\vec R)$, tyngden og sentrifugalkraften per masse for et legeme i ro på den roterende jorda. Loddlinja følger $\\vec g_\\text{eff}$, og jordoverflaten står vinkelrett på den."
+    definition: "$\\vec g_\\text{eff} = \\vec g - \\vec\\omega \\times (\\vec\\omega \\times \\vec R)$, tyngden og sentrifugalkraften per masse for et legeme i ro på den roterende jorda. Loddlinja følger $\\vec g_\\text{eff}$."
 
   - term: Generalisert impuls
     section: Symmetrier og bevarte størrelser

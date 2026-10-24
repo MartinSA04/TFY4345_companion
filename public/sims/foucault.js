@@ -1,150 +1,153 @@
 /**
- * Foucaults pendel sett ovenfra, i gulvets system. Kula slippes fra ro ute ved
- * kanten i nord og følger bevegelsesligningene for små utslag,
- *   ẍ = −ω₀² x + 2Ω ẏ,   ÿ = −ω₀² y − 2Ω ẋ,   Ω = ω sin φ,
- * der leddene med Ω er den horisontale Corioliskraften. Corioliskraften bøyer
- * banen mot høyre under hver sving (nordlige halvkule), så kula tegner en
- * rosett: spisse vendepunkter ute ved kanten, og banen bommer så vidt på
- * sentrum. Sporet blekner bakover. Buen fra startlinja viser vinkelen Ωt
- * svingeplanet i snitt har dreid.
+ * Foucaults pendel sett ovenfra, slik den henger over gulvet i et bygg på
+ * breddegraden φ. Alt er tegnet i systemet som følger gulvet. Ringen er en
+ * gradskive på gulvet med nord opp og øst til høyre, og den rette streken er
+ * pendeltråden sett ovenfra, fra punktet rett under opphenget ut til kula.
  *
- * Tida er skrudd opp: ett døgn tar 60 s, og pendelen svinger én gang per 5 s.
+ * Kula slippes fra ro mot nord. Den stiplede linja er svingeplanet ved
+ * slippet, og buen ved ringen viser hvor langt svingeplanet har dreid siden,
+ * opp til en hel runde. Sporet er kulas bane de siste sekundene.
+ *
+ * Bevegelsen er de små utslagene til en pendel med Corioliskraften tatt med,
+ * ξ = x + iy, ξ'' = −ω₀²ξ − 2iΩξ', Ω = ω sin φ, integrert med Runge–Kutta.
+ * Jordas rotasjon er sterkt overdrevet: på polen går svingeplanet rundt på
+ * 30 s, og pendelen svinger fram og tilbake på 1,6 s.
+ *
  * Kontrakt: default-eksportert init(api), api = { stage, controls, getSize,
  * onResize, signal }.
  */
-import {
-  slider, button, animate, svg, txt, line, circle, arc, arrow, rk4,
-  FIXED, MOVING, DERIVED, HINT, LABEL,
-} from "./_mekanikk.js";
+import { animate, slider, button, svg, txt, line, circle, arc, poly, rk4, FIXED, MOVING, DERIVED, HINT, LABEL } from "./_mekanikk.js";
 
 export default function init({ stage, controls, getSize, onResize, signal }) {
-  const DAY = 60; // sekunder per døgn i simuleringen
-  const OMEGA = (2 * Math.PI) / DAY; // jordas vinkelfart
-  const T0 = 5; // svingeperiode
-  const W0 = (2 * Math.PI) / T0;
-  const PSI0 = Math.PI / 2; // startplanet: nord–sør
-  const TRAIL = 30; // sekunder spor som vises
-  const MARK = 0.04; // tid mellom sporpunktene
-  let lat = 63; // breddegrad i grader
-  let t = 0;
-  let y = [0, 1, 0, 0]; // x, y, ẋ, ẏ i amplituder, x mot øst og y mot nord
-  let trail = [];
+  const W0 = (2 * Math.PI) / 1.6; // pendelens vinkelfrekvens ω₀, rad/s
+  const WPOLE = (2 * Math.PI) / 30; // jordas overdrevne ω, rad/s
+  const A = 1; // utslaget ved slippet; gradskiva har radius 1,25
+  const TRAIL = 5; // sekunder med spor
+  const DT = 1 / 240; // integrasjonssteg, s
 
-  const reset = () => {
+  let phi = 63; // breddegraden i grader, positiv nord
+  let playing = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let state, t, psi, trail, acc;
+
+  const Omega = () => WPOLE * Math.sin((phi * Math.PI) / 180);
+  // y = [x, y, ẋ, ẏ]; ẍ = −ω₀²x + 2Ωẏ, ÿ = −ω₀²y − 2Ωẋ.
+  const f = (_, y) => {
+    const O = Omega();
+    return [y[2], y[3], -W0 * W0 * y[0] + 2 * O * y[3], -W0 * W0 * y[1] - 2 * O * y[2]];
+  };
+
+  function release() {
+    state = [0, A, 0, 0];
     t = 0;
-    y = [Math.cos(PSI0), Math.sin(PSI0), 0, 0];
-    trail = [[y[0], y[1]]];
-  };
-  const big = () => OMEGA * Math.sin((lat * Math.PI) / 180); // Ω = ω sin φ
-
-  controls.append(
-    slider({
-      text: "Breddegrad φ",
-      aria: "Breddegrad i grader, negativ på den sørlige halvkula",
-      min: -90,
-      max: 90,
-      step: 1,
-      value: lat,
-      format: (v) => `${Math.abs(v)}° ${v < 0 ? "S" : "N"}`,
-      signal,
-      onInput: (v) => {
-        lat = v;
-        reset();
-      },
-    }),
-    button("Nullstill", "Slipp pendelen på nytt fra nord", reset, signal),
-  );
-
-  const f = (_, [x, yy, vx, vy]) => {
-    const om = big();
-    return [vx, vy, -W0 * W0 * x + 2 * om * vy, -W0 * W0 * yy - 2 * om * vx];
-  };
-  let since = 0;
-  function step(dt) {
-    const n = 8;
-    for (let i = 0; i < n; i++) y = rk4(y, f, t, dt / n);
-    t += dt;
-    since += dt;
-    if (since >= MARK) {
-      since = 0;
-      trail.push([y[0], y[1]]);
-      if (trail.length > TRAIL / MARK) trail.shift();
-    }
+    psi = 0; // vinkelen svingeplanet har dreid, positiv mot klokka
+    trail = [{ t: 0, x: 0, y: A }];
+    acc = 0;
   }
-  reset();
+  release();
 
+  function step(dt) {
+    acc += dt;
+    while (acc >= DT) {
+      state = rk4(state, f, t, DT);
+      t += DT;
+      psi -= Omega() * DT;
+      acc -= DT;
+    }
+    trail.push({ t, x: state[0], y: state[1] });
+    while (trail.length && trail[0].t < t - TRAIL) trail.shift();
+  }
+
+  // ── kontroller ────────────────────────────────────────────────────────────
+  const fmt = (v) => (v === 0 ? "0°" : `${Math.abs(v)}° ${v > 0 ? "N" : "S"}`);
+  const latSlider = slider({
+    text: "Breddegrad φ",
+    aria: "Breddegraden der pendelen henger, fra 90 grader sør til 90 grader nord",
+    min: -90,
+    max: 90,
+    step: 1,
+    value: phi,
+    format: fmt,
+    signal,
+    onInput: (v) => {
+      phi = v;
+      release();
+      render();
+    },
+  });
+  const again = button("Slipp på nytt", "Slipp kula på nytt fra ro mot nord", () => {
+    release();
+    render();
+  }, signal);
+  const playBtn = button(playing ? "Pause" : "Spill av", "Start eller stopp pendelen", () => {
+    playing = !playing;
+    playBtn.textContent = playing ? "Pause" : "Spill av";
+    if (playing) loop.start();
+  }, signal);
+  controls.append(again, playBtn, latSlider);
+
+  // ── tegning ───────────────────────────────────────────────────────────────
   function render() {
     const { w, h } = getSize();
     if (w < 60 || h < 60) return; // før scenen har fått mål
-    const R = Math.min(0.4 * h, 0.36 * w);
-    const A = 0.82 * R; // svingeamplituden på gulvet
+    const ring = Math.min(w, h) / 2 - 26; // gradskivens radius, px
+    const s = ring / 1.25; // px per utslagsenhet
     const cx = w / 2;
-    const cy = h / 2 + 6;
-    const P = (r, a) => [cx + r * Math.cos(a), cy - r * Math.sin(a)];
+    const cy = h / 2;
+    const P = (x, y) => [cx + s * x, cy - s * y];
     let g = "";
 
-    // Gulvet med himmelretningene.
-    g += circle(cx, cy, R, { stroke: FIXED, width: 2 });
-    const dirs = [
+    // Gradskiva: ring med streker hver 10°, lengre hver 30°, og himmelretningene.
+    g += circle(cx, cy, ring, { stroke: FIXED, width: 2 });
+    for (let k = 0; k < 36; k++) {
+      const a = (k * Math.PI) / 18;
+      const long = k % 3 === 0;
+      const r0 = ring - (long ? 9 : 5);
+      g += line(cx + r0 * Math.cos(a), cy + r0 * Math.sin(a), cx + ring * Math.cos(a), cy + ring * Math.sin(a), { color: FIXED, width: long ? 1.5 : 1 });
+    }
+    for (const [lab, a] of [
+      ["N", -Math.PI / 2],
       ["Ø", 0],
-      ["N", Math.PI / 2],
+      ["S", Math.PI / 2],
       ["V", Math.PI],
-      ["S", -Math.PI / 2],
-    ];
-    for (const [s, a] of dirs) {
-      const [x, y] = P(R + 15, a);
-      g += txt(x, y + 4, s, { anchor: "middle" });
+    ]) {
+      g += txt(cx + (ring + 13) * Math.cos(a), cy + (ring + 13) * Math.sin(a) + 4, lab, { anchor: "middle", size: 13 });
     }
 
-    // Sporet etter kula, i fem bolker som blekner bakover.
-    const K = 5;
-    const per = Math.ceil(trail.length / K);
-    for (let k = 0; k < K; k++) {
-      const part = trail.slice(k * per, (k + 1) * per + 1);
-      if (part.length < 2) continue;
-      let d = "";
-      part.forEach(([x, yy], i) => {
-        d += `${i ? "L" : "M"} ${(cx + A * x).toFixed(1)} ${(cy - A * yy).toFixed(1)} `;
-      });
-      g += `<path d="${d}" fill="none" stroke="${MOVING}" stroke-width="1.2" opacity="${(0.1 + (0.5 * (k + 1)) / K).toFixed(2)}"/>`;
+    // Svingeplanet ved slippet, og buen som viser hvor langt det har dreid.
+    g += line(cx, cy - ring, cx, cy + ring, { color: HINT, width: 1.2, dash: "5 5" });
+    // Vinkelen planet har dreid siden slippet, med fortegn; buen vokser til en hel runde og starter på nytt.
+    const back = psi % (2 * Math.PI);
+    if (Math.abs(back) > 0.02) {
+      // Skjermvinkler: nord er −π/2, og mot klokka på gulvet er minkende vinkel på skjermen.
+      g += arc(cx, cy, ring - 16, -Math.PI / 2, -Math.PI / 2 - back, { color: DERIVED, width: 3 });
+      const a1 = -Math.PI / 2 - back;
+      g += line(cx + (ring - 24) * Math.cos(a1), cy + (ring - 24) * Math.sin(a1), cx + (ring - 8) * Math.cos(a1), cy + (ring - 8) * Math.sin(a1), { color: DERIVED, width: 2.5 });
     }
 
-    // Startplanet og buen planet har dreid, med retning.
-    const [sx1, sy1] = P(A + 10, PSI0);
-    const [sx2, sy2] = P(-A - 10, PSI0);
-    g += line(sx1, sy1, sx2, sy2, { color: HINT, width: 1, dash: "3 4" });
-    const turned = -big() * t; // svingeplanets midlere dreining, negativ = med klokka
-    if (Math.abs(turned) > 0.03) {
-      const ra = 0.5 * R;
-      const lim = Math.min(Math.abs(turned), 1.9 * Math.PI) * Math.sign(turned);
-      // arc() bruker skjermvinkler (y ned), så fortegnet snus.
-      g += arc(cx, cy, ra, -PSI0, -(PSI0 + lim), { color: DERIVED, width: 1.5 });
-      const [ex, ey] = P(ra, PSI0 + lim);
-      const tx = -Math.sin(PSI0 + lim) * Math.sign(lim);
-      const ty = Math.cos(PSI0 + lim) * Math.sign(lim);
-      g += arrow(ex - tx * 6, ey + ty * 6, ex + tx * 6, ey - ty * 6, DERIVED, 1.5);
-      const [lx, ly] = P(ra + 16, PSI0 + lim / 2);
-      g += txt(lx, ly + 4, "ω sin φ · t", { fill: DERIVED, anchor: "middle" });
+    // Sporet, tråden sett ovenfra og kula.
+    if (trail.length > 1) {
+      const pts = trail.map((p) => P(p.x, p.y));
+      g += poly(pts, `stroke="${MOVING}" stroke-width="1.5" stroke-opacity="0.45" stroke-linejoin="round"`);
     }
-
-    // Snora sett ovenfra og kula.
-    const bx = cx + A * y[0];
-    const by = cy - A * y[1];
-    g += line(cx, cy, bx, by, { color: LABEL, width: 1 });
-    g += circle(cx, cy, 2.5, { fill: FIXED, stroke: FIXED });
-    g += `<circle cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" r="8" style="fill:${MOVING}"/>`;
+    const [bx, by] = P(state[0], state[1]);
+    g += line(cx, cy, bx, by, { color: FIXED, width: 1.5 });
+    g += circle(cx, cy, 3.5, { fill: FIXED, stroke: "none", width: 0 });
+    g += circle(bx, by, 9, { fill: MOVING, stroke: "none", width: 0 });
 
     stage.innerHTML = svg(w, h, g);
   }
 
-  onResize(render);
-  render();
-  animate({
+  const loop = animate({
     stage,
     signal,
+    running: () => playing,
     onFrame: (dt) => {
       step(dt);
       render();
     },
   });
+  // Uten animasjon vises de første ti sekundene.
+  if (!playing) for (let i = 0; i < 600; i++) step(1 / 60);
+  onResize(render);
+  render();
 }
