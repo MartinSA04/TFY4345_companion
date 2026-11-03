@@ -98,6 +98,13 @@ exams:
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_180811.pdf/b59f2777-3398-a215-d8be-009cd77cbe93",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_180811.pdf/6df647e3-7746-1a04-7f72-faa968a37278",
     }
+  - {
+      label: "Ordinær eksamen, desember 2017",
+      id: "2017-des",
+      date: 2017-12-12,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_171212.pdf/56ecc352-0fd7-9780-8c00-faafbbd104be",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_171212.pdf/b0b6ecfb-8a32-3b28-d2ec-3a6e5a8fbb1d",
+    }
 
   # Settet fra 2013 har ingen dato på forsiden; dagen er hentet fra NTNUs filnavn
   # (E-TFY4345-25mai2013.pdf).
@@ -322,7 +329,7 @@ formulas:
   - id: energifunksjon
     section: Symmetrier og bevarte størrelser
     tex: "\\begin{aligned} H &= \\sum_i \\dot q_i\\,\\frac{\\partial L}{\\partial\\dot q_i} - L \\\\ \\frac{dH}{dt} &= -\\frac{\\partial L}{\\partial t} \\end{aligned}"
-    label: "Energifunksjonen. Bevart når $L$ ikke avhenger eksplisitt av tida, og lik $T + V$ når føringene er tidsuavhengige og $V$ ikke avhenger av hastighetene."
+    label: "Energifunksjonen. Bevart når $L$ ikke avhenger eksplisitt av tida, og lik $T + V$ når posisjonene ikke avhenger av tida og $V$ bare av koordinatene."
   - id: lagrange-roterende
     section: Symmetrier og bevarte størrelser
     tex: "\\begin{aligned} &L = \\tfrac12 m\\left(\\vec v\\,' + \\vec\\omega \\times \\vec r\\right)^2 - V \\\\ &H = \\tfrac12 mv'^2 + V - \\tfrac12 m\\,|\\vec\\omega \\times \\vec r|^2 \\end{aligned}"
@@ -605,7 +612,7 @@ symbols:
   - { tex: "f(q, t)", meaning: "Føringen, skrevet $f(q, t) = 0$; med flere føringer $f_\\alpha$", section: "Lagrangeformalismen", term: "Holonom føring", formula: lagrange-multiplikator, note: "Ikke funksjonen $F(q, t)$ i $L' = L + dF/dt$." }
   - { tex: "\\lambda", meaning: "Lagrange-multiplikatoren; $-\\lambda\\,\\partial f/\\partial q_k$ er føringskraften", section: "Lagrangeformalismen", term: "Lagrange-multiplikator", formula: lagrange-multiplikator, id: lambda, note: "Føringskraften er $-\\lambda\\nabla f$, så positiv $\\lambda$ peker mot minkende $f$. For pendelen med $f = r - l$ er $\\lambda$ snordraget. Ikke vekstraten $\\lambda$ i $e^{\\lambda t}$ nær en ustabil likevekt." }
   - { tex: "p_i", meaning: "Generalisert impuls, $\\partial L/\\partial\\dot q_i$", section: "Lagrangeformalismen", term: "Generalisert impuls", formula: generalisert-impuls, id: p-i, note: "Bevart når $q_i$ er syklisk. For en ladd partikkel er $\\vec p = m\\dot{\\vec r} + q\\vec A$ og ikke bare $m\\dot{\\vec r}$." }
-  - { tex: "H", meaning: "Energifunksjonen, $\\sum_i \\dot q_i p_i - L$; skrevet ved $q$, $p$ og $t$ er den Hamiltonfunksjonen", unit: "J", section: "Lagrangeformalismen", term: "Energifunksjon", formula: energifunksjon, id: h, note: "Lik $T + V$ bare når føringene er tidsuavhengige og $V$ ikke avhenger av hastighetene. Som Hamiltonfunksjon tas $\\partial H/\\partial q_i$ med impulsene holdt fast." }
+  - { tex: "H", meaning: "Energifunksjonen, $\\sum_i \\dot q_i p_i - L$; skrevet ved $q$, $p$ og $t$ er den Hamiltonfunksjonen", unit: "J", section: "Lagrangeformalismen", term: "Energifunksjon", formula: energifunksjon, id: h, note: "Lik $T + V$ når posisjonene ikke avhenger av tida og $V$ bare av koordinatene. Som Hamiltonfunksjon tas $\\partial H/\\partial q_i$ med impulsene holdt fast." }
   - { tex: "\\epsilon,\\ F_i", meaning: "Parameteren og retningen i symmetrien $q_i \\to q_i + \\epsilon F_i$", section: "Lagrangeformalismen", term: "Kontinuerlig symmetri", formula: noether, note: "$F_i$ er ikke en kraft. Ikke $\\varepsilon$ i den anharmoniske oscillatoren." }
   - { tex: "F,\\ Q", meaning: "Funksjonen i $\\delta L = \\epsilon\\,dF/dt$ og den bevarte størrelsen $Q = \\sum_i p_iF_i - F$", section: "Lagrangeformalismen", term: "Noethers teorem", formula: noether, note: "Ikke en kraft $\\vec F$, og ikke kjerneladningen $Q$ i Rutherford-spredning." }
   - { tex: "\\phi,\\ \\vec A", meaning: "Skalarpotensialet og vektorpotensialet for en ladd partikkel", unit: "V, T·m", section: "Lagrangeformalismen", term: "Gaugeinvarians", formula: lagrange-ladd-partikkel, note: "$\\vec E = -\\nabla\\phi - \\partial\\vec A/\\partial t$ og $\\vec B = \\nabla \\times \\vec A$. Ikke vinkelen $\\phi$ eller Runge–Lenz-vektoren $\\vec A$." }
@@ -778,22 +785,22 @@ glossary:
 
   - term: Generalisert impuls
     section: Symmetrier og bevarte størrelser
-    definition: "$p_i = \\partial L/\\partial\\dot q_i$, impulsen som hører til koordinaten $q_i$. Kalles også kanonisk eller konjugert impuls. Lagranges ligning for $q_i$ lyder $\\dot p_i = \\partial L/\\partial q_i$. Den er lik den mekaniske impulsen bare når hastigheten inngår i $L$ gjennom $T$ alene."
+    definition: "$p_i = \\partial L/\\partial\\dot q_i$, impulsen som hører til koordinaten $q_i$. Kalles også kanonisk eller konjugert impuls. Lagranges ligning for $q_i$ lyder $\\dot p_i = \\partial L/\\partial q_i$. For en kartesisk koordinat uten magnetfelt er den $m\\dot x$, for en ladd partikkel er den $m\\dot{\\vec r} + q\\vec A$, og i et roterende system er den $m\\vec v$, impulsen i inertialsystemet, og ikke $m\\vec v\\,'$."
   - term: Syklisk koordinat
     section: Symmetrier og bevarte størrelser
     definition: "Koordinat som ikke inngår i $L$, slik at $\\partial L/\\partial q_i = 0$. Da er $\\dot p_i = 0$ etter Lagranges ligning, og den generaliserte impulsen $p_i$ er bevart."
   - term: Energifunksjon
     section: Symmetrier og bevarte størrelser
-    definition: "$H = \\sum_i \\dot q_i\\,\\partial L/\\partial\\dot q_i - L$, med $dH/dt = -\\partial L/\\partial t$. Bevart når $L$ ikke avhenger eksplisitt av tida, og lik energien $T + V$ når føringene er tidsuavhengige og $V$ bare avhenger av koordinatene. Skrevet ved koordinatene og impulsene er den Hamiltonfunksjonen."
+    definition: "$H = \\sum_i \\dot q_i\\,\\partial L/\\partial\\dot q_i - L$, med $dH/dt = -\\partial L/\\partial t$. Bevart når $L$ ikke avhenger eksplisitt av tida, og lik energien $T + V$ når posisjonene ikke avhenger av tida og $V$ bare av koordinatene. Skrevet ved koordinatene og impulsene er den Hamiltonfunksjonen."
   - term: Kontinuerlig symmetri
     section: Symmetrier og bevarte størrelser
-    definition: "Transformasjon $q_i \\to q_i + \\epsilon F_i(q, \\dot q, t)$ med en parameter $\\epsilon$ som kan gjøres vilkårlig liten, og som endrer $L$ med høyst en total tidsderivert $\\epsilon\\,dF/dt$ for alle baner. Forskyvning, rotasjon og Galilei-transformasjonen er eksempler; speiling er det ikke, for den har ingen parameter."
+    definition: "Transformasjon $q_i \\to q_i + \\epsilon F_i(q, \\dot q, t)$ med en parameter $\\epsilon$ som kan gjøres vilkårlig liten, og som endrer $L$ med høyst en total tidsderivert $\\epsilon\\,dF/dt$ for enhver bane. Forskyvning, rotasjon og Galilei-transformasjonen er eksempler. Speiling er det ikke, for den kan ikke gjøres liten."
   - term: Noethers teorem
     section: Symmetrier og bevarte størrelser
-    definition: "Hver kontinuerlig symmetri av Lagrangefunksjonen gir en bevart størrelse. Forskyvningen $q_i \\to q_i + \\epsilon F_i$ er en symmetri når den endrer $L$ med høyst en total tidsderivert $\\epsilon\\,dF/dt$, og da er $\\sum_i p_i F_i - F$ bevart."
+    definition: "Hver kontinuerlig symmetri av Lagrangefunksjonen gir en bevart størrelse. Transformasjonen $q_i \\to q_i + \\epsilon F_i$ er en symmetri når den endrer $L$ med høyst en total tidsderivert $\\epsilon\\,dF/dt$ for enhver bane, og da er $\\sum_i p_i F_i - F$ bevart."
   - term: Effektivt potensial
     section: Symmetrier og bevarte størrelser
-    definition: "Potensialet som står igjen for én koordinat når de bevarte størrelsene er satt inn i energien, som $p_\\phi^2/2\\mu r^2 + V(r)$ for radialbevegelsen i et sentralpotensial. Vendepunkter og likevekter leses ut av det som av et vanlig potensial."
+    definition: "Potensialet som står igjen for én koordinat når de bevarte størrelsene er satt inn i energien, som $p_\\phi^2/(2ml^2\\sin^2\\theta) - mgl\\cos\\theta$ for den sfæriske pendelen og $J^2/2\\mu r^2 + V(r)$ for radialbevegelsen i et sentralpotensial. Vendepunkter og likevekter leses ut av det som av et vanlig potensial."
 
   - term: Sentrifugalbarriere
     section: Tolegemeproblemet

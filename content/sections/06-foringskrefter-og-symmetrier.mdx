@@ -1,89 +1,122 @@
 ---
 order: 6
 title: "Symmetrier og bevaringslover"
-summary: "Hver koordinat som mangler i Lagrangefunksjonen, gir en bevart impuls, energifunksjonen er bevart når tida mangler, og Noethers teorem gir en bevart størrelse for hver kontinuerlig symmetri."
+summary: "En koordinat som ikke står i Lagrangefunksjonen, gir en bevart impuls, og når tida ikke står der, er energifunksjonen bevart. Noethers teorem gir en bevart størrelse for hver kontinuerlig symmetri. To bevarte størrelser holder den sfæriske pendelen mellom to sirkler, og Lagrangefunksjonen i et roterende system gir Corioliskraften og sentrifugalkraften."
 importance: core
 tag: "Uke 38"
-updated: 2026-10-22
+updated: 2026-11-03
 ---
 
 <LearningGoals>
-- Kjenne igjen en syklisk koordinat og bruke at den generaliserte impulsen som hører til den, er bevart.
-- Sette opp energifunksjonen $H$, avgjøre om den er bevart, og om den er lik energien.
-- Utlede sentrifugalkraften og Corioliskraften fra Lagrangefunksjonen i et roterende system.
-- Formulere og bevise Noethers teorem, og finne den bevarte størrelsen som hører til en gitt symmetri.
+- Finne den generaliserte impulsen til en koordinat, og bruke at den er bevart når koordinaten er syklisk.
+- Sette opp energifunksjonen, avgjøre om den er bevart, og avgjøre om den er lik energien.
+- Bruke to bevarte størrelser til å finne vendepunktene til den sfæriske pendelen.
+- Utlede Corioliskraften og sentrifugalkraften fra Lagrangefunksjonen i et roterende system.
+- Formulere og bevise Noethers teorem, og finne den bevarte størrelsen som hører til en symmetri.
 </LearningGoals>
 
-## Generalisert impuls og sykliske koordinater
+Ei kule henger i ei lett stang med lengde 1,0 m og kan svinge i alle retninger. Trekk den ut til 60° fra loddlinja og gi den farten 1,4 m/s sidelengs, vinkelrett på planet gjennom stanga og loddlinja. Kula går rundt loddlinja, men den kommer aldri under opphenget. Den svinger mellom 60° og 22° fra loddlinja. Begge vinklene følger av to størrelser som er bevart, uten at du løser bevegelsesligningene.
 
-Kall $\partial L/\partial\dot q_i$ den <Term name="generalisert impuls">generaliserte impulsen</Term> $p_i$. Da er Lagranges ligning for $q_i$ en bevegelsesligning for $p_i$:
+## Sykliske koordinater
 
-<Formula
-  tex="p_i = \frac{\partial L}{\partial\dot q_i}, \qquad \dot p_i = \frac{\partial L}{\partial q_i}"
-  caption="<b>Den generaliserte impulsen</b> til koordinaten $q_i$, også kalt kanonisk eller konjugert impuls. Etter Lagranges ligning endres den med den generaliserte kraften $\partial L/\partial q_i$."
+Simuleringen viser kula ovenfra og litt fra siden.
+
+<Simulation
+  src="/sims/sfaerisk-pendel.js"
+  title="Den sfæriske pendelen"
+  caption="Kula på ei stang med lengde $l = 1{,}0\ \text{m}$, sluppet fra $\theta = 60°$ med en sidefart vinkelrett på planet gjennom stanga og loddlinja. De stiplede sirklene ligger ved vendepunktene for $\theta$, $d$ er avstanden fra loddlinja, og den oransje pila er farten rundt loddlinja."
+  host="dom"
+  height={200}
 />
 
-For en kartesisk koordinat er $p_x = m\dot x$, den vanlige impulsen. For pendelvinkelen er $p_\theta = ml^2\dot\theta$, dreieimpulsen om opphenget. For en ladd partikkel i et elektromagnetisk felt er $\vec p = m\dot{\vec r} + q\vec A$, som ikke er den mekaniske impulsen $m\dot{\vec r}$.
+Sett sidefarten til 0. Kula svinger fram og tilbake gjennom bunnpunktet, som en vanlig pendel. Sett den tilbake til 1,4 m/s. Nå går kula rundt loddlinja mellom to sirkler, ved 60° og 22°. Vinklene der kula snur, er vendepunktene for $\theta$. Den oransje pila er lengst når kula er ved den indre sirkelen.
 
-En koordinat som mangler i $L$, kalles <Term name="syklisk koordinat">syklisk</Term>. For den er $\partial L/\partial q_i = 0$, så $\dot p_i = 0$ og $p_i$ er bevart. For den sfæriske pendelen, med $\theta$ fra loddlinja og $\phi$ rundt den, er
+Kula går fortere rundt når den er nær loddlinja, fordi dreieimpulsen om loddlinja er bevart. Stanga trekker kula mot opphenget, og opphenget ligger på loddlinja. Tyngden er parallell med loddlinja. Ingen av kreftene har dreiemoment om loddlinja, så dreieimpulsen om loddlinja er konstant. Med avstanden ${d = l\sin\theta}$ fra loddlinja og farten $v_\phi$ rundt den er dreieimpulsen $m\,d\,v_\phi$. Når $d$ blir mindre, blir $v_\phi$ større, slik en kunstløper snurrer fortere med armene inntil kroppen.
+
+Lagranges ligninger gir den samme størrelsen uten at du leter etter dreiemomenter. Med $\theta$ fra loddlinja og $\phi$ rundt den har farten komponentene $l\dot\theta$ i planet gjennom stanga og loddlinja og ${l\sin\theta\,\dot\phi}$ rundt loddlinja. De står vinkelrett på hverandre, så
 
 $$
 L = \tfrac12 ml^2\left(\dot\theta^2 + \dot\phi^2\sin^2\theta\right) \allowbreak + mgl\cos\theta
 $$
 
-$\phi$ mangler i $L$, så $p_\phi = ml^2\dot\phi\sin^2\theta$, dreieimpulsen om loddlinja, er bevart. Om en koordinat er syklisk, avhenger av hvilke koordinater du velger. Et sentralpotensial gjør $\phi$ syklisk i polarkoordinater, men ingen av de kartesiske koordinatene er syklisk.
+Vinkelen $\phi$ står ikke i $L$, bare den tidsderiverte $\dot\phi$. Lagranges ligning for $\phi$ er derfor
+
+$$
+\frac{d}{dt}\frac{\partial L}{\partial\dot\phi} = \frac{\partial L}{\partial\phi} = 0
+$$
+
+og ${\partial L/\partial\dot\phi = ml^2\sin^2\theta\,\dot\phi}$ er konstant. Størrelsen er dreieimpulsen om loddlinja, $m\,d\,v_\phi$ med ${d = l\sin\theta}$ og ${v_\phi = l\sin\theta\,\dot\phi}$.
+
+Lagranges ligning gir en slik bevart størrelse for hver koordinat som ikke står i $L$. Kall ${\partial L/\partial\dot q_i}$ den <Term name="generalisert impuls">generaliserte impulsen</Term> $p_i$ til koordinaten $q_i$. Da sier Lagranges ligning at $p_i$ endres med ${\partial L/\partial q_i}$:
+
+<Formula
+  tex="p_i = \frac{\partial L}{\partial\dot q_i}, \qquad \dot p_i = \frac{\partial L}{\partial q_i}"
+  caption="<b>Den generaliserte impulsen</b> til koordinaten $q_i$, også kalt kanonisk eller konjugert impuls, og Lagranges ligning skrevet med den."
+/>
+
+En koordinat som ikke står i $L$, er <Term name="syklisk koordinat">syklisk</Term>. For den er ${\partial L/\partial q_i = 0}$, så $p_i$ er bevart. For en fri partikkel er $x$ syklisk, og ${p_x = m\dot x}$ er den vanlige impulsen.
+
+Om en koordinat er syklisk, avhenger av hvilke koordinater du velger. En partikkel i et sentralpotensial $V(r)$ i planet har ${L = \tfrac12 m(\dot r^2 + r^2\dot\phi^2) - V(r)}$ i polarkoordinater. Der er $\phi$ syklisk, og ${p_\phi = mr^2\dot\phi}$ er bevart. I kartesiske koordinater står både $x$ og $y$ i ${V(\sqrt{x^2 + y^2})}$. Bevegelsen er den samme, og dreieimpulsen er bevart i begge, men bare polarkoordinatene viser den som en impuls til en koordinat som mangler i $L$.
 
 <Callout title="Syklisk koordinat">
-Mangler $q_i$ i $L$, er den generaliserte impulsen $p_i = \partial L/\partial\dot q_i$ bevart. Hvilke koordinater som er sykliske, avhenger av koordinatvalget.
+Står ikke $q_i$ i $L$, er den generaliserte impulsen ${p_i = \partial L/\partial\dot q_i}$ bevart. Om en koordinat er syklisk, avhenger av hvilke koordinater du velger.
 </Callout>
 
+<Example label="Eksamensoppgave" title="Bevart størrelse i et sentralpotensial">
+<ExamRef id="2023-nov" task="1.5" />
+
+A particle with mass $m$ moves in the $xy$ plane in a potential $V(r) = kr^2/2$. Here, $k$ is a positive constant, ${r^2 = x^2 + y^2}$, ${x = r\cos\theta}$ and ${y = r\sin\theta}$.
+
 <Quiz
-  question="En ladd partikkel beveger seg i det uniforme magnetfeltet $B\hat z$, med vektorpotensialet $\vec A = Bx\,\hat y$ og $\phi = 0$. Hva er bevart?"
+  question="Which quantity (in addition to the total energy) is conserved for this particle?"
+  options={["$p_x$", "$p_y$", "$v_x$", "$v_y$", "$p_\\theta$", "None"]}
+  answer={4}
+  explanation={"I polarkoordinater er $L = \\tfrac12 m(\\dot r^2 + r^2\\dot\\theta^2) - \\tfrac12 kr^2$. $\\theta$ står ikke i $L$, så $p_\\theta = mr^2\\dot\\theta$ er bevart. I kartesiske koordinater er $L = \\tfrac12 m(\\dot x^2 + \\dot y^2) - \\tfrac12 k(x^2 + y^2)$. Både $x$ og $y$ står i $L$, så $\\dot p_x = -kx$ og $\\dot p_y = -ky$, og verken $p_x$, $p_y$ eller fartskomponentene er bevart."}
+/>
+</Example>
+
+<Quiz
+  question="En partikkel med ladningen $q$ beveger seg i det uniforme magnetfeltet $B\hat z$, beskrevet med vektorpotensialet $\vec A = Bx\,\hat y$, så $L = \tfrac12 m\dot{\vec r}^{\,2} + q\,\dot{\vec r}\cdot\vec A$. Hvilken størrelse er bevart?"
   options={["$m\\dot y + qBx$", "$m\\dot y$", "$m\\dot y - qBx$", "$m\\dot x$"]}
   answer={0}
-  explanation="Med $L = \tfrac12 m\dot{\vec r}^2 + q\,\dot{\vec r}\cdot\vec A = \tfrac12 m\dot{\vec r}^2 + qBx\dot y$ mangler $y$ i $L$, så $p_y = \partial L/\partial\dot y = m\dot y + qBx$ er bevart. Fortegnet kommer fra leddet $+q\,\dot{\vec r}\cdot\vec A$ i $L$. $x$ står i $L$, så $m\dot x$ er ikke bevart, og heller ikke $m\dot y$: Lorentzkraften har komponentene $qB\dot y$ langs $x$ og $-qB\dot x$ langs $y$. $p_y/qB$ er $x$-koordinaten til sentrum av sirkelen partikkelen går i."
+  explanation={"Med $\\vec A = Bx\\,\\hat y$ er $L = \\tfrac12 m(\\dot x^2 + \\dot y^2 + \\dot z^2) + qBx\\dot y$. $y$ står ikke i $L$, så $p_y = \\partial L/\\partial\\dot y = m\\dot y + qBx$ er bevart. Leddet $q\\,\\dot{\\vec r}\\cdot\\vec A$ bidrar til $p_y$, så den generaliserte impulsen er ikke $m\\dot y$. Magnetkraften har $y$-komponenten $-qB\\dot x$ og endrer $m\\dot y$. $x$ står i $L$, så $m\\dot x$ er ikke bevart."}
 />
 
 ## Energifunksjonen
 
-Tida kan også mangle i $L$. For å finne en bevart størrelse deriverer du $L$ langs en løsning. Kjerneregelen gir ett ledd for hver $q_i$ og hver $\dot q_i$, pluss $\partial L/\partial t$. Langs en løsning er $\partial L/\partial q_i = \dot p_i$, og $\partial L/\partial\dot q_i = p_i$, så de to leddene for hver $i$ er $\dot p_i\dot q_i + p_i\ddot q_i = \frac{d}{dt}(p_i\dot q_i)$:
+Tida står heller ikke i $L$ for den sfæriske pendelen, og energien er bevart. For å finne størrelsen som er bevart når tida ikke står i $L$, deriver $L$ langs en løsning. Kjerneregelen gir ett ledd for hver $q_i$ og hver $\dot q_i$, pluss ${\partial L/\partial t}$. Langs en løsning kan du bytte ${\partial L/\partial q_i}$ med $\dot p_i$. Da er de to leddene for hver koordinat ${\dot p_i\dot q_i + p_i\ddot q_i}$, den tidsderiverte av ${p_i\dot q_i}$:
 
 $$
 \begin{aligned}
 \frac{dL}{dt} &= \sum_i \left(\frac{\partial L}{\partial q_i}\dot q_i + \frac{\partial L}{\partial\dot q_i}\ddot q_i\right) + \frac{\partial L}{\partial t} \\
-&= \sum_i \left(\dot p_i\,\dot q_i + p_i\,\ddot q_i\right) + \frac{\partial L}{\partial t} \\
-&= \frac{d}{dt}\sum_i \dot q_i\,p_i + \frac{\partial L}{\partial t}
+&= \frac{d}{dt}\sum_i p_i\dot q_i + \frac{\partial L}{\partial t}
 \end{aligned}
 $$
 
-Samle de totale tidsderiverte på venstre side:
+Flytt $dL/dt$ og summen over på samme side:
 
 $$
-\frac{d}{dt}\Bigl(\sum_i \dot q_i\,p_i - L\Bigr) = -\frac{\partial L}{\partial t}
+\frac{d}{dt}\Bigl(\sum_i p_i\dot q_i - L\Bigr) = -\frac{\partial L}{\partial t}
 $$
 
-Størrelsen i parentesen er energifunksjonen $H$. Mangler tida i $L$, er høyresida null, og $H$ er bevart:
+Størrelsen i parentesen er <Term name="energifunksjon">energifunksjonen</Term> $H$:
 
 <Formula
-  tex="\begin{aligned} H &= \sum_i \dot q_i\,\frac{\partial L}{\partial\dot q_i} - L \\ \frac{dH}{dt} &= -\frac{\partial L}{\partial t} \end{aligned}"
-  caption="<b>Energifunksjonen.</b> Den er bevart når $L$ ikke avhenger eksplisitt av tida."
+  tex="\begin{aligned} H &= \sum_i \dot q_i\,p_i - L \\ \frac{dH}{dt} &= -\frac{\partial L}{\partial t} \end{aligned}"
+  caption="<b>Energifunksjonen.</b> Den er bevart når tida ikke står eksplisitt i $L$."
 />
 
-$H$ er energien når posisjonene $\vec r_a(q)$ ikke avhenger av tida og $V$ ikke avhenger av hastighetene. Da er $\dot{\vec r}_a = \sum_i (\partial\vec r_a/\partial q_i)\,\dot q_i$ lineær i $\dot q$, så $T = \sum_a \tfrac12 m_a\dot{\vec r}_a^2$ er kvadratisk i $\dot q$. Hvert ledd i $T$ har to faktorer $\dot q$, og $\partial L/\partial\dot q_i = \partial T/\partial\dot q_i$, så $\sum_i \dot q_i\,\partial T/\partial\dot q_i = 2T$, og $H = 2T - (T - V) = T + V$. Avhenger føringene av tida, får $T$ ledd av lavere grad i $\dot q$, og da er $H$ ikke lik $E$.
+For den sfæriske pendelen er ${\dot\theta\,p_\theta + \dot\phi\,p_\phi = ml^2(\dot\theta^2 + \dot\phi^2\sin^2\theta) = 2T}$, så ${H = 2T - L = T + V}$, energien.
 
-Ei perle glir på en ring med radius $a$ som en motor dreier om en loddrett diameter med fast $\omega$, med $\theta$ fra loddlinja. Da er $T = \tfrac12 ma^2(\dot\theta^2 + \omega^2\sin^2\theta)$. Det andre leddet har grad null i $\dot\theta$, så $H = \tfrac12 ma^2\dot\theta^2 - \tfrac12 ma^2\omega^2\sin^2\theta + V = E - ma^2\omega^2\sin^2\theta$. Tida faller ut av $L$, så $H$ er bevart. Med $\omega = 0$ står ringen stille, og $H = E$.
-
-Med $\omega \ne 0$ er $E = H + ma^2\omega^2\sin^2\theta$ ikke bevart, og $E$ øker når perla glir bort fra aksen. Ringen dytter perla vinkelrett på ringen, men ringen dreier, så perla flytter seg også langs kraften. Føringskraften står vinkelrett på forskyvningene ved fast tid, ikke på den virkelige bevegelsen, og arbeidet den gjør, kommer fra motoren som holder $\omega$ fast.
+${H = T + V}$ gjelder hver gang posisjonene $\vec r_a(q)$ ikke avhenger av tida. Da er hastighetene ${\dot{\vec r}_a = \sum_i (\partial\vec r_a/\partial q_i)\,\dot q_i}$ lineære i $\dot q$, og hvert ledd i $T$ har to faktorer $\dot q$. Summen ${\sum_i \dot q_i\,\partial T/\partial\dot q_i}$ ganger hvert ledd med antallet faktorer $\dot q$ det har, altså 2, og gir $2T$. Avhenger $V$ bare av koordinatene, er ${p_i = \partial T/\partial\dot q_i}$, og ${H = 2T - (T - V) = T + V}$.
 
 <Callout title="Energifunksjonen">
-$H$ er bevart når tida mangler i $L$, og $H = T + V$ når føringene ikke avhenger av tida og $V$ ikke av hastighetene. På ringen som dreies med fast $\omega$ er $H$ bevart, men ikke $E$.
+${H = \sum_i \dot q_i\,p_i - L}$ er bevart når tida ikke står i $L$. Når posisjonene ikke avhenger av tida og $V$ bare av koordinatene, er ${H = T + V}$.
 </Callout>
 
-<SelfCheck question="Ei perle glir friksjonsfritt på en rett stang som roterer i horisontalplanet med fast vinkelfart $\omega$. Perla starter i ro i forhold til stanga i avstanden $r_0$ fra aksen. Finn farten $\dot r$ langs stanga i avstanden $r$.">
-Posisjonen er $(r\cos\omega t, r\sin\omega t)$, så $L = T = \tfrac12 m(\dot r^2 + r^2\omega^2)$. Tida faller ut når du kvadrerer hastigheten, så $\partial L/\partial t = 0$, og $H = \dot r\,m\dot r - L = \tfrac12 m\dot r^2 - \tfrac12 mr^2\omega^2$ er bevart. Ved start er $H = -\tfrac12 mr_0^2\omega^2$, så $\dot r = \omega\sqrt{r^2 - r_0^2}$, og perla glir utover. Energien $E = T$ er ikke bevart, og motoren som holder $\omega$ fast, gjør arbeidet. Leddet $-\tfrac12 mr^2\omega^2$ i $H$ er sentrifugalpotensialet.
-</SelfCheck>
+## To bevarte størrelser
 
-For den sfæriske pendelen er føringen fast og tyngden konservativ, så $H = E$, og både $E$ og $p_\phi$ er bevart. Sett $\dot\phi = p_\phi/ml^2\sin^2\theta$ inn i $E$:
+Med $p_\phi$ og energien $E$ bevart kan du finne vendepunktene, uten å løse bevegelsesligningene. Skriv energien med ${\dot\phi = p_\phi/(ml^2\sin^2\theta)}$ satt inn:
 
 $$
 \begin{aligned}
@@ -92,174 +125,312 @@ V_\text{eff}(\theta) &= \frac{p_\phi^2}{2ml^2\sin^2\theta} - mgl\cos\theta
 \end{aligned}
 $$
 
-Da beveger $\theta$ seg som én koordinat i det <Term name="effektivt potensial">effektive potensialet</Term> $V_\text{eff}$. Siden $\tfrac12 ml^2\dot\theta^2 \ge 0$, holder kula seg der $V_\text{eff}(\theta) \le E$, mellom to vendepunkter der $\dot\theta = 0$. Med $p_\phi = 0$ er $V_\text{eff}$ potensialet $-mgl\cos\theta$ til den plane pendelen. Med $p_\phi \ne 0$ vokser det første leddet uten grense når $\theta \to 0$, så kula når aldri bunnpunktet.
+Nå står bare $\theta$ igjen, og $\theta$ beveger seg som én koordinat i det <Term name="effektivt potensial">effektive potensialet</Term> $V_\text{eff}$. Det første leddet er den kinetiske energien i farten rundt loddlinja, ${\tfrac12 mv_\phi^2}$, skrevet med den bevarte $p_\phi$. Siden ${\tfrac12 ml^2\dot\theta^2 \ge 0}$, kan kula bare være der ${V_\text{eff}(\theta) \le E}$, og vendepunktene er vinklene der ${V_\text{eff}(\theta) = E}$. De stiplede sirklene i simuleringen «Den sfæriske pendelen» ligger ved dem.
 
-<Example title="Den sfæriske pendelen mellom to breddesirkler">
-Ei kule henger i en stang med lengde $l = 1{,}0$ m og slippes fra $\theta = 60°$ fra loddlinja med farten $v = 1{,}4$ m/s vannrett, vinkelrett på planet gjennom stanga og loddlinja. Hvor nær bunnpunktet kommer den?
+Med ${p_\phi \ne 0}$ vokser det første leddet uten grense når ${\theta \to 0}$, så kula når aldri bunnpunktet. Med ${p_\phi = 0}$ er ${V_\text{eff} = -mgl\cos\theta}$, potensialet til den plane pendelen, og kula svinger gjennom bunnpunktet.
+
+<Example title="Kula mellom 60° og 22°">
+Kula på stanga med lengde ${l = 1{,}0\ \text{m}}$ slippes fra ${\theta_0 = 60°}$ med farten ${v = 1{,}4\ \text{m/s}}$ vinkelrett på planet gjennom stanga og loddlinja. Finn det andre vendepunktet.
 
 <Solution>
-$\phi$ er syklisk, så $p_\phi$ er bevart, og føringen er fast, så energien er bevart:
+I startpunktet er ${\dot\theta = 0}$, så startpunktet er det ene vendepunktet. Der er hele farten rundt loddlinja:
 
 $$
 \begin{aligned}
-&p_\phi = ml^2\dot\phi\sin^2\theta \\
-&E = \tfrac12 ml^2\left(\dot\theta^2 + \dot\phi^2\sin^2\theta\right) \\
-&\qquad - mgl\cos\theta
+p_\phi &= mlv\sin\theta_0 \\
+E &= \tfrac12 mv^2 - mgl\cos\theta_0
 \end{aligned}
 $$
 
-Med $\dot\phi = p_\phi/ml^2\sin^2\theta$ satt inn er $E = \tfrac12 ml^2\dot\theta^2 + V_\text{eff}(\theta)$, med $V_\text{eff}$ som over. Kula svinger mellom de to vendepunktene der $V_\text{eff}(\theta) = E$, og startpunktet er det ene, for der står farten vinkelrett på planet gjennom stanga og loddlinja: $p_\phi = mlv\sin 60°$ og $E = \tfrac12 mv^2 - mgl\cos 60°$. Det andre vendepunktet er den andre løsningen av $V_\text{eff}(\theta) = E$. Med $u = \cos\theta$, $u_1 = \cos 60° = 0{,}5$ og $k = v^2/2gl = 1{,}96/19{,}62 = 0{,}0999$ blir ligningen, etter multiplikasjon med $\sin^2\theta/mgl$,
+Sett dem inn i ${V_\text{eff}(\theta) = E}$ og del på $mgl$. Med ${u = \cos\theta}$, ${u_0 = \cos\theta_0}$ og ${\kappa = v^2/2gl}$ er det første leddet i $V_\text{eff}$ delt på $mgl$ lik ${\kappa(1 - u_0^2)/(1 - u^2)}$, og ligningen blir
 
 $$
-\begin{aligned}
-&k\left(1 - u_1^2\right) - u\left(1 - u^2\right) \\
-&\qquad = (k - u_1)\left(1 - u^2\right)
-\end{aligned}
+\frac{\kappa(1 - u_0^2)}{1 - u^2} - u = \kappa - u_0
 $$
 
-Flytt alt over på én side og del ut den kjente roten $u = u_1$:
+Gang med ${1 - u^2}$ og flytt alt over på én side:
 
 $$
-(u - u_1)\left(u^2 + ku + ku_1 - 1\right) = 0
+u^3 + (\kappa - u_0)\,u^2 \allowbreak - u + u_0 - \kappa u_0^2 = 0
 $$
 
-Andregradsligningen $u^2 + 0{,}0999\,u - 0{,}950 = 0$ har den fysiske roten
+Ligningen er av tredje grad i $u$, og ${u = u_0}$ er en rot, fordi startpunktet er et vendepunkt. Del ut faktoren ${u - u_0}$:
 
 $$
-\begin{aligned}
-u &= \frac{-0{,}0999 + \sqrt{0{,}0100 + 3{,}800}}{2} \\
-&= 0{,}926
-\end{aligned}
+(u - u_0)\left(u^2 + \kappa u + \kappa u_0 - 1\right) = 0
 $$
 
-altså $\theta_2 = 22{,}2°$. Kula svinger mellom $22{,}2°$ og $60°$ og når aldri bunnpunktet, for $V_\text{eff} \to \infty$ når $\theta \to 0$ så lenge $p_\phi \ne 0$. En sirkelbane ved $60°$ krever $v^2 = gl\sin^2\theta/\cos\theta$, altså $3{,}8$ m/s. Med $1{,}4$ m/s faller kula innover.
+Andregradsligningen har roten
 
-<Answer>Til $\theta = 22{,}2°$ fra loddlinja, det andre vendepunktet av $V_\text{eff}(\theta) = E$.</Answer>
+$$
+u = \frac{-\kappa + \sqrt{\kappa^2 + 4(1 - \kappa u_0)}}{2}
+$$
+
+Den andre roten er under $-1$ og er ingen vinkel. Med ${u_0 = 0{,}500}$ og
+
+$$
+\kappa = \frac{1{,}4^2}{2 \cdot 9{,}81 \cdot 1{,}0} = 0{,}0999
+$$
+
+er kvadratroten ${\sqrt{0{,}0100 + 3{,}800} = 1{,}952}$, og
+
+$$
+u = \frac{-0{,}0999 + 1{,}952}{2} = 0{,}926
+$$
+
+<Answer>${\theta = \arccos 0{,}926 = 22{,}2°}$. Kula svinger mellom $22{,}2°$ og $60°$ fra loddlinja.</Answer>
 </Solution>
 </Example>
 
-## Fiktive krefter fra Lagranges ligninger
+<SelfCheck question="Hvor stor sidefart må kula ha i $\theta_0 = 60°$ for å gå rundt i en sirkel ved $60°$? Prøv svaret i simuleringen «Den sfæriske pendelen».">
+I en sirkel faller de to vendepunktene sammen, i bunnen av $V_\text{eff}$. Deriver $V_\text{eff}$ med $p_\phi$ holdt fast, og sett så inn ${p_\phi = mlv\sin\theta}$:
 
-Corioliskraften og sentrifugalkraften kan du også få fra Lagrangefunksjonen, uten å derivere roterende basisvektorer. La $K'$ rotere med konstant $\vec\omega$ om en akse gjennom origo, og bruk komponentene av $\vec r$ i $K'$ som koordinater. La $V$ ligge fast i $K'$, så $V(\vec r)$ ikke avhenger av tida. Et punkt i ro i $K'$ har farten $\vec\omega \times \vec r$ i $K$, så hastigheten i $K$ er $\vec v = \vec v\,' + \vec\omega \times \vec r$, og
+$$
+\frac{dV_\text{eff}}{d\theta} = -\frac{mv^2\cos\theta}{\sin\theta} \allowbreak + mgl\sin\theta = 0
+$$
 
-<Formula
-  tex="L = \tfrac12 m\left(\vec v\,' + \vec\omega \times \vec r\right)^2 - V(\vec r)"
-  caption="Lagrangefunksjonen i det roterende systemet $K'$. $\vec v\,'$ er hastigheten målt i $K'$, og $\vec\omega$ er konstant."
-/>
+så
 
-Den generaliserte impulsen er $\vec p = \partial L/\partial\vec v\,' = m(\vec v\,' + \vec\omega \times \vec r) = m\vec v$, impulsen målt i $K$, ikke $m\vec v\,'$. Endres $\vec r$ med $\delta\vec r$ ved fast $\vec v\,'$, endres den kinetiske energien med $\vec p \cdot (\vec\omega \times \delta\vec r) = \delta\vec r \cdot (\vec p \times \vec\omega)$. Den deriverte med hensyn på posisjonen er derfor
+$$
+v^2 = \frac{gl\sin^2\theta}{\cos\theta} = \frac{9{,}81 \cdot 1{,}0 \cdot 0{,}750}{0{,}500} \allowbreak = 14{,}7\ \text{m}^2/\text{s}^2
+$$
+
+og ${v = 3{,}8\ \text{m/s}}$. Det er farten til en konisk pendel, som Newtons lov gir med ${\tan\theta = v^2/gd}$. Med 3,8 m/s i simuleringen ligger de to sirklene oppå hverandre.
+</SelfCheck>
+
+<Callout title="To bevarte størrelser">
+Med den bevarte $p_\phi$ satt inn i energien beveger $\theta$ seg som én koordinat i $V_\text{eff}(\theta)$, og vendepunktene er der ${V_\text{eff} = E}$. Med ${p_\phi \ne 0}$ når den aldri bunnpunktet.
+</Callout>
+
+## Føringer som beveger seg
+
+Ei perle glir uten friksjon på ei vannrett stang som en motor dreier med fast vinkelfart $\omega$. Med avstanden $r$ fra akselen som koordinat er ${L = \tfrac12 m(\dot r^2 + \omega^2r^2)}$, og perla glir utover stadig fortere. Tida står ikke i $L$, så energifunksjonen er bevart, men energien til perla øker. Figur 1 viser perla ovenfra når den har glidd ut fra ro i avstanden $r_0$.
+
+<Figure src="/figures/stang-k.svg" alt="Ei stang sett ovenfra dreier mot klokka om en aksel. Ei perle på stanga har gått i en spiral ut fra akselen. Fartspila peker nesten rett opp, med en komponent langs stanga og en på tvers. Stangkraften peker på tvers av stanga, samme vei som stanga dreier." width={340} height={318} number={1} caption="Perla på stanga sett ovenfra fra bakken. Den stiplede spiralen er veien perla har gått siden den var i ro i forhold til stanga. Farten $\vec v$ har komponentene $\dot r$ langs stanga og $\omega r$ på tvers, og $\vec R$ er stangkraften." />
+
+Farten har komponenten $\dot r$ langs stanga og $\omega r$ på tvers av den, fordi punktet på stanga der perla er, går rundt med farten $\omega r$. Uten friksjon skyver stanga bare på tvers av seg selv. Stangkraften $\vec R$ peker i den retningen stanga dreier, fordi farten på tvers, $\omega r$, vokser når perla glir utover, og bare stanga kan gi den økningen. $\vec R$ står vinkelrett på $\dot r$-komponenten, men peker samme vei som $\omega r$-komponenten, så effekten er ${\vec R \cdot \vec v = R\,\omega r > 0}$. Stanga gjør arbeid på perla, selv om stangkraften står vinkelrett på enhver virtuell forskyvning, og arbeidet kommer fra motoren.
+
+Med ${p_r = m\dot r}$ er
+
+$$
+H = \dot r\,p_r - L = \tfrac12 m\dot r^2 - \tfrac12 m\omega^2r^2
+$$
+
+$H$ er ikke energien ${E = \tfrac12 m\dot r^2 + \tfrac12 m\omega^2r^2}$. Posisjonen ${(r\cos\omega t,\ r\sin\omega t)}$ avhenger av tida. Leddet ${\tfrac12 m\omega^2r^2}$ i $T$ har ingen faktor $\dot r$, så summen ${\dot r\,p_r}$ gir bare to ganger det første leddet i $T$.
+
+Perla starter med ${\dot r = 0}$ i $r_0$, så ${H = -\tfrac12 m\omega^2r_0^2}$ hele tida, og
+
+$$
+\dot r = \omega\sqrt{r^2 - r_0^2}
+$$
+
+Med ${\omega = 2{,}0\ \text{rad/s}}$ og ${r_0 = 0{,}10\ \text{m}}$ glir perla med 0,98 m/s langs stanga når den er 0,50 m ute. Energien er ${E = H + m\omega^2r^2}$, så den har økt med ${m\omega^2(r^2 - r_0^2)}$, arbeidet motoren har gjort gjennom stanga.
+
+<Callout title="Føringer som beveger seg">
+Avhenger posisjonene av tida, er $H$ ikke energien. Står tida likevel ikke i $L$, er $H$ bevart, mens energien endres med arbeidet føringen gjør.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Perle på en roterende parabel">
+<ExamRef id="2017-des" task="2" />
+
+A bead slides along a smooth wire bent in the shape of a parabola $z = cr^2$. The wire is rotating around its vertical axis with constant angular velocity $\omega$.
+
+(a) Determine the Lagrangian function for the rotating bead. Is the system holonomic?
+
+(b) Derive the equations of motion from Lagrange’s equations. What can you say about cyclic coordinates?
+
+(c) Let us assume next that the bead follows a circular trajectory with $r = R$ (set by initial conditions). Find the value of $c$.
+
+<Solution>
+a) Med $r$ som avstanden fra aksen og vinkelen $\omega t$ rundt den er posisjonen ${(r\cos\omega t,\ r\sin\omega t,\ cr^2)}$. Farten har komponentene $\dot r$ ut fra aksen, $\omega r$ rundt aksen og ${\dot z = 2cr\dot r}$ oppover, så
+
+$$
+L = \tfrac12 m\left(\dot r^2 + 4c^2r^2\dot r^2 + \omega^2r^2\right) \allowbreak - mgcr^2
+$$
+
+Perla er bundet av to føringer: ${z = cr^2}$ og vinkelen $\omega t$ rundt aksen. Begge er ligninger mellom koordinatene og tida, så systemet er holonomt. Den andre føringen avhenger av tida.
+
+b) De partiellderiverte er
 
 $$
 \begin{aligned}
-\frac{\partial L}{\partial\vec r} &= \vec p \times \vec\omega - \nabla V \\
-&= m\,\vec v\,' \times \vec\omega - m\,\vec\omega \times (\vec\omega \times \vec r) - \nabla V
+\frac{\partial L}{\partial\dot r} &= m(1 + 4c^2r^2)\,\dot r \\
+\frac{\partial L}{\partial r} &= m(4c^2r\dot r^2 + \omega^2r - 2gcr)
 \end{aligned}
 $$
 
-Her er $\vec p = m(\vec v\,' + \vec\omega \times \vec r)$ satt inn, og $(\vec\omega \times \vec r) \times \vec\omega = -\vec\omega \times (\vec\omega \times \vec r)$.
+og Lagranges ligning gir
 
-Lagranges ligning deriverer komponentene av $\vec p$ langs aksene i $K'$, altså endringen $(d\vec p/dt)_{K'}$ sett fra $K'$. Med konstant $\vec\omega$ endres $\vec r$ med $\vec v\,'$ og $\vec\omega \times \vec r$ med $\vec\omega \times \vec v\,'$, så $(d\vec p/dt)_{K'} = m(\vec a\,' + \vec\omega \times \vec v\,')$. Sett denne lik $\partial L/\partial\vec r$ og løs for $\vec a\,'$:
+$$
+(1 + 4c^2r^2)\,\ddot r + 4c^2r\dot r^2 \allowbreak + (2gc - \omega^2)\,r = 0
+$$
+
+Perla har én frihetsgrad, $r$, og $r$ står i $L$, så ingen koordinat er syklisk. Vinkelen rundt aksen er bestemt av at tråden dreier med fast $\omega$, og er ingen koordinat. Løsningsforslaget kaller den syklisk og ${mr^2\omega}$ bevart, men ${mr^2\omega}$ endres når $r$ endres, fordi tråden må få et dreiemoment for å holde $\omega$ fast. Dreier tråden fritt, er vinkelen en koordinat, den er syklisk, og ${mr^2\dot\theta}$ er bevart, men da er ikke vinkelfarten fast. Tida står ikke i $L$, så energifunksjonen
+
+$$
+H = \tfrac12 m(1 + 4c^2r^2)\,\dot r^2 - \tfrac12 m\omega^2r^2 \allowbreak + mgcr^2
+$$
+
+er bevart. Den er ikke energien, som har ${+\tfrac12 m\omega^2r^2}$.
+
+c) Med ${r = R}$ er ${\dot r = \ddot r = 0}$, og ligningen i b) gir ${(2gc - \omega^2)R = 0}$.
+
+<Answer>a) $L$ over, holonomt. b) Bevegelsesligningen over. Ingen koordinat er syklisk, men $H$ er bevart. c) ${c = \omega^2/2g}$, og da kan perla gå i sirkel i enhver høyde.</Answer>
+</Solution>
+</Example>
+
+## Roterende system
+
+Figur 2 viser det samme øyeblikket sett fra stanga, fra systemet $K'$ som roterer med den. Der glir perla rett utover langs stanga med farten $\dot r$.
+
+<Figure src="/figures/stang-kmerket.svg" alt="Stanga ligger vannrett og står stille. Perla på stanga har en fartspil utover langs stanga. Sentrifugalkraften peker utover langs stanga, Corioliskraften peker på tvers nedover, og stangkraften peker på tvers oppover, like langt." width={340} height={176} number={2} caption="Det samme øyeblikket som i figur 1, sett fra stanga. Perla glir rett utover med farten $\vec v\,'$. Sentrifugalkraften $\vec F_\text{s}$ peker ut langs stanga, Corioliskraften $\vec F_\text{C}$ på tvers, mot retningen stanga dreier, og stangkraften $\vec R$ er like stor og motsatt rettet." />
+
+Corioliskraften og stangkraften $\vec R$ står vinkelrett på bevegelsen og gjør ikke arbeid i $K'$. Bare sentrifugalkraften gjør arbeid, og den har potensialet ${V_\text{s} = -\tfrac12 m\omega^2 r^2}$. Energien målt i $K'$, med sentrifugalpotensialet tatt med, er derfor bevart, og den er ${\tfrac12 m\dot r^2 - \tfrac12 m\omega^2r^2 = H}$. I $K'$ står stanga stille, og ingenting i systemet endres med tida.
+
+Lagrangefunksjonen i $K'$ gir en bevart energifunksjon, energien i $K'$ med sentrifugalpotensialet, for enhver bevegelse i et roterende system, og den gir de fiktive kreftene uten at du deriverer enhetsvektorer som roterer. La $K'$ rotere med konstant $\vec\omega$ om en akse gjennom origo, og bruk komponentene av $\vec r$ langs aksene i $K'$ som koordinater. Hastigheten i $K$ er <FormulaRef id="hastighet-roterende" />, og potensialet $V(\vec r)$ ligger fast i $K'$:
+
+<Formula
+  tex="L = \tfrac12 m\left(\vec v\,' + \vec\omega \times \vec r\right)^2 - V(\vec r)"
+  caption="<b>Lagrangefunksjonen i et roterende system</b> $K'$ med konstant $\vec\omega$. $\vec v\,'$ er hastigheten målt i $K'$."
+/>
+
+Gang ut kvadratet:
+
+$$
+L = \tfrac12 mv'^2 + m\,\vec v\,' \cdot (\vec\omega \times \vec r) \allowbreak + \tfrac12 m\,|\vec\omega \times \vec r|^2 - V
+$$
+
+Lagrangefunksjonen har samme form som for en ladd partikkel, <FormulaRef id="lagrange-ladd-partikkel" />, med ${m\,\vec\omega \times \vec r}$ i stedet for $q\vec A$ og ${V - \tfrac12 m\,|\vec\omega \times \vec r|^2}$ i stedet for $q\phi$. For den ladde partikkelen gir leddet med $\vec A$ magnetkraften ${q\,\dot{\vec r} \times (\nabla \times \vec A)}$, og leddet med $\phi$ gir ${-q\nabla\phi}$ når potensialene ikke avhenger av tida. Her avhenger ${\vec\omega \times \vec r}$ ikke av tida, og med $\vec\omega$ langs $z$ er ${\vec\omega \times \vec r = \omega(-y, x, 0)}$, så ${\nabla \times (\vec\omega \times \vec r) = 2\vec\omega}$. Leddet ${m\,\vec v\,' \cdot (\vec\omega \times \vec r)}$ gir derfor Corioliskraften:
+
+$$
+m\,\vec v\,' \times 2\vec\omega = -2m\,\vec\omega \times \vec v\,'
+$$
+
+Den står vinkelrett på $\vec v\,'$, slik magnetkraften står vinkelrett på farten, og det er den samme likheten Larmor-presesjonen bygger på. Potensialleddet gir ${-\nabla V}$ og ${\nabla(\tfrac12 m\,|\vec\omega \times \vec r|^2)}$. Med ${|\vec\omega \times \vec r| = \omega d}$, der $d$ er avstanden fra aksen, er gradienten i det siste leddet ${m\omega^2\vec d}$, med $\vec d$ som delen av $\vec r$ vinkelrett på aksen. Det er sentrifugalkraften ut fra aksen. Til sammen er
 
 $$
 m\vec a\,' = -\nabla V - 2m\,\vec\omega \times \vec v\,' \allowbreak - m\,\vec\omega \times (\vec\omega \times \vec r)
 $$
 
-De to siste leddene er Corioliskraften og sentrifugalkraften, de samme kreftene som du får ved å derivere de roterende basisvektorene. Et ledd $-m\dot{\vec\omega} \times \vec r$ kommer til når $\vec\omega$ ikke er konstant.
+den samme ligningen som du får ved å derivere enhetsvektorene som roterer, med ${\dot{\vec\omega} = 0}$.
 
-Lagrangefunksjonen inneholder ikke tida, så energifunksjonen er bevart. Her er $\vec v\,' \cdot \vec p = mv'^2 + m\,\vec v\,' \cdot (\vec\omega \times \vec r)$, og det siste leddet faller bort mot samme ledd i $L$:
+Den generaliserte impulsen er ${\vec p = \partial L/\partial\vec v\,' = m(\vec v\,' + \vec\omega \times \vec r) = m\vec v}$, impulsen målt i $K$, og ikke ${m\vec v\,'}$. For den ladde partikkelen er den tilsvarende ${m\dot{\vec r} + q\vec A}$.
+
+Tida står ikke i $L$, så energifunksjonen er bevart. Leddet som er lineært i $\vec v\,'$, faller ut av $H$, fordi ${\vec v\,' \cdot \vec p}$ tar det med én gang og ${-L}$ trekker det fra igjen. Da er
 
 $$
-\begin{aligned}
-&H = \vec v\,' \cdot \vec p - L \\
-&\quad = \tfrac12 mv'^2 + V - \tfrac12 m\,|\vec\omega \times \vec r|^2
-\end{aligned}
+H = \vec v\,' \cdot \vec p - L = \tfrac12 mv'^2 + V \allowbreak - \tfrac12 m\,|\vec\omega \times \vec r|^2
 $$
 
-Det siste leddet er sentrifugalpotensialet, for minus gradienten av $-\tfrac12 m\,|\vec\omega \times \vec r|^2$ er sentrifugalkraften $-m\,\vec\omega \times (\vec\omega \times \vec r)$. Corioliskraften gir ikke noe ledd i $H$, for den står vinkelrett på $\vec v\,'$ og gjør ikke arbeid i $K'$. $H$ er energien sett fra det roterende systemet, med sentrifugalkraften regnet som en konservativ kraft, og den er ikke den samme størrelsen som $\tfrac12 mv^2 + V$ i $K$. Med $\vec\omega = 0$ er $H = \tfrac12 mv^2 + V$.
+$H$ er energien målt i $K'$ med sentrifugalpotensialet ${V_\text{s} = -\tfrac12 m\omega^2d^2}$ regnet med. Corioliskraften gir ikke noe ledd, fordi den ikke gjør arbeid i $K'$. For perla på stanga er ${v' = \dot r}$, ${V = 0}$ og ${d = r}$, og $H$ er den samme som før. Med ${\vec\omega = 0}$ er ${H = \tfrac12 mv^2 + V}$.
 
-<Callout title="Fiktive krefter fra $L$">
-I et system som roterer med konstant $\vec\omega$, gir $L = \tfrac12 m(\vec v\,' + \vec\omega \times \vec r)^2 - V$ Corioliskraften og sentrifugalkraften. Energifunksjonen $H$ har sentrifugalpotensialet, men ikke noe ledd fra Corioliskraften.
+<Callout title="Lagrangefunksjonen i et roterende system">
+${L = \tfrac12 m(\vec v\,' + \vec\omega \times \vec r)^2 - V}$ har formen til en ladd partikkel og gir Corioliskraften og sentrifugalkraften. ${\vec p = m\vec v}$ er impulsen i $K$, og $H$ er energien i $K'$ med sentrifugalpotensialet.
 </Callout>
 
 ## Noethers teorem
 
-Regelen om sykliske koordinater finner en bevart impuls bare når du har valgt koordinater der en av dem mangler i $L$. Et lukket system av partikler har $L = \sum_a \tfrac12 m_a\dot{\vec r}_a^2 - V$, der $V$ bare avhenger av avstandene $|\vec r_a - \vec r_b|$. Ingen kartesisk koordinat er syklisk, men $L$ er uendret når alle partiklene forskyves like mye, for avstandene og hastighetene endres ikke. Noethers teorem gir en bevart størrelse for hver slik transformasjon, også når ingen av koordinatene du bruker, er syklisk.
+Ei kule glir uten friksjon i ei grunn skål. Simuleringen viser den ovenfra.
 
-En symmetri lar $L$ være uendret eller endrer den med en total tidsderivert, og da endres ikke bevegelsesligningene. Er symmetrien en familie av transformasjoner med en parameter $\epsilon$ som kan gjøres så liten du vil, er den en <Term name="kontinuerlig symmetri">kontinuerlig symmetri</Term>. Mangler $\phi$ i $L$, er $\phi \to \phi + \epsilon$, en rotasjon om loddlinja, en slik symmetri.
-
-For å finne den bevarte størrelsen, endre $q_i$ med $\delta q_i = \epsilon F_i(q, \dot q, t)$. Tida endres ikke, så $\delta\dot q_i = \frac{d}{dt}\delta q_i = \epsilon\dot F_i$. Langs en løsning er endringen i $L$ til første orden i $\epsilon$
-
-$$
-\begin{aligned}
-&\delta L = \sum_i \frac{\partial L}{\partial q_i}\,\delta q_i \\
-&\qquad + \sum_i \frac{\partial L}{\partial\dot q_i}\,\delta\dot q_i \\
-&\quad = \epsilon\sum_i \left(\dot p_i F_i + p_i\dot F_i\right) \\
-&\quad = \epsilon\,\frac{d}{dt}\sum_i p_i F_i
-\end{aligned}
-$$
-
-der Lagranges ligninger $\partial L/\partial q_i = \dot p_i$ er brukt i det andre trinnet. Er transformasjonen en symmetri, er $\delta L = \epsilon\,dF/dt$ også langs løsningen. Her kan $F$ også avhenge av hastighetene, fordi beviset bare bruker at $\delta L$ er en total tidsderivert langs banen, og ikke ser på endepunktene. Trekk de to uttrykkene for $\delta L$ fra hverandre:
-
-$$
-\frac{d}{dt}\left(\sum_i p_i F_i - F\right) = 0
-$$
-
-Størrelsen i parentesen er altså konstant langs bevegelsen:
-
-<Statement kind="theorem" name="Noethers teorem" id="noethers-teorem-resultat">
-La $q_i \to q_i + \epsilon F_i(q, \dot q, t)$ være en transformasjon med en liten parameter $\epsilon$. Er den en symmetri, altså $\delta L = \epsilon\, dF/dt$ for en funksjon $F(q, \dot q, t)$ og for enhver bane $q(t)$, uten å bruke Lagranges ligninger, så er $Q = \sum_i p_i F_i - F$ bevart.
-</Statement>
-
-Langs en løsning gir Lagranges ligninger $\delta L = \epsilon\,\frac{d}{dt}\sum_i p_i F_i$ for enhver transformasjon. Gjaldt kravet bare løsninger, var enhver transformasjon en symmetri med $F = \sum_i p_i F_i$, og $Q$ ble null for enhver bevegelse.
-
-En syklisk koordinat $q_j$ er tilfellet $F_i = \delta_{ij}$ og $F = 0$, med $Q = p_j$.
-
-For et lukket system av partikler, der $V$ bare avhenger av avstandene, er forskyvningen $\vec r_a \to \vec r_a + \epsilon\hat n$, altså $F_a = \hat n$ for hver partikkel. Avstandene og hastighetene er uendret, så $\delta L = 0$ og $F = 0$. Den bevarte størrelsen er $Q = \sum_a \vec p_a \cdot \hat n$, den totale impulsen langs $\hat n$, og siden $\hat n$ er vilkårlig, hele $\vec P$.
-
-Roter i stedet alle partiklene en liten vinkel $\epsilon$ om aksen $\hat n$, $\vec r_a \to \vec r_a + \epsilon\,\hat n \times \vec r_a$. Avstandene og fartene er uendret til første orden i $\epsilon$, så $\delta L = 0$ igjen, og
-
-$$
-Q = \sum_a \vec p_a \cdot (\hat n \times \vec r_a) = \hat n \cdot \sum_a \vec r_a \times \vec p_a
-$$
-
-er den totale dreieimpulsen langs $\hat n$. At rommet er likt overalt, gir impulsbevaring, og at rommet er likt i alle retninger, gir dreieimpulsbevaring.
-
-Også en forskyvning i tid har formen $q_i \to q_i + \epsilon F_i$. Banen forskjøvet med $\epsilon$ er $q_i(t + \epsilon) = q_i + \epsilon\dot q_i$ til første orden, så $F_i = \dot q_i$, og
-
-$$
-\begin{aligned}
-\delta L &= \epsilon \sum_i \left(\frac{\partial L}{\partial q_i}\dot q_i + \frac{\partial L}{\partial\dot q_i}\ddot q_i\right) \\
-&= \epsilon\left(\frac{dL}{dt} - \frac{\partial L}{\partial t}\right)
-\end{aligned}
-$$
-
-for enhver bane. Mangler tida i $L$, er $\delta L = \epsilon\,dL/dt$, altså $F = L$, og den bevarte størrelsen er $Q = \sum_i p_i\dot q_i - L = H$, energifunksjonen.
-
-Når alle partiklene forskyves eller roteres, er $\delta L = 0$. I fritt fall, med $L = \tfrac12 m\dot z^2 - mgz$, endrer forskyvningen $z \to z + \epsilon$ Lagrangefunksjonen med $\delta L = -mg\epsilon = \epsilon\,\frac{d}{dt}(-mgt)$. Forskyvningen er altså en symmetri med $F_z = 1$ og $F = -mgt$, og den bevarte størrelsen er $Q = m\dot z + mgt$. Konstant $Q$ gir $\dot z = \dot z_0 - gt$, den kjente farten i fritt fall.
-
-<Callout title="Symmetri og bevart størrelse">
-Forskyvning av alle partiklene gir den totale impulsen, rotasjon gir dreieimpulsen, og forskyvning i tid gir energifunksjonen $H$. Endrer symmetrien $L$ med $\epsilon\,dF/dt$, står $F$ i den bevarte størrelsen $Q = \sum_i p_i F_i - F$.
-</Callout>
-
-<Quiz
-  question="En kloss glir friksjonsfritt på et skråplan med helningsvinkel $\alpha$, med $x$ målt nedover langs planet, så $L = \tfrac12 m\dot x^2 + mgx\sin\alpha$. Forskyvningen $x \to x + \epsilon$ endrer $L$ med $\delta L = mg\epsilon\sin\alpha$. Hvilken bevart størrelse gir den?"
-  options={["$m\\dot x - mgt\\sin\\alpha$", "$m\\dot x + mgt\\sin\\alpha$", "$m\\dot x$", "Ingen, for $L$ avhenger av $x$"]}
-  answer={0}
-  explanation="$mg\epsilon\sin\alpha$ er den totale tidsderiverte av $mgt\,\epsilon\sin\alpha$, så forskyvningen er en symmetri med $F_x = 1$ og $F = mgt\sin\alpha$. Noethers teorem gir $Q = p_x F_x - F = m\dot x - mgt\sin\alpha$, og konstant $Q$ gir $\dot x = \dot x_0 + gt\sin\alpha$: klossen får stadig større fart nedover planet. Med $+mgt\sin\alpha$ ville farten nedover avta. At $L$ avhenger av $x$, hindrer ikke symmetrien, for $\delta L$ kan være en total tidsderivert."
+<Simulation
+  src="/sims/skal.js"
+  title="Kula i skåla"
+  caption="Ei kule som glir uten friksjon i ei grunn skål, sett ovenfra. De tynne ellipsene er høydekoter, og skåla er så grunn at kula beveger seg nesten bare vannrett. Den oransje buen rundt midten er dreieimpulsen $p_\phi$ om midten. Den er lengre jo større $p_\phi$ er, og pila peker den veien kula går rundt."
+  host="dom"
+  height={300}
 />
 
-<SelfCheck question="En fri partikkel har $L = \tfrac12 m\dot x^2$. Vis at $x \to x + \epsilon t$ er en symmetri, og finn den bevarte størrelsen.">
-Her er $F_x = t$, så $\delta\dot x = \epsilon$ og $\delta L = m\dot x\,\epsilon = \epsilon\,\frac{d}{dt}(mx)$. $\delta L$ er altså en total tidsderivert med $F = mx$, så transformasjonen er en symmetri selv om $L$ endres. Noethers teorem gir $Q = p_x F_x - F = m\dot x\,t - mx$. Konstant $Q$ betyr $x = \dot x\,t - Q/m$: partikkelen går med konstant fart, og $-Q/m$ er der den var ved $t = 0$. Transformasjonen er overgangen til et inertialsystem som beveger seg med farten $-\epsilon$, og at den er en symmetri, er Galileis relativitetsprinsipp.
+I den runde skåla går kula rundt i en ellipse, og buen holder samme lengde. Sett «Lengde : bredde» til 1,20. Ellipsen dreier og flater ut til en strek gjennom midten, og buen blir borte. Så går kula rundt den andre veien.
+
+I den runde skåla peker kraften på kula rett mot midten, så den har ikke dreiemoment om midten, og dreieimpulsen er bevart. Kraften står vinkelrett på høydekotene. I den ovale skåla står kotene vinkelrett på retningen fra midten bare på de to aksene, og ellers har kraften et dreiemoment om midten. Skåla er så grunn at kula beveger seg nesten bare vannrett, så $L$ har bare $\dot x$ og $\dot y$, og i begge skålene står både $x$ og $y$ i $L$:
+
+$$
+L = \tfrac12 m(\dot x^2 + \dot y^2) \allowbreak - \tfrac12 m(\omega_x^2x^2 + \omega_y^2y^2)
+$$
+
+Her er $\omega_x$ og $\omega_y$ vinkelfrekvensene kula svinger med langs $x$ og $y$, like i den runde skåla. Ingen kartesisk koordinat er syklisk i noen av skålene. I den runde skåla er $\phi$ syklisk i polarkoordinater, som i sentralpotensialet. Den runde skåla ser lik ut når du roterer den om midten, den ovale gjør det ikke. Noethers teorem gir en bevart størrelse for hver slik symmetri, uten at du må finne koordinater der den viser seg som en syklisk koordinat. Teoremet gir også bevarte størrelser som ingen koordinat gir, som energifunksjonen og bevegelsen til massesenteret.
+
+En rotasjon med den lille vinkelen $\epsilon$ om midten flytter kula fra ${(x, y)}$ til ${(x - \epsilon y,\ y + \epsilon x)}$. Skriv en slik liten endring som ${q_i \to q_i + \epsilon F_i}$, her med ${F_x = -y}$ og ${F_y = x}$. $F_i$ kan avhenge av koordinatene, hastighetene og tida. Transformasjonen er en <Term name="kontinuerlig symmetri">kontinuerlig symmetri</Term> når den endrer $L$ med høyst en total tidsderivert, ${\delta L = \epsilon\,dF/dt}$, for enhver bane. Den er kontinuerlig fordi $\epsilon$ kan gjøres så liten du vil. Et tillegg ${dF(q, t)/dt}$ i $L$ endrer ikke bevegelsesligningene, så en slik transformasjon fører en løsning over i en løsning.
+
+Til første orden i $\epsilon$ endres hastighetene med $\epsilon\dot F_i$, og
+
+$$
+\delta L = \epsilon\sum_i\left(\frac{\partial L}{\partial q_i}F_i + \frac{\partial L}{\partial\dot q_i}\dot F_i\right)
+$$
+
+Langs en løsning er ${\partial L/\partial q_i = \dot p_i}$ etter Lagranges ligning, så summen er ${\sum_i(\dot p_iF_i + p_i\dot F_i)}$, den tidsderiverte av ${\sum_i p_iF_i}$. Er transformasjonen en symmetri, er $\delta L$ også lik ${\epsilon\,dF/dt}$ langs løsningen. Trekk de to uttrykkene fra hverandre:
+
+$$
+\frac{d}{dt}\Bigl(\sum_i p_iF_i - F\Bigr) = 0
+$$
+
+<Statement kind="theorem" name="Noethers teorem" id="noethers-teorem-resultat">
+La ${q_i \to q_i + \epsilon F_i(q, \dot q, t)}$ være en transformasjon med en liten parameter $\epsilon$, og la den endre Lagrangefunksjonen med ${\delta L = \epsilon\,dF/dt}$ for en funksjon ${F(q, \dot q, t)}$ og enhver bane. Kravet skal holde uten at du bruker Lagranges ligninger. Da er ${Q = \sum_i p_iF_i - F}$ bevart.
+</Statement>
+
+Kravet gjelder enhver bane. Langs en løsning gir Lagranges ligninger ${\delta L = \epsilon\,\frac{d}{dt}\sum_i p_iF_i}$ for enhver transformasjon, symmetri eller ikke. Sjekket du kravet bare langs løsninger, kunne du alltid velge ${F = \sum_i p_iF_i}$, og da ble ${Q = 0}$, som ikke sier noe. $F$ kan her avhenge av hastighetene, fordi beviset bare bruker at $\delta L$ er en total tidsderivert, og ikke sammenligner virkningen til baner med faste endepunkter.
+
+En syklisk koordinat $q_j$ er tilfellet ${F_j = 1}$, ${F_i = 0}$ for de andre koordinatene og ${F = 0}$, og da er ${Q = p_j}$.
+
+For rotasjonen i den runde skåla er farten like stor etter rotasjonen, og ${x^2 + y^2}$ er uendret, så ${\delta L = 0}$ og ${F = 0}$. Den bevarte størrelsen er
+
+$$
+Q = p_xF_x + p_yF_y = m(x\dot y - y\dot x)
+$$
+
+dreieimpulsen $p_\phi$ om midten. I den ovale skåla er ${\delta L = \epsilon\,m(\omega_x^2 - \omega_y^2)\,xy}$. En total tidsderivert ${dF/dt}$ inneholder hastighetene eller akselerasjonene, med mindre $F$ bare avhenger av tida, og da avhenger ${dF/dt}$ ikke av $x$ og $y$. Endringen er derfor ikke en total tidsderivert, og ingen dreieimpuls er bevart.
+
+<Callout title="Noethers teorem">
+Endrer ${q_i \to q_i + \epsilon F_i}$ Lagrangefunksjonen med høyst ${\epsilon\,dF/dt}$ for enhver bane, er ${Q = \sum_i p_iF_i - F}$ bevart. Kravet må holde uten at du bruker Lagranges ligninger.
+</Callout>
+
+## Forskyvninger og rotasjoner
+
+Et lukket system av partikler har ${L = \sum_a \tfrac12 m_a\dot{\vec r}_a^{\,2} - V}$, der $V$ bare avhenger av avstandene ${|\vec r_a - \vec r_b|}$. Forskyvningen ${\vec r_a \to \vec r_a + \epsilon\hat n}$ flytter alle partiklene like langt. Avstandene og hastighetene er uendret, så ${\delta L = 0}$ med ${F_a = \hat n}$ for hver partikkel og ${F = 0}$. Den bevarte størrelsen er ${\sum_a \vec p_a \cdot \hat n}$, den totale impulsen langs $\hat n$, og siden $\hat n$ er vilkårlig, er hele $\vec P$ bevart.
+
+En rotasjon med vinkelen $\epsilon$ om aksen $\hat n$ flytter hver partikkel med ${\epsilon\,\hat n \times \vec r_a}$. Avstandene og fartene er uendret til første orden i $\epsilon$, så ${\delta L = 0}$ igjen, og
+
+$$
+Q = \sum_a \vec p_a \cdot (\hat n \times \vec r_a) \allowbreak = \hat n \cdot \sum_a \vec r_a \times \vec p_a
+$$
+
+er den totale dreieimpulsen langs $\hat n$. For kula i den runde skåla gir rotasjonen om den loddrette aksen gjennom midten dreieimpulsen $p_\phi$, fordi ${x^2 + y^2}$ ikke endres.
+
+Tida kan også forskyves. Banen forskjøvet med $\epsilon$ i tid er ${q_i(t + \epsilon) = q_i + \epsilon\dot q_i}$ til første orden, så ${F_i = \dot q_i}$. Kjerneregelen gir ${\delta L = \epsilon\,(dL/dt - \partial L/\partial t)}$ for enhver bane. Står ikke tida i $L$, er ${\delta L = \epsilon\,dL/dt}$, altså ${F = L}$, og den bevarte størrelsen er ${\sum_i p_i\dot q_i - L = H}$, energifunksjonen.
+
+En symmetri trenger ikke la $L$ være uendret. Et legeme i fritt fall har ${L = \tfrac12 m\dot z^2 - mgz}$, og forskyvningen ${z \to z + \epsilon}$ gir ${\delta L = -mg\epsilon}$. Endringen er den tidsderiverte av ${-mg\epsilon t}$, så ${F_z = 1}$ og ${F = -mgt}$, og ${Q = m\dot z + mgt}$ er bevart. Konstant $Q$ betyr ${\dot z = \dot z_0 - gt}$. Impulsen $m\dot z$ er ikke bevart, men en kastebane som er flyttet opp, er like mulig som den opprinnelige, og symmetrien gir likevel en bevart størrelse.
+
+<SelfCheck question="Et lukket system av partikler har $L = \sum_a \tfrac12 m_a\dot{\vec r}_a^{\,2} - V$, der $V$ bare avhenger av avstandene $|\vec r_a - \vec r_b|$. Vis at $\vec r_a \to \vec r_a + \epsilon\,\hat n\,t$ for alle partiklene er en symmetri, og finn den bevarte størrelsen. Hva sier den om massesenteret?">
+Alle partiklene flyttes like langt ved hvert tidspunkt, så avstandene og $V$ er uendret. Hastighetene endres med $\epsilon\hat n$, og til første orden er
+
+$$
+\delta L = \epsilon\sum_a m_a\dot{\vec r}_a \cdot \hat n \allowbreak = \epsilon\,\frac{d}{dt}\bigl(M\vec R_\text{cm} \cdot \hat n\bigr)
+$$
+
+der $M$ er den totale massen og $\vec R_\text{cm}$ massesenteret. Transformasjonen er altså en symmetri med ${F_a = \hat n\,t}$ og ${F = M\vec R_\text{cm} \cdot \hat n}$, og Noethers teorem gir
+
+$$
+\begin{aligned}
+Q &= \sum_a \vec p_a \cdot \hat n\,t - M\vec R_\text{cm} \cdot \hat n \\
+&= \hat n \cdot \bigl(M\dot{\vec R}_\text{cm}\,t - M\vec R_\text{cm}\bigr)
+\end{aligned}
+$$
+
+Siden $\hat n$ er vilkårlig, er ${\dot{\vec R}_\text{cm}\,t - \vec R_\text{cm}}$ konstant. Den tidsderiverte av den er ${\ddot{\vec R}_\text{cm}\,t}$, så ${\ddot{\vec R}_\text{cm} = 0}$: massesenteret går med konstant hastighet. Transformasjonen er overgangen til et system som beveger seg med farten $\epsilon$ langs ${-\hat n}$, en Galilei-transformasjon.
 </SelfCheck>
 
-Speiling $\vec r \to -\vec r$ lar $L$ være uendret for mange systemer, men den kan ikke gjøres liten, så Noethers teorem gir ingen bevart størrelse fra den.
+Ei speiling ${\vec r \to -\vec r}$ lar $L$ være uendret for mange systemer, men den kan ikke gjøres liten, og teoremet gir ingen bevart størrelse fra den.
+
+<Callout title="Impuls, dreieimpuls og energi">
+For et lukket system gir forskyvning den totale impulsen, rotasjon den totale dreieimpulsen og forskyvning i tid energifunksjonen. En symmetri som endrer $L$ med ${\epsilon\,dF/dt}$, gir også en bevart størrelse, med $F$ trukket fra.
+</Callout>
 
 <Video
   id="https://www.youtube.com/watch?v=04ERSb06dOg"
   title="Noether's Theorem and The Symmetries of Reality"
   channel="PBS Space Time"
   duration="13:01"
-  caption="Hvordan symmetrier gir bevaringslover, når en bevaringslov ikke gjelder fordi symmetrien mangler, og historien om Emmy Noether."
+  caption="Bevaringslovene følger av symmetrier gjennom Noethers teorem, og de gjelder bare så langt symmetrien gjør det."
   number={1}
 />
 
@@ -270,7 +441,7 @@ a) Formulate Noether's theorem.
 
 b) Consider a system described by a Lagrangian that is a function of a set
 of generalized coordinates $q_i$, their time derivatives $\dot q_i$, and
-time $t$, $L = L(q_i, \dot q_i, t)$. A set of coordinate transformations are
+time $t$, ${L = L(q_i, \dot q_i, t)}$. A set of coordinate transformations are
 given by
 
 $$
@@ -291,51 +462,38 @@ for a suitable function $F = F(q_j, \dot q_j, t)$.
 
 c) Consider a system consisting of two particles of mass $m_1$ and $m_2$ in
 three dimensions. The potential energy $V$ is a function of the distance
-$|\vec r_{12}| = |\vec r_1 - \vec r_2|$, i.e. $V = V(|\vec r_{12}|)$. Prove
+${|\vec r_{12}| = |\vec r_1 - \vec r_2|}$, i.e. $V = V(|\vec r_{12}|)$. Prove
 that the total angular momentum of the system is conserved. Hint: Use
 Eq. (7). Are there other conserved quantities? (proof not required).
 
 <Solution>
-a) Til hver kontinuerlig symmetri i Lagrangefunksjonen hører en bevart
-størrelse: endrer $L$ seg bare med en total tidsderivert,
-$\delta L = \epsilon\,dF/dt$, under transformasjonen
-$q_i \to q_i + \epsilon F_i$, så er $Q = \sum_i p_i F_i - F$ konstant langs
-bevegelsen.
+a) En transformasjon ${q_i \to q_i + \epsilon F_i}$ som endrer Lagrangefunksjonen med høyst en total tidsderivert, ${\delta L = \epsilon\,dF/dt}$, for enhver bane, er en kontinuerlig symmetri. Til hver slik symmetri hører den bevarte størrelsen ${Q = \sum_i p_iF_i - F}$, med ${p_i = \partial L/\partial\dot q_i}$.
 
-b) Til første orden i $\epsilon$ er
+b) Til første orden i $\epsilon$ er ${\delta q_i = \epsilon F_i}$ og ${\delta\dot q_i = \epsilon\dot F_i}$, så
 
 $$
-\delta L = \sum_i \frac{\partial L}{\partial q_i}\,\epsilon F_i + \sum_i \frac{\partial L}{\partial \dot q_i}\,\epsilon\dot F_i .
+\delta L = \epsilon\sum_i \left(\frac{\partial L}{\partial q_i}F_i + \frac{\partial L}{\partial\dot q_i}\dot F_i\right)
 $$
 
-Langs en løsning gjelder Lagranges ligninger,
-$\partial L/\partial q_i = \dot p_i$ med $p_i = \partial L/\partial\dot q_i$,
-så summen er $\epsilon\sum_i(\dot p_i F_i + p_i\dot F_i) = \epsilon\,\frac{d}{dt}\sum_i p_i F_i$.
-Altså $F = \sum_i p_i F_i$.
-Med denne $F$ er $Q = \sum_i p_iF_i - F$ identisk null langs løsningen, så
-regningen i b) gjelder for enhver transformasjon og gir ingen bevart størrelse
-alene. En symmetri krever at $\delta L = \epsilon\,dF/dt$ holder for alle
-baner, uten å bruke Lagranges ligninger, og c) bruker dette kravet.
+Langs en løsning er ${\partial L/\partial q_i = \dot p_i}$, og summen er ${\sum_i(\dot p_iF_i + p_i\dot F_i)}$. Altså er ${\delta L = \epsilon\,dF/dt}$ med ${F = \sum_i p_iF_i}$. Den regningen gjelder enhver transformasjon og gir ${Q = 0}$. For å få en bevart størrelse må ${\delta L = \epsilon\,dF/dt}$ holde for enhver bane, uten Lagranges ligninger, og c) bruker det kravet.
 
-c) Roter begge partiklene en liten vinkel $\epsilon$ om en akse $\hat n$:
-$\delta\vec r_a = \epsilon\,\hat n\times\vec r_a$. Avstanden $|\vec r_{12}|$ og
-fartene endrer seg ikke, så $\delta L = 0$. Etter b) er da
-$\frac{d}{dt}\sum_a \vec p_a\cdot(\hat n\times\vec r_a) = 0$, og
-$\vec p_a\cdot(\hat n\times\vec r_a) = \hat n\cdot(\vec r_a\times\vec p_a)$, så
-dreieimpulsen langs $\hat n$ er bevart for enhver retning $\hat n$. Hele
-dreieimpulsen $\vec r_1\times\vec p_1 + \vec r_2\times\vec p_2$ er
-bevart. Lagrangefunksjonen endrer seg heller ikke under en felles forskyvning
-av begge partiklene, og den avhenger ikke eksplisitt av tida, så total impuls
-og energi er også bevart.
+c) Roter begge partiklene den lille vinkelen $\epsilon$ om en akse $\hat n$: ${\delta\vec r_a = \epsilon\,\hat n \times \vec r_a}$. Avstanden ${|\vec r_{12}|}$ og fartene er uendret, så ${\delta L = 0}$ for enhver bane, og ${F = 0}$. Noethers teorem gir at
 
-<Answer>c) Dreieimpulsen er bevart fordi $V(|\vec r_{12}|)$ er rotasjonsinvariant; total impuls og energi er også bevart.</Answer>
+$$
+\sum_a \vec p_a \cdot (\hat n \times \vec r_a) \allowbreak = \hat n \cdot (\vec r_1 \times \vec p_1 + \vec r_2 \times \vec p_2)
+$$
+
+er bevart for enhver retning $\hat n$, så hele den totale dreieimpulsen er bevart. $L$ er også uendret når begge partiklene forskyves like langt, og tida står ikke i $L$, så den totale impulsen og energien er også bevart.
+
+<Answer>c) Dreieimpulsen er bevart fordi $V(|\vec r_{12}|)$ er uendret under rotasjoner. Den totale impulsen og energien er også bevart.</Answer>
 </Solution>
 </Example>
 
 <KeyTakeaways>
-- $p_i = \partial L/\partial\dot q_i$ er den generaliserte impulsen, og $\dot p_i = \partial L/\partial q_i$. Mangler $q_i$ i $L$, er $p_i$ bevart.
-- $H = \sum_i \dot q_i p_i - L$ har $dH/dt = -\partial L/\partial t$. Den er lik $T + V$ når føringene er tidsuavhengige og $V$ ikke avhenger av hastighetene. Med tidsavhengige føringer er $H$ ikke lik energien, men den er bevart når tida faller ut av $L$, som for perla på en ring som roterer med fast $\omega$.
-- I et roterende system er $L = \tfrac12 m(\vec v\,' + \vec\omega \times \vec r)^2 - V$. Lagranges ligninger gir Corioliskraften og sentrifugalkraften, $\vec p = m\vec v$ er impulsen i $K$, og $H$ inneholder sentrifugalpotensialet.
-- Noethers teorem: endrer $q_i \to q_i + \epsilon F_i$ Lagrangefunksjonen med høyst $\epsilon\,dF/dt$, er $Q = \sum_i p_i F_i - F$ bevart. Forskyvning gir impulsen, rotasjon dreieimpulsen og tidsuavhengighet energifunksjonen.
-- Kravet $\delta L = \epsilon\,dF/dt$ gjelder alle baner. Langs den virkelige banen er $\delta L$ alltid en total tidsderivert. Noethers teorem gir ingen bevart størrelse for en diskret symmetri.
+- ${p_i = \partial L/\partial\dot q_i}$, og Lagranges ligning er ${\dot p_i = \partial L/\partial q_i}$. Står ikke $q_i$ i $L$, er $p_i$ bevart. Om en koordinat er syklisk, avhenger av hvilke koordinater du velger.
+- ${H = \sum_i \dot q_i\,p_i - L}$ har ${dH/dt = -\partial L/\partial t}$. Når posisjonene ikke avhenger av tida og $V$ bare av koordinatene, er ${H = T + V}$.
+- Den sfæriske pendelen har to bevarte størrelser, $p_\phi$ og $E$. Med $p_\phi$ satt inn i $E$ beveger $\theta$ seg i $V_\text{eff}(\theta)$, og vendepunktene er der ${V_\text{eff} = E}$.
+- En føring som beveger seg, kan gjøre arbeid. For perla på stanga som dreies med fast $\omega$, er ${H = \tfrac12 m\dot r^2 - \tfrac12 m\omega^2r^2}$ bevart, mens energien øker.
+- I et system som roterer med konstant $\vec\omega$, gir ${L = \tfrac12 m(\vec v\,' + \vec\omega \times \vec r)^2 - V}$ Corioliskraften og sentrifugalkraften. ${\vec p = m\vec v}$, og $H$ er energien i $K'$ med sentrifugalpotensialet.
+- Noethers teorem: endrer ${q_i \to q_i + \epsilon F_i}$ Lagrangefunksjonen med ${\epsilon\,dF/dt}$ for enhver bane, er ${Q = \sum_i p_iF_i - F}$ bevart. Forskyvning gir impulsen, rotasjon dreieimpulsen og forskyvning i tid energifunksjonen.
 </KeyTakeaways>

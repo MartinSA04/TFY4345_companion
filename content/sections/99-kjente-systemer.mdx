@@ -5,7 +5,7 @@ title: "Kjente systemer i Lagrangeformalismen"
 summary: "Åtte kjente systemer, fra den plane pendelen til Kapitzas pendel, regnet gjennom fra start til slutt etter samme oppskrift: systemet, koordinatene, Lagrangefunksjonen, bevegelsesligningene og de bevarte størrelsene. Hvert system har en simulering."
 importance: useful
 tag: "Interaktivt"
-updated: 2026-09-27
+updated: 2026-11-03
 ---
 
 Her er åtte systemer regnet gjennom med alle mellomregninger, etter framgangsmåten under. Hvert system har formlene det bruker i sin egen seksjon, så du kan lese ett system uten de andre.
@@ -17,7 +17,7 @@ Alle åtte systemene følger de samme fire trinnene.
 1. **Tell frihetsgradene og velg koordinater.** Antall <Term name="frihetsgrader">frihetsgrader</Term> er antall koordinater minus antall <Term name="holonom føring">føringer</Term>. Velg like mange <Term name="generaliserte koordinater">generaliserte koordinater</Term>, og velg dem slik at føringene er bygd inn, altså oppfylt for alle verdier av koordinatene: en vinkel for en stiv stang, en vinkel langs en ring. Da kommer <Term name="føringskraft">føringskreftene</Term> aldri inn i regningen. Velg dem også etter symmetrien. Bevegelsen er den samme i alle koordinatsett, men en symmetri viser seg som en koordinat som ikke står i $L$ bare i noen av dem: et sentralpotensial gjør $\phi$ syklisk i polarkoordinater og ingen koordinat syklisk i kartesiske. Skriv posisjonen til hver masse som funksjon av koordinatene.
 2. **Skriv $T$ og $V$ i koordinatene.** Deriver posisjonene med hensyn på tida med kjerne- og produktregelen, kvadrer, summer til $v^2$ for hver masse, og sett $T = \sum \tfrac12 mv^2$. Skriv potensialet i de samme koordinatene. Lagrangefunksjonen er <FormulaRef id="lagrangefunksjon" />, og ledd som er totale tidsderiverte kan strykes fordi de ikke endrer bevegelsesligningene, <FormulaRef id="ekvivalente-lagrangefunksjoner" />.
 3. **Deriver.** Lagranges ligning for hver koordinat, <FormulaRef id="euler-lagrange" />, gir bevegelsesligningene: regn ut $\partial L/\partial\dot q_i$, deriver den med hensyn på tida, regn ut $\partial L/\partial q_i$ og sett inn. Kontroller resultatet i et grensetilfelle der svaret er kjent, som små utslag eller en masse som går mot uendelig.
-4. **Let etter hva $L$ ikke avhenger av.** En koordinat som ikke står i $L$, er <Term name="syklisk koordinat">syklisk</Term>, og dens <Term name="generalisert impuls">generaliserte impuls</Term> $p_i = \partial L/\partial\dot q_i$ er bevart. Står ikke tida eksplisitt i $L$, er <Term name="energifunksjon">energifunksjonen</Term> $H = \sum_i \dot q_i\,\partial L/\partial\dot q_i - L$ bevart, og den er lik $T + V$ når føringene er tidsuavhengige og $V$ ikke avhenger av hastighetene. Endrer en forskyvning $q_i \to q_i + \epsilon F_i$ bare $L$ med en total tidsderivert $\epsilon\,dF/dt$, gir <Term name="noethers teorem">Noethers teorem</Term> den bevarte størrelsen $\sum_i p_i F_i - F$.
+4. **Let etter hva $L$ ikke avhenger av.** En koordinat som ikke står i $L$, er <Term name="syklisk koordinat">syklisk</Term>, og dens <Term name="generalisert impuls">generaliserte impuls</Term> $p_i = \partial L/\partial\dot q_i$ er bevart. Står ikke tida eksplisitt i $L$, er <Term name="energifunksjon">energifunksjonen</Term> $H = \sum_i \dot q_i\,\partial L/\partial\dot q_i - L$ bevart, og den er lik $T + V$ når posisjonene ikke avhenger av tida og $V$ bare av koordinatene. Endrer en transformasjon $q_i \to q_i + \epsilon F_i$ bare $L$ med en total tidsderivert $\epsilon\,dF/dt$ for enhver bane, gir <Term name="noethers teorem">Noethers teorem</Term> den bevarte størrelsen $\sum_i p_i F_i - F$.
 
 <Callout type="tip" title="Valg av koordinater">
 Velg koordinater som bygger inn føringene og følger symmetrien. Da kommer føringskreftene aldri inn i regningen, og du leser de bevarte størrelsene rett av $L$.
@@ -171,9 +171,9 @@ Ei kule med masse $m$ henger i en stiv, masseløs stang med lengde $l$ fra et ku
 <Simulation
   src="/sims/sfaerisk-pendel.js"
   title="Den sfæriske pendelen"
-  caption="Kula på stanga fra kuleleddet, sluppet fra $\theta = 45°$ med en sidefart. $\theta$ er målt fra loddlinja, $\phi$ er tegnet i det vannrette planet gjennom bunnpunktet, og de to stiplede breddesirklene er vendepunktene for $\theta$."
+  caption="Kula på stanga fra kuleleddet, sluppet fra $\theta = 60°$ med en sidefart. $\theta$ er målt fra loddlinja, de to stiplede breddesirklene er vendepunktene for $\theta$, $d$ er avstanden fra loddlinja, og den oransje pila er farten rundt loddlinja."
   host="dom"
-  height={300}
+  height={200}
 />
 
 **Koordinater.** Tre koordinater $x, y, z$ og én føring, $x^2 + y^2 + z^2 = l^2$, gir $3 - 1 = 2$ frihetsgrader. Kulekoordinater med loddlinja som akse: $\theta$ er vinkelen fra loddlinja nedover og $\phi$ vinkelen rundt den, med $z$-aksen oppover fra opphenget.

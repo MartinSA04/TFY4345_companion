@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 318" width="340" height="318">
+  <!-- Figur 1, modul 06: perla på stanga sett ovenfra fra bakken. Den stiplede spiralen er veien
+       perla har gått fra den startet i ro i forhold til stanga. Farten v har komponentene ṙ langs stanga
+       og ωr på tvers, og stanga skyver perla med R på tvers, i dreieretningen. -->
+  <defs><marker id="al" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8d98a6"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#3f9a6c"/></marker><marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#c0703a"/></marker><marker id="ai" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#6f7a88"/></marker><marker id="am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#7c8795"/></marker></defs>
+  <line x1="23.4" y1="300.4" x2="239.6" y2="149" stroke="#8d98a6" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="84" cy="258" r="6" fill="none" stroke="#8d98a6" stroke-width="2"/>
+  <circle cx="84" cy="258" r="2.2" fill="#8d98a6"/>
+  <path d="M 63.3 265.5 L 64.2 267.6 L 65.3 269.7 L 66.7 271.5 L 68.2 273.3 L 69.9 274.9 L 71.7 276.2 L 73.7 277.4 L 75.8 278.4 L 77.9 279.1 L 80.2 279.7 L 82.5 279.9 L 84.8 280 L 87.1 279.8 L 89.3 279.3 L 91.5 278.7 L 93.6 277.8 L 95.7 276.7 L 97.5 275.3 L 99.3 273.8 L 100.9 272.1 L 102.2 270.3 L 103.4 268.3 L 104.4 266.2 L 105.1 264.1 L 105.7 261.8 L 105.9 259.5 L 106 257.2 L 105.8 254.9 L 105.3 252.7 L 104.7 250.5 L 103.8 248.4 L 102.7 246.3 L 101.3 244.5 L 99.8 242.7 L 98.1 241.1 L 96.3 239.8 L 94.3 238.6 L 92.2 237.6 L 90.1 236.9 L 87.8 236.3 L 85.5 236.1 L 83.2 236 L 80.9 236.2 L 78.7 236.7 L 76.5 237.3" fill="none" stroke="#8d98a6" stroke-width="1.6" marker-end="url(#al)"/>
+  <text x="78" y="227" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="middle">ω</text>
+  <path d="M 118.6 307 L 119.9 306.1 L 121.2 305.2 L 122.5 304.3 L 123.7 303.4 L 125 302.5 L 126.3 301.5 L 127.7 300.6 L 129 299.7 L 130.3 298.7 L 131.7 297.7 L 133 296.7 L 134.4 295.7 L 135.8 294.7 L 137.2 293.7 L 138.6 292.6 L 140.1 291.5 L 141.5 290.3 L 143 289.2 L 144.5 288 L 146 286.7 L 147.6 285.4 L 149.1 284.1 L 150.7 282.8 L 152.3 281.3 L 153.9 279.9 L 155.5 278.3 L 157.2 276.8 L 158.8 275.1 L 160.5 273.4 L 162.2 271.6 L 163.9 269.8 L 165.6 267.9 L 167.3 265.9 L 169 263.8 L 170.8 261.6 L 172.5 259.4 L 174.2 257.1 L 176 254.7 L 177.7 252.1 L 179.4 249.5 L 181.2 246.8 L 182.9 244 L 184.6 241.1 L 186.2 238 L 187.9 234.9 L 189.5 231.6 L 191.1 228.2 L 192.6 224.7 L 194.2 221 L 195.6 217.3 L 197.1 213.4 L 198.4 209.3 L 199.8 205.2 L 201 200.9 L 202.2 196.4 L 203.3 191.8 L 204.3 187.1 L 205.3 182.2 L 206.1 177.2 L 206.9 172" fill="none" stroke="#3f9a6c" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="90.9" y1="267.8" x2="213.8" y2="181.8" stroke="#7c8795" stroke-width="1"/>
+  <text x="162.3" y="238.8" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="middle">r</text>
+  <line x1="206.9" y1="172" x2="158.7" y2="103.2" stroke="#7c8795" stroke-width="1.3" stroke-dasharray="5 4"/>
+  <line x1="158.7" y1="103.2" x2="221.8" y2="59" stroke="#7c8795" stroke-width="1.3" stroke-dasharray="5 4"/>
+  <text x="172.8" y="139.6" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="end">ωr</text>
+  <text x="186.2" y="71.1" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="end">ṙ</text>
+  <line x1="241.3" y1="221.1" x2="212" y2="179.3" stroke="#6f7a88" stroke-width="2.6" marker-end="url(#ai)"/>
+  <text x="245.3" y="243.1" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="start">R</text>
+  <line x1="206.9" y1="172" x2="221.8" y2="59" stroke="#3f9a6c" stroke-width="2.6" marker-end="url(#ag)"/>
+  <text x="231.8" y="65" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#3f9a6c" text-anchor="start">v</text>
+  <circle cx="206.9" cy="172" r="8" fill="#3f9a6c"/>
+</svg>
