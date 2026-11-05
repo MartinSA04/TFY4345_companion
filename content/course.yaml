@@ -105,6 +105,13 @@ exams:
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_171212.pdf/56ecc352-0fd7-9780-8c00-faafbbd104be",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_171212.pdf/b0b6ecfb-8a32-3b28-d2ec-3a6e5a8fbb1d",
     }
+  - {
+      label: "Ordinær eksamen, juni 2014",
+      id: "2014-jun",
+      date: 2014-06-07,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E-TFY4345-07jun2014.pdf/84743d0b-f5d3-47d8-8142-56e26249a2bb",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L-TFY4345-07jun2014.pdf/fa409f39-495a-4951-a4c2-15d414af1fff",
+    }
 
   # Settet fra 2013 har ingen dato på forsiden; dagen er hentet fra NTNUs filnavn
   # (E-TFY4345-25mai2013.pdf).
@@ -341,52 +348,60 @@ formulas:
 
   - id: redusert-masse
     section: Tolegemeproblemet
-    tex: "\\mu \\ddot{\\vec r} = \\vec F_{12}, \\qquad \\mu = \\frac{m_1 m_2}{m_1 + m_2}"
-    label: "Tolegemeproblemet uten ytre krefter, redusert til ett legeme med redusert masse $\\mu$ for relativkoordinaten $\\vec r = \\vec r_1 - \\vec r_2$."
+    tex: "L = \\tfrac12 M\\dot{\\vec R}^{\\,2} + \\tfrac12\\mu\\,\\dot{\\vec r}^{\\,2} - V(r) \\allowbreak\\qquad \\mu = \\frac{m_1 m_2}{m_1 + m_2}"
+    label: "To legemer som bare påvirker hverandre, skrevet med massesenteret $\\vec R$ og relativvektoren $\\vec r = \\vec r_1 - \\vec r_2$. $\\vec R$ er syklisk, og $\\vec r$ beveger seg som ett legeme med den reduserte massen $\\mu$ i $V(r)$."
   - id: sentralkraft-lagrange
     section: Tolegemeproblemet
     tex: "\\begin{aligned} L &= \\tfrac12\\mu\\left(\\dot r^2 + r^2\\dot\\phi^2\\right) - V(r) \\\\ J &= p_\\phi = \\mu r^2\\dot\\phi \\end{aligned}"
-    label: "Relativbevegelsen i tolegemeproblemet, i planet vinkelrett på dreieimpulsen, med redusert masse $\\mu = m_1 m_2/(m_1 + m_2)$. $\\phi$ er syklisk, og $J$ er dreieimpulsen. Arealfarten $\\tfrac12 r^2\\dot\\phi = J/2\\mu$ er konstant, som er Keplers andre lov."
+    label: "Relativbevegelsen i tolegemeproblemet, i planet vinkelrett på dreieimpulsen. $\\phi$ er syklisk, og $J$ er dreieimpulsen. Arealfarten $\\tfrac12 r^2\\dot\\phi = J/2\\mu$ er konstant, som er Keplers andre lov."
   - id: effektivt-potensial
     section: Tolegemeproblemet
-    tex: "\\begin{aligned} E &= \\tfrac12\\mu\\dot r^2 + V_\\text{eff}(r) \\\\ V_\\text{eff}(r) &= V(r) + \\frac{J^2}{2\\mu r^2} \\end{aligned}"
-    label: "Den bevarte dreieimpulsen gjør radialbevegelsen til et endimensjonalt problem i et effektivt potensial. Sirkelbanen ligger der $V_\\text{eff}' = 0$; for $V = -k/r$ er radien $r_0 = J^2/\\mu k$ og energien $-\\mu k^2/2J^2$."
+    tex: "\\begin{aligned} E &= \\tfrac12\\mu\\dot r^2 + V_\\text{eff}(r) \\\\ V_\\text{eff}(r) &= \\frac{J^2}{2\\mu r^2} + V(r) \\end{aligned}"
+    label: "Den bevarte dreieimpulsen gjør avstanden $r$ til én koordinat i et effektivt potensial. Vendepunktene er der $V_\\text{eff} = E$, og leddet $J^2/2\\mu r^2$ er sentrifugalbarrieren."
   - id: sirkelbane-stabil
     section: Tolegemeproblemet
-    tex: "\\begin{aligned} \\omega_r^2 &= \\frac{V_\\text{eff}''(r_0)}{\\mu} \\\\ &= \\frac{1}{\\mu}\\left(V''(r_0) + \\frac{3}{r_0}V'(r_0)\\right) \\end{aligned}"
-    label: "Små radielle svingninger om sirkelbanen med radius $r_0$. Banen er stabil når $\\omega_r^2 > 0$; for $V = -k/r^n$ er sirkelbanene stabile når $n < 2$. I $V = -k/r$ er $\\omega_r$ lik vinkelfarten i banen, så den forstyrrede banen er lukket."
+    tex: "\\begin{aligned} V_\\text{eff}'(r_0) &= 0 \\\\ \\omega_r^2 &= \\frac{V_\\text{eff}''(r_0)}{\\mu} \\end{aligned}"
+    label: "Sirkelbanen med radius $r_0$ og små radielle svingninger om den. Banen er stabil når $V_\\text{eff}''(r_0) > 0$, og for en potenslov krever det et potensial som faller langsommere av enn $1/r^2$. I $V = -k/r$ er $\\omega_r = \\dot\\phi$, så en forstyrret bane lukker seg."
   - id: baneligning
     section: Tolegemeproblemet
-    tex: "\\frac{d^2u}{d\\phi^2} + u = -\\frac{\\mu}{J^2u^2}\\,F\\!\\left(\\frac1u\\right)"
-    label: "Baneligningen for $u = 1/r$, med kraften $F = -V'(r)$. Den gir banens form $r(\\phi)$ uten å gå veien om tida."
+    tex: "\\frac{d^2u}{d\\phi^2} + u = -\\frac{\\mu}{J^2}\\frac{dV}{du}"
+    label: "Baneligningen for $u = 1/r$, med potensialet skrevet som funksjon av $u$. Den gir formen på banen uten å gå veien om tida. For $V = -ku$ er høyre side $\\mu k/J^2$."
   - id: kepler-bane
     section: Tolegemeproblemet
     tex: "\\begin{aligned} r &= \\frac{r_0}{1 + e\\cos\\phi}, \\qquad r_0 = \\frac{J^2}{\\mu k} \\\\ e &= \\sqrt{1 + \\frac{2EJ^2}{\\mu k^2}} \\end{aligned}"
     label: "Banen i $V = -k/r$, et kjeglesnitt med brennpunkt i kraftsentrum og $\\phi = 0$ i perihel. $e = 0$ er sirkelen, $e < 1$ en ellipse ($E < 0$), $e = 1$ en parabel ($E = 0$) og $e > 1$ en hyperbel ($E > 0$)."
   - id: ellipse-akser
     section: Tolegemeproblemet
-    tex: "\\begin{aligned} a &= \\frac{k}{2|E|} \\\\ b &= \\frac{J}{\\sqrt{2\\mu|E|}} \\\\ r_\\text{min}, r_\\text{max} &= a(1 \\mp e) \\end{aligned}"
-    label: "Halvaksene og apsidene i Keplerellipsen. $a$ avhenger bare av energien, $b$ også av dreieimpulsen, og avstanden fra sentrum til brennpunktet er $ea$."
+    tex: "\\begin{aligned} E &= -\\frac{k}{2a} \\\\ r_\\text{min}, r_\\text{max} &= a(1 \\mp e) \\end{aligned}"
+    label: "Keplerellipsen. Energien avhenger bare av den store halvaksen $a$, og kraftsentrum ligger $ea$ fra sentrum av ellipsen."
   - id: keplers-tredje
     section: Tolegemeproblemet
-    tex: "\\begin{aligned} T^2 &= \\frac{4\\pi^2\\mu}{k}\\,a^3 \\\\ &= \\frac{4\\pi^2}{G(m_1 + m_2)}\\,a^3 \\end{aligned}"
-    label: "Keplers tredje lov, av arealfarten $J/2\\mu$ og ellipsens areal $\\pi ab$. $a$ er den store halvaksen i banen til $\\vec r$, planetens bane sett fra sola. Med $k = Gm_1m_2$ faller massene ut i $\\mu/k = 1/G(m_1 + m_2)$."
+    tex: "T^2 = \\frac{4\\pi^2}{G(m_1 + m_2)}\\,a^3"
+    label: "Keplers tredje lov, av arealfarten $J/2\\mu$ og ellipsens areal $\\pi a^2\\sqrt{1 - e^2}$. $T$ er omløpstida og $a$ den store halvaksen i banen til $\\vec r$, planetens bane sett fra sola."
   - id: runge-lenz
     section: Tolegemeproblemet
     tex: "\\begin{aligned} \\vec A &= \\vec p \\times \\vec L - \\mu k\\,\\hat r \\\\ |\\vec A| &= \\mu k e \\end{aligned}"
-    label: "Runge–Lenz-vektoren, bevart bare for $V = -k/r$. Den ligger i baneplanet og peker mot perihel, og at den er bevart, er grunnen til at Keplerbanen er lukket."
+    label: "Runge–Lenz-vektoren, bevart bare for $V = -k/r$. Den peker fra kraftsentrum mot perihel, så Keplerellipsen står stille."
+  - id: perihelpresesjon
+    section: Tolegemeproblemet
+    tex: "\\Delta\\phi = \\frac{6\\pi GM}{c^2a(1 - e^2)}"
+    label: "Hvor langt perihelet flytter seg per omløp etter den generelle relativitetsteorien, i radianer. $M$ er massen til sola. For Merkur er det $43''$ per hundre år."
   - id: spredningstverrsnitt
     section: Tolegemeproblemet
-    tex: "\\begin{aligned} \\frac{d\\sigma}{d\\Omega} &= \\frac{s}{\\sin\\Theta}\\left|\\frac{ds}{d\\Theta}\\right| \\\\ J &= s\\sqrt{2\\mu E} \\end{aligned}"
-    label: "Det differensielle spredningstverrsnittet for et sentralpotensial, med støtparameteren $s$ og spredningsvinkelen $\\Theta$. Partiklene som kommer inn gjennom ringen $2\\pi s\\,ds$ går ut i romvinkelen $2\\pi\\sin\\Theta\\,d\\Theta$."
+    tex: "\\begin{aligned} \\frac{d\\sigma}{d\\Omega} &= \\frac{b}{\\sin\\vartheta}\\left|\\frac{db}{d\\vartheta}\\right| \\\\ J &= b\\sqrt{2\\mu E} \\end{aligned}"
+    label: "Det differensielle spredningstverrsnittet for et sentralpotensial, med støtparameteren $b$ og spredningsvinkelen $\\vartheta$. Partiklene som kommer inn gjennom ringen $2\\pi b\\,db$, går ut i romvinkelen $2\\pi\\sin\\vartheta\\,d\\vartheta$."
+  - id: hard-kule
+    section: Tolegemeproblemet
+    tex: "b = a\\cos\\frac{\\vartheta}{2}, \\qquad \\frac{d\\sigma}{d\\Omega} = \\frac{a^2}{4}"
+    label: "Spredning mot ei hard kule med radius $a$. Tverrsnittet er det samme i alle retninger, og det totale tverrsnittet er $\\pi a^2$."
   - id: rutherford
     section: Tolegemeproblemet
-    tex: "\\begin{aligned} s &= \\frac{|k|}{2E}\\cot\\frac{\\Theta}{2} \\\\ \\frac{d\\sigma}{d\\Omega} &= \\left(\\frac{k}{4E}\\right)^2\\frac{1}{\\sin^4(\\Theta/2)} \\end{aligned}"
-    label: "Rutherfords spredningsformel for $V = -k/r$ med $k = -qQ/4\\pi\\epsilon_0$. Tverrsnittet vokser uten grense når $\\Theta \\to 0$, fordi Coulombkraften har uendelig rekkevidde."
+    tex: "\\begin{aligned} b &= \\frac{|k|}{2E}\\cot\\frac{\\vartheta}{2} \\\\ \\frac{d\\sigma}{d\\Omega} &= \\left(\\frac{k}{4E}\\right)^2\\frac{1}{\\sin^4(\\vartheta/2)} \\end{aligned}"
+    label: "Rutherfords spredningsformel for $V = -k/r$, med $k = -qQ/4\\pi\\epsilon_0$ for to ladninger. Tverrsnittet vokser uten grense når $\\vartheta \\to 0$, fordi Coulombkraften virker på alle avstander."
   - id: virialteoremet
     section: Tolegemeproblemet
-    tex: "\\begin{aligned} 2\\langle T\\rangle &= -\\Big\\langle\\sum_i \\vec F_i \\cdot \\vec r_i\\Big\\rangle \\\\ &= n\\,\\langle V\\rangle \\end{aligned}"
-    label: "Virialteoremet for et system som holder seg endelig. Klammene er tidsmidler. Den siste likheten gjelder for et potensial som er homogent av grad $n$, som $V \\propto r^n$. Keplerbaner har $n = -1$ og $E = -\\langle T\\rangle$, oscillatoren $n = 2$ og $\\langle T\\rangle = \\langle V\\rangle$."
+    tex: "\\begin{aligned} 2\\langle T\\rangle &= -\\Big\\langle\\sum_i \\vec F_i \\cdot \\vec r_i\\Big\\rangle \\\\ &= (n + 1)\\,\\langle V\\rangle \\end{aligned}"
+    label: "Virialteoremet for et system som holder seg endelig. Klammene er tidsmidler. Den siste likheten gjelder for et potensial $V = ar^{n+1}$, der kraften går som $r^n$. Keplerbaner har $n = -2$ og $E = -\\langle T\\rangle$, oscillatoren $n = 1$ og $\\langle T\\rangle = \\langle V\\rangle$."
   - id: trelegeme-lagrange
     section: Trelegemeproblemet
     tex: "L = \\tfrac12 m\\left(\\dot x^2 + \\dot y^2\\right) \\allowbreak + m\\omega\\left(x\\dot y - y\\dot x\\right) \\allowbreak - m\\,U(x, y)"
@@ -606,7 +621,7 @@ symbols:
   - { tex: "J(t)", meaning: "Den ytre kraften som driver oscillatoren", unit: "N", section: "Newtonsk mekanikk", formula: green-respons, note: "$J_0$ er amplituden til en harmonisk kraft. Ikke dreieimpulsen $J$ i tolegemeproblemet." }
   # ── Lagrangeformalismen ──
   - { tex: "q_i,\\ \\dot q_i", meaning: "Generaliserte koordinater og hastigheter", section: "Lagrangeformalismen", term: "Generaliserte koordinater", formula: euler-lagrange, id: q, note: "Ikke ladningen $q$ i Lagrangefunksjonen for en ladd partikkel." }
-  - { tex: "n", meaning: "Antall frihetsgrader, $3N - k$", section: "Lagrangeformalismen", term: "Frihetsgrader", formula: frihetsgrader, note: "$N$ partikler med $k$ holonome føringer; her er $k$ et antall og ikke en fjærkonstant. I modulen om små svingninger heter antallet frihetsgrader $N$, og $n$ nummererer modene. I virialteoremet er $n$ graden til potensialet." }
+  - { tex: "n", meaning: "Antall frihetsgrader, $3N - k$", section: "Lagrangeformalismen", term: "Frihetsgrader", formula: frihetsgrader, note: "$N$ partikler med $k$ holonome føringer; her er $k$ et antall og ikke en fjærkonstant. I modulen om små svingninger heter antallet frihetsgrader $N$, og $n$ nummererer modene. I virialteoremet og i stabiliteten til sirkelbaner er $n$ potensen i kraften, $V = ar^{n+1}$, og tyngden har $n = -2$." }
   - { tex: "L", meaning: "Lagrangefunksjonen, $T - V$", unit: "J", section: "Lagrangeformalismen", term: "Lagrangefunksjon", formula: lagrangefunksjon, id: lagrangefunksjon, note: "Ikke dreieimpulsen $\\vec L$ eller Lagrangepunktene $L_1$ til $L_5$." }
   - { tex: "S", meaning: "Virkningen, $\\int L\\,dt$ langs en bane", unit: "J·s", section: "Lagrangeformalismen", term: "Virkning", formula: virkning, note: "Ikke snordraget $S$." }
   - { tex: "f(q, t)", meaning: "Føringen, skrevet $f(q, t) = 0$; med flere føringer $f_\\alpha$", section: "Lagrangeformalismen", term: "Holonom føring", formula: lagrange-multiplikator, note: "Ikke funksjonen $F(q, t)$ i $L' = L + dF/dt$." }
@@ -629,12 +644,12 @@ symbols:
   - { tex: "k", meaning: "Styrken i $V = -k/r$, $Gm_1m_2$ for gravitasjon", unit: "J·m", section: "To- og trelegemeproblemet", formula: kepler-bane, id: k, note: "Negativ for frastøting, $k = -qQ/4\\pi\\epsilon_0$. Ikke fjærkonstanten $k$." }
   - { tex: "e", meaning: "Eksentrisiteten", section: "To- og trelegemeproblemet", term: "Eksentrisitet", formula: kepler-bane, id: e, note: "$e = 0$ er en sirkel, $0 < e < 1$ en ellipse, $e = 1$ en parabel og $e > 1$ en hyperbel. Ikke Eulers tall $e$." }
   - { tex: "r_0", meaning: "Radien til sirkelbanen med samme $J$, $J^2/\\mu k$", unit: "m", section: "To- og trelegemeproblemet", formula: kepler-bane, note: "I molekylet med tre atomer er $r_0$ likevektsavstanden i hver binding." }
-  - { tex: "a,\\ b", meaning: "Den store og den lille halvaksen til ellipsen", unit: "m", section: "To- og trelegemeproblemet", formula: ellipse-akser, note: "$r_\\text{min}, r_\\text{max} = a(1 \\mp e)$. $a$ er også radien til ringen i «Kjente systemer», radien til den harde kula i spredning, avstanden mellom atomene i kjeden og sidene til plata og kuben blant de stive legemene." }
+  - { tex: "a", meaning: "Den store halvaksen til ellipsen", unit: "m", section: "To- og trelegemeproblemet", formula: ellipse-akser, note: "$r_\\text{min}, r_\\text{max} = a(1 \\mp e)$, og den lille halvaksen er $a\\sqrt{1 - e^2}$. $a$ er også radien til ringen i «Kjente systemer», radien til den harde kula i spredning, avstanden mellom atomene i kjeden og sidene til plata og kuben blant de stive legemene." }
   - { tex: "u", meaning: "$1/r$, variabelen i baneligningen", unit: "m⁻¹", section: "To- og trelegemeproblemet", formula: baneligning }
   - { tex: "\\vec A", meaning: "Runge–Lenz-vektoren, bevart for $V = -k/r$", section: "To- og trelegemeproblemet", formula: runge-lenz, note: "Peker mot perihel og har lengden $\\mu ke$. Ikke vektorpotensialet $\\vec A$." }
   - { tex: "G", meaning: "Gravitasjonskonstanten", unit: "N·m²/kg²", section: "To- og trelegemeproblemet", formula: keplers-tredje, note: "$6{,}674 \\cdot 10^{-11}$ N·m²/kg². For jorda er $GM_\\oplus = 3{,}986 \\cdot 10^5$ km³/s²." }
-  - { tex: "s", meaning: "Støtparameteren", unit: "m", section: "To- og trelegemeproblemet", term: "Støtparameter", formula: rutherford, note: "For et legeme som ruller, er $s$ strekningen langs underlaget, med $\\dot s = R\\dot\\theta$." }
-  - { tex: "\\Theta", meaning: "Spredningsvinkelen", unit: "rad", section: "To- og trelegemeproblemet", formula: rutherford, note: "Hos Kapitzas pendel er $\\Theta$ den langsomme delen av vinkelen $\\theta$." }
+  - { tex: "b", meaning: "Støtparameteren", unit: "m", section: "To- og trelegemeproblemet", term: "Støtparameter", formula: spredningstverrsnitt, note: "Eldre eksamenssett skriver $s$. For et legeme som ruller, er $s$ strekningen langs underlaget, med $\\dot s = R\\dot\\theta$." }
+  - { tex: "\\vartheta", meaning: "Spredningsvinkelen, mellom retningen inn og retningen ut", unit: "rad", section: "To- og trelegemeproblemet", formula: spredningstverrsnitt, note: "Eldre eksamenssett skriver $\\Theta$ eller $\\theta$. I Greens funksjon er $\\vartheta(\\tau)$ trinnfunksjonen, og hos Kapitzas pendel er $\\Theta$ den langsomme delen av vinkelen $\\theta$." }
   - { tex: "d\\sigma/d\\Omega", meaning: "Det differensielle spredningstverrsnittet", unit: "m²", section: "To- og trelegemeproblemet", term: "Spredningstverrsnitt", formula: spredningstverrsnitt, note: "$d\\Omega$ er et romvinkelelement, ikke en frekvens." }
   - { tex: "\\alpha", meaning: "Masseforholdet $m_2/M$ i trelegemeproblemet", section: "To- og trelegemeproblemet", note: "Ellers en lokal konstant: faktoren i $L' = \\alpha L$, indeksen på føringene $f_\\alpha$, vinkelen loddlinja avviker med og vinkelen til skråplanet i eksamensoppgaven om ringen." }
   - { tex: "U", meaning: "Potensialet per masse i det roterende systemet, med sentrifugalleddet", unit: "J/kg", section: "To- og trelegemeproblemet", formula: trelegeme-potensial, note: "De annenderiverte $U_{xx}$, $U_{xy}$ og $U_{yy}$ avgjør stabiliteten til Lagrangepunktene." }
@@ -807,7 +822,7 @@ glossary:
     definition: "Leddet $J^2/2\\mu r^2$ i det effektive potensialet, den kinetiske energien i vinkelbevegelsen skrevet med den bevarte dreieimpulsen. Det vokser uten grense når $r \\to 0$ og holder legemet unna kraftsentrum så lenge $J \\ne 0$ og $-V$ vokser langsommere enn $1/r^2$ når $r \\to 0$."
   - term: Redusert masse
     section: Tolegemeproblemet
-    definition: "Massen $\\mu = m_1 m_2/(m_1 + m_2)$ som relativbevegelsen i tolegemeproblemet følger, $\\mu\\ddot{\\vec r} = \\vec F_{12}$. Relativkoordinaten $\\vec r = \\vec r_1 - \\vec r_2$ er $m_1$ sett fra $m_2$, så den beveger seg som ett legeme med masse $\\mu$ om et fast kraftsentrum der $m_2$ er."
+    definition: "Massen $\\mu = m_1 m_2/(m_1 + m_2)$ som relativbevegelsen i tolegemeproblemet følger, $\\mu\\ddot{\\vec r} = \\vec F$ med $\\vec F$ som kraften på $m_1$. Relativvektoren $\\vec r = \\vec r_1 - \\vec r_2$ er $m_1$ sett fra $m_2$, så den beveger seg som ett legeme med massen $\\mu$ om et fast punkt der $m_2$ er."
   - term: Eksentrisitet
     section: Tolegemeproblemet
     definition: "Tallet $e \\ge 0$ i kjeglesnittet $r = r_0/(1 + e\\cos\\phi)$. Det fastlegger formen på banen: $e = 0$ er en sirkel, $e < 1$ en ellipse, $e = 1$ en parabel og $e > 1$ en hyperbel. For $V = -k/r$ er $e^2 = 1 + 2EJ^2/\\mu k^2$."
@@ -816,13 +831,13 @@ glossary:
     definition: "Punktet i banen nærmest sola; det fjerneste er aphel. For en vilkårlig bane kalles de to vendepunktene i $r$ apsidene, $r_\\text{min} = a(1 - e)$ og $r_\\text{max} = a(1 + e)$ i en ellipse."
   - term: Støtparameter
     section: Tolegemeproblemet
-    definition: "Avstanden $s$ fra kraftsentrum til den rette linja en innkommende partikkel følger langt ute. Sammen med energien gir den dreieimpulsen $J = s\\sqrt{2\\mu E}$ og bestemmer spredningsvinkelen $\\Theta$."
+    definition: "Avstanden $b$ fra kraftsentrum til den rette linja en innkommende partikkel følger langt ute. Sammen med energien gir den dreieimpulsen $J = b\\sqrt{2\\mu E}$ og bestemmer spredningsvinkelen $\\vartheta$."
   - term: Spredningstverrsnitt
     section: Tolegemeproblemet
     definition: "Det differensielle spredningstverrsnittet $d\\sigma/d\\Omega$ er antall partikler spredt inn i romvinkelen $d\\Omega$ per tid, delt på antall innkommende partikler per tid og areal. Det har dimensjon areal, og integralet over alle retninger er det totale tverrsnittet."
   - term: Virialteoremet
     section: Tolegemeproblemet
-    definition: "For et system som holder seg endelig er tidsmiddelet $2\\langle T\\rangle = -\\langle\\sum_i \\vec F_i \\cdot \\vec r_i\\rangle$. For et potensial som er homogent av grad $n$, gir teoremet $2\\langle T\\rangle = n\\langle V\\rangle$."
+    definition: "For et system som holder seg endelig er tidsmiddelet $2\\langle T\\rangle = -\\langle\\sum_i \\vec F_i \\cdot \\vec r_i\\rangle$. For et potensial $V = ar^{n+1}$ gir teoremet $2\\langle T\\rangle = (n + 1)\\langle V\\rangle$."
 
   - term: Jacobis konstant
     section: Trelegemeproblemet
