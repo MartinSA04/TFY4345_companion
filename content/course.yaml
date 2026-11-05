@@ -85,6 +85,13 @@ exams:
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_211200.pdf/50431bfb-3ec6-01f9-e76c-bb16b6236931",
     }
   - {
+      label: "Ordinær eksamen, desember 2019",
+      id: "2019-des",
+      date: "2019-12",
+      url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_191200.pdf/15b3dae9-b442-d069-b89d-4daf8ed23448",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_191200.pdf/7b6fe432-87cf-344a-989c-3534ac269028",
+    }
+  - {
       label: "Ordinær eksamen, desember 2018",
       id: "2018-des",
       date: 2018-12-11,
@@ -429,24 +436,24 @@ formulas:
     label: "Små svingninger om en likevekt $q_0$ med én frihetsgrad, for $L = \\tfrac12 m(q)\\dot q^2 - V(q)$ og $q = q_0 + \\eta$. Likevekten er stabil når $V''(q_0) > 0$."
   - id: kvadratisk-lagrange
     section: Små svingninger
-    tex: "L \\approx \\tfrac12 T_{ij}\\,\\dot\\eta_i\\dot\\eta_j - \\tfrac12 V_{ij}\\,\\eta_i\\eta_j \\allowbreak\\qquad T_{ij} = m_{ij}(q_0) \\allowbreak\\qquad V_{ij} = \\frac{\\partial^2 V}{\\partial q_i\\,\\partial q_j}\\bigg|_{q_0}"
-    label: "Lagrangefunksjonen til andre orden i utslagene $\\eta_i = q_i - q_{0i}$ fra en likevekt, med $T = \\tfrac12 m_{ij}(q)\\dot q_i\\dot q_j$. Begge matrisene er symmetriske, og $\\boldsymbol T$ er positivt definitt."
+    tex: "L \\approx \\tfrac12\\sum_{ij} T_{ij}\\,\\dot\\eta_i\\dot\\eta_j - \\tfrac12\\sum_{ij} V_{ij}\\,\\eta_i\\eta_j \\allowbreak\\qquad T_{ij} = m_{ij}(q_0) \\allowbreak\\qquad V_{ij} = \\frac{\\partial^2 V}{\\partial q_i\\,\\partial q_j}\\bigg|_{q_0}"
+    label: "Lagrangefunksjonen til andre orden i utslagene $\\eta_i = q_i - q_{0i}$ fra en likevekt, med $T = \\tfrac12\\sum_{ij} m_{ij}(q)\\dot q_i\\dot q_j$ når føringene ikke avhenger av tida. Begge matrisene er symmetriske, og $\\boldsymbol T$ er positivt definitt."
   - id: sekulaerligning
     section: Små svingninger
-    tex: "\\det\\left(\\boldsymbol V - \\omega^2\\boldsymbol T\\right) = 0 \\allowbreak\\qquad \\left(\\boldsymbol V - \\omega_n^2\\boldsymbol T\\right)\\mathbf A_n = 0"
-    label: "Sekulærligningen for egenfrekvensene $\\omega_n$, og ligningen for normalmoden $\\mathbf A_n$. $\\omega_n^2 < 0$ gir ustabil likevekt, og $\\omega_n^2 = 0$ en mode uten tilbakedrivende kraft, som en fri translasjon eller rotasjon."
+    tex: "\\det\\left(\\boldsymbol V - \\omega^2\\boldsymbol T\\right) = 0 \\allowbreak\\qquad \\left(\\boldsymbol V - \\omega_a^2\\boldsymbol T\\right)\\boldsymbol\\mu_a = 0"
+    label: "Sekulærligningen for egenfrekvensene $\\omega_a$, og ligningen for moden $\\boldsymbol\\mu_a$. $\\omega_a^2 < 0$ gir ustabil likevekt, og $\\omega_a^2 = 0$ en mode der ingenting drar tilbake, når hele systemet kan flyttes eller dreies uten at noen fjær strekkes."
   - id: normalkoordinater
     section: Små svingninger
-    tex: "\\boldsymbol\\eta = \\sum_n \\xi_n\\,\\mathbf A_n \\allowbreak\\qquad L = \\tfrac12\\sum_n\\left(\\dot\\xi_n^2 - \\omega_n^2\\,\\xi_n^2\\right) \\allowbreak\\qquad \\mathbf A_m^\\top\\boldsymbol T\\mathbf A_n = \\delta_{mn}"
-    label: "Normalkoordinatene $\\xi_n$ er uavhengige harmoniske oscillatorer når modene er normert med $\\boldsymbol T$ som vekt. Startverdiene er $\\xi_n(0) = \\mathbf A_n^\\top\\boldsymbol T\\boldsymbol\\eta(0)$."
+    tex: "\\boldsymbol\\eta = \\sum_a \\xi_a\\,\\boldsymbol\\mu_a \\allowbreak\\qquad L = \\tfrac12\\sum_a\\left(\\dot\\xi_a^2 - \\omega_a^2\\,\\xi_a^2\\right) \\allowbreak\\qquad \\boldsymbol\\mu_a^{\\mathsf T}\\boldsymbol T\\boldsymbol\\mu_b = \\delta_{ab}"
+    label: "Normalkoordinatene $\\xi_a$ er uavhengige harmoniske oscillatorer når modene er skalert med $\\boldsymbol T$ som vekt. Startverdiene er $\\xi_a(0) = \\boldsymbol\\mu_a^{\\mathsf T}\\boldsymbol T\\boldsymbol\\eta(0)$."
   - id: kjede-dispersjon
     section: Små svingninger
-    tex: "\\omega = 2\\sqrt{\\frac{k}{m}}\\,\\left|\\sin\\frac{\\varphi}{2}\\right| \\allowbreak\\qquad v = a\\sqrt{\\frac{k}{m}}"
-    label: "Normalmodene til en kjede av like atomer med masse $m$, avstand $a$ og fjærkonstant $k$. $\\varphi$ er faseforskjellen mellom naboatomer, og $v$ er lydfarten for lange bølger."
+    tex: "\\omega = 2\\sqrt{\\frac{k}{m}}\\,\\left|\\sin\\frac{\\varphi}{2}\\right| \\allowbreak\\qquad \\varphi = \\frac{2\\pi p}{N} \\allowbreak\\qquad v = a\\sqrt{\\frac{k}{m}}"
+    label: "Egenfrekvensene til $N$ like perler med masse $m$ på en ring, med fjærkonstanten $k$ og avstanden $a$ mellom naboene, en modell av en kjede av atomer. $\\varphi$ er faseforskjellen mellom naboer, $p = 0, 1, \\dots, N - 1$, og $v$ er lydfarten for lange bølger."
   - id: anharmonisk-frekvens
     section: Små svingninger
-    tex: "\\omega \\approx \\omega_0 + \\frac{3\\varepsilon A^2}{8\\omega_0}"
-    label: "Frekvensen til $\\ddot x + \\omega_0^2 x + \\varepsilon x^3 = 0$ med amplitude $A$, til første orden i $\\varepsilon$. For pendelen er $\\varepsilon = -\\omega_0^2/6$ og $\\omega = \\omega_0(1 - \\theta_0^2/16)$."
+    tex: "\\omega \\approx \\omega_0 + \\frac{3\\lambda A^2}{8\\omega_0}"
+    label: "Frekvensen til $\\ddot x = -\\omega_0^2 x - \\lambda x^3$ med amplitude $A$, til første orden i $\\varepsilon = \\lambda A^2/\\omega_0^2$. For pendelen er $\\lambda = -\\omega_0^2/6$ og $\\omega = \\omega_0(1 - \\theta_0^2/16)$."
 
   - id: stivt-legeme-hastighet
     section: Stive legemer
@@ -607,6 +614,7 @@ symbols:
   - { tex: "\\Omega", meaning: "Vinkelfrekvens som settes utenfra", unit: "rad/s", section: "Newtonsk mekanikk", id: omega-stor, note: "Vinkelfrekvensen til kraften i Greens funksjon og resonansen, drivfrekvensen til Kapitzas pendel og ringens vinkelfart i modulen om små svingninger. Ikke $\\omega$, frekvensen systemet selv svinger med, men for den dempede oscillatoren uten kraft er $\\Omega = \\sqrt{\\omega_0^2 - \\alpha^2}$ frekvensen den svinger med. I $d\\sigma/d\\Omega$ er $\\Omega$ en romvinkel, og $\\Omega_\\text{F}$ er dreiefarten til svingeplanet i Foucaults pendel." }
   - { tex: "\\gamma", meaning: "Friksjonskoeffisienten i motstandskraften $-\\gamma v$", unit: "kg/s", section: "Newtonsk mekanikk", formula: dempet-oscillator, id: gamma-friksjon, note: "Lorentz-faktoren $1/\\sqrt{1 - v^2/c^2}$ heter også ofte $\\gamma$. Skrives motstandskraften $-m\\gamma\\dot x$ eller $-2m\\gamma\\dot q$, har $\\gamma$ enheten s⁻¹. I eksamensoppgaven om den kvartiske oscillatoren er $\\gamma$ koeffisienten i $\\tfrac14\\gamma x^4$." }
   - { tex: "\\alpha", meaning: "Dempingen $\\gamma/2m$ i den dempede oscillatoren", unit: "s⁻¹", section: "Newtonsk mekanikk", formula: dempet-rotter, id: alpha-demping, note: "Kritisk demping er $\\alpha = \\omega_0$. I trelegemeproblemet er $\\alpha$ masseforholdet." }
+  - { tex: "\\lambda", meaning: "Eksponenten i $e^{\\lambda t}$ for den dempede oscillatoren og for et lite utslag nær en likevekt", unit: "s⁻¹", section: "Newtonsk mekanikk", formula: dempet-rotter, note: "Bevegelsen er stabil når alle røttene $\\lambda^2$ er reelle og negative. Ikke Lagrange-multiplikatoren $\\lambda$ eller styrken $\\lambda$ til $x^3$-leddet i en anharmonisk oscillator." }
   - { tex: "A", meaning: "Amplituden til en svingning", unit: "m", section: "Newtonsk mekanikk", formula: periode-1d, id: a-amplitude, note: "Ellers en konstant, som i den lineære transformasjonen $t' = At + Bx$." }
   - { tex: "\\rho", meaning: "Tetthet, masse per volum", unit: "kg/m³", section: "Newtonsk mekanikk", formula: tyngde-gauss }
   - { tex: "\\Phi", meaning: "Tyngdepotensialet, potensialet per masse, med $\\vec g = -\\nabla\\Phi$", unit: "J/kg", section: "Newtonsk mekanikk", formula: tyngde-gauss }
@@ -658,11 +666,13 @@ symbols:
   # ── Små svingninger ──
   - { tex: "\\eta,\\ \\eta_i", meaning: "Utslaget fra likevekten, $q_i - q_{0i}$", section: "Små svingninger", formula: kvadratisk-lagrange, note: "I utledningen av Lagranges ligninger er $\\epsilon\\,\\eta(t)$ variasjonen av banen, med en liten parameter $\\epsilon$." }
   - { tex: "\\boldsymbol T,\\ \\boldsymbol V", meaning: "Matrisene til den kinetiske og den potensielle energien nær likevekten", section: "Små svingninger", formula: kvadratisk-lagrange, note: "$T_{ij} = m_{ij}(q_0)$ og $V_{ij} = \\partial^2 V/\\partial q_i\\,\\partial q_j$ i likevekten. Fete bokstaver, ikke energiene $T$ og $V$ selv." }
-  - { tex: "\\omega_n", meaning: "Egenfrekvensene, røttene av sekulærligningen", unit: "rad/s", section: "Små svingninger", term: "Egenfrekvens", formula: sekulaerligning }
-  - { tex: "\\mathbf A_n", meaning: "Modevektoren, forholdet mellom utslagene i mode $n$", section: "Små svingninger", term: "Normalmode", formula: sekulaerligning }
-  - { tex: "\\xi_n", meaning: "Normalkoordinaten, utslaget langs mode $n$", section: "Små svingninger", term: "Normalkoordinat", formula: normalkoordinater, note: "Ellers er $\\xi$ et lite utslag, som den raske delen av vinkelen hos Kapitzas pendel, eller $x + iy$ for Foucaults pendel." }
-  - { tex: "\\lambda", meaning: "Eksponenten i $e^{\\lambda t}$ for utslaget nær en likevekt og for den dempede oscillatoren", unit: "s⁻¹", section: "Små svingninger", note: "Likevekten er stabil når alle røttene $\\lambda^2$ er reelle og negative. Ikke Lagrange-multiplikatoren $\\lambda$. I kjeden er $\\lambda$ bølgelengden." }
-  - { tex: "\\varphi", meaning: "Faseforskjellen mellom naboatomer i kjeden, $2\\pi n/N$", unit: "rad", section: "Små svingninger", term: "Dispersjonsrelasjon", formula: kjede-dispersjon }
+  - { tex: "\\omega_a", meaning: "Egenfrekvensene, røttene av sekulærligningen", unit: "rad/s", section: "Små svingninger", term: "Egenfrekvens", formula: sekulaerligning }
+  - { tex: "\\boldsymbol\\mu_a", meaning: "Moden, forholdet mellom utslagene i mode $a$", section: "Små svingninger", term: "Normalmode", formula: sekulaerligning, note: "Ikke den reduserte massen $\\mu$. Eksamensløsningene skriver også $\\vec a$." }
+  - { tex: "\\xi_a", meaning: "Normalkoordinaten, utslaget langs mode $a$", section: "Små svingninger", term: "Normalkoordinat", formula: normalkoordinater, note: "Ellers er $\\xi$ et lite utslag, som den raske delen av vinkelen hos Kapitzas pendel, eller $x + iy$ for Foucaults pendel." }
+  - { tex: "\\varphi", meaning: "Faseforskjellen mellom naboperler på ringen, $2\\pi p/N$", unit: "rad", section: "Små svingninger", term: "Dispersjonsrelasjon", formula: kjede-dispersjon }
+  - { tex: "p,\\ N", meaning: "Nummeret på moden og antall perler på ringen, $p = 0, 1, \\dots, N - 1$", section: "Små svingninger", formula: kjede-dispersjon, note: "Ikke impulsen $p$." }
+  - { tex: "a", meaning: "Avstanden mellom naboperlene på ringen, $2\\pi R/N$", unit: "m", section: "Små svingninger", formula: kjede-dispersjon, note: "I tolegemeproblemet er $a$ den store halvaksen." }
+  - { tex: "\\lambda", meaning: "Styrken til $x^3$-leddet i kraften, $\\ddot x = -\\omega_0^2 x - \\lambda x^3$", unit: "m⁻²·s⁻²", section: "Små svingninger", formula: anharmonisk-frekvens, id: lambda-anharmonisk, note: "For pendelen er $\\lambda = -\\omega_0^2/6$. Ikke eksponenten $\\lambda$ i $e^{\\lambda t}$." }
   # ── Stive legemer ──
   - { tex: "\\hat e_a'", meaning: "Enhetsvektorene langs aksene som sitter fast i legemet", section: "Stive legemer", formula: stivt-legeme-hastighet, note: "$a = 1, 2, 3$ nummererer aksene og $i$ partiklene. Komponentene av $\\vec\\omega$, $\\vec L$ og $\\boldsymbol I$ tas langs disse aksene." }
   - { tex: "\\boldsymbol I,\\ I_{ab}", meaning: "Treghetstensoren om et punkt i legemet", unit: "kg·m²", section: "Stive legemer", term: "Treghetstensor", formula: treghetstensor, note: "Avhenger av punktet. $\\boldsymbol I^{\\text{cm}}$ er tensoren om massesenteret og $\\boldsymbol I^{O}$ om et fast punkt $O$." }
@@ -677,7 +687,7 @@ symbols:
   - { tex: "\\Omega", meaning: "Vinkelfrekvensen $\\vec\\omega$ roterer med om symmetriaksen sett fra en fri symmetrisk snurrebass, $(I_3 - I_1)\\,\\omega_3/I_1$", unit: "rad/s", section: "Eulers ligninger og snurrebassen", term: "Symmetrisk snurrebass", formula: fri-symmetrisk-snurrebass, note: "For jorda er $\\Omega \\approx \\omega_3/300$. Sett fra rommet presesserer symmetriaksen med $|\\vec L|/I_1$. De to henger sammen ved $\\vec\\omega = \\vec L/I_1 - \\Omega\\,\\hat e_3'$." }
   - { tex: "p_\\phi,\\ p_\\psi", meaning: "De bevarte impulsene til den tunge snurrebassen, komponentene av $\\vec L$ langs loddlinja og langs symmetriaksen", unit: "kg·m²/s", section: "Eulers ligninger og snurrebassen", formula: snurrebass-impulser }
   - { tex: "l", meaning: "Avstanden fra spissen til massesenteret for en tung snurrebass", unit: "m", section: "Eulers ligninger og snurrebassen", formula: tung-snurrebass, note: "Eksamensoppgaven kaller den $h$. For den fysiske pendelen heter den samme avstanden $D$." }
-  - { tex: "\\varepsilon", meaning: "Styrken til $x^3$-leddet i den anharmoniske oscillatoren", unit: "m⁻²·s⁻²", section: "Små svingninger", formula: anharmonisk-frekvens, note: "Ikke $\\epsilon$ i Noethers teorem. I Greens funksjon er $i\\varepsilon$ forskyvningen av polene, grensen der en svak friksjon går mot null." }
+  - { tex: "\\varepsilon", meaning: "Den dimensjonsløse styrken $\\lambda A^2/\\omega_0^2$ til $x^3$-leddet i en anharmonisk oscillator", section: "Små svingninger", formula: anharmonisk-frekvens, note: "Ikke $\\epsilon$ i Noethers teorem. I Greens funksjon er $i\\varepsilon$ forskyvningen av polene, grensen der en svak friksjon går mot null." }
   # ── Hamiltonformalismen ──
   - { tex: "\\{f, g\\}", meaning: "Poissonklammen av $f$ og $g$", section: "Hamiltonformalismen", term: "Poissonklamme", formula: poissonklamme, note: "Eldre eksamenssett skriver $[f, g]_{q,p}$, med samme fortegn." }
   - { tex: "\\epsilon_{ijk}", meaning: "Levi-Civita-symbolet: $1$ for $xyz$ og sykliske ombyttinger, $-1$ når to indekser byttes, ellers $0$", section: "Hamiltonformalismen", formula: dreieimpuls-klammer, note: "Ikke parameteren $\\epsilon$ i Noethers teorem." }
@@ -848,19 +858,22 @@ glossary:
 
   - term: Normalmode
     section: Små svingninger
-    definition: "En bevegelse nær en stabil likevekt der alle koordinatene svinger harmonisk med den samme frekvensen og i fast forhold til hverandre, $\\boldsymbol\\eta = \\mathbf A_n\\cos(\\omega_n t - \\delta_n)$. Enhver liten bevegelse er en sum av normalmoder."
+    definition: "En bevegelse nær en stabil likevekt der alle koordinatene svinger harmonisk med den samme frekvensen og i fast forhold til hverandre, $\\boldsymbol\\eta = \\boldsymbol\\mu_a\\cos(\\omega_a t - \\delta_a)$. Enhver liten bevegelse er en sum av normalmoder."
   - term: Egenfrekvens
     section: Små svingninger
-    definition: "Frekvensen $\\omega_n$ til en normalmode, en rot av sekulærligningen $\\det(\\boldsymbol V - \\omega^2\\boldsymbol T) = 0$."
+    definition: "Frekvensen $\\omega_a$ til en normalmode, en rot av sekulærligningen $\\det(\\boldsymbol V - \\omega^2\\boldsymbol T) = 0$."
   - term: Sekulærligning
     section: Små svingninger
     definition: "Ligningen $\\det(\\boldsymbol V - \\omega^2\\boldsymbol T) = 0$ for egenfrekvensene til små svingninger om en likevekt. Med $N$ frihetsgrader er den av grad $N$ i $\\omega^2$."
   - term: Normalkoordinat
     section: Små svingninger
-    definition: "Utslaget $\\xi_n$ langs normalmode $n$, definert ved $\\boldsymbol\\eta = \\sum_n \\xi_n\\mathbf A_n$. I normalkoordinatene er Lagrangefunksjonen en sum av uavhengige harmoniske oscillatorer."
+    definition: "Utslaget $\\xi_a$ langs normalmode $a$, definert ved $\\boldsymbol\\eta = \\sum_a \\xi_a\\boldsymbol\\mu_a$. I normalkoordinatene er Lagrangefunksjonen en sum av uavhengige harmoniske oscillatorer."
+  - term: Sekulærledd
+    section: Små svingninger
+    definition: "Et ledd som vokser med tida, som $t\\sin\\omega_0 t$, i en rekkeutvikling der alle leddene har en fast frekvens. Det er rekkas måte å beskrive en litt endret frekvens på, og det faller bort når frekvensen får være ukjent."
   - term: Dispersjonsrelasjon
     section: Små svingninger
-    definition: "Sammenhengen mellom frekvensen og bølgelengden til en bølge. For en kjede av like atomer er den $\\omega = 2\\sqrt{k/m}\\,|\\sin(\\varphi/2)|$, med $\\varphi$ faseforskjellen mellom naboatomer."
+    definition: "Sammenhengen mellom frekvensen og bølgelengden til en bølge. For perler på en ring, en modell av en kjede av like atomer, er den $\\omega = 2\\sqrt{k/m}\\,|\\sin(\\varphi/2)|$, med $\\varphi$ faseforskjellen mellom naboer."
 
   - term: Stivt legeme
     section: Stive legemer
