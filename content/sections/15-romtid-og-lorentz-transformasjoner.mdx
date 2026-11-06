@@ -1,0 +1,339 @@
+---
+order: 15
+title: "Romtid og Lorentz-transformasjoner"
+summary: "Spesiell relativitetsteori som geometri i romtida: romtidsdiagrammer, samtidighet som avhenger av systemet, intervallet alle systemer er enige om, egentida langs en verdenslinje og hvorfor tvillingen som reiser, er yngst, og Lorentz-transformasjonen som en dreining med hyperbler i stedet for sirkler."
+importance: core
+tag: "Uke 45 · Tong 11.1–11.4.1"
+updated: 2026-11-06
+---
+
+<LearningGoals>
+- Tegne og lese et romtidsdiagram, med aksene til to inertialsystemer, og avgjøre hvilke hendelser som er samtidige i hvert av dem.
+- Bruke Lorentz-transformasjonen på par av hendelser til å finne rekkefølgen deres, tidsdilatasjon og lengdekontraksjon.
+- Regne ut intervallet mellom to hendelser, avgjøre om de er tidlike, lyslike eller romlike, og si om den ene kan påvirke den andre.
+- Finne egentida langs en verdenslinje, og forklare hvorfor tvillingen som reiser, er yngst når de møtes.
+- Skrive en boost som en matrise med ${\Lambda^{\mathsf T}\eta\Lambda = \eta}$, og legge sammen hastigheter med rapiditeten.
+</LearningGoals>
+
+Ida blir igjen på jorda mens tvillingen Jon reiser med 0,8c til en stjerne 4 lysår unna, snur og reiser like fort hjem. Når de møtes, har Ida blitt 10 år eldre og Jon 6. Målt fra jorda går Jons klokke 0,6 ganger så fort som Idas. Målt fra romskipet er det omvendt. På hele utreisen og hele hjemreisen går Idas klokke 0,6 ganger så fort som Jons. Likevel er det Jon som er yngst når de møtes.
+
+## Hendelser og samtidighet
+
+En <Term name="Hendelse">hendelse</Term> er noe som skjer på ett sted ved ett tidspunkt, som et lysglimt eller at Jon snur. Et inertialsystem gir hver hendelse en tid $t$ og et sted $x$, målt med klokker som står i ro i systemet og er stilt likt overalt. I et romtidsdiagram er hver hendelse et punkt, med $x$ mot høyre og $ct$ oppover. Med $ct$ på den loddrette aksen har begge aksene enheten meter, og lys går på skrå 45°. Et legeme tegner en <Term name="Verdenslinje">verdenslinje</Term> gjennom hendelsene det er med på. Et legeme i ro går rett opp, og et legeme med farten $u$ flytter seg $u/c$ meter til siden for hver meter $ct$ øker.
+
+Ei togvogn med lengden $L_0$, målt i vogna, kjører med farten ${v = 0{,}6c}$ langs en perrong, og ei lampe midt i taket blinker. Lyset går like fort mot begge endeveggene. Simuleringen tegner forløpet i romtidsdiagrammet til en observatør som beveger seg langs perrongen med farten du velger. Under diagrammet står vogna slik den er i observatørens «nå», rett under de samme verdiene av $x$.
+
+<Simulation
+  src="/sims/lampa-i-toget.js"
+  host="dom"
+  title="Lampa i toget"
+  caption="Ei togvogn kjører med $0{,}6c$ forbi en perrong med stolper, og lampa midt i taket blinker. Diagrammet er romtidsdiagrammet til en observatør med farten du velger langs perrongen, med $ct$ opp og $x$ mot høyre i samme skala. De heltrukne linjene er verdenslinjene til endeveggene, den stiplede midt mellom er lampa, og de oransje linjene er lyset fra blinket fram til veggene. Gjennom hvert treff går en oransje prikket vannrett linje, og de grå stiplede linjene er lyskjeglen til blinket. Den tynne vannrette linja som går oppover, er observatørens «nå», og vogna under står slik den er da. Høyden på vogna er ikke i skala, og alt går i sakte film."
+  height={290}
+/>
+
+Begynn med farten 0, som perrongen. Vogna kjører mot høyre, så verdenslinjene til veggene heller mot høyre. Lyset går 45° ut til begge sider fra blinket, og bakveggen, som kjører mot lyset, blir truffet først. Sett farten til 0,60c, som toget. Vogna står i ro, veggene går rett opp, og de to treffene ligger på samme vannrette linje, så i toget skjer de samtidig. Dra videre mot 0,90c. Nå kjører vogna mot venstre, og framveggen blir truffet først. Ved hver fart står lyset på 45°, fordi lyset har farten $c$ i alle systemene.
+
+Rekkefølgen av de to treffene avhenger altså av systemet. Det kommer ikke av at lyset bruker tid på å nå fram til den som ser. Tidspunktet i diagrammet er det klokka på stedet viser når treffet skjer.
+
+<Term name="Lorentz-transformasjon">Lorentz-transformasjonen</Term> gir tallene. La perrongen være $K$ og toget $K'$, med felles origo i blinket. Da er
+
+<Formula tex="t' = \gamma\left(t - \frac{vx}{c^2}\right), \allowbreak\qquad x' = \gamma\,(x - vt), \allowbreak\qquad \gamma = \frac{1}{\sqrt{1 - v^2/c^2}}" caption="Lorentz-transformasjonen fra $K$ til $K'$, som beveger seg med farten $v$ langs $x$-aksen, med felles origo. ${y' = y}$ og ${z' = z}$, og den omvendte transformasjonen har $-v$ i stedet for $v$." />
+
+Avstandene på tvers av farten er de samme, ${y' = y}$ og ${z' = z}$. Sett fra toget beveger perrongen seg med farten $-v$, så den omvendte transformasjonen, fra $K'$ til $K$, er den samme med $-v$ i stedet for $v$.
+
+Treffene skjer samtidig i toget, ${\Delta t' = 0}$, med avstanden ${\Delta x' = L_0}$ fra treffet bak til treffet foran. Den omvendte transformasjonen gir tida mellom dem på perrongen:
+
+$$
+\Delta t = \gamma\left(\Delta t' + \frac{v\,\Delta x'}{c^2}\right) = \frac{\gamma v L_0}{c^2}
+$$
+
+Med ${v = 0{,}6c}$ er ${\gamma = 1{,}25}$ og ${c\,\Delta t = 0{,}75\,L_0}$. Tida er positiv, så på perrongen kommer treffet foran sist.
+
+Lengden av vogna er avstanden mellom endene målt samtidig, og toget og perrongen er ikke enige om hva som er samtidig. På perrongen måles endene ved samme $t$. Med ${\Delta t = 0}$ gir transformasjonen ${\Delta x' = \gamma\,\Delta x}$, og siden ${\Delta x' = L_0}$, er lengden på perrongen ${\Delta x = L_0/\gamma = 0{,}8\,L_0}$. I simuleringen er vogna lengst ved 0,60c, der den står i ro, og kortere ved alle andre farter.
+
+<Callout title="Samtidighet avhenger av systemet">
+To hendelser på ulike steder som er samtidige i ett inertialsystem, er ikke samtidige i et system som beveger seg langs linja mellom dem. Lengden av et legeme er avstanden mellom endene målt samtidig, og derfor er legemet $\gamma$ ganger kortere i et system der det beveger seg, enn der det står i ro.
+</Callout>
+
+## Intervallet
+
+Tida og avstanden mellom to hendelser avhenger av systemet, men lyset gir en kombinasjon som ikke gjør det. Fra blinket til et treff går lyset, og det har farten $c$ i alle systemer, så ${c\,|\Delta t| = |\Delta x|}$ og ${c^2\Delta t^2 - \Delta x^2 = 0}$ i alle. Prøv den samme kombinasjonen på de to treffene. I toget er ${c\,\Delta t' = 0}$ og ${\Delta x' = L_0}$. På perrongen er ${c\,\Delta t = 0{,}75\,L_0}$, og transformasjonen gir ${\Delta x = \gamma\,(\Delta x' + v\,\Delta t') = 1{,}25\,L_0}$. Da er
+
+$$
+c^2\Delta t^2 - \Delta x^2 \allowbreak = (0{,}5625 - 1{,}5625)\,L_0^2 = -L_0^2
+$$
+
+det samme som i toget, der kombinasjonen er ${0 - L_0^2}$.
+
+<Statement kind="theorem" name="Intervallet" id="intervallet-invariant">
+For to hendelser er <Term name="Intervall">intervallet</Term>
+
+$$
+\Delta s^2 = c^2\Delta t^2 - \Delta x^2 \allowbreak - \Delta y^2 - \Delta z^2
+$$
+
+det samme i alle inertialsystemer.
+</Statement>
+
+<Derivation title="Intervallet er det samme i $K$ og $K'$">
+Med ${\Delta y' = \Delta y}$ og ${\Delta z' = \Delta z}$ er det nok å se på $t$ og $x$:
+
+$$
+\begin{aligned}
+c^2\Delta t'^2 &= \gamma^2\bigl(c^2\Delta t^2 - 2v\,\Delta t\,\Delta x + v^2\Delta x^2/c^2\bigr) \\
+\Delta x'^2 &= \gamma^2\bigl(\Delta x^2 - 2v\,\Delta t\,\Delta x + v^2\Delta t^2\bigr)
+\end{aligned}
+$$
+
+Trekk den andre fra den første. Leddene med ${\Delta t\,\Delta x}$ faller bort, og det som er igjen, er
+
+$$
+c^2\Delta t'^2 - \Delta x'^2 = \gamma^2(1 - v^2/c^2)\,(c^2\Delta t^2 - \Delta x^2) \allowbreak = c^2\Delta t^2 - \Delta x^2
+$$
+</Derivation>
+
+En dreining av aksene i et plan gir et punkt nye koordinater, men ${x^2 + y^2}$ er den samme, så punktet ligger på den samme sirkelen om origo i begge aksesystemene (figur 1, øverst). En Lorentz-transformasjon gir en hendelse nye koordinater, men intervallet fra origo er det samme. I intervallet har tida motsatt fortegn av rommet, og kurvene med konstant ${c^2t^2 - x^2}$ er hyperbler med lyslinjene som asymptoter (figur 1, nederst).
+
+<Figure src="/figures/dreining-og-boost.svg" alt="Øverst: aksene x og y med to kvarte sirkler om origo O, de samme aksene dreid 25 grader, merket x merket og y merket, og et punkt P på den ytre sirkelen. Nederst: aksene x og ct, to stiplede lyslinjer på skrå 45 grader gjennom origo, og aksene x merket og ct merket som heller inn mot lyslinja fra hver sin side. Hyperbler går gjennom merkene 1 og 2 på ct-aksen og på ct merket-aksen, og en hyperbel til høyre går gjennom merket 1 på x-aksen og på x merket-aksen." width={340} height={548} number={1} caption="Øverst: aksene $x$, $y$ og de samme aksene dreid, $x'$, $y'$, med to sirkler om origo. Punktet $P$ har andre koordinater i de dreide aksene, men samme ${x^2 + y^2}$. Nederst: aksene til $K$ og aksene til $K'$, som beveger seg med ${v = 0{,}5c}$, og lyslinjene stiplet. Kurvene har ${c^2t^2 - x^2 = 1}$ og $4$ over og ${c^2t^2 - x^2 = -1}$ til høyre, med merkene på aksene som enhet." />
+
+Figur 1 har aksene til $K'$ tegnet inn i diagrammet til $K$. $ct'$-aksen er hendelsene med ${x' = 0}$, verdenslinja ${x = vt}$ til origo i $K'$. $x'$-aksen er hendelsene med ${t' = 0}$, altså ${ct = (v/c)\,x}$, og hver linje parallell med den er hendelser som er samtidige i $K'$. Med farten 0 i simuleringen «Lampa i toget» er linja du kan trekke gjennom de to treffene, en slik linje: den heller med ${c\,\Delta t/\Delta x = 0{,}75/1{,}25 = 0{,}6}$. Begge aksene til $K'$ heller inn mot lyslinja med samme vinkel, så lyslinja ligger midt mellom aksene i begge systemene. Slik viser diagrammet at lyset har farten $c$ i begge.
+
+Merket ${ct' = 1}$ ligger på hyperbelen ${c^2t^2 - x^2 = 1}$, fordi intervallet fra origo er det samme i begge systemene. Derfor står det lenger ut langs aksen enn merket ${ct = 1}$, og en lengde på papiret er ikke tida eller avstanden i et annet system enn det diagrammet er tegnet i.
+
+Simuleringen gjør det samme den andre veien. Der står aksene fast, og hendelsene flytter seg når du endrer farten. En hendelse flytter seg langs hyperbelen med samme intervall fra blinket, slik et punkt går langs sin sirkel når du dreier planet i stedet for aksene. Treffene har intervall null fra blinket, så hyperbelen deres er lyslinjene, og treffene glir langs dem.
+
+<Video
+  id="https://www.youtube.com/watch?v=Rh0pYtQG5wI"
+  title="Lorentz Transformations | Special Relativity Ch. 3"
+  channel="minutephysics"
+  duration="12:17"
+  caption="Først flyttes hvert øyeblikk i romtidsdiagrammet sidelengs, slik Galilei-transformasjonen gjør, og lyset får feil fart. Lorentz-transformasjonen trykker i stedet diagrammet sammen langs den ene lyslinja og strekker det langs den andre, så lyset blir liggende på 45°. Alt vises på en mekanisk modell av diagrammet som dreies som en globus."
+  number={1}
+/>
+
+Fortegnet til intervallet er altså det samme i alle systemer. Med ${\Delta s^2 > 0}$ er hendelsene <Term name="Tidlik">tidlike</Term>: tida mellom dem er lengre enn tida lyset bruker mellom stedene, så et legeme som går saktere enn lyset, kan være med på begge. Med ${\Delta s^2 = 0}$ er de <Term name="Lyslik">lyslike</Term>, som blinket og et treff, og med ${\Delta s^2 < 0}$ er de <Term name="Romlik">romlike</Term>, som de to treffene. Lyslinjene gjennom en hendelse er <Term name="Lyskjegle">lyskjeglen</Term> dens. Med to romdimensjoner danner de en kjegle. Hendelser som er tidlike fra den, ligger inne i lyskjeglen, lyslike ligger på den, og romlike ligger utenfor.
+
+Rekkefølgen av to tidlike eller lyslike hendelser er den samme i alle systemer. En hendelse inne i den øvre lyskjeglen til origo ligger på en hyperbel som aldri går ned under lyslinjene, så den er senere enn origo for alle. Med formler: når ${|x| \le ct}$ og ${|v| < c}$, er ${|vx/c^2| < t}$, og ${t' = \gamma(t - vx/c^2)}$ har samme fortegn som $t$. To romlike hendelser er derimot samtidige i systemet med ${v = c^2\Delta t/\Delta x}$, og den farten er mindre enn $c$ fordi ${|c\,\Delta t| < |\Delta x|}$. For treffene på perrongen er den ${0{,}75/1{,}25 \cdot c = 0{,}6c}$, togets fart. Systemer som beveger seg saktere eller fortere enn $0{,}6c$, ser hendelsene i hver sin rekkefølge.
+
+Derfor kan ingen påvirkning gå fortere enn lyset. Et signal fra en hendelse til en romlik hendelse ville i noen systemer komme fram før det ble sendt, og da ville virkningen komme før årsaken. Det en hendelse kan påvirke, ligger inne i eller på den øvre lyskjeglen dens.
+
+<Callout title="Lyskjeglen">
+Bare tidlike og lyslike hendelser har en rekkefølge alle systemer er enige om. En hendelse kan bare påvirke det som ligger inne i eller på den øvre lyskjeglen dens.
+</Callout>
+
+<Quiz
+  question="To lyn slår ned 600 m fra hverandre langs en rett jernbanelinje, og målt fra bakken slår det vestligste ned 1,0 μs før det østligste. Kan det vestligste lynet ha utløst det østligste, og finnes det et system der det østligste slår ned først?"
+  options={["Ja, og nei: lynene er tidlike.", "Nei, og nei: rekkefølgen er fast.", "Nei, og ja: et system som går østover med over 0,5c.", "Nei, og ja: et system som går vestover med over 0,5c."]}
+  answer={2}
+  explanation={"Lyset går ${c\\,\\Delta t = 300}$ m på 1,0 μs, mindre enn 600 m, så ${\\Delta s^2 < 0}$ og lynene er romlike. Ingen påvirkning når fra det ene til det andre. Med øst som positiv $x$ er ${\\Delta t' = \\gamma(\\Delta t - v\\,\\Delta x/c^2)}$, som blir negativ når ${v > c^2\\Delta t/\\Delta x = 0{,}5c}$. Et system som beveger seg østover så fort, ser det østligste lynet først. Et system som beveger seg vestover, har ${v < 0}$ og ser tida mellom lynene bli lengre. Rekkefølgen er bare fast for tidlike og lyslike hendelser."}
+/>
+
+<Example label="Eksamensoppgave" title="Lyset fra et lysrør">
+<ExamRef id="2016-des" task="4" />
+
+A fluorescent tube lamp is stationary in a reference frame S. The tube is arranged such that it lights up simultaneously (in S) along its entire length $L_0$ at the time $t = 0$
+
+Consider an observer in a reference system S’ moving with a velocity $v$ parallel to the orientation of the tube. Suppose the tube lies along the z axis, at rest in the reference frame S, with one end at $z = 0$, and the other at ${z = L_0}$.
+
+4a) We now consider two space time events in S: the lighting up of the tube in position $z$ at time an $t$, and in position $z + \Delta z$ also at time $t$. Use the Lorentz transformation to calculate the space-time coordinates of these two events in the S’ frame ( $z'$ at time $t'$ ) , ( $z' + \Delta z'$ at time $t' + \Delta t'$).
+
+4b) For the observer in S’ the light does not appear to turn on simultaneously along the tube. Show that for the observer in S’ the lighting up of the tube propagates with an apparent velocity:
+
+$$
+|u| = \frac{c^2}{v}
+$$
+
+<Solution>
+a) S′ beveger seg med farten $v$ langs $z$-aksen, så Lorentz-transformasjonen er ${z' = \gamma(z - vt)}$ og ${t' = \gamma(t - vz/c^2)}$. Tenningen i ${z + \Delta z}$ ved den samme tida $t$ gir
+
+$$
+\begin{aligned}
+z' + \Delta z' &= \gamma\,(z + \Delta z - vt) \\
+t' + \Delta t' &= \gamma\Bigl(t - \frac{v\,(z + \Delta z)}{c^2}\Bigr)
+\end{aligned}
+$$
+
+Trekk fra uttrykkene for den første tenningen: ${\Delta z' = \gamma\,\Delta z}$ og ${\Delta t' = -\gamma v\,\Delta z/c^2}$.
+
+b) I S′ flytter tenningen seg ${\Delta z'}$ på tida ${\Delta t'}$, så farten er
+
+$$
+u = \frac{\Delta z'}{\Delta t'} = \frac{\gamma\,\Delta z}{-\gamma v\,\Delta z/c^2} \allowbreak = -\frac{c^2}{v}
+$$
+
+og ${|u| = c^2/v}$, som er større enn $c$. Minustegnet betyr at enden med størst $z$ tenner først i S′. Tenningene er samtidige i S og derfor romlike, så ingen av dem påvirker en annen, og ingenting går langs røret med denne farten.
+
+<Answer>a) ${z' = \gamma(z - vt)}$, ${t' = \gamma(t - vz/c^2)}$, ${\Delta z' = \gamma\,\Delta z}$ og ${\Delta t' = -\gamma v\,\Delta z/c^2}$. b) ${u = -c^2/v}$, så ${|u| = c^2/v}$.</Answer>
+</Solution>
+</Example>
+
+## Egentid
+
+En klokke i ro i $K'$ tikker to ganger på samme sted, med tida $\Delta t'$ mellom tikkene. Intervallet mellom tikkene er ${c^2\Delta t'^2}$, og det er det samme i alle systemer. Tida en klokke viser mellom to hendelser på sin egen verdenslinje, er altså ${\Delta s/c}$, uansett hvilket system du regner i. Den tida heter <Term name="Egentid">egentida</Term> $\tau$. I $K$, der klokka har farten $v$, er ${\Delta x = v\,\Delta t}$, så
+
+$$
+\Delta\tau = \frac{\Delta s}{c} = \Delta t\,\sqrt{1 - \frac{v^2}{c^2}} = \frac{\Delta t}{\gamma}
+$$
+
+Det er tidsdilatasjonen, lest som intervallet langs verdenslinja til klokka.
+
+Jons reise er to rette stykker. Med år og lysår som enheter er ${c = 1}$. Utreisen tar 5 år i Idas system og går 4 lysår, så Jons klokke viser ${\sqrt{5^2 - 4^2} = 3}$ år, og hjemreisen gir 3 år til. Ida står stille, ${\Delta x = 0}$, og klokka hennes viser 10 år.
+
+<Simulation
+  src="/sims/tvillingene.js"
+  host="dom"
+  title="Tvillingene"
+  caption="Reisen til tvillingene i Idas system, med tida i år opp og avstanden i lysår til siden, så lys går på skrå 45°. Ida står på jorda og går rett opp. Jon reiser ut til snuingen $P$ og hjem igjen, og farten på hver etappe står ved siden av den når det er plass. Den tonede ruta mellom de stiplede lyslinjene er hendelsene Jon kan snu i uten å reise fortere enn lyset. Hver prikk er ett år på klokka til tvillingen, og tallene øverst er det klokkene viser når tvillingene møtes. «Jons nå» tegner linjene som er samtidige med snuingen for Jon, før og etter at han snur."
+  height={360}
+/>
+
+Prikkene er klokkeslag, én for hvert år klokka viser. Langs Jons linje ligger de lenger fra hverandre i diagrammet enn langs Idas, fordi ett år på Jons klokke tar ${1/0{,}6 \approx 1{,}7}$ år i Idas system. Dra snuingen $P$ rundt i ruta, eller trykk der du vil ha den. Hvor du enn setter den utenfor Idas linje, viser Jons klokke mindre enn 10 år når de møtes. Jo lenger ut til siden $P$ ligger ved samme tid, desto mindre viser den, og minst viser den i hjørnene til høyre og venstre, der Jon reiser nesten med lysfarten. Setter du $P$ på Idas linje, blir Jon hjemme, og klokkene viser det samme.
+
+Alle omveier gir mindre tid enn Idas. I Idas system starter og slutter Jon på samme sted, ved jorda. Del en verdenslinje fra avreisen til møtet i små stykker. På hvert stykke er ${d\tau = \sqrt{dt^2 - dx^2/c^2}}$, som aldri er større enn $dt$ og er mindre der ${dx \neq 0}$, og summen av alle $dt$ er 10 år. Bare den rette verdenslinja, Idas, har ${dx = 0}$ overalt, så den har lengst egentid. Mellom to tidlike hendelser finnes det alltid et system der de skjer på samme sted, og der går argumentet på samme måte. I et plan er den rette linja den korteste veien mellom to punkter. Minustegnet i intervallet snur dette, og i romtida har den rette verdenslinja mellom to tidlike hendelser lengst egentid.
+
+<Statement kind="definition" name="Egentid" id="egentid-definisjon">
+Tida en klokke viser langs sin egen verdenslinje, er
+
+$$
+\tau = \int d\tau, \allowbreak\qquad d\tau = \frac{ds}{c} = dt\,\sqrt{1 - \frac{u^2}{c^2}}
+$$
+
+der $u$ er farten til klokka i systemet $t$ er målt i. Egentida er den samme i alle inertialsystemer.
+</Statement>
+
+Nå kan du se hvordan begge tvillingene kan finne at den andres klokke går saktest. Under utreisen er Jon i ett inertialsystem, og i det går Idas klokke 0,6 ganger så fort som hans. Trykk «4 lysår med 0,8c» og så «Jons nå». Den nederste stiplede linja er hendelsene som er samtidige med snuingen i utreisens system, og den treffer Idas linje ved 1,8 år. Rett før han snur, viser altså Idas klokke ${0{,}6 \cdot 3 = 1{,}8}$ år i Jons system, mens hans egen viser 3. Rett etter at han har snudd, er Jon i hjemreisens system, og der er snuingen samtidig med hendelsene på den øverste linja, som treffer ved 8,2 år. Hjemreisen gir Idas klokke 1,8 år til, målt fra Jon, så han regner seg fram til ${1{,}8 + 6{,}4 + 1{,}8 = 10}$ år for Ida, det samme som hun selv har. De 6,4 årene kommer av at Jon bytter inertialsystem når han snur, mens Ida blir i sitt. Derfor er ikke tvillingene likestilte.
+
+<Callout title="Den rette verdenslinja">
+Mellom to tidlike hendelser viser klokka som følger den rette verdenslinja, mest.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Reisen til Sirius">
+<ExamRef id="2015-mai" task="4" />
+
+The Lorentz transformation
+
+$$
+x' = \gamma(x - Vt)\,, \allowbreak\qquad t' = \gamma\left(t - \frac{V}{c^2}\,x\right), \allowbreak\qquad \gamma = \frac{1}{\sqrt{1 - \frac{V^2}{c^2}}}\,,
+$$
+
+relates the time and space coordinates $t, x$ and $t', x'$ measured by two observers moving with a constant relative velocity $V$ in the $x$ direction.
+
+We imagine a space ship travelling to Sirius at a speed of $0.6\,c$. We ignore the time it takes to accelerate to this speed, or to decelerate on arrival at Sirius.
+
+The distance to Sirius is 9 light years. $c = 299\,792\,458$ m/s is the speed of light in vacuum.
+
+A correct answer gives 50 % score. The remaining 50 % are earned for a careful argument. It is not enough to answer “because of time dilatation” or “because of Lorentz contraction”.
+
+a) How long time does the trip to Sirius take, as measured by observers on the Earth and on the space ship?
+
+b) What is the distance to Sirius, as measured by an observer on the space ship? What is the length of a meter stick carried on the space ship, oriented along the direction between the Earth and Sirius, as measured by observers at rest relative to the Earth? Comment?
+
+c) How long time does the light from Sirius take to reach the Earth, as measured by observers on the Earth and on the space ship? How long time does the light from the Sun take to reach Sirius, as measured by observers on the Earth and on the space ship?
+
+<Solution>
+Bruk år og lysår, så ${c = 1}$, og la $x$ peke fra jorda mot Sirius. Med ${V = 0{,}6}$ er ${\gamma = 1/0{,}8 = 1{,}25}$.
+
+a) Avreisen og ankomsten er ${\Delta x = 9}$ lysår fra hverandre i jordas system, og reisen tar ${\Delta t = 9/0{,}6 = 15}$ år. Begge hendelsene ligger på verdenslinja til romskipet, så klokka om bord viser egentida mellom dem:
+
+$$
+\Delta\tau = \sqrt{\Delta t^2 - \Delta x^2} \allowbreak = \sqrt{15^2 - 9^2} = 12\ \text{år}
+$$
+
+Lorentz-transformasjonen gir det samme, ${\Delta t' = \gamma(\Delta t - V\Delta x)}$, som er ${1{,}25\,(15 - 5{,}4) = 12}$ år.
+
+b) Avstanden til Sirius målt fra romskipet er avstanden mellom jorda og Sirius ved samme tid i romskipets system, ${\Delta t' = 0}$. Den omvendte transformasjonen ${\Delta x = \gamma(\Delta x' + V\Delta t')}$ gir da ${\Delta x' = \Delta x/\gamma = 9 \cdot 0{,}8 = 7{,}2}$ lysår. Det stemmer med a): på 12 år går Sirius ${0{,}6 \cdot 12 = 7{,}2}$ lysår mot romskipet. Meterstokken måles med endene ved samme tid i jordas system, ${\Delta t = 0}$, og ${\Delta x' = \gamma\,\Delta x}$ gir ${\Delta x = 1\ \text{m}/\gamma = 0{,}8}$ m. Hvert system måler lengdene i det andre som 0,8 ganger lengden der de står i ro. Det er ingen motsigelse, fordi de to systemene ikke er enige om hvilke hendelser som er samtidige.
+
+c) Lyset fra Sirius til jorda: ${\Delta x = -9}$ lysår og ${\Delta t = 9}$ år i jordas system. I romskipets system er
+
+$$
+\Delta t' = \gamma\,(\Delta t - V\Delta x) \allowbreak = 1{,}25\,(9 + 5{,}4) = 18\ \text{år}
+$$
+
+Lyset fra Sola til Sirius: ${\Delta x = 9}$ lysår og ${\Delta t = 9}$ år, og ${\Delta t' = 1{,}25\,(9 - 5{,}4) = 4{,}5}$ år. Det samme følger fra romskipet. Der er jorda og Sirius 7,2 lysår fra hverandre, og begge beveger seg med $0{,}6c$ i retning fra Sirius mot jorda. Lyset fra Sirius tar igjen jorda med ${1 - 0{,}6 = 0{,}4}$ lysår per år og bruker ${7{,}2/0{,}4 = 18}$ år. Sirius kommer lyset fra Sola i møte, så de nærmer seg med 1,6 lysår per år, og lyset bruker ${7{,}2/1{,}6 = 4{,}5}$ år. Løsningsforslaget skriver «the Earth» der det skal stå Sirius i dette siste argumentet.
+
+<Answer>a) 15 år på jorda, 12 år i romskipet. b) 7,2 lysår; meterstokken er 0,8 m. c) Fra Sirius til jorda: 9 år på jorda, 18 år i romskipet. Fra Sola til Sirius: 9 år på jorda, 4,5 år i romskipet.</Answer>
+</Solution>
+</Example>
+
+## Booster og rapiditet
+
+En dreining er en matrise $R$ som bevarer lengder, og kravet er ${R^{\mathsf T}R = 1}$. En Lorentz-transformasjon kan skrives på samme måte. Samle tid og sted i en <Term name="Firervektor">firervektor</Term> med komponentene
+
+$$
+X^\mu = (ct,\ x,\ y,\ z), \qquad \mu = 0, 1, 2, 3
+$$
+
+Intervallet fra origo til $X$ er da
+
+$$
+X \cdot X = X^{\mathsf T}\eta X \allowbreak = X^\mu\eta_{\mu\nu}X^\nu \allowbreak = c^2t^2 - x^2 - y^2 - z^2
+$$
+
+Matrisen ${\eta = \operatorname{diag}(1, -1, -1, -1)}$ heter Minkowski-metrikken. I den midterste formen summeres det over hver indeks som står to ganger.
+
+En Lorentz-transformasjon er en matrise $\Lambda$ med ${X' = \Lambda X}$, og den bevarer intervallet for alle $X$: ${X^{\mathsf T}\Lambda^{\mathsf T}\eta\Lambda X = X^{\mathsf T}\eta X}$. Det betyr at
+
+<Formula tex="\Lambda^{\mathsf T}\eta\,\Lambda = \eta, \allowbreak\qquad \eta = \operatorname{diag}(1, -1, -1, -1)" caption="Kravet til en Lorentz-transformasjon, $X' = \Lambda X$ med $X^\mu = (ct, x, y, z)$. Det svarer til ${R^{\mathsf T}R = 1}$ for en dreining, som bevarer lengder." />
+
+Lorentz-transformasjonen mellom to systemer som beveger seg langs $x$, heter en boost langs $x$. Med $y$ og $z$ urørt er den
+
+$$
+\begin{pmatrix} ct' \\ x' \end{pmatrix} = \begin{pmatrix} \gamma & -\gamma v/c \\ -\gamma v/c & \gamma \end{pmatrix} \begin{pmatrix} ct \\ x \end{pmatrix}
+$$
+
+og den oppfyller kravet fordi ${\gamma^2 - \gamma^2v^2/c^2 = 1}$.
+
+Den samme likheten gjør boosten til en dreining med hyperbolske funksjoner. Siden ${\gamma^2 - (\gamma v/c)^2 = 1}$, finnes det et tall $w$ med ${\gamma = \cosh w}$ og ${\gamma v/c = \sinh w}$, slik ${\cos^2\theta + \sin^2\theta = 1}$ lar deg skrive en dreining med en vinkel $\theta$. Tallet heter <Term name="Rapiditet">rapiditeten</Term>, og ${v/c = \tanh w}$:
+
+<Formula tex="\Lambda(w) = \begin{pmatrix} \cosh w & -\sinh w \\ -\sinh w & \cosh w \end{pmatrix}, \allowbreak\qquad \frac{v}{c} = \tanh w" caption="Boosten langs $x$ skrevet ved rapiditeten $w$, for komponentene $ct$ og $x$. ${\gamma = \cosh w}$ og ${\gamma v/c = \sinh w}$." />
+
+To booster langs samme akse etter hverandre gir boosten med summen av rapiditetene, ${\Lambda(w_1)\Lambda(w_2) = \Lambda(w_1 + w_2)}$, slik to dreininger om samme akse legger sammen vinklene. Multipliser matrisene, og addisjonsformlene for de hyperbolske funksjonene gir elementene
+
+$$
+\cosh w_1\cosh w_2 + \sinh w_1\sinh w_2 \allowbreak = \cosh(w_1 + w_2)
+$$
+
+$$
+\sinh w_1\cosh w_2 + \cosh w_1\sinh w_2 \allowbreak = \sinh(w_1 + w_2)
+$$
+
+Et legeme med farten $u'$ langs $x'$ i $K'$ har rapiditeten $w'$ der, og $K'$ har rapiditeten $w$ i $K$. Systemet legemet står i ro i, er altså boostet ${w + w'}$ fra $K$, og addisjonsformelen
+
+$$
+\tanh(w + w') = \frac{\tanh w + \tanh w'}{1 + \tanh w\tanh w'}
+$$
+
+gir farten i $K$:
+
+<Formula tex="u = \frac{u' + v}{1 + u'v/c^2}" caption="Hastighetsaddisjon: et legeme med farten $u'$ langs $x'$ i $K'$ har farten $u$ i $K$, der $K'$ beveger seg med farten $v$. Rapiditetene legges sammen." />
+
+Med ${u' = c}$ er ${u = c}$, og når begge fartene er små mot $c$, er ${u \approx u' + v}$ som i Galilei-transformasjonen. Rapiditeten kan vokse uten grense, men ${\tanh w < 1}$, så farten blir aldri $c$.
+
+<Callout title="Booster legger sammen rapiditeter">
+En Lorentz-transformasjon bevarer intervallet, ${\Lambda^{\mathsf T}\eta\Lambda = \eta}$, slik en dreining bevarer lengder. En boost er en dreining med hyperbolske funksjoner av rapiditeten, og rapiditetene til booster langs samme akse legges sammen.
+</Callout>
+
+<SelfCheck question="En rakett skyter ut ti trinn etter hverandre langs samme linje. Det første trinnet får farten $0{,}5c$ i forhold til jorda, og hvert av de neste $0{,}5c$ i forhold til trinnet før. Hvor fort går det siste trinnet, målt fra jorda?">
+Hvert trinn legger til rapiditeten ${w = \operatorname{artanh} 0{,}5 = 0{,}549}$, så det siste trinnet har ${10w = 5{,}49}$ og farten ${\tanh 5{,}49 \cdot c = 0{,}99997c}$. Med Galilei-transformasjonen ville farten blitt $5c$. Hvert trinn øker rapiditeten like mye, men farten kommer stadig nærmere $c$ uten å nå den.
+</SelfCheck>
+
+<Example label="Eksamensoppgave" title="Skutt ut av et romskip">
+<ExamRef id="2023-nov" task="1.15" />
+
+A spaceship moves with speed $7c/8$ relative to Spaceman Spiff, who is at rest on Anhooie-4. The alien Hideous Blob is shot out of the spaceship, in the forward direction, with speed $5c/6$ relative to the spaceship.
+
+<Quiz
+  question="What is the speed of Hideous Blob as observed by Spaceman Spiff?"
+  options={["$82c/83$", "$6c/7$", "$41c/24$", "$7c/8$", "$35c/48$", "$c/3$"]}
+  answer={0}
+  explanation={"Med ${v = 7c/8}$ og ${u' = 5c/6}$ er ${u = (u' + v)/(1 + u'v/c^2) = (41/24)\\,c/(83/48) = 82c/83}$, litt under $c$. ${41c/24}$ er summen fra Galilei-transformasjonen og er større enn $c$. ${35c/48}$ er produktet ${u'v/c}$."}
+/>
+</Example>
+
+<KeyTakeaways>
+- I et romtidsdiagram er hver hendelse et punkt med $ct$ opp og $x$ til siden, og lys går på skrå 45°. Aksene til et system $K'$ som beveger seg, heller inn mot lyslinja med samme vinkel fra hver side, og linjer parallelle med $x'$-aksen er samtidige i $K'$.
+- To hendelser på ulike steder som er samtidige i ett system, er ikke samtidige i et system som beveger seg langs linja mellom dem. Lengden er avstanden mellom endene målt samtidig, så et legeme er ${L_0/\gamma}$ langt der det beveger seg.
+- Intervallet $\Delta s^2$ mellom to hendelser er det samme i alle inertialsystemer. Bare tidlike og lyslike hendelser har en fast rekkefølge, og ingen påvirkning går fortere enn lyset.
+- En klokke viser egentida ${\tau = \int dt\,\sqrt{1 - u^2/c^2}}$ langs sin egen verdenslinje, og den rette verdenslinja mellom to tidlike hendelser har lengst egentid. Tvillingen som reiser, bytter inertialsystem når han snur, og blir yngst.
+- En Lorentz-transformasjon oppfyller ${\Lambda^{\mathsf T}\eta\Lambda = \eta}$. En boost har ${\gamma = \cosh w}$ og ${\gamma v/c = \sinh w}$, og rapiditetene legges sammen, som gir ${u = (u' + v)/(1 + u'v/c^2)}$.
+</KeyTakeaways>

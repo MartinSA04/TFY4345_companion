@@ -113,11 +113,25 @@ exams:
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_171212.pdf/b0b6ecfb-8a32-3b28-d2ec-3a6e5a8fbb1d",
     }
   - {
+      label: "Ordinær eksamen, desember 2016",
+      id: "2016-des",
+      date: 2016-12-12,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_161212.pdf/03b583b6-cfa2-06a8-fc75-c5f52ac34a65",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_161212.pdf/2c8b5efd-dd76-567e-7e84-51044111bce7",
+    }
+  - {
       label: "Kontinuasjonseksamen, august 2016",
       id: "2016-aug-kont",
       date: 2016-08-18,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_160818.pdf/8cbd587b-9713-35a7-d15e-f10f43e9cdde",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_160818.pdf/3300a5af-aa0e-24da-a6f2-9d0f5a6e40b8",
+    }
+  - {
+      label: "Ordinær eksamen, mai 2015",
+      id: "2015-mai",
+      date: 2015-05-16,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_150516.pdf/a18adeac-6f3f-4bf1-48c7-35e1f877b879",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_150516.pdf/3b708a90-574f-c1cf-966a-1449732956bf",
     }
   - {
       label: "Ordinær eksamen, juni 2014",
@@ -660,6 +674,34 @@ formulas:
     section: Virkningsvariabler og Hamilton–Jacobi
     tex: "S = W(q, \\alpha) - Et \\allowbreak\\qquad H\\Bigl(q, \\frac{\\partial W}{\\partial q}\\Bigr) = E"
     label: "Løsningen av Hamilton–Jacobi-ligningen når $H$ ikke avhenger av tida. $W$ er Hamiltons karakteristiske funksjon, med én frihetsgrad $W = \\int p\\,dq$. Med $\\alpha = E$ er $\\beta = \\partial W/\\partial E - t$ lik minus tidspunktet banen passerte startstedet."
+  - id: lorentz-transformasjon
+    section: Spesiell relativitetsteori
+    tex: "t' = \\gamma\\left(t - \\frac{vx}{c^2}\\right) \\allowbreak\\qquad x' = \\gamma\\,(x - vt)"
+    label: "<b>Lorentz-transformasjonen</b> fra $K$ til $K'$, som beveger seg med farten $v$ langs $x$-aksen, med felles origo. $\\gamma = 1/\\sqrt{1 - v^2/c^2}$, $y' = y$ og $z' = z$. Den omvendte transformasjonen har $-v$ i stedet for $v$."
+  - id: lengdekontraksjon
+    section: Spesiell relativitetsteori
+    tex: "L = \\frac{L_0}{\\gamma}"
+    label: "<b>Lengdekontraksjon</b>: et legeme med lengden $L_0$ der det står i ro, har lengden $L$ i et system der det beveger seg med farten $v$ langs lengden. Lengden er avstanden mellom endene målt samtidig."
+  - id: intervall
+    section: Spesiell relativitetsteori
+    tex: "\\Delta s^2 = c^2\\Delta t^2 - \\Delta x^2 - \\Delta y^2 - \\Delta z^2"
+    label: "<b>Intervallet</b> mellom to hendelser, det samme i alle inertialsystemer. Det er positivt for tidlike, null for lyslike og negativt for romlike hendelser."
+  - id: egentid
+    section: Spesiell relativitetsteori
+    tex: "d\\tau = dt\\,\\sqrt{1 - \\frac{u^2}{c^2}}"
+    label: "<b>Egentid</b>: tida en klokke med farten $u$ viser, $d\\tau = ds/c$. Langs en verdenslinje er $\\tau = \\int d\\tau$, og den rette verdenslinja mellom to tidlike hendelser har lengst egentid. Med konstant fart $v$ er $\\Delta\\tau = \\Delta t/\\gamma$, tidsdilatasjonen."
+  - id: lorentz-krav
+    section: Spesiell relativitetsteori
+    tex: "\\Lambda^{\\mathsf T}\\eta\\,\\Lambda = \\eta \\allowbreak\\qquad \\eta = \\operatorname{diag}(1, -1, -1, -1)"
+    label: "Kravet til en Lorentz-transformasjon $X' = \\Lambda X$, med $X^\\mu = (ct, x, y, z)$: den bevarer intervallet $X \\cdot X = X^{\\mathsf T}\\eta X$. Det svarer til $R^{\\mathsf T}R = 1$ for en dreining, som bevarer lengder."
+  - id: boost-rapiditet
+    section: Spesiell relativitetsteori
+    tex: "\\gamma = \\cosh w \\allowbreak\\qquad \\frac{\\gamma v}{c} = \\sinh w \\allowbreak\\qquad \\frac{v}{c} = \\tanh w"
+    label: "Boosten langs $x$ skrevet ved <b>rapiditeten</b> $w$. Rapiditetene til booster langs samme akse legges sammen."
+  - id: hastighetsaddisjon
+    section: Spesiell relativitetsteori
+    tex: "u = \\frac{u' + v}{1 + u'v/c^2}"
+    label: "<b>Hastighetsaddisjon</b>: et legeme med farten $u'$ langs $x'$ i $K'$ har farten $u$ i $K$, der $K'$ beveger seg med farten $v$. Med $u' = c$ er $u = c$."
 
   - id: plan-pendel
     section: Kjente systemer
@@ -700,7 +742,7 @@ symbols:
   - { tex: "x_0,\\ q_0", meaning: "Likevektspunkt, der $V' = 0$", section: "Newtonsk mekanikk", term: "Likevektspunkt", formula: likevekt }
   - { tex: "\\omega", meaning: "Vinkelfrekvensen til en svingning", unit: "rad/s", section: "Newtonsk mekanikk", formula: likevekt, id: omega, note: "Om et minimum er $\\omega = \\sqrt{V''(x_0)/m}$. $\\omega_0$ er frekvensen uten forstyrrelse, som $\\sqrt{k/m}$ for den dempede oscillatoren og $\\sqrt{g/l}$ for Foucaults pendel. Verken $\\Omega$ eller vinkelfarten $\\vec\\omega$ til et roterende system." }
   - { tex: "\\Omega", meaning: "Vinkelfrekvens som settes utenfra", unit: "rad/s", section: "Newtonsk mekanikk", id: omega-stor, note: "Vinkelfrekvensen til kraften i Greens funksjon og resonansen, drivfrekvensen til Kapitzas pendel og ringens vinkelfart i modulen om små svingninger. Ikke $\\omega$, frekvensen systemet selv svinger med, men for den dempede oscillatoren uten kraft er $\\Omega = \\sqrt{\\omega_0^2 - \\alpha^2}$ frekvensen den svinger med. I $d\\sigma/d\\Omega$ er $\\Omega$ en romvinkel, og $\\Omega_\\text{F}$ er dreiefarten til svingeplanet i Foucaults pendel." }
-  - { tex: "\\gamma", meaning: "Friksjonskoeffisienten i motstandskraften $-\\gamma v$", unit: "kg/s", section: "Newtonsk mekanikk", formula: dempet-oscillator, id: gamma-friksjon, note: "Lorentz-faktoren $1/\\sqrt{1 - v^2/c^2}$ heter også ofte $\\gamma$. Skrives motstandskraften $-m\\gamma\\dot x$ eller $-2m\\gamma\\dot q$, har $\\gamma$ enheten s⁻¹. I eksamensoppgaven om den kvartiske oscillatoren er $\\gamma$ koeffisienten i $\\tfrac14\\gamma x^4$." }
+  - { tex: "\\gamma", meaning: "Friksjonskoeffisienten i motstandskraften $-\\gamma v$", unit: "kg/s", section: "Newtonsk mekanikk", formula: dempet-oscillator, id: gamma-friksjon, note: "I spesiell relativitetsteori er $\\gamma$ Lorentz-faktoren $1/\\sqrt{1 - v^2/c^2}$. Skrives motstandskraften $-m\\gamma\\dot x$ eller $-2m\\gamma\\dot q$, har $\\gamma$ enheten s⁻¹. I eksamensoppgaven om den kvartiske oscillatoren er $\\gamma$ koeffisienten i $\\tfrac14\\gamma x^4$." }
   - { tex: "\\alpha", meaning: "Dempingen $\\gamma/2m$ i den dempede oscillatoren", unit: "s⁻¹", section: "Newtonsk mekanikk", formula: dempet-rotter, id: alpha-demping, note: "Kritisk demping er $\\alpha = \\omega_0$. I trelegemeproblemet er $\\alpha$ masseforholdet." }
   - { tex: "\\lambda", meaning: "Eksponenten i $e^{\\lambda t}$ for den dempede oscillatoren og for et lite utslag nær en likevekt", unit: "s⁻¹", section: "Newtonsk mekanikk", formula: dempet-rotter, note: "Bevegelsen er stabil når alle røttene $\\lambda^2$ er reelle og negative. Ikke Lagrange-multiplikatoren $\\lambda$ eller styrken $\\lambda$ til $x^3$-leddet i en anharmonisk oscillator." }
   - { tex: "A", meaning: "Amplituden til en svingning", unit: "m", section: "Newtonsk mekanikk", formula: periode-1d, id: a-amplitude, note: "Ellers en konstant, som i den lineære transformasjonen $t' = At + Bx$." }
@@ -741,7 +783,7 @@ symbols:
   - { tex: "e", meaning: "Eksentrisiteten", section: "To- og trelegemeproblemet", term: "Eksentrisitet", formula: kepler-bane, id: e, note: "$e = 0$ er en sirkel, $0 < e < 1$ en ellipse, $e = 1$ en parabel og $e > 1$ en hyperbel. Ikke Eulers tall $e$." }
   - { tex: "r_0", meaning: "Radien til sirkelbanen med samme $J$, $J^2/\\mu k$", unit: "m", section: "To- og trelegemeproblemet", formula: kepler-bane, note: "I molekylet med tre atomer er $r_0$ likevektsavstanden i hver binding." }
   - { tex: "a", meaning: "Den store halvaksen til ellipsen", unit: "m", section: "To- og trelegemeproblemet", formula: ellipse-akser, note: "$r_\\text{min}, r_\\text{max} = a(1 \\mp e)$, og den lille halvaksen er $a\\sqrt{1 - e^2}$. $a$ er også radien til ringen i «Kjente systemer», radien til den harde kula i spredning, avstanden mellom atomene i kjeden og sidene til plata og kuben blant de stive legemene." }
-  - { tex: "u", meaning: "$1/r$, variabelen i baneligningen", unit: "m⁻¹", section: "To- og trelegemeproblemet", formula: baneligning }
+  - { tex: "u", meaning: "$1/r$, variabelen i baneligningen", unit: "m⁻¹", section: "To- og trelegemeproblemet", formula: baneligning, note: "Ikke farten $u$ til et legeme i relativitetsteorien." }
   - { tex: "\\vec A", meaning: "Runge–Lenz-vektoren, bevart for $V = -k/r$", section: "To- og trelegemeproblemet", formula: runge-lenz, note: "Peker mot perihel og har lengden $\\mu ke$. Ikke vektorpotensialet $\\vec A$." }
   - { tex: "G", meaning: "Gravitasjonskonstanten", unit: "N·m²/kg²", section: "To- og trelegemeproblemet", formula: keplers-tredje, note: "$6{,}674 \\cdot 10^{-11}$ N·m²/kg². For jorda er $GM_\\oplus = 3{,}986 \\cdot 10^5$ km³/s². Ikke en genererende funksjon $G$." }
   - { tex: "b", meaning: "Støtparameteren", unit: "m", section: "To- og trelegemeproblemet", term: "Støtparameter", formula: spredningstverrsnitt, note: "Eldre eksamenssett skriver $s$. For et legeme som ruller, er $s$ strekningen langs underlaget, med $\\dot s = R\\dot\\theta$." }
@@ -753,7 +795,7 @@ symbols:
   - { tex: "C", meaning: "Jacobis konstant, $\\tfrac12 v'^2 + U$", unit: "J/kg", section: "To- og trelegemeproblemet", term: "Jacobis konstant", formula: jacobi-konstant, id: jacobi, note: "Legemet kan bare være der $U \\le C$." }
   - { tex: "L_1\\text{–}L_5", meaning: "Lagrangepunktene, likevektspunktene i det roterende systemet", section: "To- og trelegemeproblemet", term: "Lagrangepunkt", formula: lagrangepunkter, note: "Ikke Lagrangefunksjonen $L$. $L_4$ og $L_5$ er stabile når $m_1/m_2 > 24{,}96$." }
   # ── Små svingninger ──
-  - { tex: "\\eta,\\ \\eta_i", meaning: "Utslaget fra likevekten, $q_i - q_{0i}$", section: "Små svingninger", formula: kvadratisk-lagrange, note: "I utledningen av Lagranges ligninger er $\\epsilon\\,\\eta(t)$ variasjonen av banen, med en liten parameter $\\epsilon$." }
+  - { tex: "\\eta,\\ \\eta_i", meaning: "Utslaget fra likevekten, $q_i - q_{0i}$", section: "Små svingninger", formula: kvadratisk-lagrange, note: "I utledningen av Lagranges ligninger er $\\epsilon\\,\\eta(t)$ variasjonen av banen, med en liten parameter $\\epsilon$. Ikke Minkowski-metrikken $\\eta_{\\mu\\nu}$." }
   - { tex: "\\boldsymbol T,\\ \\boldsymbol V", meaning: "Matrisene til den kinetiske og den potensielle energien nær likevekten", section: "Små svingninger", formula: kvadratisk-lagrange, note: "$T_{ij} = m_{ij}(q_0)$ og $V_{ij} = \\partial^2 V/\\partial q_i\\,\\partial q_j$ i likevekten. Fete bokstaver, ikke energiene $T$ og $V$ selv." }
   - { tex: "\\omega_a", meaning: "Egenfrekvensene, røttene av sekulærligningen", unit: "rad/s", section: "Små svingninger", term: "Egenfrekvens", formula: sekulaerligning }
   - { tex: "\\boldsymbol\\mu_a", meaning: "Moden, forholdet mellom utslagene i mode $a$", section: "Små svingninger", term: "Normalmode", formula: sekulaerligning, note: "Ikke den reduserte massen $\\mu$. Eksamensløsningene skriver også $\\vec a$." }
@@ -794,6 +836,17 @@ symbols:
   - { tex: "S(q, \\alpha, t)", meaning: "Hamiltons prinsipale funksjon, virkningen langs den virkelige banen som funksjon av endepunktet", unit: "J·s", section: "Virkningsvariabler og Hamilton–Jacobi", term: "Hamiltons prinsipale funksjon", formula: hamilton-jacobi, id: prinsipal-funksjon, note: "Ikke snordraget $S$." }
   - { tex: "W(q, \\alpha)", meaning: "Hamiltons karakteristiske funksjon, $S = W - Et$ når $H$ ikke avhenger av tida", unit: "J·s", section: "Virkningsvariabler og Hamilton–Jacobi", term: "Hamiltons karakteristiske funksjon", formula: karakteristisk-funksjon, id: karakteristisk-funksjon, note: "Ikke arbeidet $W$." }
   - { tex: "\\alpha_i,\\ \\beta_i", meaning: "Konstantene i en løsning $S(q, \\alpha, t)$: de nye impulsene $\\alpha_i$ og de nye koordinatene $\\beta_i = \\partial S/\\partial\\alpha_i$", section: "Virkningsvariabler og Hamilton–Jacobi", formula: hj-bevegelse, id: alfa-beta-hj, note: "Med $\\alpha = E$ er $\\beta$ minus tidspunktet banen passerte startstedet. Ellers er $\\alpha$ dempingen i den dempede oscillatoren, masseforholdet i trelegemeproblemet og parameteren langs en transformasjon." }
+  # ── Spesiell relativitetsteori ──
+  - { tex: "c", meaning: "Lysfarten i vakuum, den samme i alle inertialsystemer", unit: "m/s", section: "Spesiell relativitetsteori", formula: lorentz-transformasjon, id: lysfarten, note: "Med år og lysår som enheter er $c = 1$." }
+  - { tex: "v,\\ u,\\ u'", meaning: "$v$ er farten til $K'$ langs $x$-aksen i $K$, og $u$ og $u'$ er farten til et legeme i $K$ og i $K'$", unit: "m/s", section: "Spesiell relativitetsteori", formula: hastighetsaddisjon, id: fart-relativitet, note: "Ikke $u = 1/r$ i baneligningen." }
+  - { tex: "\\gamma", meaning: "Lorentz-faktoren, $1/\\sqrt{1 - v^2/c^2}$", section: "Spesiell relativitetsteori", formula: lorentz-transformasjon, id: gamma-lorentz, note: "Ikke friksjonskoeffisienten $\\gamma$." }
+  - { tex: "L_0", meaning: "Lengden til et legeme der det står i ro", unit: "m", section: "Spesiell relativitetsteori", formula: lengdekontraksjon, id: hvilelengde }
+  - { tex: "\\Delta s^2", meaning: "Intervallet mellom to hendelser", unit: "m²", section: "Spesiell relativitetsteori", term: "Intervall", formula: intervall, id: intervall }
+  - { tex: "\\tau", meaning: "Egentida, tida en klokke viser langs sin egen verdenslinje", unit: "s", section: "Spesiell relativitetsteori", term: "Egentid", formula: egentid, id: egentid, note: "Ikke tida $\\tau$ siden dyttet i Greens funksjon." }
+  - { tex: "X^\\mu", meaning: "Firervektoren til en hendelse, $(ct, x, y, z)$, med $\\mu = 0, 1, 2, 3$", unit: "m", section: "Spesiell relativitetsteori", term: "Firervektor", formula: lorentz-krav, id: firervektor, note: "Eldre eksamenssett har tida som fjerde komponent, $(x, y, z, ict)$." }
+  - { tex: "\\eta_{\\mu\\nu}", meaning: "Minkowski-metrikken, $\\operatorname{diag}(1, -1, -1, -1)$", section: "Spesiell relativitetsteori", formula: lorentz-krav, id: minkowski-metrikk, note: "Ikke utslaget $\\eta$ i små svingninger. Eksamenssettene fra 2024 og 2025 bruker motsatt fortegn, med $\\eta_{00} = -1$." }
+  - { tex: "\\Lambda", meaning: "Matrisen til en Lorentz-transformasjon, $X' = \\Lambda X$", section: "Spesiell relativitetsteori", term: "Lorentz-transformasjon", formula: lorentz-krav, id: lorentz-matrise }
+  - { tex: "w", meaning: "Rapiditeten, med $\\tanh w = v/c$", section: "Spesiell relativitetsteori", term: "Rapiditet", formula: boost-rapiditet, id: rapiditet }
   # ── Kjente systemer ──
   - { tex: "l", meaning: "Lengden til pendelen; $l_1$ og $l_2$ for dobbeltpendelen", unit: "m", section: "Kjente systemer", formula: plan-pendel, note: "I eksamensoppgavene står $\\ell$ både for en stanglengde og for dreieimpulsen." }
   - { tex: "\\theta", meaning: "Vinkelen fra loddlinja nedover for en pendel, og fra bunnpunktet for perla på ringen", unit: "rad", section: "Kjente systemer", formula: plan-pendel, note: "$\\theta = \\pi$ er opp ned. For et legeme som ruller, er $\\theta$ dreievinkelen." }
@@ -1088,6 +1141,39 @@ glossary:
   - term: Hamiltons karakteristiske funksjon
     section: Virkningsvariabler og Hamilton–Jacobi
     definition: "$W(q)$ i $S = W - Et$ når $H$ ikke avhenger av tida. Den oppfyller $H(q, \\partial W/\\partial q) = E$, og med én frihetsgrad er $W = \\int p\\,dq$."
+  - term: Hendelse
+    section: Spesiell relativitetsteori
+    definition: "Noe som skjer på ett sted ved ett tidspunkt. Et inertialsystem gir den en tid og et sted, og i et romtidsdiagram er den et punkt."
+  - term: Verdenslinje
+    section: Spesiell relativitetsteori
+    definition: "Kurven i romtidsdiagrammet gjennom alle hendelsene et legeme er med på. Med $ct$ opp og $x$ til siden går et legeme i ro rett opp, og lys går på skrå 45°."
+  - term: Lorentz-transformasjon
+    section: Spesiell relativitetsteori
+    definition: "Transformasjonen mellom to inertialsystemer som bevarer intervallet, så lyset har farten $c$ i begge. Mellom systemer som beveger seg med farten $v$ langs $x$-aksen er den $t' = \\gamma(t - vx/c^2)$, $x' = \\gamma(x - vt)$, og den heter da en boost."
+  - term: Intervall
+    section: Spesiell relativitetsteori
+    definition: "$\\Delta s^2 = c^2\\Delta t^2 - \\Delta x^2 - \\Delta y^2 - \\Delta z^2$ mellom to hendelser, det samme i alle inertialsystemer. Fortegnet sier om hendelsene er tidlike, lyslike eller romlike."
+  - term: Tidlik
+    section: Spesiell relativitetsteori
+    definition: "To hendelser med $\\Delta s^2 > 0$, så et legeme som går saktere enn lyset, kan være med på begge. Rekkefølgen er den samme i alle inertialsystemer."
+  - term: Lyslik
+    section: Spesiell relativitetsteori
+    definition: "To hendelser med $\\Delta s^2 = 0$, som lys går mellom."
+  - term: Romlik
+    section: Spesiell relativitetsteori
+    definition: "To hendelser med $\\Delta s^2 < 0$, utenfor hverandres lyskjegle. Ingen påvirkning når fra den ene til den andre, de er samtidige i ett inertialsystem, og rekkefølgen avhenger av systemet."
+  - term: Lyskjegle
+    section: Spesiell relativitetsteori
+    definition: "Lyslinjene gjennom en hendelse. Det hendelsen kan påvirke, ligger inne i eller på den øvre lyskjeglen."
+  - term: Egentid
+    section: Spesiell relativitetsteori
+    definition: "Tida en klokke viser langs sin egen verdenslinje, $\\tau = \\int dt\\,\\sqrt{1 - u^2/c^2}$. Den er den samme i alle inertialsystemer, og mellom to tidlike hendelser er den lengst langs den rette verdenslinja."
+  - term: Firervektor
+    section: Spesiell relativitetsteori
+    definition: "Fire komponenter som transformeres som $(ct, x, y, z)$ under en Lorentz-transformasjon, $X' = \\Lambda X$."
+  - term: Rapiditet
+    section: Spesiell relativitetsteori
+    definition: "Parameteren $w$ i en boost, med $\\gamma = \\cosh w$ og $v/c = \\tanh w$. Rapiditetene til booster langs samme akse legges sammen."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker
