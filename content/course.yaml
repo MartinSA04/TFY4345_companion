@@ -559,10 +559,10 @@ formulas:
     section: Hamiltonformalismen
     tex: "H = \\frac{p_r^2}{2\\mu} + \\frac{p_\\phi^2}{2\\mu r^2} + V(r)"
     label: "Relativbevegelsen i et sentralpotensial. $p_\\phi = J$ er bevart og kan settes inn i $H$, som da blir $p_r^2/2\\mu + V_\\text{eff}(r)$. Satt inn i $L$ gir den samme konstanten feil fortegn på sentrifugalleddet."
-  - id: separatrise
+  - id: pendel-hamilton
     section: Hamiltonformalismen
-    tex: "p_\\theta = \\pm 2m\\sqrt{gl^3}\\,\\cos\\frac{\\theta}{2}"
-    label: "Separatrisen $E = mgl$ i faserommet til den plane pendelen, med $H = p_\\theta^2/2ml^2 - mgl\\cos\\theta$. Innenfor svinger pendelen, utenfor går den rundt."
+    tex: "H = \\frac{p_\\theta^2}{2ml^2} - mgl\\cos\\theta"
+    label: "Den plane pendelen i faserommet, med $p_\\theta = ml^2\\dot\\theta$. Punktet $(\\theta, p_\\theta)$ går langs kurvene med konstant $H$, med klokka rundt bunnpunktet. Innenfor separatrisen $E = mgl$ svinger pendelen, utenfor går den rundt."
   - id: hamilton-ladd-partikkel
     section: Hamiltonformalismen
     tex: "H = \\frac{(\\vec p - q\\vec A)^2}{2m} + q\\phi"
@@ -575,6 +575,10 @@ formulas:
     section: Hamiltonformalismen
     tex: "S = \\int_{t_1}^{t_2} \\Bigl(\\sum_i p_i\\dot q_i - H\\Bigr)\\,dt"
     label: "Virkningen i faserommet. $\\delta S = 0$ med $q$ og $p$ variert hver for seg og $\\delta q = 0$ i endepunktene gir Hamiltons ligninger."
+  - id: liouvilles-ligning
+    section: Hamiltonformalismen
+    tex: "\\frac{\\partial\\rho}{\\partial t} = -\\{\\rho, H\\}"
+    label: "Liouvilles ligning for tettheten $\\rho(q, p, t)$ av tilstander i faserommet. Den følger av Liouvilles teorem: tettheten rundt hvert punkt er den samme langs bevegelsen, $d\\rho/dt = 0$. En tetthet som bare avhenger av $H$, endrer seg ikke."
   - id: poissonklamme
     section: Hamiltonformalismen
     tex: "\\begin{aligned} \\{f, g\\} &= \\sum_i \\left(\\frac{\\partial f}{\\partial q_i}\\frac{\\partial g}{\\partial p_i} - \\frac{\\partial f}{\\partial p_i}\\frac{\\partial g}{\\partial q_i}\\right) \\\\ \\frac{df}{dt} &= \\{f, H\\} + \\frac{\\partial f}{\\partial t} \\end{aligned}"
@@ -712,6 +716,7 @@ symbols:
   - { tex: "\\{f, g\\}", meaning: "Poissonklammen av $f$ og $g$", section: "Hamiltonformalismen", term: "Poissonklamme", formula: poissonklamme, note: "Eldre eksamenssett skriver $[f, g]_{q,p}$, med samme fortegn." }
   - { tex: "\\epsilon_{ijk}", meaning: "Levi-Civita-symbolet: $1$ for $xyz$ og sykliske ombyttinger, $-1$ når to indekser byttes, ellers $0$", section: "Hamiltonformalismen", formula: dreieimpuls-klammer, note: "Ikke parameteren $\\epsilon$ i Noethers teorem." }
   - { tex: "\\omega_c", meaning: "Vinkelfrekvensen $qB/m$ i et uniformt magnetfelt, med fortegn", unit: "rad/s", section: "Hamiltonformalismen", term: "Syklotronfrekvens", formula: syklotronfrekvens, note: "Syklotronfrekvensen er $|\\omega_c| = |q|B/m$. For $q < 0$ er $\\omega_c < 0$, og sirkelen går mot klokka sett fra spissen av $\\vec B$." }
+  - { tex: "\\rho(q, p, t)", meaning: "Tettheten av tilstander i faserommet", section: "Hamiltonformalismen", term: "Liouvilles teorem", formula: liouvilles-ligning, id: rho-faserom, note: "Ikke massetettheten $\\rho$." }
   # ── Kjente systemer ──
   - { tex: "l", meaning: "Lengden til pendelen; $l_1$ og $l_2$ for dobbeltpendelen", unit: "m", section: "Kjente systemer", formula: plan-pendel, note: "I eksamensoppgavene står $\\ell$ både for en stanglengde og for dreieimpulsen." }
   - { tex: "\\theta", meaning: "Vinkelen fra loddlinja nedover for en pendel, og fra bunnpunktet for perla på ringen", unit: "rad", section: "Kjente systemer", formula: plan-pendel, note: "$\\theta = \\pi$ er opp ned. For et legeme som ruller, er $\\theta$ dreievinkelen." }
@@ -960,7 +965,7 @@ glossary:
     definition: "Kurven i faserommet som skiller to slags bevegelse. For pendelen er den kurven $E = mgl$ gjennom toppunktet, og den skiller svingning fra rotasjon."
   - term: Syklotronfrekvens
     section: Hamiltonformalismen
-    definition: "Vinkelfarten $|q|B/m$ som en ladd partikkel sirkler med i et uniformt magnetfelt. Den er den samme for alle farter og radier."
+    definition: "Vinkelfrekvensen $|q|B/m$ som en ladd partikkel sirkler med i et uniformt magnetfelt. Den er den samme for alle farter og radier."
   - term: Poissonklamme
     section: Hamiltonformalismen
     definition: "$\\{f, g\\} = \\sum_i (\\partial f/\\partial q_i\\,\\partial g/\\partial p_i - \\partial f/\\partial p_i\\,\\partial g/\\partial q_i)$. Klammen med $H$ gir tidsendringen, $df/dt = \\{f, H\\} + \\partial f/\\partial t$."
@@ -969,7 +974,10 @@ glossary:
     definition: "$\\{f, \\{g, h\\}\\} + \\{g, \\{h, f\\}\\} + \\{h, \\{f, g\\}\\} = 0$ for alle funksjoner på faserommet. Med $h = H$ gir den Poissons teorem."
   - term: Poissons teorem
     section: Hamiltonformalismen
-    definition: "Er $f$ og $g$ bevart uten å avhenge eksplisitt av tida, er også $\\{f, g\\}$ bevart. Klammen kan være en konstant eller en funksjon av $f$ og $g$, og da gir den ingen ny bevart størrelse."
+    definition: "Er $f$ og $g$ bevart uten å avhenge eksplisitt av tida, er også $\\{f, g\\}$ bevart. Det følger av Jacobis identitet med $h = H$."
+  - term: Liouvilles teorem
+    section: Hamiltonformalismen
+    definition: "Et område i faserommet beholder volumet $dq_1 \\cdots dq_n\\,dp_1 \\cdots dp_n$ når hvert punkt i det følger Hamiltons ligninger, også når $H$ avhenger av tida. Området kan dras ut og vris, men Hamiltons ligninger strekker like mye som de klemmer."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker

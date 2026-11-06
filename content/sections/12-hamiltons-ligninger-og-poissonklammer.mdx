@@ -1,148 +1,267 @@
 ---
 order: 12
 title: "Hamiltons ligninger og Poissonklammer"
-summary: "Hamiltonfunksjonen er energifunksjonen skrevet ved koordinatene og impulsene, og Hamiltons ligninger gir bevegelsen som en bane i faserommet. Poissonklammen med Hamiltonfunksjonen gir tidsendringen til en størrelse langs bevegelsen, og dermed om den er bevart."
+summary: "Hamiltons ligninger gir bevegelsen som et punkt som går gjennom faserommet, langs kurvene med konstant H når H ikke avhenger av tida, og en bevart impuls kan settes rett inn i H. Et område i faserommet beholder arealet sitt mens det beveger seg (Liouvilles teorem), og Poissonklammen med H gir hvor fort en størrelse endrer seg langs bevegelsen."
 importance: core
-tag: "Uke 42"
-updated: 2026-10-18
+tag: "Uke 42–43 · Tong 10.1–10.3"
+updated: 2026-11-06
 ---
 
 <LearningGoals>
 - Sette opp Hamiltonfunksjonen fra Lagrangefunksjonen og skrive Hamiltons ligninger.
-- Avgjøre om Hamiltonfunksjonen er bevart, og bruke en syklisk koordinat til å redusere antallet frihetsgrader i Hamiltonfunksjonen.
-- Lese bevegelsen som en bane i faserommet, og skille svingning fra rotasjon i faserommet til pendelen.
+- Lese bevegelsen som en bane i faserommet, og finne retningen punktet går, vendepunktene og separatrisen for pendelen.
+- Avgjøre om $H$ er bevart, og sette en bevart impuls inn i $H$ for å få færre koordinater.
 - Skrive Hamiltonfunksjonen for en ladd partikkel i et elektromagnetisk felt.
-- Utlede Hamiltons ligninger fra et variasjonsprinsipp i faserommet.
-- Regne ut Poissonklammer og bruke dem til å finne tidsendringen til en størrelse.
-- Regne ut Poissonklammene mellom komponentene av dreieimpulsen, og bruke Poissons teorem.
+- Forklare hvorfor et område i faserommet beholder arealet sitt, og hva friksjon gjør med det.
+- Regne ut Poissonklammer og bruke dem til å finne tidsendringen til en størrelse, også for dreieimpulsen.
 </LearningGoals>
 
-## Hamiltons ligninger
+Jorda går rundt sola, og dreieimpulsen ${J = \mu r^2\dot\phi}$ er bevart. Med $J$ kjent burde avstanden $r$ være den eneste koordinaten som er igjen. Sett ${\dot\phi = J/\mu r^2}$ inn i Lagrangefunksjonen ${L = \tfrac12\mu(\dot r^2 + r^2\dot\phi^2) - V(r)}$. Da blir ${L = \tfrac12\mu\dot r^2 + J^2/2\mu r^2 - V(r)}$, og Lagranges ligning for $r$ blir
 
-En bevart impuls kan ikke settes inn i $L$ før du deriverer. For relativbevegelsen i et sentralpotensial er ${L = \tfrac12\mu(\dot r^2 + r^2\dot\phi^2) - V(r)}$, og dreieimpulsen ${p_\phi = \mu r^2\dot\phi = J}$ er bevart. Med ${\dot\phi = J/\mu r^2}$ satt inn blir ${L = \tfrac12\mu\dot r^2 + J^2/2\mu r^2 - V}$, og Lagranges ligning for $r$ blir ${\mu\ddot r = -J^2/\mu r^3 - V'}$, med feil fortegn på sentrifugalleddet. $\partial L/\partial r$ skal tas med $\dot\phi$ holdt fast, men innsettingen gjør $\dot\phi$ avhengig av $r$. Hamiltons formulering bruker impulsene i stedet for hastighetene som variabler, og da holdes $p_\phi$ fast når du deriverer med hensyn på $r$.
+$$
+\mu\ddot r = -\frac{J^2}{\mu r^3} - V'(r)
+$$
 
-Lagranges ligninger er $n$ andreordens differensialligninger for koordinatene $q_i(t)$. For å finne bevegelsen videre fra et øyeblikk trenger du både $q_i$ og $\dot q_i$ i det øyeblikket, altså $2n$ tall. Med koordinatene $q_i$ og de <Term name="generalisert impuls">generaliserte impulsene</Term> ${p_i = \partial L/\partial\dot q_i}$ som $2n$ uavhengige variabler blir de $n$ andreordens ligningene til $2n$ førsteordens ligninger.
+For tyngdekraften er ${V' > 0}$, så begge leddene trekker Jorda mot sola. Ingen sirkelbane er mulig, og etter denne ligningen ville Jorda nådd sola på 43 dager, raskere enn de 65 dagene den ville brukt om den hadde stoppet opp i banen. Den riktige ligningen har ${+J^2/\mu r^3}$, sentrifugalleddet som holder Jorda ute. Feilen ligger i hva som holdes fast når du deriverer. ${\partial L/\partial r}$ tas med $\dot\phi$ holdt fast, men langs banen er det $J$ som står fast, og ${\dot\phi = J/\mu r^2}$ endrer seg med $r$. Hamiltons formulering bruker impulsene i stedet for hastighetene som variabler, og der kan du sette inn $J$ før du deriverer.
 
-For en partikkel på en linje i potensialet $V(x)$ er ${p = m\dot x}$, og Newtons andre lov kan skrives som to førsteordens ligninger:
+## Faserommet
+
+Start med en partikkel med masse $m$ på en linje i potensialet $V(x)$. Newtons andre lov, ${m\ddot x = -V'(x)}$, er én andreordens ligning. Med impulsen ${p = m\dot x}$ blir den til to førsteordens ligninger:
 
 $$
 \dot x = \frac{p}{m}, \qquad \dot p = -V'(x)
 $$
 
-Skriv energien ved $x$ og $p$, ${E = p^2/2m + V(x)}$. Da er begge høyresidene partiellderiverte av $E$: ${\dot x = \partial E/\partial p}$ og ${\dot p = -\partial E/\partial x}$. For et vilkårlig system har <Term name="energifunksjon">energifunksjonen</Term> ${H = \sum_i p_i\dot q_i - L}$ den samme rollen, men bare når den er skrevet ved $q$ og $p$ i stedet for $q$ og $\dot q$.
+Høyresidene avhenger bare av $x$ og $p$, så de to tallene i ett øyeblikk bestemmer hele bevegelsen videre. Tegn dem som et punkt i et plan med $x$ vannrett og $p$ loddrett. Planet er <Term name="faserom">faserommet</Term>, og punktet er tilstanden til partikkelen. Mens partikkelen beveger seg, går punktet gjennom faserommet med farten $(\dot x, \dot p)$, og de to ligningene gir den farten i hvert punkt.
 
-<Term name="hamiltonfunksjon">Hamiltonfunksjonen</Term> er energifunksjonen skrevet som funksjon av koordinatene, impulsene og tida:
-
-$$
-H(q, p, t) = \sum_i p_i\dot q_i - L(q, \dot q, t)
-$$
-
-der hver $\dot q_i$ er uttrykt ved $q$, $p$ og $t$ ved å løse ligningene ${p_i = \partial L/\partial\dot q_i}$. Når $T$ er av andre grad i $\dot q$ og $V$ høyst av første grad, er ligningene lineære i $\dot q$. De har én løsning, fordi andregradsdelen av den kinetiske energien er positiv for alle ${\dot q \ne 0}$.
-
-Endre $q$, $p$ og $t$ litt. Da endres $H$ med
+Begge høyresidene er partiellderiverte av energien skrevet ved $x$ og $p$, ${E(x, p) = p^2/2m + V(x)}$:
 
 $$
-dH = \sum_i \left(\dot q_i\,dp_i + p_i\,d\dot q_i\right) \allowbreak - \sum_i \left(\frac{\partial L}{\partial q_i}\,dq_i + \frac{\partial L}{\partial\dot q_i}\,d\dot q_i\right) \allowbreak - \frac{\partial L}{\partial t}\,dt
+\dot x = \frac{\partial E}{\partial p}, \qquad \dot p = -\frac{\partial E}{\partial x}
 $$
 
-Leddene med $d\dot q_i$ faller bort mot hverandre, ettersom ${p_i = \partial L/\partial\dot q_i}$. Igjen står
+For den plane pendelen med vinkelen $\theta$ fra loddlinja er impulsen ${p_\theta = ml^2\dot\theta}$, og energien skrevet ved $\theta$ og $p_\theta$ er
 
 $$
-dH = \sum_i \left(\dot q_i\,dp_i - \frac{\partial L}{\partial q_i}\,dq_i\right) \allowbreak - \frac{\partial L}{\partial t}\,dt
+E = \frac{p_\theta^2}{2ml^2} - mgl\cos\theta
 $$
 
-Koeffisientene foran $dp_i$, $dq_i$ og $dt$ er de partiellderiverte av $H$: ${\partial H/\partial p_i = \dot q_i}$, ${\partial H/\partial q_i = -\partial L/\partial q_i}$ og ${\partial H/\partial t = -\partial L/\partial t}$. Så langt er bare definisjonen av $p_i$ brukt. Lagranges ligning er ${\dot p_i = \partial L/\partial q_i}$, så ${\partial H/\partial q_i = -\dot p_i}$:
+De samme to ligningene, ${\dot\theta = \partial E/\partial p_\theta = p_\theta/ml^2}$ og ${\dot p_\theta = -\partial E/\partial\theta = -mgl\sin\theta}$, gir pendelens bevegelsesligning ${ml^2\ddot\theta = -mgl\sin\theta}$.
+
+<Simulation
+  src="/sims/pendel-i-faserommet.js"
+  title="Pendelen i faserommet"
+  caption="Øverst pendelen. Under den energidiagrammet: den grå kurven er $V(\theta)$, linja energien $E$ mellom vendepunktene, og streken fra linja ned til kurven den kinetiske energien $T$. Nederst faserommet med den samme $\theta$-aksen. De stiplede kurvene har konstant $E$, og kurven punktet går langs, er tegnet tydeligere. Den oransje kurven er separatrisen ${E = mgl}$, den fylte prikken bunnpunktet og de åpne ringene toppunktet, der pendelen står rett opp. Kantene ${\theta = \pm\pi}$ er samme stilling. Pila er farten $(\dot\theta, \dot p_\theta)$."
+  host="dom"
+  height={470}
+/>
+
+Trykk «Svingning». Pendelen svinger fram og tilbake, og punktet i faserommet går med klokka rundt en lukket kurve, en av kurvene med konstant $E$. Prikken i energidiagrammet går fram og tilbake mellom vendepunktene, der energilinja møter $V(\theta)$ og den kinetiske energien er null. De stiplede loddrette linjene viser at kurven i faserommet krysser ${p_\theta = 0}$ rett under vendepunktene.
+
+Punktet holder seg på kurven fordi farten står vinkelrett på den retningen der $E$ øker raskest. Tenk på $E(\theta, p_\theta)$ som høyden i et landskap over faserommet, med høydekurvene der $E$ er konstant. Landskapet stiger brattest i retningen ${(\partial E/\partial\theta, \partial E/\partial p_\theta)}$, og farten ${(\partial E/\partial p_\theta, -\partial E/\partial\theta)}$ står vinkelrett på den. Punktet går derfor langs høydekurvene, som en sti som holder samme høyde langs en fjellside. Det er energibevaringen sett i faserommet. Farten er like stor som brattheten, så punktet går fort der høydekurvene ligger tett. En kule i det samme landskapet ville rullet nedover, men punktet går aldri nedover, bare langs kurvene. Over aksen er ${p_\theta > 0}$, og punktet går mot høyre. Under aksen går det mot venstre, så rundt bunnpunktet går punktet med klokka.
+
+Trykk «Rotasjon». Nå ligger energilinja over hele kurven $V(\theta)$, den kinetiske energien blir aldri null, og pendelen går rundt. Punktet går mot høyre langs en bølget kurve over hele bredden, ut ved ${\theta = \pi}$ og inn igjen ved ${\theta = -\pi}$. Den oransje kurven ${E = mgl}$ skiller de to bevegelsene og heter <Term name="separatrise">separatrisen</Term>. Den går gjennom toppunktet ${\theta = \pm\pi}$, der pendelen kan stå rett opp i ro. Trykk «Nær separatrisen». Punktet går sakte når det er nær toppunktet, fordi både $p_\theta$ og ${\sin\theta}$ er små der, så begge komponentene av farten er små. Pendelen blir hengende nesten rett opp en stund før den faller tilbake.
+
+Energien avhenger ikke av tida, så farten i et punkt er den samme hver gang punktet nås. Det går derfor bare én bane gjennom hvert punkt i faserommet, og to baner krysser aldri hverandre. En pendel som passerer bunnpunktet mot høyre og senere mot venstre, er to steder i faserommet, med motsatt fortegn på $p_\theta$. Separatrisen ser ut til å krysse seg selv i toppunktet, men toppunktet er en likevekt og en bane for seg selv. Et punkt på separatrisen kommer stadig nærmere toppunktet uten å nå det.
+
+<Quiz
+  question="Du slipper pendelen fra ro med ${\theta = 90°}$. Hvilken vei peker farten til punktet i faserommet i det øyeblikket du slipper?"
+  options={["Rett ned: $p_\\theta$ minker, $\\theta$ står stille", "Mot venstre: $\\theta$ minker, $p_\\theta$ står stille", "Rett opp: $p_\\theta$ øker, $\\theta$ står stille", "Skrått ned mot venstre"]}
+  answer={0}
+  explanation={"Farten er ${(\\dot\\theta, \\dot p_\\theta) = (p_\\theta/ml^2, -mgl\\sin\\theta)}$. Pendelen er i ro, så ${p_\\theta = 0}$ og ${\\dot\\theta = 0}$, mens ${\\dot p_\\theta = -mgl\\sin 90° = -mgl}$. Farten peker rett ned. Kula skal mot ${\\theta = 0}$, men i øyeblikket den slippes, står den stille, og først når $p_\\theta$ har blitt negativ, begynner $\\theta$ å minke. Punktet går derfor ned først og bøyer så av mot venstre, med klokka rundt bunnpunktet."}
+/>
+
+<Callout title="Faserommet">
+Tilstanden er et punkt $(x, p)$ i faserommet, og energien skrevet ved $x$ og $p$ gir farten til punktet: ${\dot x = \partial E/\partial p}$, ${\dot p = -\partial E/\partial x}$. Punktet går langs kurvene med konstant energi, med klokka rundt et bunnpunkt i $V$, og to baner krysser aldri.
+</Callout>
+
+## Hamiltonfunksjonen
+
+Et vilkårlig system har Lagrangefunksjonen ${L(q, \dot q, t)}$ med $n$ koordinater $q_i$ og de <Term name="generalisert impuls">generaliserte impulsene</Term> ${p_i = \partial L/\partial\dot q_i}$. Du trenger en funksjon $H(q, p, t)$ som gir farten i faserommet på samme måte, ${\dot q_i = \partial H/\partial p_i}$ og ${\dot p_i = -\partial H/\partial q_i}$.
+
+Den første ligningen sier hvilket ledd $H$ må ha. Leddet ${\sum_i p_i\dot q_i}$ gir $\dot q_i$ når du deriverer med hensyn på $p_i$, men bare om $\dot q$ holdes fast. Når $p$ endres, endres også $\dot q$, og ${\sum_i p_i\dot q_i}$ endres i tillegg med ${\sum_i p_i\,d\dot q_i}$. Det tillegget må trekkes fra igjen, og $L$ endres med ${\sum_i (\partial L/\partial\dot q_i)\,d\dot q_i = \sum_i p_i\,d\dot q_i}$ når $\dot q$ endres. Derfor er
+
+<Formula
+  tex="H(q, p, t) = \sum_i p_i\dot q_i \allowbreak - L(q, \dot q, t)"
+  caption="<b>Hamiltonfunksjonen</b>, med hver $\dot q_i$ uttrykt ved $q$, $p$ og $t$ ved å løse ligningene ${p_i = \partial L/\partial\dot q_i}$."
+/>
+
+$H$ er <Term name="energifunksjon">energifunksjonen</Term>, skrevet ved $q$ og $p$ i stedet for $q$ og $\dot q$, og den heter <Term name="hamiltonfunksjon">Hamiltonfunksjonen</Term>. For partikkelen på linja er ${p\dot x - L = m\dot x^2 - \tfrac12 m\dot x^2 + V}$, energien. Endre $q$, $p$ og $t$ litt. Da endres $H$ med
+
+$$
+dH = \sum_i \bigl(\dot q_i\,dp_i + p_i\,d\dot q_i\bigr) \allowbreak - \sum_i \Bigl(\frac{\partial L}{\partial q_i}\,dq_i + \frac{\partial L}{\partial\dot q_i}\,d\dot q_i\Bigr) \allowbreak - \frac{\partial L}{\partial t}\,dt
+$$
+
+Leddene med $d\dot q_i$ faller bort mot hverandre, ettersom ${\partial L/\partial\dot q_i = p_i}$:
+
+$$
+dH = \sum_i \Bigl(\dot q_i\,dp_i - \frac{\partial L}{\partial q_i}\,dq_i\Bigr) \allowbreak - \frac{\partial L}{\partial t}\,dt
+$$
+
+Koeffisienten foran $dp_i$ er ${\partial H/\partial p_i = \dot q_i}$. Koeffisienten foran $dq_i$ er ${\partial H/\partial q_i = -\partial L/\partial q_i}$, og Lagranges ligning sier at ${\partial L/\partial q_i = \dot p_i}$:
 
 <Formula
   tex="\dot q_i = \frac{\partial H}{\partial p_i}, \qquad \dot p_i = -\frac{\partial H}{\partial q_i}"
-  caption="<b>Hamiltons ligninger</b>, $2n$ førsteordens ligninger for $q_i(t)$ og $p_i(t)$. Den første er definisjonen av $p_i$ løst for $\dot q_i$, og den andre er Lagranges ligning. I tillegg er ${\partial H/\partial t = -\partial L/\partial t}$."
+  caption="<b>Hamiltons ligninger</b>, $2n$ førsteordens ligninger for $q_i(t)$ og $p_i(t)$. Den første er definisjonen av $p_i$ løst for $\dot q_i$, den andre er Lagranges ligning. I tillegg er ${\partial H/\partial t = -\partial L/\partial t}$."
 />
 
-$H$ har samme verdi som energifunksjonen, men ${\partial H/\partial q_i}$ tas med impulsene holdt fast, mens energifunksjonen og $L$ deriveres med hastighetene holdt fast. Derfor er ${\partial H/\partial q_i = -\partial L/\partial q_i}$, selv om $q_i$ også står i ${\sum_i p_i\dot q_i}$ når $\dot q$ er uttrykt ved $q$ og $p$.
-
-Overgangen fra $L$ som funksjon av $\dot q$ til $H$ som funksjon av $p$ heter en <Term name="legendretransformasjon">Legendretransformasjon</Term>. Ingen informasjon går tapt i overgangen. ${\partial H/\partial p_i = \dot q_i}$ gir hastighetene tilbake, og ${L = \sum_i p_i\dot q_i - H}$. Koordinatene og impulsene kalles <Term name="kanoniske variabler">kanoniske variabler</Term>.
+Med $n$ koordinater har faserommet $2n$ dimensjoner, og Hamiltons ligninger gir farten til punktet $(q, p)$ i det. Overgangen fra $L$ som funksjon av $\dot q$ til $H$ som funksjon av $p$ heter en <Term name="legendretransformasjon">Legendretransformasjon</Term>, og koordinatene og impulsene kalles <Term name="kanoniske variabler">kanoniske variabler</Term>. Ligningene ${p_i = \partial L/\partial\dot q_i}$ kan løses for $\dot q$ fordi $L$ høyst er av andre grad i $\dot q$, og leddet av andre grad er positivt for alle ${\dot q \ne 0}$. Da er ligningene lineære i $\dot q$ og har én løsning.
 
 <Steps>
 <Step title="Lagrangefunksjonen">Skriv $L(q, \dot q, t)$ i de generaliserte koordinatene.</Step>
 <Step title="Impulsene">Regn ut ${p_i = \partial L/\partial\dot q_i}$.</Step>
 <Step title="Hastighetene">Løs ligningene for $\dot q_i$, uttrykt ved $q$, $p$ og $t$.</Step>
-<Step title="Hamiltonfunksjonen">Sett hastighetene inn i ${\sum_i p_i\dot q_i - L}$, så bare $q$, $p$ og $t$ står igjen. Deriver for å få Hamiltons ligninger.</Step>
+<Step title="Hamiltonfunksjonen">Sett hastighetene inn i ${\sum_i p_i\dot q_i - L}$, så bare $q$, $p$ og $t$ står igjen, og deriver for å få Hamiltons ligninger.</Step>
 </Steps>
 
-For en partikkel i potensialet $V(\vec r)$ er ${\vec p = m\dot{\vec r}}$ og ${H = \vec p^{\,2}/2m + V(\vec r)}$. Hamiltons ligninger gir ${\dot{\vec r} = \vec p/m}$ og ${\dot{\vec p} = -\nabla V}$, som er Newtons andre lov.
+Hamiltons ligninger følger også av virkningen. Legendretransformasjonen gir ${L = \sum_i p_i\dot q_i - H}$, og virkningen ${S = \int (\sum_i p_i\dot q_i - H)\,dt}$ er stasjonær nøyaktig når $q(t)$ og $p(t)$ oppfyller Hamiltons ligninger, med $q$ og $p$ variert hver for seg og $q$ holdt fast i endepunktene.
 
-<Example label="Eksamensoppgave" title="Stang med to masser">
-<ExamRef id="2023-nov" task="3 a, d" />
-
-A rod with negligible mass and length $\ell$ has equal masses $m$ at its two
-ends. (See figure below.) One mass can slide without friction along a
-horizontal constraint on the $x$ axis. The other mass is restricted to move
-in the $xy$ plane. We consider a situation where the center of mass is all
-the time located on the $y$ axis, i.e., in ${x = 0}$. Zero potential energy is
-chosen in vertical position ${y = 0}$.
-
-<Figure src="/figures/eksamen-2023-11-oppgave-3.png" alt="Den øvre massen ligger på x-aksen, stangen henger skrått ned med vinkelen θ fra vertikalen til den nedre massen, og tyngden peker nedover." width={720} height={440} caption="Figuren fra oppgavesettet." />
-
-a) (7%) Show that the Lagrangian of the system is
+<Derivation title="Hamiltons ligninger fra virkningen">
+Varier $q_i$ med $\delta q_i$, som er null i endepunktene $t_1$ og $t_2$, og $p_i$ med $\delta p_i$, som ikke trenger å være null der. Integranden endres med
 
 $$
-L(\theta, \dot\theta) = T - V \allowbreak = \frac{m\ell^2\dot\theta^2}{4}(1 + \sin^2\theta) \allowbreak + mg\ell\cos\theta.
+\sum_i \Bigl(\delta p_i\,\dot q_i + p_i\,\delta\dot q_i - \frac{\partial H}{\partial q_i}\,\delta q_i - \frac{\partial H}{\partial p_i}\,\delta p_i\Bigr)
 $$
 
-Hint: $a\sin^2 x + b\cos^2 x = b + (a - b)\sin^2 x$.
-
-d) (6%) Find the Hamiltonian ${H = p_\theta\dot\theta - L}$ expressed as a function of
-the canonical variables $\theta$ and $p_\theta$.
-
-<Solution>
-a) Én frihetsgrad, $\theta$. Massesenteret skal ligge på $y$-aksen, så den
-øvre massen står i ${x_1 = -\tfrac{\ell}{2}\sin\theta}$ og den nedre i
-${x_2 = \tfrac{\ell}{2}\sin\theta}$, ${y_2 = -\ell\cos\theta}$. Da er
-${\dot x_1^2 = \dot x_2^2 = \tfrac{\ell^2}{4}\cos^2\theta\,\dot\theta^2}$ og
-${\dot y_2^2 = \ell^2\sin^2\theta\,\dot\theta^2}$, så
+Integrer leddet ${p_i\,\delta\dot q_i}$ delvis. Randleddet ${[p_i\,\delta q_i]_{t_1}^{t_2}}$ er null, ettersom ${\delta q_i = 0}$ i endepunktene, og igjen står ${-\dot p_i\,\delta q_i}$. Da er
 
 $$
-\begin{aligned}
-T &= \frac{m\ell^2\dot\theta^2}{2}\left(\tfrac12\cos^2\theta + \sin^2\theta\right) \\
-  &= \frac{m\ell^2\dot\theta^2}{4}(1 + \sin^2\theta),
-\end{aligned}
+\delta S = \int_{t_1}^{t_2} \sum_i \Bigl[\Bigl(\dot q_i - \frac{\partial H}{\partial p_i}\Bigr)\delta p_i \allowbreak - \Bigl(\dot p_i + \frac{\partial H}{\partial q_i}\Bigr)\delta q_i\Bigr]\,dt
 $$
 
-med hintet brukt på ${\cos^2\theta + 2\sin^2\theta}$. Bare den nedre massen
-har potensiell energi, ${V = -mg\ell\cos\theta}$, og ${L = T - V}$ er uttrykket i
-oppgaven.
-
-d) Impulsen er ${p_\theta = \tfrac12 m\ell^2\dot\theta\,(1 + \sin^2\theta)}$,
-så ${\dot\theta = 2p_\theta/m\ell^2(1 + \sin^2\theta)}$. $T$ er av andre grad i
-$\dot\theta$, så ${p_\theta\dot\theta = 2T}$ og ${H = 2T - (T - V) = T + V}$. Med
-$\dot\theta$ satt inn er ${T = \tfrac12 p_\theta\dot\theta}$, og
-
-$$
-H = \frac{p_\theta^2}{m\ell^2(1 + \sin^2\theta)} \allowbreak - mg\ell\cos\theta
-$$
-
-Nevneren avhenger av $\theta$, så Hamiltons ligning for $p_\theta$ får et ledd
-fra det kinetiske leddet i tillegg til tyngden.
-
-<Answer>${H = p_\theta^2/[m\ell^2(1 + \sin^2\theta)]} - mg\ell\cos\theta$</Answer>
-</Solution>
-</Example>
+${\delta S = 0}$ for alle $\delta q_i$ og $\delta p_i$ krever at begge parentesene er null, og det er Hamiltons ligninger. Her kommer også ${\dot q_i = \partial H/\partial p_i}$ ut av prinsippet, mens den i utledningen fra $L$ var definisjonen av $p_i$.
+</Derivation>
 
 <Callout title="Hamiltonfunksjonen">
-${H(q, p, t) = \sum_i p_i\dot q_i - L}$ med hastighetene uttrykt ved $q$ og $p$. Hamiltons ligninger ${\dot q_i = \partial H/\partial p_i}$ og ${\dot p_i = -\partial H/\partial q_i}$ er Lagranges ligninger skrevet som $2n$ førsteordens ligninger.
+${H = \sum_i p_i\dot q_i - L}$, med hastighetene uttrykt ved $q$ og $p$. Hamiltons ligninger ${\dot q_i = \partial H/\partial p_i}$ og ${\dot p_i = -\partial H/\partial q_i}$ er Lagranges ligninger skrevet som $2n$ førsteordens ligninger.
 </Callout>
 
 ## Bevarte størrelser
 
-Langs en løsning endres $H$ med
+Langs en bane endres $H$ med
 
 $$
-\frac{dH}{dt} = \sum_i \left(\frac{\partial H}{\partial q_i}\,\dot q_i + \frac{\partial H}{\partial p_i}\,\dot p_i\right) \allowbreak + \frac{\partial H}{\partial t}
+\frac{dH}{dt} = \sum_i \Bigl(\frac{\partial H}{\partial q_i}\,\dot q_i + \frac{\partial H}{\partial p_i}\,\dot p_i\Bigr) \allowbreak + \frac{\partial H}{\partial t}
 $$
 
-Hamiltons ligninger gir ${\partial H/\partial q_i = -\dot p_i}$ og ${\partial H/\partial p_i = \dot q_i}$, så hvert ledd i summen er ${-\dot p_i\dot q_i + \dot q_i\dot p_i = 0}$, og ${dH/dt = \partial H/\partial t}$. $H$ er bevart når den ikke avhenger eksplisitt av tida, den samme regelen som for energifunksjonen, siden ${\partial H/\partial t = -\partial L/\partial t}$.
+Med Hamiltons ligninger satt inn er hvert ledd i summen ${-\dot p_i\dot q_i + \dot q_i\dot p_i = 0}$, så ${dH/dt = \partial H/\partial t}$. Punktet går langs en kurve med konstant $H$, og så lenge landskapet ikke endrer seg med tida, endrer ikke høyden seg. $H$ har samme verdi som energifunksjonen, så de samme reglene gjelder: $H$ er bevart når tida ikke står i $L$, og den er energien ${T + V}$ når posisjonene ikke avhenger av tida og $V$ bare av koordinatene.
 
-$H$ er energien ${T + V}$ når føringene ikke avhenger av tida og $V$ ikke avhenger av hastighetene. Ellers kan $H$ være bevart uten å være energien, som for perla på en ring som en motor dreier med fast vinkelfart. En $H$ som avhenger eksplisitt av tida, er ikke bevart.
+Mangler en koordinat $q_i$ i $L$, mangler den også i $H$, ettersom ${\partial H/\partial q_i = -\partial L/\partial q_i}$. Da er ${\dot p_i = -\partial H/\partial q_i = 0}$, og $p_i$ er bevart. Forskjellen fra Lagrangefunksjonen er at $p_i$ er en av variablene i $H$. ${\partial H/\partial q_j}$ tas med $p_i$ holdt fast, så du kan sette den bevarte verdien inn i $H$ før du deriverer.
+
+For Jorda rundt sola, med ${L = \tfrac12\mu(\dot r^2 + r^2\dot\phi^2) - V(r)}$, er impulsene ${p_r = \mu\dot r}$ og ${p_\phi = \mu r^2\dot\phi}$. Posisjonene avhenger ikke av tida, så ${H = T + V}$, med hastighetene uttrykt ved impulsene:
+
+$$
+H = \frac{p_r^2}{2\mu} + \frac{p_\phi^2}{2\mu r^2} + V(r)
+$$
+
+$\phi$ mangler, så ${p_\phi = J}$ er bevart. Med $J$ satt inn er
+
+$$
+H = \frac{p_r^2}{2\mu} + V_\text{eff}(r) \allowbreak\qquad V_\text{eff}(r) = \frac{J^2}{2\mu r^2} + V(r)
+$$
+
+med det samme <Term name="effektivt potensial">effektive potensialet</Term> som energien gir. Hamiltons ligninger for $r$ og $p_r$ er
+
+$$
+\dot r = \frac{p_r}{\mu} \allowbreak\qquad \dot p_r = -V_\text{eff}'(r) = \frac{J^2}{\mu r^3} - V'(r)
+$$
+
+Nå har sentrifugalleddet riktig fortegn. I $H$ står ${J^2/2\mu r^2}$ med plusstegn, som et potensial, og kraften ${-\partial H/\partial r}$ fra det peker utover. I $L$ står det samme leddet også med plusstegn, men der er det kinetisk energi, og ${+\partial L/\partial r}$ fra det peker innover. Jorda kan derfor gå i en sirkelbane med radien der ${J^2/\mu r^3 = V'(r)}$, og i en ellipse svinger $r$ om den radien.
+
+<Callout title="Bevarte størrelser">
+${dH/dt = \partial H/\partial t}$, så $H$ er bevart når den ikke avhenger eksplisitt av tida. En koordinat som mangler i $L$, mangler i $H$, og den bevarte impulsen kan settes inn i $H$ før du deriverer, men ikke i $L$.
+</Callout>
+
+## Ladd partikkel
+
+En partikkel med ladning $q$ i potensialene $\phi$ og $\vec A$ har
+
+$$
+L = \tfrac12 m\dot{\vec r}^{\,2} + q\,\dot{\vec r}\cdot\vec A - q\phi
+$$
+
+og impulsen ${\vec p = m\dot{\vec r} + q\vec A}$. Verdien av $H$ er ${\vec p\cdot\dot{\vec r} - L}$, og ${\vec p\cdot\dot{\vec r} = m\dot{\vec r}^{\,2} + q\,\dot{\vec r}\cdot\vec A}$. Leddet ${q\,\dot{\vec r}\cdot\vec A}$ faller bort mot det samme leddet i $L$, og igjen står ${H = \tfrac12 m\dot{\vec r}^{\,2} + q\phi}$. Magnetfeltet gjør ikke arbeid og bidrar ikke til verdien av $H$. Med ${m\dot{\vec r} = \vec p - q\vec A}$ satt inn er
+
+<Formula
+  tex="H = \frac{(\vec p - q\vec A)^2}{2m} + q\phi"
+  caption="<b>Hamiltonfunksjonen for en ladd partikkel</b> i potensialene $\phi(\vec r, t)$ og $\vec A(\vec r, t)$. Impulsen er ${\vec p = m\dot{\vec r} + q\vec A}$, så ${\vec p - q\vec A = m\dot{\vec r}}$."
+/>
+
+Magnetfeltet står i $H$ gjennom ${\vec p - q\vec A}$. I et uniformt felt ${\vec B = B\hat z}$ kan du velge ${\vec A = Bx\,\hat y}$ og ${\phi = 0}$, og da er
+
+$$
+H = \frac{p_x^2 + (p_y - qBx)^2 + p_z^2}{2m}
+$$
+
+$y$ og $z$ mangler i $H$, så $p_y$ og $p_z$ er bevart. Skriv ${p_y = qBX}$. Da er ${(p_y - qBx)^2/2m = \tfrac12 m\omega_c^2(x - X)^2}$, der
+
+$$
+\omega_c = \frac{qB}{m}
+$$
+
+Leddene med $x$ og $p_x$, ${p_x^2/2m + \tfrac12 m\omega_c^2(x - X)^2}$, er Hamiltonfunksjonen til en harmonisk oscillator om $X$, så ${x - X = R\cos\omega_c t}$. Hamiltons ligning for $y$ er ${\dot y = \partial H/\partial p_y = (p_y - qBx)/m = -\omega_c(x - X)}$, så ${y = Y - R\sin\omega_c t}$. Partikkelen går i en sirkel med radius $R$ om $(X, Y)$ i planet vinkelrett på $\vec B$, og langs $\vec B$ med den konstante farten $p_z/m$.
+
+Sentrum $X$ er gitt ved den bevarte impulsen $p_y$, mens ${m\dot y = p_y - qBx}$ endrer seg rundt sirkelen. For ${q > 0}$ går partikkelen fra ${(X + R, Y)}$ mot minkende $y$, som er med klokka sett fra spissen av $\vec B$. <Term name="syklotronfrekvens">Syklotronfrekvensen</Term> ${|\omega_c| = |q|B/m}$ er den samme for alle radier og farter. Et proton i et felt på 1 T går rundt 15,2 millioner ganger i sekundet.
+
+<Callout title="Ladd partikkel">
+${H = (\vec p - q\vec A)^2/2m + q\phi}$, der ${\vec p - q\vec A = m\dot{\vec r}}$, så verdien av $H$ er ${\tfrac12 m\dot{\vec r}^{\,2} + q\phi}$. I et uniformt magnetfelt går partikkelen i en sirkel vinkelrett på $\vec B$ med vinkelfrekvensen ${|q|B/m}$ uansett fart, og sentrum er gitt ved den bevarte impulsen.
+</Callout>
+
+## Liouvilles teorem
+
+Heng 24 like pendler i det samme opphenget, og slipp dem samtidig fra rundt 60° ut til siden, med litt ulike vinkler og litt ulike dytt. Hver pendel er et punkt i faserommet, og sammen ligger punktene i en liten skive. Simuleringen under følger alle tilstandene i skiva.
+
+<Simulation
+  src="/sims/pendelsky.js"
+  title="Mange pendler i faserommet"
+  caption="24 like pendler i det samme opphenget, sluppet fra litt ulike tilstander. Under er faserommet med de samme aksene som i «Pendelen i faserommet». Hver prikk er én pendel, den fylte flekken er alle tilstandene i den stiplede skiva der de startet, og den oransje kurven er separatrisen. Det fylte rektangelet øverst til høyre har til enhver tid samme areal som flekken, og det stiplede viser arealet ved start. Med friksjon er den loddrette aksen ${ml^2\dot\theta}$."
+  host="dom"
+  height={430}
+/>
+
+Først svinger pendlene nesten i takt, og flekken går med klokka rundt bunnpunktet som en klump. Etter noen svingninger er pendlene ute av takt, og flekken er dratt ut til en tynn spiral. Pendlene med størst utslag ligger ytterst i flekken og bruker lengst tid på en svingning, så de blir hengende etter. En pendel sluppet fra ro ved 87° bruker 13 % lengre tid på en svingning enn en sluppet ved 39°. Rektangelet øverst til høyre endrer seg ikke. Flekken blir lengre og tynnere, men arealet er det samme hele tida.
+
+Flekken blir skjev, men den strekkes ikke i noen retning uten å klemmes like mye i en annen. Figur 1 viser en liten rute i faserommet til pendelen, med sidene ${d\theta}$ og ${dp_\theta}$. Farten ${\dot\theta = p_\theta/ml^2}$ er størst der $p_\theta$ er størst, så den øvre kanten av ruta går fortere mot høyre enn den nedre, og ruta heller. Farten ${\dot p_\theta = -mgl\sin\theta}$ avhenger av $\theta$, så den høyre kanten flytter seg med en annen fart i $p_\theta$ enn den venstre, og ruta heller også den andre veien. Et parallellogram med samme grunnlinje og høyde som ruta har samme areal, så ingen av de to skjevhetene endrer arealet, og sammen endrer de det bare med ledd av orden ${dt^2}$, som forsvinner når $dt$ går mot null. Bredden og høyden endres ikke, fordi $\dot\theta$ ikke avhenger av $\theta$ og $\dot p_\theta$ ikke av $p_\theta$.
+
+<Figure src="/figures/skjaer.svg" alt="Et aksekryss med theta vannrett og p theta loddrett. En stiplet kvadratisk rute, og fra hvert hjørne en grå pil til det samme hjørnet litt senere. De øvre hjørnene flytter seg lenger mot høyre enn de nedre, og de høyre hjørnene flytter seg nedover, mens de venstre flytter seg litt opp. De nye hjørnene avgrenser en fylt, skjev firkant merket samme areal." width={340} height={230} number={1} caption="En liten rute i faserommet til pendelen (stiplet) og den samme ruta litt senere (fylt), med de samme aksene som i «Pendelen i faserommet». Pilene viser hvor hjørnene flytter seg. Tida er overdrevet." />
+
+I andre systemer kan $\dot q$ avhenge av $q$, og da endres bredden også. På tida $dt$ blir den ${dq\,(1 + \partial\dot q/\partial q\;dt)}$, og høyden blir ${dp\,(1 + \partial\dot p/\partial p\;dt)}$. Hamiltons ligninger gir
+
+$$
+\frac{\partial\dot q}{\partial q} + \frac{\partial\dot p}{\partial p} = \frac{\partial^2 H}{\partial q\,\partial p} - \frac{\partial^2 H}{\partial p\,\partial q} = 0
+$$
+
+så bredden vokser med samme faktor som høyden krymper, og arealet ${dq\,dp}$ er det samme. Argumentet bruker bare $H$ ved ett tidspunkt, så det holder også når $H$ avhenger av tida. Med $2n$ variabler gir det samme argumentet
+
+<Statement kind="theorem" name="Liouvilles teorem" id="liouville">
+Et område i faserommet beholder volumet ${dq_1 \cdots dq_n\,dp_1 \cdots dp_n}$ når hvert punkt i det følger Hamiltons ligninger, også når $H$ avhenger av tida.
+</Statement>
+
+<Derivation title="Volumet med $n$ frihetsgrader">
+På tida $dt$ flytter punktet seg fra $(q, p)$ til ${\tilde q_i = q_i + (\partial H/\partial p_i)\,dt}$ og ${\tilde p_i = p_i - (\partial H/\partial q_i)\,dt}$. Det nye volumet er det gamle ganget med determinanten av Jacobimatrisen ${\partial(\tilde q, \tilde p)/\partial(q, p)}$, som er enhetsmatrisen pluss ${dt}$ ganger en matrise $\boldsymbol M$. For en liten $\epsilon$ er ${\det(\boldsymbol 1 + \epsilon\boldsymbol M) = 1 + \epsilon\operatorname{tr}\boldsymbol M}$ pluss ledd av orden $\epsilon^2$, og diagonalen i $\boldsymbol M$ har elementene ${\partial^2 H/\partial q_i\,\partial p_i}$ og ${-\partial^2 H/\partial p_i\,\partial q_i}$. Sporet er null, så
+
+$$
+\det\frac{\partial(\tilde q, \tilde p)}{\partial(q, p)} = 1 + \mathcal O(dt^2)
+$$
+
+Volumet endrer seg ikke til første orden i $dt$, og den deriverte av volumet med hensyn på tida er null. $H$ kan avhenge av tida, siden hvert steg bare bruker $H$ ved ett tidspunkt.
+</Derivation>
+
+Flekken oppfører seg som melk i kaffe du rører i. Melkedråpen dras ut til lange, tynne tråder, men melka tar like stor plass i koppen hele tida, fordi verken kaffe eller melk kan presses sammen. Flekken i faserommet er melka, og Hamiltons ligninger er røringen. Analogien stopper ved at melka til slutt blander seg med kaffen. I faserommet blander ingenting seg: arealet er det samme, og trådene blir bare tynnere.
+
+Trykk «Friksjon: av», så knappen viser «Friksjon: på». Nå bremses hver pendel, og jo fortere den går, desto mer. Flekken og rektangelet krymper, og alle pendlene ender i ro i bunnpunktet. Friksjonen minker $|{ml^2\dot\theta}|$ uten å strekke flekken like mye langs $\theta$, så arealet i planet av $\theta$ og ${ml^2\dot\theta}$ krymper. Friksjonskraften er ikke med i pendelens $H$, og bevegelsen følger ikke Hamiltons ligninger med den $H$.
+
+<SelfCheck question="En partikkel på en linje har ${\dot x = v}$ og ${m\dot v = -V'(x) - 2m\gamma v}$. Hvor fort krymper arealet til et område i planet av $x$ og $mv$?">
+Farten i planet er ${(\dot x, m\dot v) = (v, -V'(x) - 2m\gamma v)}$. ${\dot x = v}$ avhenger ikke av $x$, så bredden endrer seg ikke. Høyden vokser med faktoren
+
+$$
+1 + \frac{\partial(m\dot v)}{\partial(mv)}\,dt = 1 - 2\gamma\,dt
+$$
+
+Arealet $A$ oppfyller ${dA/dt = -2\gamma A}$, og ${A(t) = A(0)\,e^{-2\gamma t}}$. Uten friksjon er ${\gamma = 0}$, og arealet er bevart, som Liouvilles teorem sier.
+</SelfCheck>
+
+Den dempede bevegelsen har likevel en Lagrangefunksjon og en Hamiltonfunksjon, med eksplisitt tidsavhengighet:
 
 <Example label="Eksamensoppgave" title="Dempet bevegelse">
 <ExamRef id="2022-des" task="4 a–b" />
@@ -162,16 +281,15 @@ $$
 
 <Solution>
 a) ${\partial L/\partial\dot q = e^{2\gamma t}m\dot q}$ og
-${\partial L/\partial q = -e^{2\gamma t}V'(q)}$. Den tidsderiverte av den første
-er ${e^{2\gamma t}(m\ddot q + 2\gamma m\dot q)}$, så Lagranges ligning er
+${\partial L/\partial q = -e^{2\gamma t}V'(q)}$. Den tidsderiverte av den første er
+${e^{2\gamma t}(m\ddot q + 2\gamma m\dot q)}$, så Lagranges ligning er
 
 $$
-e^{2\gamma t}\left(m\ddot q + 2m\gamma\dot q + V'(q)\right) = 0
+e^{2\gamma t}\bigl(m\ddot q + 2m\gamma\dot q + V'(q)\bigr) = 0
 $$
 
-Del på $e^{2\gamma t}$, som aldri er null. Da står
-${m\ddot q = -V'(q) - 2m\gamma\dot q}$ igjen, Newtons andre lov med kraften fra
-potensialet og dempingskraften $f$.
+Del på $e^{2\gamma t}$, som aldri er null. Da står ${m\ddot q = -V'(q) - 2m\gamma\dot q}$
+igjen, Newtons andre lov med kraften fra potensialet og dempingskraften $f$.
 
 b) Impulsen er ${p = e^{2\gamma t}m\dot q}$, så ${\dot q = e^{-2\gamma t}p/m}$. Da er
 
@@ -179,7 +297,7 @@ $$
 \begin{aligned}
 H &= p\dot q - L \\
 &= e^{2\gamma t}\bigl(m\dot q^2 - \tfrac12 m\dot q^2 + V\bigr) \\
-&= e^{2\gamma t}\left(\tfrac12 m\dot q^2 + V\right)
+&= e^{2\gamma t}\bigl(\tfrac12 m\dot q^2 + V\bigr)
 \end{aligned}
 $$
 
@@ -190,144 +308,34 @@ H(q, p, t) = e^{-2\gamma t}\,\frac{p^2}{2m} \allowbreak + e^{2\gamma t}\,V(q)
 $$
 
 $H$ avhenger eksplisitt av tida og er ikke bevart. Den er heller ikke energien
-${\tfrac12 m\dot q^2 + V}$, men energien ganget med $e^{2\gamma t}$, og impulsen $p$
-er ikke $m\dot q$.
+${\tfrac12 m\dot q^2 + V}$, men energien ganget med $e^{2\gamma t}$.
 
 <Answer>${H = e^{-2\gamma t}p^2/2m + e^{2\gamma t}V(q)}$, med ${p = e^{2\gamma t}m\dot q}$.</Answer>
 </Solution>
 </Example>
 
-Utledningen av Hamiltons ligninger ga ${\partial H/\partial q_i = -\partial L/\partial q_i}$. En koordinat som mangler i $L$, mangler derfor også i $H$. Da er ${\dot p_i = -\partial H/\partial q_i = 0}$, og $p_i$ er en konstant du kan sette inn i $H$. For relativbevegelsen i et sentralpotensial, med ${L = \tfrac12\mu(\dot r^2 + r^2\dot\phi^2) - V(r)}$, er ${p_r = \mu\dot r}$ og ${p_\phi = \mu r^2\dot\phi}$, så
+Med denne $H$ følger den dempede bevegelsen Hamiltons ligninger, så arealet i planet av $q$ og ${p = e^{2\gamma t}m\dot q}$ er bevart. Arealet i planet av $q$ og $m\dot q$ krymper som $e^{-2\gamma t}$, og faktoren $e^{2\gamma t}$ i $p$ veier opp for det nøyaktig. Liouvilles teorem gjelder for de kanoniske variablene til en Hamiltonfunksjon, og $m\dot q$ er ikke den kanoniske impulsen her.
 
-$$
-H = \frac{p_r^2}{2\mu} + \frac{p_\phi^2}{2\mu r^2} + V(r)
-$$
+<Derivation title="Poincarés gjentakelsesteorem">
+Når energien er bevart og bevegelsen holder seg i et begrenset område, har den delen av faserommet som systemet kan nå, et endelig volum. Ta et lite område $D_0$ og følg det i tidssteg $\tau$, så det blir $D_1, D_2, \ldots$. Etter Liouvilles teorem har alle samme volum. De kan ikke alle ligge uten å overlappe, fordi det samlede volumet da ville vokse uten grense. To av dem overlapper derfor, $D_j$ og $D_k$ med ${k > j}$. Følg bevegelsen $j$ steg baklengs. Da overlapper $D_0$ og $D_{k-j}$, så et punkt i $D_0$ er tilbake i $D_0$ etter ${k - j}$ steg. Det gjelder hvor lite $D_0$ enn er, så nær enhver starttilstand finnes det tilstander som kommer tilbake så nær den du vil. Gass som slippes ut fra ett hjørne av et rom, samler seg derfor i hjørnet igjen en gang, men tida det tar, er mye lengre enn universets alder.
+</Derivation>
 
-$\phi$ mangler, så $p_\phi$ er konstant og lik dreieimpulsen $J$. Med ${p_\phi = J}$ satt inn er ${H = p_r^2/2\mu + V_\text{eff}(r)}$, med det <Term name="effektivt potensial">effektive potensialet</Term> ${V_\text{eff} = V + J^2/2\mu r^2}$. Hamiltons ligninger for $r$ og $p_r$ er
-
-$$
-\dot r = \frac{p_r}{\mu}, \qquad \dot p_r = -V_\text{eff}'(r)
-$$
-
-som er bevegelsen i ett potensial, med én frihetsgrad. Sentrifugalleddet ${-\partial(J^2/2\mu r^2)/\partial r = J^2/\mu r^3}$ har riktig fortegn, fordi $\partial H/\partial r$ tas med $p_\phi$ holdt fast, og $p_\phi$ er fast langs hele bevegelsen. Satt inn i $L$ ga den samme konstanten feil fortegn, fordi $\partial L/\partial r$ tas med $\dot\phi$ holdt fast.
-
-<Callout title="Bevarte størrelser i $H$">
-$H$ er bevart når den ikke avhenger eksplisitt av tida. Mangler $q_i$ i $L$, mangler den også i $H$, og $p_i$ er en konstant du kan sette inn i $H$ før du deriverer. I $L$ gir den samme innsettingen gale ligninger.
-</Callout>
-
-For den sfæriske pendelen er $\phi$ syklisk på samme måte. Med ${p_\theta = ml^2\dot\theta}$ og ${p_\phi = ml^2\dot\phi\sin^2\theta}$ er
-
-$$
-H = \frac{p_\theta^2}{2ml^2} + \frac{p_\phi^2}{2ml^2\sin^2\theta} \allowbreak - mgl\cos\theta
-$$
-
-<Quiz
-  question="Hva er $\dot p_\theta$ for den sfæriske pendelen med Hamiltonfunksjonen over?"
-  options={["${\\dfrac{p_\\phi^2\\cos\\theta}{ml^2\\sin^3\\theta} - mgl\\sin\\theta}$", "${-\\dfrac{p_\\phi^2\\cos\\theta}{ml^2\\sin^3\\theta} - mgl\\sin\\theta}$", "${-mgl\\sin\\theta}$", "${\\dfrac{p_\\phi^2\\cos\\theta}{ml^2\\sin^3\\theta} + mgl\\sin\\theta}$"]}
-  answer={0}
-  explanation="${\dot p_\theta = -\partial H/\partial\theta}$ med $p_\phi$ holdt fast. Den deriverte av $1/\sin^2\theta$ er ${-2\cos\theta/\sin^3\theta}$, så det midterste leddet i $H$ gir ${+p_\phi^2\cos\theta/ml^2\sin^3\theta}$, og ${-mgl\cos\theta}$ gir ${-mgl\sin\theta}$. Det første leddet dytter kula bort fra loddlinja når ${\theta < 90°}$, og tyngden trekker den tilbake. Det andre svaret er det du får ved å sette $\dot\phi$ inn i $L$. Det tredje mangler leddet med $p_\phi$: at $p_\phi$ er konstant, fjerner ikke $\theta$-avhengigheten i det leddet."
-/>
-
-## Faserommet
-
-Tilstanden $(q, p)$ er et punkt i det $2n$-dimensjonale <Term name="faserom">faserommet</Term>. Hamiltons ligninger gir farten $(\dot q, \dot p)$ i hvert punkt i faserommet. Når $H$ ikke avhenger eksplisitt av tida, er farten i et punkt den samme uansett når punktet nås, så det går nøyaktig én bane gjennom hvert punkt, og to baner kan ikke krysse hverandre. I <Term name="konfigurasjonsrom">konfigurasjonsrommet</Term>, der bare $q$ er tegnet, krysser banene. En pendel passerer bunnpunktet både mot høyre og mot venstre, med motsatt fortegn på $p$.
-
-En slik $H$ er også bevart, så punktet går langs en kurve ${H(q, p) = E}$. Med én frihetsgrad er kurven hele banen, så kurvene med konstant $H$ viser alle bevegelsene systemet kan ha. For den plane pendelen med $\theta$ fra loddlinja er ${p_\theta = ml^2\dot\theta}$ og
-
-$$
-H = \frac{p_\theta^2}{2ml^2} - mgl\cos\theta
-$$
-
-Hamiltons ligninger er ${\dot\theta = p_\theta/ml^2}$ og ${\dot p_\theta = -mgl\sin\theta}$. Farten til punktet er null der ${p_\theta = 0}$ og ${\sin\theta = 0}$, altså i bunnpunktet og i toppunktet ${\theta = \pm\pi}$. Langs en kurve er ${p_\theta^2/2ml^2 = E + mgl\cos\theta}$. For ${-mgl < E < mgl}$ blir høyresida null der ${\cos\theta = -E/mgl}$. Der snur pendelen, og kurvene er lukkede ringer rundt bunnpunktet. For ${E > mgl}$ er høyresida minst ${E - mgl > 0}$, så $p_\theta$ blir aldri null, og pendelen går rundt. Kurven ${E = mgl}$ skiller de to bevegelsene og heter <Term name="separatrise">separatrisen</Term>. På den er
-
-$$
-\frac{p_\theta^2}{2ml^2} = mgl(1 + \cos\theta) \allowbreak = 2mgl\cos^2\frac{\theta}{2}
-$$
-
-så
-
-$$
-p_\theta = \pm 2m\sqrt{gl^3}\,\cos\frac{\theta}{2}
-$$
-
-Nær toppunktet er ${\pi - \theta \ll 1}$ og ${\cos(\theta/2) \approx (\pi - \theta)/2}$, så ${\dot\theta = p_\theta/ml^2 \approx \sqrt{g/l}\,(\pi - \theta)}$. Vinkelen ${\pi - \theta}$ som er igjen, avtar da som ${e^{-\sqrt{g/l}\,t}}$ og blir aldri null, så pendelen på separatrisen bruker uendelig lang tid på å nå toppunktet. ${\theta = \pi}$ og ${\theta = -\pi}$ er samme stilling, så faserommet til pendelen er en sylinder, og kurvene for rotasjon er lukkede ringer rundt den.
-
-<Simulation
-  src="/sims/faserom.js"
-  title="Faserommet til pendelen"
-  caption="Faserommet til den plane pendelen, med $\theta$ vannrett og $p_\theta$ loddrett. De stiplede buene har konstant $H$, og den oransje kurven er separatrisen. Den fylte oransje prikken er bunnpunktet, de åpne ringene er toppunktet, og de prikkede kantene ${\theta = \pm\pi}$ er samme stilling. Punktet følger Hamiltons ligninger, pila er farten $(\dot\theta, \dot p_\theta)$, og den svake kurven er banen. Den lille pendelen står i vinkelen til punktet."
-  host="dom"
-  height={340}
-/>
-
-<Callout title="Faserommet">
-Tilstanden er et punkt i faserommet, og Hamiltons ligninger gir farten til punktet. Når $H$ ikke avhenger eksplisitt av tida, går punktet langs en kurve med konstant $H$, og to baner krysser aldri. For pendelen skiller separatrisen ${E = mgl}$ svingning fra rotasjon.
-</Callout>
-
-## Ladd partikkel
-
-En partikkel med ladning $q$ i et elektromagnetisk felt med potensialene $\phi$ og $\vec A$ har Lagrangefunksjonen
-
-$$
-L = \tfrac12 m\dot{\vec r}^{\,2} + q\,\dot{\vec r}\cdot\vec A - q\phi
-$$
-
-Den generaliserte impulsen, også kalt den kanoniske impulsen, er ${\vec p = m\dot{\vec r} + q\vec A}$, så ${\dot{\vec r} = (\vec p - q\vec A)/m}$. I ${H = \vec p\cdot\dot{\vec r} - L}$ er ${\vec p\cdot\dot{\vec r} = m\dot{\vec r}^{\,2} + q\vec A\cdot\dot{\vec r}}$, og leddet ${q\vec A\cdot\dot{\vec r}}$ faller bort mot det samme leddet i $L$. Igjen står ${H = \tfrac12 m\dot{\vec r}^{\,2} + q\phi}$, og med $\dot{\vec r}$ uttrykt ved $\vec p$:
-
-<Formula
-  tex="H = \frac{(\vec p - q\vec A)^2}{2m} + q\phi"
-  caption="<b>Hamiltonfunksjonen for en ladd partikkel</b> i potensialene $\phi(\vec r, t)$ og $\vec A(\vec r, t)$. Impulsen er ${\vec p = m\dot{\vec r} + q\vec A}$, så ${\vec p - q\vec A = m\dot{\vec r}}$."
-/>
-
-$H$ er den kinetiske energien pluss $q\phi$. Magnetfeltet gjør ikke arbeid og gir ikke noe ledd i verdien av $H$. Feltet kommer inn gjennom ${\vec p - q\vec A = m\dot{\vec r}}$, så $H$ avhenger av $\vec A$ når den er skrevet ved $\vec p$. Hamiltons ligninger er Lagranges ligninger skrevet om, så de gir den samme Lorentzkraften.
-
-I det uniforme feltet $B\hat z$, med ${\vec A = Bx\,\hat y}$ og ${\phi = 0}$, er
-
-$$
-H = \frac{p_x^2 + (p_y - qBx)^2 + p_z^2}{2m}
-$$
-
-$y$ og $z$ mangler i $H$, så $p_y$ og $p_z$ er konstante. Skriv ${p_y = qBX}$. Da er ${(p_y - qBx)^2/2m = \tfrac12 m\omega_c^2(x - X)^2}$ med
-
-$$
-\omega_c = \frac{qB}{m}
-$$
-
-og $x$ svinger harmonisk om $X$, ${x - X = R\cos\omega_c t}$. Hamiltons ligning for $y$ er ${\dot y = (p_y - qBx)/m = -\omega_c(x - X)}$, så ${y = Y - R\sin\omega_c t}$. Partikkelen går altså i en sirkel med radius $R$ om $(X, Y)$ i planet vinkelrett på $\vec B$, og langs $\vec B$ går den med konstant fart $p_z/m$. For ${q > 0}$ går den fra ${(X + R, Y)}$ mot minkende $y$, altså med klokka sett fra spissen av $\vec B$. For ${q < 0}$ er ${\omega_c < 0}$, og sirkelen går mot klokka. <Term name="syklotronfrekvens">Syklotronfrekvensen</Term> ${|\omega_c| = |q|B/m}$ er den samme for alle radier og farter.
-
-<Callout title="Ladd partikkel">
-For en ladd partikkel er ${H = (\vec p - q\vec A)^2/2m + q\phi}$, der ${\vec p - q\vec A = m\dot{\vec r}}$. I et uniformt magnetfelt går partikkelen i en sirkel i planet vinkelrett på $\vec B$, med syklotronfrekvensen ${|q|B/m}$ uansett fart.
-</Callout>
-
-## Virkningen i faserommet
-
-Lagranges ligninger følger av at virkningen er stasjonær. Legendretransformasjonen gir ${L = \sum_i p_i\dot q_i - H}$, så virkningen kan skrives ved $q$ og $p$:
-
-$$
-S = \int_{t_1}^{t_2} \Bigl(\sum_i p_i\dot q_i - H(q, p, t)\Bigr)\,dt
-$$
-
-Hamiltons ligninger følger av det samme prinsippet når $q(t)$ og $p(t)$ varieres hver for seg i dette uttrykket. Varier $q_i$ med $\delta q_i$, som er null i endepunktene, og $p_i$ med $\delta p_i$, som ikke trenger å være null der. Leddet $p_i\,\delta\dot q_i$ integreres delvis: randleddet $p_i\,\delta q_i$ er null i endepunktene, og igjen står ${-\dot p_i\,\delta q_i}$. Da er
-
-$$
-\begin{aligned}
-\delta S = \int_{t_1}^{t_2} \sum_i \Bigl[&\Bigl(\dot q_i - \frac{\partial H}{\partial p_i}\Bigr)\delta p_i \\
-&- \Bigl(\dot p_i + \frac{\partial H}{\partial q_i}\Bigr)\delta q_i\Bigr]\,dt
-\end{aligned}
-$$
-
-${\delta S = 0}$ for alle $\delta q_i$ og $\delta p_i$ krever at begge parentesene er null, og det er Hamiltons ligninger. Her kommer også ${\dot q_i = \partial H/\partial p_i}$ ut av prinsippet, mens den i utledningen fra $L$ var definisjonen av $p_i$.
-
-<Callout title="Virkningen i faserommet">
-Hamiltons ligninger følger av at ${S = \int (\sum_i p_i\dot q_i - H)\,dt}$ er stasjonær når $q$ og $p$ varieres hver for seg, med ${\delta q_i = 0}$ i endepunktene. Da kommer også ${\dot q_i = \partial H/\partial p_i}$ ut av prinsippet.
+<Callout title="Hvorfor arealet er bevart">
+Hamiltons ligninger strekker like mye som de klemmer. Det gjelder for de kanoniske variablene til enhver $H$, også den dempede bevegelsens $H(q, p, t)$. I planet av $q$ og $m\dot q$ krymper arealet når det er friksjon.
 </Callout>
 
 ## Poissonklammer
 
-En størrelse $f(q, p, t)$, som den kinetiske energien eller en komponent av dreieimpulsen, endrer seg langs bevegelsen fordi $q$ og $p$ gjør det. Kjerneregelen og Hamiltons ligninger gir
+En størrelse som den kinetiske energien endrer seg langs bevegelsen fordi $q$ og $p$ gjør det. For pendelen er ${T = p_\theta^2/2ml^2}$. Den avhenger bare av $p_\theta$, så kurvene med konstant $T$ er vannrette linjer i faserommet. Figur 2 viser dem sammen med kurvene med konstant $H$.
+
+<Figure src="/figures/klamme.svg" alt="Faserommet til pendelen med theta vannrett og p theta loddrett. Stiplede grå ringer rundt origo har konstant H, og den midterste ringen er grønn. Prikkede blå vannrette linjer har konstant T. I punktet A til venstre på den grønne ringen peker en grønn pil skrått opp mot høyre, på tvers av de blå linjene, merket T øker. I punktet B øverst på ringen peker pila vannrett mot høyre langs en blå linje, merket T størst." width={340} height={250} number={2} caption="Faserommet til pendelen, med de samme aksene som i «Pendelen i faserommet». Ringene har konstant $H$, de prikkede linjene konstant $T$. Pilene er farten i $A$ og $B$." />
+
+Punktet går langs en kurve med konstant $H$ og krysser linjene med konstant $T$ underveis. I $A$ er pendelen på vei ned mot bunnpunktet, farten peker oppover på tvers av linjene, og $T$ øker. I $B$ henger pendelen rett ned, farten er vannrett og går langs en linje, og $T$ er størst. Hvor fort $T$ endrer seg, er hvor fort punktet krysser linjene med konstant $T$.
+
+For en størrelse $f(q, p, t)$ gir kjerneregelen og Hamiltons ligninger
 
 $$
-\frac{df}{dt} = \sum_i \left(\frac{\partial f}{\partial q_i}\frac{\partial H}{\partial p_i} - \frac{\partial f}{\partial p_i}\frac{\partial H}{\partial q_i}\right) \allowbreak + \frac{\partial f}{\partial t}
+\frac{df}{dt} = \sum_i \Bigl(\frac{\partial f}{\partial q_i}\,\dot q_i + \frac{\partial f}{\partial p_i}\,\dot p_i\Bigr) + \frac{\partial f}{\partial t} \allowbreak = \sum_i \Bigl(\frac{\partial f}{\partial q_i}\frac{\partial H}{\partial p_i} - \frac{\partial f}{\partial p_i}\frac{\partial H}{\partial q_i}\Bigr) + \frac{\partial f}{\partial t}
 $$
 
 Summen er <Term name="poissonklamme">Poissonklammen</Term> av $f$ og $H$:
@@ -337,99 +345,83 @@ Summen er <Term name="poissonklamme">Poissonklammen</Term> av $f$ og $H$:
   caption="<b>Poissonklammen</b> av to funksjoner på faserommet, og tidsendringen til en størrelse $f(q, p, t)$ langs bevegelsen."
 />
 
-En størrelse som ikke avhenger eksplisitt av tida, er altså bevart når ${\{f, H\} = 0}$. Med ${f = q_i}$ og ${f = p_i}$ er ${\{q_i, H\} = \partial H/\partial p_i}$ og ${\{p_i, H\} = -\partial H/\partial q_i}$, så Hamiltons ligninger er ${\dot q_i = \{q_i, H\}}$ og ${\dot p_i = \{p_i, H\}}$. For en syklisk koordinat $q_i$ er ${\{p_i, H\} = 0}$, og $p_i$ er bevart.
+For pendelen er
 
-Fire regler gjør regningen kort. Klammen skifter fortegn når du bytter om de to funksjonene, ${\{f, g\} = -\{g, f\}}$, så ${\{H, H\} = 0}$ og ${dH/dt = \partial H/\partial t}$, som før. Den er lineær i hver av funksjonene. Produktregelen for derivasjon gir ${\{fg, h\} = f\{g, h\} + \{f, h\}g}$. Den oppfyller også <Term name="jacobis identitet">Jacobis identitet</Term>,
+$$
+\{T, H\} = -\frac{\partial T}{\partial p_\theta}\frac{\partial H}{\partial\theta} \allowbreak = -\frac{p_\theta}{ml^2}\,mgl\sin\theta \allowbreak = -mgl\sin\theta\,\dot\theta
+$$
+
+Det er ${-dV/dt}$, som det må være når ${T + V}$ er bevart. I $A$ er ${\theta < 0}$ og ${\dot\theta > 0}$, så klammen er positiv, og i $B$ er ${\sin\theta = 0}$.
+
+En størrelse som ikke avhenger eksplisitt av tida, er derfor bevart når ${\{f, H\} = 0}$. Med ${f = q_i}$ og ${f = p_i}$ er ${\{q_i, H\} = \partial H/\partial p_i}$ og ${\{p_i, H\} = -\partial H/\partial q_i}$, så Hamiltons ligninger er ${\dot q_i = \{q_i, H\}}$ og ${\dot p_i = \{p_i, H\}}$. For en koordinat som mangler i $H$, er ${\{p_i, H\} = 0}$.
+
+En størrelse som avhenger eksplisitt av tida, kan også være bevart, når ${\{f, H\}}$ og ${\partial f/\partial t}$ er like store med motsatt fortegn:
+
+<Example label="Eksamensoppgave" title="En bevart størrelse som avhenger av tida">
+<ExamRef id="2019-des" task="5 a" />
+
+(a) For a one-dimensional system with the Hamiltonian
+
+$$
+H = \frac{p^2}{2} - \frac{1}{2q^2}
+$$
+
+show that there is a constant of the motion [3p]
+
+$$
+D = \frac{pq}{2} - Ht.
+$$
+
+<Solution>
+$D$ avhenger av tida både gjennom $q$ og $p$ og eksplisitt gjennom leddet ${-Ht}$, så
+
+$$
+\frac{dD}{dt} = \{D, H\} + \frac{\partial D}{\partial t}
+$$
+
+$H$ står også i $D$, så klammen deles i to: ${\{D, H\} = \{pq/2, H\} - t\{H, H\}}$. Klammen
+${\{H, H\}}$ er null, fordi de to leddene i definisjonen er like. Med ${\partial H/\partial p = p}$ og
+${\partial H/\partial q = 1/q^3}$ er
+
+$$
+\Bigl\{\frac{pq}{2}, H\Bigr\} = \frac{p}{2}\cdot p - \frac{q}{2}\cdot\frac{1}{q^3} \allowbreak = \frac{p^2}{2} - \frac{1}{2q^2} = H
+$$
+
+Den eksplisitte tidsavhengigheten i ${-Ht}$ gir ${\partial D/\partial t = -H}$, siden $H$ ikke
+avhenger eksplisitt av tida. Da er ${dD/dt = H - H = 0}$, og $D$ er bevart.
+
+<Answer>${\{D, H\} = H}$ og ${\partial D/\partial t = -H}$, så ${dD/dt = 0}$.</Answer>
+</Solution>
+</Example>
+
+Klammen har fire regler som gjør regningen kort. Den skifter fortegn når du bytter om de to funksjonene, ${\{f, g\} = -\{g, f\}}$, så ${\{H, H\} = 0}$ og ${dH/dt = \partial H/\partial t}$, som før. Den er lineær i hver av funksjonene. Produktregelen for derivasjon gir ${\{fg, h\} = f\{g, h\} + \{f, h\}g}$. Og den oppfyller <Term name="jacobis identitet">Jacobis identitet</Term>,
 
 $$
 \{f, \{g, h\}\} \allowbreak + \{g, \{h, f\}\} \allowbreak + \{h, \{f, g\}\} = 0
 $$
 
-som du viser ved å skrive ut alle leddene. Hvert ledd har én annenderivert, og leddene faller bort parvis. For koordinatene og impulsene selv gir definisjonen, med ${\partial q_i/\partial q_k = \delta_{ik}}$ og ${\partial q_i/\partial p_k = 0}$,
+som du viser ved å skrive ut alle leddene: hvert ledd har én annenderivert, og leddene faller bort parvis. For koordinatene og impulsene selv gir definisjonen, med ${\partial q_i/\partial q_k = \delta_{ik}}$ og ${\partial q_i/\partial p_k = 0}$,
 
 <Formula
   tex="\{q_i, q_j\} = 0 \allowbreak\qquad \{p_i, p_j\} = 0 \allowbreak\qquad \{q_i, p_j\} = \delta_{ij}"
   caption="<b>De fundamentale Poissonklammene</b> mellom de kanoniske variablene."
 />
 
-Med disse klammene og produktregelen regner du ut klammen av to polynomer i $q$ og $p$ uten å derivere: ${\{x, p_x^2\} = 2p_x\{x, p_x\} = 2p_x}$.
+Med disse klammene og produktregelen regner du ut klammen av to polynomer i $q$ og $p$ uten å derivere: ${\{x, p_x^2\} = 2p_x\{x, p_x\} = 2p_x}$. Kommutatoren i kvantemekanikken har de samme fire reglene, og ${[\hat x, \hat p_x] = i\hbar}$ svarer til ${\{x, p_x\} = 1}$.
+
+Liouvilles teorem sier noe om en hel sky av tilstander, som pendlene i simuleringen «Mange pendler i faserommet». La ${\rho(q, p, t)}$ være hvor tett tilstandene ligger. Ingen tilstand forsvinner eller kommer til, og et område som følger bevegelsen, beholder arealet sitt, så tettheten rundt hvert punkt i skyen er den samme langs bevegelsen: ${d\rho/dt = 0}$. Med klammen skrevet ut er det
+
+$$
+\frac{\partial\rho}{\partial t} = -\{\rho, H\}
+$$
+
+En tetthet som bare avhenger av $H$, har ${\{\rho(H), H\} = \rho'(H)\{H, H\} = 0}$ og endrer seg ikke. Pendlene i simuleringen nærmer seg en slik tetthet: når spiralen har viklet seg mange ganger, avhenger tettheten, sett litt på avstand, bare av hvilken kurve med konstant $H$ en tilstand ligger på.
 
 <Callout title="Poissonklammen">
 ${df/dt = \{f, H\} + \partial f/\partial t}$, så en størrelse uten eksplisitt tidsavhengighet er bevart når ${\{f, H\} = 0}$. For de kanoniske variablene er ${\{q_i, p_j\} = \delta_{ij}}$, og klammene $\{q_i, q_j\}$ og $\{p_i, p_j\}$ er null.
 </Callout>
 
-<Example label="Eksamensoppgave" title="Kinetisk energi i fritt fall">
-<ExamRef id="2021-des" task="1 B" />
-
-Consider the following Hamiltonian of a falling particle: ${H = T + V = \frac{p^2}{2m} + mgy}$
-
-Derive the total time-derivative of kinetic energy $T$ by using the Poisson
-bracket formalism. The vertical coordinate of the particle (mass $m$) is
-denoted with $y$ and the related momentum is $p$.
-
-Confirm your result by considering the time-derivative of total energy. [4p]
-
-<Solution>
-${T = p^2/2m}$ avhenger ikke eksplisitt av tida, så ${dT/dt = \{T, H\}}$. Med én
-koordinat $y$ er
-
-$$
-\{T, H\} = \frac{\partial T}{\partial y}\frac{\partial H}{\partial p} - \frac{\partial T}{\partial p}\frac{\partial H}{\partial y} \allowbreak = 0 - \frac{p}{m}\,mg = -gp
-$$
-
-Kontroll: $H$ avhenger ikke eksplisitt av tida, så ${T + V}$ er bevart, og
-${dT/dt = -dV/dt = -mg\dot y}$. Hamiltons ligning gir ${\dot y = \partial H/\partial p = p/m}$,
-så ${dT/dt = -gp}$. Med $y$ oppover er ${p < 0}$ mens partikkelen faller, og da er
-${dT/dt = -gp > 0}$.
-
-<Answer>${dT/dt = \{T, H\} = -gp}$.</Answer>
-</Solution>
-</Example>
-
-To bevarte størrelser kan gi en tredje. La $f$ og $g$ være bevart uten å avhenge eksplisitt av tida, så ${\{f, H\} = 0}$ og ${\{g, H\} = 0}$. Sett ${h = H}$ i Jacobis identitet. Det første leddet inneholder ${\{g, H\} = 0}$ og det andre ${\{H, f\} = -\{f, H\} = 0}$, så det tredje leddet er også null: ${\{H, \{f, g\}\} = 0}$. Da er ${\{\{f, g\}, H\} = -\{H, \{f, g\}\} = 0}$, og $\{f, g\}$ avhenger ikke eksplisitt av tida, så $\{f, g\}$ er bevart:
-
-<Statement kind="theorem" name="Poissons teorem">
-Er $f$ og $g$ bevart, og avhenger ingen av dem eksplisitt av tida, er også $\{f, g\}$ bevart.
-</Statement>
-
-Klammen kan være en konstant eller en funksjon av $f$ og $g$, og da gir den ingen ny bevart størrelse.
-
-## Klammene for dreieimpulsen
-
-For én partikkel er ${\vec L = \vec r \times \vec p}$, med komponentene ${L_x = yp_z - zp_y}$, ${L_y = zp_x - xp_z}$ og ${L_z = xp_y - yp_x}$. Lineariteten gir
-
-$$
-\{L_x, L_y\} = \{yp_z, zp_x\} - \{yp_z, xp_z\} \allowbreak - \{zp_y, zp_x\} + \{zp_y, xp_z\}
-$$
-
-Etter produktregelen er klammen av to produkter null med mindre en koordinat i det ene møter impulsen til den samme koordinaten i det andre. I det andre og det tredje leddet skjer ikke det, og i det første og det fjerde møtes $z$ og $p_z$. Med ${\{p_z, z\} = -1}$ og ${\{z, p_z\} = 1}$ er
-
-$$
-\{L_x, L_y\} = -yp_x + xp_y = L_z
-$$
-
-Bytt ${x \to y \to z \to x}$, så får du ${\{L_y, L_z\} = L_x}$ og ${\{L_z, L_x\} = L_y}$. Med Levi-Civita-symbolet $\epsilon_{ijk}$, som er $1$ for $xyz$ og de sykliske ombyttingene, ${-1}$ når to av indeksene er byttet om, og $0$ når to indekser er like, er de tre klammene samlet
-
-<Formula
-  tex="\{L_i, L_j\} = \sum_k \epsilon_{ijk}L_k \allowbreak\qquad \{L^2, L_i\} = 0"
-  caption="<b>Poissonklammene for dreieimpulsen</b>, med ${L^2 = L_x^2 + L_y^2 + L_z^2}$."
-/>
-
-Klammen med $L^2$ følger av produktregelen. For ${i = z}$ er
-
-$$
-\{L^2, L_z\} = 2L_x\{L_x, L_z\} \allowbreak + 2L_y\{L_y, L_z\} \allowbreak = -2L_xL_y + 2L_yL_x = 0
-$$
-
-og de andre komponentene på samme måte.
-
-Etter Poissons teorem er ${L_z = \{L_x, L_y\}}$ bevart når $L_x$ og $L_y$ er det, så to bevarte komponenter gir hele $\vec L$. $L^2$ og én komponent kan derimot være bevart uten de to andre. Klammen mellom dem er null, så Poissons teorem gir ingen ny størrelse. Kommutatorene for dreieimpulsen i kvantemekanikken har den samme formen, ${[\hat L_x, \hat L_y] = i\hbar\hat L_z}$ og ${[\hat L^2, \hat L_z] = 0}$, og for koordinatene og impulsene svarer ${[\hat x, \hat p_x] = i\hbar}$ til ${\{x, p_x\} = 1}$.
-
-<Callout title="Dreieimpulsen">
-${\{L_x, L_y\} = L_z}$ og syklisk, og ${\{L^2, L_i\} = 0}$. Er to komponenter av $\vec L$ bevart, er den tredje det også, mens $L^2$ og én komponent kan være bevart uten de to andre.
-</Callout>
-
-For en ladd partikkel i et magnetfelt har to komponenter av ${m\dot{\vec r} = \vec p - q\vec A}$ klammen ${\{m\dot x, m\dot y\} = qB_z}$, selv om ${\{p_x, p_y\} = 0}$. Klammen avhenger bare av $\vec B$, ikke av hvilken $\vec A$ du velger.
+For en ladd partikkel i et magnetfelt er ${\{p_x, p_y\} = 0}$, men klammen mellom to komponenter av ${m\dot{\vec r} = \vec p - q\vec A}$ er ikke null.
 
 <SelfCheck question="Vis at ${\{m\dot x, m\dot y\} = qB_z}$ for en ladd partikkel i magnetfeltet ${\vec B = \nabla \times \vec A}$, med ${m\dot{\vec r} = \vec p - q\vec A(\vec r)}$.">
 Klammen er ${\{p_x - qA_x, p_y - qA_y\}}$. ${\{p_x, p_y\} = 0}$, og ${\{A_x, A_y\} = 0}$
@@ -442,14 +434,111 @@ $$
 $$
 
 Svaret avhenger bare av $\vec B$ og ikke av hvilken $\vec A$ du valgte, og det må
-det, siden $m\dot{\vec r}$ er den samme i alle gauger.
+det, siden $m\dot{\vec r}$ ikke endres ved en gaugetransformasjon.
 </SelfCheck>
 
+<Example label="Eksamensoppgave" title="Den sfæriske pendelen med Hamiltons metode">
+<ExamRef id="2017-des" task="3" />
+
+Use the Hamiltonian method for a spherical pendulum
+of mass $m$ and length $b$.
+
+(a) Find the Hamiltonian equations of motion.
+
+(b) What can you say about conserved quantities?
+
+(c) Using the Poisson’s bracket, evaluate the total
+time-derivative of the kinetic energy $T$. When is
+$T$ a constant of motion?
+
+<Solution>
+a) Med $\theta$ fra loddlinja nedover og $\phi$ rundt den er
+${T = \tfrac12 mb^2(\dot\theta^2 + \sin^2\theta\,\dot\phi^2)}$ og ${V = -mgb\cos\theta}$.
+Impulsene er ${p_\theta = mb^2\dot\theta}$ og ${p_\phi = mb^2\sin^2\theta\,\dot\phi}$.
+Posisjonene avhenger ikke av tida, så ${H = T + V}$:
+
+$$
+H = \frac{p_\theta^2}{2mb^2} + \frac{p_\phi^2}{2mb^2\sin^2\theta} \allowbreak - mgb\cos\theta
+$$
+
+Hamiltons ligninger er
+
+$$
+\begin{aligned}
+\dot\theta &= \frac{p_\theta}{mb^2} \\
+\dot\phi &= \frac{p_\phi}{mb^2\sin^2\theta} \\
+\dot p_\theta &= \frac{p_\phi^2\cos\theta}{mb^2\sin^3\theta} - mgb\sin\theta \\
+\dot p_\phi &= 0
+\end{aligned}
+$$
+
+der det første leddet i $\dot p_\theta$ kommer fra ${\partial(1/\sin^2\theta)/\partial\theta = -2\cos\theta/\sin^3\theta}$.
+
+b) $\phi$ mangler i $H$, så $p_\phi$, dreieimpulsen om loddlinja, er bevart. $H$ avhenger
+ikke eksplisitt av tida, så ${H = T + V}$, energien, er bevart. Med ${p_\phi}$ satt inn beskriver
+$H$ en bevegelse i $\theta$ alene, i ${V_\text{eff}(\theta) = p_\phi^2/2mb^2\sin^2\theta - mgb\cos\theta}$.
+
+c) $T$ avhenger ikke eksplisitt av tida, så ${dT/dt = \{T, H\}}$. Siden
+${H = T + V}$ og ${\{T, T\} = 0}$, er ${\{T, H\} = \{T, V\}}$. $V$ avhenger bare av $\theta$,
+så bare leddet ${-(\partial T/\partial p_\theta)(\partial V/\partial\theta)}$ er igjen:
+
+$$
+\frac{dT}{dt} = -\frac{p_\theta}{mb^2}\,mgb\sin\theta \allowbreak = -mgb\sin\theta\,\dot\theta
+$$
+
+Det er ${-dV/dt}$, som det må være når ${T + V}$ er bevart. $T$ er konstant når
+${\dot\theta = 0}$ hele tida, det vil si når kula går i en vannrett sirkel med fast $\theta$.
+
+<Answer>${dT/dt = \{T, H\} = -mgb\sin\theta\,\dot\theta}$. $T$ er bevart når $\theta$ er konstant: kula går i en vannrett sirkel.</Answer>
+</Solution>
+</Example>
+
+## Dreieimpulsen
+
+For én partikkel er ${\vec L = \vec r \times \vec p}$, med komponentene ${L_x = yp_z - zp_y}$, ${L_y = zp_x - xp_z}$ og ${L_z = xp_y - yp_x}$. Lineariteten gir
+
+$$
+\{L_x, L_y\} = \{yp_z, zp_x\} - \{yp_z, xp_z\} \allowbreak - \{zp_y, zp_x\} + \{zp_y, xp_z\}
+$$
+
+Etter produktregelen er klammen av to produkter null, med mindre en koordinat i det ene møter impulsen til den samme koordinaten i det andre. I det andre og det tredje leddet skjer ikke det. I det første og det fjerde møtes $z$ og $p_z$, med ${\{p_z, z\} = -1}$ og ${\{z, p_z\} = 1}$, så
+
+$$
+\{L_x, L_y\} = -yp_x + xp_y = L_z
+$$
+
+Bytt ${x \to y \to z \to x}$, så får du ${\{L_y, L_z\} = L_x}$ og ${\{L_z, L_x\} = L_y}$. Med Levi-Civita-symbolet $\epsilon_{ijk}$, som er $1$ for $xyz$ og de sykliske ombyttingene, ${-1}$ når to av indeksene er byttet om, og $0$ når to indekser er like, er de tre klammene samlet
+
+<Formula
+  tex="\{L_i, L_j\} = \sum_k \epsilon_{ijk}L_k \allowbreak\qquad \{L^2, L_i\} = 0"
+  caption="<b>Poissonklammene for dreieimpulsen</b>, med ${L^2 = L_x^2 + L_y^2 + L_z^2}$."
+/>
+
+Klammen med $L^2$ følger av produktregelen. For $L_z$ er
+
+$$
+\{L^2, L_z\} = 2L_x\{L_x, L_z\} \allowbreak + 2L_y\{L_y, L_z\} \allowbreak = -2L_xL_y + 2L_yL_x = 0
+$$
+
+og de to andre komponentene på samme måte.
+
+Er $L_x$ og $L_y$ bevart, er også ${L_z = \{L_x, L_y\}}$ bevart. Sett ${f = L_x}$, ${g = L_y}$ og ${h = H}$ i Jacobis identitet. Det første leddet inneholder ${\{L_y, H\} = 0}$ og det andre ${\{H, L_x\} = -\{L_x, H\} = 0}$, så det tredje leddet er også null: ${\{H, L_z\} = 0}$, og $L_z$ er bevart. Et system som ikke endrer seg når du dreier det om $x$-aksen og om $y$-aksen, endrer seg heller ikke når du dreier det om $z$-aksen, fordi alle dreininger kan settes sammen av dreininger om de to aksene. Regningen brukte ikke hva $L_x$ og $L_y$ er, bare at klammene deres med $H$ er null:
+
+<Statement kind="theorem" name="Poissons teorem">
+Er $f$ og $g$ bevart, og avhenger ingen av dem eksplisitt av tida, er også $\{f, g\}$ bevart.
+</Statement>
+
+Klammen mellom $L^2$ og $L_z$ er null, så de to gir ingen ny størrelse etter Poissons teorem. Kommutatorene for dreieimpulsen i kvantemekanikken har den samme formen, ${[\hat L_x, \hat L_y] = i\hbar\hat L_z}$ og ${[\hat L^2, \hat L_z] = 0}$.
+
+<Callout title="Dreieimpulsen">
+${\{L_x, L_y\} = L_z}$ og syklisk, og ${\{L^2, L_i\} = 0}$. Er to komponenter av $\vec L$ bevart, er den tredje det også.
+</Callout>
+
 <KeyTakeaways>
-- ${H(q, p, t) = \sum_i p_i\dot q_i - L}$ med hastighetene uttrykt ved $q$ og $p$. Hamiltons ligninger ${\dot q_i = \partial H/\partial p_i}$ og ${\dot p_i = -\partial H/\partial q_i}$ er Lagranges ligninger skrevet som $2n$ førsteordens ligninger.
-- ${dH/dt = \partial H/\partial t = -\partial L/\partial t}$. En koordinat som mangler i $L$, mangler også i $H$, og den bevarte impulsen kan settes inn i $H$, men ikke i $L$.
-- Tilstanden er et punkt i faserommet. Med tidsuavhengig $H$ går punktet langs en kurve med konstant $H$, og banene krysser aldri. For pendelen skiller separatrisen ${E = mgl}$ svingning fra rotasjon.
-- For en ladd partikkel er ${H = (\vec p - q\vec A)^2/2m + q\phi}$. I et uniformt magnetfelt går den i en sirkel i planet vinkelrett på $\vec B$ med syklotronfrekvensen ${|q|B/m}$.
-- Hamiltons ligninger følger av at ${\int (\sum_i p_i\dot q_i - H)\,dt}$ er stasjonær når $q$ og $p$ varieres hver for seg.
-- ${df/dt = \{f, H\} + \partial f/\partial t}$ og ${\{q_i, p_j\} = \delta_{ij}}$. Er $f$ og $g$ bevart uten eksplisitt tidsavhengighet, er $\{f, g\}$ det også. For dreieimpulsen er ${\{L_x, L_y\} = L_z}$ og syklisk, og ${\{L^2, L_i\} = 0}$.
+- Tilstanden er et punkt $(q, p)$ i faserommet, og Hamiltons ligninger ${\dot q_i = \partial H/\partial p_i}$, ${\dot p_i = -\partial H/\partial q_i}$ gir farten til punktet. Med én frihetsgrad og en $H$ som ikke avhenger av tida går punktet langs kurvene med konstant $H$, med klokka rundt et bunnpunkt, og baner krysser aldri.
+- ${H = \sum_i p_i\dot q_i - L}$ med hastighetene uttrykt ved $q$ og $p$. Leddet $-L$ trekker fra endringen ${\sum_i p_i\,d\dot q_i}$ som kommer av at $\dot q$ endres med $p$, så ${\partial H/\partial p_i = \dot q_i}$.
+- ${dH/dt = \partial H/\partial t}$. En bevart impuls kan settes inn i $H$ før du deriverer, og gir da sentrifugalleddet med riktig fortegn. Satt inn i $L$ gir den feil fortegn.
+- For en ladd partikkel er ${H = (\vec p - q\vec A)^2/2m + q\phi}$. I et uniformt magnetfelt går den i en sirkel med syklotronfrekvensen ${|q|B/m}$.
+- Liouvilles teorem: et område i faserommet beholder arealet, eller volumet, mens det dras ut, fordi Hamiltons ligninger strekker like mye som de klemmer.
+- ${df/dt = \{f, H\} + \partial f/\partial t}$, ${\{q_i, p_j\} = \delta_{ij}}$, og ${\{L_x, L_y\} = L_z}$ og syklisk. To bevarte størrelser uten eksplisitt tidsavhengighet har en bevart klamme.
 </KeyTakeaways>
