@@ -413,22 +413,30 @@ formulas:
     section: Trelegemeproblemet
     tex: "L = \\tfrac12 m\\left(\\dot x^2 + \\dot y^2\\right) \\allowbreak + m\\omega\\left(x\\dot y - y\\dot x\\right) \\allowbreak - m\\,U(x, y)"
     label: "Det lette legemet i det begrensede trelegemeproblemet, i systemet $K'$ som roterer med $\\omega^2 = G(m_1 + m_2)/d^3$ om massesenteret. $m_1$ og $m_2$ står i ro på $x$-aksen, og leddet som er lineært i farten, gir Corioliskraften."
+  - id: trelegeme-bevegelse
+    section: Trelegemeproblemet
+    tex: "\\ddot x - 2\\omega\\dot y = -\\frac{\\partial U}{\\partial x} \\allowbreak\\qquad \\ddot y + 2\\omega\\dot x = -\\frac{\\partial U}{\\partial y}"
+    label: "Bevegelsesligningene for det lette legemet i $K'$. Leddene med $2\\omega$ er Corioliskraften per masse, som bøyer banen mot høyre når $K'$ roterer mot klokka."
   - id: trelegeme-potensial
     section: Trelegemeproblemet
     tex: "U = -\\frac{Gm_1}{r_1} - \\frac{Gm_2}{r_2} \\allowbreak - \\tfrac12\\omega^2\\left(x^2 + y^2\\right)"
-    label: "Potensialet per masse i det roterende systemet, tyngden fra $m_1$ og $m_2$ pluss sentrifugalpotensialet. $r_1$ og $r_2$ er avstandene til de to massene, og Lagrangepunktene er de stasjonære punktene til $U$."
+    label: "Potensialet per masse i det roterende systemet, tyngden fra $m_1$ og $m_2$ pluss sentrifugalpotensialet. $r_1$ og $r_2$ er avstandene til de to massene, og Lagrangepunktene er de flate stedene i $U$."
   - id: jacobi-konstant
     section: Trelegemeproblemet
     tex: "C = \\tfrac12\\left(\\dot x^2 + \\dot y^2\\right) + U(x, y)"
     label: "Jacobis konstant, energifunksjonen per masse i det roterende systemet. Den er bevart, og legemet kan bare være der $U \\le C$."
   - id: lagrangepunkter
     section: Trelegemeproblemet
-    tex: "r_1 = r_2 = d \\allowbreak\\qquad h \\approx d\\left(\\frac{m_2}{3m_1}\\right)^{1/3}"
-    label: "$L_4$ og $L_5$ danner likesidede trekanter med $m_1$ og $m_2$. $L_1$ og $L_2$ ligger i avstanden $h$ på hver side av $m_2$ når $m_2 \\ll m_1$, og $L_3$ ligger på motsatt side av $m_1$."
+    tex: "r_1 = r_2 = d \\allowbreak\\qquad h \\approx d\\left(\\frac{m_2}{3M}\\right)^{1/3}"
+    label: "Toppene $L_4$ og $L_5$ ligger i avstanden $d$ fra begge de tunge legemene, i hjørnene av likesidede trekanter. Sadelpunktene $L_1$ og $L_2$ ligger i avstanden $h$ på hver side av $m_2$ når $m_2 \\ll m_1$, og $L_3$ på den andre siden av $m_1$, bort fra $m_2$."
+  - id: lagrangepunkt-linearisert
+    section: Trelegemeproblemet
+    tex: "\\lambda^4 + \\left(U_{xx} + U_{yy} + 4\\omega^2\\right)\\lambda^2 \\allowbreak + U_{xx}U_{yy} - U_{xy}^2 = 0"
+    label: "Ligningen for $\\lambda$ når utslagene fra et Lagrangepunkt går som $e^{\\lambda t}$, med de andrederiverte av $U$ i punktet. Punktet er stabilt når begge røttene $\\lambda^2$ er reelle og negative. Leddet $4\\omega^2$ kommer fra Corioliskraften og står bare i summen av røttene."
   - id: lagrange-stabilitet
     section: Trelegemeproblemet
     tex: "27\\,m_1 m_2 < (m_1 + m_2)^2"
-    label: "Betingelsen for at $L_4$ og $L_5$ er stabile, $m_1/m_2 > 24{,}96$. $L_1$, $L_2$ og $L_3$ er ustabile for alle masseforhold."
+    label: "Betingelsen for at toppene $L_4$ og $L_5$ er stabile, $m_1/m_2 > 24{,}96$. Sadelpunktene $L_1$, $L_2$ og $L_3$ er ustabile for alle masseforhold."
 
   - id: sma-svingninger
     section: Små svingninger
@@ -660,7 +668,8 @@ symbols:
   - { tex: "\\vartheta", meaning: "Spredningsvinkelen, mellom retningen inn og retningen ut", unit: "rad", section: "To- og trelegemeproblemet", formula: spredningstverrsnitt, note: "Eldre eksamenssett skriver $\\Theta$ eller $\\theta$. I Greens funksjon er $\\vartheta(\\tau)$ trinnfunksjonen, og hos Kapitzas pendel er $\\Theta$ den langsomme delen av vinkelen $\\theta$." }
   - { tex: "d\\sigma/d\\Omega", meaning: "Det differensielle spredningstverrsnittet", unit: "m²", section: "To- og trelegemeproblemet", term: "Spredningstverrsnitt", formula: spredningstverrsnitt, note: "$d\\Omega$ er et romvinkelelement, ikke en frekvens." }
   - { tex: "\\alpha", meaning: "Masseforholdet $m_2/M$ i trelegemeproblemet", section: "To- og trelegemeproblemet", note: "Ellers en lokal konstant: faktoren i $L' = \\alpha L$, indeksen på føringene $f_\\alpha$, vinkelen loddlinja avviker med og vinkelen til skråplanet i eksamensoppgaven om ringen." }
-  - { tex: "U", meaning: "Potensialet per masse i det roterende systemet, med sentrifugalleddet", unit: "J/kg", section: "To- og trelegemeproblemet", formula: trelegeme-potensial, note: "De annenderiverte $U_{xx}$, $U_{xy}$ og $U_{yy}$ avgjør stabiliteten til Lagrangepunktene." }
+  - { tex: "U", meaning: "Potensialet per masse i det roterende systemet, med sentrifugalleddet", unit: "J/kg", section: "To- og trelegemeproblemet", formula: trelegeme-potensial, note: "De andrederiverte $U_{xx}$, $U_{xy}$ og $U_{yy}$ avgjør stabiliteten til Lagrangepunktene." }
+  - { tex: "h", meaning: "Avstanden fra $m_2$ til $L_1$ og $L_2$ når $m_2 \\ll m_1$", unit: "m", section: "To- og trelegemeproblemet", formula: lagrangepunkter, note: "Ellers en høyde, som fallhøyden for avbøyningen mot øst." }
   - { tex: "C", meaning: "Jacobis konstant, $\\tfrac12 v'^2 + U$", unit: "J/kg", section: "To- og trelegemeproblemet", term: "Jacobis konstant", formula: jacobi-konstant, id: jacobi, note: "Legemet kan bare være der $U \\le C$." }
   - { tex: "L_1\\text{–}L_5", meaning: "Lagrangepunktene, likevektspunktene i det roterende systemet", section: "To- og trelegemeproblemet", term: "Lagrangepunkt", formula: lagrangepunkter, note: "Ikke Lagrangefunksjonen $L$. $L_4$ og $L_5$ er stabile når $m_1/m_2 > 24{,}96$." }
   # ── Små svingninger ──
@@ -854,7 +863,7 @@ glossary:
     definition: "Den bevarte energifunksjonen per masse for det lette legemet i det begrensede trelegemeproblemet, $C = \\tfrac12 v'^2 + U$. $v'$ er farten i systemet som roterer med de to tunge legemene, og $U$ tar med sentrifugalpotensialet. Legemet kan bare være der $U \\le C$."
   - term: Lagrangepunkt
     section: Trelegemeproblemet
-    definition: "Et av de fem likevektspunktene i det begrensede trelegemeproblemet, der et lett legeme står i ro i systemet som roterer med de to tunge legemene. $L_1$, $L_2$ og $L_3$ ligger på linja gjennom dem og er ustabile. $L_4$ og $L_5$ danner likesidede trekanter med dem og er stabile når $m_1/m_2 > 24{,}96$."
+    definition: "Et av de fem likevektspunktene i det begrensede trelegemeproblemet, der et lett legeme står i ro i systemet som roterer med de to tunge legemene. De er de flate stedene i potensialet $U$. Sadelpunktene $L_1$, $L_2$ og $L_3$ ligger på linja gjennom de tunge legemene og er ustabile. Toppene $L_4$ og $L_5$ danner likesidede trekanter med dem og er stabile når $m_1/m_2 > 24{,}96$."
 
   - term: Normalmode
     section: Små svingninger

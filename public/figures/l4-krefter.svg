@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 268" width="340" height="268">
+  <!-- The pulls from m₁ and m₂ (m₁ = 3m₂) on a body at L₄, in the ratio m₁ : m₂, and their sum, which points at the centre of mass. -->
+  <line x1="70" y1="218" x2="280" y2="218" stroke="#8d98a6" stroke-width="1.4" stroke-dasharray="5 5"/>
+  <line x1="70" y1="218" x2="175" y2="36.1" stroke="#8d98a6" stroke-width="1.4" stroke-dasharray="5 5"/>
+  <line x1="280" y1="218" x2="175" y2="36.1" stroke="#8d98a6" stroke-width="1.4" stroke-dasharray="5 5"/>
+  <text x="106.5" y="131.1" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="middle">d</text>
+  <text x="243.5" y="131.1" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="middle">d</text>
+  <text x="205" y="240" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#7c8795" text-anchor="middle">d</text>
+  <line x1="107.3" y1="153.4" x2="129.9" y2="192.5" stroke="#8d98a6" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <line x1="197.6" y1="75.2" x2="129.9" y2="192.5" stroke="#8d98a6" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <line x1="175" y1="36.1" x2="110.4" y2="148.1" stroke="#7c8795" stroke-width="2"/>
+  <path d="M 107.3 153.4 L 107.4 145.2 L 114.4 149.2 Z" fill="#7c8795"/>
+  <line x1="175" y1="36.1" x2="194.5" y2="69.9" stroke="#7c8795" stroke-width="2"/>
+  <path d="M 197.6 75.2 L 190.5 71 L 197.5 67 Z" fill="#7c8795"/>
+  <line x1="175" y1="36.1" x2="132" y2="185.2" stroke="#c0703a" stroke-width="2.4"/>
+  <path d="M 129.9 192.5 L 127.6 182.9 L 136.9 185.6 Z" fill="#c0703a"/>
+  <line x1="116.5" y1="212" x2="128.5" y2="224" stroke="#c0703a" stroke-width="2"/>
+  <line x1="116.5" y1="224" x2="128.5" y2="212" stroke="#c0703a" stroke-width="2"/>
+  <circle cx="70" cy="218" r="11" fill="#5b6470"/>
+  <circle cx="280" cy="218" r="7" fill="#5b6470"/>
+  <circle cx="175" cy="36.1" r="5" fill="#3f9a6c"/>
+  <text x="70" y="248" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="middle">m<tspan dy="5" font-size="13">1</tspan></text>
+  <text x="280" y="246" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="middle">m<tspan dy="5" font-size="13">2</tspan></text>
+  <text x="195" y="28.1" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#c0703a" text-anchor="start">L<tspan dy="5" font-size="13">4</tspan></text>
+</svg>

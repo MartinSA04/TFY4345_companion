@@ -1,167 +1,150 @@
 ---
 order: 9
 title: "Det begrensede trelegemeproblemet"
-summary: "Et lett legeme i tyngdefeltet fra to tunge legemer som går i sirkelbaner om hverandre, sett fra systemet som roterer med dem: Jacobis konstant, de fem Lagrangepunktene og stabiliteten deres, der Corioliskraften gjør L₄ og L₅ stabile."
+summary: "Et lett legeme i tyngdefeltet fra to tunge legemer som går i sirkel om hverandre. I systemet som roterer med dem, er potensialet et landskap med to topper og tre sadelpunkter, de fem Lagrangepunktene. Sadelpunktene er alltid ustabile, men Corioliskraften holder legemet nær toppene når det ene tunge legemet er minst 25 ganger tyngre enn det andre."
 importance: core
-tag: "Uke 40"
-updated: 2026-11-05
+tag: "Uke 39–40 · Tong 7.6.1 og 8.1.3"
+updated: 2026-11-06
 ---
 
 <LearningGoals>
-- Sette opp det begrensede trelegemeproblemet i et roterende system og finne de fem Lagrangepunktene.
-- Avgjøre stabiliteten til Lagrangepunktene, der et ledd som er lineært i farten gjør et maksimum av potensialet stabilt.
+- Sette opp Lagrangefunksjonen og bevegelsesligningene for det lette legemet i systemet som roterer med de to tunge, og finne Jacobis konstant.
+- Finne de fem Lagrangepunktene, og forklare hvorfor $L_4$ og $L_5$ danner likesidede trekanter med de to tunge legemene.
+- Finne avstanden fra $m_2$ til $L_1$ og $L_2$ når $m_2$ er mye lettere enn $m_1$.
+- Avgjøre om et Lagrangepunkt er stabilt ut fra de andrederiverte av $U$, og forklare hvordan Corioliskraften holder et legeme nær en topp i $U$.
 </LearningGoals>
 
-## Det begrensede trelegemeproblemet
+James Webb-teleskopet går rundt sola 1,5 millioner km lenger ute enn jorda, på linja fra sola gjennom jorda. Et legeme så langt ute som bare sola trakk på, ville brukt 5,5 døgn mer enn et år på én runde, men teleskopet holder følge med jorda og bruker nøyaktig ett år. Omtrent hver tredje uke fyrer det av rakettmotorene for å bli der. Jupiter har over 15 000 kjente asteroider, trojanerne, i to svermer 60° foran og 60° bak planeten i banen. De har ingen motorer, og banene til de fleste holder seg i milliarder av år.
 
-Tre legemer som trekker på hverandre, har ingen generell løsning på lukket form. Et enklere tilfelle er når to tunge legemer $m_1 \ge m_2$ går i sirkelbaner om massesenteret, og et tredje legeme med masse $m$ er så lett at det ikke påvirker dem. Sola, jorda og et romteleskop er et eksempel.
+## To tunge legemer og ett lett
 
-Gå over fra inertialsystemet $K$ til systemet $K'$ som roterer med $m_1$ og $m_2$ om massesenteret. Der står de i ro, og tyngden fra dem avhenger ikke av tida. Banen til relativkoordinaten mellom dem er en sirkel med radius $d$, så Keplers tredje lov med $a = d$ gir vinkelfarten:
+Bevegelsen til tre legemer som trekker på hverandre, har ingen generell løsning på lukket form. Teleskopet er derimot så lett at det ikke flytter merkbart på sola og jorda. Sola og jorda går da rundt hverandre som i tolegemeproblemet, og teleskopet beveger seg i tyngdefeltet fra dem uten å påvirke dem. Med to tunge legemer $m_1 \ge m_2$ og et lett legeme $m$ som ikke påvirker dem, heter problemet det begrensede trelegemeproblemet.
 
-$
+La de to tunge gå i sirkelbaner om massesenteret, slik jorda nesten gjør. Avstanden $d$ mellom dem er da fast, og Keplers tredje lov med $a = d$ gir vinkelfarten:
+
+$$
 \omega^2 = \frac{GM}{d^3}, \qquad M = m_1 + m_2
-$
+$$
 
-I $K'$ står $m_1$ og $m_2$ på $x$-aksen, i $x = -\alpha d$ og $x = (1 - \alpha)d$ med $\alpha = m_2/M$. Det lette legemet beveger seg i baneplanet $z = 0$. Farten i inertialsystemet er $\vec v\,' + \vec\omega \times \vec r$, så Lagrangefunksjonen i $K'$ er $\tfrac12 m(\vec v\,' + \vec\omega \times \vec r)^2 - V$, og med $\vec\omega = \omega\hat z$ er $\vec\omega \times \vec r = (-\omega y, \omega x)$. Kvadratet er
+I et inertialsystem $K$ beveger de to tunge seg, så tyngdefeltet det lette legemet beveger seg i, endrer seg med tida. I systemet $K'$ som roterer med vinkelfarten $\omega$ om massesenteret, står de stille, og tyngdefeltet ligger fast. Legg $x$-aksen i $K'$ gjennom dem. Massesenteret deler avstanden mellom dem i forholdet $m_2 : m_1$, så $m_1$ står i $x = -\alpha d$ og $m_2$ i $x = (1 - \alpha)d$, med $\alpha = m_2/M$. Anta at det lette legemet beveger seg i baneplanet, med koordinatene $x$ og $y$ i $K'$.
 
-$
+Hastigheten i $K$ er ${\vec v\,' + \vec\omega \times \vec r}$, så Lagrangefunksjonen i $K'$ er ${\tfrac12 m(\vec v\,' + \vec\omega \times \vec r)^2 - V}$, som i ethvert roterende system. Med $\vec\omega$ langs $z$ er ${\vec\omega \times \vec r = \omega(-y, x)}$, og kvadratet av hastigheten i $K$ blir
+
+$$
 (\dot x - \omega y)^2 + (\dot y + \omega x)^2 = \dot x^2 + \dot y^2 \allowbreak + 2\omega(x\dot y - y\dot x) \allowbreak + \omega^2(x^2 + y^2)
-$
+$$
 
-Samle det siste leddet og tyngden fra $m_1$ og $m_2$ i potensialet $U$ per masse, med avstandene $r_1$ og $r_2$ fra det lette legemet til $m_1$ og $m_2$. Da er
-
-$
-L = \tfrac12 m\left(\dot x^2 + \dot y^2\right) \allowbreak + m\omega\left(x\dot y - y\dot x\right) \allowbreak - m\,U(x, y)
-$
+Det siste leddet gir sentrifugalpotensialet. Samle det og tyngden fra $m_1$ og $m_2$ i ett potensial per masse:
 
 <Formula
   tex="U = -\frac{Gm_1}{r_1} - \frac{Gm_2}{r_2} \allowbreak - \tfrac12\omega^2\left(x^2 + y^2\right)"
-  caption="<b>Potensialet i det roterende systemet</b>, per masse. Det siste leddet er sentrifugalpotensialet."
+  caption="<b>Potensialet i det roterende systemet</b>, per masse. $r_1$ og $r_2$ er avstandene fra det lette legemet til $m_1$ og $m_2$, og det siste leddet er sentrifugalpotensialet."
 />
 
-Leddet $m\omega(x\dot y - y\dot x)$ er lineært i farten og gir Corioliskraften. Lagranges ligning for $x$, $\frac{d}{dt}\frac{\partial L}{\partial\dot x} = \frac{\partial L}{\partial x}$, med
+Da er
 
-$
-\frac{\partial L}{\partial\dot x} = m(\dot x - \omega y) \allowbreak\qquad \frac{\partial L}{\partial x} = m\omega\dot y - m\frac{\partial U}{\partial x}
-$
+$$
+L = \tfrac12 m\left(\dot x^2 + \dot y^2\right) \allowbreak + m\omega\left(x\dot y - y\dot x\right) \allowbreak - m\,U(x, y)
+$$
 
-gir $m\ddot x - m\omega\dot y = m\omega\dot y - m\,\partial U/\partial x$. Ligningen for $y$ følger på samme måte:
+Leddet $m\omega(x\dot y - y\dot x)$ er lineært i farten. For $x$ er ${\partial L/\partial\dot x = m(\dot x - \omega y)}$ og ${\partial L/\partial x = m\omega\dot y - m\,\partial U/\partial x}$, så Lagranges ligning blir ${m\ddot x - m\omega\dot y = m\omega\dot y - m\,\partial U/\partial x}$. Ligningen for $y$ følger på samme måte:
 
 <Formula
-  tex="\ddot x - 2\omega\dot y = -\frac{\partial U}{\partial x} \allowbreak\qquad \ddot y + 2\omega\dot x = -\frac{\partial U}{\partial y}"
+  tex="\begin{aligned} \ddot x - 2\omega\dot y &= -\frac{\partial U}{\partial x} \\ \ddot y + 2\omega\dot x &= -\frac{\partial U}{\partial y} \end{aligned}"
   caption="<b>Bevegelsesligningene</b> for det lette legemet i $K'$. Leddene med $2\omega$ er Corioliskraften per masse."
 />
 
-$L$ inneholder ikke tida, så energifunksjonen $H = \dot x\,\partial L/\partial\dot x + \dot y\,\partial L/\partial\dot y - L$ er bevart. Corioliskraften står vinkelrett på farten og gjør ikke arbeid, så $H$ inneholder bare den kinetiske energien i $K'$ og $U$. I regningen faller leddet som er lineært i farten, ut:
+Corioliskraften ${-2m\vec\omega \times \vec v\,'}$ står vinkelrett på farten, og når $K'$ roterer mot klokka, bøyer den banen mot høyre.
 
-$
-\begin{aligned}
-H &= m\dot x(\dot x - \omega y) + m\dot y(\dot y + \omega x) - L \\
-&= \tfrac12 m\left(\dot x^2 + \dot y^2\right) + m\,U
-\end{aligned}
-$
-
-$H$ delt på $m$ er <Term name="Jacobis konstant">Jacobis konstant</Term>:
+Tida står ikke i $L$, så energifunksjonen er bevart. I et roterende system er den energien målt i $K'$ med sentrifugalpotensialet, her ${\tfrac12 m(\dot x^2 + \dot y^2) + mU}$. Corioliskraften gjør ikke arbeid og gir ikke noe ledd. Delt på $m$ er energifunksjonen <Term name="Jacobis konstant">Jacobis konstant</Term>:
 
 <Formula
   tex="C = \tfrac12\left(\dot x^2 + \dot y^2\right) + U(x, y)"
   caption="<b>Jacobis konstant</b>, bevart langs banen."
 />
 
-Farten i kvadrat kan ikke være negativ, så legemet kan bare være der $U \le C$. Kurvene $U = C$ er grensen for området legemet kan nå.
+Farten i kvadrat er aldri negativ, så legemet kan bare være der $U \le C$.
 
-<Callout title="Jacobis konstant">
-I systemet som roterer med $m_1$ og $m_2$, er $C = \tfrac12(\dot x^2 + \dot y^2) + U$ bevart for det lette legemet. Legemet kan bare være der $U \le C$.
+<Callout title="Det lette legemet i K′">
+I systemet som roterer med de to tunge legemene, beveger det lette legemet seg i potensialet $U$, med Corioliskraften i tillegg. Jacobis konstant ${C = \tfrac12 v'^2 + U}$ er bevart, så legemet holder seg der $U \le C$.
 </Callout>
 
-## Lagrangepunktene
+## Topper og sadelpunkter
 
-Et legeme som står i ro i $K'$, har $\dot x = \dot y = \ddot x = \ddot y = 0$. Da faller Coriolisleddene ut av bevegelsesligningene i $K'$, og de krever $\partial U/\partial x = \partial U/\partial y = 0$. Likevektspunktene er altså de stasjonære punktene til $U$, og de heter <Term name="lagrangepunkt">Lagrangepunktene</Term>. Sett fra $K$ går et legeme i et Lagrangepunkt i en sirkelbane med samme omløpstid som $m_1$ og $m_2$, og tyngden fra de to er akkurat sentripetalkraften.
+Tegn $U$ som et landskap, med høyden $U(x, y)$ over hvert punkt i baneplanet. Figur 1 viser landskapet for to tunge legemer der $m_2$ er en tidel av totalmassen.
 
-$U$ er symmetrisk i $y$, så $\partial U/\partial y = 0$ på $x$-aksen, og der blir $\partial U/\partial x = 0$
+<Figure src="/figures/landskap.svg" alt="Et grått landskap sett på skrå ovenfra, skåret over langs en rett linje foran. Snittkanten går fra venstre: opp til en kul merket L3, ned i en dyp brønn med m1 i bunnen, opp til en kul merket L1, ned i en smal brønn med m2 i bunnen, opp til en kul merket L2 og ned mot høyre kant. Bak brønnene går en rygg i en bue, og øverst på den, bak, er punktet L4." width={340} height={186} number={1} caption="Potensialet $U$ i systemet som roterer med $m_1$ og $m_2$, som et landskap med høyden $U$ over baneplanet, for $m_2/M = 0{,}1$. Bare den ene halvdelen av baneplanet er tegnet, og snittet nærmest deg viser $U$ langs linja gjennom massene. Den andre halvdelen er speilbildet, med $L_5$ der $L_4$ er. Brønnene går mot $-\infty$ og er kuttet." />
 
-$
-\omega^2 x = \frac{Gm_1(x + \alpha d)}{|x + \alpha d|^3} \allowbreak + \frac{Gm_2\,(x - (1 - \alpha)d)}{|x - (1 - \alpha)d|^3}
-$
+Rundt hver masse er det en dyp brønn, fra tyngden. Langt ute faller landskapet bratt av i alle retninger, fordi sentrifugalleddet ${-\tfrac12\omega^2(x^2 + y^2)}$ blir stort. Mellom de to brønnene går en rygg, og en annen går rundt begge, mellom brønnene og skrenten. Ryggene møtes i to topper, $L_4$ i den tegnede halvdelen og $L_5$ i den andre. De krysser linja gjennom massene i tre sadelpunkter: $L_1$ mellom brønnene, $L_2$ utenfor $m_2$ og $L_3$ utenfor $m_1$. Et sadelpunkt er som en fjellovergang: det laveste punktet på ryggen og det høyeste på veien over den. Ryggene krysser linja, så i sadelpunktene buer $U$ nedover langs linja og oppover på tvers av den.
 
-Langs aksen går $U$ mot $-\infty$ ved hver masse og langt ute, og alle tre leddene i $U(x, 0)$ har negativ annenderivert. $U(x, 0)$ har derfor nøyaktig ett maksimum i hvert av de tre intervallene, og tre av punktene ligger på aksen. $L_1$ ligger mellom massene, $L_2$ utenfor $m_2$ og $L_3$ utenfor $m_1$ på motsatt side. Ligningen er av femte grad og må løses numerisk, men for $m_2 \ll m_1$ ligger $L_1$ og $L_2$ nær $m_2$, på hver sin side i avstanden
-
-$
-h \approx d\left(\frac{m_2}{3m_1}\right)^{1/3}
-$
-
-Tilnærmingen krever $h \ll d$, og kubikkroten gjør $h/d$ liten bare når $m_2/m_1$ er svært liten. For sola og jorda er $h/d = 0{,}01$.
-
-<Derivation title="Avstanden fra m₂ til L₁ og L₂">
-$L_2$ ligger i $x = (1 - \alpha)d + h$, i avstanden $d + h$ fra $m_1$ og $h$ fra $m_2$. Siden $\omega^2(1 - \alpha)d = GM(1 - \alpha)/d^2 = Gm_1/d^2$, blir ligningen
-
-$
-\frac{Gm_1}{d^2} + \omega^2 h = \frac{Gm_1}{(d + h)^2} + \frac{Gm_2}{h^2}
-$
-
-For $h \ll d$ er $Gm_1/(d + h)^2 \approx (Gm_1/d^2)(1 - 2h/d)$, og for $m_2 \ll m_1$ er $\omega^2 \approx Gm_1/d^3$:
-
-$
-\begin{aligned}
-\frac{Gm_1}{d^3}\,h + \frac{2Gm_1}{d^3}\,h &= \frac{Gm_2}{h^2} \\
-\Rightarrow\quad h^3 &= \frac{m_2}{3m_1}\,d^3
-\end{aligned}
-$
-
-For $L_1$ i $x = (1 - \alpha)d - h$ skifter alle leddene med $h$ fortegn, og den samme ligningen kommer ut.
-</Derivation>
-
-<Derivation title="Lagrangepunktene til sola og jorda">
-For sola og jorda er $m_2/m_1 = 3{,}0\cdot10^{-6}$ og $h = 1{,}5\cdot10^6$ km, fire ganger avstanden til månen. Solobservatoriet SOHO går i bane rundt $L_1$, og James Webb-teleskopet rundt $L_2$, der sola og jorda ligger i samme retning og ett varmeskjold skygger for begge.
-</Derivation>
-
-De to siste Lagrangepunktene, $L_4$ og $L_5$, ligger utenfor aksen. For $y \ne 0$ kan $\partial U/\partial y = 0$ deles på $y$:
-
-$
-\omega^2 = \frac{Gm_1}{r_1^3} + \frac{Gm_2}{r_2^3}
-$
-
-Ligningen $\partial U/\partial x = 0$ er
-
-$
-\omega^2 x = \frac{Gm_1(x + \alpha d)}{r_1^3} \allowbreak + \frac{Gm_2\,(x - (1 - \alpha)d)}{r_2^3}
-$
-
-Gang ligningen for $\omega^2$ med $x$, og trekk ligningen over fra produktet. Leddene med $x$ faller bort, og med $m_1\alpha = m_2(1 - \alpha) = m_1m_2/M$ står det igjen
-
-$
-0 = \frac{Gm_1m_2\,d}{M}\left(\frac{1}{r_2^3} - \frac{1}{r_1^3}\right)
-$
-
-Altså er $r_1 = r_2$, og ligningen for $\omega^2$ gir $\omega^2 = GM/r_1^3$. Sammen med $\omega^2 = GM/d^3$ gir det $r_1 = r_2 = d$. $L_4$ og $L_5$ ligger i hjørnet av en likesidet trekant med $m_1$ og $m_2$, $60°$ foran og bak $m_2$ i banen sett fra $m_1$, uansett masseforholdet.
+Et legeme som står i ro i $K'$, har ingen Corioliskraft, så bevegelsesligningene krever ${\partial U/\partial x = \partial U/\partial y = 0}$. Likevektene er altså de flate stedene i landskapet. Landskapet har fem: de to toppene og de tre sadelpunktene. De heter <Term name="Lagrangepunkt">Lagrangepunktene</Term>. Sett fra $K$ går et legeme som står i ro i et Lagrangepunkt, i en sirkel om massesenteret med samme omløpstid som de to tunge, og tyngden fra dem er akkurat den sentripetalkraften sirkelbanen trenger.
 
 <Callout title="Lagrangepunktene">
-Lagrangepunktene er de stasjonære punktene til $U$. $L_1$, $L_2$ og $L_3$ ligger på linja gjennom $m_1$ og $m_2$, og $L_4$ og $L_5$ i hjørnene av de to likesidede trekantene med $m_1$ og $m_2$.
+Lagrangepunktene er de flate stedene i $U$, der et lett legeme kan stå i ro i $K'$: tre sadelpunkter, $L_1$, $L_2$ og $L_3$, på linja gjennom massene og to topper, $L_4$ og $L_5$.
 </Callout>
 
-$L_1$, $L_2$ og $L_3$ er sadelpunkter for $U$, med maksimum langs aksen og minimum på tvers, og $L_4$ og $L_5$ er maksimumspunkter. Når $C$ øker, vokser området $U \le C$ og skifter form ved verdien av $U$ i hvert Lagrangepunkt. For $m_2 < m_1$ er $U(L_1) < U(L_2) < U(L_3) < U(L_4)$. Under $U(L_1)$ er det tillatte området delt i tre: rundt $m_1$, rundt $m_2$ og langt ute. Ved $C = U(L_1)$ møtes de to indre delene i $L_1$, og legemet kan gå fra den ene massen til den andre. Ved $U(L_2)$ åpner området seg forbi $m_2$ og ut, ved $U(L_3)$ forbi $m_1$, og over $U(L_4)$ er hele planet tillatt.
+## Tre sadelpunkter på linja
 
-<Simulation
-  src="/sims/lagrangepunkter.js"
-  title="Potensialet og Lagrangepunktene"
-  caption="Nivåkurvene til $U$ i systemet som roterer med $m_1$ og $m_2$, med de fem Lagrangepunktene i oransje og kraftigere kurver gjennom $L_1$, $L_2$ og $L_3$. Det skraverte området er der $U > C$."
-  host="dom"
-  height={380}
+På $x$-aksen peker tyngden fra begge massene og sentrifugalkraften langs aksen. Mellom massene trekker $m_1$ mot venstre og $m_2$ mot høyre, og nær hver masse vinner den nærmeste. Et sted mellom dem er summen av kreftene null, og der ligger $L_1$. Utenfor $m_2$ trekker begge massene innover. Nær $m_2$ vinner trekket fra $m_2$, og langt ute vinner sentrifugalkraften, som vokser med avstanden mens tyngden avtar. Der de er like, ligger $L_2$, og på samme måte ligger $L_3$ utenfor $m_1$ på motsatt side.
+
+Langs aksen buer hvert av de tre leddene i $U$ nedover overalt utenom massene, og da gjør summen det også. Mellom to steder der $U(x, 0)$ går mot $-\infty$, har den derfor nøyaktig ett maksimum, slik snittet i figur 1 viser.
+
+Når $m_2$ er mye lettere enn $m_1$, ligger $L_1$ og $L_2$ nær $m_2$, og avstanden $h$ dit følger av én kraftbalanse. I $m_2$ selv er trekket fra $m_1$ akkurat like stort som sentrifugalkraften, siden $m_2$ står i ro i $K'$. Gå $h$ videre utover. Sentrifugalkraften per masse vokser med $\omega^2 h$, og trekket fra $m_1$, som går som $1/r^2$, avtar med $2Gm_1h/d^3$. Når ${m_2 \ll m_1}$, er ${Gm_1/d^3 \approx GM/d^3 = \omega^2}$, så trekket avtar med omtrent $2\omega^2 h$. Til sammen skyver de legemet utover med $3\omega^2 h$. $m_2$ trekker det tilbake med $Gm_2/h^2$, og $L_2$ ligger der de to er like:
+
+$$
+3\omega^2 h = \frac{Gm_2}{h^2} \allowbreak\quad\Rightarrow\quad h^3 = \frac{Gm_2}{3\omega^2} = \frac{m_2}{3M}\,d^3
+$$
+
+På innsiden av $m_2$ bytter kreftene retning. Trekket fra $m_1$ er sterkere og sentrifugalkraften svakere, så de trekker legemet innover med $3\omega^2 h$, og $m_2$ trekker utover. $L_1$ ligger derfor i den samme avstanden $h$ på innsiden.
+
+<Formula
+  tex="h \approx d\left(\frac{m_2}{3M}\right)^{1/3}"
+  caption="<b>Avstanden fra $m_2$ til $L_1$ og $L_2$</b>, når ${m_2 \ll m_1}$."
 />
 
-<SelfCheck question="Jorda er $81$ ganger tyngre enn månen, og avstanden mellom dem er $384\,400$ km. Hvor langt fra månen ligger $L_1$ og $L_2$ omtrent?">
-$h \approx 384\,400\text{ km}\cdot(1/243)^{1/3} = 61\,500$ km. Den eksakte løsningen av femtegradsligningen gir $58\,000$ km for $L_1$ og $64\,500$ km for $L_2$. Med $h/d = 0{,}16$ er leddene av andre orden i $h/d$ ikke lenger små, og de flytter $L_1$ nærmere månen og $L_2$ lenger ut.
+Tilnærmingen krever $h \ll d$, og kubikkroten gjør $h/d$ liten bare når $m_2/M$ er svært liten. For sola og jorda er ${m_2/M = 3{,}0 \cdot 10^{-6}}$, så ${h/d = 0{,}010}$ og ${h = 1{,}5}$ millioner km. Der ligger James Webb-teleskopet, ved $L_2$, og solobservatoriet SOHO ved $L_1$. Sett fra $K$ trekker jorda teleskopet innover i tillegg til sola, så teleskopet får mer sentripetalkraft enn sola alene gir i den avstanden, og kan gå rundt på ett år.
+
+<Callout title="Sadelpunktene">
+$L_1$ ligger mellom massene, $L_2$ utenfor $m_2$ og $L_3$ utenfor $m_1$, alle på linja gjennom massene. Når ${m_2 \ll m_1}$, ligger $L_1$ og $L_2$ i avstanden ${h \approx d(m_2/3M)^{1/3}}$ på hver side av $m_2$.
+</Callout>
+
+<SelfCheck question="Jorda er 81 ganger tyngre enn månen, og avstanden mellom dem er 384 400 km. Hvor langt fra månen ligger $L_1$ og $L_2$ omtrent, og hvor god er tilnærmingen?">
+Med ${m_2/M = 1/82}$ er ${h \approx 384\,400\ \text{km} \cdot (1/246)^{1/3} = 61\,300}$ km. Da er ${h/d = 0{,}16}$, som ikke er svært lite. Den eksakte løsningen gir $58\,100$ km for $L_1$ og $64\,600$ km for $L_2$, omtrent 5 % fra tilnærmingen. Leddene av andre orden i $h/d$ flytter $L_1$ nærmere månen og $L_2$ lenger ut.
 </SelfCheck>
 
-## Stabiliteten til Lagrangepunktene
+## Toppene L₄ og L₅
 
-I det begrensede trelegemeproblemet har det lette legemet, i systemet som roterer med vinkelfarten $\omega$ til de to tunge, Lagrangefunksjonen
+Utenfor aksen er likevekten lettest å finne fra $K$. Der går legemet i en sirkel om massesenteret med vinkelfarten $\omega$, så tyngden på det må peke mot massesenteret og være $\omega^2$ ganger avstanden dit, per masse. Trekket fra $m_1$ er $Gm_1/r_1^2$ langs linja mot $m_1$, altså $Gm_1/r_1^3$ ganger vektoren fra legemet til $m_1$. Trekket fra $m_2$ er på samme måte $Gm_2/r_2^3$ ganger vektoren til $m_2$. Summen av to slike vektorer peker mot et punkt på linja mellom massene, der vektene $Gm_1/r_1^3$ og $Gm_2/r_2^3$ balanserer, slik massesenteret er punktet der $m_1$ og $m_2$ balanserer. Summen peker derfor mot massesenteret bare når vektene står i forholdet $m_1 : m_2$, og det krever $r_1 = r_2$. På linja gjennom massene peker alle trekkene langs linja, så der må bare størrelsen stemme, og det gir sadelpunktene.
 
-$$
-L = \tfrac12 m\left(\dot x^2 + \dot y^2\right) \allowbreak + m\omega\left(x\dot y - y\dot x\right) \allowbreak - m\,U(x, y)
-$$
+<Figure src="/figures/l4-krefter.svg" alt="En likesidet trekant med stiplede sider merket d. Nede til venstre en stor grå masse m1, nede til høyre en mindre grå masse m2 og et oransje kryss på grunnlinja nær m1. Øverst et grønt legeme ved L4. Fra legemet går en lang grå pil mot m1 og en kort grå pil mot m2, og en oransje pil, summen av de to, peker mot krysset." width={340} height={268} number={2} caption="Trekkene fra $m_1$ og $m_2$ på et legeme i $L_4$ (grå), for $m_1 = 3m_2$. Hvert er $Gm_i/d^3$ ganger vektoren mot massen, så lengdene står i forholdet $3 : 1$. Summen (oransje) peker mot massesenteret (krysset)." />
 
-der $U$ er tyngdepotensialet fra $m_1$ og $m_2$ pluss sentrifugalpotensialet, per masse. Likevektene er Lagrangepunktene, der $\partial U/\partial x = \partial U/\partial y = 0$. Coriolisleddet $m\omega(x\dot y - y\dot x)$ er lineært i farten og passer ikke inn i formen $L \approx \tfrac12 T_{ij}\dot\eta_i\dot\eta_j - \tfrac12 V_{ij}\eta_i\eta_j$, så bevegelsesligningene må lineariseres direkte. Lagranges ligninger gir $\ddot x - 2\omega\dot y = -\partial U/\partial x$ og $\ddot y + 2\omega\dot x = -\partial U/\partial y$. Med $\eta_1$ og $\eta_2$ som utslaget fra et Lagrangepunkt i $x$ og $y$ er $\partial U/\partial x \approx U_{xx}\eta_1 + U_{xy}\eta_2$ og $\partial U/\partial y \approx U_{xy}\eta_1 + U_{yy}\eta_2$, så de lineariserte ligningene er
+Med $r_1 = r_2$ er summen $GM/r_1^3$ ganger vektoren til massesenteret, og sirkelbanen krever $\omega^2$ ganger den samme vektoren, med ${\omega^2 = GM/d^3}$. Altså er ${r_1 = r_2 = d}$. $L_4$ og $L_5$ ligger i hjørnet av hver sin likesidede trekant med $m_1$ og $m_2$, uansett masseforholdet. Sett fra $m_1$ ligger $L_4$ $60°$ foran $m_2$ i banen og $L_5$ $60°$ bak. Det er der trojanerne følger Jupiter.
+
+<Callout title="Toppene">
+$L_4$ og $L_5$ ligger i avstanden $d$ fra begge de tunge legemene, i hjørnene av to likesidede trekanter, for alle masseforhold. Der peker summen av trekkene mot massesenteret.
+</Callout>
+
+<SelfCheck question="To like tunge stjerner går i sirkelbaner om hverandre. Hvor ligger $L_1$, og hvor ligger $L_4$ og $L_5$?">
+$L_1$ ligger midt mellom stjernene. Der trekker de like sterkt hver sin vei, og midtpunktet er massesenteret, der sentrifugalkraften er null. $L_4$ og $L_5$ ligger på midtnormalen, i avstanden $\sqrt3\,d/2$ fra massesenteret på hver side.
+</SelfCheck>
+
+## Stabilitet
+
+I simuleringen under står $m_1$ og $m_2$ i ro i $K'$, og $U$ er tegnet med høydekurver, som på et turkart. Trykk et sted for å slippe et lett legeme i ro der. Det skraverte området er der ${U > C}$, der legemet aldri kan komme.
+
+<Simulation
+  src="/sims/lagrangepunktene.js"
+  title="Et lett legeme nær Lagrangepunktene"
+  caption="Systemet $K'$ som roterer med $m_1$ og $m_2$, med høydekurvene til $U$ og de fem Lagrangepunktene i oransje. Kurvene gjennom $L_1$ og $L_2$ er kraftigere. Det lette legemet slippes i ro, og sporet er banen i $K'$. Det skraverte området er der $U$ er større enn i startpunktet. Ett omløp for $m_1$ og $m_2$ tar 1,6 s. «Uten Corioliskraft» er et tenkt tilfelle der legemet bare følger $-\nabla U$."
+  host="dom"
+  height={330}
+/>
+
+Med ${m_1/m_2 = 1047}$, som for sola og Jupiter, starter legemet i ro $10°$ foran $L_4$. Det går i en sløyfe fram og tilbake langs ryggen, rundt toppen, og blir der. Én sløyfe tar rundt 20 s, eller 13 omløp. Trykk «Slipp ved L₂». Legemet starter like utenfor sadelpunktet og har forlatt det i løpet av ett omløp. Toppene holder altså på legemet, mens sadelpunktene kaster det ut, selv om ei kule på en topp i et vanlig landskap ville trille ned. Velg «Uten Corioliskraft», et tenkt tilfelle der legemet bare følger $-\nabla U$, og trykk «Slipp ved L₄». Legemet glir ned fra ryggen og faller inn mot $m_1$.
+
+Jacobis konstant holder ikke legemet nær toppen. Et legeme som slippes i ro, har $C$ lik $U$ i startpunktet, og nær en topp er $U$ lavere i alle retninger, så legemet kan komme overalt utenfor de små skraverte områdene rundt toppene. Det er Corioliskraften som holder det. Et legeme som begynner å gli ned fra toppen, bøyes mot høyre og går rundt toppen. Lufta rundt et høytrykk gjør det samme. Trykket skyver lufta ut fra høytrykket, slik $-\nabla U$ skyver legemet ut fra toppen, og Corioliskraften fra jordas rotasjon bøyer lufta mot høyre på den nordlige halvkula, så vinden blåser med klokka rundt høytrykket. Sammenligningen sier ikke hvor sterkt Corioliskraften må bøye.
+
+Velg «Med Corioliskraft» igjen og sett ${m_1/m_2 = 20}$. Legemet slippes ved $L_4$ på nytt og forlater toppen etter et par omløp. Med ${m_1/m_2 = 81}$, som for jorda og månen, blir det. For å finne grensen må bevegelsen nær et Lagrangepunkt regnes ut. For små svingninger leste du to matriser ut av Lagrangefunksjonen, én for leddene med to farter og én for leddene med to utslag, og prøvde en cosinus. Coriolisleddet $m\omega(x\dot y - y\dot x)$ har ett utslag og én fart, og i bevegelsesligningene gjør det en cosinus i den ene koordinaten til en sinus i den andre. Lineariser derfor bevegelsesligningene direkte. Med $\eta_1$ og $\eta_2$ som utslagene i $x$ og $y$ fra et Lagrangepunkt er ${\partial U/\partial x \approx U_{xx}\eta_1 + U_{xy}\eta_2}$ og ${\partial U/\partial y \approx U_{xy}\eta_1 + U_{yy}\eta_2}$, der $U_{xx}$, $U_{xy}$ og $U_{yy}$ er de andrederiverte av $U$ i punktet. Da er
 
 $$
 \begin{aligned}
@@ -170,74 +153,98 @@ $$
 \end{aligned}
 $$
 
-der $U_{xx}$, $U_{xy}$ og $U_{yy}$ er de annenderiverte av $U$ i punktet. Leddene med $\dot\eta$ blander cosinus og sinus, så prøv $\eta_1, \eta_2 \propto e^{\lambda t}$. Innsatt blir ligningene
+Prøv ${\eta_i = \mu_i e^{\lambda t}}$, som tar med både cosinus og sinus. Hver tidsderivert blir en faktor $\lambda$:
 
 $$
-\begin{pmatrix} \lambda^2 + U_{xx} & U_{xy} - 2\omega\lambda \\ U_{xy} + 2\omega\lambda & \lambda^2 + U_{yy} \end{pmatrix}\begin{pmatrix} \eta_1 \\ \eta_2 \end{pmatrix} = 0
+\begin{pmatrix} \lambda^2 + U_{xx} & U_{xy} - 2\omega\lambda \\ U_{xy} + 2\omega\lambda & \lambda^2 + U_{yy} \end{pmatrix}\begin{pmatrix} \mu_1 \\ \mu_2 \end{pmatrix} = 0
 $$
 
-og de har en løsning med utslag ulik null bare når determinanten er null:
+Det finnes en løsning med utslag bare når determinanten er null:
 
-$$
-\left(\lambda^2 + U_{xx}\right)\left(\lambda^2 + U_{yy}\right) \allowbreak - U_{xy}^2 + 4\omega^2\lambda^2 = 0
-$$
+<Formula
+  tex="\lambda^4 + \left(U_{xx} + U_{yy} + 4\omega^2\right)\lambda^2 \allowbreak + U_{xx}U_{yy} - U_{xy}^2 = 0"
+  caption="<b>Stabiliteten til et Lagrangepunkt.</b> Punktet er stabilt når begge røttene $\lambda^2$ er reelle og negative."
+/>
 
-Ligningen inneholder bare $\lambda^2$, så røttene kommer i par $\pm\lambda$. Er begge røttene $\lambda^2$ reelle og negative, er $\lambda$ rent imaginær, og utslaget svinger uten å vokse. Ellers har én $\lambda$ i et par positiv realdel, og utslaget vokser. Uten Coriolisleddet $4\omega^2\lambda^2$ er røttene $\lambda^2$ minus egenverdiene til matrisen av annenderiverte, og stabilitet krever et minimum for $U$, som før.
+Ligningen er av andre grad i $\lambda^2$. Er begge røttene $\lambda^2$ reelle og negative, er $\lambda$ imaginær, og utslagene svinger. Ellers har minst én $\lambda$ positiv realdel, og utslaget vokser. Produktet av de to røttene er ${U_{xx}U_{yy} - U_{xy}^2}$, og summen er ${-(U_{xx} + U_{yy} + 4\omega^2)}$.
 
-$U$ er symmetrisk under $y \to -y$, så $U_{xy} = 0$ på $x$-aksen. $L_1$, $L_2$ og $L_3$ ligger på aksen og er sadelpunkter med $U_{xx} < 0 < U_{yy}$, så produktet av de to røttene $\lambda^2$, som er $U_{xx}U_{yy}$, er negativt. Én rot er positiv, og punktene er ustabile for alle masseforhold.
+I et sadelpunkt buer $U$ nedover langs aksen og oppover på tvers, så ${U_{xx} < 0 < U_{yy}}$, og ${U_{xy} = 0}$ fordi $U$ er symmetrisk om aksen. Produktet er negativt, så den ene roten $\lambda^2$ er positiv. Corioliskraften står bare i summen, ikke i produktet, så sadelpunktene er ustabile for alle masseforhold.
 
-$L_4$ og $L_5$ er maksimumspunkter for $U$. Corioliskraften står vinkelrett på farten og gjør ikke arbeid, så $\tfrac12 v^2 + U$ er bevart, og et legeme som slippes i ro, kan nå alle steder der $U$ er mindre enn i startpunktet. Energien holder det altså ikke nær punktet, og uten Corioliskraften ville det gli ned i alle retninger. Når legemet begynner å gli, bøyer Corioliskraften banen av til siden, og er $m_1$ mye større enn $m_2$, går legemet i en sløyfe rundt punktet i stedet. Betingelsen er
+På en topp buer $U$ nedover i alle retninger, og produktet er positivt. Uten leddet $4\omega^2$ ville summen også vært positiv, og begge røttene positive, slik legemet gled ned i simuleringen uten Corioliskraft. Utenfor en masse er ${\nabla^2(1/r) = 0}$, så leddet $-Gm_i/r_i$ i $U$ bidrar til ${U_{xx} + U_{yy}}$ med minus sin andrederiverte på tvers av baneplanet, og det er $-Gm_i/r_i^3$. Sentrifugalleddet bidrar med $-2\omega^2$. I $L_4$ er ${r_1 = r_2 = d}$, så ${U_{xx} + U_{yy} = -GM/d^3 - 2\omega^2 = -3\omega^2}$, og summen av røttene er $-\omega^2$. Corioliskraften har gjort summen negativ, og da er begge røttene negative så sant de er reelle. At de er reelle, krever at kvadratet av summen er større enn fire ganger produktet. Med de andrederiverte i $L_4$ blir kravet
 
 <Formula
   tex="27\,m_1 m_2 < (m_1 + m_2)^2 \allowbreak\quad\Leftrightarrow\quad \frac{m_1}{m_2} > 24{,}96"
   caption="<b>Stabilitetsbetingelsen for $L_4$ og $L_5$.</b> $L_1$, $L_2$ og $L_3$ er ustabile for alle masseforhold."
 />
 
-Med $\alpha = m_2/(m_1 + m_2)$ er betingelsen $\alpha < 0{,}0385$. Betingelsen gjelder de lineariserte ligningene, så den sier at små utslag holder seg små så lenge leddene av høyere orden i $U$ kan sløyfes. Nær $\alpha = 0{,}0135$ og $\alpha = 0{,}024$ står frekvensene til de to svingningene om punktet i forholdet $3:1$ og $2:1$, og der kan leddene av høyere orden likevel føre legemet bort.
-
-<Callout title="Lagrangepunktene">
-$L_1$, $L_2$ og $L_3$ er ustabile for alle masseforhold. $L_4$ og $L_5$ er maksima for $U$, men Corioliskraften gjør dem stabile når $27\,m_1 m_2 < (m_1 + m_2)^2$.
-</Callout>
-
-<Derivation title="Hvorfor L₄ og L₅ er stabile">
-Potensialet er $U = -Gm_1/r_1 - Gm_2/r_2 - \tfrac12\omega^2(x^2 + y^2)$, med $\omega^2 = GM/d^3$, $M = m_1 + m_2$ og $d$ avstanden mellom de tunge legemene. Den annenderiverte av $-1/r$ er $\partial_i\partial_j(-1/r) = (\delta_{ij} - 3n_in_j)/r^3$, med $\vec n = \vec r/r$. I $L_4$ er $r_1 = r_2 = d$, og enhetsvektorene fra $m_1$ og $m_2$ er $\vec n_1 = (\tfrac12, \tfrac{\sqrt3}{2})$ og $\vec n_2 = (-\tfrac12, \tfrac{\sqrt3}{2})$. Leddene med $\delta_{ij}$ gir $GM/d^3 = \omega^2$ og opphever sentrifugalleddet. Med $\alpha = m_2/M$, $Gm_1/d^3 = (1 - \alpha)\omega^2$ og $Gm_2/d^3 = \alpha\omega^2$ står det igjen
+<Derivation title="De andrederiverte i L₄">
+Med $\vec n$ som enhetsvektoren fra en masse til punktet og ${\partial_i = \partial/\partial x_i}$ er de andrederiverte av $1/r$ i planet
 
 $$
-\partial_i\partial_j U = -3(1 - \alpha)\,\omega^2 n_{1i}n_{1j} \allowbreak - 3\alpha\,\omega^2 n_{2i}n_{2j}
+\partial_i\partial_j\,\frac{1}{r} = \frac{3n_in_j - \delta_{ij}}{r^3}
 $$
+
+så tyngden ${-Gm/r}$ gir ${Gm(\delta_{ij} - 3n_in_j)/r^3}$. Summen av de to diagonalleddene er ${Gm(2 - 3)/r^3 = -Gm/r^3}$, fordi ${n_x^2 + n_y^2 = 1}$. Sentrifugalleddet ${-\tfrac12\omega^2(x^2 + y^2)}$ gir $-\omega^2\delta_{ij}$.
+
+I $L_4$ er ${r_1 = r_2 = d}$, så leddene med $\delta_{ij}$ fra tyngden gir ${GM/d^3 = \omega^2}$ og opphever sentrifugalleddet. Med ${Gm_1/d^3 = (1 - \alpha)\,\omega^2}$ og ${Gm_2/d^3 = \alpha\,\omega^2}$ står det igjen
+
+$$
+U_{ij} = -3(1 - \alpha)\,\omega^2 n_{1i}n_{1j} \allowbreak - 3\alpha\,\omega^2 n_{2i}n_{2j}
+$$
+
+Enhetsvektorene fra $m_1$ og $m_2$ til $L_4$ er ${\vec n_1 = (\tfrac12, \tfrac{\sqrt3}{2})}$ og ${\vec n_2 = (-\tfrac12, \tfrac{\sqrt3}{2})}$. Det gir
 
 $$
 U_{xx} = -\tfrac34\omega^2 \allowbreak\qquad U_{yy} = -\tfrac94\omega^2 \allowbreak\qquad U_{xy} = -\tfrac{3\sqrt3}{4}(1 - 2\alpha)\,\omega^2
 $$
 
-Satt inn i determinantligningen $(\lambda^2 + U_{xx})(\lambda^2 + U_{yy}) - U_{xy}^2 + 4\omega^2\lambda^2 = 0$ gir de annenderiverte
+Med ${1 - (1 - 2\alpha)^2 = 4\alpha(1 - \alpha)}$ er produktet av røttene
 
 $$
-\lambda^4 + \omega^2\lambda^2 + \tfrac{27}{4}\,\alpha(1 - \alpha)\,\omega^4 = 0
+U_{xx}U_{yy} - U_{xy}^2 = \tfrac{27}{4}\alpha(1 - \alpha)\,\omega^4
 $$
 
-Røttene er
-
-$$
-\lambda^2 = \tfrac12\omega^2\left(-1 \pm \sqrt{1 - 27\alpha(1 - \alpha)}\right)
-$$
-
-De er reelle og negative når $1 - 27\alpha(1 - \alpha) > 0$, og med $\alpha(1 - \alpha) = m_1m_2/M^2$ er ulikheten $27\,m_1m_2 < (m_1 + m_2)^2$.
+og summen er $-\omega^2$. Kvadratet av summen er større enn fire ganger produktet når ${1 > 27\alpha(1 - \alpha)}$. Med ${\alpha(1 - \alpha) = m_1m_2/M^2}$ er det ${27\,m_1m_2 < M^2}$, og ulikheten gjelder for ${\alpha < 0{,}0385}$, altså ${m_1/m_2 > 24{,}96}$.
 </Derivation>
 
-<Derivation title="Trojanerne hos Jupiter">
-Sola og Jupiter har $m_1/m_2 = 1047$, og over ti tusen asteroider, trojanerne, følger Jupiter rundt sola nær $L_4$ og $L_5$. For så liten $\alpha$ er røttene $\lambda^2 \approx -\omega^2$ og $\lambda^2 \approx -\tfrac{27}{4}\alpha\,\omega^2$. Den langsomme svingningen om punktet har perioden $2\pi/\omega$ delt på $\sqrt{27\alpha/4} = 0{,}080$, for Jupiter $11{,}9$ år$/0{,}080 \approx 150$ år.
+Sola og Jupiter har ${m_1/m_2 = 1047}$, langt over grensen. Pluto og Charon har ${m_1/m_2 \approx 8}$ og ingen stabile Lagrangepunkter. Grensen gjelder små utslag. Et legeme som slippes langt fra toppen, kan forsvinne også når $m_1/m_2$ er større. For en liten $\alpha$ ligger den ene roten nær $-\omega^2$, og den andre er produktet delt på den, ${\lambda^2 \approx -\tfrac{27}{4}\alpha\,\omega^2}$. Den svingningen er den lange sløyfen i simuleringen, med perioden $2\pi/\omega$ delt på $\sqrt{27\alpha/4}$. For Jupiter er ${2\pi/\omega = 11{,}9}$ år og ${\sqrt{27\alpha/4} = 0{,}080}$, så perioden er 150 år, og trojanerne svinger fram og tilbake rundt $L_4$ og $L_5$ med omtrent den perioden.
+
+Ved $L_2$ for sola og jorda gir ligningen ${\lambda \approx 2{,}5\,\omega}$. Med ${\omega = 2\pi}$ per år blir et lite utslag $e$ ganger større på 23 døgn. Teleskopet går i en bane rundt $L_2$ og ikke i selve punktet, men utslag fra den banen vokser omtrent like fort, og det korrigerer banen hver tredje uke.
+
+<Derivation title="Hvor fort L₂ kaster legemet ut">
+Nær $m_2$, med ${m_2 \ll m_1}$, skyver trekket fra $m_1$ og sentrifugalkraften sammen legemet utover med $3\omega^2$ per lengde langs aksen. Det gir $-3\omega^2$ til $U_{xx}$. På tvers av aksen opphever de hverandre: trekket fra $m_1$ gir ${Gm_1/d^3 \approx \omega^2}$ til $U_{yy}$, og sentrifugalleddet $-\omega^2$. Fra $m_2$ gir de andrederiverte av ${-Gm_2/r}$ i avstanden $h$ langs aksen ${-2Gm_2/h^3}$ til $U_{xx}$ og ${Gm_2/h^3}$ til $U_{yy}$, og i $L_2$ er ${Gm_2/h^3 = 3\omega^2}$. Altså er
+
+$$
+U_{xx} = -9\omega^2 \allowbreak\qquad U_{yy} = 3\omega^2 \allowbreak\qquad U_{xy} = 0
+$$
+
+og ligningen for $\lambda$ blir
+
+$$
+\lambda^4 - 2\omega^2\lambda^2 - 27\omega^4 = 0 \allowbreak\quad\Rightarrow\quad \lambda^2 = \left(1 + \sqrt{28}\right)\omega^2 \allowbreak = 6{,}3\,\omega^2
+$$
+
+Den positive roten er ${\lambda = 2{,}5\,\omega}$. Med ${\omega = 2\pi/(365\ \text{døgn})}$ er ${1/\lambda = 23}$ døgn.
 </Derivation>
 
-<Simulation
-  src="/sims/trelegeme.js"
-  title="Et legeme nær L₄"
-  caption="Nivåkurvene til $U$ i systemet som roterer med $m_1$ og $m_2$, de fem Lagrangepunktene og et lett legeme som starter i ro, med sporet sitt. Det skraverte området er der $U$ er større enn i startpunktet."
-  host="dom"
-  height={380}
+<Callout title="Stabiliteten">
+Sadelpunktene $L_1$, $L_2$ og $L_3$ er ustabile for alle masseforhold, fordi produktet av røttene $\lambda^2$ er negativt der, og Corioliskraften ikke endrer det. Toppene $L_4$ og $L_5$ er stabile når ${m_1/m_2 > 24{,}96}$, fordi Corioliskraften bøyer et legeme som glir ned, rundt toppen.
+</Callout>
+
+<Quiz
+  question="To stjerner går i sirkelbaner om hverandre, og den ene er 10 ganger tyngre enn den andre. Hvilke av Lagrangepunktene kan holde på et lett legeme som får et lite dytt?"
+  options={[
+    "$L_4$ og $L_5$, fordi Corioliskraften bøyer legemet rundt toppene",
+    "$L_1$, $L_2$ og $L_3$, fordi $U$ har et minimum på tvers av linja der",
+    "Ingen av dem, fordi masseforholdet er for lite",
+    "Alle fem, fordi Corioliskraften bøyer legemet rundt hvert av dem"
+  ]}
+  answer={2}
+  explanation={"Sadelpunktene er ustabile for alle masseforhold. $U$ har et minimum på tvers av linja der, men et maksimum langs den, så produktet av røttene $\\lambda^2$ er negativt, og Corioliskraften endrer ikke produktet. Toppene holdes av Corioliskraften bare når $m_1/m_2 > 24{,}96$, og her er forholdet 10. Da er røttene $\\lambda^2$ komplekse, og legemet går i stadig større sløyfer til det forlater toppen."}
 />
 
 <KeyTakeaways>
-- I systemet som roterer med $m_1$ og $m_2$, er Jacobis konstant $C = \tfrac12(\dot x^2 + \dot y^2) + U$ bevart, og Lagrangepunktene er de stasjonære punktene til $U$.
-- $L_4$ og $L_5$ er maksima for $U$, men Corioliskraften gjør dem stabile når $27m_1m_2 < (m_1 + m_2)^2$. $L_1$, $L_2$ og $L_3$ er alltid ustabile.
+- I systemet som roterer med de to tunge legemene, står de i ro, og det lette legemet beveger seg i potensialet $U$ med Corioliskraften i tillegg. Jacobis konstant ${C = \tfrac12 v'^2 + U}$ er bevart.
+- Lagrangepunktene er de flate stedene i $U$: tre sadelpunkter på linja gjennom massene og to topper i hjørnene av likesidede trekanter. Når ${m_2 \ll m_1}$, ligger $L_1$ og $L_2$ i avstanden ${h \approx d(m_2/3M)^{1/3}}$ fra $m_2$.
+- Sadelpunktene er ustabile for alle masseforhold. Toppene $L_4$ og $L_5$ er stabile når ${27m_1m_2 < M^2}$, fordi Corioliskraften bøyer et legeme som glir ned, rundt toppen.
 </KeyTakeaways>

@@ -1,9 +1,11 @@
 /**
- * Det begrensede trelegemeproblemet i det roterende systemet K′: m₁ og m₂
- * står i ro på x-aksen, og potensialet U(x, y) = −Gm₁/r₁ − Gm₂/r₂ − ½ω²(x² + y²)
- * er tegnet som nivåkurver, med kurvene gjennom L₁, L₂ og L₃ kraftigere. De
- * fem Lagrangepunktene er oransje. Et lett legeme slippes i ro, enten ved L₄
- * eller der leseren trykker, og følger bevegelsesligningene med Coriolisleddet.
+ * Et lett legeme nær Lagrangepunktene, i systemet K′ som roterer med de to
+ * tunge legemene m₁ og m₂. De står i ro på x-aksen, og potensialet per masse
+ * U(x, y) = −Gm₁/r₁ − Gm₂/r₂ − ½ω²(x² + y²) er tegnet som høydekurver, med
+ * kurvene gjennom skarene L₁, L₂ og L₃ kraftigere. De fem Lagrangepunktene er
+ * oransje. Det lette legemet slippes i ro, ved L₄, ved L₂ eller der leseren
+ * trykker, og følger ẍ − 2ωẏ = −∂U/∂x, ÿ + 2ωẋ = −∂U/∂y. «Uten Corioliskraft»
+ * fjerner leddene med 2ω, et tenkt tilfelle der legemet bare følger −∇U.
  * Det skraverte området er der U er større enn Jacobis konstant C, altså der
  * legemet aldri kan komme; legemet starter på kanten av det.
  *
@@ -11,25 +13,32 @@
  * default-eksportert init(api), api = { stage, controls, getSize, onResize, signal }.
  */
 import {
-  nb, rk4, slider, button, animate, svg, txt, poly, arrow,
-  DERIVED, MOVING, LABEL, HINT,
+  rk4, slider, button, animate, svg, poly, arrow, DERIVED, MOVING, LABEL, HINT,
 } from "./_mekanikk.js";
 
 export default function init({ stage, controls, getSize, onResize, signal }) {
-  const RATE = 2.4; // simulerte tidsenheter per sekund; ett omløp ≈ 2,6 s
-  const START_TURN = 0.35; // startpunktet er L₄ dreid så mye (rad) framover om massesenteret
+  const RATE = 3.9; // simulerte tidsenheter per sekund; ett omløp ≈ 1,6 s
+  const TURN_L4 = (10 * Math.PI) / 180; // «Slipp ved L₄»: L₄ dreid 10° framover om massesenteret
+  const OFF_L2 = 0.002; // «Slipp ved L₂»: så langt utenfor L₂, i enheter av d
+  const TRAIL = 1600; // punkter i sporet, omtrent 27 s
   const HALF_W = 1.45; // synlig område i enheter av d
   const HALF_H = 1.2;
-  const CELL = 3; // rutenettet for nivåkurvene, i piksler
-  let alpha = 0.01; // m₂/M
+  const CELL = 3; // rutenettet for høydekurvene, i piksler
+  // Verdier mellom 25 og 45 og nær 73 er utelatt: der forlater legemet L₄ fra 10° selv om grensen for små
+  // utslag er 24,96 (stort utslag nær grensen, og resonansene 2 : 1 og 3 : 1).
+  const RATIOS = [4, 6, 8, 10, 12, 16, 20, 50, 81, 150, 300, 600, 1047];
+  let ratio = 1047; // m₁/m₂
+  let alpha = 1 / (1 + ratio); // m₂/M
   let pts = lagrangePoints(alpha);
+  let coriolis = true;
   let s = [0, 0, 0, 0]; // [x, y, ẋ, ẏ]
   let C = 0;
   let trail = [];
   let pause = 0; // sekunder legemet står stille etter en kollisjon før det slippes på nytt
   let release = [0, 0];
+  let preset = "L4"; // hvor glidebryteren slipper legemet på nytt
 
-  // Bufret bakgrunn: nivåkurver og skravering avhenger bare av α, C og størrelsen.
+  // Bufret bakgrunn: høydekurver og skravering avhenger bare av α, C og størrelsen.
   let geom = null;
   let grid = null;
   let contourLayer = "";
@@ -47,15 +56,16 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     const r2 = Math.hypot(x - 1 + alpha, y);
     const q1 = (1 - alpha) / (r1 * r1 * r1);
     const q2 = alpha / (r2 * r2 * r2);
+    const k = coriolis ? 2 : 0;
     return [
       vx,
       vy,
-      2 * vy + x - q1 * (x + alpha) - q2 * (x - 1 + alpha),
-      -2 * vx + y - q1 * y - q2 * y,
+      k * vy + x - q1 * (x + alpha) - q2 * (x - 1 + alpha),
+      -k * vx + y - q1 * y - q2 * y,
     ];
   }
 
-  /** De fem stasjonære punktene til U for masseforholdet a. */
+  /** De fem stasjonære punktene til U for masseforholdet a = m₂/M. */
   function lagrangePoints(a) {
     const dU = (x) => {
       const h = 1e-7;
@@ -90,34 +100,67 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     fillLayer = "";
   }
 
-  function releaseNearL4() {
+  function releasePreset() {
+    if (preset === "L2") {
+      releaseAt(pts.L2[0] + OFF_L2, 0);
+      return;
+    }
     const [x0, y0] = pts.L4;
-    const c = Math.cos(START_TURN);
-    const sn = Math.sin(START_TURN);
+    const c = Math.cos(TURN_L4);
+    const sn = Math.sin(TURN_L4);
     releaseAt(x0 * c - y0 * sn, x0 * sn + y0 * c);
   }
-  releaseNearL4();
+  releasePreset();
 
-  function setAlpha(a) {
-    alpha = a;
-    pts = lagrangePoints(a);
+  function setRatio(r) {
+    ratio = r;
+    alpha = 1 / (1 + r);
+    pts = lagrangePoints(alpha);
     grid = null;
-    releaseNearL4();
+    releasePreset();
+  }
+
+  function toggle(text, aria, pressed, onClick) {
+    const b = button(text, aria, onClick, signal);
+    b.setAttribute("aria-pressed", String(pressed));
+    return b;
+  }
+  const withBtn = toggle("Med Corioliskraft", "Legemet følger bevegelsesligningene med Corioliskraften", true, () => setCoriolis(true));
+  const withoutBtn = toggle(
+    "Uten Corioliskraft",
+    "Tenkt tilfelle: legemet følger bare minus gradienten til U, uten Corioliskraften",
+    false,
+    () => setCoriolis(false),
+  );
+  function setCoriolis(on) {
+    coriolis = on;
+    withBtn.setAttribute("aria-pressed", String(on));
+    withoutBtn.setAttribute("aria-pressed", String(!on));
+    releaseAt(release[0], release[1]);
   }
 
   controls.append(
     slider({
-      text: "Masseforhold m₂/M",
-      aria: "Massen til det lettere av de to tunge legemene, som andel av totalmassen",
-      min: 0.002,
-      max: 0.08,
-      step: 0.002,
-      value: alpha,
-      format: (v) => nb(v, 3),
+      text: "m₁/m₂",
+      aria: "Masseforholdet mellom det tyngste og det lettere av de to tunge legemene",
+      min: 0,
+      max: RATIOS.length - 1,
+      step: 1,
+      value: RATIOS.indexOf(ratio),
+      format: (i) => String(RATIOS[i]),
       signal,
-      onInput: setAlpha,
+      onInput: (i) => setRatio(RATIOS[i]),
     }),
-    button("Slipp ved L₄", "Slipp legemet i ro like foran L₄", releaseNearL4, signal),
+    button("Slipp ved L₄", "Slipp legemet i ro 10 grader foran L₄", () => {
+      preset = "L4";
+      releasePreset();
+    }, signal),
+    button("Slipp ved L₂", "Slipp legemet i ro like utenfor L₂", () => {
+      preset = "L2";
+      releasePreset();
+    }, signal),
+    withBtn,
+    withoutBtn,
   );
 
   function step(dt) {
@@ -135,17 +178,21 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
       const h = Math.min(left, 0.004, 0.03 * Math.pow(rm, 1.5));
       s = rk4(s, f, 0, h);
       left -= h;
-      if (r1 < 0.05 || r2 < 0.02) {
+      if (r1 < 0.05 || r2 < 0.015) {
         pause = 1.2;
         return;
       }
     }
-    if (Math.hypot(s[0], s[1]) > 2.4) {
+    // Legemet slippes på nytt når det har forlatt det synlige området.
+    const px = geom ? geom.ox + s[0] * geom.sc : 0;
+    const py = geom ? geom.oy - s[1] * geom.sc : 0;
+    const out = geom && (px < -15 || px > geom.w + 15 || py < -15 || py > geom.h + 15);
+    if (out || Math.hypot(s[0], s[1]) > 2.4) {
       pause = 0.6;
       return;
     }
     trail.push([s[0], s[1]]);
-    if (trail.length > 1100) trail.splice(0, trail.length - 1100);
+    if (trail.length > TRAIL) trail.splice(0, trail.length - TRAIL);
   }
 
   /** Verdiene av U i nodene til et rutenett over scenen. */
@@ -163,7 +210,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     return { nx, ny, v };
   }
 
-  /** Nivåkurven U = c som stidata, med marsjerende kvadrater. */
+  /** Høydekurven U = c som stidata, med marsjerende kvadrater. */
   function contour(c) {
     const { nx, ny, v } = grid;
     let d = "";
@@ -214,12 +261,16 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     const U2 = U(...pts.L2);
     const U3 = U(...pts.L3);
     const U4 = U(...pts.L4);
-    const thin = [U1 - 1, U1 - 0.45, U1 - 0.18, U3 + 0.5 * (U4 - U3), U4 - 0.12 * (U4 - U3)];
+    // Brønnene rundt massene, skrenten utenfor og to kurver rundt toppene L₄ og L₅. Kurvene rundt toppene
+    // brytes opp i prikker når ryggen er nesten flat, og tegnes bare når den heller.
+    const tops = U4 - U3 > 0.025 ? [U3 + 0.5 * (U4 - U3), U4 - 0.15 * (U4 - U3)] : [];
+    const thin = [U1 - 1, U1 - 0.45, U1 - 0.18, U3 - 0.35, U3 - 0.8, ...tops];
     let g = "";
     for (const c of thin) {
       g += `<path d="${contour(c)}" fill="none" stroke="${HINT}" stroke-width="1"/>`;
     }
-    for (const c of [U1, U2, U3]) {
+    // Kurven gjennom L₃ følger nesten hele ryggen når m₂ er liten og brytes opp i prikker, så bare L₁ og L₂ får kurver.
+    for (const c of [U1, U2]) {
       g += `<path d="${contour(c)}" fill="none" stroke="${LABEL}" stroke-width="1.1" opacity="0.75"/>`;
     }
     contourLayer = g;
@@ -276,33 +327,34 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
 
     let g = fillLayer + contourLayer;
 
-    // Rotasjonen: en bue med pil om massesenteret, mot klokka.
-    const rr = 0.3 * sc;
-    const a0 = 1.75;
-    const a1 = 2.95;
-    const at = (a) => [X(0.3 * Math.cos(a)), Y(0.3 * Math.sin(a))];
+    // Rotasjonen til K′: en bue med pil om massesenteret, mot klokka.
+    const RA = 0.42; // radien til buen, så pilen går klar av m₁ også når m₂ er stor
+    const rr = RA * sc;
+    const a0 = 1.5;
+    const a1 = 2.5;
+    const at = (a) => [X(RA * Math.cos(a)), Y(RA * Math.sin(a))];
     const [bx0, by0] = at(a0);
     const [bx1, by1] = at(a1);
     g += `<path d="M ${bx0.toFixed(1)} ${by0.toFixed(1)} A ${rr.toFixed(1)} ${rr.toFixed(1)} 0 0 0 ${bx1.toFixed(1)} ${by1.toFixed(1)}" fill="none" stroke="${LABEL}" stroke-width="1.1"/>`;
     const [hx, hy] = at(a1 - 0.2);
     g += arrow(hx, hy, bx1, by1, LABEL, 1.1);
-    const [lx, ly] = at(2.35);
-    g += txt(lx - 8, ly - 6, "ω", { anchor: "end" });
+    const [lx, ly] = at(2.0);
+    g += `<text x="${(lx - 8).toFixed(1)}" y="${(ly - 6).toFixed(1)}" text-anchor="end" style="fill:${LABEL};font-family:var(--font-mono);font-size:12px">ω</text>`;
 
-    // Sporet og legemet.
+    // Sporet.
     g += poly(trail.map((p) => [X(p[0]), Y(p[1])]), `stroke="${MOVING}" stroke-width="1.4" opacity="0.6"`);
 
     // m₁ og m₂, i ro i K′.
     const R1 = 9;
-    const R2 = Math.max(3.5, R1 * Math.cbrt(alpha / (1 - alpha)) * 1.6);
+    const R2 = Math.max(3.5, Math.min(7, R1 * Math.cbrt(alpha / (1 - alpha)) * 1.6));
     g += `<circle cx="${X(-alpha).toFixed(1)}" cy="${Y(0).toFixed(1)}" r="${R1}" style="fill:var(--fg)"/>`;
     g += `<circle cx="${X(1 - alpha).toFixed(1)}" cy="${Y(0).toFixed(1)}" r="${R2.toFixed(1)}" style="fill:var(--fg)"/>`;
     g += sub(X(-alpha), Y(0) + R1 + 15, "m", "1");
-    g += sub(X(1 - alpha), Y(0) + 18, "m", "2");
+    g += sub(X(1 - alpha), Y(0) + R2 + 15, "m", "2");
 
-    // Lagrangepunktene.
+    // Lagrangepunktene. L₁ og L₂ får etiketter over og ut til sidene, så de ikke treffer m₂.
     const lab = {
-      L1: [-2, -9, "end"],
+      L1: [-3, -9, "end"],
       L2: [3, -9, "start"],
       L3: [-3, -9, "end"],
       L4: [0, -10, "middle"],
@@ -312,7 +364,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
       const [x, y] = pts[k];
       const px = X(x);
       const py = Y(y);
-      g += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="3.5" style="fill:${DERIVED}"/>`;
+      g += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="3" style="fill:${DERIVED}"/>`;
       const [dx, dy, an] = lab[k];
       g += sub(px + dx, py + dy, "L", k[1], { fill: DERIVED, anchor: an });
     }
@@ -333,7 +385,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
       const ky = geom.h / rect.height;
       const x = ((e.clientX - rect.left) * kx - geom.ox) / geom.sc;
       const y = (geom.oy - (e.clientY - rect.top) * ky) / geom.sc;
-      if (Math.hypot(x + alpha, y) < 0.08 || Math.hypot(x - 1 + alpha, y) < 0.04) return;
+      if (Math.hypot(x + alpha, y) < 0.08 || Math.hypot(x - 1 + alpha, y) < 0.03) return;
       releaseAt(x, y);
     },
     { signal },
