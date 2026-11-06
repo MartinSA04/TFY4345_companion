@@ -4,13 +4,13 @@ title: "Eulers ligninger og snurrebassen"
 summary: "Eulers ligninger er bevegelsesligningene for rotasjonen, skrevet langs legemets hovedakser. De gir presesjonen til en fri symmetrisk snurrebass og viser hvorfor rotasjon om aksen med det midterste treghetsmomentet er ustabil. Eulervinklene gjør orienteringen til generaliserte koordinater, og med dem gir Lagrangefunksjonen presesjonen og nutasjonen til en tung snurrebass."
 importance: core
 tag: "Uke 42"
-updated: 2026-10-10
+updated: 2026-11-06
 ---
 
 <LearningGoals>
 - Utlede Eulers ligninger fra $\dot{\vec L} = \vec N$ og bruke dem på en fri symmetrisk snurrebass.
 - Vise at rotasjon om hovedaksen med det største eller det minste treghetsmomentet er stabil, og at rotasjon om den midterste er ustabil.
-- Forklare hvorfor en rotasjon er en ortogonal matrise med determinant $+1$, og beskrive orienteringen med Eulervinklene.
+- Beskrive orienteringen til et stivt legeme med Eulervinklene.
 - Skrive $\vec\omega$ og den kinetiske energien ved Eulervinklene.
 - Sette opp Lagrangefunksjonen for en tung symmetrisk snurrebass, finne de bevarte størrelsene og forklare presesjon og nutasjon.
 - Finne farten for jevn presesjon og betingelsen for at en snurrebass står stabilt rett opp.
@@ -134,30 +134,7 @@ True (T) or false (F). Please explain your choice as half of the points depends 
 
 ## Rotasjoner og Eulervinklene
 
-Eulers ligninger gir $\vec\omega$, men ikke orienteringen til legemet, og dreiemomentet på en tung snurrebass avhenger av orienteringen. For å sette opp Lagranges ligninger trenger du generaliserte koordinater for orienteringen til legemet, altså for hvor aksene $\hat e_a'$ peker i forhold til rommets akser $\hat e_a$ i $K$. Tallene $R_{ab} = \hat e_a' \cdot \hat e_b$ danner <Term name="rotasjonsmatrise">rotasjonsmatrisen</Term> $\boldsymbol R$ med $\hat e_a' = \sum_b R_{ab}\,\hat e_b$. Da er $\hat e_a' \cdot \hat e_b' = \sum_c R_{ac}R_{bc}$, og kravet $\hat e_a' \cdot \hat e_b' = \delta_{ab}$ sier at matrisen er ortogonal, $\boldsymbol R\boldsymbol R^{\mathsf T} = \boldsymbol 1$. Produktet $\boldsymbol R\boldsymbol R^{\mathsf T}$ er symmetrisk, så kravet gir seks betingelser på ni elementer, og tre tall er igjen.
-
-Determinanten er $\pm 1$, fordi $(\det\boldsymbol R)^2 = \det(\boldsymbol R\boldsymbol R^{\mathsf T}) = 1$. Matrisen $-\boldsymbol 1$ har determinant $-1$ og gjør et høyrehåndssystem til et venstrehåndssystem. Et legeme som dreies, starter i $\boldsymbol 1$ og endrer seg kontinuerlig, så determinanten kan ikke hoppe til $-1$. En rotasjon har derfor $\det\boldsymbol R = +1$.
-
-<Callout title="Rotasjoner">
-En rotasjon er en ortogonal matrise med $\det\boldsymbol R = +1$. Et legeme som dreies kontinuerlig fra $\boldsymbol 1$, kan ikke få determinanten til å hoppe til $-1$.
-</Callout>
-
-Komponentene av en vektor langs de to settene akser henger sammen ved $v_a' = \sum_b R_{ab}v_b$. Sett $\vec L = \boldsymbol I\vec\omega$ inn i $\vec L\,' = \boldsymbol R\vec L$, og skriv $\vec\omega = \boldsymbol R^{\mathsf T}\vec\omega\,'$, som følger av $\vec\omega\,' = \boldsymbol R\vec\omega$ og $\boldsymbol R^{\mathsf T}\boldsymbol R = \boldsymbol 1$. Da er $\vec L\,' = \boldsymbol R\boldsymbol I\boldsymbol R^{\mathsf T}\vec\omega\,'$, så treghetstensoren langs de nye aksene er $\boldsymbol I' = \boldsymbol R\boldsymbol I\boldsymbol R^{\mathsf T}$. En tensor er en størrelse med komponenter som skifter akser på denne måten, med én $\boldsymbol R$ for hver indeks.
-
-<Example label="Eksamensoppgave" title="Rotasjoner som ortogonale transformasjoner">
-<ExamRef id="2022-des" task="1 i" />
-
-True (T) or false (F). Please explain your choice as half of the points depends on it:
-
-<Quiz
-  question={"i. Only a certain class of orthogonal transformations can be used for describing rotations of rigid bodies."}
-  options={["T", "F"]}
-  answer={0}
-  explanation={"Sant. Bare de ortogonale matrisene med $\\det\\boldsymbol R = +1$ er rotasjoner. De med $\\det\\boldsymbol R = -1$ inneholder en speiling, og et legeme som dreies kontinuerlig fra $\\boldsymbol 1$, kan aldri nå dem."}
-/>
-</Example>
-
-Ortogonaliteten binder seks av de ni elementene i $\boldsymbol R$, så orienteringen er gitt ved tre tall. De velges som regel som <Term name="eulervinkler">Eulervinklene</Term>. <Term name="knutelinje">Knutelinja</Term> $\hat e_N$ er skjæringslinja mellom rommets $\hat e_1\hat e_2$-plan og legemets $\hat e_1'\hat e_2'$-plan. For ei skive med symmetriaksen $\hat e_3'$ sier $\theta$ hvor mye aksen heller fra $\hat e_3$, $\phi$ hvilken retning den heller i, og $\psi$ hvor langt skiva har dreid om sin egen akse, målt fra knutelinja. Vinklene er tre dreininger etter hverandre. Start med legemets akser langs rommets:
+Eulers ligninger gir $\vec\omega$, men ikke orienteringen til legemet, og dreiemomentet på en tung snurrebass avhenger av orienteringen. For å sette opp Lagranges ligninger trenger du generaliserte koordinater for orienteringen til legemet, altså for hvor aksene $\hat e_a'$ peker i forhold til rommets akser $\hat e_a$ i $K$. Komponentene deres er radene i <Term name="rotasjonsmatrise">rotasjonsmatrisen</Term> ${R_{ab} = \hat e_a' \cdot \hat e_b}$. Aksene har lengde 1 og står vinkelrett på hverandre, så $\boldsymbol R$ er ortogonal, og ortogonaliteten binder seks av de ni elementene. Orienteringen er altså gitt ved tre tall. De velges som regel som <Term name="eulervinkler">Eulervinklene</Term>. <Term name="knutelinje">Knutelinja</Term> $\hat e_N$ er skjæringslinja mellom rommets $\hat e_1\hat e_2$-plan og legemets $\hat e_1'\hat e_2'$-plan. For ei skive med symmetriaksen $\hat e_3'$ sier $\theta$ hvor mye aksen heller fra $\hat e_3$, $\phi$ hvilken retning den heller i, og $\psi$ hvor langt skiva har dreid om sin egen akse, målt fra knutelinja. Vinklene er tre dreininger etter hverandre. Start med legemets akser langs rommets:
 
 1. Drei vinkelen $\phi$ om $\hat e_3$. Da havner legemets første akse, som startet langs $\hat e_1$, langs knutelinja $\hat e_N$.
 2. Drei vinkelen $\theta$ om knutelinja. Da vipper legemets tredje akse fra $\hat e_3$ over til $\hat e_3'$, og $\theta$ er vinkelen mellom $\hat e_3$ og $\hat e_3'$.
@@ -393,7 +370,7 @@ som er 12,9 omdreininger per sekund.
 - Eulers ligninger er $\dot{\vec L} = \vec N$ skrevet langs hovedaksene. Uten dreiemoment er $T$ og $|\vec L|$ bevart.
 - For en fri symmetrisk snurrebass er $\omega_3$ konstant, og sett fra rommet presesserer symmetriaksen om den faste $\vec L$ med vinkelfarten $|\vec L|/I_1$.
 - Rotasjon om hovedaksen med størst eller minst treghetsmoment er stabil. Om den midterste vokser små avvik som $e^{\lambda t}$, og legemet snur seg.
-- En rotasjon er en ortogonal matrise med $\det\boldsymbol R = +1$. Eulervinklene $\phi$, $\theta$ og $\psi$ er dreininger om $\hat e_3$, knutelinja og $\hat e_3'$.
+- Eulervinklene $\phi$, $\theta$ og $\psi$ er dreininger om $\hat e_3$, knutelinja og $\hat e_3'$.
 - For den tunge snurrebassen er $\phi$ og $\psi$ sykliske, så $p_\psi = I_3\omega_3$, $p_\phi$ og energien er bevart, og $\theta$ beveger seg i $V_\text{eff}(\theta)$. Svingningen i $\theta$ er nutasjon, og banen til symmetriaksen får bølger, løkker eller spisser.
 - Den langsomme jevne presesjonen er $\dot\phi \approx Mgl/I_3\omega_3$ når snurrebassen spinner fort. En snurrebass står stabilt rett opp når $I_3^2\omega_3^2 > 4I_1Mgl$.
 </KeyTakeaways>

@@ -463,10 +463,10 @@ formulas:
     tex: "\\omega \\approx \\omega_0 + \\frac{3\\lambda A^2}{8\\omega_0}"
     label: "Frekvensen til $\\ddot x = -\\omega_0^2 x - \\lambda x^3$ med amplitude $A$, til første orden i $\\varepsilon = \\lambda A^2/\\omega_0^2$. For pendelen er $\\lambda = -\\omega_0^2/6$ og $\\omega = \\omega_0(1 - \\theta_0^2/16)$."
 
-  - id: stivt-legeme-hastighet
+  - id: dreiemoment-aksel
     section: Stive legemer
-    tex: "\\dot{\\vec r}_i = \\dot{\\vec R} + \\vec\\omega \\times \\left(\\vec r_i - \\vec R\\right) \\allowbreak\\qquad \\dot{\\hat e}_a' = \\vec\\omega \\times \\hat e_a'"
-    label: "Hastigheten til punkt $i$ i et stivt legeme med massesenteret $\\vec R$. Enhetsvektorene $\\hat e_a'$ sitter fast i legemet, og $\\vec\\omega$ er den samme uansett hvilket punkt i legemet som brukes som origo."
+    tex: "\\vec N = \\vec\\omega \\times \\vec L \\allowbreak\\qquad N = m\\,d\\,w\\,\\omega^2"
+    label: "Dreiemomentet lagrene må gi et legeme som roterer med fast $\\vec\\omega$ om en aksel, når $\\vec L$ ikke ligger langs akselen. For to like lodd $m$ rett overfor hverandre i avstanden $d$ fra akselen, i to plan med avstanden $w$ mellom seg, er ${N = mdw\\omega^2}$."
   - id: treghetstensor
     section: Stive legemer
     tex: "I_{ab} = \\sum_i m_i\\left(r_i^2\\,\\delta_{ab} - x_{ia}\\,x_{ib}\\right) \\allowbreak\\qquad I_{ab} = \\int \\rho\\left(r^2\\,\\delta_{ab} - x_a x_b\\right)dV"
@@ -483,6 +483,14 @@ formulas:
     section: Stive legemer
     tex: "I_{ab} = I^{\\text{cm}}_{ab} + M\\left(R^2\\,\\delta_{ab} - R_aR_b\\right) \\allowbreak\\qquad I = I_\\text{cm} + Mh^2"
     label: "<b>Parallellakseteoremet.</b> $\\vec R$ er massesenteret målt fra det nye punktet, og $h$ er avstanden mellom to parallelle akser der den ene går gjennom massesenteret."
+  - id: rotasjonsmatrise
+    section: Stive legemer
+    tex: "R_{ab} = \\hat e_a' \\cdot \\hat e_b \\allowbreak\\qquad \\boldsymbol R\\boldsymbol R^{\\mathsf T} = \\boldsymbol 1 \\allowbreak\\qquad \\det\\boldsymbol R = +1"
+    label: "Rotasjonsmatrisen mellom rommets akser $\\hat e_a$ og legemets akser $\\hat e_a'$. Den er ortogonal med determinant $+1$, og orienteringen er gitt ved tre tall. Med $\\boldsymbol I$ langs legemets akser er treghetstensoren langs rommets akser ${\\boldsymbol R^{\\mathsf T}\\boldsymbol I\\boldsymbol R}$."
+  - id: stivt-legeme-hastighet
+    section: Stive legemer
+    tex: "\\dot{\\vec r}_i = \\dot{\\vec R} + \\vec\\omega \\times \\vec y_i \\allowbreak\\qquad \\dot{\\hat e}_a' = \\vec\\omega \\times \\hat e_a'"
+    label: "Hastigheten til masse $i$ i et stivt legeme, med $\\vec y_i = \\vec r_i - \\vec R$ målt fra massesenteret. Enhetsvektorene $\\hat e_a'$ sitter fast i legemet, og $\\vec\\omega$ er den samme uansett hvilket punkt i legemet du måler fra. Står et punkt $O$ fast, er ${\\dot{\\vec r}_i = \\vec\\omega \\times \\vec r_i}$ med $\\vec r_i$ målt fra $O$."
   - id: kinetisk-stivt
     section: Stive legemer
     tex: "T = \\tfrac12 M\\dot{\\vec R}^2 + \\tfrac12\\,\\vec\\omega \\cdot \\boldsymbol I^{\\text{cm}}\\vec\\omega"
@@ -494,7 +502,7 @@ formulas:
   - id: rulling
     section: Stive legemer
     tex: "\\dot{\\vec R} + \\vec\\omega \\times \\left(\\vec r_A - \\vec R\\right) = 0 \\allowbreak\\qquad \\dot s = R\\dot\\theta"
-    label: "Rulling uten glidning: kontaktpunktet $A$ står i ro. For et hjul med radius $R$ som ruller langs ei linje, er føringen holonom, $s = R\\theta + \\text{konstant}$, og friksjonen gjør ikke arbeid."
+    label: "Rulling uten glidning: kontaktpunktet $A$ står i ro. For et hjul med radius $R$ som ruller langs ei linje, er føringen holonom, $s = R\\theta + \\text{konstant}$. Friksjonskreftene på legemet og underlaget gjør til sammen ikke arbeid."
   - id: eulers-ligninger
     section: Eulers ligninger og snurrebassen
     tex: "\\begin{aligned} I_1\\dot\\omega_1 + (I_3 - I_2)\\,\\omega_2\\omega_3 &= N_1 \\\\ I_2\\dot\\omega_2 + (I_1 - I_3)\\,\\omega_3\\omega_1 &= N_2 \\\\ I_3\\dot\\omega_3 + (I_2 - I_1)\\,\\omega_1\\omega_2 &= N_3 \\end{aligned}"
@@ -507,10 +515,6 @@ formulas:
     section: Eulers ligninger og snurrebassen
     tex: "\\lambda^2 = \\frac{(I_3 - I_1)(I_1 - I_2)}{I_2 I_3}\\,\\omega_1^2"
     label: "Små avvik fra rotasjon om hovedakse 1 går som $e^{\\lambda t}$. Rotasjonen er stabil når $I_1$ er det største eller det minste hovedtreghetsmomentet, og ustabil når det er det midterste."
-  - id: rotasjonsmatrise
-    section: Eulers ligninger og snurrebassen
-    tex: "\\hat e_a' = \\sum_b R_{ab}\\,\\hat e_b \\allowbreak\\qquad \\boldsymbol R\\boldsymbol R^{\\mathsf T} = \\boldsymbol 1 \\allowbreak\\qquad \\det\\boldsymbol R = +1"
-    label: "Rotasjonsmatrisen mellom rommets akser $\\hat e_a$ og legemets akser $\\hat e_a'$ er ortogonal med determinant $+1$. Treghetstensoren skifter akser som ${\\boldsymbol I' = \\boldsymbol R\\boldsymbol I\\boldsymbol R^{\\mathsf T}}$."
   - id: eulervinkler-omega
     section: Eulers ligninger og snurrebassen
     tex: "\\begin{aligned} \\omega_1 &= \\dot\\phi\\sin\\theta\\sin\\psi + \\dot\\theta\\cos\\psi \\\\ \\omega_2 &= \\dot\\phi\\sin\\theta\\cos\\psi - \\dot\\theta\\sin\\psi \\\\ \\omega_3 &= \\dot\\psi + \\dot\\phi\\cos\\theta \\end{aligned}"
@@ -650,7 +654,7 @@ symbols:
   # ── Roterende referansesystemer ──
   - { tex: "\\vec\\omega", meaning: "Vinkelhastigheten til et roterende system eller et stivt legeme", unit: "s⁻¹", section: "Roterende referansesystemer", term: "Vinkelhastighet", formula: rotasjon-tidsderivert, note: "For jorda er $\\omega = 7{,}29 \\cdot 10^{-5}$ s⁻¹. Perla på roterende ring i «Kjente systemer» bruker $\\omega$ for ringens vinkelfart, som modulen om små svingninger kaller $\\Omega$." }
   - { tex: "\\vec v\\,',\\ \\vec a\\,'", meaning: "Hastighet og akselerasjon målt i det roterende systemet $K'$", unit: "m/s, m/s²", section: "Roterende referansesystemer", formula: akselerasjon-roterende }
-  - { tex: "\\vec d", meaning: "Komponenten av $\\vec r$ vinkelrett på rotasjonsaksen", unit: "m", section: "Roterende referansesystemer", formula: sentrifugalkraft, note: "Ellers er $d$ avstanden mellom $m_1$ og $m_2$ i trelegemeproblemet." }
+  - { tex: "\\vec d", meaning: "Komponenten av $\\vec r$ vinkelrett på rotasjonsaksen", unit: "m", section: "Roterende referansesystemer", formula: sentrifugalkraft, note: "For hjulet med lodd er $d$ avstanden fra akselen til loddene og $w$ avstanden mellom planene de sitter i. Ellers er $d$ avstanden mellom $m_1$ og $m_2$ i trelegemeproblemet." }
   - { tex: "V_\\text{s}", meaning: "Sentrifugalpotensialet, $-\\tfrac12 m\\omega^2 d^2$", unit: "J", section: "Roterende referansesystemer", term: "Sentrifugalkraft", formula: sentrifugalkraft, note: "Inngår i $U$ i trelegemeproblemet og i $H$ for et roterende system." }
   - { tex: "\\vec F_\\text{s},\\ \\vec F_\\text{C}", meaning: "Sentrifugalkraften og Corioliskraften", unit: "N", section: "Roterende referansesystemer", term: "Corioliskraft", formula: corioliskraft }
   # ── To- og trelegemeproblemet ──
@@ -688,9 +692,9 @@ symbols:
   - { tex: "I_1,\\ I_2,\\ I_3", meaning: "Hovedtreghetsmomentene, egenverdiene til $\\boldsymbol I$", unit: "kg·m²", section: "Stive legemer", term: "Hovedtreghetsmoment", formula: hovedakser }
   - { tex: "I_{\\hat n},\\ I", meaning: "Treghetsmomentet om en akse, $\\sum_i m_i d_i^2$", unit: "kg·m²", section: "Stive legemer", term: "Treghetsmoment", formula: dreieimpuls-stivt, note: "$I_\\text{cm}$ er treghetsmomentet om en akse gjennom massesenteret og $I_O$ om en fast akse gjennom $O$." }
   - { tex: "D", meaning: "Avstanden fra aksen til massesenteret for en fysisk pendel", unit: "m", section: "Stive legemer", term: "Fysisk pendel", formula: fysisk-pendel }
+  - { tex: "\\boldsymbol R", meaning: "Rotasjonsmatrisen, $R_{ab} = \\hat e_a' \\cdot \\hat e_b$", section: "Stive legemer", term: "Rotasjonsmatrise", formula: rotasjonsmatrise, note: "Ikke massesenteret $\\vec R$ eller en radius $R$." }
   # ── Eulers ligninger og snurrebassen ──
   - { tex: "\\hat e_a,\\ \\hat e_N", meaning: "Rommets akser i $K$, og knutelinja", section: "Eulers ligninger og snurrebassen", term: "Knutelinje", formula: rotasjonsmatrise, note: "Legemets akser er $\\hat e_a'$. For en tung snurrebass peker $\\hat e_3$ loddrett opp." }
-  - { tex: "\\boldsymbol R", meaning: "Rotasjonsmatrisen, $R_{ab} = \\hat e_a' \\cdot \\hat e_b$", section: "Eulers ligninger og snurrebassen", term: "Rotasjonsmatrise", formula: rotasjonsmatrise, note: "Ikke massesenteret $\\vec R$ eller en radius $R$." }
   - { tex: "\\phi,\\ \\theta,\\ \\psi", meaning: "Eulervinklene, dreiningene om $\\hat e_3$, om knutelinja og om $\\hat e_3'$", unit: "rad", section: "Eulers ligninger og snurrebassen", term: "Eulervinkler", formula: eulervinkler-omega, note: "For en tung snurrebass er $\\theta$ vinkelen mellom loddlinja og symmetriaksen, $\\phi$ presesjonsvinkelen og $\\psi$ dreiningen om symmetriaksen, målt fra knutelinja. Spinnet er $\\omega_3 = \\dot\\psi + \\dot\\phi\\cos\\theta$, ikke $\\dot\\psi$. Eksamensoppgavene skriver $\\varphi$." }
   - { tex: "\\omega_3", meaning: "Spinnet, komponenten av $\\vec\\omega$ langs symmetriaksen", unit: "rad/s", section: "Eulers ligninger og snurrebassen", formula: snurrebass-impulser, note: "$\\omega_3 = \\dot\\psi + \\dot\\phi\\cos\\theta$ er konstant for både den frie og den tunge symmetriske snurrebassen." }
   - { tex: "\\Omega", meaning: "Vinkelfrekvensen $\\vec\\omega$ roterer med om symmetriaksen sett fra en fri symmetrisk snurrebass, $(I_3 - I_1)\\,\\omega_3/I_1$", unit: "rad/s", section: "Eulers ligninger og snurrebassen", term: "Symmetrisk snurrebass", formula: fri-symmetrisk-snurrebass, note: "For jorda er $\\Omega \\approx \\omega_3/300$. Sett fra rommet presesserer symmetriaksen med $|\\vec L|/I_1$. De to henger sammen ved $\\vec\\omega = \\vec L/I_1 - \\Omega\\,\\hat e_3'$." }
@@ -886,7 +890,10 @@ glossary:
 
   - term: Stivt legeme
     section: Stive legemer
-    definition: "System av partikler der alle avstandene mellom partiklene er faste. Det har seks frihetsgrader, tre for et punkt i legemet og tre for orienteringen."
+    definition: "System av masser der alle avstandene mellom massene er faste. Det har seks frihetsgrader, tre for massesenteret og tre for orienteringen."
+  - term: Rotasjonsmatrise
+    section: Stive legemer
+    definition: "Matrisen $R_{ab} = \\hat e_a' \\cdot \\hat e_b$ mellom to sett akser. Den er ortogonal, $\\boldsymbol R\\boldsymbol R^{\\mathsf T} = \\boldsymbol 1$, og har determinant $+1$. En ortogonal matrise med determinant $-1$ inneholder en speiling."
   - term: Treghetstensor
     section: Stive legemer
     definition: "Den symmetriske matrisen $I_{ab} = \\sum_i m_i(r_i^2\\delta_{ab} - x_{ia}x_{ib})$ om et punkt i legemet. Den gir dreieimpulsen $\\vec L = \\boldsymbol I\\vec\\omega$ og den kinetiske energien $\\tfrac12\\vec\\omega \\cdot \\boldsymbol I\\vec\\omega$."
@@ -907,7 +914,7 @@ glossary:
     definition: "Et stivt legeme som svinger om en fast, vannrett akse som ikke går gjennom massesenteret. Små svingninger har $\\omega^2 = MgD/I_O$, der $D$ er avstanden fra aksen til massesenteret."
   - term: Rulling uten glidning
     section: Stive legemer
-    definition: "Bevegelse der kontaktpunktet står i ro i forhold til underlaget. Langs ei linje gir det den holonome føringen $\\dot s = R\\dot\\theta$, og friksjonskraften gjør ikke arbeid."
+    definition: "Bevegelse der kontaktpunktet står i ro i forhold til underlaget. Langs ei linje gir det den holonome føringen $\\dot s = R\\dot\\theta$, og friksjonskreftene på legemet og underlaget gjør til sammen ikke arbeid."
   - term: Eulers ligninger
     section: Eulers ligninger og snurrebassen
     definition: "Bevegelsesligningene ${I_1\\dot\\omega_1 + (I_3 - I_2)\\,\\omega_2\\omega_3 = N_1}$ og de to sykliske ombyttingene, for komponentene av $\\vec\\omega$ langs hovedaksene. De er $\\dot{\\vec L} = \\vec N$ skrevet langs legemets akser."
@@ -920,9 +927,6 @@ glossary:
   - term: Nutasjon
     section: Eulers ligninger og snurrebassen
     definition: "Svingningen i vinkelen $\\theta$ mellom loddlinja og symmetriaksen mens en tung snurrebass presesserer."
-  - term: Rotasjonsmatrise
-    section: Eulers ligninger og snurrebassen
-    definition: "Matrisen $R_{ab} = \\hat e_a' \\cdot \\hat e_b$ mellom to sett akser. Den er ortogonal, $\\boldsymbol R\\boldsymbol R^{\\mathsf T} = \\boldsymbol 1$, og har determinant $+1$. En ortogonal matrise med determinant $-1$ inneholder en speiling."
   - term: Eulervinkler
     section: Eulers ligninger og snurrebassen
     definition: "Tre vinkler $\\phi$, $\\theta$ og $\\psi$ som gir orienteringen til et stivt legeme som tre dreininger etter hverandre, $\\phi$ om rommets $\\hat e_3$, $\\theta$ om knutelinja og $\\psi$ om legemets $\\hat e_3'$."
