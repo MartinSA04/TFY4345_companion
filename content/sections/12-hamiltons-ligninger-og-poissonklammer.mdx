@@ -187,7 +187,43 @@ og impulsen ${\vec p = m\dot{\vec r} + q\vec A}$. Verdien av $H$ er ${\vec p\cdo
   caption="<b>Hamiltonfunksjonen for en ladd partikkel</b> i potensialene $\phi(\vec r, t)$ og $\vec A(\vec r, t)$. Impulsen er ${\vec p = m\dot{\vec r} + q\vec A}$, så ${\vec p - q\vec A = m\dot{\vec r}}$."
 />
 
-Magnetfeltet står i $H$ gjennom ${\vec p - q\vec A}$. I et uniformt felt ${\vec B = B\hat z}$ kan du velge ${\vec A = Bx\,\hat y}$ og ${\phi = 0}$, og da er
+Magnetfeltet står i $H$ gjennom ${\vec p - q\vec A}$, og Hamiltons ligninger med denne $H$ gir Lorentzkraften ${m\ddot{\vec r} = q(\vec E + \dot{\vec r} \times \vec B)}$, med ${\vec E = -\nabla\phi - \partial\vec A/\partial t}$ og ${\vec B = \nabla \times \vec A}$. Impulsen inneholder $q\vec A$, så $\dot{\vec p}$ inneholder ${q\,d\vec A/dt}$, endringen av $\vec A$ langs banen. Sammen med ${-\partial H/\partial\vec r}$ gir det leddet både det elektriske feltet og ${\dot{\vec r} \times \vec B}$.
+
+<Derivation title="Lorentzkraften fra Hamiltons ligninger">
+Skriv komponentene med $x_i$, ${i = 1, 2, 3}$. Den første av Hamiltons ligninger er
+
+$$
+\dot x_i = \frac{\partial H}{\partial p_i} = \frac{p_i - qA_i}{m}
+$$
+
+som er definisjonen av impulsen, ${p_i = m\dot x_i + qA_i}$. $x_i$ står både i $A_j$ og i $\phi$, så den andre er
+
+$$
+\dot p_i = -\frac{\partial H}{\partial x_i} \allowbreak = \frac{q}{m}\sum_j (p_j - qA_j)\frac{\partial A_j}{\partial x_i} \allowbreak - q\frac{\partial\phi}{\partial x_i} \allowbreak = q\sum_j \dot x_j\,\frac{\partial A_j}{\partial x_i} - q\frac{\partial\phi}{\partial x_i}
+$$
+
+med ${p_j - qA_j = m\dot x_j}$ satt inn. På venstresida er ${p_i = m\dot x_i + qA_i(\vec r(t), t)}$. $A_i$ endrer seg fordi feltet endrer seg med tida og fordi partikkelen flytter seg, så
+
+$$
+\dot p_i = m\ddot x_i + q\,\frac{\partial A_i}{\partial t} \allowbreak + q\sum_j \dot x_j\,\frac{\partial A_i}{\partial x_j}
+$$
+
+Sett de to uttrykkene for $\dot p_i$ like, og løs for $m\ddot x_i$:
+
+$$
+m\ddot x_i = q\Bigl(-\frac{\partial\phi}{\partial x_i} - \frac{\partial A_i}{\partial t}\Bigr) \allowbreak + q\sum_j \dot x_j\Bigl(\frac{\partial A_j}{\partial x_i} - \frac{\partial A_i}{\partial x_j}\Bigr)
+$$
+
+Den første parentesen er $E_i$. For ${i = 1}$, altså $x$, er leddet med ${j = x}$ null. Med ${\partial_x = \partial/\partial x}$ er summen
+
+$$
+\dot y\,(\partial_x A_y - \partial_y A_x) \allowbreak + \dot z\,(\partial_x A_z - \partial_z A_x) \allowbreak = \dot yB_z - \dot zB_y
+$$
+
+som er $x$-komponenten av ${\dot{\vec r} \times \vec B}$, med ${B_z = \partial_x A_y - \partial_y A_x}$ og ${B_y = \partial_z A_x - \partial_x A_z}$ fra ${\vec B = \nabla \times \vec A}$. De andre komponentene følger ved å bytte indeksene syklisk, så ${m\ddot{\vec r} = q(\vec E + \dot{\vec r} \times \vec B)}$.
+</Derivation>
+
+I et uniformt felt ${\vec B = B\hat z}$ kan du velge ${\vec A = Bx\,\hat y}$ og ${\phi = 0}$, og da er
 
 $$
 H = \frac{p_x^2 + (p_y - qBx)^2 + p_z^2}{2m}
@@ -318,6 +354,18 @@ Med denne $H$ følger den dempede bevegelsen Hamiltons ligninger, så arealet i 
 
 <Derivation title="Poincarés gjentakelsesteorem">
 Når energien er bevart og bevegelsen holder seg i et begrenset område, har den delen av faserommet som systemet kan nå, et endelig volum. Ta et lite område $D_0$ og følg det i tidssteg $\tau$, så det blir $D_1, D_2, \ldots$. Etter Liouvilles teorem har alle samme volum. De kan ikke alle ligge uten å overlappe, fordi det samlede volumet da ville vokse uten grense. To av dem overlapper derfor, $D_j$ og $D_k$ med ${k > j}$. Følg bevegelsen $j$ steg baklengs. Da overlapper $D_0$ og $D_{k-j}$, så et punkt i $D_0$ er tilbake i $D_0$ etter ${k - j}$ steg. Det gjelder hvor lite $D_0$ enn er, så nær enhver starttilstand finnes det tilstander som kommer tilbake så nær den du vil. Gass som slippes ut fra ett hjørne av et rom, samler seg derfor i hjørnet igjen en gang, men tida det tar, er mye lengre enn universets alder.
+</Derivation>
+
+<Derivation title="Lysintensiteten langs en stråle">
+Når ingen fotoner blir spredt eller absorbert, går hvert foton langs en lysstråle og følger Hamiltons ligninger. I tomt rom er ${H = cp}$, der ${p = |\vec p|}$. La ${\rho(\vec r, \vec p)}$ være tettheten av fotoner i faserommet, så det er ${\rho\,d^3r\,d^3p}$ fotoner i et lite område. Et område som følger fotonene, har like mange fotoner hele tida, og Liouvilles teorem sier at volumet også er det samme. Da er $\rho$ den samme langs hver stråle.
+
+Intensiteten $I$ er her antallet fotoner per flate, per tid, per romvinkel og per energi. Se på fotonene som går gjennom en liten flate $dA$ på tida $dt$, med retning innenfor $d\Omega$ rundt normalen. De når flaten innen $dt$ hvis de ligger i en sylinder med grunnflate $dA$ og lengde $c\,dt$ bak den, så ${d^3r = dA\,c\,dt}$. I kulekoordinater er ${d^3p = p^2\,dp\,d\Omega}$, og med ${E = cp}$ er ${dE = c\,dp}$. Antallet er da
+
+$$
+dN = \rho\,dA\,c\,dt\,p^2\,dp\,d\Omega \allowbreak = \rho\,p^2\,dA\,dt\,d\Omega\,dE
+$$
+
+og ${I = dN/(dA\,dt\,d\Omega\,dE) = p^2\rho}$. I tomt rom er energien og dermed $p$ konstant for hvert foton, og $\rho$ er konstant langs strålen, så $I$ er det også. Hver bit av solskiva lyser derfor like sterkt sett fra banen til Mars som fra banen til Jorda. Fra Mars dekker skiva bare 0,43 av romvinkelen den dekker fra Jorda, så Mars får 43 % så mye lys per flate.
 </Derivation>
 
 <Callout title="Hvorfor arealet er bevart">
