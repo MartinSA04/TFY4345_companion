@@ -137,6 +137,13 @@ exams:
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L-TFY4345-25mai2013.pdf/a31d9494-70d8-4e64-aa64-cb694c759c1d",
     }
   - {
+      label: "Ordinær eksamen, juni 2012",
+      id: "2012-jun",
+      date: 2012-06-01,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E-TFY4345-01jun2012.pdf/f94b9ecf-5357-4822-ba05-3b5d34d4aa32",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L-TFY4345-01jun2012.pdf/adaf6294-2e76-4fdc-b694-30ad55883982",
+    }
+  - {
       label: "Ordinær eksamen, juni 2011",
       id: "2011-jun",
       date: 2011-06-07,
@@ -621,6 +628,39 @@ formulas:
     tex: "p_i = \\frac{\\partial G_2}{\\partial q_i} \\allowbreak\\qquad Q_i = \\frac{\\partial G_2}{\\partial P_i} \\allowbreak\\qquad H' = H + \\frac{\\partial G_2}{\\partial t}"
     label: "Med $G_2(q, P, t)$, der $G = G_2 - \\sum_i Q_iP_i$. $G_2 = \\sum_i q_iP_i$ gir ingen endring. Med $G_3(p, Q, t)$ er $q_i = -\\partial G_3/\\partial p_i$ og $P_i = -\\partial G_3/\\partial Q_i$, med $G_4(p, P, t)$ er $q_i = -\\partial G_4/\\partial p_i$ og $Q_i = \\partial G_4/\\partial P_i$."
 
+  - id: virkningsvariabel
+    section: Virkningsvariabler og Hamilton–Jacobi
+    tex: "I = \\frac{1}{2\\pi}\\oint p\\,dq"
+    label: "<b>Virkningsvariabelen</b> for en periodisk bevegelse med én frihetsgrad: arealet banen omslutter i faserommet, delt på $2\\pi$. Den avhenger bare av energien. For den harmoniske oscillatoren er $I = E/\\omega$."
+  - id: frekvens-fra-virkning
+    section: Virkningsvariabler og Hamilton–Jacobi
+    tex: "\\omega = \\frac{dE}{dI} = \\frac{2\\pi}{T}"
+    label: "Vinkelfrekvensen fra virkningsvariabelen. Perioden er hvor fort arealet banen omslutter, vokser med energien: $T\\,dE = 2\\pi\\,dI$."
+  - id: adiabatisk-invariant
+    section: Virkningsvariabler og Hamilton–Jacobi
+    tex: "I = \\text{konstant} \\quad\\text{når}\\quad T\\,|\\dot\\lambda| \\ll |\\lambda|"
+    label: "<b>Adiabatisk invariant</b>: virkningsvariabelen er bevart når en parameter $\\lambda$ i $H$ endres sakte sammenlignet med perioden $T$. For en oscillator er $E/\\omega$ bevart, så energien følger vinkelfrekvensen."
+  - id: vinkelvariabler-oscillator
+    section: Virkningsvariabler og Hamilton–Jacobi
+    tex: "q = \\sqrt{\\frac{2I}{m\\omega}}\\,\\sin\\theta \\allowbreak\\qquad p = \\sqrt{2m\\omega I}\\,\\cos\\theta"
+    label: "Virknings- og vinkelvariabler for den harmoniske oscillatoren. $H = \\omega I$, så $\\dot\\theta = \\omega$ og $\\dot I = 0$."
+  - id: kepler-virkning
+    section: Virkningsvariabler og Hamilton–Jacobi
+    tex: "E = -\\frac{\\mu k^2}{2(I_r + J)^2}"
+    label: "Bundne baner i $V = -k/r$, skrevet ved virkningsvariablene $I_r = \\frac{1}{2\\pi}\\oint p_r\\,dr$ for avstanden og $J$ for vinkelen. $H$ avhenger bare av summen, så avstanden svinger én gang for hver runde, og banen lukker seg."
+  - id: hamilton-jacobi
+    section: Virkningsvariabler og Hamilton–Jacobi
+    tex: "\\frac{\\partial S}{\\partial t} + H\\Bigl(q, \\frac{\\partial S}{\\partial q}, t\\Bigr) = 0"
+    label: "<b>Hamilton–Jacobi-ligningen</b> for Hamiltons prinsipale funksjon $S(q, t)$, virkningen langs den virkelige banen som funksjon av endepunktet. Impulsene er $p_i = \\partial S/\\partial q_i$."
+  - id: hj-bevegelse
+    section: Virkningsvariabler og Hamilton–Jacobi
+    tex: "p_i = \\frac{\\partial S}{\\partial q_i} \\allowbreak\\qquad \\beta_i = \\frac{\\partial S}{\\partial\\alpha_i}"
+    label: "Bevegelsen fra en løsning $S(q, \\alpha, t)$ med $n$ konstanter $\\alpha_i$. $S$ er en genererende funksjon $G_2$ med de nye impulsene $\\alpha_i$ og $H' = 0$, så de nye koordinatene $\\beta_i$ er også konstante, og løst for $q$ gir ligningene bevegelsen."
+  - id: karakteristisk-funksjon
+    section: Virkningsvariabler og Hamilton–Jacobi
+    tex: "S = W(q, \\alpha) - Et \\allowbreak\\qquad H\\Bigl(q, \\frac{\\partial W}{\\partial q}\\Bigr) = E"
+    label: "Løsningen av Hamilton–Jacobi-ligningen når $H$ ikke avhenger av tida. $W$ er Hamiltons karakteristiske funksjon, med én frihetsgrad $W = \\int p\\,dq$. Med $\\alpha = E$ er $\\beta = \\partial W/\\partial E - t$ lik minus tidspunktet banen passerte startstedet."
+
   - id: plan-pendel
     section: Kjente systemer
     tex: "L = \\tfrac12 ml^2\\dot\\theta^2 + mgl\\cos\\theta, \\qquad \\ddot\\theta = -\\frac{g}{l}\\sin\\theta"
@@ -747,6 +787,13 @@ symbols:
   - { tex: "H'", meaning: "Hamiltonfunksjonen i de nye variablene", unit: "J", section: "Kanoniske transformasjoner", term: "Genererende funksjon", formula: genererende-funksjon, id: h-ny, note: "Lik $H$ skrevet ved $Q$ og $P$ når transformasjonen ikke avhenger av tida, ellers $H + \\partial G/\\partial t$. Eldre eksamenssett skriver $K$." }
   - { tex: "G,\\ G_2,\\ G_3,\\ G_4", meaning: "Genererende funksjoner av $(q, Q)$, $(q, P)$, $(p, Q)$ og $(p, P)$, og eventuelt tida", section: "Kanoniske transformasjoner", term: "Genererende funksjon", formula: genererende-funksjon, id: genererende-g, note: "Eldre eksamenssett skriver $F$ eller $F_1$, og $F_2$, $F_3$ og $F_4$. Ikke gravitasjonskonstanten $G$." }
   - { tex: "f,\\ \\alpha", meaning: "En størrelse $f(q, p)$ som generator, og parameteren langs transformasjonen den genererer", section: "Kanoniske transformasjoner", term: "Generator", formula: generator, id: generator-f, note: "Et lite steg har parameteren $\\epsilon$. Når $f = H$, er $\\alpha$ tida." }
+  # ── Virkningsvariabler og Hamilton–Jacobi ──
+  - { tex: "I", meaning: "Virkningsvariabelen, arealet banen omslutter i faserommet delt på $2\\pi$", unit: "J·s", section: "Virkningsvariabler og Hamilton–Jacobi", term: "Virkningsvariabel", formula: virkningsvariabel, id: virkningsvariabel, note: "Ikke treghetsmomentet $I$. For Keplerbanen er $I_r$ virkningsvariabelen for avstanden, og den for vinkelen er $J$." }
+  - { tex: "\\theta", meaning: "Vinkelvariabelen, $2\\pi$ ganger den delen av perioden som har gått siden et valgt sted på banen", unit: "rad", section: "Virkningsvariabler og Hamilton–Jacobi", term: "Vinkelvariabel", formula: vinkelvariabler-oscillator, id: vinkelvariabel, note: "Ellers er $\\theta$ vinkelen fra loddlinja for en pendel. Der $\\theta$ er vinkelvariabelen, heter pendelvinkelen $\\varphi$." }
+  - { tex: "\\varphi", meaning: "Vinkelen fra loddlinja for en pendel der $\\theta$ er vinkelvariabelen; impulsen er $p_\\varphi = ml^2\\dot\\varphi$", unit: "rad", section: "Virkningsvariabler og Hamilton–Jacobi", id: pendelvinkel-varphi, note: "Ikke vinkelen $\\phi$ i baneplanet for en sentralkraft, og ikke faseforskjellen $\\varphi$ mellom naboperler på ringen." }
+  - { tex: "S(q, \\alpha, t)", meaning: "Hamiltons prinsipale funksjon, virkningen langs den virkelige banen som funksjon av endepunktet", unit: "J·s", section: "Virkningsvariabler og Hamilton–Jacobi", term: "Hamiltons prinsipale funksjon", formula: hamilton-jacobi, id: prinsipal-funksjon, note: "Ikke snordraget $S$." }
+  - { tex: "W(q, \\alpha)", meaning: "Hamiltons karakteristiske funksjon, $S = W - Et$ når $H$ ikke avhenger av tida", unit: "J·s", section: "Virkningsvariabler og Hamilton–Jacobi", term: "Hamiltons karakteristiske funksjon", formula: karakteristisk-funksjon, id: karakteristisk-funksjon, note: "Ikke arbeidet $W$." }
+  - { tex: "\\alpha_i,\\ \\beta_i", meaning: "Konstantene i en løsning $S(q, \\alpha, t)$: de nye impulsene $\\alpha_i$ og de nye koordinatene $\\beta_i = \\partial S/\\partial\\alpha_i$", section: "Virkningsvariabler og Hamilton–Jacobi", formula: hj-bevegelse, id: alfa-beta-hj, note: "Med $\\alpha = E$ er $\\beta$ minus tidspunktet banen passerte startstedet. Ellers er $\\alpha$ dempingen i den dempede oscillatoren, masseforholdet i trelegemeproblemet og parameteren langs en transformasjon." }
   # ── Kjente systemer ──
   - { tex: "l", meaning: "Lengden til pendelen; $l_1$ og $l_2$ for dobbeltpendelen", unit: "m", section: "Kjente systemer", formula: plan-pendel, note: "I eksamensoppgavene står $\\ell$ både for en stanglengde og for dreieimpulsen." }
   - { tex: "\\theta", meaning: "Vinkelen fra loddlinja nedover for en pendel, og fra bunnpunktet for perla på ringen", unit: "rad", section: "Kjente systemer", formula: plan-pendel, note: "$\\theta = \\pi$ er opp ned. For et legeme som ruller, er $\\theta$ dreievinkelen." }
@@ -1020,6 +1067,27 @@ glossary:
   - term: Genererende funksjon
     section: Kanoniske transformasjoner
     definition: "En funksjon av en gammel og en ny variabel, som $G(q, Q, t)$, som gir en kanonisk transformasjon gjennom $p_i = \\partial G/\\partial q_i$ og $P_i = -\\partial G/\\partial Q_i$, med den nye Hamiltonfunksjonen $H' = H + \\partial G/\\partial t$."
+  - term: Virkningsvariabel
+    section: Virkningsvariabler og Hamilton–Jacobi
+    definition: "Arealet en periodisk bane omslutter i faserommet, delt på $2\\pi$: $I = \\frac{1}{2\\pi}\\oint p\\,dq$. Den avhenger bare av energien, og med den som impuls avhenger $H$ bare av $I$. Vinkelfrekvensen er $\\omega = dE/dI$, og for den harmoniske oscillatoren er $I = E/\\omega$."
+  - term: Vinkelvariabel
+    section: Virkningsvariabler og Hamilton–Jacobi
+    definition: "Koordinaten som hører til virkningsvariabelen: $2\\pi$ ganger den delen av perioden som har gått siden punktet passerte et valgt sted på banen. Den går jevnt, $\\dot\\theta = dE/dI = \\omega$."
+  - term: Adiabatisk invariant
+    section: Virkningsvariabler og Hamilton–Jacobi
+    definition: "En størrelse som er bevart når en parameter i $H$ endres sakte sammenlignet med perioden. Virkningsvariabelen er en, så for en oscillator er $E/\\omega$ bevart. Ved en rask endring får tilstander med samme energi ulike energier."
+  - term: Integrabelt system
+    section: Virkningsvariabler og Hamilton–Jacobi
+    definition: "Et system med $n$ frihetsgrader og $n$ uavhengige bevarte størrelser med Poissonklamme null seg imellom. Det har virknings- og vinkelvariabler, og $H$ avhenger bare av virkningsvariablene."
+  - term: Hamilton–Jacobi-ligningen
+    section: Virkningsvariabler og Hamilton–Jacobi
+    definition: "$\\partial S/\\partial t + H(q, \\partial S/\\partial q, t) = 0$, en partiell differensialligning av første orden for Hamiltons prinsipale funksjon $S(q, t)$."
+  - term: Hamiltons prinsipale funksjon
+    section: Virkningsvariabler og Hamilton–Jacobi
+    definition: "Virkningen langs den virkelige banen som funksjon av endepunktet, $S(q, t)$, med $p_i = \\partial S/\\partial q_i$ og $\\partial S/\\partial t = -H$. En løsning med $n$ konstanter er en genererende funksjon til nye variabler som står stille."
+  - term: Hamiltons karakteristiske funksjon
+    section: Virkningsvariabler og Hamilton–Jacobi
+    definition: "$W(q)$ i $S = W - Et$ når $H$ ikke avhenger av tida. Den oppfyller $H(q, \\partial W/\\partial q) = E$, og med én frihetsgrad er $W = \\int p\\,dq$."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker

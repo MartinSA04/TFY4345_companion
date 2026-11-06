@@ -1,0 +1,450 @@
+---
+order: 14
+title: "Virkningsvariabler og Hamilton–Jacobi"
+summary: "Arealet en periodisk bane omslutter i faserommet, delt på 2π, er virkningsvariabelen. Den gir vinkelfrekvensen, er bevart når systemet endres sakte, og er impulsen i variabler der bevegelsen går jevnt. Løsningen av Hamilton–Jacobi-ligningen er virkningen som funksjon av endepunktet, og den gir nye variabler som står stille."
+importance: core
+tag: "Uke 44 · Tong 10.5–10.7"
+updated: 2026-11-06
+---
+
+<LearningGoals>
+- Regne ut virkningsvariabelen ${I = \frac{1}{2\pi}\oint p\,dq}$ for en periodisk bevegelse, og finne vinkelfrekvensen fra ${\omega = dE/dI}$.
+- Forklare hvorfor virkningsvariabelen er bevart når en parameter endres sakte, og bruke det til å finne hva som skjer med bevegelsen.
+- Forklare hva vinkelvariabelen er, og hvorfor overgangen til virknings- og vinkelvariabler er kanonisk.
+- Sette opp Hamilton–Jacobi-ligningen for et gitt system og løse den ved å skille variablene.
+- Finne bevegelsen fra Hamiltons prinsipale funksjon.
+</LearningGoals>
+
+En pendel henger i ei snor som går opp gjennom et hull i taket. Snora er 1,00 m lang, og pendelen svinger 6° ut til hver side. Trekk snora sakte opp gjennom hullet, så den er 25 cm lang etter ett minutt. Perioden går fra 2,0 s til 1,0 s, pendelen svinger 17° ut, og energien i svingningen blir dobbelt så stor. Rykk snora like langt opp på to hundredeler av et sekund, og utfallet avhenger av hvor i svingningen pendelen var. En pendel som passerte bunnen, svinger etterpå 49° ut, og en som var ved et vendepunkt, fortsatt bare 6°.
+
+## Adiabatiske invarianter
+
+Vinkelen fra loddlinja heter $\varphi$ i denne modulen, fordi $\theta$ er vinkelvariabelen. Med lengden $l$ er impulsen ${p_\varphi = ml^2\dot\varphi}$, og Hamiltons ligninger er
+
+$$
+\dot\varphi = \frac{p_\varphi}{ml^2}, \qquad \dot p_\varphi = -mgl\sin\varphi
+$$
+
+De gjelder også mens snora trekkes, med lengden $l(t)$ snora har i øyeblikket. Snora drar langs seg selv gjennom hullet og gir ikke noe dreiemoment om det, så $p_\varphi$ endres bare av tyngden. Bevegelsen følger altså Hamiltons ligninger med en $H$ som avhenger av tida. Energien i svingningen, målt fra pendelen i ro i bunnen, er
+
+$$
+E = \frac{p_\varphi^2}{2ml^2} + mgl(1 - \cos\varphi)
+$$
+
+Med fast lengde er $E$ bevart, og punktet $(\varphi, p_\varphi)$ går rundt en kurve med konstant $E$. Simuleringen under har 24 slike pendler i det samme hullet. De har samme energi og er spredt jevnt i tid over én svingning, så i faserommet ligger de på én kurve med konstant energi.
+
+<Simulation
+  src="/sims/snora-trekkes-opp.js"
+  title="Snora trekkes opp"
+  caption="24 like pendler i snorer gjennom det samme hullet i taket, og under dem faserommet. Den uthevede pendelen har vendepunktene sine stiplet, med utslaget. Ringen er tilstandene på kurven pendlene startet på, arealet den omslutter er fylt, og hver prikk er én pendel. Den stiplede kurven har konstant energi og går gjennom den uthevede pendelen, med lengden snora har nå. Kvadratene øverst til høyre har areal i forhold til arealet ringen og den stiplede kurven omslutter, og de prikkede kvadratene viser arealet ved start."
+  host="dom"
+  height={440}
+/>
+
+Pendlene svinger 6° ut, og ringen er en smal, høy kurve. Trykk «Trekk sakte». Etter to svingninger trekkes snora opp til 25 cm i løpet av 20 sekunder. Ringen blir bredere og lavere, men den ligger på den stiplede kurven hele tida, og ingen av kvadratene endrer seg. Til slutt svinger pendlene 17° ut.
+
+Trykk «Trekk raskt». Nå trekkes snora like langt på to hundredeler av et sekund. På så kort tid rekker verken $\varphi$ eller $p_\varphi$ å endre seg mye, og ringen står nesten der den var. Men den stiplede kurven gjennom den uthevede pendelen blir mye større, og ringen ligger ikke lenger på noen kurve med konstant energi. Etterpå går hver pendel rundt sin egen kurve, og ringen vris til et bånd. Pendlene svinger mellom 6° og 49° ut, den uthevede 49°. Kvadratet for ringen er det samme som før, mens kvadratet for kurven er rundt åtte ganger så stort.
+
+Begge utfallene følger av Liouvilles teorem. Teoremet gjelder også når $H$ avhenger av tida, så ringen beholder arealet sitt uansett hvor fort snora trekkes. Forskjellen er hvilken kurve ringen ligger på. Snora drar hardest når pendelen passerer bunnen, så hvor mye energi en pendel får, avhenger av hvor i svingningen den er. Når snora trekkes sakte, rekker hver pendel mange svingninger mens lengden endres litt. Alle pendlene går gjennom alle delene av svingningen og får den samme energiendringen, så ringen ligger hele tida på én kurve med konstant energi. Arealet innenfor den kurven er arealet av ringen, og det endres ikke.
+
+Når snora trekkes raskt, får pendlene ulik energi. En pendel som passerer bunnen, beholder $p_\varphi$, så med en firedel av lengden blir ${\dot\varphi = p_\varphi/ml^2}$ 16 ganger så stor, og bevegelsesenergien ${p_\varphi^2/2ml^2}$ blir 16 ganger så stor. En pendel ved et vendepunkt har ${p_\varphi = 0}$ og beholder bare høydeenergien ${mgl(1 - \cos\varphi)}$, som blir en firedel så stor, så den svinger fortsatt 6° ut.
+
+Arealet forklarer tallene. For små utslag er ${1 - \cos\varphi \approx \varphi^2/2}$, og med ${\omega = \sqrt{g/l}}$ er
+
+$$
+E = \frac{p_\varphi^2}{2ml^2} + \tfrac12 ml^2\omega^2\varphi^2
+$$
+
+Kurven med energien $E$ er en ellipse med halvaksene ${\varphi_0 = \sqrt{2E/ml^2\omega^2}}$ langs $\varphi$ og ${\sqrt{2ml^2E} = ml^2\omega\varphi_0}$ langs $p_\varphi$. Arealet av en ellipse er $\pi$ ganger produktet av halvaksene:
+
+$$
+\pi\varphi_0 \cdot ml^2\omega\varphi_0 = \frac{2\pi E}{\omega}
+$$
+
+Arealet er det samme før og etter at snora er trukket sakte, så $E/\omega$ er det samme. Med en firedel av lengden er $\omega$ dobbelt så stor, og energien blir dobbelt så stor. Utslaget følger av ${\varphi_0^2 = 2E/ml^2\omega^2}$. Med $E/\omega$ fast er ${\varphi_0^2 \propto 1/l^2\omega \propto l^{-3/2}}$, så ${\varphi_0 \propto l^{-3/4}}$. En firedel av lengden gir ${4^{3/4} = 2{,}83}$ ganger så stort utslag, fra 6° til 17°. Ved 17° er feilen i ${1 - \cos\varphi \approx \varphi^2/2}$ under 1 %.
+
+Energien kommer fra hånden. Snora drar hardere når pendelen passerer bunnen enn når den snur, fordi den også må bøye banen der, så hånden gjør mer arbeid enn det som trengs for å løfte pendelen.
+
+<Derivation title="Arbeidet hånden gjør">
+Kall snordraget $F$. Langs snora gir Newtons andre lov ${F - mg\cos\varphi = ml\dot\varphi^2}$, så ${F = mg\cos\varphi + ml\dot\varphi^2}$. Når snora trekkes sakte, fordeles hver liten strekning $|dl|$ over mange svingninger, og hånden kjenner gjennomsnittet av $F$. For små utslag er ${\varphi = \varphi_0\sin\omega t}$, så ${\langle\varphi^2\rangle = \varphi_0^2/2}$ og ${\langle\dot\varphi^2\rangle = \omega^2\varphi_0^2/2}$. Med ${\cos\varphi \approx 1 - \varphi^2/2}$ og ${l\omega^2 = g}$ er
+
+$$
+\langle F\rangle = mg\Bigl(1 - \frac{\varphi_0^2}{4}\Bigr) + \frac{mg\varphi_0^2}{2} \allowbreak = mg\Bigl(1 + \frac{\varphi_0^2}{4}\Bigr)
+$$
+
+Hånden gjør arbeidet ${\langle F\rangle\,|dl|}$. Av det løfter ${mg\,|dl|}$ pendelen, og resten går til svingningen:
+
+$$
+dE = \tfrac14 mg\varphi_0^2\,|dl| = \frac{E}{2l}\,|dl|
+$$
+
+med ${E = \tfrac12 mgl\varphi_0^2}$. Da er ${dE/E = -dl/2l}$, og ${E \propto l^{-1/2} \propto \omega}$, det samme som arealet gir.
+</Derivation>
+
+Arealet en lukket bane omslutter i faserommet, delt på $2\pi$, heter <Term name="virkningsvariabel">virkningsvariabelen</Term>:
+
+<Formula
+  tex="I = \frac{1}{2\pi}\oint p\,dq"
+  caption="<b>Virkningsvariabelen</b> for en periodisk bevegelse med én frihetsgrad. Integralet går én gang rundt banen i faserommet, og $I$ er arealet banen omslutter delt på $2\pi$. For den harmoniske oscillatoren er ${I = E/\omega}$."
+/>
+
+$I$ har enheten J·s, den samme som virkningen. Med en fast $H$ avhenger $I$ bare av energien, fordi energien bestemmer banen. Når en parameter i $H$ endres sakte, er det $I$ som er bevart, ikke energien:
+
+<Statement kind="theorem" name="Adiabatisk invariant" id="adiabatisk-invariant">
+Endres en parameter $\lambda$ i $H$ så sakte at den endrer seg lite i løpet av én periode, ${T\,|\dot\lambda| \ll |\lambda|}$, er virkningsvariabelen $I$ bevart, og avviket blir mindre jo saktere endringen er. $I$ kalles en adiabatisk invariant.
+</Statement>
+
+Snora som trekkes fra 1,00 m til 25 cm på ett minutt, går 0,75 m på 60 s, så ${|\dot l| = 0{,}0125}$ m/s. ${T|\dot l|/l}$ er størst til slutt, med ${T = 1{,}0}$ s og ${l = 0{,}25}$ m, og er da 0,05. På to hundredeler av et sekund er ${|\dot l| = 37{,}5}$ m/s, og forholdet er 75 ved starten.
+
+<SelfCheck question="En ball spretter fram og tilbake mellom to vegger med avstanden $a$, uten tyngde og uten tap. Den ene veggen skyves sakte inn til avstanden er $a/2$. Hvor mye øker farten og energien til ballen?">
+Banen i faserommet er et rektangel: $q$ går fra 0 til $a$ med ${p = mv}$ og tilbake med ${p = -mv}$. Arealet er ${2amv}$, så ${I = amv/\pi}$. $I$ er bevart når veggen flyttes sakte, så ${av}$ er konstant, og farten dobles når avstanden halveres. Energien ${\tfrac12 mv^2}$ firedobles.
+
+Det samme følger av støtene. Veggen kommer mot ballen med en liten fart $u$, så ballen får ${2u}$ mer fart hver gang den treffer veggen, og den treffer veggen ${v/2a}$ ganger per tid. Da er ${dv/dt = uv/a}$ og ${da/dt = -u}$, så ${dv/v = -da/a}$, og ${av}$ er konstant.
+</SelfCheck>
+
+<Quiz
+  question="En pendel i en rakett på utskytningsrampen svinger 10° ut. Raketten letter og akselererer gradvis mer, så den effektive tyngdeakselerasjonen pendelen kjenner, øker fra $g$ til $4g$ i løpet av et par minutter. Hvor stort er utslaget da?"
+  options={["5°", "7°", "10°", "14°"]}
+  answer={1}
+  explanation={"Med ${\\omega = \\sqrt{g/l}}$ er ${I = E/\\omega = \\tfrac12 ml^2\\omega\\varphi_0^2}$. $I$ er bevart, så ${\\varphi_0^2 \\propto 1/\\omega \\propto g^{-1/2}}$ og ${\\varphi_0 \\propto g^{-1/4}}$. Med $4g$ blir utslaget ${10°/\\sqrt 2 = 7°}$. 5° får du hvis du holder energien fast, men raketten gjør arbeid på pendelen, og energien dobles med $\\omega$. Med samme utslag ville ${I = \\tfrac12 ml^2\\omega\\varphi_0^2}$ blitt dobbelt så stor, men $I$ er bevart. 14° har eksponenten med feil fortegn."}
+/>
+
+<Derivation title="Ladd partikkel i et magnetfelt som endrer seg sakte">
+En partikkel med ladning ${q > 0}$ og masse $m$ sirkler i et uniformt magnetfelt ${\vec B = B\hat z}$ med vinkelfrekvensen ${\omega_c = qB/m}$. Med ${\vec A = Bx\,\hat y}$ er bevegelsen på tvers av feltet gitt ved
+
+$$
+H_\perp = \frac{p_x^2}{2m} + \frac{(p_y - qBx)^2}{2m}
+$$
+
+$y$ står ikke i $H_\perp$, så $p_y$ er bevart, og bevegelsen langs $x$ er en harmonisk oscillator med vinkelfrekvensen $\omega_c$ om ${x = p_y/qB}$. Energien i den er bevegelsesenergien på tvers av feltet, ${E_\perp = \tfrac12 mv_\perp^2}$. Virkningsvariabelen er
+
+$$
+I = \frac{E_\perp}{\omega_c} = \frac{m^2v_\perp^2}{2qB}
+$$
+
+Endres feltet sakte sammenlignet med en runde, er $I$ bevart, og ${v_\perp^2/B}$ er konstant. Det gjelder også når feltet endrer seg fra sted til sted, så lenge det endrer seg lite over avstanden partikkelen går på én runde. Da ser partikkelen et felt som endrer seg sakte. Radien er ${R = mv_\perp/qB}$, så ${BR^2 = m^2v_\perp^2/q^2B}$ er også konstant, og den magnetiske fluksen ${\pi R^2B}$ gjennom sirkelen er bevart. Øker feltet, krymper sirkelen, og partikkelen får mer fart på tvers.
+
+En partikkel som går langs feltlinjene mot et sted der feltet er sterkere, har konstant energi, fordi magnetkraften ikke gjør arbeid. Farten på tvers vokser med $B$, så farten langs feltet må minke. Der farten på tvers har tatt hele farten, snur partikkelen. En partikkel som går 30° på skrå av feltet der det er svakest, har ${v_\perp^2 = v^2/4}$ og snur der feltet er fire ganger så sterkt. Mellom to slike steder er partikkelen fanget. Jordas magnetfelt er sterkest nær polene, og strålingsbeltene rundt Jorda er protoner og elektroner som er fanget slik og spretter fram og tilbake mellom nord og sør.
+</Derivation>
+
+Pendelen med snora som kortes, ble diskutert på Solvaykonferansen i 1911. I den tidlige kvanteteorien hadde en oscillator energiene ${E = n\hbar\omega}$ med et helt tall $n$, og et helt tall kan ikke endre seg litt etter litt. Lorentz spurte derfor hva som skjer med en pendel når snora kortes sakte, og Einstein svarte at ${E/\omega}$ ikke endres, så $n$ er det samme.
+
+<Callout title="Sakte og raske endringer">
+For en oscillator er ${I = E/\omega}$, så når en parameter endres sakte, følger energien vinkelfrekvensen. Endres den raskt, får systemer som startet med samme energi, ulike energier.
+</Callout>
+
+## Virknings- og vinkelvariabler
+
+Med fast $H$ er $I$ bevart, og den kan brukes som ny impuls. Koordinaten som hører til $I$, beveger seg da jevnt, og bevegelsen blir så enkel som den kan bli. Start med den harmoniske oscillatoren, ${H = p^2/2m + \tfrac12 m\omega^2q^2}$, som svinger som ${q = A\sin(\omega t + \delta)}$ og ${p = m\omega A\cos(\omega t + \delta)}$. Skriv tilstanden ved fasen ${\theta = \omega t + \delta}$ og virkningsvariabelen ${I = E/\omega = \tfrac12 m\omega A^2}$:
+
+$$
+q = \sqrt{\frac{2I}{m\omega}}\,\sin\theta, \allowbreak\qquad p = \sqrt{2m\omega I}\,\cos\theta
+$$
+
+Satt inn i $H$ gir de ${H = \omega I\cos^2\theta + \omega I\sin^2\theta = \omega I}$. Overgangen er kanonisk. Klammen ${\{q, p\}}$ regnet i $\theta$ og $I$ er
+
+$$
+\frac{\partial q}{\partial\theta}\frac{\partial p}{\partial I} - \frac{\partial q}{\partial I}\frac{\partial p}{\partial\theta} \allowbreak = \cos^2\theta + \sin^2\theta = 1
+$$
+
+og den er faktoren arealene endres med fra $(\theta, I)$ til $(q, p)$. Overgangen beholder altså arealene og speiler ikke. Hamiltons ligninger i de nye variablene er ${\dot\theta = \partial H/\partial I = \omega}$ og ${\dot I = -\partial H/\partial\theta = 0}$: $I$ står stille, og $\theta$ går jevnt. Ellipsene i faserommet er kurvene med konstant $I$, og $\theta$ sier hvor på ellipsen punktet er.
+
+For en periodisk bevegelse i et hvilket som helst potensial avhenger $I$ bare av energien. Snu sammenhengen, så er $H$ en funksjon av $I$ alene, ${H = E(I)}$. Med $I$ som impuls gir Hamiltons ligninger ${\dot I = 0}$ og ${\dot\theta = dE/dI}$ for koordinaten $\theta$ som hører til $I$, så $\theta$ går jevnt. For at $\theta$ skal gå $2\pi$ på én periode, må ${dE/dI}$ være ${2\pi/T}$. Figur 1 viser at det stemmer.
+
+<Figure src="/figures/stripe.svg" alt="Faserommet til pendelen med phi vannrett og p phi loddrett. En heltrukket lukket kurve merket E og en stiplet kurve utenfor merket E pluss dE, med en tonet stripe mellom dem. Over origo starter en prikk på den indre kurven, med en pil langs kurven mot høyre merket d phi. Over pila er biten av stripa mellom de to kurvene fylt sterkere, og høyden er merket dp." width={340} height={250} number={1} caption="Stripa mellom to kurver med konstant energi i faserommet til pendelen, med $\varphi$ vannrett og $p_\varphi$ loddrett. Den fylte biten er den delen av stripa punktet passerer på tida $dt$. ${dE}$ er overdrevet." />
+
+Figur 1 viser kurvene med energiene $E$ og ${E + dE}$ i faserommet til pendelen, med ${q = \varphi}$. Arealet mellom dem er ${2\pi\,dI}$. Høyden av stripa er ${dp = dE/(\partial H/\partial p)}$, og etter Hamiltons ligninger er ${\partial H/\partial p = \dot q}$, så ${dp = dE/\dot q}$. Stripa er smal der punktet går fort. På tida $dt$ går punktet ${dq = \dot q\,dt}$, og biten av stripa over den strekningen har arealet ${dq\,dp = dE\,dt}$. På én periode går punktet hele veien rundt, så hele stripa har arealet ${T\,dE}$:
+
+$$
+2\pi\,dI = T\,dE \quad\Rightarrow\quad \frac{dE}{dI} = \frac{2\pi}{T} = \omega
+$$
+
+Vinkelfrekvensen følger altså av hvor fort arealet vokser med energien, uten at du løser bevegelsesligningen. For oscillatoren er ${I = E/\omega}$ og ${dE/dI = \omega}$, som det skal være.
+
+<Formula
+  tex="\omega = \frac{dE}{dI} = \frac{2\pi}{T}"
+  caption="<b>Vinkelfrekvensen fra virkningsvariabelen</b>. Perioden er hvor fort arealet banen omslutter, vokser med energien: ${T\,dE = 2\pi\,dI}$."
+/>
+
+$\theta$ er derfor $2\pi$ ganger den delen av perioden som har gått siden punktet passerte et valgt sted på banen. For oscillatoren er stedet ${q = 0}$ med ${p > 0}$. Overgangen til $\theta$ og $I$ er kanonisk også her. Biten av stripa i figur 1 ligger mellom $I$ og ${I + dI}$ og mellom $\theta$ og ${\theta + d\theta}$, med ${d\theta = \omega\,dt}$. Arealet ${dE\,dt}$ er ${(\omega\,dI)(d\theta/\omega) = dI\,d\theta}$, det samme som biten har i planet av $\theta$ og $I$. Overgangen beholder arealene, og den speiler ikke: øverst på banen går punktet mot høyre, og $I$ øker oppover, som i planet av $\theta$ og $I$.
+
+<Simulation
+  src="/sims/banene-rettet-ut.js"
+  title="Banene rettet ut"
+  caption="Øverst pendlene. I midten faserommet, med $\varphi$ vannrett og $p_\varphi$ loddrett, og nederst planet av vinkelvariabelen $\theta$ og virkningsvariabelen $I$. De stiplede kurvene har konstant $I$ og de tynne linjene konstant $\theta$, med ${\theta = 0}$ der pendelen passerer bunnen mot høyre. Den oransje kurven er separatrisen. Hver pendel er en prikk i begge planene, og en fylt skive er et område av tilstander."
+  host="dom"
+  height={470}
+/>
+
+Trykk «Fire pendler». Fire pendler med ulike utslag passerer bunnen samtidig, på vei mot høyre. I faserommet går prikkene med klokka rundt hver sin stiplede kurve, og den ytterste blir hengende etter. I planet nederst går hver prikk rett mot høyre langs sin linje med konstant $I$ og kommer inn igjen fra venstre når $\theta$ har gått $2\pi$. Den ytterste går saktest, fordi en pendel med stort utslag har lengst periode. De tynne linjene viser hvordan banene er rettet ut: en linje med konstant $\theta$ går ut fra bunnpunktet i faserommet og er en loddrett linje nederst. Linjene for ${\theta = 0}$, $\pi/2$, $\pi$ og $3\pi/2$ er halvaksene, mens de andre bøyer av mot vendepunktene, der pendelen går sakte og bruker mer av perioden.
+
+Trykk «Sky». 24 pendler slippes samtidig fra tilstander i en liten skive i faserommet. Skiva dras ut til en spiral, fordi pendlene med størst utslag bruker lengst tid på en svingning. Nederst blir skiva et bånd som heller mer og mer: hver prikk holder sin $I$ og går mot høyre med sin egen fart ${\omega(I)}$.
+
+<SelfCheck question="En ball med masse $m$ spretter elastisk på et gulv, med ${H = p^2/2m + mgq}$ for høyden ${q \ge 0}$. Finn ${I(E)}$, og finn perioden fra ${T = 2\pi\,dI/dE}$.">
+Ballen går opp og ned mellom ${q = 0}$ og ${q = E/mg}$. Med ${p_0 = \sqrt{2mE}}$, impulsen ved gulvet, omslutter banen området mellom linja ${q = 0}$ og parabelen ${q = (E - p^2/2m)/mg}$, for $p$ fra $-p_0$ til $p_0$. Arealet er
+
+$$
+\int_{-p_0}^{p_0} \frac{E - p^2/2m}{mg}\,dp \allowbreak = \frac{2p_0E}{mg} - \frac{p_0^3}{3m^2g} \allowbreak = \frac{4p_0E}{3mg}
+$$
+
+så ${I = 2p_0E/3\pi mg = 2\sqrt{2m}\,E^{3/2}/3\pi mg}$. Da er ${dI/dE = \sqrt{2mE}/\pi mg = p_0/\pi mg}$, og ${T = 2p_0/mg = 2v_0/g}$, med ${v_0 = p_0/m}$. Det er tida opp og ned igjen: ballen bremses fra $v_0$ med $g$ og snur etter ${v_0/g}$.
+</SelfCheck>
+
+<Statement kind="definition" name="Virknings- og vinkelvariabler" id="virknings-og-vinkelvariabler">
+For en periodisk bevegelse med én frihetsgrad er virkningsvariabelen ${I = \frac{1}{2\pi}\oint p\,dq}$, og <Term name="vinkelvariabel">vinkelvariabelen</Term> $\theta$ er $2\pi$ ganger den delen av perioden som har gått siden punktet passerte et valgt sted på banen. Overgangen fra $(q, p)$ til $(\theta, I)$ er kanonisk, ${H = E(I)}$, og ${\dot\theta = dE/dI = \omega}$.
+</Statement>
+
+### Flere frihetsgrader
+
+Med $n$ frihetsgrader trengs $n$ virkningsvariabler $I_i$, alle bevart, og alle må kunne være impulser samtidig. Nye impulser har ${\{P_i, P_j\} = 0}$, så systemet må ha $n$ uavhengige bevarte størrelser med Poissonklamme null seg imellom. Et teorem som også er Liouvilles, sier at det er nok: da finnes variabler ${(\theta_i, I_i)}$ med ${H = H(I_1, \dots, I_n)}$. Et slikt system kalles <Term name="integrabelt system">integrabelt</Term>. Hver vinkel går jevnt med sin egen vinkelfrekvens ${\omega_i = \partial H/\partial I_i}$. De fleste systemer er ikke integrable. Dobbeltpendelen har to frihetsgrader, men bare energien er bevart, og ved store utslag er bevegelsen kaotisk.
+
+En sentralkraft i planet har to frihetsgrader og to bevarte størrelser, $H$ og dreieimpulsen $J$, med ${\{J, H\} = 0}$. Vinkelen $\phi$ i baneplanet går fra 0 til $2\pi$ med ${p_\phi = J}$, så virkningsvariabelen for den er $J$ selv. Svingningen i $r$ har ${I_r = \frac{1}{2\pi}\oint p_r\,dr}$. For ${V = -k/r}$ gir integralet
+
+$$
+E = -\frac{\mu k^2}{2(I_r + J)^2}
+$$
+
+Avstanden svinger med vinkelfrekvensen ${\omega_r = \partial H/\partial I_r}$, og vinkelen går rundt med vinkelfrekvensen ${\omega_\phi = \partial H/\partial J}$. $H$ avhenger bare av summen ${I_r + J}$, så de to er like. Avstanden svinger én gang for hver runde, og banen lukker seg.
+
+<Derivation title="Virkningsvariabelen for svingningen i $r$">
+Med $E$ og $J$ bevart er ${p_r^2 = 2\mu E + 2\mu k/r - J^2/r^2}$. For ${E < 0}$ er det
+
+$$
+p_r^2 = \frac{2\mu|E|\,(r - r_\text{min})(r_\text{max} - r)}{r^2}
+$$
+
+der røttene oppfyller ${r_\text{min} + r_\text{max} = k/|E|}$ og ${r_\text{min}r_\text{max} = J^2/2\mu|E|}$. En hel svingning går fra $r_\text{min}$ til $r_\text{max}$ og tilbake, så
+
+$$
+I_r = \frac{1}{\pi}\sqrt{2\mu|E|}\int_{r_\text{min}}^{r_\text{max}} \frac{\sqrt{(r - r_\text{min})(r_\text{max} - r)}}{r}\,dr
+$$
+
+Integralet er ${\tfrac{\pi}{2}(r_\text{min} + r_\text{max}) - \pi\sqrt{r_\text{min}r_\text{max}}}$, og
+
+$$
+I_r = \sqrt{2\mu|E|}\,\frac{k}{2|E|} - J \allowbreak = k\sqrt{\frac{\mu}{2|E|}} - J
+$$
+
+Løst for $E$ gir det ${E = -\mu k^2/2(I_r + J)^2}$.
+</Derivation>
+
+<Callout title="Flere frihetsgrader">
+Et system med $n$ frihetsgrader og $n$ uavhengige bevarte størrelser med Poissonklamme null seg imellom er integrabelt. Da avhenger $H$ bare av virkningsvariablene, og hver vinkel går jevnt med ${\omega_i = \partial H/\partial I_i}$. For Keplerbanen er vinkelfrekvensene like, og banen lukker seg.
+</Callout>
+
+## Hamilton–Jacobi-ligningen
+
+Virknings- og vinkelvariablene krever en periodisk bevegelse, og for å finne $\theta$ må du vite hvordan punktet går rundt banen. I Hamilton–Jacobi-teorien står alle de nye variablene stille, og bevegelsen trenger ikke være periodisk. Utgangspunktet er virkningen, regnet som funksjon av hvor og når banen slutter.
+
+Ta en fri partikkel med masse $m$ som starter i $x_0$ ved ${t = 0}$. Den virkelige banen til $x$ ved tida $t$ har den konstante farten ${v = (x - x_0)/t}$, og virkningen langs den er
+
+$$
+S(x, t) = \tfrac12 mv^2\,t = \frac{m(x - x_0)^2}{2t}
+$$
+
+Deriver med hensyn på endepunktet:
+
+$$
+\frac{\partial S}{\partial x} = \frac{m(x - x_0)}{t} = p, \allowbreak\qquad \frac{\partial S}{\partial t} = -\frac{m(x - x_0)^2}{2t^2} = -E
+$$
+
+Den deriverte med hensyn på stedet er impulsen partikkelen har der, og den deriverte med hensyn på tida er minus energien. Med ${E = p^2/2m}$ gir de
+
+$$
+\frac{\partial S}{\partial t} + \frac{1}{2m}\Bigl(\frac{\partial S}{\partial x}\Bigr)^2 = 0
+$$
+
+en ligning for $S$ der $H$ står med ${\partial S/\partial x}$ i stedet for $p$.
+
+Ligningen for $S$ gjelder for ethvert system. Når du varierer en bane, gir delvis integrasjon et ledd ${(\partial L/\partial\dot q)\,\delta q = p\,\delta q}$ fra hvert endepunkt, i tillegg til integralet med Lagranges ligning. Hold starten fast og flytt endepunktet med $\delta q$. Langs den virkelige banen er integralet null, så ${\delta S = p\,\delta q}$, og ${\partial S/\partial q = p}$. La så banen gå et lite tidsrom $dt$ lenger. Langs banen vokser $S$ med ${L\,dt}$, og den samme endringen er ${(\partial S/\partial t + p\dot q)\,dt}$, så ${\partial S/\partial t = L - p\dot q = -H}$:
+
+<Statement kind="theorem" name="Hamilton–Jacobi-ligningen" id="hamilton-jacobi-ligningen">
+Virkningen langs den virkelige banen som funksjon av endepunktet, ${S(q_1, \dots, q_n, t)}$, oppfyller
+
+$$
+\frac{\partial S}{\partial t} + H\Bigl(q, \frac{\partial S}{\partial q}, t\Bigr) = 0
+$$
+
+der $q$ står for alle $q_i$ og ${\partial S/\partial q}$ for alle impulsene ${p_i = \partial S/\partial q_i}$. $S$ heter <Term name="Hamiltons prinsipale funksjon">Hamiltons prinsipale funksjon</Term>.
+</Statement>
+
+Hamiltons ligninger er $2n$ ordinære differensialligninger. Hamilton–Jacobi-ligningen er én partiell differensialligning av første orden, for én funksjon av ${n + 1}$ variabler, og den har mange løsninger. For den frie partikkelen er også ${S = \alpha x - \alpha^2t/2m}$ en løsning, for enhver konstant $\alpha$: ${\partial S/\partial x = \alpha}$ og ${\partial S/\partial t = -\alpha^2/2m}$. Den er også en virkning: virkningen ${\alpha^2t/2m}$ langs banen med impulsen $\alpha$, pluss ${\alpha x_0}$, der ${x_0 = x - \alpha t/m}$ er stedet banen startet i. Enhver løsning med konstanter som dette kalles Hamiltons prinsipale funksjon.
+
+En løsning med $n$ konstanter ${\alpha_1, \dots, \alpha_n}$, ${S(q, \alpha, t)}$, gir hele bevegelsen. Les den som en genererende funksjon ${G_2(q, P, t)}$ med de nye impulsene ${P_i = \alpha_i}$. Da er ${p_i = \partial S/\partial q_i}$, de nye koordinatene er ${Q_i = \partial S/\partial\alpha_i}$, og den nye Hamiltonfunksjonen er
+
+$$
+H' = H + \frac{\partial S}{\partial t} = 0
+$$
+
+Med ${H' = 0}$ gir Hamiltons ligninger ${\dot Q_i = 0}$ og ${\dot P_i = 0}$, så alle de nye variablene står stille. Kall de konstante koordinatene $\beta_i$. Ligningene ${\partial S/\partial\alpha_i = \beta_i}$ inneholder $q$, $t$ og $2n$ konstanter, og løst for $q$ gir de bevegelsen. For den frie partikkelen er ${\partial S/\partial\alpha = x - \alpha t/m = \beta}$, så ${x = \beta + \alpha t/m}$: partikkelen har impulsen $\alpha$ og er i $\beta$ ved ${t = 0}$.
+
+<Formula
+  tex="p_i = \frac{\partial S}{\partial q_i} \allowbreak\qquad \beta_i = \frac{\partial S}{\partial\alpha_i}"
+  caption="<b>Bevegelsen fra Hamiltons prinsipale funksjon</b> ${S(q, \alpha, t)}$ med $n$ konstanter $\alpha_i$. $S$ er en genererende funksjon av typen $G_2$ med de nye impulsene $\alpha_i$ og ${H' = 0}$, så de nye koordinatene $\beta_i$ er også konstante."
+/>
+
+<Steps>
+<Step title="Sett opp ligningen">
+Skriv $H$ med ${\partial S/\partial q_i}$ i stedet for $p_i$, og sett ${\partial S/\partial t + H = 0}$.
+</Step>
+<Step title="Finn en løsning med $n$ konstanter">
+Finn ${S(q, \alpha, t)}$, som regel ved å skille variablene.
+</Step>
+<Step title="Finn bevegelsen">
+Sett ${\partial S/\partial\alpha_i = \beta_i}$ og løs for ${q_i(t)}$. Impulsene er ${p_i = \partial S/\partial q_i}$.
+</Step>
+<Step title="Tilpass startbetingelsene">
+Bestem $\alpha_i$ og $\beta_i$ fra $q$ og $p$ ved ${t = 0}$.
+</Step>
+</Steps>
+
+Når $H$ ikke avhenger av tida, skiller tida seg ut. Prøv ${S = W(q) - Et}$ med en konstant $E$. Da er ${\partial S/\partial t = -E}$ og ${\partial S/\partial q_i = \partial W/\partial q_i}$, og ligningen blir
+
+$$
+H\Bigl(q, \frac{\partial W}{\partial q}\Bigr) = E
+$$
+
+uten tida. $W$ heter <Term name="Hamiltons karakteristiske funksjon">Hamiltons karakteristiske funksjon</Term>. Med én frihetsgrad og ${H = p^2/2m + V(q)}$ er ${\partial W/\partial q = \sqrt{2m(E - V)}}$, impulsen ved energien $E$, og ${W = \int p\,dq}$. Med ${\alpha = E}$ er den konstante koordinaten ${\beta = \partial W/\partial E - t}$. ${\partial W/\partial E = \int m\,dq/p = \int dq/\dot q}$ er tida partikkelen bruker fra stedet integralet starter i, så $-\beta$ er tidspunktet den var der.
+
+<Callout title="Bevegelsen fra Hamilton–Jacobi">
+En løsning ${S(q, \alpha, t)}$ med $n$ konstanter er en genererende funksjon til nye variabler som står stille, og ${\partial S/\partial\alpha_i = \beta_i}$ gir bevegelsen. Når $H$ ikke avhenger av tida, er ${S = W(q, \alpha) - Et}$ med ${H(q, \partial W/\partial q) = E}$.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Hamiltons karakteristiske funksjon">
+<ExamRef id="2022-aug-kont" task="2 iv" />
+
+True (T) or false (F). Please explain as half of the points depend on it:
+
+<Quiz
+  question={"iv. We can solve the Hamilton-Jacobi equation by using Hamilton’s characteristic function for the following Hamiltonian ($A$ is a constant) ${H = \\frac{p^2}{2m} - mAtx}$"}
+  options={["T", "F"]}
+  answer={1}
+  explanation={"Usant. $H$ avhenger eksplisitt av tida gjennom leddet ${-mAtx}$. Med ${S = W(x) - Et}$ er ${\\partial S/\\partial t = -E}$ konstant, mens $H$ endrer seg med tida, så ligningen kan ikke oppfylles, og energien er ikke bevart. Den karakteristiske funksjonen krever en $H$ som ikke avhenger av tida."}
+/>
+</Example>
+
+<Example label="Eksamensoppgave" title="Fritt fall med Hamilton–Jacobi">
+<ExamRef id="2018-des" task="5 a–b" />
+
+Let us consider a system in free fall in a uniform gravitational field. The Hamiltonian of the system is
+
+$$
+H = \frac{p^2}{2m} + mgy
+$$
+
+where $y$ is the vertical location and $p$ is the associated canonical momentum.
+
+In general, the Hamilton-Jacobi theory considers a partial differential equation of the form
+
+$$
+H\left(q_i, \frac{\partial S}{\partial q_i}, t\right) + \frac{\partial S}{\partial t} = 0,
+$$
+
+where $S$ is the Hamilton’s principal function.
+
+(a) Derive the Hamilton’s principal function ${S(y, \alpha, t)}$ and solve it. For simplicity, choose here that ${\alpha = E}$.
+
+(b) By using ${S(y, \alpha, t)}$ and the interrelationships between old and new coordinates, derive the final solution for $y$. Use here the initial conditions ${y = y_0}$ and ${p = p_0}$ at ${t = 0}$.
+
+<Solution>
+a) $H$ avhenger ikke av tida, så ${S = W(y) - \alpha t}$ med ${\alpha = E}$. Ligningen for $W$ er
+
+$$
+\frac{1}{2m}\Bigl(\frac{dW}{dy}\Bigr)^2 + mgy = \alpha
+$$
+
+så ${dW/dy = \sqrt{2m(\alpha - mgy)}}$. Integrert er
+
+$$
+W(y) = -\frac{\bigl(2m(\alpha - mgy)\bigr)^{3/2}}{3m^2g}
+$$
+
+pluss en konstant, som ikke betyr noe. Kontroll: den deriverte av ${(2m(\alpha - mgy))^{3/2}}$ er ${-3m^2g\sqrt{2m(\alpha - mgy)}}$. Hamiltons prinsipale funksjon er
+
+$$
+S(y, \alpha, t) = -\frac{\bigl(2m(\alpha - mgy)\bigr)^{3/2}}{3m^2g} \allowbreak - \alpha t
+$$
+
+b) Den nye koordinaten er konstant:
+
+$$
+\beta = \frac{\partial S}{\partial\alpha} \allowbreak = -\frac{\sqrt{2m(\alpha - mgy)}}{mg} - t
+$$
+
+og impulsen er ${p = \partial S/\partial y = \sqrt{2m(\alpha - mgy)}}$, så ${\beta = -p/mg - t}$. Ved ${t = 0}$ gir det ${\beta = -p_0/mg}$, og ${\alpha = p_0^2/2m + mgy_0}$. Løs for $y$:
+
+$$
+2m(\alpha - mgy) = m^2g^2(t + \beta)^2 \allowbreak\quad\Rightarrow\quad y = \frac{\alpha}{mg} - \tfrac12 g(t + \beta)^2
+$$
+
+Med $\alpha$ og $\beta$ satt inn er
+
+$$
+y = y_0 + \frac{p_0^2 - (p_0 - mgt)^2}{2m^2g} \allowbreak = y_0 + \frac{p_0t}{m} - \tfrac12 gt^2
+$$
+
+Mens ballen faller, er ${p = -\sqrt{2m(\alpha - mgy)}}$, og den samme regningen gir det samme svaret etter kvadreringen. Løsningsforslaget får ${-p_0t/m}$, fordi det finner $\beta$ fra ${\beta^2}$ og velger ${\beta = +p_0/mg}$. Med ${p = p_0}$ ved ${t = 0}$ er ${\beta = -p_0/mg}$, og leddet er ${+p_0t/m}$: en ball som kastes opp, går først oppover.
+
+<Answer>a) ${S = -\bigl(2m(E - mgy)\bigr)^{3/2}/3m^2g - Et}$. b) ${y = y_0 + p_0t/m - \tfrac12 gt^2}$.</Answer>
+</Solution>
+</Example>
+
+En syklisk koordinat skiller seg ut på samme måte. Står $q_1$ ikke i $H$, er impulsen $p_1$ en konstant $\alpha_1$, og ${S = \alpha_1q_1 + \dots}$, der resten ikke avhenger av $q_1$, gir ${\partial S/\partial q_1 = \alpha_1}$.
+
+<Example label="Eksamensoppgave" title="Hamilton–Jacobi-ligningen i polarkoordinater">
+<ExamRef id="2012-jun" task="3c" />
+
+(c) A charged particle is constrained to move in the $xy$-plane under the influence of a central force potential ${V = \frac{1}{2}kr^2}$, which is non-electromagnetic, in addition to a constant magnetic field $\mathbf B$ perpendicular to the plane. In this case, the magnetic vector potential may be written ${\mathbf A = \frac{1}{2}\mathbf B \times \mathbf r}$. Assume that the Lagrangian of the system may be written as:
+
+$$
+L = \frac{m}{2}(\dot x^2 + \dot y^2) \allowbreak + \frac{q}{c}(\dot{\mathbf x} \cdot \mathbf A) \allowbreak - \frac{k}{2}(x^2 + y^2). \qquad (4)
+$$
+
+Switch to polar coordinates and write down the corresponding Hamilton-Jacobi equation based on this Lagrangian.
+
+<Solution>
+Faktoren ${q/c}$ kommer fra gaussiske enheter; i SI står $q$ alene. Med ${\mathbf B = B\hat z}$ er ${\mathbf A = \tfrac12 B(-y, x, 0)}$, og ${\dot{\mathbf x} \cdot \mathbf A = \tfrac12 B(x\dot y - y\dot x) = \tfrac12 Br^2\dot\phi}$, der $\phi$ er vinkelen i planet. Da er
+
+$$
+L = \frac m2(\dot r^2 + r^2\dot\phi^2) \allowbreak + \frac{qB}{2c}r^2\dot\phi - \frac k2 r^2
+$$
+
+Impulsene er ${p_r = m\dot r}$ og ${p_\phi = mr^2\dot\phi + qBr^2/2c}$. Løs for $\dot\phi$, og ${H = p_r\dot r + p_\phi\dot\phi - L}$ blir
+
+$$
+H = \frac{p_r^2}{2m} \allowbreak + \frac{1}{2mr^2}\Bigl(p_\phi - \frac{qB}{2c}r^2\Bigr)^2 \allowbreak + \frac k2 r^2
+$$
+
+Sett ${p_r = \partial S/\partial r}$ og ${p_\phi = \partial S/\partial\phi}$:
+
+$$
+\frac{\partial S}{\partial t} + \frac{1}{2m}\Bigl(\frac{\partial S}{\partial r}\Bigr)^2 \allowbreak + \frac{1}{2mr^2}\Bigl(\frac{\partial S}{\partial\phi} - \frac{qB}{2c}r^2\Bigr)^2 \allowbreak + \frac k2 r^2 = 0
+$$
+
+$\phi$ står ikke i ligningen, og $H$ avhenger ikke av tida, så ${S = -Et + \alpha\phi + W(r)}$ skiller variablene, med ${\alpha = p_\phi}$. Løsningsforslaget skriver ${-\partial_t S}$, men med ${H + \partial S/\partial t = 0}$ er fortegnet pluss.
+
+<Answer>${\partial S/\partial t + (\partial S/\partial r)^2/2m + (\partial S/\partial\phi - qBr^2/2c)^2/2mr^2 + kr^2/2 = 0}$</Answer>
+</Solution>
+</Example>
+
+Med to eller tre koordinater kan $W$ tegnes. Impulsen ${\vec p = \nabla W}$ står vinkelrett på flatene der $W$ er konstant, og ${|\nabla W| = |\vec p| = \sqrt{2m(E - V)}}$. Figur 2 viser baller kastet fra det samme punktet med samme fart i ulike retninger. $W$ er virkningen ${\int p\,ds}$ langs banen fra kastet. Banene krysser kurvene med konstant $W$ vinkelrett, og kurvene ligger tettest der ballene går fortest, fordi $W$ vokser raskest der impulsen er størst.
+
+<Figure src="/figures/bolgefronter.svg" alt="Et punkt O øverst til venstre med grå baner som går ut i en vifte, fra nesten rett ned til litt over vannrett, og bøyer nedover. Oransje stiplede kurver krysser banene på tvers, nær sirkler rundt O nær punktet og tettere og flatere lenger ned. En grønn pil merket p står på en av banene, vinkelrett på en oransje kurve, og peker langs banen." width={340} height={300} number={2} caption="Baller kastet fra $O$ med samme fart, i retninger fra 80° under til 20° over vannrett. De grå kurvene er banene, de oransje stiplede kurvene har konstant $W$, med like store sprang i $W$ mellom dem. Pila er impulsen ${\vec p = \nabla W}$ der den er tegnet." />
+
+Bildet er det samme som for lys. Lysstråler står vinkelrett på bølgefrontene, og bølgefrontene ligger tettest der brytningsindeksen er størst. Banene er strålene, kurvene med konstant $W$ er bølgefrontene, og ${\sqrt{2m(E - V)}}$ har rollen brytningsindeksen har. Analogien stopper ved farten: lyset går saktest der brytningsindeksen er størst, mens ballen går fortest der impulsen er størst.
+
+Den karakteristiske funksjonen gir også vinkelvariabelen. Velg virkningsvariabelen $I$ som konstanten $\alpha$, med ${E = E(I)}$. Da er ${S = W(q, I) - E(I)\,t}$, og den konstante koordinaten er
+
+$$
+\beta = \frac{\partial W}{\partial I} - \frac{dE}{dI}\,t = \frac{\partial W}{\partial I} - \omega t
+$$
+
+${\partial W/\partial I}$ er altså ${\beta + \omega t}$ og går jevnt. Med ${\partial W/\partial E = \int dq/\dot q}$ er ${\partial W/\partial I = \omega\int dq/\dot q}$, $2\pi$ ganger den delen av perioden punktet har brukt fra startstedet: vinkelvariabelen $\theta$. ${W(q, I) = \int p\,dq}$ er den genererende funksjonen ${G_2}$ for overgangen fra $(q, p)$ til $(\theta, I)$. Den avhenger ikke av tida, så den nye Hamiltonfunksjonen er ${H' = H = E(I)}$.
+
+<KeyTakeaways>
+- Virkningsvariabelen ${I = \frac{1}{2\pi}\oint p\,dq}$ er arealet banen omslutter i faserommet delt på $2\pi$. For oscillatoren er ${I = E/\omega}$.
+- Endres en parameter sakte sammenlignet med perioden, er $I$ bevart, så energien til en oscillator følger vinkelfrekvensen. Ved en rask endring får tilstander med samme energi ulike energier.
+- Med $I$ som impuls går vinkelvariabelen $\theta$ jevnt, ${\dot\theta = dE/dI = \omega}$, og perioden følger av hvor fort arealet vokser med energien, ${T = 2\pi\,dI/dE}$.
+- Med $n$ frihetsgrader finnes slike variabler når systemet er integrabelt. For Keplerbanen avhenger $H$ bare av ${I_r + J}$, så vinkelfrekvensene er like, og banen lukker seg.
+- Hamiltons prinsipale funksjon $S$ er virkningen som funksjon av endepunktet og oppfyller ${\partial S/\partial t + H(q, \partial S/\partial q, t) = 0}$. En løsning med $n$ konstanter $\alpha_i$ gir bevegelsen fra ${\partial S/\partial\alpha_i = \beta_i}$, og når $H$ ikke avhenger av tida, er ${S = W - Et}$.
+</KeyTakeaways>
