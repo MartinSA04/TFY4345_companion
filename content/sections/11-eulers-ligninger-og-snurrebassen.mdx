@@ -1,108 +1,100 @@
 ---
 order: 11
 title: "Eulers ligninger og snurrebassen"
-summary: "Eulers ligninger er bevegelsesligningene for rotasjonen, skrevet langs legemets hovedakser. De gir presesjonen til en fri symmetrisk snurrebass og viser hvorfor rotasjon om aksen med det midterste treghetsmomentet er ustabil. Eulervinklene gjør orienteringen til generaliserte koordinater, og med dem gir Lagrangefunksjonen presesjonen og nutasjonen til en tung snurrebass."
+summary: "En mobil som kastes ende over ende, snur seg i lufta fordi rotasjon om aksen med det midterste treghetsmomentet er ustabil. Eulers ligninger gir hvordan vinkelhastigheten endrer seg langs legemets akser når dreieimpulsen står fast, og hvordan en tallerken vingler. Eulervinklene gir koordinater for orienteringen, og med dem gir Lagrangefunksjonen presesjonen og nutasjonen til en tung snurrebass og betingelsen for at den står rett opp."
 importance: core
-tag: "Uke 42"
+tag: "Uke 41–42 · Tong 9.4–9.6"
 updated: 2026-11-06
 ---
 
 <LearningGoals>
-- Utlede Eulers ligninger fra $\dot{\vec L} = \vec N$ og bruke dem på en fri symmetrisk snurrebass.
+- Forklare hvorfor vinkelhastigheten til et legeme kan endre seg når dreieimpulsen står fast, og utlede Eulers ligninger fra $\dot{\vec L} = \vec N$.
 - Vise at rotasjon om hovedaksen med det største eller det minste treghetsmomentet er stabil, og at rotasjon om den midterste er ustabil.
-- Beskrive orienteringen til et stivt legeme med Eulervinklene.
-- Skrive $\vec\omega$ og den kinetiske energien ved Eulervinklene.
+- Finne hvor fort en fri symmetrisk snurrebass vingler, sett fra legemet og sett fra rommet.
+- Beskrive orienteringen til et stivt legeme med Eulervinklene, og skrive den kinetiske energien til en symmetrisk snurrebass ved dem.
 - Sette opp Lagrangefunksjonen for en tung symmetrisk snurrebass, finne de bevarte størrelsene og forklare presesjon og nutasjon.
 - Finne farten for jevn presesjon og betingelsen for at en snurrebass står stabilt rett opp.
 </LearningGoals>
 
+Kast mobilen opp i lufta mens den snurrer, og ta den igjen. Snurrer den om lengdeaksen, som en kjevle, eller flatt om aksen gjennom skjermen, roterer den rolig om den samme aksen hele veien. Snurrer den ende over ende, om aksen på tvers, kommer den nesten alltid ned med skjermen vendt den andre veien, fordi den underveis har dreid en halv runde om lengdeaksen. I lufta virker tyngden i massesenteret og gir ikke noe dreiemoment om det, så dreieimpulsen $\vec L$ om massesenteret står fast hele tida. Likevel vokser et lite avvik fra tverraksen omtrent 140 ganger for hver runde en mobil på 15 × 7 × 0,8 cm går. Selv om du treffer tverraksen innenfor 1°, har mobilen snudd seg i løpet av den andre runden.
+
 ## Eulers ligninger
 
-Bevegelsesligningen for rotasjonen er $\dot{\vec L} = \vec N$ i et inertialsystem $K$, med dreieimpulsen og dreiemomentet om et fast punkt $O$ i legemet eller om massesenteret. Du vil ha den som ligninger for komponentene $\omega_a$. Langs rommets akser endrer treghetstensoren seg når legemet dreier. Langs hovedaksene $\hat e_a'$, som følger legemet, er $L_a = I_a\omega_a$ med konstante $I_a$. Aksene roterer med $\vec\omega$, så den tidsderiverte i $K$ er den tidsderiverte langs aksene pluss $\vec\omega \times \vec L$, <FormulaRef id="rotasjon-tidsderivert" />:
+Mens mobilen er i lufta, står $\vec L$ fast, men vinkelhastigheten $\vec\omega$ endrer seg. Langs mobilens hovedakser $\hat e_a'$ er ${L_a = I_a\omega_a}$, og hovedtreghetsmomentene $I_a$ er konstante, fordi aksene sitter fast i mobilen. Komponentene ${\omega_a = L_a/I_a}$ er altså gitt ved komponentene av $\vec L$ langs mobilens akser. Når mobilen dreier, dreier aksene, og komponentene av den faste $\vec L$ langs dem endrer seg. Da endrer $\vec\omega$ seg også.
+
+Stjernene på himmelen viser hvordan $\vec L$ ser ut fra mobilen. Stjernene står stille, men sett fra jorda, som dreier mot øst, går de over himmelen mot vest. Polarstjerna ligger nesten langs jordaksen og står nesten stille. På samme måte dreier en vektor som står fast i rommet, med $-\vec\omega$ sett fra et legeme som roterer, og bare en vektor langs $\vec\omega$ står stille. Roterer mobilen om en hovedakse, er $\vec L$ parallell med $\vec\omega$ og står stille sett fra mobilen. Ellers dreier $\vec L$ i mobilen, og fordi $\vec\omega$ følger komponentene av $\vec L$, flytter dreieaksen seg også.
+
+<FormulaRef id="rotasjon-tidsderivert">Regelen</FormulaRef> for hvordan en vektor endrer seg sett fra et roterende system, gjør bildet med stjernene til ligninger. La $K'$ være systemet som følger legemet, med aksene $\hat e_a'$. Brukt på $\vec L$ er regelen
 
 $$
-\dot{\vec L} = \sum_a I_a\dot\omega_a\,\hat e_a' + \vec\omega \times \vec L = \vec N
+\left(\frac{d\vec L}{dt}\right)_K = \left(\frac{d\vec L}{dt}\right)_{K'} + \vec\omega \times \vec L
 $$
 
-Komponent 1 av kryssproduktet er $\omega_2 L_3 - \omega_3 L_2 = (I_3 - I_2)\,\omega_2\omega_3$, og de to andre følger ved å bytte indeksene syklisk:
+I inertialsystemet $K$ er ${\dot{\vec L} = \vec N}$, der $\vec N$ er dreiemomentet om det samme punktet som $\vec L$, massesenteret eller et fast punkt i legemet. Sett fra $K'$ er endringen av $\vec L$ derfor ${\vec N - \vec\omega \times \vec L}$. Uten dreiemoment er den ${-\vec\omega \times \vec L}$, en dreining med $-\vec\omega$, som stjernene. Langs hovedaksene er endringen sett fra $K'$ lik ${\sum_a I_a\dot\omega_a\,\hat e_a'}$, og komponent 1 av kryssproduktet er ${\omega_2L_3 - \omega_3L_2 = (I_3 - I_2)\,\omega_2\omega_3}$. De to andre komponentene følger ved å bytte indeksene syklisk:
 
 <Formula
   tex="\begin{aligned} I_1\dot\omega_1 + (I_3 - I_2)\,\omega_2\omega_3 &= N_1 \\ I_2\dot\omega_2 + (I_1 - I_3)\,\omega_3\omega_1 &= N_2 \\ I_3\dot\omega_3 + (I_2 - I_1)\,\omega_1\omega_2 &= N_3 \end{aligned}"
-  caption="<b>Eulers ligninger</b>, med komponentene langs hovedaksene. $\vec N$ og $\boldsymbol I$ tas om det samme punktet, et fast punkt eller massesenteret."
+  caption="<b>Eulers ligninger</b>, med komponentene langs hovedaksene. $\vec N$ og $I_a$ tas om det samme punktet, massesenteret eller et fast punkt i legemet."
 />
 
-Dette er <Term name="eulers ligninger">Eulers ligninger</Term>, tre koblede førsteordens ligninger for $\omega_a(t)$. De sier ikke direkte hvordan legemet står, for $\omega_a$ er ikke tidsderiverte av noen vinkler.
+Dette er <Term name="eulers ligninger">Eulers ligninger</Term>. Leddene med to komponenter av $\vec\omega$ er dreiningen av $\vec L$ sett fra legemet. For ei kule er alle $I_a$ like, leddene er null, og uten dreiemoment står $\vec\omega$ fast. Det samme gjelder rotasjon om én hovedakse, for eksempel ${\vec\omega = \omega_2\hat e_2'}$, der alle produktene av to komponenter er null.
 
-Uten dreiemoment står $\vec L$ fast i $K$, så lengden $|\vec L|^2 = \sum_a L_a^2$ er bevart, selv om komponentene $L_a$ langs hovedaksene endrer seg. Dreiemomentet gjør arbeidet $\vec N \cdot \vec\omega$ per tid, så uten dreiemoment er også $T = \sum_a L_a^2/2I_a$ bevart. Eulers ligninger bekrefter at $T$ er bevart. Gang ligning $a$ med $\omega_a$ og summer. Da er $\sum_a I_a\omega_a\dot\omega_a = \dot T$, og leddene med $\omega_1\omega_2\omega_3$ får faktoren $(I_3 - I_2) + (I_1 - I_3) + (I_2 - I_1) = 0$.
+Uten dreiemoment er to størrelser bevart. $|\vec L|$ er bevart fordi $\vec L$ står fast i $K$, og sett fra legemet dreier den bare. Dreiemomentet gjør arbeidet ${\vec N \cdot \vec\omega}$ per tid, så uten dreiemoment er også den kinetiske energien ${T = \sum_a L_a^2/2I_a}$ bevart. Eulers ligninger bekrefter det. Gang ligning $a$ med $\omega_a$ og summer. Da blir venstresida ${\sum_a I_a\omega_a\dot\omega_a = \dot T}$, og leddene med ${\omega_1\omega_2\omega_3}$ får faktoren ${(I_3 - I_2) + (I_1 - I_3) + (I_2 - I_1) = 0}$.
 
 <Callout title="Bevart uten dreiemoment">
-Uten dreiemoment er $T$ og $|\vec L|$ bevart, mens komponentene $L_a$ langs hovedaksene kan endre seg.
+Uten dreiemoment står $\vec L$ fast i rommet og dreier baklengs sett fra legemet, og $\vec\omega$ følger med. $|\vec L|$ og $T$ er bevart.
 </Callout>
 
-## Fri symmetrisk snurrebass
+## Mobilen som snur seg
 
-Et legeme med $I_1 = I_2$ er en <Term name="symmetrisk snurrebass">symmetrisk snurrebass</Term>, og $\hat e_3'$ er symmetriaksen. Uten dreiemoment gir den tredje av Eulers ligninger $\dot\omega_3 = 0$, fordi $I_2 - I_1 = 0$, og de to første blir
-
-$$
-\dot\omega_1 = -\Omega\,\omega_2 \allowbreak\qquad \dot\omega_2 = \Omega\,\omega_1 \allowbreak\qquad \Omega = \frac{I_3 - I_1}{I_1}\,\omega_3
-$$
-
-Deriver den første og sett inn den andre. Da er $\ddot\omega_1 = -\Omega^2\omega_1$, så $\omega_1$ svinger harmonisk med vinkelfrekvensen $\Omega$. Regn tida fra et øyeblikk der $\omega_2 = 0$. Da er løsningen $\omega_1 = \omega_\perp\cos\Omega t$, og den første ligningen gir $\omega_2 = -\dot\omega_1/\Omega = \omega_\perp\sin\Omega t$. Sett fra legemet har $\vec\omega$ den faste komponenten $\omega_3$ langs symmetriaksen, og komponenten $\omega_\perp$ vinkelrett på aksen roterer rundt den med vinkelfrekvensen $\Omega$. For ei kule er $I_3 = I_1$ og $\Omega = 0$, så $\vec\omega$ står fast i legemet. For et flattrykt legeme, som jorda eller ei skive, er $I_3 > I_1$, og $\vec\omega$ går rundt aksen samme vei som legemet spinner. For et avlangt legeme er $I_3 < I_1$, og $\vec\omega$ går rundt aksen motsatt vei.
-
-Sett fra $K$ står $\vec L$ fast, fordi $\vec N = 0$. Symmetriaksen endrer seg som $\dot{\hat e}_3' = \vec\omega \times \hat e_3'$, så skriv $\vec\omega$ ved $\vec L$. Med $I_1 = I_2$ er $\vec L = I_1(\omega_1\hat e_1' + \omega_2\hat e_2') + I_3\omega_3\hat e_3'$. Legg til og trekk fra $I_1\omega_3\hat e_3'$, så er ${\vec L = I_1\vec\omega + (I_3 - I_1)\,\omega_3\hat e_3'}$. Leddet langs $\hat e_3'$ gir null i kryssproduktet med $\hat e_3'$, og
-
-$$
-\dot{\hat e}_3' = \vec\omega \times \hat e_3' = \frac{\vec L}{I_1} \times \hat e_3'
-$$
-
-Symmetriaksen roterer altså om den faste $\vec L$ med vinkelfarten $|\vec L|/I_1$, og vinkelen mellom dem er fast, fordi $\dot{\hat e}_3'$ står vinkelrett på $\vec L$. En slik rotasjon av symmetriaksen om en fast retning heter <Term name="presesjon">presesjon</Term>. Siden $\vec L$ er en sum av $\vec\omega$ og $\hat e_3'$, ligger de tre vektorene hele tida i samme plan, og planet roterer med symmetriaksen.
-
-$\Omega$ og $|\vec L|/I_1$ er to vinkelfarter for den samme bevegelsen. Løs uttrykket for $\vec L$ for $\vec\omega$:
-
-$$
-\vec\omega = \frac{\vec L}{I_1} - \Omega\,\hat e_3'
-$$
-
-Legemet dreier altså med $|\vec L|/I_1$ om $\vec L$, sammen med planet, og i tillegg med $-\Omega$ om symmetriaksen. Sett fra legemet dreier derfor planet, og med det $\vec\omega$ og $\vec L$, med $\Omega$ om symmetriaksen.
-
-<Callout title="Fri symmetrisk snurrebass">
-Sett fra legemet går $\vec\omega$ rundt symmetriaksen med $\Omega = (I_3 - I_1)\,\omega_3/I_1$. Sett fra rommet presesserer symmetriaksen om den faste $\vec L$ med vinkelfarten $|\vec L|/I_1$.
-</Callout>
-
-<Derivation title="Chandler wobble">
-Jorda er flattrykt ved polene, med $(I_3 - I_1)/I_1 \approx 1/300$, så $\Omega \approx \omega_3/300$. Ligger $\vec\omega$ litt på skrå av polaksen, skulle rotasjonsaksen sett fra jorda gå rundt polen én gang på omtrent 300 døgn. Den målte bevegelsen, Chandler wobble, har perioden 430 døgn, fordi jorda ikke er helt stiv. Sett fra rommet går polaksen samtidig rundt $\vec L$ med $|\vec L|/I_1 \approx \omega_3$, omtrent én gang i døgnet, på en svært smal kjegle.
-</Derivation>
-
-## Stabil og ustabil rotasjon
-
-Rotasjon om en hovedakse, $\vec\omega = \omega_1\hat e_1'$, løser Eulers ligninger uten dreiemoment, for alle produktene $\omega_a\omega_b$ er null. For å se om den er stabil, la $\omega_2$ og $\omega_3$ være små og behold bare ledd av første orden i dem. Da er $\omega_1$ konstant, fordi $\dot\omega_1$ er proporsjonal med $\omega_2\omega_3$, og
-
-$$
-I_2\dot\omega_2 = (I_3 - I_1)\,\omega_1\omega_3 \allowbreak\qquad I_3\dot\omega_3 = (I_1 - I_2)\,\omega_1\omega_2
-$$
-
-For å få én ligning for $\omega_2$, deriver den første og sett inn $\dot\omega_3$ fra den andre:
-
-<Formula
-  tex="\ddot\omega_2 = \lambda^2\omega_2 \allowbreak\qquad \lambda^2 = \frac{(I_3 - I_1)(I_1 - I_2)}{I_2 I_3}\,\omega_1^2"
-  caption="Små avvik fra rotasjon om hovedakse 1."
-/>
-
-Med $\lambda^2 < 0$ svinger $\omega_2$ og $\omega_3$ harmonisk om null. Med $\lambda^2 > 0$ vokser de som $e^{\lambda t}$. Er $I_1$ det største av de tre, er den første faktoren negativ og den andre positiv. Er $I_1$ det minste, er fortegnene omvendt. I begge tilfeller er $\lambda^2 < 0$, og rotasjonen er stabil. Ligger $I_1$ mellom de to andre, har faktorene samme fortegn, og et lite avvik vokser eksponentielt. Rotasjon om hovedaksen med det midterste treghetsmomentet er ustabil.
-
-Ligningene over gjelder bare så lenge avviket er lite, så de sier ikke hva som skjer når avviket har vokst. Bevaringen av $T$ og $|\vec L|$ viser hvor avviket ender. Sett fra legemet ligger $\vec L$ både på kula $\sum_a L_a^2 = |\vec L|^2$ og på ellipsoiden $\sum_a L_a^2/2I_a = T$, så spissen av $\vec L$ går langs skjæringskurven mellom dem, en kurve på kula der $T$ har fast verdi. Hver $L_a^2$ teller med vekten $1/2I_a$ i $T$, så på kula er $T$ størst når $\vec L$ ligger langs aksen med minst $I_a$, og minst langs aksen med størst $I_a$. Rundt et maksimum og et minimum er kurvene med fast $T$ små, lukkede kurver rundt aksen, og $\vec L$ holder seg nær den. Den midterste aksen er et sadelpunkt for $T$, for $T$ øker når $\vec L$ vipper mot aksen med minst $I_a$, og avtar mot aksen med størst. Gjennom sadelpunktet går to kurver som krysser hverandre. En $\vec L$ som starter like ved den midterste aksen, følger en av dem helt over til motsatt side av legemet, og legemet snur seg.
-
-<Callout title="Stabile og ustabile akser">
-Rotasjon om hovedaksen med størst eller minst treghetsmoment er stabil. Om den midterste vokser et lite avvik, og legemet snur seg.
-</Callout>
+Trykk «Om lengdeaksen» i simuleringen, og så «Gjennom skjermen». Begge starter med et lite avvik fra aksen. I begge tilfellene vingler stanga litt, men mobilen fortsetter å rotere om den samme aksen. Trykk «Om tverraksen». Nå vipper stanga helt over til motsatt side og tilbake igjen.
 
 <Simulation
-  src="/sims/fri-rotasjon.js"
-  title="Rotasjon om de tre hovedaksene"
-  caption="Ei bok med tre ulike sider roterer fritt med et lite avvik fra én hovedakse. Akse 1 går langs den lengste sida og har det minste treghetsmomentet, og akse 3 står vinkelrett på den store flaten og har det største. Den grå stanga er hovedaksen rotasjonen startet om, den stiplede linja er banen til enden av stanga, og den oransje pila er $\vec L$."
+  src="/sims/mobilen.js"
+  title="Mobilen i lufta"
+  caption="En mobil på 15 × 7 × 0,8 cm, regnet som en jevn plate, roterer fritt, sett fra et system som faller med den. Akse 1 går langs mobilen, akse 2 på tvers og akse 3 gjennom skjermen, og stanga er aksen rotasjonen startet om, med banen til enden stiplet. Sett fra mobilen er kula alle retningene $\vec L$ kan ha med samme lengde, og de stiplede kurvene på kula er der $T$ også har samme verdi. Den tydeligste går gjennom retningen $\vec L$ startet i. Mobilen roterer langsommere enn i et ekte kast."
   host="dom"
-  height={340}
+  height={300}
 />
+
+Trykk «Fra mobilen». Nå følger kameraet mobilen, som ligger stille, og $\vec L$ beveger seg. Med «Om lengdeaksen» eller «Gjennom skjermen» går spissen av $\vec L$ i en liten sløyfe rundt akse 1 eller akse 3. Med «Om tverraksen» går den fra akse 2 helt over til motsatt side av kula og tilbake. Banen følger hele tida den tydeligste stiplede kurven.
+
+De stiplede kurvene kommer fra de to bevarte størrelsene. Sett fra mobilen har $\vec L$ fast lengde, så spissen ligger på en kule. Energien er også fast, og
+
+$$
+T = \frac{L_1^2}{2I_1} + \frac{L_2^2}{2I_2} + \frac{L_3^2}{2I_3}
+$$
+
+Hver verdi av $T$ gir en kurve på kula, og spissen kan bare gå langs kurven den startet på. Hver $L_a^2$ teller med vekten $1/2I_a$, så med samme lengde på $\vec L$ er $T$ størst når $\vec L$ ligger langs akse 1, som har minst treghetsmoment, og minst når $\vec L$ ligger langs akse 3.
+
+Tenk på $T$ som høyden i et landskap på kula. Akse 1 er en topp, akse 3 er en bunn, og kurvene med fast $T$ er høydekurver, som på et kart. Rundt en topp og rundt en bunn er høydekurvene små ringer, så en $\vec L$ som starter like ved akse 1 eller akse 3, holder seg der. Akse 2 er et sadelpunkt, som et fjellpass. Langs fjellryggen stiger terrenget mot toppene på hver side, og langs veien over passet synker det ned mot dalene. På samme måte stiger $T$ fra akse 2 mot akse 1 og synker mot akse 3. Gjennom sadelpunktet går to høydekurver som krysser hverandre, og de fører helt over til sadelpunktet på motsatt side av kula. En $\vec L$ som starter like ved akse 2, følger en av dem dit. Når $\vec L$ peker langs $-\hat e_2'$, har mobilen snudd seg en halv runde i forhold til $\vec L$. Det er den halve runden du ser når mobilen kommer ned med skjermen vendt den andre veien.
+
+Kurvene sier hvor $\vec L$ går, men ikke hvor fort et lite avvik vokser. La mobilen rotere om akse 2 med små $\omega_1$ og $\omega_3$, og behold bare ledd av første orden i dem. I den andre av Eulers ligninger er leddet ${\omega_3\omega_1}$ av andre orden, så $\omega_2$ er konstant. Den første og den tredje blir
+
+$$
+I_1\dot\omega_1 = (I_2 - I_3)\,\omega_2\omega_3 \allowbreak\qquad I_3\dot\omega_3 = (I_1 - I_2)\,\omega_1\omega_2
+$$
+
+Deriver den første og sett inn $\dot\omega_3$ fra den andre:
+
+$$
+\ddot\omega_1 = \lambda^2\omega_1 \allowbreak\qquad \lambda^2 = \frac{(I_2 - I_3)(I_1 - I_2)}{I_1I_3}\,\omega_2^2
+$$
+
+For mobilen er ${I_1 < I_2 < I_3}$, så begge faktorene er negative, og ${\lambda^2 > 0}$. Da vokser $\omega_1$, og med den $\omega_3$, som $e^{\lambda t}$. For en plate med sidene 15, 7 og 0,8 cm er ${I_1 : I_2 : I_3 = 49{,}6 : 225{,}6 : 274}$, og ${\lambda = 0{,}79\,\omega_2}$. På én runde, ${t = 2\pi/\omega_2}$, vokser avviket med faktoren ${e^{2\pi \cdot 0{,}79} \approx 140}$.
+
+De samme stegene for rotasjon om en hovedakse $a$, med $b$ og $c$ for de to andre aksene, gir
+
+<Formula
+  tex="\lambda^2 = \frac{(I_a - I_b)(I_c - I_a)}{I_bI_c}\,\omega_a^2"
+  caption="Små avvik fra rotasjon om hovedakse $a$ går som $e^{\lambda t}$. Med $\lambda^2 < 0$ svinger de rundt null med vinkelfrekvensen $|\lambda|$."
+/>
+
+Faktorene har samme fortegn bare når $I_a$ ligger mellom $I_b$ og $I_c$. For rotasjon om aksen med det største eller det minste treghetsmomentet er ${\lambda^2 < 0}$, og et lite avvik svinger rundt null med vinkelfrekvensen $|\lambda|$, som sløyfene rundt akse 1 og akse 3 i simuleringen.
+
+<Callout title="Stabile og ustabile akser">
+Rotasjon om hovedaksen med størst eller minst treghetsmoment er stabil. Ved rotasjon om den midterste vokser et lite avvik som $e^{\lambda t}$, og legemet snur seg.
+</Callout>
 
 <Video
   id="https://www.youtube.com/watch?v=1VPfZ_XzisU"
@@ -113,12 +105,6 @@ Rotasjon om hovedaksen med størst eller minst treghetsmoment er stabil. Om den 
   number={1}
 />
 
-Bøyer legemet seg og taper energi til varme, er $|\vec L|$ fortsatt bevart, fordi de indre kreftene ikke gir noe dreiemoment. Ved fast $|\vec L|$ er $T = |\vec L|^2/2I$ minst for rotasjon om aksen med størst $I$, så legemet ender med å rotere om den.
-
-<Derivation title="Explorer 1">
-Satellitten Explorer 1 skulle i 1958 spinne om lengdeaksen, som har det minste treghetsmomentet. Bøyelige antenner tok opp energi, og satellitten endte med å rotere om en akse på tvers.
-</Derivation>
-
 <Example label="Eksamensoppgave" title="Stabil rotasjon av en sylinder">
 <ExamRef id="2022-des" task="1 ii" />
 
@@ -128,98 +114,230 @@ True (T) or false (F). Please explain your choice as half of the points depends 
   question={"ii. Consider a cylinder with the principal components of inertia $I_1 = I_2 > I_3$. Claim: The rotation around the third principal axis ($I_3$) is stable against small perturbations."}
   options={["T", "F"]}
   answer={0}
-  explanation={"Sant. $I_3$ er det minste treghetsmomentet, og rotasjon om aksen med det største eller det minste er stabil. Med indeksene byttet syklisk er $\\lambda^2 = (I_2 - I_3)(I_3 - I_1)\\,\\omega_3^2/I_1I_2$, og med $I_1 = I_2$ blir $\\lambda^2 = -\\Omega^2$. Sett fra legemet roterer avviket med $\\Omega$ om aksen i stedet for å vokse."}
+  explanation={"Sant. $I_3$ er det minste treghetsmomentet. Med ${a = 3}$ er ${\\lambda^2 = (I_3 - I_1)(I_2 - I_3)\\,\\omega_3^2/I_1I_2}$, og med ${I_1 = I_2 > I_3}$ er den første faktoren negativ og den andre positiv, så ${\\lambda^2 < 0}$. Et lite avvik svinger rundt aksen i stedet for å vokse. Det endrer ikke svaret at to av treghetsmomentene er like."}
 />
 </Example>
 
-## Rotasjoner og Eulervinklene
 
-Eulers ligninger gir $\vec\omega$, men ikke orienteringen til legemet, og dreiemomentet på en tung snurrebass avhenger av orienteringen. For å sette opp Lagranges ligninger trenger du generaliserte koordinater for orienteringen til legemet, altså for hvor aksene $\hat e_a'$ peker i forhold til rommets akser $\hat e_a$ i $K$. Komponentene deres er radene i <Term name="rotasjonsmatrise">rotasjonsmatrisen</Term> ${R_{ab} = \hat e_a' \cdot \hat e_b}$. Aksene har lengde 1 og står vinkelrett på hverandre, så $\boldsymbol R$ er ortogonal, og ortogonaliteten binder seks av de ni elementene. Orienteringen er altså gitt ved tre tall. De velges som regel som <Term name="eulervinkler">Eulervinklene</Term>. <Term name="knutelinje">Knutelinja</Term> $\hat e_N$ er skjæringslinja mellom rommets $\hat e_1\hat e_2$-plan og legemets $\hat e_1'\hat e_2'$-plan. For ei skive med symmetriaksen $\hat e_3'$ sier $\theta$ hvor mye aksen heller fra $\hat e_3$, $\phi$ hvilken retning den heller i, og $\psi$ hvor langt skiva har dreid om sin egen akse, målt fra knutelinja. Vinklene er tre dreininger etter hverandre. Start med legemets akser langs rommets:
+## Tallerkenen som vingler
 
-1. Drei vinkelen $\phi$ om $\hat e_3$. Da havner legemets første akse, som startet langs $\hat e_1$, langs knutelinja $\hat e_N$.
-2. Drei vinkelen $\theta$ om knutelinja. Da vipper legemets tredje akse fra $\hat e_3$ over til $\hat e_3'$, og $\theta$ er vinkelen mellom $\hat e_3$ og $\hat e_3'$.
-3. Drei vinkelen $\psi$ om $\hat e_3'$. Da havner de to andre aksene på $\hat e_1'$ og $\hat e_2'$.
+Kast en tallerken eller en frisbee litt skjevt, og den vingler. Et legeme med to like hovedtreghetsmomenter, ${I_1 = I_2}$, er en <Term name="symmetrisk snurrebass">symmetrisk snurrebass</Term>, og $\hat e_3'$ er symmetriaksen. Simuleringen viser en tynn tallerken med $\vec L$ rett opp. Enden av stanga langs symmetriaksen går rundt $\vec L$, og $\vec L$, $\vec\omega$ og stanga ligger hele tida i ett plan. Se på merket på tallerkenen. Det går rundt omtrent én gang mens stanga går rundt to ganger. Trykk «Fra tallerkenen». Sett fra tallerkenen går $\vec L$ og $\vec\omega$ rundt symmetriaksen.
 
-Hver dreining gir komponentene langs de nye aksene fra komponentene langs de forrige, så den første dreiningen virker først og står lengst til høyre. Matrisen er produktet $\boldsymbol R = \boldsymbol R_3(\psi)\,\boldsymbol R_1(\theta)\,\boldsymbol R_3(\phi)$ av tre dreiematriser om én akse hver.
+<Simulation
+  src="/sims/tallerken.js"
+  title="Tallerkenen i lufta"
+  caption="En tynn tallerken, ${I_3 = 2I_1}$, roterer fritt, sett fra et system som faller med den. Stanga er symmetriaksen, og den stiplede kurven er banen til enden av den, eller til spissen av $\vec L$ sett fra tallerkenen. Helningen er vinkelen mellom $\vec L$ og symmetriaksen. Tallerkenen roterer langsommere enn i et ekte kast."
+  host="dom"
+  height={320}
+/>
+
+Begge bevegelsene følger av Eulers ligninger. Uten dreiemoment og med ${I_1 = I_2}$ gir den tredje ligningen ${I_3\dot\omega_3 = 0}$, så $\omega_3$ er konstant. De to andre blir
+
+$$
+\dot\omega_1 = -\Omega\,\omega_2 \allowbreak\qquad \dot\omega_2 = \Omega\,\omega_1 \allowbreak\qquad \Omega = \frac{I_3 - I_1}{I_1}\,\omega_3
+$$
+
+Det er ligningene for en vektor ${(\omega_1, \omega_2)}$ som roterer med vinkelfarten $\Omega$, og løsningen er ${\omega_1 = \omega_\perp\cos\Omega t}$, ${\omega_2 = \omega_\perp\sin\Omega t}$. Sett fra tallerkenen går $\vec\omega$, og med den $\vec L$, rundt symmetriaksen med $\Omega$, på en kjegle med fast åpning. For ei kule er ${I_3 = I_1}$ og ${\Omega = 0}$. For en tynn tallerken er ${I_3 = 2I_1}$ og ${\Omega = \omega_3}$, så $\vec\omega$ går rundt aksen samme vei som tallerkenen spinner. For et avlangt legeme, som en sylinder som er lengre enn den er bred, er ${I_3 < I_1}$, og $\vec\omega$ går rundt motsatt vei.
+
+Sett fra rommet står $\vec L$ fast. Med ${I_1 = I_2}$ er ${\vec L = I_1(\omega_1\hat e_1' + \omega_2\hat e_2') + I_3\omega_3\hat e_3'}$. Legg til og trekk fra ${I_1\omega_3\hat e_3'}$:
+
+$$
+\vec L = I_1\vec\omega + (I_3 - I_1)\,\omega_3\,\hat e_3' \allowbreak\quad\Rightarrow\quad \vec\omega = \frac{\vec L}{I_1} - \Omega\,\hat e_3'
+$$
+
+Symmetriaksen sitter fast i legemet, så ${\dot{\hat e}_3' = \vec\omega \times \hat e_3'}$. Leddet langs $\hat e_3'$ gir null i kryssproduktet, og
+
+$$
+\dot{\hat e}_3' = \frac{\vec L}{I_1} \times \hat e_3'
+$$
+
+Symmetriaksen dreier altså om den faste $\vec L$ med vinkelfarten $|\vec L|/I_1$, og vinkelen mellom dem er fast. Den dreiningen er vinglingen du ser, og en slik rotasjon av symmetriaksen om en fast retning heter <Term name="presesjon">presesjon</Term>. Uttrykket for $\vec\omega$ viser også hvorfor $\vec L$, $\vec\omega$ og $\hat e_3'$ ligger i ett plan, som dreier med symmetriaksen.
+
+La $\theta$ være vinkelen mellom $\vec L$ og symmetriaksen. Komponenten av $\vec L$ langs aksen er ${|\vec L|\cos\theta = I_3\omega_3}$, så tallerkenen vingler med
+
+$$
+\frac{|\vec L|}{I_1} = \frac{I_3\,\omega_3}{I_1\cos\theta} \approx 2\,\omega_3
+$$
+
+når $\theta$ er liten. Tallerkenen vingler dobbelt så fort som komponenten $\omega_3$ av vinkelhastigheten langs symmetriaksen, og det er derfor merket i simuleringen går rundt én gang for hver andre vingling.
+
+<Callout title="Fri symmetrisk snurrebass">
+Sett fra legemet går $\vec\omega$ og $\vec L$ rundt symmetriaksen med ${\Omega = (I_3 - I_1)\,\omega_3/I_1}$. Sett fra rommet presesserer symmetriaksen om den faste $\vec L$ med vinkelfarten $|\vec L|/I_1$.
+</Callout>
+
+<Derivation title="Jordaksen vingler">
+Jorda er flattrykt ved polene, med ${(I_3 - I_1)/I_1 \approx 1/300}$, så ${\Omega \approx \omega_3/300}$. Ligger rotasjonsaksen litt skjevt i forhold til symmetriaksen, skulle den sett fra jorda gå rundt polen én gang på omtrent 300 døgn. Astronomen Seth Chandler fant bevegelsen i 1891, med en periode på omtrent 430 døgn. Perioden er lengre fordi jorda ikke er helt stiv. Rotasjonsaksen treffer overflaten under 10 meter fra polen.
+</Derivation>
+
+## Eulervinklene
+
+En snurrebass på et bord får et dreiemoment fra tyngden, og dreiemomentet avhenger av hvor mye snurrebassen heller. Eulers ligninger gir $\vec\omega$, men ikke hvordan legemet står, fordi komponentene $\omega_a$ ikke er tidsderivertene av noen vinkler. For å sette opp Lagranges ligninger trenger du tre koordinater for orienteringen, like mange som de frie tallene i rotasjonsmatrisen.
+
+For en snurrebass er tre vinkler naturlige. $\theta$ er hvor mye aksen heller fra loddlinja, $\phi$ er hvilken retning den heller i, og $\psi$ er hvor langt snurrebassen har dreid om sin egen akse. Det er <Term name="eulervinkler">Eulervinklene</Term>. Hver av dem er en dreining, og tre dreininger etter hverandre fører rommets akser $\hat e_a$, med $\hat e_3$ opp, over i legemets akser $\hat e_a'$:
+
+1. Drei vinkelen $\phi$ om $\hat e_3$. Aksen som startet langs $\hat e_1$, havner langs <Term name="knutelinje">knutelinja</Term> $\hat e_N$.
+2. Drei vinkelen $\theta$ om knutelinja. Legemets tredje akse vipper fra $\hat e_3$ over til $\hat e_3'$.
+3. Drei vinkelen $\psi$ om $\hat e_3'$. De to andre aksene havner på $\hat e_1'$ og $\hat e_2'$.
+
+Knutelinja ligger både i rommets $\hat e_1\hat e_2$-plan og i legemets $\hat e_1'\hat e_2'$-plan. For snurrebassen er knutelinja den vannrette linja som står vinkelrett på planet gjennom loddlinja og aksen, og $\psi$ måles fra den. Trykk «Vis dreiningene» i simuleringen for å se de tre dreiningene etter hverandre. Flytt så $\psi$. Skiva dreier om sin egen akse, og $\hat e_3'$ står stille. Flytt $\phi$, og retningen skiva heller i, går rundt $\hat e_3$.
 
 <Simulation
   src="/sims/eulervinkler.js"
   title="Eulervinklene"
-  caption="Legemet er ei skive med aksene $\hat e_1'$, $\hat e_2'$ og $\hat e_3'$, og de grå aksene er rommets. Den stiplede sirkelen ligger i rommets $\hat e_1\hat e_2$-plan, den stiplede linja er knutelinja $\hat e_N$, og de oransje buene er vinklene $\phi$, $\theta$ og $\psi$."
+  caption="Legemet er ei skive med aksene $\hat e_1'$, $\hat e_2'$ og $\hat e_3'$, og de grå aksene er rommets. Den stiplede sirkelen ligger i rommets $\hat e_1\hat e_2$-plan, den stiplede linja er knutelinja $\hat e_N$, og buene er vinklene $\phi$, $\theta$ og $\psi$."
   host="dom"
   height={340}
 />
 
-For å skrive den kinetiske energien ved vinklene trenger du komponentene av $\vec\omega$ langs legemets akser. Vinkelhastighetene til de tre dreiningene legges sammen som vektorer:
+I et kort tidsrom $dt$ dreier legemet de små vinklene $d\phi$, $d\theta$ og $d\psi$ om de tre aksene. Små dreininger kan legges sammen som vektorer, fordi rekkefølgen bare betyr noe ved andre orden i vinklene. Vinkelhastigheten er derfor
 
 $$
 \vec\omega = \dot\phi\,\hat e_3 + \dot\theta\,\hat e_N + \dot\psi\,\hat e_3'
 $$
 
-Langs legemets akser blir summen
-
-<Formula
-  tex="\begin{aligned} \omega_1 &= \dot\phi\sin\theta\sin\psi + \dot\theta\cos\psi \\ \omega_2 &= \dot\phi\sin\theta\cos\psi - \dot\theta\sin\psi \\ \omega_3 &= \dot\psi + \dot\phi\cos\theta \end{aligned}"
-  caption="Vinkelhastigheten langs legemets akser, uttrykt ved Eulervinklene og de tidsderiverte av dem."
-/>
-
-<Derivation title="Komponentene av $\vec\omega$ langs legemets akser">
-Den tredje dreiningen tar knutelinja over i $\hat e_1'$, så $\hat e_N = \cos\psi\,\hat e_1' - \sin\psi\,\hat e_2'$. Den andre dreiningen vipper $\hat e_3$ over i $\hat e_3'$ om knutelinja. Rommets $\hat e_3$ er altså $\hat e_3'$ vippet tilbake vinkelen $\theta$ om $\hat e_N$. Vektoren $\hat e_3'$ står vinkelrett på $\hat e_N$ og vippes mot $\hat e_3' \times \hat e_N$, så $\hat e_3 = \cos\theta\,\hat e_3' + \sin\theta\,\hat e_3' \times \hat e_N$. Med $\hat e_3' \times \hat e_N = \sin\psi\,\hat e_1' + \cos\psi\,\hat e_2'$ er
+For en symmetrisk snurrebass trenger du bare to deler av $\vec\omega$, komponenten $\omega_3$ langs symmetriaksen og delen $\vec\omega_\perp$ vinkelrett på den, fordi ${T = \tfrac12 I_1\omega_\perp^2 + \tfrac12 I_3\omega_3^2}$ når ${I_1 = I_2}$. Knutelinja står vinkelrett på $\hat e_3'$, og ${\hat e_3 \cdot \hat e_3' = \cos\theta}$, så
 
 $$
-\hat e_3 = \sin\theta\sin\psi\,\hat e_1' \allowbreak + \sin\theta\cos\psi\,\hat e_2' \allowbreak + \cos\theta\,\hat e_3'
+\omega_3 = \dot\psi + \dot\phi\cos\theta
 $$
 
-Sett de to uttrykkene inn i $\vec\omega = \dot\phi\,\hat e_3 + \dot\theta\,\hat e_N + \dot\psi\,\hat e_3'$ og samle leddene langs hver akse. Langs $\hat e_1'$ bidrar $\dot\phi\sin\theta\sin\psi$ og $\dot\theta\cos\psi$, langs $\hat e_2'$ bidrar $\dot\phi\sin\theta\cos\psi$ og $-\dot\theta\sin\psi$, og langs $\hat e_3'$ bidrar $\dot\phi\cos\theta$ og $\dot\psi$.
-</Derivation>
-
-Komponenten $\omega_3$ har to deler. $\dot\psi$ er hvor fort legemet dreier om $\hat e_3'$ i forhold til knutelinja, men knutelinja dreier selv med $\dot\phi$ om $\hat e_3$, og den dreiningen har komponenten $\dot\phi\cos\theta$ langs $\hat e_3'$. Spinnet, hele komponenten av $\vec\omega$ langs symmetriaksen, er derfor $\omega_3 = \dot\psi + \dot\phi\cos\theta$.
-
-<Callout title="Spinnet">
-Spinnet $\omega_3 = \dot\psi + \dot\phi\cos\theta$ er hele komponenten av $\vec\omega$ langs symmetriaksen. $\dot\psi$ er bare dreiningen i forhold til knutelinja.
-</Callout>
-
-For en symmetrisk snurrebass er $T = \tfrac12 I_1(\omega_1^2 + \omega_2^2) + \tfrac12 I_3\omega_3^2$. Snurrebassen ser lik ut etter en dreining om sin egen akse, så $T$ kan ikke avhenge av $\psi$. I $\omega_1^2 + \omega_2^2$ faller $\psi$ da også ut, fordi kryssleddene med $\sin\psi\cos\psi$ har motsatt fortegn i de to kvadratene, og
+Delen $\vec\omega_\perp$ er hvor fort symmetriaksen selv beveger seg, fordi ${\dot{\hat e}_3' = \vec\omega \times \hat e_3'}$ har lengden $\omega_\perp$. Spissen av $\hat e_3'$ ligger på en kule med radius 1. Spissen går med farten $\dot\theta$ nedover og ${\dot\phi\sin\theta}$ rundt loddlinja, som kula i en sfærisk pendel med lengde 1, så ${\omega_\perp^2 = \dot\theta^2 + \dot\phi^2\sin^2\theta}$, og
 
 $$
 T = \tfrac12 I_1\left(\dot\theta^2 + \dot\phi^2\sin^2\theta\right) \allowbreak + \tfrac12 I_3\left(\dot\psi + \dot\phi\cos\theta\right)^2
 $$
 
-<SelfCheck question="En tallerken kastes så den vingler litt. Legg $\hat e_3$ langs $\vec L$. Hvor fort vingler den, $\dot\phi$, sammenlignet med $\dot\psi$, farten den dreier med i forhold til knutelinja?">
-Vinkelen mellom $\vec L$ og symmetriaksen er fast, så $\dot\theta = 0$, og vinglingen er presesjonen $\dot\phi = |\vec L|/I_1$. Komponenten langs symmetriaksen er $|\vec L|\cos\theta = I_3\omega_3$, så $\dot\phi = I_3\omega_3/(I_1\cos\theta)$. Da gir $\omega_3 = \dot\psi + \dot\phi\cos\theta$ at $\dot\psi = \omega_3(1 - I_3/I_1) = -\Omega$. For ei tynn skive er $I_3 = 2I_1$, så $\dot\psi = -\omega_3$ og $\dot\phi \approx 2\omega_3$ når $\theta$ er liten. Tallerkenen vingler dobbelt så fort som den dreier i forhold til knutelinja, og den dreiningen går motsatt vei av vinglingen. Spinnet $\omega_3$ har samme fortegn som $\dot\phi$.
-</SelfCheck>
+$\psi$ står ikke i $T$, fordi snurrebassen ser lik ut etter en dreining om sin egen akse. $\omega_3$ er spinnet, hele komponenten av $\vec\omega$ langs symmetriaksen. $\dot\psi$ alene er bare dreiningen i forhold til knutelinja, og knutelinja dreier selv med $\dot\phi$.
 
-## Tung symmetrisk snurrebass
+<Callout title="Spinnet">
+Spinnet ${\omega_3 = \dot\psi + \dot\phi\cos\theta}$ er hele komponenten av $\vec\omega$ langs symmetriaksen. $\dot\psi$ er bare dreiningen i forhold til knutelinja.
+</Callout>
 
-En symmetrisk snurrebass med masse $M$ står med spissen $P$ fast på bordet, og massesenteret ligger i avstanden $l$ ut langs symmetriaksen. Bruk Eulervinklene med $\hat e_3$ loddrett opp. Da er $\theta$ vinkelen mellom loddlinja og symmetriaksen, $\phi$ dreiningen av aksen rundt loddlinja og $\psi$ dreiningen av snurrebassen om sin egen akse, målt fra knutelinja. Spissen står i ro, så treghetsmomentene tas om $P$, med $I_1 = I_1^\text{cm} + Ml^2$ etter parallellakseteoremet. Massesenteret ligger i høyden $l\cos\theta$, så $V = Mgl\cos\theta$, og
+<Derivation title="Komponentene av ω langs legemets akser">
+Et legeme uten symmetri trenger alle tre komponentene. Den tredje dreiningen tar knutelinja over i $\hat e_1'$, så ${\hat e_N = \cos\psi\,\hat e_1' - \sin\psi\,\hat e_2'}$. Den andre dreiningen vipper $\hat e_3$ over i $\hat e_3'$ om knutelinja, så $\hat e_3$ er $\hat e_3'$ vippet tilbake vinkelen $\theta$ om $\hat e_N$, mot ${\hat e_3' \times \hat e_N = \sin\psi\,\hat e_1' + \cos\psi\,\hat e_2'}$:
+
+$$
+\hat e_3 = \sin\theta\sin\psi\,\hat e_1' \allowbreak + \sin\theta\cos\psi\,\hat e_2' \allowbreak + \cos\theta\,\hat e_3'
+$$
+
+Sett de to uttrykkene inn i ${\vec\omega = \dot\phi\,\hat e_3 + \dot\theta\,\hat e_N + \dot\psi\,\hat e_3'}$ og samle leddene langs hver akse:
+
+<Formula
+  tex="\begin{aligned} \omega_1 &= \dot\phi\sin\theta\sin\psi + \dot\theta\cos\psi \\ \omega_2 &= \dot\phi\sin\theta\cos\psi - \dot\theta\sin\psi \\ \omega_3 &= \dot\psi + \dot\phi\cos\theta \end{aligned}"
+  caption="Vinkelhastigheten langs legemets akser, uttrykt ved Eulervinklene."
+/>
+
+Kvadratene av de to første gir ${\omega_1^2 + \omega_2^2 = \dot\theta^2 + \dot\phi^2\sin^2\theta}$, fordi kryssleddene med ${\sin\psi\cos\psi}$ har motsatt fortegn.
+</Derivation>
+
+<Example label="Eksamensoppgave" title="En frisbee som vingler">
+<ExamRef id="2016-aug-kont" task="3" />
+
+(3a) Consider an axi-symmetric body with moment of inertia: $I_1 = I_2 \neq I_3$. The angular momentum in the laboratory frame is $\vec L = L\vec e_z$. Derive the equation of motion for the body, using the Euler equation and the angles $\theta, \psi, \varphi$.
+
+(3b) Find the expression for the Euler angles $\theta, \psi, \varphi$ as a function of time.
+
+(3c) For a Frisbee $I_1 = I_2$ and $I_3 = 2I_1$. The precession (wobble) of the frisbee is given by $\dot\varphi$. Show that the precession of the frisbee is twice as fast as the rotation frequency of the frisbee, assuming that the angle $\theta$ is small ($i.e.$ $\cos(\theta) \approx 1$).
+
+<Solution>
+3a) Legg rommets $\hat e_3$ langs $\vec L$, så $\theta$ er vinkelen mellom $\vec L$ og symmetriaksen. Med ${I_1 = I_2}$ og uten dreiemoment gir den tredje av Eulers ligninger ${I_3\dot\omega_3 = 0}$, og de to første gir ${\dot\omega_1 = -\Omega\,\omega_2}$ og ${\dot\omega_2 = \Omega\,\omega_1}$ med ${\Omega = (I_3 - I_1)\,\omega_3/I_1}$. Komponenten av $\vec L$ langs symmetriaksen er ${L\cos\theta = I_3\omega_3}$, så $\theta$ er konstant. For vinklene, sammenlign
+
+$$
+\vec\omega = \frac{L}{I_1}\,\hat e_3 - \Omega\,\hat e_3' \allowbreak\qquad \vec\omega = \dot\varphi\,\hat e_3 + \dot\theta\,\hat e_N + \dot\psi\,\hat e_3'
+$$
+
+De tre vektorene $\hat e_3$, $\hat e_N$ og $\hat e_3'$ er uavhengige når ${\theta \neq 0}$, så koeffisientene må være like:
+
+$$
+\dot\theta = 0 \allowbreak\qquad \dot\varphi = \frac{L}{I_1} \allowbreak\qquad \dot\psi = -\Omega = \frac{I_1 - I_3}{I_1I_3}\,L\cos\theta
+$$
+
+3b) Alle tre er konstante, så ${\theta = \theta_0}$, ${\varphi = Lt/I_1 + \varphi_0}$ og ${\psi = -\Omega t + \psi_0}$, med ${\Omega = (I_3 - I_1)\,L\cos\theta_0/I_1I_3}$.
+
+3c) Med ${I_3 = 2I_1}$ er ${\omega_3 = L\cos\theta/I_3 = L\cos\theta/2I_1}$, og
+
+$$
+\frac{\dot\varphi}{\omega_3} = \frac{L/I_1}{L\cos\theta/2I_1} = \frac{2}{\cos\theta} \approx 2
+$$
+
+Frisbeen dreier i forhold til knutelinja med ${\dot\psi = -\Omega = -\omega_3}$, altså like fort som $\omega_3$, men motsatt vei av vinglingen.
+
+<Answer>$\theta$ er konstant, ${\dot\varphi = L/I_1}$ og ${\dot\psi = -(I_3 - I_1)\,L\cos\theta_0/I_1I_3}$. For frisbeen er ${\dot\varphi \approx 2\,\omega_3}$.</Answer>
+</Solution>
+</Example>
+
+## Snurrebassen på bordet
+
+Ta en snurrebass laget av ei jevn skive med masse 0,10 kg og radius 3,0 cm på en lett aksel, med massesenteret 3,0 cm over spissen. Sett den til å spinne 50 ganger i sekundet med aksen 30° fra loddlinja. Den faller ikke, og aksen går rundt loddlinja én gang på omtrent 3 sekunder.
+
+<Figure src="/figures/presesjon.svg" alt="En snurrebass står skrått med spissen P på et bord. Aksen heller vinkelen theta fra en stiplet loddlinje. En oransje pil L går fra spissen langs aksen. Fra massesenteret på aksen peker en pil Mg rett ned. Ved spissen av L peker en pil N vannrett, langs en stiplet vannrett sirkel med sentrum på loddlinja." width={340} height={222} number={1} caption="Snurrebassen sett skrått ovenfra. Tyngden $M\vec g$ virker i massesenteret, i avstanden $l$ fra spissen $P$, og dreiemomentet $\vec N$ om spissen er vannrett. Den stiplede sirkelen er banen spissen av $\vec L$ følger." />
+
+Figur 1 viser hvorfor. Bevegelsen avhenger bare av $M$, $l$, $I_1$ og $I_3$, så figuren og simuleringen tegner en snurrebass med en annen form. Tyngden gir dreiemomentet ${\vec N = l\hat e_3' \times (-Mg\,\hat e_3)}$ om spissen. Det står vinkelrett på både loddlinja og symmetriaksen, altså vannrett og vinkelrett på planet gjennom dem. Spinner snurrebassen fort, ligger $\vec L$ nesten langs aksen, ${\vec L \approx I_3\omega_3\hat e_3'}$. Da står $\vec N$ vinkelrett på $\vec L$, og ${\dot{\vec L} = \vec N}$ flytter spissen av $\vec L$ sidelengs, rundt en vannrett sirkel med radius ${I_3\omega_3\sin\theta}$. Går den rundt med vinkelfarten $\dot\phi$, er ${|\dot{\vec L}| = I_3\omega_3\dot\phi\sin\theta}$, og det må være lik ${|\vec N| = Mgl\sin\theta}$:
+
+$$
+\dot\phi \approx \frac{Mgl}{I_3\omega_3}
+$$
+
+Vinkelen faller ut, så snurrebassen går like fort rundt uansett hvor mye den heller. Retningen følger av ${\vec N = Mgl\,\hat e_3 \times \hat e_3'}$. Med ${\vec L \approx I_3\omega_3\hat e_3'}$ er ${\dot{\vec L} = (Mgl/I_3\omega_3)\,\hat e_3 \times \vec L}$, så $\vec L$ dreier om $\hat e_3$ mot klokka sett ovenfra når ${\omega_3 > 0}$. Med aksen over det vannrette planet har spinnet ${\omega_3\hat e_3'}$ en del oppover, så snurrebassen spinner også mot klokka sett ovenfra, og den går rundt samme vei som den spinner. For snurrebassen er ${I_3 = \tfrac12 MR^2 = 4{,}5 \cdot 10^{-5}\ \text{kg·m}^2}$ og ${\omega_3 = 2\pi \cdot 50\ \text{s}^{-1} = 314\ \text{s}^{-1}}$, så ${I_3\omega_3 = 1{,}41 \cdot 10^{-2}\ \text{kg·m}^2/\text{s}}$. Tyngden gir
+
+$$
+Mgl = 0{,}10 \cdot 9{,}81 \cdot 0{,}030\ \text{N·m} \allowbreak = 2{,}94 \cdot 10^{-2}\ \text{N·m}
+$$
+
+så ${\dot\phi = 2{,}08\ \text{s}^{-1}}$, og én runde tar ${2\pi/\dot\phi = 3{,}0\ \text{s}}$.
+
+Figur 1 bygger på at $\vec L$ ligger langs aksen. Når aksen beveger seg, har $\vec L$ også en del fra den bevegelsen, og snurrebassen vipper opp og ned mens den går rundt. Lagrangefunksjonen gir hele bevegelsen. Spissen står fast, så den kinetiske energien er den fra Eulervinklene, med treghetsmomentene om spissen. Snurrebassen er fortsatt symmetrisk om spissen, med det samme $I_3$ og ${I_1 = I_1^\text{cm} + Ml^2}$ etter parallellakseteoremet. Med $\hat e_3$ loddrett opp er $\theta$ vinkelen mellom loddlinja og aksen, massesenteret ligger i høyden ${l\cos\theta}$, og
 
 <Formula
   tex="L = \tfrac12 I_1\left(\dot\theta^2 + \dot\phi^2\sin^2\theta\right) \allowbreak + \tfrac12 I_3\left(\dot\psi + \dot\phi\cos\theta\right)^2 \allowbreak - Mgl\cos\theta"
   caption="Lagrangefunksjonen for en tung symmetrisk snurrebass med spissen fast. $I_1$ og $I_3$ er treghetsmomentene om spissen, og $l$ er avstanden fra spissen til massesenteret."
 />
 
-$\phi$ og $\psi$ står ikke i $L$, bare $\dot\phi$ og $\dot\psi$. De er altså sykliske, og de generaliserte impulsene til dem er bevart:
+Uten spinn er dette Lagrangefunksjonen til en sfærisk pendel som står på hodet, med $ml^2$ byttet med $I_1$. Spinnet legger til leddet med $I_3$. $\phi$ og $\psi$ står ikke i $L$, bare $\dot\phi$ og $\dot\psi$. Begge er sykliske, og impulsene deres er bevart:
 
 <Formula
-  tex="p_\psi = I_3\left(\dot\psi + \dot\phi\cos\theta\right) \allowbreak = I_3\omega_3 \allowbreak\qquad p_\phi = I_1\dot\phi\sin^2\theta + I_3\omega_3\cos\theta"
-  caption="De to bevarte impulsene. $p_\psi$ er komponenten av $\vec L$ langs symmetriaksen og $p_\phi$ komponenten langs loddlinja."
+  tex="p_\psi = I_3\omega_3 \allowbreak\qquad p_\phi = I_1\dot\phi\sin^2\theta + I_3\omega_3\cos\theta"
+  caption="De to bevarte impulsene til den tunge snurrebassen, med spinnet ${\omega_3 = \dot\psi + \dot\phi\cos\theta}$."
 />
 
-Spinnet $\omega_3$ er altså konstant. $p_\psi = I_3\omega_3$ er komponenten av $\vec L$ langs symmetriaksen. $p_\phi$ er komponenten langs loddlinja: med $\hat e_3 = \sin\theta\sin\psi\,\hat e_1' + \sin\theta\cos\psi\,\hat e_2' + \cos\theta\,\hat e_3'$ er $\vec L \cdot \hat e_3 = I_1\dot\phi\sin^2\theta + I_3\omega_3\cos\theta$. Begge bevaringslovene følger derfor også av dreiemomentet. Tyngden gir dreiemomentet ${l\hat e_3' \times (-Mg\hat e_3)}$, som peker langs knutelinja, vinkelrett på både symmetriaksen og loddlinja. Komponenten $N_3$ langs symmetriaksen er null, og med $I_1 = I_2$ gir den tredje av Eulers ligninger $I_3\dot\omega_3 = 0$. Loddlinja $\hat e_3$ står fast i rommet, og $\vec N \cdot \hat e_3 = 0$, så komponenten av $\vec L$ langs loddlinja er bevart. Lagrangefunksjonen avhenger ikke av tida, og føringen er tidsuavhengig, så energien er bevart også:
+Du kan se begge bevaringslovene i figur 1. $p_\psi$ er komponenten av $\vec L$ langs symmetriaksen. Med ${I_1 = I_2}$ er den tredje av Eulers ligninger ${I_3\dot\omega_3 = N_3}$, og $\vec N$ står vinkelrett på aksen, så ${N_3 = 0}$, og spinnet $\omega_3$ endrer seg ikke. $p_\phi$ er komponenten av $\vec L$ langs loddlinja, og $\vec N$ er vannrett. Med ${\vec L = I_1\vec\omega_\perp + I_3\omega_3\hat e_3'}$ og ${\hat e_3 \cdot \vec\omega_\perp = \dot\phi\sin^2\theta}$ er ${\vec L \cdot \hat e_3}$ lik $p_\phi$. Tida står ikke i $L$, og spissen står fast, så energien er bevart også:
 
 $$
 E = \tfrac12 I_1\left(\dot\theta^2 + \dot\phi^2\sin^2\theta\right) \allowbreak + \tfrac12 I_3\omega_3^2 + Mgl\cos\theta
 $$
 
 <Callout title="Bevarte størrelser">
-For den tunge snurrebassen er $p_\psi = I_3\omega_3$, $p_\phi$ og energien bevart. $p_\psi$ og $p_\phi$ er komponentene av $\vec L$ langs symmetriaksen og langs loddlinja.
+For den tunge snurrebassen er ${p_\psi = I_3\omega_3}$, $p_\phi$ og energien bevart. $p_\psi$ og $p_\phi$ er komponentene av $\vec L$ langs symmetriaksen og langs loddlinja.
 </Callout>
 
-Lagranges ligning for $\theta$ er
+Med $p_\phi$ og $E$ bevart kan du finne vendepunktene som for den sfæriske pendelen. Løs $p_\phi$ for $\dot\phi$, med ${I_3\omega_3 = p_\psi}$:
 
 $$
-I_1\ddot\theta = I_1\dot\phi^2\sin\theta\cos\theta \allowbreak - I_3\omega_3\dot\phi\sin\theta + Mgl\sin\theta
+\dot\phi = \frac{p_\phi - p_\psi\cos\theta}{I_1\sin^2\theta}
 $$
+
+Sett uttrykket inn i energien, og flytt det konstante leddet ${\tfrac12 I_3\omega_3^2}$ over på høyresida:
+
+<Formula
+  tex="\tfrac12 I_1\dot\theta^2 + V_\text{eff}(\theta) \allowbreak = E - \tfrac12 I_3\omega_3^2 \allowbreak\qquad V_\text{eff}(\theta) = \frac{(p_\phi - p_\psi\cos\theta)^2}{2I_1\sin^2\theta} \allowbreak + Mgl\cos\theta"
+  caption="Bevegelsen i $\theta$ for den tunge snurrebassen, med de to bevarte impulsene som konstanter."
+/>
+
+$\theta$ beveger seg som én koordinat i $V_\text{eff}$ og svinger mellom to vendepunkter, der $V_\text{eff}$ er lik høyresida. Den svingningen heter <Term name="nutasjon">nutasjon</Term>. Mens aksen går rundt loddlinja, går den opp og ned mellom to sirkler.
+
+<Simulation
+  src="/sims/tung-snurrebass.js"
+  title="Tung snurrebass"
+  caption="En tung snurrebass med spissen $P$ fast på bordet. Kurven er banen til enden av symmetriaksen, og de stiplede sirklene er vendepunktene for $\theta$. Spinnet er gitt i enheter der ${I_1 = I_3 = Mgl = 1}$. Snurrebassen blir liggende når kanten treffer bordet."
+  host="dom"
+  height={330}
+/>
+
+Trykk «Slipp i ro». Snurrebassen faller først, får fart sidelengs og stiger tilbake til startvinkelen, og banen får spisser der. Trykk «Dytt framover», som gir aksen litt fart i den retningen den går rundt. Nå går banen i bølger. «Dytt bakover» gir løkker. Formen avgjøres av fortegnet til $\dot\phi$ i vendepunktene. Har $\dot\phi$ samme fortegn i begge, går banen i bølger, og skifter den fortegn, går banen i løkker.
+
+Banen får spisser fordi snurrebassen slippes i ro. Slippes snurrebassen i ro i $\theta_0$, er ${\dot\phi = 0}$ der, så ${p_\phi = p_\psi\cos\theta_0}$, og høyresida er ${V_\text{eff}(\theta_0) = Mgl\cos\theta_0}$. Brøken i $V_\text{eff}$ er aldri negativ, så ${V_\text{eff}(\theta) \ge Mgl\cos\theta}$, og bevegelsen krever ${Mgl\cos\theta \le Mgl\cos\theta_0}$, altså ${\theta \ge \theta_0}$. Startvinkelen er det øvre vendepunktet, og der står aksen et øyeblikk stille hver gang.
+
+Dra spinnet opp til 6 og trykk «Slipp i ro». Spissene blir små og tette. Med stor $p_\psi$ vokser brøken i $V_\text{eff}$ raskt når $\theta$ går bort fra $\theta_0$, så de to vendepunktene ligger nær hverandre, og nutasjonen går fort. Det øyet ser av en snurrebass som spinner fort, er derfor den langsomme presesjonen fra figur 1.
 
 <Example label="Eksamensoppgave" title="Tung snurrebass">
 <ExamRef id="2021-des" task="3" />
@@ -237,7 +355,7 @@ Derive the Lagrangian equations of motion and the canonical momenta. What are th
 Hint: There is no need to expand the final time-derivative explicitly for a constant quantity. Instead you may use $\frac{d}{dt}(\ldots) = 0$.
 
 <Solution>
-$\varphi$ er presesjonsvinkelen, dreiningen av symmetriaksen rundt loddlinja. $\theta$ er vinkelen mellom loddlinja og symmetriaksen, og $\psi$ er dreiningen av snurrebassen om sin egen akse, målt fra knutelinja. Med $\omega_1^2 + \omega_2^2 = \dot\theta^2 + \dot\varphi^2\sin^2\theta$, $\omega_3 = \dot\psi + \dot\varphi\cos\theta$ og massen $m$ er
+$\theta$ er vinkelen mellom loddlinja og symmetriaksen, $\varphi$ er retningen aksen heller i, målt rundt loddlinja, og $\psi$ er dreiningen av snurrebassen om sin egen akse, målt fra knutelinja. Med ${\omega_1^2 + \omega_2^2 = \dot\theta^2 + \dot\varphi^2\sin^2\theta}$, ${\omega_3 = \dot\psi + \dot\varphi\cos\theta}$ og massen $m$ er
 
 $$
 L = \tfrac12 I\left(\dot\theta^2 + \dot\varphi^2\sin^2\theta\right) \allowbreak + \tfrac12 I_3\left(\dot\psi + \dot\varphi\cos\theta\right)^2 \allowbreak - mgh\cos\theta
@@ -246,10 +364,11 @@ $$
 $\varphi$ og $\psi$ er sykliske, og Lagranges ligninger for dem er
 
 $$
-\begin{aligned}
-&\frac{d}{dt}(I_3\omega_3) = 0 \\
-&\frac{d}{dt}(I\dot\varphi\sin^2\theta + I_3\omega_3\cos\theta) = 0
-\end{aligned}
+\tfrac{d}{dt}\left(I_3\omega_3\right) = 0
+$$
+
+$$
+\tfrac{d}{dt}\left(I\dot\varphi\sin^2\theta + I_3\omega_3\cos\theta\right) = 0
 $$
 
 Komponenten $\omega_3$ er altså konstant. Den er spinnet, hele komponenten av $\vec\omega$ langs symmetriaksen. Ligningen for $\theta$ er
@@ -258,40 +377,21 @@ $$
 I\ddot\theta - I\dot\varphi^2\sin\theta\cos\theta \allowbreak + I_3\omega_3\dot\varphi\sin\theta \allowbreak - mgh\sin\theta = 0
 $$
 
-De kanoniske impulsene er $p_\theta = I\dot\theta$, $p_\psi = I_3\omega_3$ og $p_\varphi = I\dot\varphi\sin^2\theta + I_3\omega_3\cos\theta$. De bevarte størrelsene er $p_\psi$, $p_\varphi$ og energien $T + mgh\cos\theta$, fordi $L$ ikke avhenger av tida.
+De kanoniske impulsene er ${p_\theta = I\dot\theta}$, ${p_\psi = I_3\omega_3}$ og ${p_\varphi = I\dot\varphi\sin^2\theta + I_3\omega_3\cos\theta}$. De bevarte størrelsene er $p_\psi$, $p_\varphi$ og energien ${T + mgh\cos\theta}$, fordi $L$ ikke avhenger av tida.
 
 <Answer>$\omega_3 = \dot\psi + \dot\varphi\cos\theta$ er konstant. $p_\psi$, $p_\varphi$ og energien er bevart.</Answer>
 </Solution>
 </Example>
 
-For å få en ligning i $\theta$ alene, løs $p_\phi$ for $\dot\phi$ med $I_3\omega_3 = p_\psi$:
+## Jevn presesjon
+
+Trykk «Jevn presesjon» i simuleringen «Tung snurrebass». Nå går aksen rundt på én sirkel, uten nutasjon. Det krever at aksen får akkurat den riktige farten sidelengs. Lagranges ligning for $\theta$ er
 
 $$
-\dot\phi = \frac{p_\phi - p_\psi\cos\theta}{I_1\sin^2\theta}
+I_1\ddot\theta = I_1\dot\phi^2\sin\theta\cos\theta \allowbreak - I_3\omega_3\dot\phi\sin\theta + Mgl\sin\theta
 $$
 
-I energien er da $\tfrac12 I_1\dot\phi^2\sin^2\theta = (p_\phi - p_\psi\cos\theta)^2/2I_1\sin^2\theta$, en funksjon av $\theta$ alene. Leddet $\tfrac12 I_3\omega_3^2$ er konstant. Flytt det over til høyresiden:
-
-<Formula
-  tex="\tfrac12 I_1\dot\theta^2 + V_\text{eff}(\theta) \allowbreak = E - \tfrac12 I_3\omega_3^2 \allowbreak\qquad V_\text{eff}(\theta) = \frac{(p_\phi - p_\psi\cos\theta)^2}{2I_1\sin^2\theta} \allowbreak + Mgl\cos\theta"
-  caption="Bevegelsen i $\theta$ for den tunge snurrebassen, med de to bevarte impulsene som konstanter."
-/>
-
-Som for den sfæriske pendelen svinger $\theta$ mellom to vendepunkter $\theta_1$ og $\theta_2$ der $V_\text{eff}(\theta) = E - \tfrac12 I_3\omega_3^2$. Den svingningen heter <Term name="nutasjon">nutasjon</Term>, og symmetriaksen beveger seg mellom to sirkler mens den presesserer rundt loddlinja. Banen som enden av symmetriaksen tegner, avhenger av fortegnet til $\dot\phi$ i vendepunktene. Har $\dot\phi$ samme fortegn i begge, går banen i bølger. Skifter den fortegn, går banen i løkker.
-
-Slippes snurrebassen i ro i vinkelen $\theta_0$, er $\dot\phi = 0$ der, så $p_\phi = p_\psi\cos\theta_0$. Da er $V_\text{eff}(\theta_0) = Mgl\cos\theta_0$, og $E - \tfrac12 I_3\omega_3^2 = Mgl\cos\theta_0$, fordi også $\dot\theta = 0$ ved start. Brøken i $V_\text{eff}$ er aldri negativ, så $V_\text{eff}(\theta) \ge Mgl\cos\theta$. Bevegelsen krever $V_\text{eff}(\theta) \le Mgl\cos\theta_0$, altså $\cos\theta \le \cos\theta_0$ og $\theta \ge \theta_0$. Startvinkelen $\theta_0$ er det øvre vendepunktet. Snurrebassen faller først, får fart sidelengs og stiger tilbake til $\theta_0$, og banen får spisser.
-
-Spinner snurrebassen fort, er nutasjonen liten og rask. Med stor $p_\psi$ er brøken i $V_\text{eff}$ en smal brønn med bunnen der $p_\phi = p_\psi\cos\theta$ og krumningen $p_\psi^2/I_1$, så $\theta$ svinger med vinkelfrekvensen $p_\psi/I_1 = I_3\omega_3/I_1$. Tyngden flytter bunnen nedover med vinkelen $\Delta\theta = I_1Mgl\sin\theta_0/(I_3\omega_3)^2$, så en snurrebass som slippes i ro, svinger mellom $\theta_0$ og $\theta_0 + 2\,\Delta\theta$. Dobbelt så stort spinn gir altså dobbelt så rask nutasjon med en firedel av utslaget.
-
-<Simulation
-  src="/sims/tung-snurrebass.js"
-  title="Tung snurrebass"
-  caption="En tung snurrebass med spissen $P$ fast på bordet. Den fargede kurven er banen til enden av symmetriaksen, og de stiplede sirklene er vendepunktene $\theta_1$ og $\theta_2$."
-  host="dom"
-  height={330}
-/>
-
-Snurrebassen presesserer jevnt, uten nutasjon, når $\theta = \theta_0$ hele tida. Med $\ddot\theta = 0$ gir ligningen for $\theta$, delt på $\sin\theta_0$,
+Jevn presesjon har ${\theta = \theta_0}$ hele tida, så ${\ddot\theta = 0}$. Del på ${\sin\theta_0}$:
 
 <Formula
   tex="Mgl = \dot\phi\,(I_3\omega_3 - I_1\dot\phi\cos\theta_0)"
@@ -304,73 +404,52 @@ $$
 \dot\phi_\pm = \frac{I_3\omega_3 \pm \sqrt{I_3^2\omega_3^2 - 4I_1Mgl\cos\theta_0}}{2I_1\cos\theta_0}
 $$
 
-De er reelle når $I_3^2\omega_3^2 > 4I_1Mgl\cos\theta_0$. Spinner snurrebassen fort, er $4I_1Mgl\cos\theta_0 \ll I_3^2\omega_3^2$, og kvadratroten er omtrent $I_3\omega_3 - 2I_1Mgl\cos\theta_0/I_3\omega_3$. Da er den langsomme roten
+De finnes bare når ${I_3^2\omega_3^2 > 4I_1Mgl\cos\theta_0}$. I simuleringen er ${\theta_0 = 30°}$, så grensen for spinnet er ${2\sqrt{\cos 30°} = 1{,}86}$, og under den er dyttene slått av. Når snurrebassen spinner fort, er kvadratroten omtrent ${I_3\omega_3 - 2I_1Mgl\cos\theta_0/I_3\omega_3}$. Da er den langsomme roten ${\dot\phi_- \approx Mgl/I_3\omega_3}$, den samme som figur 1 ga, og den raske er ${\dot\phi_+ \approx I_3\omega_3/(I_1\cos\theta_0)}$. Den raske er vinglingen til en fri snurrebass, der $\vec L$ nesten står rett opp og tyngden bare er en liten rettelse. Den krever et kraftig dytt.
 
-$$
-\dot\phi_- \approx \frac{Mgl}{I_3\omega_3}
-$$
-
-og den raske $\dot\phi_+ \approx I_3\omega_3/(I_1\cos\theta_0)$, som er presesjonen til en fri snurrebass og krever et kraftig dytt. Den langsomme roten er uavhengig av vinkelen. Den følger også direkte av $\dot{\vec L} = \vec N$. Med $\vec L \approx I_3\omega_3\hat e_3'$ går spissen av $\vec L$ rundt på en vannrett sirkel med radius $I_3\omega_3\sin\theta$, så $|\dot{\vec L}| = I_3\omega_3\dot\phi\sin\theta$, og dreiemomentet krever $|\dot{\vec L}| = Mgl\sin\theta$. Dreiemomentet peker langs knutelinja, så spissen av $\vec L$, og med den symmetriaksen, går sidelengs i retning av $\vec N$. Sett ovenfra presesserer derfor en snurrebass med aksen over det vannrette planet samme vei som den spinner, og $\dot\phi_- > 0$ når $\omega_3 > 0$. En snurrebass som slippes i ro, presesserer i snitt med den langsomme farten.
+Tilnærmingen ${\dot\phi_- \approx Mgl/I_3\omega_3}$ krever at ${I_1\dot\phi\cos\theta_0}$ er liten mot $I_3\omega_3$. For snurrebassen på 50 omdreininger per sekund er ${I_1 = \tfrac14 MR^2 + Ml^2 = 1{,}13 \cdot 10^{-4}\ \text{kg·m}^2}$, og forholdet er 1,4 %, så de 3,0 sekundene per runde står seg.
 
 <Callout title="Langsom presesjon">
-En snurrebass som spinner fort, presesserer med $\dot\phi \approx Mgl/I_3\omega_3$, uavhengig av vinkelen og samme vei som den spinner.
+En snurrebass som spinner fort, presesserer med ${\dot\phi \approx Mgl/I_3\omega_3}$, uavhengig av vinkelen og samme vei som den spinner. Nutasjonen er da rask og liten.
 </Callout>
 
-Jorda er en symmetrisk snurrebass med $I_3 > I_1$. Sola og Månen trekker ekvatorbulen mot ekliptikkplanet, så dreiemomentet vil rette opp jordaksen, mens tyngden vil velte en snurrebass. Dreiemomentet har altså motsatt fortegn, og jordaksen presesserer motsatt vei av spinnet, én gang på omtrent 26 000 år. Denne presesjonen er drevet av et dreiemoment og er en annen bevegelse enn Chandler wobble, som jorda gjør uten dreiemoment.
+<Derivation title="Jordaksen presesserer">
+Jorda er en symmetrisk snurrebass med ${I_3 > I_1}$, flattrykt ved polene, og aksen heller 23,4° fra normalen til baneplanet. Sola og Månen trekker hardere i den delen av ekvatorbulen som er nærmest dem, og det gir et dreiemoment som vil rette opp jordaksen mot normalen til baneplanet. Tyngden vil velte en snurrebass på et bord. Dreiemomentet på jorda har altså motsatt retning, og jordaksen presesserer motsatt vei av spinnet, én runde på omtrent 26 000 år. Denne presesjonen er drevet av et dreiemoment og er en annen bevegelse enn vinglingen jorda gjør uten dreiemoment.
+</Derivation>
 
-En snurrebass som spinner rett opp, $\theta = 0$, er en <Term name="sovende snurrebass">sovende snurrebass</Term>. Med $\theta = 0$ i $p_\phi$ er $p_\phi = p_\psi$, og med $(1 - \cos\theta)^2/\sin^2\theta = \tan^2(\theta/2)$ er
+## En snurrebass som står rett opp
+
+En snurrebass som spinner rett opp, ${\theta = 0}$, står nesten helt stille og kalles en <Term name="sovende snurrebass">sovende snurrebass</Term>. Friksjonen i spissen bremser spinnet, og under et bestemt spinn begynner snurrebassen å vingle og faller. Trykk «Nesten rett opp» i simuleringen «Tung snurrebass», som slipper snurrebassen i ro 3° fra loddlinja. Med spinnet 3 holder aksen seg nær loddlinja. Sett spinnet til 1,9 og trykk igjen. Nå svinger aksen ut til 37° før den kommer tilbake.
+
+For en snurrebass som står rett opp, er ${p_\phi = p_\psi}$, fordi ${\cos 0 = 1}$. Med ${(1 - \cos\theta)^2/\sin^2\theta = \tan^2(\theta/2)}$ er
 
 $$
-\begin{aligned}
-V_\text{eff}(\theta) &= \frac{p_\psi^2}{2I_1}\tan^2\frac{\theta}{2} + Mgl\cos\theta \\
-&\approx Mgl + \left(\frac{p_\psi^2}{8I_1} - \frac{Mgl}{2}\right)\theta^2
-\end{aligned}
+V_\text{eff}(\theta) = \frac{p_\psi^2}{2I_1}\tan^2\frac{\theta}{2} + Mgl\cos\theta \allowbreak \approx Mgl + \left(\frac{p_\psi^2}{8I_1} - \frac{Mgl}{2}\right)\theta^2
 $$
 
-$\theta = 0$ er et minimum når parentesen er positiv. Med $p_\psi = I_3\omega_3$ blir kravet
+Spinnet holder aksen oppe, og tyngden trekker den ned. ${\theta = 0}$ er et minimum når parentesen er positiv, og med ${p_\psi = I_3\omega_3}$ blir kravet
 
 <Formula
   tex="I_3^2\omega_3^2 > 4I_1Mgl"
   caption="Betingelsen for at en snurrebass står stabilt rett opp."
 />
 
-Grensen er den samme som gjør røttene $\dot\phi_\pm$ reelle, $I_3^2\omega_3^2 > 4I_1Mgl\cos\theta_0$, ved $\theta_0 = 0$. Friksjonen i spissen bremser spinnet. Når $\omega_3$ kommer under grensen, begynner snurrebassen å vingle, og den faller etter hvert.
-
-<Example title="En snurrebass på bordet">
-En snurrebass er ei jevn skive med masse $M = 0{,}10\ \text{kg}$ og radius $R = 3{,}0\ \text{cm}$ på en lett aksel. Massesenteret ligger $l = 3{,}0\ \text{cm}$ over spissen, og snurrebassen spinner med 50 omdreininger per sekund. Hvor lang tid bruker den på én runde med langsom, jevn presesjon, og hvor sakte kan den spinne og fremdeles stå stabilt rett opp?
-
-<Solution>
-Om symmetriaksen er $I_3 = \tfrac12 MR^2 = 4{,}5 \cdot 10^{-5}$ kg·m². Om en akse gjennom spissen, vinkelrett på symmetriaksen, gir parallellakseteoremet
+Grensen er den samme som gjør røttene for jevn presesjon reelle, ved ${\theta_0 = 0}$. I simuleringen er grensen for spinnet 2, og ved 2,1 holder aksen seg innenfor 10°. For snurrebassen med skiva på 0,10 kg er ${\sqrt{I_1Mgl} = 1{,}82 \cdot 10^{-3}\ \text{kg·m}^2/\text{s}}$, og den står rett opp så lenge
 
 $$
-I_1 = \tfrac14 MR^2 + Ml^2 \allowbreak = (0{,}225 + 0{,}90) \cdot 10^{-4} \allowbreak = 1{,}13 \cdot 10^{-4}\ \text{kg·m}^2
+\omega_3 > \frac{2\sqrt{I_1Mgl}}{I_3} \allowbreak = \frac{2 \cdot 1{,}82 \cdot 10^{-3}}{4{,}5 \cdot 10^{-5}}\ \text{s}^{-1} \allowbreak = 81\ \text{s}^{-1}
 $$
 
-Spinnet er $\omega_3 = 2\pi \cdot 50\ \text{s}^{-1} = 314\ \text{s}^{-1}$, så $I_3\omega_3 = 1{,}41 \cdot 10^{-2}$ kg·m²/s. Tyngden gir $Mgl = 0{,}10 \cdot 9{,}81 \cdot 0{,}030\ \text{N·m} = 2{,}94 \cdot 10^{-2}\ \text{N·m}$. Den langsomme presesjonen er
+altså 13 omdreininger per sekund.
 
-$$
-\dot\phi \approx \frac{Mgl}{I_3\omega_3} = 2{,}08\ \text{s}^{-1}
-$$
-
-og én runde tar $2\pi/\dot\phi = 3{,}0\ \text{s}$. Leddet $I_1\dot\phi\cos\theta_0$ er under 2 % av $I_3\omega_3$, så tilnærmingen holder.
-
-For å stå rett opp må snurrebassen ha
-
-$$
-\omega_3 > \frac{2\sqrt{I_1Mgl}}{I_3} \allowbreak = \frac{2\sqrt{3{,}32 \cdot 10^{-6}}}{4{,}5 \cdot 10^{-5}} \allowbreak = 81\ \text{s}^{-1}
-$$
-
-som er 12,9 omdreininger per sekund.
-
-<Answer>Én runde med jevn presesjon tar omtrent 3,0 s, og snurrebassen står stabilt rett opp så lenge den spinner med mer enn 13 omdreininger per sekund.</Answer>
-</Solution>
-</Example>
+<SelfCheck question="Den samme snurrebassen, med masse 0,10 kg, radius 3,0 cm og massesenteret 3,0 cm over spissen, spinner nå 20 ganger i sekundet. Hvor lang tid tar én runde med langsom presesjon, og står den rett opp hvis du setter den slik?">
+Spinnet er ${\omega_3 = 2\pi \cdot 20\ \text{s}^{-1} = 126\ \text{s}^{-1}}$, så ${I_3\omega_3 = 5{,}65 \cdot 10^{-3}\ \text{kg·m}^2/\text{s}}$ og ${\dot\phi \approx Mgl/I_3\omega_3 = 5{,}2\ \text{s}^{-1}}$. Én runde tar ${2\pi/\dot\phi = 1{,}2\ \text{s}}$. Ved 30° er ${I_1\dot\phi\cos\theta_0/I_3\omega_3 = 0{,}09}$, så tilnærmingen er fortsatt god, men dårligere enn ved 50 omdreininger per sekund. Spinnet er over grensen på ${81\ \text{s}^{-1}}$, så snurrebassen står rett opp.
+</SelfCheck>
 
 <KeyTakeaways>
-- Eulers ligninger er $\dot{\vec L} = \vec N$ skrevet langs hovedaksene. Uten dreiemoment er $T$ og $|\vec L|$ bevart.
-- For en fri symmetrisk snurrebass er $\omega_3$ konstant, og sett fra rommet presesserer symmetriaksen om den faste $\vec L$ med vinkelfarten $|\vec L|/I_1$.
-- Rotasjon om hovedaksen med størst eller minst treghetsmoment er stabil. Om den midterste vokser små avvik som $e^{\lambda t}$, og legemet snur seg.
-- Eulervinklene $\phi$, $\theta$ og $\psi$ er dreininger om $\hat e_3$, knutelinja og $\hat e_3'$.
-- For den tunge snurrebassen er $\phi$ og $\psi$ sykliske, så $p_\psi = I_3\omega_3$, $p_\phi$ og energien er bevart, og $\theta$ beveger seg i $V_\text{eff}(\theta)$. Svingningen i $\theta$ er nutasjon, og banen til symmetriaksen får bølger, løkker eller spisser.
-- Den langsomme jevne presesjonen er $\dot\phi \approx Mgl/I_3\omega_3$ når snurrebassen spinner fort. En snurrebass står stabilt rett opp når $I_3^2\omega_3^2 > 4I_1Mgl$.
+- Eulers ligninger er $\dot{\vec L} = \vec N$ skrevet langs hovedaksene. Uten dreiemoment står $\vec L$ fast i rommet og dreier baklengs sett fra legemet, og $|\vec L|$ og $T$ er bevart.
+- Rotasjon om hovedaksen med størst eller minst treghetsmoment er stabil. Ved rotasjon om den midterste vokser et lite avvik som $e^{\lambda t}$, og legemet snur seg.
+- For en fri symmetrisk snurrebass går $\vec\omega$ rundt symmetriaksen med ${\Omega = (I_3 - I_1)\,\omega_3/I_1}$ sett fra legemet, og symmetriaksen presesserer om $\vec L$ med $|\vec L|/I_1$ sett fra rommet.
+- Eulervinklene $\phi$, $\theta$ og $\psi$ er dreininger om $\hat e_3$, knutelinja og $\hat e_3'$, og spinnet er ${\omega_3 = \dot\psi + \dot\phi\cos\theta}$.
+- For den tunge snurrebassen er $\phi$ og $\psi$ sykliske, så $p_\psi$, $p_\phi$ og energien er bevart, og $\theta$ beveger seg i $V_\text{eff}(\theta)$. Svingningen i $\theta$ er nutasjon.
+- En snurrebass som spinner fort, presesserer med ${\dot\phi \approx Mgl/I_3\omega_3}$, og den står stabilt rett opp når ${I_3^2\omega_3^2 > 4I_1Mgl}$.
 </KeyTakeaways>

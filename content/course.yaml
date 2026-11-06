@@ -113,6 +113,13 @@ exams:
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_171212.pdf/b0b6ecfb-8a32-3b28-d2ec-3a6e5a8fbb1d",
     }
   - {
+      label: "Kontinuasjonseksamen, august 2016",
+      id: "2016-aug-kont",
+      date: 2016-08-18,
+      url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_160818.pdf/8cbd587b-9713-35a7-d15e-f10f43e9cdde",
+      solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_160818.pdf/3300a5af-aa0e-24da-a6f2-9d0f5a6e40b8",
+    }
+  - {
       label: "Ordinær eksamen, juni 2014",
       id: "2014-jun",
       date: 2014-06-07,
@@ -513,8 +520,8 @@ formulas:
     label: "Fri symmetrisk snurrebass, $I_1 = I_2$. $\\omega_3$ er konstant, og sett fra legemet roterer $\\vec\\omega$ om symmetriaksen med $\\Omega$. Sett fra rommet presesserer symmetriaksen om den faste $\\vec L$ med vinkelfarten $|\\vec L|/I_1$."
   - id: stabil-rotasjon
     section: Eulers ligninger og snurrebassen
-    tex: "\\lambda^2 = \\frac{(I_3 - I_1)(I_1 - I_2)}{I_2 I_3}\\,\\omega_1^2"
-    label: "Små avvik fra rotasjon om hovedakse 1 går som $e^{\\lambda t}$. Rotasjonen er stabil når $I_1$ er det største eller det minste hovedtreghetsmomentet, og ustabil når det er det midterste."
+    tex: "\\lambda^2 = \\frac{(I_a - I_b)(I_c - I_a)}{I_bI_c}\\,\\omega_a^2"
+    label: "Små avvik fra rotasjon om hovedakse $a$ går som $e^{\\lambda t}$, der $b$ og $c$ er de to andre aksene. Rotasjonen er stabil når $I_a$ er det største eller det minste hovedtreghetsmomentet, og ustabil når det er det midterste."
   - id: eulervinkler-omega
     section: Eulers ligninger og snurrebassen
     tex: "\\begin{aligned} \\omega_1 &= \\dot\\phi\\sin\\theta\\sin\\psi + \\dot\\theta\\cos\\psi \\\\ \\omega_2 &= \\dot\\phi\\sin\\theta\\cos\\psi - \\dot\\theta\\sin\\psi \\\\ \\omega_3 &= \\dot\\psi + \\dot\\phi\\cos\\theta \\end{aligned}"
@@ -525,7 +532,7 @@ formulas:
     label: "Tung symmetrisk snurrebass med spissen fast. $I_1$ og $I_3$ er treghetsmomentene om spissen, og $l$ er avstanden fra spissen til massesenteret."
   - id: snurrebass-impulser
     section: Eulers ligninger og snurrebassen
-    tex: "p_\\psi = I_3\\left(\\dot\\psi + \\dot\\phi\\cos\\theta\\right) \\allowbreak = I_3\\omega_3 \\allowbreak\\qquad p_\\phi = I_1\\dot\\phi\\sin^2\\theta + I_3\\omega_3\\cos\\theta"
+    tex: "p_\\psi = I_3\\omega_3 \\allowbreak\\qquad p_\\phi = I_1\\dot\\phi\\sin^2\\theta + I_3\\omega_3\\cos\\theta"
     label: "$\\phi$ og $\\psi$ er sykliske for den tunge snurrebassen. $p_\\psi$ er komponenten av $\\vec L$ langs symmetriaksen og $p_\\phi$ komponenten langs loddlinja. Energien er bevart også."
   - id: snurrebass-veff
     section: Eulers ligninger og snurrebassen
@@ -697,7 +704,7 @@ symbols:
   - { tex: "\\hat e_a,\\ \\hat e_N", meaning: "Rommets akser i $K$, og knutelinja", section: "Eulers ligninger og snurrebassen", term: "Knutelinje", formula: rotasjonsmatrise, note: "Legemets akser er $\\hat e_a'$. For en tung snurrebass peker $\\hat e_3$ loddrett opp." }
   - { tex: "\\phi,\\ \\theta,\\ \\psi", meaning: "Eulervinklene, dreiningene om $\\hat e_3$, om knutelinja og om $\\hat e_3'$", unit: "rad", section: "Eulers ligninger og snurrebassen", term: "Eulervinkler", formula: eulervinkler-omega, note: "For en tung snurrebass er $\\theta$ vinkelen mellom loddlinja og symmetriaksen, $\\phi$ presesjonsvinkelen og $\\psi$ dreiningen om symmetriaksen, målt fra knutelinja. Spinnet er $\\omega_3 = \\dot\\psi + \\dot\\phi\\cos\\theta$, ikke $\\dot\\psi$. Eksamensoppgavene skriver $\\varphi$." }
   - { tex: "\\omega_3", meaning: "Spinnet, komponenten av $\\vec\\omega$ langs symmetriaksen", unit: "rad/s", section: "Eulers ligninger og snurrebassen", formula: snurrebass-impulser, note: "$\\omega_3 = \\dot\\psi + \\dot\\phi\\cos\\theta$ er konstant for både den frie og den tunge symmetriske snurrebassen." }
-  - { tex: "\\Omega", meaning: "Vinkelfrekvensen $\\vec\\omega$ roterer med om symmetriaksen sett fra en fri symmetrisk snurrebass, $(I_3 - I_1)\\,\\omega_3/I_1$", unit: "rad/s", section: "Eulers ligninger og snurrebassen", term: "Symmetrisk snurrebass", formula: fri-symmetrisk-snurrebass, note: "For jorda er $\\Omega \\approx \\omega_3/300$. Sett fra rommet presesserer symmetriaksen med $|\\vec L|/I_1$. De to henger sammen ved $\\vec\\omega = \\vec L/I_1 - \\Omega\\,\\hat e_3'$." }
+  - { tex: "\\Omega", meaning: "Vinkelfarten som $\\vec\\omega$ går rundt symmetriaksen med, sett fra en fri symmetrisk snurrebass, $(I_3 - I_1)\\,\\omega_3/I_1$", unit: "rad/s", section: "Eulers ligninger og snurrebassen", term: "Symmetrisk snurrebass", formula: fri-symmetrisk-snurrebass, note: "For jorda er $\\Omega \\approx \\omega_3/300$. Sett fra rommet presesserer symmetriaksen med $|\\vec L|/I_1$. De to henger sammen ved $\\vec\\omega = \\vec L/I_1 - \\Omega\\,\\hat e_3'$." }
   - { tex: "p_\\phi,\\ p_\\psi", meaning: "De bevarte impulsene til den tunge snurrebassen, komponentene av $\\vec L$ langs loddlinja og langs symmetriaksen", unit: "kg·m²/s", section: "Eulers ligninger og snurrebassen", formula: snurrebass-impulser }
   - { tex: "l", meaning: "Avstanden fra spissen til massesenteret for en tung snurrebass", unit: "m", section: "Eulers ligninger og snurrebassen", formula: tung-snurrebass, note: "Eksamensoppgaven kaller den $h$. For den fysiske pendelen heter den samme avstanden $D$." }
   - { tex: "\\varepsilon", meaning: "Den dimensjonsløse styrken $\\lambda A^2/\\omega_0^2$ til $x^3$-leddet i en anharmonisk oscillator", section: "Små svingninger", formula: anharmonisk-frekvens, note: "Ikke $\\epsilon$ i Noethers teorem. I Greens funksjon er $i\\varepsilon$ forskyvningen av polene, grensen der en svak friksjon går mot null." }

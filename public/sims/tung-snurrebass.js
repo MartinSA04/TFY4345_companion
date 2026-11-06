@@ -11,13 +11,17 @@
  * Bevegelsen regnes fra Lagrangefunksjonen med de to bevarte impulsene
  * p_ψ = I₃ω₃ og p_φ = I₁φ̇ sin²θ + p_ψ cos θ: φ̇ = (p_φ − p_ψ cos θ)/(I₁ sin²θ),
  * ψ̇ = ω₃ − φ̇ cos θ og I₁θ̈ = I₁φ̇² sin θ cos θ − p_ψ φ̇ sin θ + Mgl sin θ.
- * Snurrebassen starter i θ₀ = 40° med θ̇ = 0, og knappene velger φ̇ i start:
+ * Snurrebassen starter i θ₀ = 30° med θ̇ = 0, og knappene velger φ̇ i start:
  * null (spisser), halve farten for jevn presesjon (bølger), minus den
- * (løkker) eller nøyaktig den (jevn presesjon). De stiplede sirklene er
- * vendepunktene der V_eff(θ) er lik startverdien.
+ * (løkker) eller nøyaktig den (jevn presesjon). «Nesten rett opp» slipper
+ * den i ro i θ₀ = 3°. De stiplede sirklene er vendepunktene der V_eff(θ) er
+ * lik startverdien.
  *
- * Enheter: I₁ = Mgl = 1, I₃ = 0,5 I₁. Glidebryteren setter p_ψ/I₁, og
- * snurrebassen står stabilt rett opp når den er over 2. Kontrakt:
+ * Enheter: I₁ = I₃ = Mgl = 1, så glidebryteren «Spinn» er både ω₃ og
+ * p_ψ = I₃ω₃, og snurrebassen står stabilt rett opp når den er over 2. Jevn presesjon i 30°
+ * krever p_ψ/I₁ > 2√cos 30° = 1,86; under det er dyttene slått av. Kroppen
+ * er en kjegle med r = s/2, så den treffer bordet når θ når arctan 2 = 63,4°,
+ * og der stopper simuleringen. Kontrakt:
  * default-eksportert init(api), api = { stage, controls, getSize, onResize, signal }.
  */
 import {
@@ -32,14 +36,14 @@ const STEEL = "var(--muted)";
 const LIGHTPAINT = `color-mix(in oklab, ${MOVING} 40%, ${PAPER})`;
 
 // Profilen [s, r] langs aksen i enheten l, som en klassisk snurrebass: en
-// kort stålspiss, en kropp som vider seg ut fra spissen og er bredest like
+// kort stålspiss, en kjegle som vider seg ut fra spissen og er bredest like
 // under toppen, en lav rund krone og et skaft opp til enden TIP.
 const PROFILE = (() => {
   const R = 0.45;
-  const pts = [[0, 0], [0.08, 0.05]];
-  for (let i = 1; i <= 10; i++) {
-    const sk = 0.08 + (0.82 * i) / 10;
-    pts.push([sk, R * (sk / 0.9) ** 0.6]);
+  const pts = [[0, 0], [0.1, 0.03]];
+  for (let i = 0; i <= 8; i++) {
+    const sk = 0.12 + (0.78 * i) / 8;
+    pts.push([sk, (R * sk) / 0.9]);
   }
   for (let i = 1; i <= 6; i++) {
     const sk = 0.9 + (0.18 * i) / 6;
@@ -70,9 +74,12 @@ function hull(pts) {
 
 export default function init({ stage, controls, getSize, onResize, signal }) {
   const I1 = 1;
-  const I3 = 0.5;
+  const I3 = 1;
   const MGL = 1;
-  const TH0 = (40 * Math.PI) / 180;
+  const TH_TILT = (30 * Math.PI) / 180;
+  const TH_UP = (3 * Math.PI) / 180;
+  // Kjeglen treffer bordet når θ er større enn den minste arctan(s/r) langs profilen.
+  const TH_DOWN = Math.min(...PROFILE.filter(([, r]) => r > 0).map(([sk, r]) => Math.atan2(sk, r)));
   const TS = 2; // simulert tid per sekund
   const DT = 0.002;
   const TIP = 1.35; // enden av aksen, i enheten l
@@ -84,15 +91,19 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     { k: 0.5, text: "Dytt framover", aria: "Gi aksen et dytt i samme retning som presesjonen" },
     { k: -1, text: "Dytt bakover", aria: "Gi aksen et dytt mot presesjonen" },
     { k: 1, text: "Jevn presesjon", aria: "Gi aksen akkurat farten for jevn presesjon" },
+    { k: 0, up: true, text: "Nesten rett opp", aria: "Slipp snurrebassen i ro nesten rett opp" },
   ];
 
   let spin = 3; // p_ψ/I₁
   let mode = 0;
+  let TH0 = TH_TILT;
+  let down = false; // har truffet bordet
   let pps = 0;
   let pph = 0;
   let y = [TH0, 0, 0, 0]; // [θ, θ̇, φ, ψ]
   let trail = [];
   let lim = [TH0, TH0];
+  let reach = TH0; // den største vinkelen aksen når
 
   const Veff = (t) => {
     const s = Math.sin(t);
@@ -126,16 +137,28 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     return TH0 > tmin ? [other, TH0] : [TH0, other];
   }
 
+  const hasRoot = () => spin * spin * I1 * I1 > 4 * I1 * MGL * Math.cos(TH_TILT);
+
   function reset() {
+    if (!hasRoot() && MODES[mode].k !== 0) mode = 0;
+    TH0 = MODES[mode].up ? TH_UP : TH_TILT;
+    down = false;
     pps = spin * I1;
     const c0 = Math.cos(TH0);
-    const slow = (pps - Math.sqrt(pps * pps - 4 * I1 * MGL * c0)) / (2 * I1 * c0);
+    const slow = MODES[mode].k ? (pps - Math.sqrt(pps * pps - 4 * I1 * MGL * c0)) / (2 * I1 * c0) : 0;
     const pd0 = MODES[mode].k * slow;
     pph = I1 * pd0 * Math.sin(TH0) ** 2 + pps * c0;
     y = [TH0, 0, 0, 0];
     trail = [];
-    lim = turning();
-    buttons.forEach((b, i) => b.setAttribute("aria-pressed", String(i === mode)));
+    // Et vendepunkt bortenfor vinkelen der kanten treffer bordet, nås aldri og tegnes ikke.
+    const tp = turning();
+    lim = tp.filter((t) => t <= TH_DOWN);
+    if (!lim.length) lim = [TH0];
+    reach = Math.min(Math.max(...tp), TH_DOWN);
+    buttons.forEach((b, i) => {
+      b.setAttribute("aria-pressed", String(i === mode));
+      b.disabled = MODES[i].k !== 0 && !hasRoot();
+    });
   }
 
   const f = (t, s) => {
@@ -150,11 +173,18 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
   const axis = (th, ph) => [Math.sin(th) * Math.cos(ph), Math.sin(th) * Math.sin(ph), Math.cos(th)];
 
   function step(dt) {
+    if (down) return;
     let s = dt * TS;
     while (s > 0) {
       const h = Math.min(DT, s);
       y = rk4(y, f, 0, h);
       s -= h;
+      if (y[0] >= TH_DOWN) {
+        // Kanten av kjeglen treffer bordet: snurrebassen blir liggende.
+        y[0] = TH_DOWN;
+        down = true;
+        break;
+      }
     }
     trail.push(axis(y[0], y[2]).map((c) => TIP * c));
     if (trail.length > TRAIL) trail.shift();
@@ -177,7 +207,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     slider({
       text: "Spinn",
       aria: "Spinnet om symmetriaksen",
-      min: 2.6,
+      min: 1.8,
       max: 6,
       step: 0.1,
       value: spin,
@@ -196,7 +226,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     const { w, h } = getSize();
     if (w < 60 || h < 60) return; // før scenen har fått mål
     const [th, , ph, ps] = y;
-    const rmax = Math.max(0.8, TIP * Math.sin(lim[1]));
+    const rmax = Math.max(0.8, TIP * Math.sin(reach));
     const s = Math.min((h - 30) / 1.75, (0.5 * w - 16) / rmax);
     const cx = w / 2;
     const cy = h / 2 + 0.5 * s;
