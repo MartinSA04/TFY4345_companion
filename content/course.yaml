@@ -596,6 +596,31 @@ formulas:
     tex: "\\{L_i, L_j\\} = \\sum_k \\epsilon_{ijk}L_k \\allowbreak\\qquad \\{L^2, L_i\\} = 0"
     label: "Poissonklammene for dreieimpulsen. To bevarte komponenter gir den tredje. Kommutatorene i kvantemekanikken har samme form, $[\\hat L_x, \\hat L_y] = i\\hbar\\hat L_z$."
 
+  - id: nye-variabler-en-frihetsgrad
+    section: Kanoniske transformasjoner
+    tex: "\\dot Q = \\{Q, P\\}\\,\\frac{\\partial H}{\\partial P} \\allowbreak\\qquad \\dot P = -\\{Q, P\\}\\,\\frac{\\partial H}{\\partial Q}"
+    label: "Bevegelsen i nye variabler $Q(q, p)$ og $P(q, p)$ med én frihetsgrad. $\\{Q, P\\}$ er faktoren arealene i faserommet endres med, negativ når overgangen speiler faserommet. Hamiltons ligninger gjelder i de nye variablene når den er 1."
+  - id: kanonisk-transformasjon
+    section: Kanoniske transformasjoner
+    tex: "\\{Q_i, Q_j\\} = 0 \\allowbreak\\qquad \\{P_i, P_j\\} = 0 \\allowbreak\\qquad \\{Q_i, P_j\\} = \\delta_{ij}"
+    label: "<b>Kanonisk transformasjon</b>: Hamiltons ligninger gjelder i de nye variablene for enhver $H$ nøyaktig når klammene mellom dem er de fundamentale. Da har enhver Poissonklamme samme verdi i de gamle og de nye variablene."
+  - id: punkttransformasjon
+    section: Kanoniske transformasjoner
+    tex: "P_i = \\sum_j \\frac{\\partial q_j}{\\partial Q_i}\\,p_j = \\frac{\\partial L}{\\partial\\dot Q_i}"
+    label: "Impulsene når bare koordinatene byttes, $Q_i(q)$. Med én frihetsgrad er $P = p/Q'(q)$. Impulsen til polarvinkelen er dreieimpulsen $p_\\phi = xp_y - yp_x$."
+  - id: generator
+    section: Kanoniske transformasjoner
+    tex: "Q_i = q_i + \\epsilon\\,\\frac{\\partial f}{\\partial p_i} \\allowbreak\\qquad P_i = p_i - \\epsilon\\,\\frac{\\partial f}{\\partial q_i} \\allowbreak\\qquad \\delta H = -\\epsilon\\,\\{f, H\\}"
+    label: "Transformasjonen som $f(q, p)$ genererer, med en liten parameter $\\epsilon$. Impulsen genererer forskyvninger, dreieimpulsen dreininger og $H$ bevegelsen. $f$ er bevart hvis og bare hvis transformasjonen ikke endrer verdien av $H$."
+  - id: genererende-funksjon
+    section: Kanoniske transformasjoner
+    tex: "p_i = \\frac{\\partial G}{\\partial q_i} \\allowbreak\\qquad P_i = -\\frac{\\partial G}{\\partial Q_i} \\allowbreak\\qquad H' = H + \\frac{\\partial G}{\\partial t}"
+    label: "Kanonisk transformasjon fra en genererende funksjon $G(q, Q, t)$. Den følger av kravet $\\sum_i p_i\\,dq_i - H\\,dt = \\sum_i P_i\\,dQ_i - H'\\,dt + dG$."
+  - id: genererende-funksjon-g2
+    section: Kanoniske transformasjoner
+    tex: "p_i = \\frac{\\partial G_2}{\\partial q_i} \\allowbreak\\qquad Q_i = \\frac{\\partial G_2}{\\partial P_i} \\allowbreak\\qquad H' = H + \\frac{\\partial G_2}{\\partial t}"
+    label: "Med $G_2(q, P, t)$, der $G = G_2 - \\sum_i Q_iP_i$. $G_2 = \\sum_i q_iP_i$ gir ingen endring. Med $G_3(p, Q, t)$ er $q_i = -\\partial G_3/\\partial p_i$ og $P_i = -\\partial G_3/\\partial Q_i$, med $G_4(p, P, t)$ er $q_i = -\\partial G_4/\\partial p_i$ og $Q_i = \\partial G_4/\\partial P_i$."
+
   - id: plan-pendel
     section: Kjente systemer
     tex: "L = \\tfrac12 ml^2\\dot\\theta^2 + mgl\\cos\\theta, \\qquad \\ddot\\theta = -\\frac{g}{l}\\sin\\theta"
@@ -660,7 +685,7 @@ symbols:
   - { tex: "p_i", meaning: "Generalisert impuls, $\\partial L/\\partial\\dot q_i$", section: "Lagrangeformalismen", term: "Generalisert impuls", formula: generalisert-impuls, id: p-i, note: "Bevart når $q_i$ er syklisk. For en ladd partikkel er $\\vec p = m\\dot{\\vec r} + q\\vec A$ og ikke bare $m\\dot{\\vec r}$." }
   - { tex: "H", meaning: "Energifunksjonen, $\\sum_i \\dot q_i p_i - L$; skrevet ved $q$, $p$ og $t$ er den Hamiltonfunksjonen", unit: "J", section: "Lagrangeformalismen", term: "Energifunksjon", formula: energifunksjon, id: h, note: "Lik $T + V$ når posisjonene ikke avhenger av tida og $V$ bare av koordinatene. Som Hamiltonfunksjon tas $\\partial H/\\partial q_i$ med impulsene holdt fast." }
   - { tex: "\\epsilon,\\ F_i", meaning: "Parameteren og retningen i symmetrien $q_i \\to q_i + \\epsilon F_i$", section: "Lagrangeformalismen", term: "Kontinuerlig symmetri", formula: noether, note: "$F_i$ er ikke en kraft. Ikke $\\varepsilon$ i den anharmoniske oscillatoren." }
-  - { tex: "F,\\ Q", meaning: "Funksjonen i $\\delta L = \\epsilon\\,dF/dt$ og den bevarte størrelsen $Q = \\sum_i p_iF_i - F$", section: "Lagrangeformalismen", term: "Noethers teorem", formula: noether, note: "Ikke en kraft $\\vec F$, og ikke kjerneladningen $Q$ i Rutherford-spredning." }
+  - { tex: "F,\\ Q", meaning: "Funksjonen i $\\delta L = \\epsilon\\,dF/dt$ og den bevarte størrelsen $Q = \\sum_i p_iF_i - F$", section: "Lagrangeformalismen", term: "Noethers teorem", formula: noether, note: "Ikke en kraft $\\vec F$, ikke kjerneladningen $Q$ i Rutherford-spredning, og ikke de nye koordinatene $Q_i$ etter en kanonisk transformasjon." }
   - { tex: "\\phi,\\ \\vec A", meaning: "Skalarpotensialet og vektorpotensialet for en ladd partikkel", unit: "V, T·m", section: "Lagrangeformalismen", term: "Gaugeinvarians", formula: lagrange-ladd-partikkel, note: "$\\vec E = -\\nabla\\phi - \\partial\\vec A/\\partial t$ og $\\vec B = \\nabla \\times \\vec A$. Ikke vinkelen $\\phi$ eller Runge–Lenz-vektoren $\\vec A$." }
   # ── Roterende referansesystemer ──
   - { tex: "\\vec\\omega", meaning: "Vinkelhastigheten til et roterende system eller et stivt legeme", unit: "s⁻¹", section: "Roterende referansesystemer", term: "Vinkelhastighet", formula: rotasjon-tidsderivert, note: "For jorda er $\\omega = 7{,}29 \\cdot 10^{-5}$ s⁻¹. Perla på roterende ring i «Kjente systemer» bruker $\\omega$ for ringens vinkelfart, som modulen om små svingninger kaller $\\Omega$." }
@@ -678,7 +703,7 @@ symbols:
   - { tex: "a", meaning: "Den store halvaksen til ellipsen", unit: "m", section: "To- og trelegemeproblemet", formula: ellipse-akser, note: "$r_\\text{min}, r_\\text{max} = a(1 \\mp e)$, og den lille halvaksen er $a\\sqrt{1 - e^2}$. $a$ er også radien til ringen i «Kjente systemer», radien til den harde kula i spredning, avstanden mellom atomene i kjeden og sidene til plata og kuben blant de stive legemene." }
   - { tex: "u", meaning: "$1/r$, variabelen i baneligningen", unit: "m⁻¹", section: "To- og trelegemeproblemet", formula: baneligning }
   - { tex: "\\vec A", meaning: "Runge–Lenz-vektoren, bevart for $V = -k/r$", section: "To- og trelegemeproblemet", formula: runge-lenz, note: "Peker mot perihel og har lengden $\\mu ke$. Ikke vektorpotensialet $\\vec A$." }
-  - { tex: "G", meaning: "Gravitasjonskonstanten", unit: "N·m²/kg²", section: "To- og trelegemeproblemet", formula: keplers-tredje, note: "$6{,}674 \\cdot 10^{-11}$ N·m²/kg². For jorda er $GM_\\oplus = 3{,}986 \\cdot 10^5$ km³/s²." }
+  - { tex: "G", meaning: "Gravitasjonskonstanten", unit: "N·m²/kg²", section: "To- og trelegemeproblemet", formula: keplers-tredje, note: "$6{,}674 \\cdot 10^{-11}$ N·m²/kg². For jorda er $GM_\\oplus = 3{,}986 \\cdot 10^5$ km³/s². Ikke en genererende funksjon $G$." }
   - { tex: "b", meaning: "Støtparameteren", unit: "m", section: "To- og trelegemeproblemet", term: "Støtparameter", formula: spredningstverrsnitt, note: "Eldre eksamenssett skriver $s$. For et legeme som ruller, er $s$ strekningen langs underlaget, med $\\dot s = R\\dot\\theta$." }
   - { tex: "\\vartheta", meaning: "Spredningsvinkelen, mellom retningen inn og retningen ut", unit: "rad", section: "To- og trelegemeproblemet", formula: spredningstverrsnitt, note: "Eldre eksamenssett skriver $\\Theta$ eller $\\theta$. I Greens funksjon er $\\vartheta(\\tau)$ trinnfunksjonen, og hos Kapitzas pendel er $\\Theta$ den langsomme delen av vinkelen $\\theta$." }
   - { tex: "d\\sigma/d\\Omega", meaning: "Det differensielle spredningstverrsnittet", unit: "m²", section: "To- og trelegemeproblemet", term: "Spredningstverrsnitt", formula: spredningstverrsnitt, note: "$d\\Omega$ er et romvinkelelement, ikke en frekvens." }
@@ -717,6 +742,11 @@ symbols:
   - { tex: "\\epsilon_{ijk}", meaning: "Levi-Civita-symbolet: $1$ for $xyz$ og sykliske ombyttinger, $-1$ når to indekser byttes, ellers $0$", section: "Hamiltonformalismen", formula: dreieimpuls-klammer, note: "Ikke parameteren $\\epsilon$ i Noethers teorem." }
   - { tex: "\\omega_c", meaning: "Vinkelfrekvensen $qB/m$ i et uniformt magnetfelt, med fortegn", unit: "rad/s", section: "Hamiltonformalismen", term: "Syklotronfrekvens", formula: syklotronfrekvens, note: "Syklotronfrekvensen er $|\\omega_c| = |q|B/m$. For $q < 0$ er $\\omega_c < 0$, og sirkelen går mot klokka sett fra spissen av $\\vec B$." }
   - { tex: "\\rho(q, p, t)", meaning: "Tettheten av tilstander i faserommet", section: "Hamiltonformalismen", term: "Liouvilles teorem", formula: liouvilles-ligning, id: rho-faserom, note: "Ikke massetettheten $\\rho$." }
+  # ── Kanoniske transformasjoner ──
+  - { tex: "Q_i,\\ P_i", meaning: "De nye koordinatene og impulsene etter en kanonisk transformasjon", section: "Kanoniske transformasjoner", term: "Kanonisk transformasjon", formula: kanonisk-transformasjon, id: nye-variabler, note: "Ikke den bevarte størrelsen $Q$ i Noethers teorem i Lagrangeformalismen, og ikke den totale impulsen $\\vec P$." }
+  - { tex: "H'", meaning: "Hamiltonfunksjonen i de nye variablene", unit: "J", section: "Kanoniske transformasjoner", term: "Genererende funksjon", formula: genererende-funksjon, id: h-ny, note: "Lik $H$ skrevet ved $Q$ og $P$ når transformasjonen ikke avhenger av tida, ellers $H + \\partial G/\\partial t$. Eldre eksamenssett skriver $K$." }
+  - { tex: "G,\\ G_2,\\ G_3,\\ G_4", meaning: "Genererende funksjoner av $(q, Q)$, $(q, P)$, $(p, Q)$ og $(p, P)$, og eventuelt tida", section: "Kanoniske transformasjoner", term: "Genererende funksjon", formula: genererende-funksjon, id: genererende-g, note: "Eldre eksamenssett skriver $F$ eller $F_1$, og $F_2$, $F_3$ og $F_4$. Ikke gravitasjonskonstanten $G$." }
+  - { tex: "f,\\ \\alpha", meaning: "En størrelse $f(q, p)$ som generator, og parameteren langs transformasjonen den genererer", section: "Kanoniske transformasjoner", term: "Generator", formula: generator, id: generator-f, note: "Et lite steg har parameteren $\\epsilon$. Når $f = H$, er $\\alpha$ tida." }
   # ── Kjente systemer ──
   - { tex: "l", meaning: "Lengden til pendelen; $l_1$ og $l_2$ for dobbeltpendelen", unit: "m", section: "Kjente systemer", formula: plan-pendel, note: "I eksamensoppgavene står $\\ell$ både for en stanglengde og for dreieimpulsen." }
   - { tex: "\\theta", meaning: "Vinkelen fra loddlinja nedover for en pendel, og fra bunnpunktet for perla på ringen", unit: "rad", section: "Kjente systemer", formula: plan-pendel, note: "$\\theta = \\pi$ er opp ned. For et legeme som ruller, er $\\theta$ dreievinkelen." }
@@ -978,6 +1008,18 @@ glossary:
   - term: Liouvilles teorem
     section: Hamiltonformalismen
     definition: "Et område i faserommet beholder volumet $dq_1 \\cdots dq_n\\,dp_1 \\cdots dp_n$ når hvert punkt i det følger Hamiltons ligninger, også når $H$ avhenger av tida. Området kan dras ut og vris, men Hamiltons ligninger strekker like mye som de klemmer."
+  - term: Kanonisk transformasjon
+    section: Kanoniske transformasjoner
+    definition: "En overgang til nye variabler $Q_i$ og $P_i$ der Hamiltons ligninger gjelder i de nye variablene, for enhver $H$. Når overgangen ikke avhenger av tida, er den nye Hamiltonfunksjonen $H$ skrevet ved $Q$ og $P$, og overgangen er kanonisk nøyaktig når $\\{Q_i, P_j\\} = \\delta_{ij}$ og $\\{Q_i, Q_j\\} = \\{P_i, P_j\\} = 0$. Med én frihetsgrad beholder den arealene i faserommet og retningen punktet går rundt i."
+  - term: Punkttransformasjon
+    section: Kanoniske transformasjoner
+    definition: "Et bytte av koordinater, $Q_i(q)$, med impulsene fra Lagrangefunksjonen, $P_i = \\partial L/\\partial\\dot Q_i$. Med én frihetsgrad er $P = p/Q'(q)$. Den er en kanonisk transformasjon."
+  - term: Generator
+    section: Kanoniske transformasjoner
+    definition: "En størrelse $f(q, p)$ genererer transformasjonen $\\delta q_i = \\epsilon\\,\\partial f/\\partial p_i$, $\\delta p_i = -\\epsilon\\,\\partial f/\\partial q_i$, som er Hamiltons ligninger med $f$ i stedet for $H$. Impulsen genererer forskyvninger, dreieimpulsen dreininger og $H$ bevegelsen. $f$ er bevart hvis og bare hvis transformasjonen den genererer, ikke endrer verdien av $H$."
+  - term: Genererende funksjon
+    section: Kanoniske transformasjoner
+    definition: "En funksjon av en gammel og en ny variabel, som $G(q, Q, t)$, som gir en kanonisk transformasjon gjennom $p_i = \\partial G/\\partial q_i$ og $P_i = -\\partial G/\\partial Q_i$, med den nye Hamiltonfunksjonen $H' = H + \\partial G/\\partial t$."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker

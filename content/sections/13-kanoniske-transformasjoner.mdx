@@ -1,0 +1,381 @@
+---
+order: 13
+title: "Kanoniske transformasjoner"
+summary: "Med én frihetsgrad gjelder Hamiltons ligninger i nye variabler når overgangen beholder arealene i faserommet og retningen punktet går rundt i, og Poissonklammene avgjør det for et hvilket som helst antall frihetsgrader. En størrelse genererer en transformasjon og er bevart hvis og bare hvis transformasjonen ikke endrer verdien av H. En genererende funksjon gir kanoniske transformasjoner og den nye Hamiltonfunksjonen, også når overgangen avhenger av tida."
+importance: core
+tag: "Uke 43 · Tong 10.4"
+updated: 2026-11-06
+---
+
+<LearningGoals>
+- Avgjøre med Poissonklammene om en overgang til nye variabler $Q$ og $P$ er kanonisk.
+- Forklare hvorfor en kanonisk transformasjon med én frihetsgrad beholder arealene i faserommet og retningen punktet går rundt i.
+- Finne de nye impulsene når bare koordinatene byttes.
+- Finne transformasjonen en størrelse genererer, og bruke at størrelsen er bevart hvis og bare hvis transformasjonen ikke endrer verdien av $H$.
+- Lage en kanonisk transformasjon fra en genererende funksjon og finne den nye Hamiltonfunksjonen, også når overgangen avhenger av tida.
+</LearningGoals>
+
+En kloss med masse $m$ på en fjær med fjærstivhet $k$ har utslaget $q$, impulsen ${p = m\dot q}$ og ${H = p^2/2m + \tfrac12 kq^2}$. Bytt om rollene: la impulsen være den nye koordinaten, ${Q = p}$, og utslaget med motsatt fortegn den nye impulsen, ${P = -q}$. Da er ${H = Q^2/2m + \tfrac12 kP^2}$, og Hamiltons ligninger i de nye variablene er
+
+$$
+\dot Q = \frac{\partial H}{\partial P} = kP, \allowbreak\qquad \dot P = -\frac{\partial H}{\partial Q} = -\frac{Q}{m}
+$$
+
+Med ${Q = p}$ og ${P = -q}$ sier de ${\dot p = -kq}$ og ${\dot q = p/m}$, de samme ligningene som før. Bytt uten minustegnet, ${Q = p}$ og ${P = q}$. Da har $H$ den samme formen, men ligningene sier ${\dot p = kq}$ og ${\dot q = -p/m}$. Begge fortegnene er snudd, og ligningene beskriver klossens bevegelse med tida baklengs. Byttet med minustegnet er en <Term name="kanonisk transformasjon">kanonisk transformasjon</Term>, byttet uten er det ikke.
+
+## Nye variabler i faserommet
+
+I Lagrangeformalismen kan du bytte koordinater, og hastighetene følger med. I Hamiltons formulering er tilstanden et punkt $(q, p)$ i faserommet, og nye variabler ${Q(q, p)}$ og ${P(q, p)}$ gir hvert punkt to nye tall. De kan blande posisjon og impuls, som byttet over gjør. Simuleringen under viser klossens bevegelse skrevet i de nye variablene, og bevegelsen Hamiltons ligninger gir i dem.
+
+<Simulation
+  src="/sims/nye-variabler.js"
+  title="Klossen i nye variabler"
+  caption="Øverst klossen på fjæra, under faserommet i de nye variablene $Q$ og $P$, der ellipsene har konstant $H$ og den heltrukne er banen. Den fylte prikken er klossens bevegelse skrevet i $Q$ og $P$. Ringen starter i samme punkt og følger Hamiltons ligninger med den samme $H$ skrevet ved $Q$ og $P$, og den stiplede klossen er bevegelsen ringen beskriver. Ruta ved origo er bildet av en kvadratisk rute i $(q, p)$, med pilene langs retningene der $q$ og $p$ øker."
+  host="dom"
+  height={270}
+/>
+
+Med «Q = q, P = p» er planet det vanlige faserommet. Prikken går med klokka rundt en ellipse, ringen ligger oppå den, og den stiplede klossen følger klossen. Trykk «Q = 2q, P = p». Ellipsen og ruta blir dobbelt så brede, og ringen blir hengende etter: den bruker dobbelt så lang tid på en runde som prikken, og den stiplede klossen svinger halvparten så fort som klossen. Trykk «Q = 2q, P = p/2». Ruta er nå dobbelt så bred og halvparten så høy, med samme areal som før, og ringen følger prikken.
+
+Ringen får farten sin fra Hamiltons ligninger, og der kommer hver komponent av farten fra brattheten i den andre retningen. Farten langs $Q$ er ${\partial H/\partial P}$, hvor bratt $H$ er langs $P$, og farten langs $P$ er ${-\partial H/\partial Q}$. Strekk planet til dobbel bredde. Prikken går da dobbelt så fort langs $Q$, men $H$ er like bratt langs $P$ som før, så ringen gjør det ikke. Klem planet til halv høyde i tillegg. Da blir $H$ dobbelt så bratt langs $P$, og ringen går dobbelt så fort langs $Q$, like fort som prikken. Langs $P$ er det omvendt: klemmen halverer farten til prikken, og strekket halverer brattheten langs $Q$ og dermed farten til ringen. Hamiltons ligninger holder i de nye variablene når strekket i den ene retningen veies opp av klemmen i den andre, det vil si når arealene i faserommet er de samme.
+
+Trykk «Q = p, P = q». Ruta har samme areal, men den er speilvendt: i det vanlige faserommet ligger pila for $p$ en kvart omdreining mot klokka fra pila for $q$, her ligger den med klokka. Prikken går mot klokka rundt ellipsen, mens ringen går med klokka, og den stiplede klossen går klossens bevegelse baklengs. Hamiltons ligninger sender alltid punktet med klokka rundt et bunnpunkt i $H$, så de kan ikke beskrive en speiling. Trykk «Q = p, P = −q», byttet med minustegnet. Planet er dreid en kvart omdreining med klokka, retningen rundt er den samme, og ringen følger prikken igjen.
+
+Regningen bak dette går gjennom Poissonklammen. Langs bevegelsen er ${\dot Q = \{Q, H\}}$, regnet i de gamle variablene. Skriv $H$ som funksjon av $Q$ og $P$. Kjerneregelen gir
+
+$$
+\frac{\partial H}{\partial q} = \frac{\partial H}{\partial Q}\frac{\partial Q}{\partial q} + \frac{\partial H}{\partial P}\frac{\partial P}{\partial q}
+$$
+
+og det samme med $p$ i stedet for $q$. Satt inn i klammen faller leddene med ${\partial H/\partial Q}$ bort, og den samme regningen for $\dot P$ gir
+
+$$
+\dot Q = \{Q, P\}\,\frac{\partial H}{\partial P}, \allowbreak\qquad \dot P = -\{Q, P\}\,\frac{\partial H}{\partial Q}
+$$
+
+Hamiltons ligninger gjelder i de nye variablene nøyaktig når ${\{Q, P\} = 1}$. Klammen er faktoren arealet endres med. En liten rute med sidene $dq$ og $dp$ går over i et parallellogram med sidene ${(\partial Q/\partial q,\ \partial P/\partial q)\,dq}$ og ${(\partial Q/\partial p,\ \partial P/\partial p)\,dp}$, og arealet av det er determinanten
+
+$$
+\Bigl(\frac{\partial Q}{\partial q}\frac{\partial P}{\partial p} - \frac{\partial Q}{\partial p}\frac{\partial P}{\partial q}\Bigr)\,dq\,dp \allowbreak = \{Q, P\}\,dq\,dp
+$$
+
+med negativt fortegn når parallellogrammet er speilvendt. For «Q = 2q, P = p» er ${\{Q, P\} = 2}$, og prikken går dobbelt så fort som ringen. For «Q = p, P = q» er ${\{Q, P\} = -1}$, og ringen går baklengs.
+
+<Quiz
+  question="Hvilken av overgangene er kanonisk?"
+  options={["${Q = -q,\\ P = p}$", "${Q = -q,\\ P = -p}$", "${Q = q,\\ P = 2p}$", "${Q = p,\\ P = q}$"]}
+  answer={1}
+  explanation={"Med begge fortegnene snudd er ${\\{Q, P\\} = (-1)(-1) - 0 = 1}$. Overgangen dreier faserommet en halv omdreining, så arealene og retningen rundt er de samme. Med bare ett fortegn snudd er ${\\{Q, P\\} = -1}$, en speiling, og det samme gjelder byttet uten minustegn. ${P = 2p}$ dobler arealene, ${\\{Q, P\\} = 2}$."}
+/>
+
+Med $n$ frihetsgrader gir den samme kjerneregelen
+
+$$
+\dot Q_i = \{Q_i, H\} \allowbreak = \sum_j \Bigl(\{Q_i, Q_j\}\,\frac{\partial H}{\partial Q_j} + \{Q_i, P_j\}\,\frac{\partial H}{\partial P_j}\Bigr)
+$$
+
+og tilsvarende for $\dot P_i$. Hamiltons ligninger gjelder da for enhver $H$ når klammene mellom de nye variablene er de fundamentale klammene:
+
+<Statement kind="definition" name="Kanonisk transformasjon" id="kanonisk-transformasjon-def">
+En overgang til nye variabler ${Q_i(q, p)}$ og ${P_i(q, p)}$ er en kanonisk transformasjon når Hamiltons ligninger gjelder i de nye variablene med den samme $H$, skrevet ved $Q$ og $P$, for enhver $H$. Det er tilfellet nøyaktig når ${\{Q_i, Q_j\} = 0}$, ${\{P_i, P_j\} = 0}$ og ${\{Q_i, P_j\} = \delta_{ij}}$.
+</Statement>
+
+Den samme kjerneregelen viser at enhver Poissonklamme har samme verdi regnet i $q$ og $p$ som i $Q$ og $P$ når overgangen er kanonisk. Du kan derfor regne ut klammer, og ${df/dt = \{f, H\}}$, i de variablene som er enklest.
+
+<Derivation title="Klammene med $n$ frihetsgrader">
+Skriv en funksjon $f$ på faserommet som funksjon av de nye variablene. Kjerneregelen gir ${\partial f/\partial q_k = \sum_a (\partial f/\partial y_a)(\partial y_a/\partial q_k)}$, der $y_a$ går over alle $Q_i$ og $P_i$, og det samme for $p_k$. Satt inn i definisjonen av klammen gir det
+
+$$
+\{f, g\} = \sum_{a, b} \frac{\partial f}{\partial y_a}\frac{\partial g}{\partial y_b}\,\{y_a, y_b\}
+$$
+
+der klammene på begge sider er regnet i $q$ og $p$. Er ${\{Q_i, Q_j\} = \{P_i, P_j\} = 0}$ og ${\{Q_i, P_j\} = \delta_{ij}}$, står bare leddene med ett $Q_i$ og den tilhørende $P_i$ igjen, og høyresida er klammen regnet i $Q$ og $P$. Med ${f = Q_i}$ og ${g = H}$ gir det ${\dot Q_i = \partial H/\partial P_i}$, og med ${f = P_i}$ gir det ${\dot P_i = -\partial H/\partial Q_i}$.
+
+Omvendt: gjelder Hamiltons ligninger i de nye variablene for enhver $H$, kan du velge ${H = P_j}$. Da er ${\dot Q_i = \partial P_j/\partial P_i = \delta_{ij}}$ og ${\dot P_i = 0}$, og siden ${\dot Q_i = \{Q_i, H\}}$ og ${\dot P_i = \{P_i, H\}}$, er ${\{Q_i, P_j\} = \delta_{ij}}$ og ${\{P_i, P_j\} = 0}$. Med ${H = Q_j}$ får du ${\{Q_i, Q_j\} = 0}$ på samme måte.
+</Derivation>
+
+<Callout title="Kanonisk med én frihetsgrad">
+Med én frihetsgrad er ${\{Q, P\}}$ faktoren arealene i faserommet endres med. Overgangen er kanonisk når faktoren er 1: et strekk i én retning må veies opp av en klemme i den andre, og overgangen kan ikke speile faserommet.
+</Callout>
+
+## Nye koordinater
+
+Bytter du bare koordinaten $q$ ut med en ny koordinat ${Q(q)}$, må den nye impulsen velges slik at ${\{Q, P\} = 1}$. $Q$ avhenger ikke av $p$, så ${\{Q, P\} = Q'(q)\,\partial P/\partial p}$, og kravet er oppfylt med
+
+$$
+P = \frac{p}{Q'(q)}
+$$
+
+Overgangen strekker faserommet med faktoren ${Q'(q)}$ langs $q$, og den nye impulsen klemmer det like mye langs $p$. I simuleringen «Klossen i nye variabler» er «Q = 2q, P = p/2» en slik overgang: ${Q'(q) = 2}$ gir ${P = p/2}$.
+
+Den nye impulsen er den Lagrangefunksjonen gir. Med ${\dot Q = Q'(q)\,\dot q}$ er ${p = \partial L/\partial\dot q = Q'(q)\,\partial L/\partial\dot Q}$, og ${\partial L/\partial\dot Q = p/Q'(q)}$. Et slikt bytte av koordinater heter en <Term name="punkttransformasjon">punkttransformasjon</Term>. Lagranges ligninger gjelder i alle koordinater, og Hamiltons ligninger følger av dem, så med impulsene fra Lagrangefunksjonen er en punkttransformasjon kanonisk. Med flere koordinater er impulsene
+
+<Formula
+  tex="P_i = \sum_j \frac{\partial q_j}{\partial Q_i}\,p_j = \frac{\partial L}{\partial\dot Q_i}"
+  caption="<b>Impulsene ved en punkttransformasjon</b> ${Q_i(q)}$."
+/>
+
+For polarkoordinater i planet, ${x = r\cos\phi}$ og ${y = r\sin\phi}$, er ${\partial x/\partial\phi = -y}$ og ${\partial y/\partial\phi = x}$, så impulsen til $\phi$ er
+
+$$
+p_\phi = xp_y - yp_x
+$$
+
+dreieimpulsen $L_z$ om origo.
+
+<SelfCheck question="En partikkel i planet har impulsen $\vec p$. Vis at ${\{\phi, L_z\} = 1}$ med ${L_z = xp_y - yp_x}$. Hvorfor kan ikke komponenten ${\vec p\cdot\hat\phi}$ langs sirkelen være impulsen til $\phi$?">
+Med ${\phi = \arctan(y/x)}$ er ${\partial\phi/\partial x = -y/r^2}$ og ${\partial\phi/\partial y = x/r^2}$, og $\phi$ avhenger ikke av impulsene. Da er
+
+$$
+\{\phi, L_z\} = \frac{\partial\phi}{\partial x}\frac{\partial L_z}{\partial p_x} + \frac{\partial\phi}{\partial y}\frac{\partial L_z}{\partial p_y} \allowbreak = \frac{-y}{r^2}(-y) + \frac{x}{r^2}\,x = 1
+$$
+
+Komponenten langs sirkelen er ${\vec p\cdot\hat\phi = -p_x\sin\phi + p_y\cos\phi = L_z/r}$. Siden $\phi$ og $r$ bare avhenger av koordinatene, er ${\{\phi, 1/r\} = 0}$, og ${\{\phi, L_z/r\} = 1/r}$. Klammen er ikke 1, så $\phi$ og ${\vec p\cdot\hat\phi}$ er ikke en koordinat og impulsen til den.
+</SelfCheck>
+
+<Callout title="Nye koordinater">
+Bytter du bare koordinatene, ${Q_i(q)}$, er overgangen kanonisk med impulsene Lagrangefunksjonen gir, ${P_i = \partial L/\partial\dot Q_i}$. Med én frihetsgrad er ${P = p/Q'(q)}$: strekket langs $q$ veies opp av en klemme langs $p$.
+</Callout>
+
+## Generatorer
+
+En kanonisk transformasjon kan også leses som en flytting. Til nå har $Q$ og $P$ vært nye tall for det samme punktet i faserommet. Leses $(Q, P)$ i stedet som et nytt punkt i det samme faserommet, flytter transformasjonen tilstanden fra $(q, p)$ til $(Q, P)$.
+
+Ei kule glir uten friksjon i ei grunn, rund skål, med ${H = (p_x^2 + p_y^2)/2m + \tfrac12 m\omega^2(x^2 + y^2)}$. Drei tilstanden en liten vinkel $\epsilon$ om midten. Posisjonen går fra $(x, y)$ til ${(x - \epsilon y,\ y + \epsilon x)}$, og impulsen dreies med, fra ${(p_x, p_y)}$ til ${(p_x - \epsilon p_y,\ p_y + \epsilon p_x)}$. Alle fire endringene er $\epsilon$ ganger en partiellderivert av dreieimpulsen ${L_z = xp_y - yp_x}$:
+
+$$
+\delta x_i = \epsilon\,\frac{\partial L_z}{\partial p_i}, \qquad \delta p_i = -\epsilon\,\frac{\partial L_z}{\partial x_i}
+$$
+
+med $x_i$ lik $x$ og $y$. Det er Hamiltons ligninger med $L_z$ i stedet for $H$ og $\epsilon$ i stedet for $dt$. Enhver størrelse $f(q, p)$ gir på samme måte en transformasjon:
+
+<Formula
+  tex="Q_i = q_i + \epsilon\,\frac{\partial f}{\partial p_i} \allowbreak\qquad P_i = p_i - \epsilon\,\frac{\partial f}{\partial q_i}"
+  caption="<b>Transformasjonen som $f$ genererer</b>, med en liten parameter $\epsilon$."
+/>
+
+Overgangen er kanonisk til første orden i $\epsilon$. Med én frihetsgrad er leddene av første orden i ${\{Q, P\}}$ lik ${\epsilon\,\partial^2 f/\partial q\,\partial p}$ og ${-\epsilon\,\partial^2 f/\partial p\,\partial q}$, og de faller bort mot hverandre. $f$ kalles <Term name="generator">generatoren</Term> for transformasjonen. Mange små steg etter hverandre flytter tilstanden langs en kurve i faserommet. To kanoniske transformasjoner etter hverandre er til sammen kanonisk, fordi hver av dem beholder klammene, og feilen av andre orden i hvert steg går mot null når stegene blir mange og små. Hele flyttingen er derfor kanonisk. Med $\alpha$ som summen av stegene er
+
+$$
+\frac{dq_i}{d\alpha} = \frac{\partial f}{\partial p_i}, \qquad \frac{dp_i}{d\alpha} = -\frac{\partial f}{\partial q_i}
+$$
+
+og $\alpha$ har rollen tida har i Hamiltons ligninger. Simuleringen under flytter kula i skåla med transformasjonene som tre størrelser genererer.
+
+<Simulation
+  src="/sims/skal-generator.js"
+  title="Det en størrelse genererer"
+  caption="Ei kule som glir uten friksjon i ei grunn skål, sett ovenfra, med høydekotene tegnet. Den svake kula med pil er tilstanden før flyttingen, og den tydelige er tilstanden etter at transformasjonen har virket med parameteren $\alpha$. Den oransje stiplede kurven er veien kula flyttes langs, og søyla til høyre er $H$ etter flyttingen, med streken ved verdien før."
+  host="dom"
+  height={300}
+/>
+
+Velg «Impulsen langs x» og dra $\alpha$. Kula flyttes rett mot høyre, og pila er den samme. Med ${f = p_x}$ er ${\partial f/\partial p_x = 1}$ og alle de andre deriverte null, så impulsen genererer en forskyvning. Velg «Dreieimpulsen». Kula og pila dreies sammen om midten, vinkelen $\alpha$. Velg «Hamiltonfunksjonen». Kula flyttes langs banen den ville gått, og $\alpha$ er tida: $H$ genererer bevegelsen. Bevegelsen fra ett tidspunkt til et senere er altså en kanonisk transformasjon. Med én frihetsgrad gir det Liouvilles teorem på nytt: bevegelsen beholder arealene i faserommet.
+
+Følg søyla. I den runde skåla står den stille når kula dreies. Trykk «Skål: rund», så knappen viser «Skål: oval», velg «Dreieimpulsen» og dra $\alpha$ igjen. Nå går $H$ opp og ned, fordi dreiningen flytter kula til steder der skåla er høyere eller lavere. Forskyvningen endrer verdien av $H$ i begge skålene, og bevegelsen endrer den i ingen av dem.
+
+Søyla viser om størrelsen er bevart. Et lite steg endrer $H$ med
+
+$$
+\delta H = \sum_i \Bigl(\frac{\partial H}{\partial q_i}\,\delta q_i + \frac{\partial H}{\partial p_i}\,\delta p_i\Bigr) \allowbreak = \epsilon\sum_i \Bigl(\frac{\partial H}{\partial q_i}\frac{\partial f}{\partial p_i} - \frac{\partial H}{\partial p_i}\frac{\partial f}{\partial q_i}\Bigr) \allowbreak = -\epsilon\,\{f, H\}
+$$
+
+og for en størrelse som ikke avhenger eksplisitt av tida, er ${\{f, H\} = df/dt}$. Da er ${\delta H = -\epsilon\,df/dt}$:
+
+<Statement kind="theorem" name="Noethers teorem i Hamiltons formulering" id="noether-hamilton">
+En størrelse ${f(q, p)}$ er bevart hvis og bare hvis transformasjonen den genererer, ikke endrer verdien av $H$.
+</Statement>
+
+Teoremet går begge veier. En transformasjon som ikke endrer verdien av $H$, gir en bevart størrelse, generatoren sin, og en bevart størrelse gir en slik transformasjon. I Lagrangeformalismen gikk Noethers teorem fra en symmetri som virket på koordinatene, til en bevart størrelse. Her virker transformasjonen på koordinatene og impulsene sammen. Dreieimpulsen er bevart i den runde skåla fordi en dreining ikke endrer verdien av $H$, og den er ikke bevart i den ovale. $p_x$ er ikke bevart i noen av skålene.
+
+<SelfCheck question="En partikkel med ladning $q$ i det uniforme magnetfeltet ${\vec B = B\hat z}$, med ${\vec A = Bx\,\hat y}$, har ${H = [p_x^2 + (p_y - qBx)^2 + p_z^2]/2m}$. Vis at ${f = p_x - qBy}$ er bevart, og finn transformasjonen den genererer.">
+$H$ avhenger av $x$ og $p_y$, så
+
+$$
+\{f, H\} = -\frac{\partial H}{\partial x} - qB\,\frac{\partial H}{\partial p_y} \allowbreak = \frac{qB}{m}(p_y - qBx) - \frac{qB}{m}(p_y - qBx) = 0
+$$
+
+og $f$ er bevart. Transformasjonen er ${\delta x = \epsilon\,\partial f/\partial p_x = \epsilon}$ og ${\delta p_y = -\epsilon\,\partial f/\partial y = \epsilon qB}$, og de andre variablene er uendret. Partikkelen flyttes langs $x$, og $p_y$ følger med. Feltet er det samme overalt, så forskyvningen er en symmetri, men med denne $\vec A$ står $x$ i ${m\dot y = p_y - qBx}$. For at hastigheten skal være den samme etter forskyvningen, må $p_y$ øke med $qB$ ganger forskyvningen. Den bevarte størrelsen som hører til forskyvningen langs $x$, er derfor ikke $p_x$.
+</SelfCheck>
+
+<Callout title="Generatorer">
+En størrelse $f$ genererer transformasjonen ${\delta q_i = \epsilon\,\partial f/\partial p_i}$, ${\delta p_i = -\epsilon\,\partial f/\partial q_i}$, som er Hamiltons ligninger med $f$ i stedet for $H$. Impulsen genererer forskyvninger, dreieimpulsen dreininger og $H$ bevegelsen selv.
+</Callout>
+
+## Genererende funksjoner
+
+Med Poissonklammene kan du sjekke en overgang du allerede har, men de gir deg ingen ny. En <Term name="genererende funksjon">genererende funksjon</Term> gir en. Ta funksjonen ${G = qQ}$ av den gamle og den nye koordinaten, og la
+
+$$
+p = \frac{\partial G}{\partial q} = Q, \qquad P = -\frac{\partial G}{\partial Q} = -q
+$$
+
+Det er byttet fra klossen på fjæra, med minustegnet. Uten minustegnet foran ${\partial G/\partial Q}$ ville det blitt byttet som går baklengs.
+
+Regelen kommer fra virkningen. Hamiltons ligninger er betingelsen for at virkningen ${\int (\sum_i p_i\dot q_i - H)\,dt}$ er stasjonær. I de nye variablene gjelder Hamiltons ligninger med en ny Hamiltonfunksjon $H'$ når ${\int (\sum_i P_i\dot Q_i - H')\,dt}$ er stasjonær for de samme banene. Det nye integralet er stasjonært for de samme banene hvis de to integrandene skiller seg med en total tidsderivert ${dG/dt}$. Hold nå både $q$ og $p$ faste i endepunktene. Ligningene kommer fra variasjonene mellom endepunktene, så de er de samme som når bare $q$ holdes fast. Da er også $Q$, $P$ og dermed $G$ faste der, og integralet av ${dG/dt}$, som er $G$ ved slutten minus $G$ ved starten, endres ikke. Ganget med $dt$ er kravet
+
+$$
+\sum_i p_i\,dq_i - H\,dt \allowbreak = \sum_i P_i\,dQ_i - H'\,dt + dG
+$$
+
+La $G$ avhenge av $q$, $Q$ og $t$. Da er
+
+$$
+dG = \sum_i \frac{\partial G}{\partial q_i}\,dq_i + \sum_i \frac{\partial G}{\partial Q_i}\,dQ_i \allowbreak + \frac{\partial G}{\partial t}\,dt
+$$
+
+$q$, $Q$ og $t$ kan endres uavhengig av hverandre, så koeffisientene foran $dq_i$, $dQ_i$ og $dt$ må være like på begge sider:
+
+<Formula
+  tex="p_i = \frac{\partial G}{\partial q_i} \allowbreak\qquad P_i = -\frac{\partial G}{\partial Q_i} \allowbreak\qquad H' = H + \frac{\partial G}{\partial t}"
+  caption="<b>Kanonisk transformasjon fra en genererende funksjon</b> ${G(q, Q, t)}$, med $H'$ som Hamiltonfunksjonen i de nye variablene."
+/>
+
+Den første ligningen gir $Q$ som funksjon av $q$ og $p$, og den andre gir da $P$. Når $G$ ikke avhenger av tida, er ${H' = H}$, skrevet ved de nye variablene, som i definisjonen av en kanonisk transformasjon. Avhenger $G$ av tida, flytter de nye variablene seg i forhold til de gamle, og ${H' = H + \partial G/\partial t}$ må gi den bevegelsen i tillegg. Hamiltons ligninger gjelder da i de nye variablene med $H'$, og overgangen kalles kanonisk også da.
+
+<Example label="Eksamensoppgave" title="Den nye impulsen fra en genererende funksjon">
+<ExamRef id="2023-nov" task="1.19" />
+
+In a canonical transformation of type 1, from ”old” coordinates $(q, p)$ to ”new” coordinates $(Q, P)$, the generating function is ${F = F_1(q, Q) = qQ - q^2 - Q^2}$.
+
+<Quiz
+  question="What is $P(q, p)$?"
+  options={["${P = q - p}$", "${P = 4q + 3p}$", "${P = q + p}$", "${P = 2q - 2p}$", "${P = 4q - 3p}$", "${P = 3q + 2p}$"]}
+  answer={5}
+  explanation={"$F_1$ er $G(q, Q)$ i teksten. ${p = \\partial F_1/\\partial q = Q - 2q}$, så ${Q = p + 2q}$. Da er ${P = -\\partial F_1/\\partial Q = 2Q - q = 2(p + 2q) - q = 3q + 2p}$. Kontroll: ${\\{Q, P\\} = (\\partial Q/\\partial q)(\\partial P/\\partial p) - (\\partial Q/\\partial p)(\\partial P/\\partial q) = 2 \\cdot 2 - 1 \\cdot 3 = 1}$."}
+/>
+</Example>
+
+En genererende funksjon av $q$ og $Q$ krever at $q$ og $Q$ kan endres uavhengig av hverandre. En overgang der $Q$ er gitt ved $q$ alene, som ${Q = q}$, har ingen slik funksjon. Skriv i stedet ${G = G_2(q, P, t) - \sum_i Q_iP_i}$. Da faller ${\sum_i P_i\,dQ_i}$ bort fra kravet, og ${-\sum_i Q_i\,dP_i}$ kommer inn i stedet:
+
+$$
+\sum_i p_i\,dq_i - H\,dt \allowbreak = -H'\,dt + \frac{\partial G_2}{\partial t}\,dt \allowbreak + \sum_i \frac{\partial G_2}{\partial q_i}\,dq_i \allowbreak + \sum_i \Bigl(\frac{\partial G_2}{\partial P_i} - Q_i\Bigr)dP_i
+$$
+
+Med $q$, $P$ og $t$ uavhengige er ${p_i = \partial G_2/\partial q_i}$, ${Q_i = \partial G_2/\partial P_i}$ og ${H' = H + \partial G_2/\partial t}$. ${G_2 = \sum_i q_iP_i}$ gir ${p_i = P_i}$ og ${Q_i = q_i}$, ingen endring. ${G_2 = \sum_i q_iP_i + \epsilon f(q, P)}$ gir ${Q_i = q_i + \epsilon\,\partial f/\partial P_i}$ og ${P_i = p_i - \epsilon\,\partial f/\partial q_i}$, som til første orden i $\epsilon$ er transformasjonen $f$ genererer. ${G_2 = Q(q)\,P}$ med en gitt funksjon ${Q(q)}$ gir punkttransformasjonen med ${p = Q'(q)\,P}$, altså ${P = p/Q'(q)}$ som før.
+
+Med ${G = G_3(p, Q, t) + \sum_i q_ip_i}$ faller ${\sum_i p_i\,dq_i}$ bort fra venstresida, og ${-\sum_i q_i\,dp_i}$ kommer inn i stedet. Med ${G = G_4(p, P, t) + \sum_i q_ip_i - \sum_i Q_iP_i}$ skjer begge byttene. Tabellen samler de fire typene:
+
+<Table
+  columns={["Funksjon", "Ligninger"]}
+  rowHeader={false}
+  rows={[
+    ["${G(q, Q)}$", "${p_i = \\partial G/\\partial q_i}$<br>${P_i = -\\partial G/\\partial Q_i}$"],
+    ["${G_2(q, P)}$", "${p_i = \\partial G_2/\\partial q_i}$<br>${Q_i = \\partial G_2/\\partial P_i}$"],
+    ["${G_3(p, Q)}$", "${q_i = -\\partial G_3/\\partial p_i}$<br>${P_i = -\\partial G_3/\\partial Q_i}$"],
+    ["${G_4(p, P)}$", "${q_i = -\\partial G_4/\\partial p_i}$<br>${Q_i = \\partial G_4/\\partial P_i}$"],
+  ]}
+  caption="De fire typene genererende funksjoner. Hver kan også avhenge av tida, og for alle fire er ${H' = H + \partial G/\partial t}$, med den genererende funksjonen derivert med hensyn på tida."
+/>
+
+<Example label="Eksamensoppgave" title="En genererende funksjon av $p$ og $Q$">
+<ExamRef id="2019-des" task="5 b" />
+
+(b) Show that the time-independent transformation
+
+$$
+P = p + q^2 + pq^2, \allowbreak\qquad Q = \tan^{-1}q
+$$
+
+is canonical by obtaining a suitable generating function of type ${F_3(p, Q)}$ [3p].
+
+Hint: You may find the trigonometric relation ${1 + \tan^2x = \sec^2x}$ useful here.
+
+<Solution>
+$F_3$ er $G_3$ i tabellen, så ${q = -\partial F_3/\partial p}$ og ${P = -\partial F_3/\partial Q}$. Skriv $q$ og $P$ ved $p$ og $Q$. Oppgavens ${Q = \tan^{-1}q}$ gir ${q = \tan Q}$, og med hintet er
+
+$$
+P = p(1 + q^2) + q^2 \allowbreak = p\sec^2Q + \tan^2Q
+$$
+
+Ligningen ${q = -\partial F_3/\partial p}$ gir ${\partial F_3/\partial p = -\tan Q}$, så ${F_3 = -p\tan Q + g(Q)}$ for en funksjon $g$ av $Q$ alene. Satt inn i ${P = -\partial F_3/\partial Q}$:
+
+$$
+-\frac{\partial F_3}{\partial Q} = p\sec^2Q - g'(Q) \allowbreak = p\sec^2Q + \tan^2Q
+$$
+
+så ${g'(Q) = -\tan^2Q = 1 - \sec^2Q}$ og ${g(Q) = Q - \tan Q}$. En slik funksjon finnes, og overgangen er derfor kanonisk. Kontroll med klammen: $Q$ avhenger ikke av $p$, så
+
+$$
+\{Q, P\} = \frac{\partial Q}{\partial q}\frac{\partial P}{\partial p} = \frac{1 + q^2}{1 + q^2} = 1
+$$
+
+<Answer>${F_3(p, Q) = Q - (p + 1)\tan Q}$, pluss en konstant.</Answer>
+</Solution>
+</Example>
+
+Mål posisjonen fra et punkt som beveger seg med farten $v$: ${Q = q - vt}$ og ${P = p}$. Overgangen kommer fra ${G_2 = (q - vt)P}$, som gir ${p = P}$, ${Q = q - vt}$ og
+
+$$
+H' = H + \frac{\partial G_2}{\partial t} = H - vP
+$$
+
+For en fri partikkel er ${H' = P^2/2m - vP}$, og ${\dot Q = \partial H'/\partial P = P/m - v}$ er farten målt fra det bevegelige punktet. Leddet ${-vP}$ gir den ekstra farten $-v$.
+
+<Example label="Eksamensoppgave" title="Dempet oscillator med en tidsavhengig transformasjon">
+<ExamRef id="2013-mai" task="2 b–d" />
+
+(b) Betrakt nå istedet en dempet lineær oscillator beskrevet av bevegelseslikningen:
+
+$$
+\ddot x + \lambda\dot x + \omega^2x = 0. \qquad (15)
+$$
+
+Anta at Lagrange funksjonen til dette systemet kan skrives på følgende måte:
+
+$$
+L = h(t)\left[\frac{m\dot x^2}{2} - \frac{m\omega^2x^2}{2}\right]. \qquad (16)
+$$
+
+Finn funksjonen $h(t)$ slik at bevegelseslikningen som produseres av denne Lagrange funksjonen blir eksakt lik likning (28). Du kan bruke følgende initialbetingelse slik at $h(t)$ er unikt definert: ${h(0) = 1}$.
+
+(c) Konstruer Hamilton funksjonen ${H = H(x, p, t)}$ fra ovennevnte Lagrange funksjon $L$. Er Hamilton funksjonen $H$ bevart?
+
+(d) Finn den transformerte Hamilton funksjonen ${K = K(X, P, t)}$ ved å bruke den genererende funksjonen:
+
+$$
+F_2(x, P, t) = e^{\lambda t/2}xP. \qquad (17)
+$$
+
+Er Hamilton funksjonen $K$ bevart?
+
+<Solution>
+b) Likning (28) i oppgaven er (15). Med ${\partial L/\partial\dot x = hm\dot x}$ og ${\partial L/\partial x = -hm\omega^2x}$ er Lagranges ligning
+
+$$
+hm\ddot x + \dot hm\dot x + hm\omega^2x = 0
+$$
+
+Del på $hm$: ${\ddot x + (\dot h/h)\,\dot x + \omega^2x = 0}$. Det er (15) når ${\dot h/h = \lambda}$, og med ${h(0) = 1}$ er ${h(t) = e^{\lambda t}}$.
+
+c) Impulsen er ${p = e^{\lambda t}m\dot x}$, så ${\dot x = e^{-\lambda t}p/m}$, og
+
+$$
+H = p\dot x - L = e^{-\lambda t}\,\frac{p^2}{2m} \allowbreak + e^{\lambda t}\,\frac{m\omega^2x^2}{2}
+$$
+
+$H$ avhenger eksplisitt av tida, så ${dH/dt = \partial H/\partial t \ne 0}$, og $H$ er ikke bevart.
+
+d) $F_2$ er $G_2$ i tabellen, og $K$ er $H'$. ${p = \partial F_2/\partial x = e^{\lambda t/2}P}$ og ${X = \partial F_2/\partial P = e^{\lambda t/2}x}$, så ${x = e^{-\lambda t/2}X}$ og ${p = e^{\lambda t/2}P}$. Satt inn i $H$ forsvinner tidsfaktorene: ${e^{-\lambda t}p^2/2m = P^2/2m}$ og ${e^{\lambda t}m\omega^2x^2/2 = m\omega^2X^2/2}$. Leddet ${\partial F_2/\partial t}$ er ${\tfrac12\lambda e^{\lambda t/2}xP = \tfrac12\lambda XP}$, så
+
+$$
+K = H + \frac{\partial F_2}{\partial t} \allowbreak = \frac{P^2}{2m} + \frac{m\omega^2X^2}{2} \allowbreak + \frac{\lambda}{2}XP
+$$
+
+$K$ avhenger ikke eksplisitt av tida, så ${dK/dt = \partial K/\partial t = 0}$, og $K$ er bevart, selv om oscillatoren mister energi. Løsningsforslaget skriver $\gamma XP$ for det siste leddet, men med $F_2$ i oppgaven er faktoren $\lambda/2$.
+
+<Answer>b) ${h = e^{\lambda t}}$. c) ${H = e^{-\lambda t}p^2/2m + e^{\lambda t}m\omega^2x^2/2}$, ikke bevart. d) ${K = P^2/2m + m\omega^2X^2/2 + \tfrac12\lambda XP}$, bevart.</Answer>
+</Solution>
+</Example>
+
+<Callout title="Genererende funksjoner">
+${G(q, Q, t)}$ gir en kanonisk transformasjon med ${p_i = \partial G/\partial q_i}$ og ${P_i = -\partial G/\partial Q_i}$, og ${G_2(q, P, t)}$ en med ${p_i = \partial G_2/\partial q_i}$ og ${Q_i = \partial G_2/\partial P_i}$. Den nye Hamiltonfunksjonen er ${H' = H + \partial G/\partial t}$, så en overgang som avhenger av tida, gir en ny Hamiltonfunksjon ${H' \ne H}$.
+</Callout>
+
+<KeyTakeaways>
+- Med én frihetsgrad er ${\dot Q = \{Q, P\}\,\partial H/\partial P}$ og ${\dot P = -\{Q, P\}\,\partial H/\partial Q}$. Overgangen er kanonisk når ${\{Q, P\} = 1}$, altså når den beholder arealene i faserommet og retningen punktet går rundt i. Med flere frihetsgrader er kravet ${\{Q_i, P_j\} = \delta_{ij}}$ og ${\{Q_i, Q_j\} = \{P_i, P_j\} = 0}$.
+- Bytter du bare koordinatene, er impulsene ${P_i = \partial L/\partial\dot Q_i}$, med én frihetsgrad ${P = p/Q'(q)}$. Impulsen til polarvinkelen er dreieimpulsen ${xp_y - yp_x}$.
+- En størrelse $f$ genererer transformasjonen ${\delta q_i = \epsilon\,\partial f/\partial p_i}$, ${\delta p_i = -\epsilon\,\partial f/\partial q_i}$. Impulsen genererer forskyvninger, dreieimpulsen dreininger og $H$ bevegelsen, så bevegelsen er selv en kanonisk transformasjon.
+- $f$ er bevart hvis og bare hvis transformasjonen den genererer, ikke endrer verdien av $H$.
+- En genererende funksjon ${G(q, Q, t)}$ gir ${p_i = \partial G/\partial q_i}$, ${P_i = -\partial G/\partial Q_i}$ og ${H' = H + \partial G/\partial t}$. Med ${G_2(q, P, t)}$ er ${Q_i = \partial G_2/\partial P_i}$, og ${G_2 = \sum_i q_iP_i}$ gir ingen endring.
+</KeyTakeaways>
