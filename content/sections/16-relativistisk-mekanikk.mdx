@@ -1,0 +1,424 @@
+---
+order: 16
+title: "Relativistisk mekanikk"
+summary: "Firerimpulsen, med energien E = γmc² som tidsdel, bevaring av firerimpulsen i henfall og støt, terskelenergi, kraft og konstant akselerasjon, og virkningen −mc²∫dτ som gir impulsen, energien og Hamiltonfunksjonen til en partikkel som går fort."
+importance: core
+tag: "Uke 45 · Tong 11.4.2–11.6"
+updated: 2026-11-06
+---
+
+<LearningGoals>
+- Skrive firerhastigheten og firerimpulsen til en partikkel, og bruke ${P \cdot P = m^2c^2}$ til å finne energien, impulsen eller massen.
+- Bruke bevaringen av firerimpulsen på henfall og støt, og finne terskelenergien for en reaksjon.
+- Finne bevegelsen til en rakett med konstant akselerasjon i sitt eget hvilesystem, og forklare hvorfor farten aldri når $c$.
+- Konstruere virkningen til en fri partikkel og finne impulsen, energien og Hamiltonfunksjonen fra den.
+- Skrive virkningen med en vilkårlig parameter langs verdenslinja, avgjøre om en Lagrangefunksjon med indekser er den samme i alle inertialsystemer, og løse Lagranges ligninger med $t$ som en av koordinatene.
+</LearningGoals>
+
+I 1947 fant en gruppe i Bristol spor etter pioner i fotografiske plater som hadde ligget høyt oppe i fjellet, der mer av den kosmiske strålingen når ned. Et pion stopper i plata, og der det stopper, begynner sporet etter et myon. Myonsporet er like langt hver gang, rundt 0,6 mm, så myonet får alltid den samme kinetiske energien, 4,1 MeV. Pionet har massen 139,6 MeV/c² og myonet 105,7 MeV/c². Det andre produktet er et nøytrino, som ikke har ladning og ikke setter spor. I henfallet forsvinner altså 33,9 MeV/c² av massen. I Newtons mekanikk er massen bevart, og et slikt henfall kan ikke skje.
+
+## Firerimpulsen
+
+En klokke som følger en partikkel, viser egentida $\tau$. Verdenslinja til partikkelen er $X^\mu(\tau)$, og <Term name="Firerhastighet">firerhastigheten</Term> er hvor fort koordinatene til partikkelen endrer seg med egentida:
+
+$$
+U^\mu = \frac{dX^\mu}{d\tau} = \gamma\,(c,\ \vec u), \allowbreak\qquad \gamma = \frac{1}{\sqrt{1 - u^2/c^2}}
+$$
+
+Her er $\vec u$ farten til partikkelen, og $\gamma$ kommer fra ${dt = \gamma\,d\tau}$. Egentida er den samme i alle inertialsystemer, så $U$ transformeres som $X$, ${U' = \Lambda U}$. Med $dt$ i nevneren ville ikke $U$ transformert som $X$, fordi $dt$ også endrer seg med systemet. Skalarproduktet ${U \cdot U}$ er det samme for alle partikler:
+
+$$
+U \cdot U = \gamma^2\,(c^2 - u^2) = c^2
+$$
+
+Energien er bevart når ingenting avhenger av tida, og impulsen når ingenting avhenger av stedet. En boost blander $t$ og $x$, så den blander også energien og impulsen, og de bevarte størrelsene må danne en firervektor. Av partikkelen alene kan du bygge firervektoren $mU$, og romdelen ${\gamma m\vec u}$ blir Newtons impuls ved lav fart.
+
+<Term name="Firerimpuls">Firerimpulsen</Term> er derfor massen ganger firerhastigheten, ${P = mU = (\gamma mc,\ \gamma m\vec u)}$. Romdelen er impulsen ${\vec p = \gamma m\vec u}$, som blir Newtons $m\vec u$ når ${u \ll c}$. Tidsdelen ganget med $c$ er
+
+$$
+\gamma mc^2 = mc^2 + \tfrac12 mu^2 + \dots
+$$
+
+Det andre leddet er den kinetiske energien fra Newton, så tidsdelen er energien delt på $c$, ${E = \gamma mc^2}$. Det første leddet, <Term name="Hvileenergi">hvileenergien</Term> $mc^2$, har partikkelen også i ro.
+
+<Formula tex="P^\mu = mU^\mu = \Bigl(\frac{E}{c},\ \vec p\Bigr), \allowbreak\qquad E = \gamma mc^2, \allowbreak\qquad \vec p = \gamma m\vec u" caption="Firerimpulsen til en partikkel med massen $m$ og farten $\vec u$, med ${\gamma = 1/\sqrt{1 - u^2/c^2}}$." />
+
+Skalarproduktet ${P \cdot P}$ er det samme i alle systemer, så du kan regne det ut der det er enklest. I systemet der partikkelen står i ro, er ${P = (mc, 0)}$ og ${P \cdot P = m^2c^2}$. I et hvilket som helst annet system er ${P \cdot P = E^2/c^2 - p^2}$, og de to må være like:
+
+<Formula tex="E^2 = p^2c^2 + m^2c^4" caption="Energien og impulsen til en partikkel med massen $m$, fra ${P \cdot P = m^2c^2}$. Farten er ${\vec u = \vec p\,c^2/E}$." />
+
+Energien og impulsen avhenger av systemet, men massen gjør det ikke. Massen er gitt ved lengden av firerimpulsen i romtida, ${\sqrt{P \cdot P} = mc}$.
+
+Med $pc$ mot høyre og $E$ opp ligger alle firerimpulsene til en partikkel med massen $m$ på hyperbelen ${E^2 - p^2c^2 = m^2c^4}$ (figur 1). I ro peker pila rett opp til ${E = mc^2}$. Pila heller som verdenslinja, fordi $P$ er parallell med $U$: med farten $0{,}6c$ er ${pc/E = u/c = 0{,}6}$. En boost flytter pila langs hyperbelen, på samme måte som den flytter en hendelse langs hyperbelen med samme intervall fra origo.
+
+<Figure src="/figures/energi-og-impuls.svg" alt="Et diagram med pc mot høyre og E opp. En hyperbel har bunnpunktet i E lik 1 og nærmer seg den stiplede linja E lik pc. Tre piler går fra origo til hyperbelen: rett opp merket u lik 0, og på skrå merket 0,6c og 0,9c. En prikket kurve, merket Newton, følger hyperbelen nær bunnen og går brattere opp enn den lenger ut." width={340} height={360} number={1} caption="Firerimpulsen til en partikkel med massen $m$, med $pc$ og $E$ i enheter av $mc^2$. Pilene går til punktene med farten $0$, $0{,}6c$ og $0{,}9c$ på hyperbelen ${E^2 - p^2c^2 = m^2c^4}$. Den prikkede kurven er Newtons ${E = mc^2 + p^2/2m}$, og de stiplede linjene er ${E = \lvert p\rvert c}$." />
+
+Nær bunnen følger hyperbelen Newtons ${E = mc^2 + p^2/2m}$. Lenger ut går den mye saktere opp: ved $0{,}9c$ er ${E = 2{,}29\,mc^2}$, mens Newton gir $3{,}13\,mc^2$ ved den samme impulsen. Når farten går mot $c$, vokser $E$ og $p$ uten grense, og hyperbelen nærmer seg linja ${E = pc}$.
+
+En partikkel uten masse har ${P \cdot P = 0}$, altså ${E = pc}$, og pila ligger på den linja. Farten er ${u = pc^2/E = c}$, så en masseløs partikkel går alltid med lysfarten. Fotonet er en slik partikkel, med energien ${E = \hbar\omega}$. Massen til nøytrinoet er så liten at den kan settes til null her.
+
+I partikkelfysikken måles energien i MeV, impulsen i MeV/c og massen i MeV/c². Da har alle leddene i ${E^2 = p^2c^2 + m^2c^4}$ enheten MeV², og $c$ forsvinner fra regningen.
+
+<Callout title="Firerimpulsen">
+Firerimpulsen ${P = mU = (E/c, \vec p)}$ har ${P \cdot P = m^2c^2}$ i alle systemer, så ${E^2 = p^2c^2 + m^2c^4}$. En masseløs partikkel har ${E = pc}$ og går med lysfarten.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Massen fra energien og impulsen">
+<ExamRef id="2023-nov" task="1.18" />
+
+<Quiz
+  question="What is the mass of a (free) particle with energy 500 MeV and momentum 400 MeV/c?"
+  options={["50 MeV/c$^2$", "100 MeV/c$^2$", "150 MeV/c$^2$", "200 MeV/c$^2$", "250 MeV/c$^2$", "300 MeV/c$^2$"]}
+  answer={5}
+  explanation={"${m^2c^4 = E^2 - p^2c^2 = (500^2 - 400^2)\\ \\text{MeV}^2}$, så ${mc^2 = 300}$ MeV og ${m = 300\\ \\text{MeV}/c^2}$. 100 MeV/c² er differansen ${E - pc}$, men det er kvadratene som trekkes fra hverandre."}
+/>
+</Example>
+
+## Henfall
+
+I et isolert system er summen av firerimpulsene bevart: energien og impulsen er de samme etter et henfall eller et støt som før. Summen er en firervektor, så når den er bevart i ett inertialsystem, er den bevart i alle. Massene er ikke bevart. For pionet som henfaller til et myon og et nøytrino, er
+
+$$
+P_\pi = P_\mu + P_\nu
+$$
+
+Her er $\mu$ og $\nu$ navnene på myonet og nøytrinoet, ikke indekser. Simuleringen viser henfallet på to måter. Øverst går partiklene langs en linje i laboratoriet. Nederst er firerimpulsene i et diagram som figur 1, i MeV, med pionet og myonet på hver sin hyperbel og nøytrinoets pil på skrå 45°, fra spissen av myonets pil.
+
+<Simulation
+  src="/sims/pionet-henfaller.js"
+  host="dom"
+  title="Pionet henfaller"
+  caption="Et pion henfaller til et myon og et nøytrino. Øverst går partiklene langs en linje i laboratoriet, og bare de ladde etterlater spor. Nederst er firerimpulsene i et diagram med $pc$ mot høyre og $E$ opp, i MeV og i samme skala. Pilene er firerimpulsene til pionet, myonet og nøytrinoet, merket med energien, og kurvene er hyperblene ${E^2 - p^2c^2 = m^2c^4}$ for pionet og myonet. De grå stiplede linjene er ${E = \lvert p\rvert c}$, og nøytrinoets pil starter i spissen av myonets pil og er parallell med en av dem. «Myonet framover» og «Myonet bakover» er retningen myonet sendes ut i, målt i pionets system. Bevegelsen øverst går i sakte film."
+  height={400}
+/>
+
+Begynn med farten 0. Pionet ligger i ro, og pila går rett opp til 139,6 MeV. Bevaringen sier at pila til myonet og pila til nøytrinoet, satt etter hverandre, ender i spissen av pionets pil. Nøytrinoet er masseløst, så pila går på skrå 45°. Myonets firerimpuls ligger altså der linja 45° ned fra spissen av pionets pil treffer myonets hyperbel, og det er bare ett slikt punkt på hver side. Derfor får myonet den samme energien i hvert henfall.
+
+Regn det ut. Med ${P_\nu = P_\pi - P_\mu}$ og ${P_\nu \cdot P_\nu = 0}$ er
+
+$$
+0 = (P_\pi - P_\mu)^2 \allowbreak = m_\pi^2c^2 - 2P_\pi \cdot P_\mu + m_\mu^2c^2
+$$
+
+I pionets hvilesystem er ${P_\pi = (m_\pi c, \vec 0)}$, så ${P_\pi \cdot P_\mu = m_\pi E_\mu}$, og
+
+$$
+E_\mu = \frac{(m_\pi^2 + m_\mu^2)\,c^2}{2m_\pi} = 109{,}8\ \text{MeV}
+$$
+
+Den kinetiske energien til myonet er ${E_\mu - m_\mu c^2 = 4{,}1}$ MeV, sporet i plata. Impulsen er ${\sqrt{E_\mu^2 - m_\mu^2c^4}/c = 29{,}8}$ MeV/c, og nøytrinoet har like stor impuls den andre veien og energien 29,8 MeV. Sammen har de ${109{,}8 + 29{,}8 = 139{,}6}$ MeV, pionets hvileenergi. Når pionet henfaller i ro, har energien bare én mulig verdi med to partikler etter henfallet. Henfaller en partikkel til tre, kan de dele energien på mange måter, og energien til hver av dem varierer fra henfall til henfall. Det konstante myonsporet viste at pionet henfaller til to partikler.
+
+Massen $M$ til et system av partikler er gitt ved lengden av summen av firerimpulsene i romtida:
+
+<Formula tex="M^2c^4 = \Bigl(\sum_i E_i\Bigr)^2 \allowbreak - \Bigl(\sum_i \vec p_i\Bigr)^2 c^2" caption="Den invariante massen $M$ til et system av partikler, den samme i alle inertialsystemer. I massesentersystemet, der ${\sum_i \vec p_i = 0}$, er ${Mc^2 = \sum_i E_i}$." />
+
+Den heter <Term name="Invariant masse">den invariante massen</Term>. I <Term name="Massesentersystem">massesentersystemet</Term>, der summen av impulsene er null, er ${Mc^2 = \sum_i E_i}$, og siden hver ${E_i \ge m_i c^2}$, er $M$ minst summen av massene. De er like bare når alle partiklene står i ro i det systemet. Pionets masse er større enn summen av massene til myonet og nøytrinoet, og forskjellen ble kinetisk energi. Målt med lengden i romtida, ${\sqrt{E^2 - p^2c^2}}$, er pila til pionet lengre enn de to andre til sammen, selv om den ser kortere ut i diagrammet. Pionets pil har lengden ${m_\pi c^2}$, myonets ${m_\mu c^2}$ og nøytrinoets null. Det er det samme minustegnet som gjør at den rette verdenslinja mellom to tidlike hendelser har lengst egentid.
+
+Sett farten til 0,80c. Pilene til pionet og myonet har flyttet seg langs hyperblene, nøytrinoets pil står fortsatt på skrå 45°, og de ender fortsatt i hverandre, så bevaringen gjelder i laboratoriet også. Med myonet framover har myonet 222,7 MeV, og nøytrinoet, som går bakover, har 9,9 MeV. Trykk «Myonet bakover». Nå går nøytrinoet framover med 89,4 MeV, tre ganger mer enn de 29,8 MeV det har i pionets system. Framover og bakover gir den største og den minste energien myonet og nøytrinoet kan få fra et pion med denne farten.
+
+Faktoren 3 er dopplereffekten. En masseløs partikkel som går framover med energien $E_0$ i kildens system, har ${P = (E_0/c,\ E_0/c)}$ der. Kilden beveger seg med farten ${\beta c}$, og boosten tilbake til laboratoriet gir ${E = \gamma(E_0 + \beta E_0) = \gamma(1 + \beta)\,E_0}$. Faktoren er ${\gamma(1 + \beta) = \sqrt{(1 + \beta)/(1 - \beta)}}$. For lys er ${E = \hbar\omega}$, så
+
+<Formula tex="\omega = \omega_0\,\sqrt{\frac{1 + \beta}{1 - \beta}}" caption="Dopplereffekten: lys med vinkelfrekvensen $\omega_0$ i kildens system har $\omega$ hos en mottaker som kilden beveger seg mot med farten ${\beta c}$. Beveger kilden seg bort, bytter $\beta$ fortegn, og frekvensen blir lavere." />
+
+Med ${\beta = 0{,}8}$ er faktoren ${\sqrt{1{,}8/0{,}2} = 3}$, som for nøytrinoet. Lys fra en kilde som beveger seg bort, får lavere frekvens og blir rødforskjøvet, som nøytrinoet som gikk bakover med 9,9 MeV, en tredel av 29,8.
+
+<Callout title="Bevaring av firerimpulsen">
+I et isolert system er summen av firerimpulsene bevart, i alle inertialsystemer. Massene er ikke bevart. Massen til et system er gitt ved lengden av summen av firerimpulsene i romtida, og den er minst summen av massene til delene.
+</Callout>
+
+## Terskelenergi
+
+To protoner som kolliderer, kan lage et proton og et antiproton: ${p + p \to p + p + p + \bar p}$. Etter støtet er det fire partikler med protonmassen $m_p$, så den invariante massen må være minst $4m_p$.
+
+Skyt et proton med energien $E_1$ mot et proton i ro. Summen av firerimpulsene er ${(E_1/c + m_pc,\ \vec p_1)}$, og med ${E_1^2 - p_1^2c^2 = m_p^2c^4}$ er
+
+$$
+M^2c^4 = (E_1 + m_pc^2)^2 - p_1^2c^2 \allowbreak = 2m_p^2c^4 + 2E_1m_pc^2
+$$
+
+Kravet ${M \ge 4m_p}$ gir ${E_1 \ge 7m_pc^2}$, altså en kinetisk energi på minst ${6m_pc^2 = 5{,}6}$ GeV. I en kollider kommer protonene mot hverandre med like stor fart, summen av impulsene er null, og ${Mc^2 = 2E}$. Der er ${E = 2m_pc^2}$ nok, en kinetisk energi på ${m_pc^2 = 0{,}94}$ GeV for hvert proton.
+
+Forskjellen kommer av impulsen. Mot et proton i ro er summen av impulsene $\vec p_1$ også etter støtet, så partiklene som lages, må bevege seg, og den kinetiske energien deres kan ikke bli masse. Den laveste energien som gjør en reaksjon mulig, er <Term name="Terskelenergi">terskelenergien</Term>. Ved terskelen står alle partiklene etter støtet i ro i massesentersystemet. For en partikkel med massen $m_1$ mot en partikkel med massen $m_2$ i ro gir den samme regningen
+
+<Formula tex="E_1 = \frac{(M^2 - m_1^2 - m_2^2)\,c^2}{2m_2}" caption="Terskelenergien til partikkel 1 når den treffer partikkel 2 i ro og lager partikler med summen av massene $M$. Ved terskelen er $M$ den invariante massen, og den kinetiske energien er ${E_1 - m_1c^2}$." />
+
+<Callout title="Terskelenergi">
+En reaksjon er mulig når den invariante massen før støtet er minst summen av massene etter. Mot en partikkel i ro må produktene bevege seg, så terskelenergien er lavest når to partikler kolliderer med like store og motsatte impulser.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Terskelenergi, og to partikler som smelter sammen">
+<ExamRef id="2014-jun" task="2c–d, f" />
+
+(c) Beskriv nøyaktig hva som menes med *terskelenergi* i sammenheng med relativistiske partikkelkollisjoner. Drøft hvordan man bør designe eksperimenter for å oppnå lavest mulig terskelenergi for en reaksjon hvor to partikler kolliderer og produserer flere nye partikler.
+
+(d) Betrakt et $\pi^+$ meson som kolliderer med et nøytron hvor sistnevnte er i ro i lab-systemet. Denne kollisjonen produserer et $K^+$ meson og en $\Lambda$ hyperon. Hva er terskelenergien for denne reaksjonen i lab-systemet? Massene til partiklene er $m_\pi, m_n, m_K, m_\Lambda$.
+
+(f) To partikler med hvilemasser $m_1$ and $m_2$ beveger seg mot hverandre langs $z$-aksen med hastigheter $v_1$ and $v_2$, respektive, i en observatørs koordinatsystem. Ved kollisjon smelter de sammen til en ny partikkel med hvilemasse $m_3$ som beveger seg med hastighet $v_3$ i forhold til observatøren. Finn et uttrykk for $m_3$ og $v_3$ som funksjon av $m_1$, $m_2$, $v_1$, $v_2$. Er det mulig at den nye partikkelen $m_3$ er et foton dersom verken $m_1$ eller $m_2$ er lik null?
+
+<Solution>
+c) Terskelenergien er den laveste energien partiklene kan kollidere med og fortsatt lage de nye partiklene. Ved terskelen er den invariante massen før støtet lik summen av massene etter, og produktene står i ro i massesentersystemet. Summen av impulsene er bevart, så hvis den ikke er null i laboratoriet, må produktene bevege seg der, og energien de beveger seg med, kan ikke bli masse. Den laveste terskelen får du derfor når laboratoriet er massesentersystemet: to stråler som kolliderer rett mot hverandre med like store og motsatte impulser. Da kan hele energien bli masse.
+
+d) Før støtet er summen av firerimpulsene ${(E_\pi/c + m_nc,\ \vec p_\pi)}$. Den invariante massen er gitt ved
+
+$$
+M^2c^4 = (E_\pi + m_nc^2)^2 \allowbreak - p_\pi^2c^2 \allowbreak = m_\pi^2c^4 + m_n^2c^4 \allowbreak + 2E_\pi m_nc^2
+$$
+
+Ved terskelen er ${M = m_K + m_\Lambda}$, så
+
+$$
+2E_\pi m_nc^2 = (m_K + m_\Lambda)^2c^4 \allowbreak - m_\pi^2c^4 - m_n^2c^4
+$$
+
+Den kinetiske energien er ${T_\pi = E_\pi - m_\pi c^2}$, og med ${2m_\pi m_n}$ trukket fra i telleren er
+
+$$
+T_\pi = \frac{(m_K + m_\Lambda)^2 - (m_\pi + m_n)^2}{2m_n}\,c^2
+$$
+
+Med massene 139,6, 939,6, 493,7 og 1115,7 MeV/c² er ${T_\pi = 0{,}76}$ GeV.
+
+f) La partikkel 1 gå i positiv $z$-retning og partikkel 2 i negativ, med farten $v_1$ og $v_2$. Bevaring av energien og impulsen gir
+
+$$
+\begin{aligned}
+\gamma_1m_1 + \gamma_2m_2 &= \gamma_3m_3 \\
+\gamma_1m_1v_1 - \gamma_2m_2v_2 &= \gamma_3m_3v_3
+\end{aligned}
+$$
+
+Den andre delt på den første er farten:
+
+$$
+v_3 = \frac{\gamma_1m_1v_1 - \gamma_2m_2v_2}{\gamma_1m_1 + \gamma_2m_2}
+$$
+
+Massen er den invariante massen før støtet. Partiklene går mot hverandre, så ${\vec p_1 \cdot \vec p_2 = -p_1p_2}$, og
+
+$$
+m_3^2c^4 = (E_1 + E_2)^2 \allowbreak - (p_1 - p_2)^2c^2 \allowbreak = m_1^2c^4 + m_2^2c^4 \allowbreak + 2(E_1E_2 + p_1p_2c^2)
+$$
+
+Med ${E_i = \gamma_im_ic^2}$ og ${p_i = \gamma_im_iv_i}$ er
+
+$$
+m_3^2 = m_1^2 + m_2^2 \allowbreak + 2\gamma_1\gamma_2m_1m_2\,(1 + v_1v_2/c^2)
+$$
+
+Siden ${\gamma_1\gamma_2(1 + v_1v_2/c^2) \ge 1}$, er ${m_3 \ge m_1 + m_2}$, så den nye partikkelen kan ikke være et foton når $m_1$ og $m_2$ ikke er null. Løsningsforslaget har ${1 - v_1v_2/c^2}$ i sin ligning (19), men med partiklene på vei mot hverandre er fortegnet pluss, som her.
+
+<Answer>c) Den laveste energien som gjør reaksjonen mulig; lavest når to partikler kolliderer med like store og motsatte impulser. d) $T_\pi$ fra formelen over, 0,76 GeV, og ${E_\pi = T_\pi + m_\pi c^2}$. f) $v_3$ og $m_3$ som over. Nei, fordi ${m_3 \ge m_1 + m_2 > 0}$.</Answer>
+</Solution>
+</Example>
+
+<SelfCheck question="Verdensrommet er fylt av fotoner fra den kosmiske bakgrunnsstrålingen, med typisk energi ${E_\gamma = 6 \cdot 10^{-4}}$ eV. Et proton fra verdensrommet treffer et slikt foton rett forfra og lager et pion, ${p + \gamma \to p + \pi^0}$. Hvor stor energi må protonet minst ha? Bruk ${m_pc^2 = 938{,}3}$ MeV og ${m_{\pi^0}c^2 = 135{,}0}$ MeV.">
+Protonet har mye mer energi enn hvileenergien ${m_pc^2}$, så ${p_pc \approx E_p}$. Fotonet går den andre veien med ${p_\gamma c = -E_\gamma}$. Den invariante massen er da
+
+$$
+M^2c^4 = (E_p + E_\gamma)^2 \allowbreak - (p_pc - E_\gamma)^2 \allowbreak \approx m_p^2c^4 + 4E_pE_\gamma
+$$
+
+Kravet ${M \ge m_p + m_{\pi^0}}$ gir ${E_p \ge m_{\pi^0}(2m_p + m_{\pi^0})\,c^4/4E_\gamma}$, som er ${1{,}1 \cdot 10^{20}}$ eV. Det er ${10^{11}}$ ganger ${m_pc^2}$, så ${p_pc \approx E_p}$ holder. Bare produktet ${E_pE_\gamma}$ inngår, så et foton med svært lite energi er nok når protonet har stor nok energi. Protoner med mer energi enn dette mister energi til pioner på veien gjennom bakgrunnsstrålingen.
+</SelfCheck>
+
+## Kraft og akselerasjon
+
+En rakett starter fra jorda og akselererer slik at passasjerene hele tida kjenner 1 g, som når de står på jorda. Med Newton ville farten etter tida $t$ vært $gt$, og etter ${c/g = 0{,}97}$ år ville den vært $c$.
+
+Akselerasjonen passasjerene kjenner, er akselerasjonen $a'$ i det inertialsystemet raketten står i ro i akkurat da, det momentane <Term name="Hvilesystem">hvilesystemet</Term>. På en kort egentid $d\tau$ øker farten i det systemet fra 0 til ${a'\,d\tau}$. Ved lav fart er rapiditeten ${w \approx u/c}$, så rapiditeten øker med ${a'\,d\tau/c}$. Booster langs samme akse legger sammen rapiditetene, så etter egentida $\tau$ har raketten rapiditeten ${w = a'\tau/c}$ i jordas system. Farten er ${u = c\tanh w}$, som går mot $c$ uten å nå den.
+
+Tida og stedet i jordas system følger av ${dt = \gamma\,d\tau = \cosh w\,d\tau}$ og ${dx = u\,dt = c\sinh w\,d\tau}$:
+
+<Formula tex="t = \frac{c}{a'}\sinh\frac{a'\tau}{c}, \allowbreak\qquad x = \frac{c^2}{a'}\Bigl(\cosh\frac{a'\tau}{c} - 1\Bigr)" caption="Verdenslinja til et legeme som starter i ro i origo og har den konstante akselerasjonen $a'$ i sitt momentane hvilesystem, med egentida $\tau$ som parameter. Rapiditeten er ${w = a'\tau/c}$." />
+
+Ved liten $\tau$ er ${t \approx \tau}$ og ${x \approx \tfrac12 a'\tau^2}$, Newtons bevegelse. Siden ${\cosh^2 w - \sinh^2 w = 1}$, er ${(x + c^2/a')^2 - c^2t^2 = c^4/a'^2}$: verdenslinja er en hyperbel (figur 2).
+
+<Figure src="/figures/raketten.svg" alt="Et romtidsdiagram med lysår mot høyre og år opp. Jorda går rett opp langs tidsaksen med prikker ved 1, 2 og 3 år. Raketten starter i origo og bøyer av mot høyre langs en hyperbel som blir nesten parallell med den stiplede lyslinja, med prikker for hvert halvår og merkene 1 år og 2 år. En prikket parabel merket Newton bøyer lenger ut og krysser lyslinja ved rundt 1,9 år." width={340} height={372} number={2} caption="Raketten som akselererer med 1 g, tegnet i jordas system med år opp og lysår til siden, så lys går på skrå 45°. Prikkene på rakettens verdenslinje står for hvert halvår på rakettens klokke, og prikkene på tidsaksen for hvert år på jorda. Den prikkede kurven er Newtons ${x = \tfrac12 gt^2}$, og den stiplede linja er lys som sendes fra jorda ved avreisen." />
+
+Med ${a' = g}$ er ${c^2/g = 0{,}97}$ lysår. Etter ett år på rakettens klokke har raketten farten $0{,}77c$, jordas klokke viser 1,19 år, og raketten er 0,56 lysår unna. Etter to år har den $0{,}97c$, og jordas klokke viser 3,76 år. Newtons parabel krysser lyslinja etter 1,9 år, mens hyperbelen aldri gjør det.
+
+Newtons andre lov skrives med firerimpulsen og egentida, ${dP/d\tau = F}$, der $F$ er firerkraften. Begge sidene er firervektorer, fordi $\tau$ er den samme i alle systemer, så loven har samme form i alle. Siden ${d\tau = dt/\gamma}$, er romdelen av ${dP/d\tau}$ lik ${\gamma\,d\vec p/dt}$. Kraften $\vec f$ slik du kjenner den, er ${d\vec p/dt}$, så romdelen av $F$ er ${\gamma\vec f}$:
+
+<Formula tex="\frac{d\vec p}{dt} = \vec f, \allowbreak\qquad \frac{dE}{dt} = \vec f \cdot \vec u, \allowbreak\qquad \vec p = \gamma m\vec u" caption="Newtons andre lov for en partikkel med massen $m$ og farten $\vec u$, med kraften $\vec f$. Firerkraften er ${F = dP/d\tau = \gamma\,(\vec f \cdot \vec u/c,\ \vec f)}$." />
+
+Ligningen for energien kommer fra ${U \cdot U = c^2}$. Endringen av firerhastigheten er <Term name="Firerakselerasjon">firerakselerasjonen</Term> ${a^\mu = dU^\mu/d\tau}$. Siden ${U \cdot U = c^2}$ hele tida, gir derivasjonen ${U \cdot a = 0}$, så ${F \cdot U = m\,U \cdot a = 0}$. Med ${F = \gamma\,(dE/c\,dt,\ \vec f)}$ og ${U = \gamma\,(c, \vec u)}$ er ${F \cdot U = \gamma^2\,(dE/dt - \vec f \cdot \vec u)}$. Arbeidet kraften gjør per tid, er altså endringen av ${E = \gamma mc^2}$.
+
+En konstant kraft $f$ langs $x$ på et legeme med massen $m$ som starter i ro, gir ${p = ft}$, og det er rakettens bevegelse. For raketten er ${p = \gamma mu = mc\sinh w}$, og med $t$ fra formelen over er ${p = ma't}$. Konstant akselerasjon i hvilesystemet er altså det samme som en konstant kraft ${f = ma'}$ i jordas system, så lenge massen ikke endrer seg, og farten ${u = pc^2/E}$ når aldri $c$ fordi $E$ alltid er større enn $pc$. Firerakselerasjonen til raketten er ${a = a'(\sinh w,\ \cosh w)}$, så ${U \cdot a = 0}$ og ${a \cdot a = -a'^2}$ hele tida.
+
+<Callout title="Konstant akselerasjon">
+Med konstant akselerasjon $a'$ i det momentane hvilesystemet øker rapiditeten jevnt med egentida, ${w = a'\tau/c}$. Farten nærmer seg $c$ uten å nå den, verdenslinja er en hyperbel, og i jordas system er kraften ${f = dp/dt = ma'}$ konstant.
+</Callout>
+
+<SelfCheck question="Raketten akselererer med 1 g i to år på sin egen klokke, bremser med 1 g i to år til, og gjør det samme på vei hjem. Hvor mye eldre er passasjerene blitt når de lander, hvor mye eldre er de som ble igjen på jorda, og hvor langt ute snudde raketten?">
+Hver av de fire etappene er en kopi av den første, speilet i tid eller rom. Den første tar 2 år på rakettens klokke og 3,76 år på jorda, og raketten kommer 2,91 lysår ut. Passasjerene blir 8 år eldre, de på jorda ${4 \cdot 3{,}76 = 15{,}0}$ år, og raketten snur ${2 \cdot 2{,}91 = 5{,}8}$ lysår unna. Den rette verdenslinja, jordas, har lengst egentid.
+</SelfCheck>
+
+## Virkningen til en fri partikkel
+
+Lagrangefunksjonen ${\tfrac12 mu^2}$ gir Newtons impuls og energi, og de gjelder bare ved lav fart. Den enkleste måten å få de samme bevegelsesligningene i alle inertialsystemer på, er en virkning som er den samme i alle. Langs verdenslinja til en fri partikkel er det bare én størrelse alle systemer er enige om, egentida. En slik virkning må derfor være proporsjonal med egentida:
+
+$$
+S = -\alpha\int d\tau
+$$
+
+Mellom to tidlike hendelser har den rette verdenslinja lengst egentid, og en fri partikkel går rett. Med minustegnet og ${\alpha > 0}$ har den rette verdenslinja den minste virkningen. Konstanten $\alpha$ følger av lav fart. Med ${d\tau = dt\,\sqrt{1 - u^2/c^2}}$ er Lagrangefunksjonen
+
+$$
+L = -\alpha\sqrt{1 - \frac{u^2}{c^2}} \approx -\alpha + \frac{\alpha u^2}{2c^2}
+$$
+
+Lagranges ligninger ser ikke konstanten $-\alpha$, og det andre leddet er Newtons ${\tfrac12 mu^2}$ når ${\alpha = mc^2}$.
+
+<Formula tex="S = -mc^2\int d\tau, \allowbreak\qquad L = -mc^2\sqrt{1 - \frac{u^2}{c^2}}" caption="Virkningen og Lagrangefunksjonen til en fri partikkel med massen $m$ og farten $u$." />
+
+Den <Term name="Generalisert impuls">generaliserte impulsen</Term> og energifunksjonen er
+
+$$
+\vec p = \frac{\partial L}{\partial\vec u} = \gamma m\vec u
+$$
+
+$$
+H = \vec p \cdot \vec u - L \allowbreak = \gamma mu^2 + \frac{mc^2}{\gamma} \allowbreak = \gamma mc^2
+$$
+
+For en fri partikkel avhenger $L$ verken av $\vec r$ eller $t$, så både $\vec p$ og $H$ er bevart, og de er komponentene i firerimpulsen. Firerimpulsen ble valgt fordi den gir Newtons impuls og energi ved lav fart. Virkningen viser at det er $\gamma m\vec u$ og $\gamma mc^2$ som er bevart.
+
+En konstant $C$ lagt til $L$ endrer ikke bevegelsen, men gir ${C\int dt}$ i virkningen, og tida mellom to hendelser er ikke den samme i alle systemer. Kravet om en virkning alle systemer er enige om, bestemmer altså også konstanten, og derfor er hvileenergien med i ${H = \gamma mc^2}$.
+
+For en partikkel i et potensial $V(\vec r)$ trekkes $V$ fra som før, ${L = -mc^2\sqrt{1 - u^2/c^2} - V}$. Potensialet er gitt i systemet der det står stille, og $L$ gjelder i det systemet. Skrevet ved impulsen er energifunksjonen Hamiltonfunksjonen:
+
+<Formula tex="H = \sqrt{p^2c^2 + m^2c^4} + V(\vec r)" caption="Hamiltonfunksjonen til en partikkel med massen $m$ i potensialet $V$." />
+
+Hamiltons ligning ${\dot{\vec r} = \partial H/\partial\vec p = \vec p\,c^2/E}$ gir tilbake ${\vec u = \vec p\,c^2/E}$. Med et potensial gir Lagranges ligning ${d(\gamma m\vec u)/dt = -\nabla V}$, Newtons lov med den relativistiske impulsen, og ${H = \gamma mc^2 + V}$ er bevart. Ved lav fart er ${L \approx -mc^2 + \tfrac12 mu^2 - V}$, den vanlige Lagrangefunksjonen pluss en konstant.
+
+<Callout title="Virkningen til en fri partikkel">
+${S = -mc^2\int d\tau}$ er virkningen alle inertialsystemer er enige om. Den gir impulsen ${\gamma m\vec u}$, energien ${\gamma mc^2}$ og Hamiltonfunksjonen ${\sqrt{p^2c^2 + m^2c^4}}$.
+</Callout>
+
+## Indekser oppe og nede
+
+I skalarproduktet ${X \cdot Y = \eta_{\mu\nu}X^\mu Y^\nu}$ holder $\eta$ orden på fortegnene, med pluss for tida og minus for rommet. Skalarproduktet blir kortere å skrive med en indeks nede:
+
+$$
+X_\mu = \eta_{\mu\nu}X^\nu \allowbreak = (ct,\ -x,\ -y,\ -z), \allowbreak\qquad X \cdot Y = X^\mu Y_\mu
+$$
+
+der det summeres over $\mu$. Komponentene med indeksen oppe heter <Term name="Kontravariant og kovariant">kontravariante</Term> og de med indeksen nede kovariante. En nedre indeks endrer seg motsatt av en øvre når du bytter system, så i en sum over et par med én indeks oppe og én nede faller endringen bort. Et uttrykk der hver indeks står én gang oppe og én gang nede og summeres over, er derfor det samme i alle inertialsystemer, og det heter en <Term name="Lorentz-skalar">Lorentz-skalar</Term>. ${U^\mu U_\mu = c^2}$ og ${P^\mu P_\mu = m^2c^2}$ er eksempler.
+
+En størrelse med flere nedre indekser, som $\eta_{\mu\nu}$, er en kovariant tensor når hver av indeksene endrer seg som en nedre indeks. Da er en sum som ${\eta_{\mu\nu}X^\mu Y^\nu}$ den samme i alle systemer. For $\eta$ er også komponentene de samme i alle systemer, og det er kravet ${\Lambda^{\mathsf T}\eta\Lambda = \eta}$. Komponentene til en annen kovariant tensor kan endre seg fra system til system, men summen med indeksene parvis oppe og nede er den samme i alle.
+
+<Callout title="Indekser">
+${X_\mu = \eta_{\mu\nu}X^\nu}$ skifter fortegn på romdelen. Et uttrykk der hver indeks står én gang oppe og én gang nede, er en Lorentz-skalar, den samme i alle inertialsystemer.
+</Callout>
+
+## Virkningen langs verdenslinja
+
+Med $t$ som parameter er virkningen skrevet i ett bestemt system. Den kan skrives slik at du ser at den er den samme i alle. La en parameter $\sigma$ som øker langs verdenslinja nummerere hendelsene på den, $X^\mu(\sigma)$. Da er ${c\,d\tau = \sqrt{\eta_{\mu\nu}\,dX^\mu dX^\nu}}$, og
+
+<Formula tex="S = -mc\int\sqrt{\eta_{\mu\nu}\dot X^\mu\dot X^\nu}\;d\sigma" caption="Virkningen til en fri partikkel med en vilkårlig parameter $\sigma$ langs verdenslinja og ${\dot X^\mu = dX^\mu/d\sigma}$. Rottegnet er en Lorentz-skalar, og verdien av $S$ avhenger ikke av hvilken parameter du velger." />
+
+Rottegnet ganger $d\sigma$ er ${\sqrt{\eta_{\mu\nu}\,dX^\mu dX^\nu} = c\,d\tau}$ uansett hvilken parameter du bruker, så virkningen har samme verdi med alle. Med ${\sigma = t}$ er ${\dot X = (c, \vec u)}$, og virkningen blir ${-mc^2\int\sqrt{1 - u^2/c^2}\,dt}$, som før.
+
+Nå er alle de fire komponentene $X^\mu$ koordinater, også ${X^0 = ct}$, og Lagranges ligninger gjelder for hver av dem. Deriver først:
+
+$$
+\frac{\partial L}{\partial\dot X^\mu} = -\frac{mc\,\eta_{\mu\nu}\dot X^\nu}{\sqrt{\eta_{\rho\lambda}\dot X^\rho\dot X^\lambda}}
+$$
+
+Velg så ${\sigma = \tau}$. Da er ${\dot X = U}$, rottegnet er $c$, og ${\partial L/\partial\dot X^\mu = -mU_\mu}$. $L$ avhenger ikke av $X^\mu$, så Lagranges ligninger gir ${d(mU_\mu)/d\tau = 0}$: firerimpulsen er konstant, og verdenslinja er rett. Velger du ${\sigma = \tau}$ før du deriverer, er ${L = -mc^2}$ en konstant, og Lagranges ligninger gir ingenting.
+
+Den generaliserte impulsen til ${X^0 = ct}$ er ${-mU_0 = -E/c}$, og til $X^i$ er den ${-mU_i = p^i}$. Når $L$ ikke avhenger av $t$, er $t$ en syklisk koordinat og energien bevart, på samme måte som impulsen er bevart når $L$ ikke avhenger av $x$.
+
+Et ledd lagt til $L$ holder virkningen lik i alle systemer når det er en Lorentz-skalar, bygd av $\dot X^\mu$, $X^\mu$ og tensorer med nedre indekser, med hver indeks én gang oppe og én gang nede.
+
+<Callout title="Virkningen langs verdenslinja">
+Med en vilkårlig parameter er ${S = -mc\int\sqrt{\eta_{\mu\nu}\dot X^\mu\dot X^\nu}\,d\sigma}$. Deriver før du setter ${\sigma = \tau}$. Da er den generaliserte impulsen til $ct$ lik $-E/c$, og $t$ er syklisk når $L$ ikke avhenger av den.
+</Callout>
+
+<Example label="Eksamensoppgave" title="En relativistisk oscillator">
+<ExamRef id="2025-nov" task="2a–d" />
+
+The Lagrangian for a particle with mass $m$ that moves in one spatial dimension is
+
+$$
+L = -mc\sqrt{-\eta_{\mu\nu}\dot x^\mu\dot x^\nu} \allowbreak - \frac12 kB_{\mu\nu\gamma}\dot x^\mu x^\nu x^\gamma\,, \tag{2}
+$$
+
+where $\mu = 0, 1$, $\nu = 0, 1$, and $\gamma = 0, 1$. The coordinates are ${x^0 = ct}$ and ${x^1 = x}$. Moreover, $B_{\mu\nu\gamma}$ is a covariant tensor of rank three and $k > 0$ is a constant.
+
+a) Explain why the Lagrangian $L$ is Lorentz invariant. In the laboratory frame, the tensor $B_{\mu\nu\gamma}$ has a very simple form
+
+$$
+B_{\mu\nu\gamma} = \frac1c\,\delta_{\mu0}\delta_{\nu1}\delta_{\gamma1}\,. \tag{3}
+$$
+
+Write down the Lagrangian $L$ in the laboratory frame. Are there any cyclic coordinates?
+
+b) Derive the equations of motion. Find the conserved quantity and interpret the result.
+
+c) Take the non-relativistic limit of the Lagrangian. Any comments?
+
+d) The action is given by the integral
+
+$$
+S = \int L\,d\tau\,. \tag{4}
+$$
+
+Reparametrize the action using coordinate time $t$ instead of proper time $\tau$, and find the Lagrangian that corresponds to Eq. (2).
+
+<Solution>
+Oppgaven bruker ${\eta_{00} = -1}$ og ${\eta_{11} = 1}$, ellers ville tallet under rottegnet vært negativt. Da er ${-\eta_{\mu\nu}\dot x^\mu\dot x^\nu = (\dot x^0)^2 - (\dot x^1)^2}$, det samme som ${\eta_{\mu\nu}\dot X^\mu\dot X^\nu}$ i denne modulen. Prikken er derivasjon med hensyn på $\tau$, og her står $\gamma$ for en indeks.
+
+a) I begge leddene står hver indeks én gang oppe og én gang nede og summeres over. Det første er $-mc$ ganger roten av en Lorentz-skalar. I det andre er den kovariante tensoren $B$ summert med ${\dot x^\mu x^\nu x^\gamma}$, så det er også en Lorentz-skalar. $L$ er derfor den samme i alle systemer. I laboratoriet er bare ${B_{011} = 1/c}$ forskjellig fra null, og med ${\dot x^0 = c\dot t}$ er ${B_{\mu\nu\gamma}\dot x^\mu x^\nu x^\gamma = \dot t\,x^2}$:
+
+$$
+L = -mc\sqrt{c^2\dot t^2 - \dot x^2} - \tfrac12 k\,\dot t\,x^2
+$$
+
+$L$ avhenger av $\dot t$, men ikke av $t$, så ${x^0 = ct}$ er syklisk.
+
+b) Deriver, og sett så rottegnet lik $c$, siden $\tau$ er egentida:
+
+$$
+\begin{aligned}
+\frac{\partial L}{\partial\dot t} &= -mc^2\dot t - \tfrac12 kx^2 \\
+\frac{\partial L}{\partial\dot x} &= m\dot x \\
+\frac{\partial L}{\partial x} &= -k\,\dot t\,x
+\end{aligned}
+$$
+
+Ligningen for $t$ sier at ${\partial L/\partial\dot t}$ er konstant, og ligningen for $x$ er ${m\ddot x = -k\,\dot t\,x}$. Den bevarte størrelsen er
+
+$$
+K = mc^2\,\dot t + \tfrac12 kx^2 \allowbreak = \gamma mc^2 + \tfrac12 kx^2
+$$
+
+fordi ${\dot t = dt/d\tau = \gamma}$. Den første delen er energien til partikkelen og den andre den potensielle energien ${\tfrac12 kx^2}$, så $K$ er energien til en relativistisk oscillator, bevart fordi $L$ ikke avhenger av $t$. Med ${d/d\tau = \gamma\,d/dt}$ blir ligningen for $x$ til ${d(\gamma m\,dx/dt)/dt = -kx}$.
+
+c) Ved lav fart er ${\tau \approx t}$, så du kan bruke $t$ som parameter. Rottegnet gir ${-mc\sqrt{c^2 - u^2} \approx -mc^2 + \tfrac12 mu^2}$, og det siste leddet blir ${-\tfrac12 kx^2}$:
+
+$$
+L \approx -mc^2 + \tfrac12 mu^2 - \tfrac12 kx^2
+$$
+
+Det er den harmoniske oscillatoren pluss konstanten $-mc^2$, som ikke endrer bevegelsesligningene.
+
+d) Med ${d\tau = dt/\dot t}$ er ${\sqrt{c^2\dot t^2 - \dot x^2}\,d\tau = \sqrt{c^2 - u^2}\,dt}$ og ${\dot t\,x^2\,d\tau = x^2\,dt}$, med ${u = dx/dt}$. Da er ${S = \int L\,dt}$ med
+
+$$
+L = -mc^2\sqrt{1 - u^2/c^2} - \tfrac12 kx^2
+$$
+
+Løsningsforslaget har mistet $k$ i ${\partial L/\partial\dot x^0}$, men kommer fram til den samme $K$.
+
+<Answer>a) Alle indeksene er summert parvis, så $L$ er en Lorentz-skalar; ${L = -mc\sqrt{c^2\dot t^2 - \dot x^2} - \tfrac12 k\dot t x^2}$, og $t$ er syklisk. b) ${m\ddot x = -k\dot t x}$ og ${K = \gamma mc^2 + \tfrac12 kx^2}$ bevart, energien til en relativistisk oscillator. c) ${L \approx -mc^2 + \tfrac12 mu^2 - \tfrac12 kx^2}$, den harmoniske oscillatoren pluss en konstant. d) ${L = -mc^2\sqrt{1 - u^2/c^2} - \tfrac12 kx^2}$.</Answer>
+</Solution>
+</Example>
+
+<KeyTakeaways>
+- Firerhastigheten er ${U = dX/d\tau = \gamma(c, \vec u)}$ og firerimpulsen ${P = mU = (E/c, \vec p)}$, med ${E = \gamma mc^2}$ og ${\vec p = \gamma m\vec u}$. ${P \cdot P = m^2c^2}$ gir ${E^2 = p^2c^2 + m^2c^4}$, og en masseløs partikkel har ${E = pc}$.
+- Summen av firerimpulsene er bevart i henfall og støt, men massene er ikke det. Den invariante massen ${M^2c^4 = (\sum E)^2 - (\sum\vec p)^2c^2}$ er minst summen av massene, og en reaksjon er mulig når den er minst summen av massene etter.
+- Mot en partikkel i ro er terskelenergien ${E_1 = (M^2 - m_1^2 - m_2^2)c^2/2m_2}$. En kollider med like store og motsatte impulser trenger mye mindre.
+- Konstant akselerasjon $a'$ i hvilesystemet gir rapiditeten ${w = a'\tau/c}$ og en hyperbel i romtida. Newtons lov er ${d\vec p/dt = \vec f}$ med ${\vec p = \gamma m\vec u}$, og ${dE/dt = \vec f \cdot \vec u}$.
+- Virkningen til en fri partikkel er ${S = -mc^2\int d\tau}$. Den gir ${\vec p = \gamma m\vec u}$, ${H = \sqrt{p^2c^2 + m^2c^4}}$, og med en vilkårlig parameter ${S = -mc\int\sqrt{\eta_{\mu\nu}\dot X^\mu\dot X^\nu}\,d\sigma}$. Der er $ct$ en koordinat med den generaliserte impulsen $-E/c$, og $t$ er syklisk når energien er bevart.
+</KeyTakeaways>

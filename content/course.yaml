@@ -702,6 +702,46 @@ formulas:
     section: Spesiell relativitetsteori
     tex: "u = \\frac{u' + v}{1 + u'v/c^2}"
     label: "<b>Hastighetsaddisjon</b>: et legeme med farten $u'$ langs $x'$ i $K'$ har farten $u$ i $K$, der $K'$ beveger seg med farten $v$. Med $u' = c$ er $u = c$."
+  - id: firerimpuls
+    section: Spesiell relativitetsteori
+    tex: "U^\\mu = \\frac{dX^\\mu}{d\\tau} = \\gamma\\,(c, \\vec u) \\allowbreak\\qquad P^\\mu = mU^\\mu = \\Bigl(\\frac{E}{c}, \\vec p\\Bigr)"
+    label: "<b>Firerhastigheten</b> og <b>firerimpulsen</b> til en partikkel med massen $m$ og farten $\\vec u$, med $E = \\gamma mc^2$, $\\vec p = \\gamma m\\vec u$ og $\\gamma = 1/\\sqrt{1 - u^2/c^2}$. $U \\cdot U = c^2$."
+  - id: energi-impuls
+    section: Spesiell relativitetsteori
+    tex: "E^2 = p^2c^2 + m^2c^4"
+    label: "Energien og impulsen til en partikkel med massen $m$, fra $P \\cdot P = m^2c^2$. Farten er $\\vec u = \\vec p\\,c^2/E$, og en masseløs partikkel har $E = pc$ og går med farten $c$."
+  - id: invariant-masse
+    section: Spesiell relativitetsteori
+    tex: "M^2c^4 = \\Bigl(\\sum_i E_i\\Bigr)^2 \\allowbreak - \\Bigl(\\sum_i \\vec p_i\\Bigr)^2 c^2"
+    label: "Den <b>invariante massen</b> til et system av partikler, den samme i alle inertialsystemer og bevart i henfall og støt. I massesentersystemet er $Mc^2 = \\sum_i E_i$, og $M$ er minst summen av massene."
+  - id: terskelenergi
+    section: Spesiell relativitetsteori
+    tex: "E_1 = \\frac{(M^2 - m_1^2 - m_2^2)\\,c^2}{2m_2}"
+    label: "<b>Terskelenergien</b> til partikkel 1 mot partikkel 2 i ro, når partiklene etter støtet har summen av massene $M$. Kinetisk energi er $E_1 - m_1c^2$."
+  - id: doppler
+    section: Spesiell relativitetsteori
+    tex: "\\omega = \\omega_0\\,\\sqrt{\\frac{1 + \\beta}{1 - \\beta}}"
+    label: "<b>Dopplereffekten</b> for lys: vinkelfrekvensen $\\omega_0$ i kildens system blir $\\omega$ hos en mottaker som kilden beveger seg mot med farten $\\beta c$. Bort fra mottakeren bytter $\\beta$ fortegn."
+  - id: konstant-akselerasjon
+    section: Spesiell relativitetsteori
+    tex: "t = \\frac{c}{a'}\\sinh\\frac{a'\\tau}{c} \\allowbreak\\qquad x = \\frac{c^2}{a'}\\Bigl(\\cosh\\frac{a'\\tau}{c} - 1\\Bigr)"
+    label: "Et legeme som starter i ro i origo med konstant akselerasjon $a'$ i sitt momentane hvilesystem. Rapiditeten er $w = a'\\tau/c$, og verdenslinja er en hyperbel."
+  - id: newton-relativistisk
+    section: Spesiell relativitetsteori
+    tex: "\\frac{d\\vec p}{dt} = \\vec f \\allowbreak\\qquad \\frac{dE}{dt} = \\vec f \\cdot \\vec u"
+    label: "Newtons andre lov med $\\vec p = \\gamma m\\vec u$ og $E = \\gamma mc^2$, fra $dP/d\\tau = F$ med firerkraften $F = \\gamma\\,(\\vec f \\cdot \\vec u/c, \\vec f)$."
+  - id: relativistisk-lagrange
+    section: Spesiell relativitetsteori
+    tex: "S = -mc^2\\int d\\tau \\allowbreak\\qquad L = -mc^2\\sqrt{1 - \\frac{u^2}{c^2}} - V(\\vec r)"
+    label: "Virkningen og Lagrangefunksjonen til en partikkel i potensialet $V$. Generalisert impuls $\\gamma m\\vec u$ og energifunksjon $\\gamma mc^2 + V$."
+  - id: relativistisk-hamilton
+    section: Spesiell relativitetsteori
+    tex: "H = \\sqrt{p^2c^2 + m^2c^4} + V(\\vec r)"
+    label: "Hamiltonfunksjonen til en partikkel med massen $m$ i potensialet $V$."
+  - id: kovariant-virkning
+    section: Spesiell relativitetsteori
+    tex: "S = -mc\\int\\sqrt{\\eta_{\\mu\\nu}\\dot X^\\mu\\dot X^\\nu}\\;d\\sigma"
+    label: "Virkningen til en fri partikkel med en vilkårlig parameter $\\sigma$ og $\\dot X^\\mu = dX^\\mu/d\\sigma$. Deriver før du setter $\\sigma = \\tau$; da er $\\partial L/\\partial\\dot X^\\mu = -mU_\\mu$, og den generaliserte impulsen til $ct$ er $-E/c$."
 
   - id: plan-pendel
     section: Kjente systemer
@@ -839,7 +879,7 @@ symbols:
   # ── Spesiell relativitetsteori ──
   - { tex: "c", meaning: "Lysfarten i vakuum, den samme i alle inertialsystemer", unit: "m/s", section: "Spesiell relativitetsteori", formula: lorentz-transformasjon, id: lysfarten, note: "Med år og lysår som enheter er $c = 1$." }
   - { tex: "v,\\ u,\\ u'", meaning: "$v$ er farten til $K'$ langs $x$-aksen i $K$, og $u$ og $u'$ er farten til et legeme i $K$ og i $K'$", unit: "m/s", section: "Spesiell relativitetsteori", formula: hastighetsaddisjon, id: fart-relativitet, note: "Ikke $u = 1/r$ i baneligningen." }
-  - { tex: "\\gamma", meaning: "Lorentz-faktoren, $1/\\sqrt{1 - v^2/c^2}$", section: "Spesiell relativitetsteori", formula: lorentz-transformasjon, id: gamma-lorentz, note: "Ikke friksjonskoeffisienten $\\gamma$." }
+  - { tex: "\\gamma", meaning: "Lorentz-faktoren, $1/\\sqrt{1 - v^2/c^2}$", section: "Spesiell relativitetsteori", formula: lorentz-transformasjon, id: gamma-lorentz, note: "For en partikkel med farten $u$ er $\\gamma = 1/\\sqrt{1 - u^2/c^2}$. Ikke friksjonskoeffisienten $\\gamma$. I $E_\\gamma$ og $p + \\gamma \\to p + \\pi^0$ er $\\gamma$ et foton, og i eksamenssettet fra 2025 er $\\gamma$ også en indeks." }
   - { tex: "L_0", meaning: "Lengden til et legeme der det står i ro", unit: "m", section: "Spesiell relativitetsteori", formula: lengdekontraksjon, id: hvilelengde }
   - { tex: "\\Delta s^2", meaning: "Intervallet mellom to hendelser", unit: "m²", section: "Spesiell relativitetsteori", term: "Intervall", formula: intervall, id: intervall }
   - { tex: "\\tau", meaning: "Egentida, tida en klokke viser langs sin egen verdenslinje", unit: "s", section: "Spesiell relativitetsteori", term: "Egentid", formula: egentid, id: egentid, note: "Ikke tida $\\tau$ siden dyttet i Greens funksjon." }
@@ -847,6 +887,15 @@ symbols:
   - { tex: "\\eta_{\\mu\\nu}", meaning: "Minkowski-metrikken, $\\operatorname{diag}(1, -1, -1, -1)$", section: "Spesiell relativitetsteori", formula: lorentz-krav, id: minkowski-metrikk, note: "Ikke utslaget $\\eta$ i små svingninger. Eksamenssettene fra 2024 og 2025 bruker motsatt fortegn, med $\\eta_{00} = -1$." }
   - { tex: "\\Lambda", meaning: "Matrisen til en Lorentz-transformasjon, $X' = \\Lambda X$", section: "Spesiell relativitetsteori", term: "Lorentz-transformasjon", formula: lorentz-krav, id: lorentz-matrise }
   - { tex: "w", meaning: "Rapiditeten, med $\\tanh w = v/c$", section: "Spesiell relativitetsteori", term: "Rapiditet", formula: boost-rapiditet, id: rapiditet }
+  - { tex: "U^\\mu", meaning: "Firerhastigheten, $dX^\\mu/d\\tau = \\gamma(c, \\vec u)$", unit: "m/s", section: "Spesiell relativitetsteori", term: "Firerhastighet", formula: firerimpuls, id: firerhastighet, note: "Ikke potensialet per masse $U$ i trelegemeproblemet." }
+  - { tex: "P^\\mu", meaning: "Firerimpulsen, $mU^\\mu = (E/c, \\vec p)$", unit: "kg·m/s", section: "Spesiell relativitetsteori", term: "Firerimpuls", formula: firerimpuls, id: firerimpuls, note: "$P_\\pi$, $P_\\mu$ og $P_\\nu$ er firerimpulsene til et pion, et myon og et nøytrino; der er $\\mu$ og $\\nu$ navn på partikler, ikke indekser." }
+  - { tex: "E,\\ \\vec p", meaning: "Energien $\\gamma mc^2$ og impulsen $\\gamma m\\vec u$ til en partikkel", unit: "J, kg·m/s", section: "Spesiell relativitetsteori", formula: energi-impuls, id: energi-impuls-relativistisk, note: "$E$ inneholder hvileenergien $mc^2$. I partikkelfysikken måles $E$ i MeV, $p$ i MeV/c og $m$ i MeV/c²." }
+  - { tex: "M", meaning: "Den invariante massen til et system av partikler", unit: "kg", section: "Spesiell relativitetsteori", term: "Invariant masse", formula: invariant-masse, id: invariant-masse, note: "Den er minst like stor som summen av massene. Ikke den totale massen $M$ i Newtons mekanikk." }
+  - { tex: "\\beta", meaning: "Farten til kilden i enheter av $c$", section: "Spesiell relativitetsteori", formula: doppler, id: beta-relativitet }
+  - { tex: "a'", meaning: "Akselerasjonen i det momentane hvilesystemet", unit: "m/s²", section: "Spesiell relativitetsteori", formula: konstant-akselerasjon, id: a-hvilesystem }
+  - { tex: "a^\\mu", meaning: "Firerakselerasjonen, $dU^\\mu/d\\tau$", unit: "m/s²", section: "Spesiell relativitetsteori", term: "Firerakselerasjon", formula: newton-relativistisk, id: firerakselerasjon, note: "$U \\cdot a = 0$, og med konstant akselerasjon er $a \\cdot a = -a'^2$. Ikke halvaksen $a$." }
+  - { tex: "\\vec f,\\ F^\\mu", meaning: "Kraften $d\\vec p/dt$ og firerkraften $dP^\\mu/d\\tau = \\gamma(\\vec f \\cdot \\vec u/c, \\vec f)$", unit: "N", section: "Spesiell relativitetsteori", formula: newton-relativistisk, id: firerkraft, note: "Ikke føringen $f(q, t)$ eller generatoren $f$." }
+  - { tex: "X_\\mu", meaning: "Komponentene med indeksen nede, $\\eta_{\\mu\\nu}X^\\nu = (ct, -x, -y, -z)$", unit: "m", section: "Spesiell relativitetsteori", term: "Kontravariant og kovariant", formula: kovariant-virkning, id: indeks-nede, note: "$X \\cdot Y = X^\\mu Y_\\mu$." }
   # ── Kjente systemer ──
   - { tex: "l", meaning: "Lengden til pendelen; $l_1$ og $l_2$ for dobbeltpendelen", unit: "m", section: "Kjente systemer", formula: plan-pendel, note: "I eksamensoppgavene står $\\ell$ både for en stanglengde og for dreieimpulsen." }
   - { tex: "\\theta", meaning: "Vinkelen fra loddlinja nedover for en pendel, og fra bunnpunktet for perla på ringen", unit: "rad", section: "Kjente systemer", formula: plan-pendel, note: "$\\theta = \\pi$ er opp ned. For et legeme som ruller, er $\\theta$ dreievinkelen." }
@@ -1174,6 +1223,36 @@ glossary:
   - term: Rapiditet
     section: Spesiell relativitetsteori
     definition: "Parameteren $w$ i en boost, med $\\gamma = \\cosh w$ og $v/c = \\tanh w$. Rapiditetene til booster langs samme akse legges sammen."
+  - term: Firerhastighet
+    section: Spesiell relativitetsteori
+    definition: "$U^\\mu = dX^\\mu/d\\tau = \\gamma(c, \\vec u)$, hvor fort koordinatene til en partikkel endrer seg med egentida. Den er en firervektor fordi egentida er den samme i alle inertialsystemer, og $U \\cdot U = c^2$."
+  - term: Firerimpuls
+    section: Spesiell relativitetsteori
+    definition: "$P = mU = (E/c, \\vec p)$ med $E = \\gamma mc^2$ og $\\vec p = \\gamma m\\vec u$. Summen av firerimpulsene i et isolert system er bevart, og $P \\cdot P = m^2c^2$."
+  - term: Firerakselerasjon
+    section: Spesiell relativitetsteori
+    definition: "$a^\\mu = dU^\\mu/d\\tau$, endringen av firerhastigheten per egentid. Siden $U \\cdot U = c^2$, er $U \\cdot a = 0$."
+  - term: Hvileenergi
+    section: Spesiell relativitetsteori
+    definition: "Energien $mc^2$ en partikkel med massen $m$ har i ro. Når massene endrer seg i et henfall eller støt, blir hvileenergi til kinetisk energi eller omvendt."
+  - term: Invariant masse
+    section: Spesiell relativitetsteori
+    definition: "Massen til et system av partikler, $Mc^2 = \\sqrt{(\\sum E_i)^2 - (\\sum \\vec p_i)^2c^2}$, gitt ved lengden av summen av firerimpulsene i romtida. Den er den samme i alle inertialsystemer og minst summen av massene."
+  - term: Massesentersystem
+    section: Spesiell relativitetsteori
+    definition: "Inertialsystemet der summen av impulsene til partiklene er null. Der er den invariante massen summen av energiene delt på $c^2$."
+  - term: Terskelenergi
+    section: Spesiell relativitetsteori
+    definition: "Den laveste energien som gjør en reaksjon mulig: den invariante massen før støtet er lik summen av massene etter, og produktene står i ro i massesentersystemet."
+  - term: Hvilesystem
+    section: Spesiell relativitetsteori
+    definition: "Inertialsystemet der et legeme står i ro. For et legeme som akselererer, er det momentane hvilesystemet det inertialsystemet legemet står i ro i akkurat da."
+  - term: Kontravariant og kovariant
+    section: Spesiell relativitetsteori
+    definition: "Komponentene $X^\\mu$ med indeksen oppe er kontravariante, og $X_\\mu = \\eta_{\\mu\\nu}X^\\nu$ med indeksen nede er kovariante. En kovariant tensor har nedre indekser og gir en Lorentz-skalar summert med kontravariante vektorer."
+  - term: Lorentz-skalar
+    section: Spesiell relativitetsteori
+    definition: "En størrelse som er den samme i alle inertialsystemer. Et uttrykk der hver indeks står én gang oppe og én gang nede og summeres over, er en Lorentz-skalar, for eksempel $P^\\mu P_\\mu = m^2c^2$."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker
