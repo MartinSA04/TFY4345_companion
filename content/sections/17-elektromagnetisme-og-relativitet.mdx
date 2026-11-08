@@ -1,0 +1,403 @@
+---
+order: 17
+title: "Elektromagnetisme og relativitet"
+summary: "Firerstrømmen og firerpotensialet, feltstyrketensoren og hvordan det elektriske og det magnetiske feltet blandes når du bytter inertialsystem, virkningen og Lorentzkraften for en ladd partikkel ved alle farter, og Maxwells ligninger skrevet med feltstyrketensoren."
+importance: core
+tag: "Uke 46 · Brauner 5.3.1, 12.1"
+part: "Del 6: Spesiell relativitetsteori"
+updated: 2026-11-08
+---
+
+<LearningGoals>
+- Bruke firerstrømmen til å finne ladningstettheten og strømtettheten i et annet inertialsystem, og forklare hvorfor en nøytral ledning med strøm er ladd i et system som går langs den.
+- Skrive firerpotensialet og feltstyrketensoren, og lese $\vec E$ og $\vec B$ ut av $F^{\mu\nu}$.
+- Finne det elektriske og det magnetiske feltet i et annet inertialsystem.
+- Konstruere virkningen til en ladd partikkel, utlede ${m\,dU^\mu/d\tau = qF^{\mu\nu}U_\nu}$ fra den og finne radien til en rask partikkel i et magnetfelt.
+- Skrive Maxwells ligninger med feltstyrketensoren og vise at de krever at ladningen er bevart.
+</LearningGoals>
+
+En ledning fører strømmen 10 A. Et elektron går parallelt med ledningen, 1 cm unna, i samme retning som elektronene i ledningen og med farten $0{,}2c$. Der elektronet er, er magnetfeltet fra strømmen ${B = \mu_0 I/2\pi r = 0{,}20}$ mT, og det trekker elektronet mot ledningen med kraften ${euB = 1{,}92 \cdot 10^{-15}}$ N. Ledningen er nøytral, så det virker ingen elektrisk kraft.
+
+I systemet der elektronet står i ro, kan magnetfeltet ikke virke på det, fordi den magnetiske kraften er proporsjonal med farten. Elektronet trekkes likevel inn til det treffer ledningen, og treffet er en hendelse som skjer i alle systemer. Kraften i elektronets system må derfor være elektrisk, og da må ledningen være ladd der.
+
+## Ladning og strøm
+
+Ladningen til et legeme er et helt tall ganger elementærladningen, og tallet er det samme i alle systemer. Ladningstettheten er ikke det. En stav med ladningen $Q$ og lengden $L_0$ der den står i ro, har ladningen ${Q/L_0}$ per lengde. Når staven går langs lengden med farten $u$, er den forkortet til ${L_0/\gamma}$, så ladningen per lengde er $\gamma$ ganger større, og staven fører en strøm.
+
+For ladninger med tettheten $\rho_0$ i sitt hvilesystem er ladningstettheten ${\rho = \gamma\rho_0}$ og strømtettheten ${\vec J = \rho\vec u}$. Sammen er de
+
+$$
+(c\rho,\ \vec J) = \rho_0\,\gamma\,(c,\ \vec u) = \rho_0 U^\mu
+$$
+
+Tettheten $\rho_0$ i hvilesystemet er den samme i alle systemer, og firerhastigheten $U^\mu$ er en firervektor. De fire tallene er derfor også en firervektor, <Term name="Firerstrøm">firerstrømmen</Term>. Med flere slags ladninger, som ioner og elektroner, er firerstrømmen summen av firerstrømmene til hver av dem.
+
+<Formula tex="J^\mu = (c\rho,\ \vec J)" caption="Firerstrømmen, med ladningstettheten $\rho$ og strømtettheten $\vec J$. For ladninger med tettheten $\rho_0$ i hvilesystemet er ${J^\mu = \rho_0U^\mu}$." />
+
+En boost langs $x$ med farten $v$ blander $c\rho$ og $J_x$ på samme måte som $ct$ og $x$:
+
+$$
+\rho' = \gamma\Bigl(\rho - \frac{vJ_x}{c^2}\Bigr), \allowbreak\qquad J_x' = \gamma\,(J_x - v\rho)
+$$
+
+En ledning som er nøytral og fører strøm, har ${\rho = 0}$ og ${J_x \neq 0}$. I et system som går langs ledningen, er ${\rho' = -\gamma vJ_x/c^2}$, og ledningen er ladd.
+
+Simuleringen «Ledningen» viser hvordan det skjer. Ionene står i ro i laboratoriet, og elektronene i ledningen og elektronet utenfor går mot høyre med farten $0{,}6c$. I en ekte ledning går elektronene under en millimeter per sekund, men regningen er den samme. Du velger hvor fort du selv går langs ledningen, og alt tegnes i ditt system.
+
+<Simulation
+  src="/sims/ledningen.js"
+  host="dom"
+  title="Ledningen"
+  caption="En ledning med positive ioner (ringer med pluss) og elektroner (prikker), og et elektron utenfor ledningen, tegnet i systemet til en observatør med farten du velger langs ledningen. Pilene ved elektronet utenfor er den elektriske og den magnetiske kraften på det, lagt etter hverandre, så spissen på den siste viser summen, og pila merket $I$ under ledningen viser strømretningen. Farten til elektronene er sterkt overdrevet, og alt går i sakte film."
+  height={300}
+/>
+
+Med farten 0 står ionene og elektronene like tett, og ledningen er nøytral. Kraften på elektronet utenfor er bare magnetisk. Sett farten din til 0,60c, som elektronene. Nå står elektronene i ro, og de står lenger fra hverandre enn før, fordi de i laboratoriet var forkortet med ${\gamma = 1{,}25}$. Ionene går mot venstre og er forkortet like mye, så de står tettere. Det er ${\gamma^2 = 1{,}56}$ ganger så mange ioner som elektroner på hver lengde av ledningen, ledningen er positivt ladd, og kraften på elektronet er bare elektrisk. Den peker fortsatt mot ledningen. Mellom 0 og 0,60c peker begge kreftene mot ledningen. Dra videre forbi 0,60c, eller under 0. Da peker den elektriske og den magnetiske kraften hver sin vei, men summen peker alltid mot ledningen.
+
+Firerstrømmen gir den samme ladningen per lengde som tellingen i simuleringen. Ganger du ${\rho'}$ med tverrsnittet, som en boost langs ledningen ikke endrer, får du ladningen per lengde, ${\lambda' = \gamma(\lambda - vI_x/c^2)}$, der $I_x$ er strømmen. I laboratoriet har ionene ladningen $e/a$ per lengde og elektronene $-e/a$, med avstanden $a$ mellom ionene, og elektronene gir strømmen ${I_x = -0{,}6c \cdot e/a}$. I elektronenes system er da ${\lambda' = 1{,}25 \cdot 0{,}36\,e/a = 0{,}45\,e/a}$. Det er forskjellen mellom ionene, ${1{,}25\,e/a}$, og elektronene, ${0{,}80\,e/a}$.
+
+Ladningen per lengde avhenger av strømmen og av farten din, ikke av hvor fort elektronene i ledningen går. For ledningen med 10 A peker $x$-aksen den veien elektronet utenfor går, og strømmen går motsatt vei, ${I_x = -10}$ A. I elektronets system, med ${v = 0{,}2c}$ og ${\gamma = 1{,}02}$, er
+
+$$
+\lambda' = -\frac{\gamma vI_x}{c^2} = 6{,}8 \cdot 10^{-9}\ \text{C/m}
+$$
+
+Det er $4{,}3 \cdot 10^{10}$ elementærladninger per meter. Ionene i en kobberledning med tverrsnittet 1,5 mm² har ladningen $2{,}0 \cdot 10^4$ C per meter, så overskuddet er bare 3 av $10^{13}$. Forskjellen mellom hvor mye ionene og elektronene er forkortet, er bitteliten, men ledningen har så mange ladninger at et lite overskudd gir en merkbar kraft.
+
+<Video
+  id="https://www.youtube.com/watch?v=1TKSfAkWWN0"
+  title="How Special Relativity Makes Magnets Work"
+  channel="Veritasium"
+  duration="4:19"
+  caption="Hvorfor en strøm i en ledning virker på ladninger som går langs den. I systemet som følger ladningene, gjør lengdekontraksjonen ledningen ladd, og fordi ledningen har så mange ladninger, gir et lite overskudd en merkbar kraft."
+  number={1}
+/>
+
+<Callout title="Firerstrømmen">
+Ladningen er den samme i alle systemer, men ladningstettheten og strømtettheten danner firervektoren ${J^\mu = (c\rho, \vec J)}$, og en boost blander dem. En nøytral ledning som fører strøm, er ladd i et system som går langs den.
+</Callout>
+
+## Firerpotensialet
+
+Potensialene lages av ladningene og strømmene. Når ladningene og strømmene ikke endrer seg med tida, er
+
+$$
+\phi(\vec r) = \frac{1}{4\pi\epsilon_0}\int\frac{\rho(\vec r\,')}{|\vec r - \vec r\,'|}\,dV'
+$$
+
+$$
+\vec A(\vec r) = \frac{\mu_0}{4\pi}\int\frac{\vec J(\vec r\,')}{|\vec r - \vec r\,'|}\,dV'
+$$
+
+Med ${1/\epsilon_0 = \mu_0c^2}$ er ${\phi/c}$ det samme integralet over ${c\rho}$ som $\vec A$ er over $\vec J$. De fire potensialene lages altså av de fire komponentene i firerstrømmen på samme måte, og de danner en firervektor, <Term name="Firerpotensial">firerpotensialet</Term>. Integralene gjelder bare for kilder som ikke endrer seg, men Maxwells ligninger viser at $A^\mu$ er en firervektor også når kildene beveger seg.
+
+<Formula tex="A^\mu = \Bigl(\frac{\phi}{c},\ \vec A\Bigr)" caption="Firerpotensialet, med skalarpotensialet $\phi$ og vektorpotensialet $\vec A$." />
+
+De deriverte med hensyn på koordinatene skrives ${\partial_\mu = \partial/\partial X^\mu}$. Endringen ${df = \partial_\mu f\,dX^\mu}$ av en funksjon mellom to nære hendelser er den samme i alle systemer, så $\partial_\mu$ har indeksen nede. Med indeksen oppe skifter romdelen fortegn, som for alle firervektorer:
+
+$$
+\begin{aligned}
+\partial_\mu &= \Bigl(\frac{1}{c}\frac{\partial}{\partial t},\ \nabla\Bigr) \\
+\partial^\mu &= \Bigl(\frac{1}{c}\frac{\partial}{\partial t},\ -\nabla\Bigr)
+\end{aligned}
+$$
+
+Gaugetransformasjonen ${\vec A \to \vec A + \nabla\chi}$, ${\phi \to \phi - \partial\chi/\partial t}$ blir da én ligning for alle fire komponentene:
+
+$$
+A^\mu \to A^\mu - \partial^\mu\chi
+$$
+
+For ${\mu = 0}$ trekkes ${\tfrac1c\,\partial\chi/\partial t}$ fra ${\phi/c}$, og for romdelen gir minustegnet i $\partial^\mu$ pluss $\nabla\chi$.
+
+<Callout title="Firerpotensialet">
+Potensialene danner firervektoren ${A^\mu = (\phi/c, \vec A)}$. For kilder som ikke endrer seg, lages de av firerstrømmen på samme måte, og Maxwells ligninger viser at de er en firervektor også når kildene beveger seg. En gaugetransformasjon er ${A^\mu \to A^\mu - \partial^\mu\chi}$.
+</Callout>
+
+## Feltstyrketensoren
+
+Feltene er deriverte av potensialene, ${\vec E = -\nabla\phi - \partial\vec A/\partial t}$ og ${\vec B = \nabla \times \vec A}$. Skriv én komponent av hvert med $\partial^\mu$ og $A^\mu$. Med ${\partial^1 = -\partial/\partial x}$ er
+
+$$
+\begin{aligned}
+\frac{E_x}{c} &= -\frac{\partial}{\partial x}\frac{\phi}{c} - \frac{1}{c}\frac{\partial A_x}{\partial t} \\
+&= \partial^1 A^0 - \partial^0 A^1
+\end{aligned}
+$$
+
+$$
+B_z = \frac{\partial A_y}{\partial x} - \frac{\partial A_x}{\partial y} \allowbreak = \partial^2 A^1 - \partial^1 A^2
+$$
+
+Begge har formen ${\partial^\mu A^\nu - \partial^\nu A^\mu}$, og det kommer av gaugeinvariansen. Feltene endres ikke av en gaugetransformasjon, men den endrer ${\partial^\mu A^\nu}$ med ${-\partial^\mu\partial^\nu\chi}$. Den endringen er den samme når du bytter $\mu$ og $\nu$, så den faller bort i differansen ${\partial^\mu A^\nu - \partial^\nu A^\mu}$. Summen ${\partial^\mu A^\nu + \partial^\nu A^\mu}$ endres med ${-2\partial^\mu\partial^\nu\chi}$. Av de deriverte av potensialene kan derfor bare differensene være felt, og de er <Term name="Feltstyrketensor">feltstyrketensoren</Term>:
+
+<Formula tex="F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu" caption="Feltstyrketensoren. Den er antisymmetrisk, ${F^{\nu\mu} = -F^{\mu\nu}}$, med $\vec E/c$ i raden og kolonnen for tida og $\vec B$ i resten." />
+
+Antisymmetrien gir null på diagonalen og seks uavhengige komponenter, de tre i $\vec E$ og de tre i $\vec B$. Med $\mu$ som rad og $\nu$ som kolonne er
+
+$$
+F^{\mu\nu} = \begin{pmatrix} 0 & -\tfrac{E_x}{c} & -\tfrac{E_y}{c} & -\tfrac{E_z}{c} \\[4pt] \tfrac{E_x}{c} & 0 & -B_z & B_y \\[4pt] \tfrac{E_y}{c} & B_z & 0 & -B_x \\[4pt] \tfrac{E_z}{c} & -B_y & B_x & 0 \end{pmatrix}
+$$
+
+Det elektriske og det magnetiske feltet er seks komponenter av én tensor, på samme måte som energien og impulsen er fire komponenter av firerimpulsen.
+
+<Callout title="Feltstyrketensoren">
+${F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu}$ er antisymmetrisk og endres ikke av en gaugetransformasjon. De seks komponentene er $\vec E/c$ og $\vec B$.
+</Callout>
+
+## Feltene i et annet system
+
+Hver indeks i ${F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu}$ kommer fra en firervektor, så når du bytter system, endrer hver av dem seg som indeksen i $X^\mu$. Som matriser er ${F' = \Lambda F\Lambda^{\mathsf T}}$.
+
+For en boost langs $x$ med farten $v$ virker $\Lambda$ bare på indeksene 0 og 1, som ${ct' = \gamma(ct - \beta x)}$ og ${x' = \gamma(x - \beta ct)}$, med ${\beta = v/c}$. Komponenten ${F'^{20} = E_y'/c}$ har indeksen 2 først, og indeksen 2 endres ikke av boosten. Indeksen 0 endres som $ct$, så
+
+$$
+F'^{20} = \gamma\,\bigl(F^{20} - \beta F^{21}\bigr) \allowbreak\quad\Rightarrow\quad E_y' = \gamma\,(E_y - vB_z)
+$$
+
+De andre komponentene følger på samme måte. Skrevet med vektorer, for en fart $\vec v$ i en hvilken som helst retning, er
+
+<Formula tex="\begin{aligned} \vec E\,'_\parallel &= \vec E_\parallel \\ \vec E\,'_\perp &= \gamma\,\bigl(\vec E + \vec v \times \vec B\bigr)_\perp \\ \vec B\,'_\parallel &= \vec B_\parallel \\ \vec B\,'_\perp &= \gamma\,\bigl(\vec B - \vec v \times \vec E/c^2\bigr)_\perp \end{aligned}" caption="Feltene i $K'$, som beveger seg med farten $\vec v$ i $K$. $\parallel$ og $\perp$ står for komponentene langs og på tvers av $\vec v$, og ${\gamma = 1/\sqrt{1 - v^2/c^2}}$." />
+
+<Derivation title="Alle komponentene ved en boost langs $x$">
+Boosten endrer bare indeksene 0 og 1. Rad 0 og 1 i $\Lambda$ er ${(\gamma, -\gamma\beta)}$ og ${(-\gamma\beta, \gamma)}$, og indeksene 2 og 3 står som de er.
+
+Når begge indeksene er 0 og 1, er
+
+$$
+F'^{01} = \gamma^2F^{01} + \gamma^2\beta^2F^{10} \allowbreak = \gamma^2(1 - \beta^2)\,F^{01} = F^{01}
+$$
+
+fordi ${F^{10} = -F^{01}}$. Altså er ${E_x' = E_x}$. Når begge indeksene er 2 og 3, endres ingenting, og ${F'^{23} = F^{23}}$ gir ${B_x' = B_x}$.
+
+Når én indeks er 2 eller 3, virker $\Lambda$ bare på den andre:
+
+$$
+\begin{aligned}
+F'^{20} &= \gamma\,(F^{20} - \beta F^{21}) \\
+F'^{30} &= \gamma\,(F^{30} - \beta F^{31}) \\
+F'^{21} &= \gamma\,(F^{21} - \beta F^{20}) \\
+F'^{31} &= \gamma\,(F^{31} - \beta F^{30})
+\end{aligned}
+$$
+
+Med ${F^{20} = E_y/c}$, ${F^{30} = E_z/c}$, ${F^{21} = B_z}$ og ${F^{31} = -B_y}$ er det
+
+$$
+\begin{aligned}
+E_y' &= \gamma\,(E_y - vB_z) \\
+E_z' &= \gamma\,(E_z + vB_y) \\
+B_z' &= \gamma\,(B_z - vE_y/c^2) \\
+B_y' &= \gamma\,(B_y + vE_z/c^2)
+\end{aligned}
+$$
+
+Med ${\vec v = v\hat x}$ er ${\vec v \times \vec B = (0, -vB_z, vB_y)}$ og ${\vec v \times \vec E = (0, -vE_z, vE_y)}$, så de fire linjene er komponentene på tvers i vektorformlene.
+</Derivation>
+
+Komponentene langs farten er de samme i begge systemene, og komponentene på tvers blandes. Ved lav fart er ${\gamma \approx 1}$ og ${\vec E\,' \approx \vec E + \vec v \times \vec B}$. En ladning som står i ro i $K'$, kjenner kraften ${q\vec E\,'}$, og det er Lorentzkraften ${q(\vec E + \vec v \times \vec B)}$ på ladningen i $K$, der den går med farten $\vec v$.
+
+For ledningen med 10 A er ${\vec E = 0}$ i laboratoriet. I elektronets system, med ${v = 0{,}2c}$, er ${E' = \gamma vB = 1{,}22 \cdot 10^4}$ V/m, rettet bort fra ledningen. Det er feltet fra linjeladningen i elektronets system, ${\lambda'/2\pi\epsilon_0 r = 1{,}22 \cdot 10^4}$ V/m. Firerstrømmen og transformasjonen av feltene gir det samme feltet.
+
+Kraften ${eE' = 1{,}96 \cdot 10^{-15}}$ N på elektronet i dets eget system er $\gamma$ ganger kraften i laboratoriet. Impulsen på tvers av farten er den samme i begge systemene, fordi boosten går langs farten. I laboratoriet går klokka til elektronet $\gamma$ ganger saktere, så impulsen på tvers vokser $\gamma$ ganger saktere der, og kraften er $\gamma$ ganger mindre.
+
+<Callout title="Feltene i et annet system">
+Ved en boost er komponentene av $\vec E$ og $\vec B$ langs farten de samme, og komponentene på tvers blandes. Den magnetiske kraften på en ladning i ett system er en elektrisk kraft i systemet der ladningen står i ro.
+</Callout>
+
+<Quiz
+  question={"I laboratoriet er det bare et uniformt magnetfelt ${\\vec B = B\\hat z}$. Hvilke felt er det i systemet til et proton som går med farten $0{,}6c$ langs $x$-aksen?"}
+  options={[
+    "${\\vec E\\,' = 0}$ og ${\\vec B\\,' = B\\hat z}$",
+    "${\\vec E\\,' = -0{,}6\\,cB\\,\\hat y}$ og ${\\vec B\\,' = B\\hat z}$",
+    "${\\vec E\\,' = -0{,}75\\,cB\\,\\hat y}$ og ${\\vec B\\,' = 1{,}25\\,B\\hat z}$",
+    "${\\vec E\\,' = 0{,}75\\,cB\\,\\hat y}$ og ${\\vec B\\,' = 1{,}25\\,B\\hat z}$"
+  ]}
+  answer={2}
+  explanation={"Farten står vinkelrett på $\\vec B$, så hele feltet er en komponent på tvers. Med ${\\vec E = 0}$ er ${\\vec E\\,' = \\gamma\\,\\vec v \\times \\vec B}$ og ${\\vec B\\,' = \\gamma\\vec B}$, med ${\\gamma = 1{,}25}$. Siden ${\\hat x \\times \\hat z = -\\hat y}$, er ${\\vec E\\,' = -1{,}25 \\cdot 0{,}6\\,cB\\,\\hat y}$. Den elektriske kraften på protonet i ro peker dermed samme vei som den magnetiske kraften ${e\\vec v \\times \\vec B}$ i laboratoriet. Uten $\\gamma$ får du ${-0{,}6\\,cB\\,\\hat y}$, og med motsatt fortegn har du brukt farten laboratoriet har i protonets system i stedet for farten til protonet."}
+/>
+
+<Example label="Eksamensoppgave" title="Kondensator i fart">
+<ExamRef id="2011-jun" task="4a–b" />
+
+Consider the three situations (A), (B), and (C) sketched in the figure below. In situation (A), a capacitor consisting of two conducting plates with charge $Q$ and $-Q$ is at rest in the observer's frame of reference $\mathcal S$. The plates have an area $A$ and a negligible thickness. They are separated by a distance $d$. In situations (B) and (C), the capacitor moves with a constant velocity $v$ along a specific direction (indicated in the figure) relative the observer in $\mathcal S$. The velocity is assumed to be comparable to the speed of light $c$ in magnitude.
+
+<Figure src="/figures/eksamen-2011-06-oppgave-4.svg" alt="Tre kondensatorer med to parallelle plater. (A): øvre plate har ladningen Q, nedre −Q, plateflaten er A og avstanden d. (B): en pil merket ν peker opp, vinkelrett på platene. (C): en pil merket ν peker mot høyre, langs platene." width={340} height={134} number={1} caption="Figuren fra oppgavesettet, tegnet på nytt." />
+
+(a) In situation (A), the electric field observed between the two conducting plates is constant and equal to ${E = Q/(\varepsilon_0 A)}$ in magnitude whereas the magnetic field is zero ($B = 0$). Here, $\varepsilon_0$ is the vacuum permittivity constant. Using a Lorentz transformation, derive analytically in detail the electric field $E$ and magnetic field $B$ observed in $\mathcal S$ for the scenarios (B) and (C). In both these cases, find the magnitude and direction of the fields.
+
+(b) Explain how you could have found the result for the electric field $E$ in situation (B) and (C) simply by properly accounting for Lorentz contraction in the equation ${E = Q/(\varepsilon_0 A)}$ valid for scenario (A).
+
+<Solution>
+Figuren skriver farten som $\nu$, teksten som $v$.
+
+a) Kall systemet der kondensatoren står i ro, $K$. Der er feltet $\vec E_0$, med størrelsen ${E_0 = Q/\epsilon_0A}$ og rettet fra platen med $Q$ mot platen med $-Q$, og ${\vec B = 0}$. Kondensatoren går med farten $\vec v$ i $\mathcal S$, så $\mathcal S$ går med farten $-\vec v$ i $K$. Sett $-\vec v$ inn i transformasjonen av feltene, med ${\vec B = 0}$ i $K$:
+
+$$
+\vec E_\parallel = \vec E_{0\parallel}, \allowbreak\qquad \vec E_\perp = \gamma\vec E_{0\perp}, \allowbreak\qquad \vec B = \gamma\,\frac{\vec v \times \vec E_0}{c^2}
+$$
+
+der $\vec E$ og $\vec B$ er feltene i $\mathcal S$.
+
+I (B) går kondensatoren vinkelrett på platene, langs feltet. Hele feltet er en komponent langs farten, så ${E = E_0 = Q/\epsilon_0A}$, med samme retning som i (A). Siden ${\vec v \times \vec E_0 = 0}$, er ${B = 0}$.
+
+I (C) går kondensatoren langs platene, på tvers av feltet. Da er
+
+$$
+E = \gamma\,\frac{Q}{\epsilon_0A}, \allowbreak\qquad B = \gamma\,\frac{vQ}{\epsilon_0Ac^2} = \gamma\mu_0\frac{vQ}{A}
+$$
+
+$\vec E$ peker fra platen med $Q$ mot platen med $-Q$ som før. $\vec B$ er parallell med platene og vinkelrett på farten, i retningen til ${\vec v \times \vec E_0}$. I figuren peker $\vec v$ mot høyre og $\vec E_0$ ned, så $\vec B$ peker inn i figuren.
+
+Fasiten finner den samme størrelsen på $B$, men med motsatt fortegn, fordi den regner over til et system som går med farten $v$ i forhold til kondensatoren. Der går kondensatoren den andre veien.
+
+b) Ladningen $Q$ er den samme i alle systemer. I (B) blir avstanden $d$ mellom platene kortere, men arealet $A$ er det samme, og $E$ avhenger ikke av $d$. I (C) blir platene forkortet langs farten, så arealet blir ${A/\gamma}$, og
+
+$$
+E = \frac{Q}{\epsilon_0A/\gamma} = \gamma\,\frac{Q}{\epsilon_0A}
+$$
+
+<Answer>(B): ${E = Q/\epsilon_0A}$ som i (A), og ${B = 0}$. (C): ${E = \gamma Q/\epsilon_0A}$ i samme retning som i (A), og ${B = \gamma\mu_0vQ/A}$ parallell med platene og vinkelrett på farten.</Answer>
+</Solution>
+</Example>
+
+## Ladd partikkel
+
+Lagrangefunksjonen ${L = \tfrac12 m\dot{\vec r}^{\,2} + q\,\dot{\vec r}\cdot\vec A - q\phi}$ for en partikkel med ladningen $q$ gjelder ved lav fart. Virkningen ${-mc^2\int d\tau}$, som alle systemer er enige om, har Lagrangefunksjonen ${-mc^2\sqrt{1 - u^2/c^2}}$, med farten ${\vec u = \dot{\vec r}}$. Ved lav fart er den ${-mc^2 + \tfrac12 mu^2}$, så den erstatter leddet ${\tfrac12 m\dot{\vec r}^{\,2}}$. Leddene med potensialene kan stå som de er. Med ${dX^\mu/dt = (c, \vec u)}$ og ${A_\mu = (\phi/c, -\vec A)}$ er
+
+$$
+q\,\vec u\cdot\vec A - q\phi = -qA_\mu\frac{dX^\mu}{dt}
+$$
+
+så i virkningen gir de ${-q\int A_\mu\,dX^\mu}$, et integral av firerpotensialet langs verdenslinja. Indeksen $\mu$ står én gang oppe og én gang nede, så integralet er en Lorentz-skalar, og verdien avhenger ikke av parameteren du bruker langs verdenslinja.
+
+<Formula tex="S = -mc^2\int d\tau \allowbreak - q\int A_\mu\,dX^\mu" caption="Virkningen til en partikkel med massen $m$ og ladningen $q$ i et elektromagnetisk felt med firerpotensialet $A^\mu$. Med $t$ som parameter er $L = -mc^2\sqrt{1 - u^2/c^2} + q\,\vec u\cdot\vec A - q\phi$." />
+
+En gaugetransformasjon ${A_\mu \to A_\mu - \partial_\mu\chi}$ legger ${q\int\partial_\mu\chi\,dX^\mu = q\int d\chi}$ til virkningen. Det er $q$ ganger forskjellen i $\chi$ mellom endepunktene, og den endrer ikke hvilken verdenslinje som gjør virkningen stasjonær. Bevegelsen er derfor gaugeinvariant ved alle farter.
+
+Med en parameter $\sigma$ langs verdenslinja og ${\dot X^\mu = dX^\mu/d\sigma}$ er Lagrangefunksjonen
+
+$$
+L = -mc\sqrt{\eta_{\mu\nu}\dot X^\mu\dot X^\nu} \allowbreak - qA_\mu(X)\,\dot X^\mu
+$$
+
+Deriver først, og sett så ${\sigma = \tau}$, så ${\dot X = U}$:
+
+$$
+\frac{\partial L}{\partial\dot X^\mu} = -mU_\mu - qA_\mu, \allowbreak\qquad \frac{\partial L}{\partial X^\mu} = -q\,\partial_\mu A_\nu\,U^\nu
+$$
+
+Lagranges ligning er derfor
+
+$$
+\frac{d}{d\tau}\bigl(mU_\mu + qA_\mu\bigr) = q\,\partial_\mu A_\nu\,U^\nu
+$$
+
+Langs verdenslinja endrer potensialet seg fordi partikkelen flytter seg, ${dA_\mu/d\tau = \partial_\nu A_\mu\,U^\nu}$. Flyttet over til høyre side blir det leddet den andre halvdelen av feltstyrketensoren:
+
+$$
+\begin{aligned}
+m\frac{dU_\mu}{d\tau} &= q\,\bigl(\partial_\mu A_\nu - \partial_\nu A_\mu\bigr)\,U^\nu \\
+&= qF_{\mu\nu}U^\nu
+\end{aligned}
+$$
+
+Med begge indeksene nede har tensoren samme form, ${F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu}$. Med $\mu$ oppe er bevegelsesligningen
+
+<Formula tex="m\frac{dU^\mu}{d\tau} = qF^{\mu\nu}U_\nu" caption="Bevegelsesligningen for en partikkel med massen $m$ og ladningen $q$ i feltet $F^{\mu\nu}$, der $U^\mu$ er firerhastigheten og $\tau$ egentida." />
+
+Høyre side er firerkraften fra feltet. Med ${U_\nu = \gamma(c, -\vec u)}$ og ${d\tau = dt/\gamma}$ er romdelen og tidsdelen
+
+$$
+\begin{aligned}
+\frac{d\vec p}{dt} &= q\,\bigl(\vec E + \vec u \times \vec B\bigr) \\
+\frac{d}{dt}\bigl(\gamma mc^2\bigr) &= q\vec E\cdot\vec u
+\end{aligned}
+$$
+
+med ${\vec p = \gamma m\vec u}$. Lorentzkraften gjelder altså ved alle farter, med den relativistiske impulsen. Den magnetiske delen står vinkelrett på farten og gjør ikke arbeid, så bare $\vec E$ endrer energien.
+
+I et uniformt magnetfelt uten elektrisk felt er energien og dermed $\gamma$ konstant, og ${\gamma m\,d\vec u/dt = q\vec u \times \vec B}$. Det er Newtons ligning for en partikkel med massen ${\gamma m}$. Når farten står vinkelrett på $\vec B$, går partikkelen derfor i en sirkel, og kraften ${|q|uB}$ gir sentripetalakselerasjonen, ${\gamma mu^2/r = |q|uB}$:
+
+<Formula tex="r = \frac{p}{|q|B}, \allowbreak\qquad \omega = \frac{|q|B}{\gamma m}" caption="Sirkelbanen til en partikkel med impulsen $p$ og ladningen $q$ vinkelrett på et uniformt magnetfelt $B$, ved alle farter. Ved lav fart er $\omega$ syklotronfrekvensen ${|q|B/m}$." />
+
+LHC er bygd for protoner med energien 7 TeV, og magnetene som bøyer dem, har ${B = 8{,}33}$ T. Hvileenergien 938 MeV er under en tusendel av 7 TeV, så ${p \approx 7\ \text{TeV}/c}$ og ${p/e = 7 \cdot 10^{12}\ \text{V}/c}$:
+
+$$
+r = \frac{p}{eB} = \frac{7 \cdot 10^{12}\ \text{V}}{c \cdot 8{,}33\ \text{T}} \allowbreak = 2{,}80\ \text{km}
+$$
+
+Det er krumningsradien i magnetene i LHC. Med Newtons impuls ${mu \approx mc}$ ville radien vært 38 cm.
+
+<Callout title="Ladd partikkel">
+Virkningen ${S = -mc^2\int d\tau - q\int A_\mu\,dX^\mu}$ gir ${m\,dU^\mu/d\tau = qF^{\mu\nu}U_\nu}$. Romdelen er Lorentzkraften med ${\vec p = \gamma m\vec u}$, og i et uniformt magnetfelt er radien ${p/|q|B}$ ved alle farter.
+</Callout>
+
+<SelfCheck question="En syklotron driver protonene rundt med en spenning som veksler med den faste vinkelfrekvensen ${eB/m}$. Ved hvilken kinetisk energi er perioden til protonene 1 % lengre enn perioden til spenningen?">
+Perioden er ${2\pi/\omega = 2\pi\gamma m/eB}$, så den er 1 % lengre når ${\gamma = 1{,}01}$. Den kinetiske energien ${(\gamma - 1)\,mc^2}$ er da 1 % av hvileenergien 938 MeV, altså 9,4 MeV. Etter mange runder kommer protonene for sent til spenningen.
+</SelfCheck>
+
+## Maxwells ligninger
+
+Maxwells ligninger med kilder er Gauss' lov og Ampère–Maxwells lov:
+
+$$
+\begin{aligned}
+\nabla\cdot\vec E &= \frac{\rho}{\epsilon_0} \\
+\nabla\times\vec B - \frac{1}{c^2}\frac{\partial\vec E}{\partial t} &= \mu_0\vec J
+\end{aligned}
+$$
+
+Begge lovene har de første deriverte av feltene på venstre side og kildene på høyre. Kildene er de fire komponentene i $J^\mu$, så høyre side må være en konstant ganger $J^\nu$, og venstre side en firervektor bygd av de første deriverte av $F^{\mu\nu}$. Med én indeks i $\partial$ og to i $F$ får du en firervektor når du summerer indeksen i $\partial$ med én av indeksene i $F$. Summert med den andre gir det minus det samme, fordi $F$ er antisymmetrisk, og de to indeksene i $F$ summert med hverandre gir null. Begge lovene er derfor én ligning:
+
+<Formula tex="\partial_\mu F^{\mu\nu} = \mu_0 J^\nu" caption="Maxwells ligninger med kilder. ${\nu = 0}$ gir Gauss' lov og ${\nu = 1, 2, 3}$ Ampère–Maxwells lov." />
+
+Det summeres over $\mu$. For ${\nu = 0}$ er ${F^{00} = 0}$ og ${F^{i0} = E_i/c}$, så venstre side er ${\nabla\cdot\vec E/c}$. Høyre side er ${\mu_0c\rho}$, og med ${\mu_0c^2 = 1/\epsilon_0}$ er det Gauss' lov, så konstanten er $\mu_0$. Begge sidene er firervektorer, så når ligningen gjelder i ett system, gjelder den i alle.
+
+<Derivation title="Ampère–Maxwells lov fra ${\nu = 1}$">
+Med ${F^{01} = -E_x/c}$, ${F^{21} = B_z}$ og ${F^{31} = -B_y}$ er
+
+$$
+\partial_\mu F^{\mu 1} = -\frac{1}{c^2}\frac{\partial E_x}{\partial t} \allowbreak + \frac{\partial B_z}{\partial y} - \frac{\partial B_y}{\partial z}
+$$
+
+De to siste leddene er ${(\nabla\times\vec B)_x}$, og høyre side er ${\mu_0J_x}$. Det er $x$-komponenten av Ampère–Maxwells lov, og ${\nu = 2, 3}$ gir de to andre.
+</Derivation>
+
+De to andre ligningene, ${\nabla\cdot\vec B = 0}$ og ${\nabla\times\vec E = -\partial\vec B/\partial t}$, er oppfylt av seg selv når feltene er deriverte av potensialene. Med indekser er de
+
+$$
+\partial^\lambda F^{\mu\nu} + \partial^\mu F^{\nu\lambda} + \partial^\nu F^{\lambda\mu} = 0
+$$
+
+Ligningen heter <Term name="Bianchi-identitet">Bianchi-identiteten</Term>. Hvis du setter inn ${F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu}$, faller leddene mot hverandre parvis, fordi rekkefølgen på to deriverte ikke spiller noen rolle. Indeksene 1, 2, 3 gir ${\nabla\cdot\vec B = 0}$, og tre indekser der én er 0, gir en komponent av Faradays lov.
+
+Antisymmetrien i $F^{\mu\nu}$ krever at ladningen er bevart. Deriver begge sidene av ${\partial_\mu F^{\mu\nu} = \mu_0J^\nu}$ med $\partial_\nu$, og summer over $\nu$. På venstre side er ${\partial_\nu\partial_\mu}$ det samme når du bytter $\mu$ og $\nu$, mens $F^{\mu\nu}$ skifter fortegn, så summen er null. Høyre side må da også være null:
+
+<Formula tex="\partial_\mu J^\mu = \frac{\partial\rho}{\partial t} + \nabla\cdot\vec J = 0" caption="Ladningsbevaring: ladningen i et volum endrer seg bare ved at det går strøm gjennom overflaten." />
+
+Maxwells ligninger har bare løsninger når kildene bevarer ladningen.
+
+Skrevet med potensialene er venstre side
+
+$$
+\partial_\mu\bigl(\partial^\mu A^\nu - \partial^\nu A^\mu\bigr) \allowbreak = \Box A^\nu - \partial^\nu\bigl(\partial_\mu A^\mu\bigr)
+$$
+
+med ${\Box = \partial_\mu\partial^\mu = \frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \nabla^2}$. En gaugetransformasjon endrer ${\partial_\mu A^\mu}$ med ${-\Box\chi}$, så med en $\chi$ som løser ${\Box\chi = \partial_\mu A^\mu}$ får du potensialer med ${\partial_\mu A^\mu = 0}$. Det valget heter <Term name="Lorenz-gauge">Lorenz-gauge</Term>, og da er det siste leddet null:
+
+<Formula tex="\Box A^\nu = \mu_0 J^\nu" caption="Maxwells ligninger for firerpotensialet i Lorenz-gauge, ${\partial_\mu A^\mu = 0}$, med ${\Box = \partial_\mu\partial^\mu}$." />
+
+I $\Box$ står indeksen én gang oppe og én gang nede, så $\Box$ er den samme i alle systemer, og $J^\nu$ er en firervektor. Ligningen har samme form i alle systemer, så potensialet den bestemmer, er en firervektor også når kildene beveger seg. Uten kilder er ${\Box A^\nu = 0}$ bølgeligningen for bølger med farten $c$, og fordi $\Box$ er den samme i alle systemer, går bølgene med farten $c$ i alle.
+
+<Callout title="Maxwells ligninger">
+${\partial_\mu F^{\mu\nu} = \mu_0J^\nu}$ er Gauss' lov og Ampère–Maxwells lov, og Bianchi-identiteten er de to andre. Antisymmetrien i $F^{\mu\nu}$ gir ${\partial_\mu J^\mu = 0}$, og i Lorenz-gauge er ${\Box A^\nu = \mu_0J^\nu}$.
+</Callout>
+
+<KeyTakeaways>
+- Ladningen er den samme i alle systemer. Ladningstettheten og strømtettheten danner firerstrømmen ${J^\mu = (c\rho, \vec J)}$, så en nøytral ledning med strøm er ladd i et system som går langs den.
+- Potensialene danner firerpotensialet ${A^\mu = (\phi/c, \vec A)}$, og feltene er de seks komponentene i ${F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu}$.
+- Ved en boost er feltkomponentene langs farten de samme, og komponentene på tvers blandes: ${\vec E\,'_\perp = \gamma(\vec E + \vec v \times \vec B)_\perp}$ og ${\vec B\,'_\perp = \gamma(\vec B - \vec v \times \vec E/c^2)_\perp}$.
+- Virkningen ${-mc^2\int d\tau - q\int A_\mu\,dX^\mu}$ gir ${m\,dU^\mu/d\tau = qF^{\mu\nu}U_\nu}$, Lorentzkraften med ${\vec p = \gamma m\vec u}$. I et uniformt magnetfelt er radien ${p/|q|B}$.
+- Maxwells ligninger er ${\partial_\mu F^{\mu\nu} = \mu_0J^\nu}$ og Bianchi-identiteten. De krever ${\partial_\mu J^\mu = 0}$, og i Lorenz-gauge er ${\Box A^\nu = \mu_0J^\nu}$.
+</KeyTakeaways>

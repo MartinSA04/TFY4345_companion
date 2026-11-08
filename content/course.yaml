@@ -742,6 +742,46 @@ formulas:
     section: Spesiell relativitetsteori
     tex: "S = -mc\\int\\sqrt{\\eta_{\\mu\\nu}\\dot X^\\mu\\dot X^\\nu}\\;d\\sigma"
     label: "Virkningen til en fri partikkel med en vilkårlig parameter $\\sigma$ og $\\dot X^\\mu = dX^\\mu/d\\sigma$. Deriver før du setter $\\sigma = \\tau$; da er $\\partial L/\\partial\\dot X^\\mu = -mU_\\mu$, og den generaliserte impulsen til $ct$ er $-E/c$."
+  - id: firerstrom
+    section: Elektromagnetisme og relativitet
+    tex: "J^\\mu = (c\\rho,\\ \\vec J) = \\rho_0U^\\mu"
+    label: "<b>Firerstrømmen</b> med ladningstettheten $\\rho$ og strømtettheten $\\vec J$, der $\\rho_0$ er tettheten i hvilesystemet til ladningene. En boost langs $x$ gir $\\rho' = \\gamma(\\rho - vJ_x/c^2)$, så en nøytral ledning med strøm er ladd i et system som går langs den."
+  - id: firerpotensial
+    section: Elektromagnetisme og relativitet
+    tex: "A^\\mu = \\Bigl(\\frac{\\phi}{c},\\ \\vec A\\Bigr) \\allowbreak\\qquad A^\\mu \\to A^\\mu - \\partial^\\mu\\chi"
+    label: "<b>Firerpotensialet</b> og gaugetransformasjonen, med $\\partial^\\mu = (\\partial/\\partial(ct), -\\nabla)$. Med indeksen nede er $A_\\mu = (\\phi/c, -\\vec A)$ og $\\partial_\\mu = (\\partial/\\partial(ct), \\nabla)$."
+  - id: feltstyrketensor
+    section: Elektromagnetisme og relativitet
+    tex: "F^{\\mu\\nu} = \\partial^\\mu A^\\nu - \\partial^\\nu A^\\mu"
+    label: "<b>Feltstyrketensoren</b>, antisymmetrisk og gaugeinvariant, med $F^{i0} = E_i/c$, $F^{12} = -B_z$, $F^{23} = -B_x$ og $F^{31} = -B_y$."
+  - id: felttransformasjon
+    section: Elektromagnetisme og relativitet
+    tex: "\\vec E\\,'_\\perp = \\gamma\\,\\bigl(\\vec E + \\vec v \\times \\vec B\\bigr)_\\perp \\allowbreak\\qquad \\vec B\\,'_\\perp = \\gamma\\,\\bigl(\\vec B - \\vec v \\times \\vec E/c^2\\bigr)_\\perp"
+    label: "Feltene i $K'$, som beveger seg med farten $\\vec v$ i $K$. Komponentene langs $\\vec v$ er de samme, $\\vec E\\,'_\\parallel = \\vec E_\\parallel$ og $\\vec B\\,'_\\parallel = \\vec B_\\parallel$."
+  - id: virkning-ladd-partikkel
+    section: Elektromagnetisme og relativitet
+    tex: "S = -mc^2\\int d\\tau \\allowbreak - q\\int A_\\mu\\,dX^\\mu"
+    label: "Virkningen til en partikkel med massen $m$ og ladningen $q$ i et elektromagnetisk felt. Med $t$ som parameter er $L = -mc^2\\sqrt{1 - u^2/c^2} + q\\,\\vec u\\cdot\\vec A - q\\phi$."
+  - id: lorentzkraft-kovariant
+    section: Elektromagnetisme og relativitet
+    tex: "m\\frac{dU^\\mu}{d\\tau} = qF^{\\mu\\nu}U_\\nu"
+    label: "Bevegelsesligningen for en ladd partikkel. Romdelen er Lorentzkraften $d\\vec p/dt = q(\\vec E + \\vec u \\times \\vec B)$ med $\\vec p = \\gamma m\\vec u$, og tidsdelen er $d(\\gamma mc^2)/dt = q\\vec E\\cdot\\vec u$."
+  - id: sirkelbane-relativistisk
+    section: Elektromagnetisme og relativitet
+    tex: "r = \\frac{p}{|q|B} \\allowbreak\\qquad \\omega = \\frac{|q|B}{\\gamma m}"
+    label: "Sirkelbanen til en partikkel med impulsen $p = \\gamma mu$ vinkelrett på et uniformt magnetfelt $B$, ved alle farter."
+  - id: maxwell-kovariant
+    section: Elektromagnetisme og relativitet
+    tex: "\\partial_\\mu F^{\\mu\\nu} = \\mu_0 J^\\nu \\allowbreak\\qquad \\partial^\\lambda F^{\\mu\\nu} + \\partial^\\mu F^{\\nu\\lambda} + \\partial^\\nu F^{\\lambda\\mu} = 0"
+    label: "<b>Maxwells ligninger</b>. Den første er Gauss' lov og Ampère–Maxwells lov, og den andre, Bianchi-identiteten, er $\\nabla\\cdot\\vec B = 0$ og Faradays lov."
+  - id: ladningsbevaring
+    section: Elektromagnetisme og relativitet
+    tex: "\\partial_\\mu J^\\mu = \\frac{\\partial\\rho}{\\partial t} + \\nabla\\cdot\\vec J = 0"
+    label: "<b>Ladningsbevaring</b>, som Maxwells ligninger krever fordi $F^{\\mu\\nu}$ er antisymmetrisk."
+  - id: lorenz-gauge
+    section: Elektromagnetisme og relativitet
+    tex: "\\partial_\\mu A^\\mu = 0 \\allowbreak\\quad\\Rightarrow\\quad \\Box A^\\nu = \\mu_0 J^\\nu"
+    label: "Maxwells ligninger for firerpotensialet i <b>Lorenz-gauge</b>, med $\\Box = \\partial_\\mu\\partial^\\mu$. Uten kilder beskriver de bølger med farten $c$ i alle inertialsystemer."
 
   - id: plan-pendel
     section: Kjente systemer
@@ -891,11 +931,21 @@ symbols:
   - { tex: "P^\\mu", meaning: "Firerimpulsen, $mU^\\mu = (E/c, \\vec p)$", unit: "kg·m/s", section: "Spesiell relativitetsteori", term: "Firerimpuls", formula: firerimpuls, id: firerimpuls, note: "$P_\\pi$, $P_\\mu$ og $P_\\nu$ er firerimpulsene til et pion, et myon og et nøytrino; der er $\\mu$ og $\\nu$ navn på partikler, ikke indekser." }
   - { tex: "E,\\ \\vec p", meaning: "Energien $\\gamma mc^2$ og impulsen $\\gamma m\\vec u$ til en partikkel", unit: "J, kg·m/s", section: "Spesiell relativitetsteori", formula: energi-impuls, id: energi-impuls-relativistisk, note: "$E$ inneholder hvileenergien $mc^2$. I partikkelfysikken måles $E$ i MeV, $p$ i MeV/c og $m$ i MeV/c²." }
   - { tex: "M", meaning: "Den invariante massen til et system av partikler", unit: "kg", section: "Spesiell relativitetsteori", term: "Invariant masse", formula: invariant-masse, id: invariant-masse, note: "Den er minst like stor som summen av massene. Ikke den totale massen $M$ i Newtons mekanikk." }
-  - { tex: "\\beta", meaning: "Farten til kilden i enheter av $c$", section: "Spesiell relativitetsteori", formula: doppler, id: beta-relativitet }
+  - { tex: "\\beta", meaning: "En fart i enheter av $c$: $v/c$ for en boost, og farten til kilden i Dopplereffekten", section: "Spesiell relativitetsteori", formula: doppler, id: beta-relativitet }
   - { tex: "a'", meaning: "Akselerasjonen i det momentane hvilesystemet", unit: "m/s²", section: "Spesiell relativitetsteori", formula: konstant-akselerasjon, id: a-hvilesystem }
   - { tex: "a^\\mu", meaning: "Firerakselerasjonen, $dU^\\mu/d\\tau$", unit: "m/s²", section: "Spesiell relativitetsteori", term: "Firerakselerasjon", formula: newton-relativistisk, id: firerakselerasjon, note: "$U \\cdot a = 0$, og med konstant akselerasjon er $a \\cdot a = -a'^2$. Ikke halvaksen $a$." }
   - { tex: "\\vec f,\\ F^\\mu", meaning: "Kraften $d\\vec p/dt$ og firerkraften $dP^\\mu/d\\tau = \\gamma(\\vec f \\cdot \\vec u/c, \\vec f)$", unit: "N", section: "Spesiell relativitetsteori", formula: newton-relativistisk, id: firerkraft, note: "Ikke føringen $f(q, t)$ eller generatoren $f$." }
   - { tex: "X_\\mu", meaning: "Komponentene med indeksen nede, $\\eta_{\\mu\\nu}X^\\nu = (ct, -x, -y, -z)$", unit: "m", section: "Spesiell relativitetsteori", term: "Kontravariant og kovariant", formula: kovariant-virkning, id: indeks-nede, note: "$X \\cdot Y = X^\\mu Y_\\mu$." }
+  # ── Elektromagnetisme og relativitet ──
+  - { tex: "\\rho,\\ \\rho_0", meaning: "Ladningstettheten, og ladningstettheten i hvilesystemet til ladningene", unit: "C/m³", section: "Elektromagnetisme og relativitet", term: "Firerstrøm", formula: firerstrom, id: ladningstetthet, note: "For ladninger med farten $u$ er $\\rho = \\gamma\\rho_0$. Ikke massetettheten $\\rho$." }
+  - { tex: "\\vec J,\\ J^\\mu", meaning: "Strømtettheten, og firerstrømmen $(c\\rho, \\vec J)$", unit: "A/m²", section: "Elektromagnetisme og relativitet", term: "Firerstrøm", formula: firerstrom, id: firerstrom, note: "Ikke dreieimpulsen $J$ eller kraften $J(t)$ i Greens funksjon." }
+  - { tex: "\\lambda,\\ I", meaning: "Ladningen per lengde og strømmen i en ledning", unit: "C/m, A", section: "Elektromagnetisme og relativitet", formula: firerstrom, id: linjeladning, note: "En boost langs ledningen gir $\\lambda' = \\gamma(\\lambda - vI_x/c^2)$. Ikke Lagrange-multiplikatoren $\\lambda$, og $I$ er ikke treghetsmomentet eller virkningsvariabelen." }
+  - { tex: "e", meaning: "Elementærladningen", unit: "C", section: "Elektromagnetisme og relativitet", id: elementaerladning, note: "$1{,}602 \\cdot 10^{-19}$ C. Et elektron har ladningen $-e$ og et proton $e$. Ikke eksentrisiteten $e$." }
+  - { tex: "A^\\mu,\\ A_\\mu", meaning: "Firerpotensialet $(\\phi/c, \\vec A)$, og med indeksen nede $(\\phi/c, -\\vec A)$", unit: "T·m", section: "Elektromagnetisme og relativitet", term: "Firerpotensial", formula: firerpotensial, id: firerpotensial, note: "Ikke Runge–Lenz-vektoren $\\vec A$." }
+  - { tex: "\\partial_\\mu,\\ \\partial^\\mu", meaning: "De deriverte $\\partial/\\partial X^\\mu = (\\partial/\\partial(ct), \\nabla)$, og med indeksen oppe $(\\partial/\\partial(ct), -\\nabla)$", unit: "m⁻¹", section: "Elektromagnetisme og relativitet", formula: firerpotensial, id: firerderivert }
+  - { tex: "F^{\\mu\\nu}", meaning: "Feltstyrketensoren, med $\\vec E/c$ og $\\vec B$ som de seks komponentene", unit: "T", section: "Elektromagnetisme og relativitet", term: "Feltstyrketensor", formula: feltstyrketensor, id: feltstyrketensor, note: "Den har to indekser. Firerkraften $F^\\mu$ har én." }
+  - { tex: "\\Box", meaning: "d'Alembert-operatoren, $\\partial_\\mu\\partial^\\mu = \\partial^2/\\partial(ct)^2 - \\nabla^2$", unit: "m⁻²", section: "Elektromagnetisme og relativitet", term: "Lorenz-gauge", formula: lorenz-gauge, id: dalembert }
+  - { tex: "\\epsilon_0,\\ \\mu_0", meaning: "Permittiviteten og permeabiliteten i vakuum, med $\\epsilon_0\\mu_0 = 1/c^2$", unit: "F/m, H/m", section: "Elektromagnetisme og relativitet", formula: maxwell-kovariant, id: epsilon0-mu0, note: "$0$ i $\\mu_0$ er ikke en firerindeks, og $\\mu_0$ er ikke den reduserte massen $\\mu$." }
   # ── Kjente systemer ──
   - { tex: "l", meaning: "Lengden til pendelen; $l_1$ og $l_2$ for dobbeltpendelen", unit: "m", section: "Kjente systemer", formula: plan-pendel, note: "I eksamensoppgavene står $\\ell$ både for en stanglengde og for dreieimpulsen." }
   - { tex: "\\theta", meaning: "Vinkelen fra loddlinja nedover for en pendel, og fra bunnpunktet for perla på ringen", unit: "rad", section: "Kjente systemer", formula: plan-pendel, note: "$\\theta = \\pi$ er opp ned. For et legeme som ruller, er $\\theta$ dreievinkelen." }
@@ -1253,6 +1303,21 @@ glossary:
   - term: Lorentz-skalar
     section: Spesiell relativitetsteori
     definition: "En størrelse som er den samme i alle inertialsystemer. Et uttrykk der hver indeks står én gang oppe og én gang nede og summeres over, er en Lorentz-skalar, for eksempel $P^\\mu P_\\mu = m^2c^2$."
+  - term: Firerstrøm
+    section: Elektromagnetisme og relativitet
+    definition: "$J^\\mu = (c\\rho, \\vec J) = \\rho_0U^\\mu$, ladningstettheten og strømtettheten samlet i en firervektor. Ladningen er den samme i alle inertialsystemer, men en boost blander tettheten og strømmen."
+  - term: Firerpotensial
+    section: Elektromagnetisme og relativitet
+    definition: "$A^\\mu = (\\phi/c, \\vec A)$, skalarpotensialet og vektorpotensialet samlet i en firervektor. Det lages av firerstrømmen, og en gaugetransformasjon er $A^\\mu \\to A^\\mu - \\partial^\\mu\\chi$."
+  - term: Feltstyrketensor
+    section: Elektromagnetisme og relativitet
+    definition: "$F^{\\mu\\nu} = \\partial^\\mu A^\\nu - \\partial^\\nu A^\\mu$, den antisymmetriske tensoren med $\\vec E/c$ og $\\vec B$ som de seks komponentene. Den er gaugeinvariant, og ved en boost blandes komponentene av $\\vec E$ og $\\vec B$ på tvers av farten."
+  - term: Bianchi-identitet
+    section: Elektromagnetisme og relativitet
+    definition: "$\\partial^\\lambda F^{\\mu\\nu} + \\partial^\\mu F^{\\nu\\lambda} + \\partial^\\nu F^{\\lambda\\mu} = 0$, som er oppfylt av seg selv når feltene er deriverte av potensialer. Den inneholder $\\nabla\\cdot\\vec B = 0$ og Faradays lov."
+  - term: Lorenz-gauge
+    section: Elektromagnetisme og relativitet
+    definition: "Potensialer med $\\partial_\\mu A^\\mu = 0$. Da er Maxwells ligninger $\\Box A^\\nu = \\mu_0J^\\nu$, som har samme form i alle inertialsystemer."
 
 # ── Lenker → sidemenyen ──────────────────────────────────────────────────────
 # Bare emnesida. Den eier øvingsark, pensumliste og beskjeder, så guiden lenker
