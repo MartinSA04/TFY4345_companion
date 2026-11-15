@@ -2,7 +2,7 @@
 order: 5
 title: "Roterende referansesystemer"
 summary: "Sett fra et system som roterer, går en fri ball i en bue, og Newtons andre lov får ekstra ledd: sentrifugalkraften, Corioliskraften og Eulerkraften. De forklarer hvorfor loddlinja ikke peker mot jordas sentrum, hvorfor en stein som faller, lander øst for loddlinja, og hvorfor svingeplanet til Foucaults pendel dreier."
-importance: core
+importance: useful
 tag: "Uke 37"
 part: "Del 2: Lagrangeformalismen"
 updated: 2026-10-24
@@ -387,55 +387,6 @@ $$
 Tilnærmingen satte farten uten Corioliskraften inn i Coriolisleddet. Farten mot øst som steinen
 får, ville gitt et nytt ledd der. Det leddet er en faktor $\omega t$ mindre enn det som er med, og
 ${\omega t = 7{,}29 \cdot 10^{-5} \cdot 4{,}51 = 3{,}3 \cdot 10^{-4}}$, så tilnærmingen holder godt.
-
-<Example label="Eksamensoppgave" title="Fritt fall fra 39 km">
-<ExamRef id="2022-aug-kont" task="1 A–B" />
-
-A. Felix Baumgartner made his record base jump in 2012 with a starting altitude of 39 km (reached
-by using a giant helium balloon) and a supersonic top velocity of 1358 km/h in free fall. Some
-people claim (?!) that if Earth was a spinning sphere, the starting point on the surface should have
-escaped him \*visibly\* while ascend (balloon trip). Make solid arguments why this should not be the
-case. Small measurable deflections are of course present (one effect mentioned below). The radius of
-Earth is 6371 km. [2p]
-
-<Figure src="/figures/eksamen-2022-08-oppgave-1.png" alt="Jordkule med rotasjonsaksen gjennom N og S, vinkelhastigheten omega, breddegraden alfa og de lokale enhetsvektorene e_x, e_y og e_z ved et punkt på overflaten der g peker innover." width={380} height={450} caption="Figuren fra oppgavesettet." />
-
-B. Derive the lateral displacement due to the Coriolis effect for the first part of the free fall by
-assuming that Felix reaches the maximum velocity (1358 km/h) in the end, but not reaching the ground
-yet. To be clear: Felix starts from 39 km at rest (checkpoint 1) and falls freely until maximum
-velocity (checkpoint 2). How much has it taken time and what is the altitude then? How much is the
-lateral deflection of the fall at that point with respect to Earth's surface and in which direction?
-You can neglect air resistance. The latitude of Roswell (New Mexico, USA) is 34 degrees (north),
-Earth's angular velocity is $\omega = 7.29\times 10^{-5}\ \text{s}^{-1}$ and the acceleration of
-gravity is $g = 9.81\ \text{m/s}^2$. [5p]
-
-Hint: You can safely ignore the x- and y-components of velocity in the cross-product.
-
-<Solution>
-A. Felix og ballongen starter med den samme farten mot øst som bakken, så sett fra $K'$ starter de i
-ro. Ballongen stiger med lufta, og lufta roterer med jorda. Luftmotstanden holder derfor ballongen
-over det samme stedet på bakken, bortsett fra det vinden flytter den. Hvis ingenting holdt ballongen
-med lufta, ville Corioliskraften fra stigefarten flyttet den mot vest. Kraften er liten, men den
-virker hele oppstigningen. Med konstant stigefart $v$ blir avviket ${\omega\cos\phi\, v t^2 = \omega\cos\phi\, h t}$ etter tida
-$t$, over ti kilometer for en oppstigning på et par timer. Sentrifugalleddet endrer seg lite, fordi
-39 km bare er 0,6 % av jordradien.
-
-B. Fra ro er ${t = v_\text{maks}/g}$, og med ${v_\text{maks} = 377{,}2}$ m/s
-er $t = 38{,}45$ s. Han har da falt
-${v_\text{maks}^2 / 2g = 7{,}25}$ km, så høyden er ${39 - 7{,}25 = 31{,}7}$ km. Bare den loddrette farten
-er med i kryssproduktet, så avbøyningen er den samme som for fall fra et tårn, med breddegraden
-${\phi = 34°}$ ($\alpha$ i oppgaven). Med ${\cos 34° = 0{,}829}$ er
-${g\omega\cos\phi = 5{,}93 \cdot 10^{-4}\ \text{m/s}^3}$, så
-
-$$
-x = \tfrac13 \cdot 5{,}93 \cdot 10^{-4} \cdot 38{,}45^3\ \text{m} \allowbreak = 11{,}2\ \text{m}
-$$
-
-mot øst. Løsningsforslaget oppgir 11,5 m med den samme formelen; tallene i oppgaven gir 11,2 m.
-
-<Answer>$t = 38{,}5$ s, høyden er 31,7 km, og avbøyningen er 11,2 m mot øst.</Answer>
-</Solution>
-</Example>
 
 <SelfCheck question="En ball kastes rett opp med 20 m/s i Trondheim og faller ned igjen. Lander den der den ble kastet, øst for det eller vest for det, og hvor langt fra?">
 På vei opp er ${v_z' > 0}$, og Coriolisleddet $-2\omega v_z'\cos\phi$ i $x$-retningen peker mot vest.
