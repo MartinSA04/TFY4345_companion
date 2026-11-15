@@ -30,6 +30,31 @@ exam:
   # Ingen formelsamling deles ut: kode H forbyr trykte hjelpemidler, og settene i
   # arkivet har ingen formelside.
   formulaSheet: false
+  # Det foreleseren har sagt om årets eksamen (melding til studentene, november
+  # 2026). Punktene er guidens egne ord; `message` er meldingen ordrett, med
+  # skrivefeilene, fordi nedtrekkslista lover foreleserens egne ord. Vises bare
+  # på Eksamen-siden.
+  focus:
+    title: "Fra foreleseren"
+    items:
+      - { label: "Mest vekt", text: "Lagrangeformalismen, små svingninger, Hamiltonformalismen med symmetrier, kanoniske transformasjoner og spesiell relativitetsteori." }
+      - { label: "Bare kort", text: "ikke-holonome føringer, roterende referansesystemer og Hamilton–Jacobi. De får neppe stor plass på eksamen." }
+      - { label: "Ikke med i år", text: "dynamiske systemer og tidevann. Oppgaver i eldre sett om fikspunkter eller tidevann er ikke relevante." }
+      - { label: "Øvingene", text: "nyttige å se på før eksamen." }
+    message: |
+      Comments on (previous) exam(s):
+
+      our main focus was on Lagrangian mechanics, small oscillations, Hamiltonian mechanics including symmetries, canonical transformations, special relativity
+      we treated anholonomic constraints, rotating coordinate systems, the Hamilton-Jabobi only superficially, so unlikely that they will play a prominent role in the exam
+      it will be useful to to look at the exercises
+      we did not discuss dynamical systems, tides,...; so exercises from previous exams  including the words "fixed point", "tidally locked", ... are not relevant.
+      And here are some comments on previous exams, one for each lecturer:
+
+      JAO '25: not relevant for our exam: 1,3
+      JA '22 Aug:  ...:  1, parts of 2
+      PGD '16 Dec: ...: 4
+      JL '12: ...: 1d
+    messageLang: en
 
 # ── Tidligere eksamener → Eksamen-siden ──────────────────────────────────────
 # Lenker rett til PDF-ene hos NTNU; guiden hoster dem ikke selv. Ingen dato er
@@ -40,12 +65,18 @@ exam:
 # bare med måned i etiketten og har ingen date-verdi.
 # Et utvalg, nyeste først; resten ligger i arkivet som lenkes nederst.
 exams:
+  # `marks`: oppgaver som ikke er verdt tida i år. `lecturer` bare for det
+  # foreleseren selv pekte ut (2025, aug. 2022, des. 2016, 2012); `guide` er
+  # guidens vurdering ut fra det foreleseren sa om pensum: dynamiske systemer og
+  # tidevann (ikke med), ikke-holonome føringer, roterende systemer og
+  # Hamilton–Jacobi (bare kort), og stoff ingen forelesning hadde.
   - {
       label: "Ordinær eksamen, november 2025",
       id: "2025-nov",
       date: 2025-11-26,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_251200.pdf/df66e8f7-6483-7255-c4b7-52a012a924fc",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_251200.pdf/56c203d5-ea6d-de00-ebb6-fb49a93e433f",
+      marks: { lecturer: "1 og 3" },
     }
   - {
       label: "Ordinær eksamen, november 2024",
@@ -53,6 +84,7 @@ exams:
       date: 2024-11-30,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_241130.pdf/9671b7d0-a23a-371a-8e06-26779817d835",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_241130.pdf/cb2b1e14-0572-02e5-34a6-95b3ed7e5350",
+      marks: { guide: "1 h og 3 b–c" },
     }
   - {
       label: "Ordinær eksamen, november 2023",
@@ -60,6 +92,7 @@ exams:
       date: 2023-11-27,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_231127.pdf/f9dd7df7-33ea-eb9a-fb3a-563c869dd5f8",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_231127.pdf/fe4473de-a2fd-b927-7768-1ec35c83d5a4",
+      marks: { guide: "1.16, 1.17 og 1.20" },
     }
   - {
       label: "Ordinær eksamen, desember 2022",
@@ -67,6 +100,7 @@ exams:
       date: 2022-12-01,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_221200.pdf/45a3ba32-5f1c-ae99-5e60-1af9042a1c19",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_221200.pdf/93dc3010-70b6-697b-ca97-764a25ed86d1",
+      marks: { guide: "1 iv" },
     }
   - {
       label: "Kontinuasjonseksamen, august 2022",
@@ -76,6 +110,7 @@ exams:
       date: 2022-08,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_220800.pdf/b914a74c-97e6-a065-038a-1228c5155834",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_220800.pdf/eb0eb036-86c7-93d7-796b-6665bf6e1c63",
+      marks: { lecturer: "1 og deler av 2", guide: "2 i, iv og v" },
     }
   - {
       label: "Ordinær eksamen, desember 2021",
@@ -83,6 +118,7 @@ exams:
       date: 2021-12-14,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_211200.pdf/f36d4cc9-75af-0a20-7b4d-3fe6a5326437",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_211200.pdf/50431bfb-3ec6-01f9-e76c-bb16b6236931",
+      marks: { guide: "1 A og 5" },
     }
   - {
       label: "Ordinær eksamen, desember 2019",
@@ -90,6 +126,7 @@ exams:
       date: "2019-12",
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_191200.pdf/15b3dae9-b442-d069-b89d-4daf8ed23448",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_191200.pdf/7b6fe432-87cf-344a-989c-3534ac269028",
+      marks: { guide: "1 A iv–v" },
     }
   - {
       label: "Ordinær eksamen, desember 2018",
@@ -97,6 +134,7 @@ exams:
       date: 2018-12-11,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_181211.pdf/975ccfe8-c496-a0fc-220d-a3850e0f59cc",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_181211.pdf/f30f2fc7-f315-a3d0-8a6b-3c9e56642dcd",
+      marks: { guide: "1 og 5" },
     }
   - {
       label: "Kontinuasjonseksamen, august 2018",
@@ -104,6 +142,7 @@ exams:
       date: 2018-08-11,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_180811.pdf/b59f2777-3398-a215-d8be-009cd77cbe93",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_180811.pdf/6df647e3-7746-1a04-7f72-faa968a37278",
+      marks: { guide: "4" },
     }
   - {
       label: "Ordinær eksamen, desember 2017",
@@ -111,6 +150,7 @@ exams:
       date: 2017-12-12,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_171212.pdf/56ecc352-0fd7-9780-8c00-faafbbd104be",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_171212.pdf/b0b6ecfb-8a32-3b28-d2ec-3a6e5a8fbb1d",
+      marks: { guide: "4" },
     }
   - {
       label: "Ordinær eksamen, desember 2016",
@@ -118,6 +158,7 @@ exams:
       date: 2016-12-12,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_161212.pdf/03b583b6-cfa2-06a8-fc75-c5f52ac34a65",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_161212.pdf/2c8b5efd-dd76-567e-7e84-51044111bce7",
+      marks: { lecturer: "4" },
     }
   - {
       label: "Kontinuasjonseksamen, august 2016",
@@ -132,6 +173,7 @@ exams:
       date: 2015-05-16,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_150516.pdf/a18adeac-6f3f-4bf1-48c7-35e1f877b879",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_150516.pdf/3b708a90-574f-c1cf-966a-1449732956bf",
+      marks: { guide: "3" },
     }
   - {
       label: "Ordinær eksamen, juni 2014",
@@ -156,6 +198,7 @@ exams:
       date: 2012-06-01,
       url: "https://www.ntnu.no/documents/10422/1270665911/E-TFY4345-01jun2012.pdf/f94b9ecf-5357-4822-ba05-3b5d34d4aa32",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L-TFY4345-01jun2012.pdf/adaf6294-2e76-4fdc-b694-30ad55883982",
+      marks: { lecturer: "1d", guide: "2 c og 3 c" },
     }
   - {
       label: "Ordinær eksamen, juni 2011",
