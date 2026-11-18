@@ -5,7 +5,7 @@ summary: "Spesiell relativitetsteori som geometri i romtida: romtidsdiagrammer, 
 importance: core
 tag: "Uke 45 · Tong 11.1–11.4.1"
 part: "Del 6: Spesiell relativitetsteori"
-updated: 2026-11-06
+updated: 2026-11-18
 ---
 
 <LearningGoals>
@@ -14,6 +14,7 @@ updated: 2026-11-06
 - Regne ut intervallet mellom to hendelser, avgjøre om de er tidlike, lyslike eller romlike, og si om den ene kan påvirke den andre.
 - Finne egentida langs en verdenslinje, og forklare hvorfor tvillingen som reiser, er yngst når de møtes.
 - Skrive en boost som en matrise med ${\Lambda^{\mathsf T}\eta\Lambda = \eta}$, og legge sammen hastigheter med rapiditeten.
+- Regne ut skalarproduktet av to firervektorer, og forklare hvorfor det er det samme i alle inertialsystemer.
 </LearningGoals>
 
 Ida blir igjen på jorda mens tvillingen Jon reiser med 0,8c til en stjerne 4 lysår unna, snur og reiser like fort hjem. Når de møtes, har Ida blitt 10 år eldre og Jon 6. Målt fra jorda går Jons klokke 0,6 ganger så fort som Idas. Målt fra romskipet er det omvendt. På hele utreisen og hele hjemreisen går Idas klokke 0,6 ganger så fort som Jons. Likevel er det Jon som er yngst når de møtes.
@@ -292,10 +293,43 @@ A spaceship moves with speed $7c/8$ relative to Spaceman Spiff, who is at rest o
 />
 </Example>
 
+## Skalarproduktet
+
+Intervallet ${X \cdot X = X^{\mathsf T}\eta X}$ fra origo hører til én hendelse og sier ingenting om to retninger. Aksene til $K'$ i figur 1 heller inn mot lyslinja fra hver sin side og ser ikke vinkelrette ut, selv om $K'$ er et inertialsystem like godt som $K$. I planet avgjør skalarproduktet om to vektorer står vinkelrett. Bytt ut den siste $X$-en i ${X^{\mathsf T}\eta X}$ med en annen firervektor $Y$, så får du <Term name="Skalarprodukt av firervektorer">skalarproduktet</Term> av de to:
+
+<Formula tex="X \cdot Y = X^{\mathsf T}\eta\,Y \allowbreak = X^0Y^0 - X^1Y^1 \allowbreak - X^2Y^2 - X^3Y^3" caption="Skalarproduktet av to firervektorer, med ${\eta = \operatorname{diag}(1, -1, -1, -1)}$. Med ${Y = X}$ er det intervallet fra origo til $X$." />
+
+Tallene oppe er indekser, ikke potenser. Fortegnene er de samme som i intervallet, pluss for tida og minus for rommet. Rekkefølgen spiller ingen rolle, ${X \cdot Y = Y \cdot X}$, og du ganger ut parenteser som med tall. Men ${X \cdot X}$ kan være null eller negativ, som for lyslike og romlike hendelser. Intervallet mellom hendelsene $X$ og $Y$ er ${(X - Y)\cdot(X - Y)}$, ofte skrevet ${(X - Y)^2}$, og ganget ut er det
+
+$$
+(X - Y)^2 \allowbreak = X \cdot X - 2\,X \cdot Y + Y \cdot Y
+$$
+
+Ligningen har samme form som cosinussetningen for en trekant i planet. Den gir ${X \cdot Y}$ fra de tre intervallene i trekanten med hjørnene origo, $X$ og $Y$, og hvert av dem er det samme i alle inertialsystemer. Da er ${X \cdot Y}$ det også, slik en dreining ikke endrer skalarproduktet av to vektorer i planet fordi den ikke endrer lengdene. Kravet ${\Lambda^{\mathsf T}\eta\Lambda = \eta}$ gir det samme resultatet på én linje. Med ${X' = \Lambda X}$ og ${Y' = \Lambda Y}$ er
+
+$$
+X' \cdot Y' = X^{\mathsf T}\Lambda^{\mathsf T}\eta\Lambda Y \allowbreak = X^{\mathsf T}\eta Y = X \cdot Y
+$$
+
+Regningen bruker bare at begge endrer seg med $\Lambda$, så skalarproduktet av to firervektorer er det samme i alle inertialsystemer, også når de ikke er hendelser.
+
+Skalarproduktet av to firervektorer langs aksene til $K'$ er null. Se bort fra $y$ og $z$. $ct'$-aksen er verdenslinja ${x = vt}$, så en hendelse på den er ${X = ct\,(1,\ v/c)}$. $x'$-aksen er linja ${ct = (v/c)\,x}$, så en hendelse på den er ${Y = x\,(v/c,\ 1)}$. Da er
+
+$$
+X \cdot Y = ct\,x\,\Bigl(\frac{v}{c} - \frac{v}{c}\Bigr) = 0
+$$
+
+Svaret stemmer med at skalarproduktet er det samme i alle systemer. I $K'$ er ${X = (ct',\ 0)}$ og ${Y = (0,\ x')}$, og produktet er null der også. To firervektorer med skalarproduktet null heter ortogonale. I romtidsdiagrammet er speilbildet av en retning om lyslinja ortogonal på den, fordi speilingen bytter om $ct$ og $x$, og ${(a, b)\cdot(b, a) = ab - ba = 0}$. Aksene til $K'$ er et slikt par.
+
+<Callout title="Skalarproduktet">
+${X \cdot Y = X^{\mathsf T}\eta Y}$, med pluss for tida og minus for rommet, er det samme i alle inertialsystemer. Du ganger ut parenteser som med tall. Firervektorer langs aksene til et system som beveger seg, er ortogonale, selv om de ikke ser vinkelrette ut i diagrammet.
+</Callout>
+
 <KeyTakeaways>
 - I et romtidsdiagram er hver hendelse et punkt med $ct$ opp og $x$ til siden, og lys går på skrå 45°. Aksene til et system $K'$ som beveger seg, heller inn mot lyslinja med samme vinkel fra hver side, og linjer parallelle med $x'$-aksen er samtidige i $K'$.
 - To hendelser på ulike steder som er samtidige i ett system, er ikke samtidige i et system som beveger seg langs linja mellom dem. Lengden er avstanden mellom endene målt samtidig, så et legeme er ${L_0/\gamma}$ langt der det beveger seg.
 - Intervallet $\Delta s^2$ mellom to hendelser er det samme i alle inertialsystemer. Bare tidlike og lyslike hendelser har en fast rekkefølge, og ingen påvirkning går fortere enn lyset.
 - En klokke viser egentida ${\tau = \int dt\,\sqrt{1 - u^2/c^2}}$ langs sin egen verdenslinje, og den rette verdenslinja mellom to tidlike hendelser har lengst egentid. Tvillingen som reiser, bytter inertialsystem når han snur, og blir yngst.
 - En Lorentz-transformasjon oppfyller ${\Lambda^{\mathsf T}\eta\Lambda = \eta}$. En boost har ${\gamma = \cosh w}$ og ${\gamma v/c = \sinh w}$, og rapiditetene legges sammen, som gir ${u = (u' + v)/(1 + u'v/c^2)}$.
+- Skalarproduktet ${X \cdot Y = X^{\mathsf T}\eta Y}$, med pluss for tida og minus for rommet, er bestemt av tre intervaller og er derfor det samme i alle inertialsystemer. Firervektorer med skalarproduktet null er ortogonale, som to firervektorer langs aksene til $K'$.
 </KeyTakeaways>

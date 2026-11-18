@@ -5,7 +5,7 @@ summary: "Firerimpulsen, med energien E = γmc² som tidsdel, bevaring av fireri
 importance: core
 tag: "Uke 45 · Tong 11.4.2–11.6"
 part: "Del 6: Spesiell relativitetsteori"
-updated: 2026-11-06
+updated: 2026-11-18
 ---
 
 <LearningGoals>
@@ -101,7 +101,7 @@ $$
 0 = (P_\pi - P_\mu)^2 \allowbreak = m_\pi^2c^2 - 2P_\pi \cdot P_\mu + m_\mu^2c^2
 $$
 
-I pionets hvilesystem er ${P_\pi = (m_\pi c, \vec 0)}$, så ${P_\pi \cdot P_\mu = m_\pi E_\mu}$, og
+I pionets hvilesystem er ${P_\pi = (m_\pi c, \vec 0)}$, så bare tidskomponentene bidrar, ${P_\pi \cdot P_\mu = m_\pi c \cdot E_\mu/c = m_\pi E_\mu}$, og
 
 $$
 E_\mu = \frac{(m_\pi^2 + m_\mu^2)\,c^2}{2m_\pi} = 109{,}8\ \text{MeV}
@@ -242,7 +242,9 @@ Newtons andre lov skrives med firerimpulsen og egentida, ${dP/d\tau = F}$, der $
 
 <Formula tex="\frac{d\vec p}{dt} = \vec f, \allowbreak\qquad \frac{dE}{dt} = \vec f \cdot \vec u, \allowbreak\qquad \vec p = \gamma m\vec u" caption="Newtons andre lov for en partikkel med massen $m$ og farten $\vec u$, med kraften $\vec f$. Firerkraften er ${F = dP/d\tau = \gamma\,(\vec f \cdot \vec u/c,\ \vec f)}$." />
 
-Ligningen for energien kommer fra ${U \cdot U = c^2}$. Endringen av firerhastigheten er <Term name="Firerakselerasjon">firerakselerasjonen</Term> ${a^\mu = dU^\mu/d\tau}$. Siden ${U \cdot U = c^2}$ hele tida, gir derivasjonen ${U \cdot a = 0}$, så ${F \cdot U = m\,U \cdot a = 0}$. Med ${F = \gamma\,(dE/c\,dt,\ \vec f)}$ og ${U = \gamma\,(c, \vec u)}$ er ${F \cdot U = \gamma^2\,(dE/dt - \vec f \cdot \vec u)}$. Arbeidet kraften gjør per tid, er altså endringen av ${E = \gamma mc^2}$.
+Ligningen for energien kommer fra ${U \cdot U = c^2}$. Endringen av firerhastigheten er <Term name="Firerakselerasjon">firerakselerasjonen</Term> ${a^\mu = dU^\mu/d\tau}$. Skalarproduktet er en sum av produkter av komponentene, så det deriveres med produktregelen, ${d(U \cdot U)/d\tau = a \cdot U + U \cdot a = 2\,U \cdot a}$. Siden ${U \cdot U = c^2}$ hele tida, er ${U \cdot a = 0}$, og da er ${F \cdot U = m\,U \cdot a = 0}$. Med ${F = \gamma\,(dE/c\,dt,\ \vec f)}$ og ${U = \gamma\,(c, \vec u)}$ er ${F \cdot U = \gamma^2\,(dE/dt - \vec f \cdot \vec u)}$. Arbeidet kraften gjør per tid, er altså endringen av ${E = \gamma mc^2}$.
+
+Firerakselerasjonen er ortogonal på firerhastigheten, ${U \cdot a = 0}$. I det momentane hvilesystemet er ${U = (c, \vec 0)}$, så ${U \cdot a = c\,a^0 = 0}$, og der har $a$ bare en romdel.
 
 En konstant kraft $f$ langs $x$ på et legeme med massen $m$ som starter i ro, gir ${p = ft}$, og det er rakettens bevegelse. For raketten er ${p = \gamma mu = mc\sinh w}$, og med $t$ fra formelen over er ${p = ma't}$. Konstant akselerasjon i hvilesystemet er altså det samme som en konstant kraft ${f = ma'}$ i jordas system, så lenge massen ikke endrer seg, og farten ${u = pc^2/E}$ når aldri $c$ fordi $E$ alltid er større enn $pc$. Firerakselerasjonen til raketten er ${a = a'(\sinh w,\ \cosh w)}$, så ${U \cdot a = 0}$ og ${a \cdot a = -a'^2}$ hele tida.
 
@@ -304,7 +306,13 @@ $$
 X_\mu = \eta_{\mu\nu}X^\nu \allowbreak = (ct,\ -x,\ -y,\ -z), \allowbreak\qquad X \cdot Y = X^\mu Y_\mu
 $$
 
-der det summeres over $\mu$. Komponentene med indeksen oppe heter <Term name="Kontravariant og kovariant">kontravariante</Term> og de med indeksen nede kovariante. En nedre indeks endrer seg motsatt av en øvre når du bytter system, så i en sum over et par med én indeks oppe og én nede faller endringen bort. Et uttrykk der hver indeks står én gang oppe og én gang nede og summeres over, er derfor det samme i alle inertialsystemer, og det heter en <Term name="Lorentz-skalar">Lorentz-skalar</Term>. ${U^\mu U_\mu = c^2}$ og ${P^\mu P_\mu = m^2c^2}$ er eksempler.
+der det summeres over $\mu$. Komponentene med indeksen oppe heter <Term name="Kontravariant og kovariant">kontravariante</Term> og de med indeksen nede kovariante. Ved en boost endrer en nedre indeks seg motsatt av en øvre. For boosten langs $x$ er ${X_0 = ct}$ og ${X_1 = -x}$, så ${ct' = \gamma(ct - vx/c)}$ og ${x' = \gamma(x - vt)}$ blir
+
+$$
+X'_0 = \gamma\,(X_0 + vX_1/c), \allowbreak\qquad X'_1 = \gamma\,(X_1 + vX_0/c)
+$$
+
+De nedre komponentene endrer seg altså med boosten med farten $-v$, og de øvre med boosten med farten $v$. Gang ut ${X'_0Y'^0 + X'_1Y'^1}$. Leddene med $v$ faller bort, og det som står igjen, er ${X_0Y^0 + X_1Y^1}$ ganget med ${\gamma^2(1 - v^2/c^2) = 1}$. Et uttrykk der hver indeks står én gang oppe og én gang nede og summeres over, er derfor det samme i alle inertialsystemer, og det heter en <Term name="Lorentz-skalar">Lorentz-skalar</Term>. ${U^\mu U_\mu = c^2}$ og ${P^\mu P_\mu = m^2c^2}$ er eksempler.
 
 En størrelse med flere nedre indekser, som $\eta_{\mu\nu}$, er en kovariant tensor når hver av indeksene endrer seg som en nedre indeks. Da er en sum som ${\eta_{\mu\nu}X^\mu Y^\nu}$ den samme i alle systemer. For $\eta$ er også komponentene de samme i alle systemer, og det er kravet ${\Lambda^{\mathsf T}\eta\Lambda = \eta}$. Komponentene til en annen kovariant tensor kan endre seg fra system til system, men summen med indeksene parvis oppe og nede er den samme i alle.
 

@@ -745,6 +745,10 @@ formulas:
     section: Spesiell relativitetsteori
     tex: "u = \\frac{u' + v}{1 + u'v/c^2}"
     label: "<b>Hastighetsaddisjon</b>: et legeme med farten $u'$ langs $x'$ i $K'$ har farten $u$ i $K$, der $K'$ beveger seg med farten $v$. Med $u' = c$ er $u = c$."
+  - id: skalarprodukt
+    section: Spesiell relativitetsteori
+    tex: "X \\cdot Y = X^{\\mathsf T}\\eta\\,Y \\allowbreak = X^0Y^0 - X^1Y^1 \\allowbreak - X^2Y^2 - X^3Y^3"
+    label: "<b>Skalarproduktet</b> av to firervektorer, det samme i alle inertialsystemer. Med $Y = X$ er det intervallet fra origo til $X$, og ortogonale firervektorer har $X \\cdot Y = 0$."
   - id: firerimpuls
     section: Spesiell relativitetsteori
     tex: "U^\\mu = \\frac{dX^\\mu}{d\\tau} = \\gamma\\,(c, \\vec u) \\allowbreak\\qquad P^\\mu = mU^\\mu = \\Bigl(\\frac{E}{c}, \\vec p\\Bigr)"
@@ -1313,6 +1317,9 @@ glossary:
   - term: Firervektor
     section: Spesiell relativitetsteori
     definition: "Fire komponenter som transformeres som $(ct, x, y, z)$ under en Lorentz-transformasjon, $X' = \\Lambda X$."
+  - term: Skalarprodukt av firervektorer
+    section: Spesiell relativitetsteori
+    definition: "$X \\cdot Y = X^0Y^0 - X^1Y^1 - X^2Y^2 - X^3Y^3$, med pluss for tida og minus for rommet som i intervallet. Skalarproduktet er det samme i alle inertialsystemer, og to firervektorer med skalarproduktet null er ortogonale."
   - term: Rapiditet
     section: Spesiell relativitetsteori
     definition: "Parameteren $w$ i en boost, med $\\gamma = \\cosh w$ og $v/c = \\tanh w$. Rapiditetene til booster langs samme akse legges sammen."
