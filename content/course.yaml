@@ -27,9 +27,10 @@ exam:
   durationMinutes: 240
   format: Skriftlig skoleeksamen
   aids: "Kode H: alle kalkulatorer tillatt, ingen trykte eller håndskrevne hjelpemidler"
-  # Ingen formelsamling deles ut: kode H forbyr trykte hjelpemidler, og settene i
-  # arkivet har ingen formelside.
-  formulaSheet: false
+  # Foreleseren sa i spørretimen at det kommer et formelark på eksamen, men at det
+  # ikke deles ut på forhånd. Derfor ingen formulaSheetUrl, og ingen formel er
+  # merket onSheet: false, siden ingen vet hva arket inneholder.
+  formulaSheet: true
   # Det foreleseren har sagt om årets eksamen (melding til studentene, november
   # 2026). Punktene er guidens egne ord; `message` er meldingen ordrett, med
   # skrivefeilene, fordi nedtrekkslista lover foreleserens egne ord. Vises bare
@@ -55,6 +56,17 @@ exam:
       PGD '16 Dec: ...: 4
       JL '12: ...: 1d
     messageLang: en
+    # Det foreleseren sa muntlig i spørretimen før eksamen (november 2026). Det
+    # finnes ikke skriftlig, så det står under egen overskrift og ikke i
+    # `items`, som leseren tar for å stå i meldingen.
+    groups:
+      - title: "Sagt muntlig i spørretimen"
+        items:
+          - { label: "Ikke med i år", text: "Eulervinkler, virknings- og vinkelvariabler, Greens funksjon og Lagrange-multiplikatorer." }
+          - { label: "Små svingninger", text: "kommer på eksamen. Det holder å kunne én variant." }
+          - { label: "Lagrangefunksjonen i spesiell relativitetsteori", text: "det holder å kunne én variant." }
+          - { label: "Kanoniske transformasjoner", text: "du trenger ikke bruke dem, bare sjekke at en transformasjon er kanonisk." }
+          - { label: "Formelark", text: "kommer på eksamen, men deles ikke ut på forhånd." }
 
 # ── Tidligere eksamener → Eksamen-siden ──────────────────────────────────────
 # Lenker rett til PDF-ene hos NTNU; guiden hoster dem ikke selv. Ingen dato er
@@ -69,7 +81,10 @@ exams:
   # foreleseren selv pekte ut (2025, aug. 2022, des. 2016, 2012); `guide` er
   # guidens vurdering ut fra det foreleseren sa om pensum: dynamiske systemer og
   # tidevann (ikke med), ikke-holonome føringer, roterende systemer og
-  # Hamilton–Jacobi (bare kort), og stoff ingen forelesning hadde.
+  # Hamilton–Jacobi (bare kort), og stoff ingen forelesning hadde. Fra
+  # spørretimen: Eulervinkler, virknings- og vinkelvariabler, Greens funksjon og
+  # Lagrange-multiplikatorer er ikke med, og av kanoniske transformasjoner er
+  # bare sjekken av at en transformasjon er kanonisk med.
   - {
       label: "Ordinær eksamen, november 2025",
       id: "2025-nov",
@@ -84,7 +99,7 @@ exams:
       date: 2024-11-30,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_241130.pdf/9671b7d0-a23a-371a-8e06-26779817d835",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_241130.pdf/cb2b1e14-0572-02e5-34a6-95b3ed7e5350",
-      marks: { guide: "1 h og 3 b–c" },
+      marks: { guide: "1 b–d, 1 h og 3 b–c" },
     }
   - {
       label: "Ordinær eksamen, november 2023",
@@ -92,7 +107,7 @@ exams:
       date: 2023-11-27,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_231127.pdf/f9dd7df7-33ea-eb9a-fb3a-563c869dd5f8",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_231127.pdf/fe4473de-a2fd-b927-7768-1ec35c83d5a4",
-      marks: { guide: "1.16, 1.17 og 1.20" },
+      marks: { guide: "1.16, 1.17, 1.19 og 1.20" },
     }
   - {
       label: "Ordinær eksamen, desember 2022",
@@ -100,7 +115,7 @@ exams:
       date: 2022-12-01,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_221200.pdf/45a3ba32-5f1c-ae99-5e60-1af9042a1c19",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_221200.pdf/93dc3010-70b6-697b-ca97-764a25ed86d1",
-      marks: { guide: "1 iv" },
+      marks: { guide: "1 iv og 4 c–e" },
     }
   - {
       label: "Kontinuasjonseksamen, august 2022",
@@ -118,7 +133,7 @@ exams:
       date: 2021-12-14,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_211200.pdf/f36d4cc9-75af-0a20-7b4d-3fe6a5326437",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_211200.pdf/50431bfb-3ec6-01f9-e76c-bb16b6236931",
-      marks: { guide: "1 A og 5" },
+      marks: { guide: "1 A, 3 og 5" },
     }
   - {
       label: "Ordinær eksamen, desember 2019",
@@ -126,7 +141,7 @@ exams:
       date: "2019-12",
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_191200.pdf/15b3dae9-b442-d069-b89d-4daf8ed23448",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_191200.pdf/7b6fe432-87cf-344a-989c-3534ac269028",
-      marks: { guide: "1 A iv–v" },
+      marks: { guide: "1 A iii–v" },
     }
   - {
       label: "Ordinær eksamen, desember 2018",
@@ -134,7 +149,7 @@ exams:
       date: 2018-12-11,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_181211.pdf/975ccfe8-c496-a0fc-220d-a3850e0f59cc",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_181211.pdf/f30f2fc7-f315-a3d0-8a6b-3c9e56642dcd",
-      marks: { guide: "1 og 5" },
+      marks: { guide: "1, 2 b–c og 5" },
     }
   - {
       label: "Kontinuasjonseksamen, august 2018",
@@ -166,6 +181,7 @@ exams:
       date: 2016-08-18,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_160818.pdf/8cbd587b-9713-35a7-d15e-f10f43e9cdde",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_160818.pdf/3300a5af-aa0e-24da-a6f2-9d0f5a6e40b8",
+      marks: { guide: "3" },
     }
   - {
       label: "Ordinær eksamen, mai 2015",
@@ -191,6 +207,7 @@ exams:
       date: 2013-05-25,
       url: "https://www.ntnu.no/documents/10422/1270665911/E-TFY4345-25mai2013.pdf/04cb9b52-18f2-448e-a0d5-d12cfef9d786",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L-TFY4345-25mai2013.pdf/a31d9494-70d8-4e64-aa64-cb694c759c1d",
+      marks: { guide: "2 d" },
     }
   - {
       label: "Ordinær eksamen, juni 2012",
@@ -214,8 +231,8 @@ examArchive:
   label: "Hele eksamensarkivet hos Institutt for fysikk"
 
 # ── Formelsamling ────────────────────────────────────────────────────────────
-# Eksamen deler ikke ut formelark (hjelpemiddelkode H, og settene i arkivet har
-# ingen formelside), så exam.formulaSheet er false og radene får ingen merker.
+# Det kommer et formelark på eksamen, men innholdet er ukjent, så ingen rad er
+# merket onSheet: false.
 formulas:
   - id: newtons-andre
     section: Inertialsystemer
