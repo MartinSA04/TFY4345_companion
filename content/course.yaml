@@ -189,7 +189,7 @@ exams:
       date: 2015-05-16,
       url: "https://www.ntnu.no/documents/10422/1270665911/E_TFY4345_150516.pdf/a18adeac-6f3f-4bf1-48c7-35e1f877b879",
       solutionUrl: "https://www.ntnu.no/documents/10422/1270665911/L_TFY4345_150516.pdf/3b708a90-574f-c1cf-966a-1449732956bf",
-      marks: { guide: "3" },
+      marks: { guide: "3 c–d" },
     }
   - {
       label: "Ordinær eksamen, juni 2014",
